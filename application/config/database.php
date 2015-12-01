@@ -2,10 +2,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'tshirt';
+$db['default']['hostname'] = 'sql6.freemysqlhosting.net';
+$db['default']['username'] = 'sql698313';
+$db['default']['password'] = 'iG9!lY4*';
+$db['default']['database'] = 'sql698313';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'dg_';
 $db['default']['pconnect'] = TRUE;
