@@ -11,7 +11,7 @@
 ?>
 <div class="module-menu <?php if(isset($options->class_sfx)) echo $options->class_sfx; ?>">
 	<div class="navbar <?php if(isset($options->style)) echo $options->style; ?> <?php if(isset($options->display)) echo $options->display; ?>">
-		<div class="container-fluid">
+		<div class="container-fluid float-right">
 		
 			<!-- Head menu -->
 			<div class="navbar-header">				

@@ -1130,3 +1130,13 @@ outline-color: #2e2423;
 .p-color-sizes li label{
 	margin-right: 5px;
 }
+
+.navbar-nav>li>a {
+    line-height: 40px;
+}
+.float-right{
+    float: right;
+}
+.navbar-default{
+    background: none;
+}
