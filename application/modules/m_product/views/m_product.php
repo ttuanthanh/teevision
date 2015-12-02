@@ -16,7 +16,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		//echo '<pre>';
 		//print_r($products);
 		if(isset($options->show_title) && $options->show_title == 'yes')
-			echo '<h3>'.$m_product->title.'</h3>';
+			echo '<h3 class="text-center">'.$m_product->title.'</h3>';
 			
 		echo '<div class="box-product row">';
 		foreach($products as $product)
@@ -45,11 +45,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			
 			echo '<div class="col-md-'.$cols.' col-ms-'.$col_ms.' col-xs-'.$col_xs.'">';
 		
-			echo 	'<div class="thumbnail layout-product">';
+			echo 	'<div class="thumbnail layout-product edit-thumb">';
+                        echo 		'<div class="caption text-center"><a href="'.site_url().'product/'.$product->id.'-'.$product->slug.'">'.strtoupper($product->title).'</a></div>';		
 			echo 		'<a href="'.site_url().'product/'.$product->id.'-'.$product->slug.'">';
 			echo 			'<img class="img-responsive" src="'.base_url($product->image).'" alt=""/>';
 			echo 		'</a>';		
-			echo 		'<div class="caption text-left"><a href="'.site_url().'product/'.$product->id.'-'.$product->slug.'">'.$product->title.'</a></div>';		
+
 			echo 	'</div>';
 			
 			echo '</div>';

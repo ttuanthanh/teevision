@@ -1132,11 +1132,15 @@ outline-color: #2e2423;
 }
 
 .navbar-nav>li>a {
-    line-height: 40px;
+    line-height: 45px;
 }
 .float-right{
     float: right;
 }
 .navbar-default{
     background: none;
+}
+.edit-thumb{
+    background-color: none;
+    border: none;
 }
