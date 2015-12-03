@@ -42,7 +42,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					echo $key.': "'.$val.'",';
 			}
 		?>
-		auto: false,
-		speed: 400
+		auto: true,
+		speed: 1000
 	});
 </script>

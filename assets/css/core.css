@@ -1144,3 +1144,19 @@ outline-color: #2e2423;
     background-color: none;
     border: none;
 }
+.clear{
+    clear: both;
+}
+.btn-quote{
+    margin: 20px 0;
+    border-radius: 0;
+    background: #27AAE0;
+    font-family: Lobster;
+}
+.tee-title{
+    font-family: Lobster;
+}
+@font-face {
+    font-family: Lobster;
+    src: url(../font/Lobster1.4.otf);
+}
