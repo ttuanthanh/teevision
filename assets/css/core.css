@@ -943,6 +943,7 @@ outline-color: #2e2423;
 	outline: none;
 }
 #shopping-cart .cart i{	
+    color: #843534;
 	font-size: 25px;
 }
 #shopping-cart .cart span{
@@ -1151,12 +1152,14 @@ outline-color: #2e2423;
     margin: 20px 0;
     border-radius: 0;
     background: #27AAE0;
-    font-family: Lobster;
 }
 .tee-title{
     font-family: Lobster;
 }
 @font-face {
     font-family: Lobster;
-    src: url(../font/Lobster1.4.otf);
+    src: url(../fonts/Lobster1.4.otf);
+}
+.thumbnail .caption a{
+    color: black;
 }

@@ -22,7 +22,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
         <div class="col-md-2 col-ms-1 "></div>
     </div>
-    <div class="text-center">
+    <div class="text-center ">
         <div class="col-md-3 col-ms-4 col-xs-6">
             <img src="assets/images/no.png" height="75"/>
             <h3>All Inclusive Pricing</h3>

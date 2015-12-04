@@ -11,7 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 	echo $css;
-	echo '<div class="module-social">';
+	echo '<div class="module-social float-right">';
 	$content = json_decode($social->content);
 	echo '<ul class="social">';
 	foreach($content as $key=>$value)
@@ -25,5 +25,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		}
 	}
 	echo '</ul>';
+        echo '<br clear="all">';
 	echo '</div>';
+        echo '<br clear="all">';
 ?>
