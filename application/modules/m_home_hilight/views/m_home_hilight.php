@@ -12,7 +12,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	echo $css;
 	$content = json_decode($highlight->content);
 ?>
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/unslider/css/unslider.css'); ?>"/>
+<script src="<?php echo base_url('media/modules/unslider/js/unslider-min.js'); ?>"></script>
 <div class="module-highlight">
     <div>
         <div class="col-md-2 col-ms-1 "></div>
@@ -50,3 +51,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
     <br class="clear"/>
 </div>
+
+<div class="my-slider">
+    <h2 class="tee-title">Testimonials?</h2>
+	<ul>
+            <li>
+                <div class="col-md-2 text-center">
+                    <img src="assets/images/smily.png" >
+                </div>
+                <div class="col-xs-10 text-left">
+                    <p>
+                        Mr. Brittin<br>
+                        Administrator - International Christian High School
+                    </p>
+                    <hr>
+                    <p>
+                        Tee Vision Printing is the best quality custom printing on the Eeast Coast. We have ordered custom T-shirts, Hoodies, and Uniforms from Teevision Printing and have had these orders in hand in about 1 week( Free Delivery Too ! ) You will also not find a better deal on these custom made designs.
+                    </p>
+                </div>
+                
+            </li>
+	</ul>
+</div>
+<script>
+        jQuery(document).ready(function($) {
+                $('.my-slider').unslider();
+        });
+</script>

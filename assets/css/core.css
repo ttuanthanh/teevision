@@ -1154,7 +1154,7 @@ outline-color: #2e2423;
     background: #27AAE0;
 }
 .tee-title{
-    font-family: Lobster;
+    font-family: Lobster!important;
 }
 @font-face {
     font-family: Lobster;
