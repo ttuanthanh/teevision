@@ -9,7 +9,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 $lang["user_error_not_exists"] = "User is not exists";
 
 /* --------------- page login --------------- */
-$lang["user_page_title"] = "tshirtecommerce.com - User Shop";
+$lang["user_page_title"] = "teevisionprinting.com - User Shop";
 $lang["user_login"] = "Login";
 $lang["user_email"] = "Email";
 $lang["user_password"] = "Password";
@@ -206,7 +206,7 @@ $lang['user_email_cf_move_trash'] = "Do you want move to trash";
 $lang['user_email_cf_del'] = "Do you want delete";
 $lang['user_email_alert_checkbox'] = "You not checked email";
 
-$lang['user_send_email_subject'] = "You have new email from tshirtecommerce.com";
+$lang['user_send_email_subject'] = "You have new email from teevisionprinting.com";
 $lang['user_send_email_message'] = "You have new email from: ";
 
 $lang["user_username"] = "Username";

@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>T-Shirt eCommerce - Online solutions for printing</title>
+	<title>Tee Vision Printing - Online solutions for printing</title>
 	<link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/install.css'); ?>" rel="stylesheet">
 </head>
@@ -20,7 +20,7 @@
 							<img src="<?php echo base_url(); ?>assets/images/logo-leng.png" alt="">
 						</div>
 						<div class="col-md-5 pull-left">
-							<h3>T-Shirt eCommerce installation <small>version 1.1.0</small></h3>
+							<h3>Tee Vision Printing installation <small>version 1.1.0</small></h3>
 						</div>
 					</div>
 				</div>
@@ -34,8 +34,8 @@
 						<div class="col-md-12">
 							<br>
 							<br>
-							<h1 class="text-center">T-Shirt eCommerce - Online solutions for printing</h1>							
-							<p>Welcome to T-Shirt eCommerce software. It is great choice of your printing business. This tools support design anything: clothes, cups, hats, phone case, tablet, card...</p>
+							<h1 class="text-center">Tee Vision Printing - Online solutions for printing</h1>							
+							<p>Welcome to Tee Vision Printing software. It is great choice of your printing business. This tools support design anything: clothes, cups, hats, phone case, tablet, card...</p>
 						</div>
 					</div>
 					
@@ -141,7 +141,7 @@
 		
 		<footer>		
 			<div class="container text-center">
-				<a href="http://tshirtecommerce.com/" title="T-Shirt eCommerce">tshirtecommerce.com</a> - Online solutions for printing
+				<a href="http://teevisionprinting.com/" title="Tee Vision Printing">teevisionprinting.com</a> - Online solutions for printing
 			</div>
 		</footer>
 	</div>

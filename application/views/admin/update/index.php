@@ -1,9 +1,9 @@
 <?php
 /**
- * @author tshirtecommerce - www.tshirtecommerce.com
+ * @author teevisionprinting - www.teevisionprinting.com
  * @date: 2015-01-10
  * 
- * @copyright  Copyright (C) 2015 tshirtecommerce.com. All rights reserved.
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  *
  */
@@ -42,9 +42,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					?>
 					<a href="javascript:void(0);" onclick="updateTool('<?php echo site_url().'admin/update/tool/'.$file?>', 'update')" style="color:#fff; margin-left: 6px;" class="btn btn-primary pull-right btn-sm"><?php echo $this->lang->line('admin_update');?></a> 
 					<?php } ?>
-					 <a target="_blank" href="javascript:void(0);" onclick="updateTool('http://updates.tshirtecommerce.com/<?php echo $data->file; ?>', 'download')" class="btn btn-default pull-right btn-sm"><?php echo $this->lang->line('admin_download');?></a>
+					 <a target="_blank" href="javascript:void(0);" onclick="updateTool('http://updates.teevisionprinting.com/<?php echo $data->file; ?>', 'download')" class="btn btn-default pull-right btn-sm"><?php echo $this->lang->line('admin_download');?></a>
 				</h3>
-				<iframe src="http://updates.tshirtecommerce.com/<?php echo $data->info; ?>" width="100%" height="100%" marginheight="0" frameborder="0" style="background: #fff;padding:0px;"></iframe>
+				<iframe src="http://updates.teevisionprinting.com/<?php echo $data->info; ?>" width="100%" height="100%" marginheight="0" frameborder="0" style="background: #fff;padding:0px;"></iframe>
 			<?php } ?>
 		</div>
 		
@@ -52,7 +52,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="col-sm-12">
 				<?php if(isset($last_version)){ $file 	= str_replace('.zip', '', $last_version->file); ?>					
 					<a href="<?php echo site_url().'admin/update/tool/'.$file?>" class="btn btn-primary btn-sm" style="font-weight: bold;"><?php echo $this->lang->line('admin_update_last_version_title');?></a>					
-					 <a target="_blank" href="http://updates.tshirtecommerce.com/<?php echo $last_version->file; ?>" class="btn btn-primary btn-sm" style="font-weight: bold;"><?php echo $this->lang->line('admin_download_last_version_title');?></a>
+					 <a target="_blank" href="http://updates.teevisionprinting.com/<?php echo $last_version->file; ?>" class="btn btn-primary btn-sm" style="font-weight: bold;"><?php echo $this->lang->line('admin_download_last_version_title');?></a>
 				<?php } ?>
 			</div>
 		</div>

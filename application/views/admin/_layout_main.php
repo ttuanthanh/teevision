@@ -1,9 +1,9 @@
 <?php
 /**
- * @author tshirtecommerce - www.tshirtecommerce.com
+ * @author teevisionprinting - www.teevisionprinting.com
  * @date: 2015-01-10
  * 
- * @copyright  Copyright (C) 2015 tshirtecommerce.com. All rights reserved.
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  *
  */
@@ -36,7 +36,7 @@ $this->load->view('admin/components/page_head');
 							</li>
 							<?php } ?>							
 							<li class="search-box">
-								<a href="http://tshirtecommerce.com/" target="_blank">Help & Support</a>
+								<a href="http://teevisionprinting.com/" target="_blank">Help & Support</a>
 							</li>
 						</ol>
 						<div class="page-header">
@@ -67,7 +67,7 @@ $this->load->view('admin/components/page_head');
 	<!-- end: MAIN CONTAINER -->
 	<div class="footer clearfix">
 		<div class="footer-inner">
-			2015 &copy; tshirtecommerce.com
+			2015 &copy; teevisionprinting.com
 		</div>
 		<div class="footer-items">
 			<span class="go-top"><i class="clip-chevron-up"></i></span>

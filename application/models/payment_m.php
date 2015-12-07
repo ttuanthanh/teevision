@@ -1,11 +1,11 @@
 <?php
 /**
- * @author tshirtecommerce - www.tshirtecommerce.com
+ * @author teevisionprinting - www.teevisionprinting.com
  * @date: 2015-01-10
  * 
  * payment
  * 
- * @copyright  Copyright (C) 2015 tshirtecommerce.com. All rights reserved.
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  *
  */

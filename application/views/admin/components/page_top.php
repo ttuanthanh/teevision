@@ -10,7 +10,7 @@
 			<!-- end: RESPONSIVE MENU TOGGLER -->
 			<!-- start: LOGO -->
 			<a class="navbar-brand" href="<?php echo site_url();?>">
-				<img src="<?php echo base_url(); ?>assets/images/logo-leng.png" alt="http://tshirtecommerce.com" />
+				<img src="<?php echo base_url(); ?>assets/images/logo-leng.png" alt="http://teevisionprinting.com" />
 			</a>
 			<!-- end: LOGO -->
 		</div>

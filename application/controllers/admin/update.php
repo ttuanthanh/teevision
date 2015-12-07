@@ -1,9 +1,9 @@
 <?php
 /**
- * @author tshirtecommerce - www.tshirtecommerce.com
+ * @author teevisionprinting - www.teevisionprinting.com
  * @date: 2015-01-10
  * 
- * @copyright  Copyright (C) 2015 tshirtecommerce.com. All rights reserved.
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  *
  */
@@ -25,7 +25,7 @@ class Update extends Admin_Controller {
 		$this->data['meta_title'] = $this->lang->line('update_admin_meta_title');
 		$this->data['breadcrumb'] = $this->lang->line('update_admin_breadcrumb');
 		
-		$content 	= file_get_contents('http://updates.tshirtecommerce.com/updates.json');
+		$content 	= file_get_contents('http://updates.teevisionprinting.com/updates.json');
 		$data 		= json_decode($content);		
 		$this->data['update'] = $data;
 		$this->data['subview'] = 'admin/update/index';
@@ -36,7 +36,7 @@ class Update extends Admin_Controller {
 	{
 		if($ver != '')
 		{
-			$file = 'http://updates.tshirtecommerce.com/'.$ver.'.zip';
+			$file = 'http://updates.teevisionprinting.com/'.$ver.'.zip';
 			$data = file_get_contents($file);
 			if($data != '')
 			{				
