@@ -2,10 +2,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'sql6.freemysqlhosting.net';
-$db['default']['username'] = 'sql698313';
-$db['default']['password'] = 'iG9!lY4*';
-$db['default']['database'] = 'sql698313';
+$db['default']['hostname'] = 'db4free.net';
+$db['default']['username'] = 'tee_sql';
+$db['default']['password'] = '123456';
+$db['default']['database'] = 'teevision';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'dg_';
 $db['default']['pconnect'] = TRUE;
