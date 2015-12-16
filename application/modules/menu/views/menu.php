@@ -19,7 +19,7 @@
 			</div>
 			
 			<div class="navbar-collapse collapse" id="dg-navbar-collapse">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav font-bold edit-menu">
 				
 				<?php if (isset($items)) { ?>
 				
