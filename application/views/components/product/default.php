@@ -29,6 +29,15 @@ $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 <?php if (count($product)) { ?>	
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
 	<div class="row">
+                <div class="page-header pro-detail-title no-border font-bold">
+                        <h2>
+                                <?php echo $product->title; ?>
+
+                                <?php if (isset($color_active)) { ?>
+                                <small><?php echo $color_active; ?></small>
+                                <?php } ?>
+                        </h2>
+                </div>
 		<!-- product image -->
 		<div class="col-md-6">
 			<?php
@@ -45,22 +54,23 @@ $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 		
 		<!-- product info -->
 		<div class="col-md-6">
-			<div class="page-header">
-				<h2>
-					<?php echo $product->title; ?>
-					
-					<?php if (isset($color_active)) { ?>
-					<small><?php echo $color_active; ?></small>
-					<?php } ?>
-				</h2>
-			</div>
-			
+						
 			<!-- rating -->
+                        
+                        <p class="font-bold">Available color</p>
+                        <!-- product design -->
+			<?php if (isset($product->design)) { ?>
+			<div class="form-group">
+				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
+			</div>
+			<?php } ?>
+                        
 			
 			<!-- SKU -->
-			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>
+<!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
 			
 			<!-- product short description -->
+                        <p class="font-bold">Key features</p>
 			<div class="form-group">
 				<?php echo $product->short_description; ?>
 			</div>
@@ -80,7 +90,17 @@ $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 					</span>
 				</p>
 			</div>
-			
+                         
+			<!-- share -->
+<!--			<hr class="clearfix">-->
+                        <p class="font-bold">Share This</p>
+			<div class="form-group clearfix">
+				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
+				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
+				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
+			</div>
+                        
 			<!-- product attribute -->
 			<?php if (isset($product->attributes)) { ?>
 			<div class="form-group">
@@ -88,12 +108,7 @@ $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 			</div>
 			<?php } ?>			
 			
-			<!-- product design -->
-			<?php if (isset($product->design)) { ?>
-			<div class="form-group">
-				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
-			</div>
-			<?php } ?>
+			
 			
 			<!-- form -->
 			<div class="form-group clearfix">
@@ -101,21 +116,13 @@ $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 					<!--
 					<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
 					-->
-					
+					<a class="btn btn-primary pull-left btn-quote margin-right20" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>"> GET QUOTE</a>
 					<?php if (isset($product->design) && $product->design->front != '') { ?>
-					<a class="btn btn-primary pull-left" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"><i class="glyphicon glyphicon-pencil"></i> Start Designing</a>
+					<a class="btn btn-primary pull-left btn-quote" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
 					<?php } ?>
 				</form>
 			</div>
 			
-			<!-- share -->
-			<hr class="clearfix">
-			<div class="form-group clearfix">
-				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
-				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
-				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
-			</div>
 		</div>
 	</div>
 	
