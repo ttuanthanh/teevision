@@ -31,6 +31,7 @@ class Product extends Frontend_Controller
 		{
 			// load product info
 			$this->load->model('product_m');
+                        $this->load->model('categories_m');
 			$row	= $this->product_m->getProduct( array( 'id'=> $id, 'published' => 1 ) );
 			if (empty($row[0]) || count($row[0]) == 0)
 			{
@@ -81,6 +82,7 @@ class Product extends Frontend_Controller
 			}
 			
 			$this->data['product_m']	= $this->product_m;
+                        $this->data['categories_m']	= $this->categories_m;
 			$this->data['product']		= $product;
 			
 			// load Related

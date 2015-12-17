@@ -129,6 +129,33 @@ class Product_m extends MY_Model
 			return $categories;
 		}
 	}
+        
+        
+	// get all categories of product
+	function getProductCateOrderParent($id, $all = true)
+	{
+		$this->_table_name = 'product_categories';
+		
+		$this->db->select('product_categories.id, product_categories.cate_id');
+                $this->db->join('categories','product_categories.cate_id=categories.id');
+		$this->db->where('product_id', $id);		
+		$this->_order_by = 'categories.parent_id ASC, product_categories.id DESC';
+		if($all)
+		{
+			return parent::get();
+		}
+		else
+		{
+			$rows = parent::get();
+			$categories = array();
+			for($i=0; $i<count($rows); $i++)
+			{
+				$categories[] 	= $rows[$i]->cate_id;
+			}
+			
+			return $categories;
+		}
+	}
 	
 	public function getAttribute($product_id)
 	{

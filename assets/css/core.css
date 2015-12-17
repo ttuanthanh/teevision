@@ -1173,3 +1173,14 @@ outline-color: #2e2423;
 .margin-right20{ margin-right: 20px;}
 .pro-detail-title { padding: 0 40px;}
 .edit-menu li a:hover { color: #3AB6D5!important;}
+.e-beadcrum{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #eee;
+    margin-top: 20px;
+}
+.e-beadcrum a{
+    color: #747474;    
+    font-weight: bold;
+}
+.e-beadcrum a:hover{    color: #3AB6D5!important; text-decoration: none;}

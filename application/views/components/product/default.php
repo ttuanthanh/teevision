@@ -24,11 +24,24 @@ else
 
 $currency	= $product_m->getCurrency($product->currency_id);
 $link 		= site_url('product/'.$product->id .'-'. $product->slug);
+$cateee = $product_m->getProductCateOrderParent($product->id);
+
 ?>
 
 <?php if (count($product)) { ?>	
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
 	<div class="row">
+                <!-- breadcrumb -->
+                <ol class="breadcrumb e-beadcrum">
+                    <li><a href="<?php echo site_url('/'); ?>">HOME TEEVISON</a></li>
+                <?php 
+                    foreach ($cateee as $cat){
+                        $cat_q = $categories_m->getCategory('product', $cat->cate_id);
+                        echo '<li><a href="'.site_url('categories/'.$cat_q->id.'-'.$cat_q->slug).'">'.strtoupper($cat_q->title).'</a></li>';
+                    }
+                ?>
+                    <li><?php echo strtoupper($product->title); ?></li>
+                </ol>
                 <div class="page-header pro-detail-title no-border font-bold">
                         <h2>
                                 <?php echo $product->title; ?>
