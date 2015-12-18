@@ -25,7 +25,7 @@ class Api extends Frontend_Controller {
 		if ($product_id == 0) return false;
 		
 		$this->load->driver('cache');
-                var_dump($this->cache->file->get('product-img-'.$product_id.'-'.$view.'-'.$index));
+                //var_dump($this->cache->file->get('product-img-'.$product_id.'-'.$view.'-'.$index));
 		if ($this->cache->file->get('product-img-'.$product_id.'-'.$view.'-'.$index) == false)
 		{
 			// load product design
