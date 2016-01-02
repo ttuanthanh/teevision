@@ -47,7 +47,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
     <br class="clear"/>
     <div class="col-xs-12 text-center ">
-        <button type="button" class="btn btn-primary btn-quote">REQUEST QUOTE HERE</button>        
+        <a href="product/12-mens-polo" type="button" class="btn btn-primary btn-quote">REQUEST QUOTE HERE</a>        
     </div>
     <br class="clear"/>
 </div>
