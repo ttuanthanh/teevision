@@ -1,18 +1,18 @@
 <?php
 $active_group = 'default';
 $active_record = TRUE;
-
+/*
 $db['default']['hostname'] = 'binddesk.com';
 $db['default']['username'] = 'binddesknoti';
 $db['default']['password'] = '9@!Ze7z1x';
 $db['default']['database'] = 'binddesknoti';
 
-/*#### for local
-$db['default']['hostname'] = 'sql6.freemysqlhosting.net';
-$db['default']['username'] = 'sql698313';
-$db['default']['password'] = 'iG9!lY4*';
-$db['default']['database'] = 'sql698313';
-*/
+#### for local*/
+$db['default']['hostname'] = '127.0.0.1';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'binddesknoti';
+/**/
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'dg_';

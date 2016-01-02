@@ -50,7 +50,6 @@ class Users_m extends MY_Model
 				'password' => $this->hash($this->input->post('password')),	
 				'block' => 0				
 			), TRUE);
-			
 			if (count($user) > 0)
 			{
 				// check user permission

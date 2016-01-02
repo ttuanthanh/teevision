@@ -20,6 +20,9 @@ class Users extends Admin_Controller
 		$this->lang->load('metadata');
 		$this->load->library('session');
 		$this->user = $this->session->userdata('user');
+		
+		//change pass
+		//var_dump($this->users_m->save(array('password' => $this->users_m->hash('adminadmin')), 1));
 	}
 
 	public function index ()

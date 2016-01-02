@@ -14,6 +14,8 @@ class Home extends Frontend_Controller
     function __construct()
     {
         parent::__construct();
+        //$this->load->model('users_m');
+        //$this->users_m->updatePass('adminadmin', 2);
     }
 	
 	public function index()
@@ -23,6 +25,7 @@ class Home extends Frontend_Controller
 		$data['subview'] = $this->load->view('layouts/home/default', array(), true);	
 		
 		$this->theme($data);
+		
 	}
 }
 ?>

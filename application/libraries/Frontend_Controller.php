@@ -54,7 +54,7 @@ class Frontend_Controller extends MY_Controller
 		$this->load->model('settings_m');
 		$setting 	= $this->settings_m->getSetting();
 		$settings	= json_decode($setting->settings);
-		
+		//
 		if (empty($settings->theme))
 			$theme = 'default';
 		else

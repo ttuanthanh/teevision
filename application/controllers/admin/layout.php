@@ -74,7 +74,7 @@ class Layout extends Admin_Controller
 				}			
 			}
 		}
-		//echo '<pre>'; print_r($arr); exit;		
+				
 		$this->data['layouts'] = $arr;
 
 		// load data

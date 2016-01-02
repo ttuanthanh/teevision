@@ -49,7 +49,19 @@
 			<description>Product detail.</description>
 		</layout>
 	</group>
-	
+	<group name="product-quote" description="Product quote" icon="tshirt.png">
+		<layout>
+			<name>quote</name>
+			<title>Product after quote</title>
+			<description>Product after quote</description>
+		</layout>
+		
+		<layout>
+			<name>default</name>
+			<title>Product after quote</title>
+			<description>Product after quote.</description>
+		</layout>
+	</group>
 	<group name="idea" description="Design ideas" icon="Idea-Icon.png">
 		<layout>
 			<name>categories</name>
