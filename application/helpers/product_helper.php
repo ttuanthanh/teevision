@@ -97,7 +97,7 @@ class helperProduct
 			$html 				= '';
 			for ($i=0; $i<count($attrs->name); $i++)
 			{
-				$html 	.= '<div class="form-group product-fields">';
+				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
 				$html 	.= 		'<label for="fields">'.$attrs->name[$i].'</label>';
 				
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
@@ -115,7 +115,7 @@ class helperProduct
 	
 	function field($name, $title, $price, $type, $id)
 	{
-		$html = '<div class="dg-poduct-fields">';
+		$html = '<div class="dg-poduct-fields ">';
 		switch($type)
 		{
 			case 'checkbox':

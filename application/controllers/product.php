@@ -189,7 +189,7 @@ class Product extends Frontend_Controller
 			}
 			
 			$this->data['product_m']	= $this->product_m;
-                        $this->data['categories_m']	= $this->categories_m;
+            $this->data['categories_m']	= $this->categories_m;
 			$this->data['product']		= $product;
 			
 			// load Related

@@ -29,8 +29,18 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 ?>
 
 <?php if (count($product)) { ?>	
+	<link href="<?php echo base_url('assets/css/product-quote.css'); ?>" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css'); ?>" rel="stylesheet"/>
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
+	
+	<script src="<?php echo base_url('assets/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js');?>"></script>
+	<script src="<?php echo base_url('assets/plugins/holder/holder.min.js');?>"></script>
+	<script type="text/javascript">
+		//if(typeof Holder !== 'undefined') Holder.run();
+	</script>
 	<div class="row">
+		<form name="checkout" class="product-after-quote checkout" action="" method="post">
+		<div class="row">
                 <!-- breadcrumb -->
                 <ol class="breadcrumb e-beadcrum">
                     <li><a href="<?php echo site_url('/'); ?>">HOME TEEVISON</a></li>
@@ -71,7 +81,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 						
 			<!-- rating -->
                         
-            <p class="font-bold">Available color: <?php if (isset($color_active)) { ?><span style="color: <?php echo $color_active?>"><?php echo  ucfirst ($color_active); ?></span><?php } ?>
+            <p class="font-bold">Selected color: <?php if (isset($color_active)) { ?><span style="color: <?php echo $color_active?>"><?php echo  ucfirst ($color_active); ?></span><?php } else echo 'none'; ?>
             </p>
             <!-- product design -->
 			<?php if (isset($product->design)) { ?>
@@ -79,100 +89,108 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
 			</div>
 			<?php } ?>
-                        
-			
-			<!-- SKU -->
-<!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
-			
-			<!-- product short description -->
-                        <p class="font-bold">Key features</p>
-			<div class="form-group">
-				<?php echo $product->short_description; ?>
-			</div>
-			
-			<!-- product price -->
-			<div class="form-group">
-				<p class="price">
-					<?php echo lang('price'); ?>: 
-					<?php if($price != $product->price) { ?>
-					<span class="price-old text-muted">
-						<del><small><?php echo $currency->currency_symbol .''. $product->price; ?></small></del>
-					</span>
-					<?php } ?>
-					
-					<span class="price-new text-danger">
-						<strong><?php echo $currency->currency_symbol .''. $price; ?></strong>
-					</span>
-				</p>
-			</div>
-                         
-			<!-- share -->
-<!--			<hr class="clearfix">-->
-                        <p class="font-bold">Share This</p>
-			<div class="form-group clearfix">
-				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
-				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
-				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
-			</div>
-                        
-			<!-- product attribute -->
-			<?php if (isset($product->attributes)) { ?>
-			<div class="form-group">
-				<?php echo $product->attributes; ?>
-			</div>
-			<?php } ?>			
-			
-			
-			
-			<!-- form -->
-			<div class="form-group clearfix">
-				<form name="addtocart" class="addtocart" action="" method="post">
-					<!--
-					<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
-					-->
-					<a class="btn btn-primary pull-left btn-quote margin-right20" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>"> GET QUOTE</a>
-					<?php if (isset($product->design) && $product->design->front != '') { ?>
-					<a class="btn btn-primary pull-left btn-quote" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
-					<?php } ?>
-				</form>
-			</div>
 			
 		</div>
-	</div>
-	
-	<!-- product tab -->
-	<div class="row">
-		<div class="col-md-12">
-			 <ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#product-description" class="outline-none" aria-controls="product-description" role="tab" data-toggle="tab">Description</a>
-				</li>
-				<li role="presentation">
-					<a href="#product-reviews" class="outline-none" aria-controls="product-reviews" role="tab" data-toggle="tab">Reviews</a>
-				</li>
-			</ul>
-			
-			<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=435908239812114&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-			<div class="tab-content tab-content-border">
-				<div role="tabpanel" class="tab-pane active" id="product-description">
-					<?php echo $product->description; ?>
+		
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- product attribute -->
+					<?php if (isset($product->attributes)) { ?>
+					<div class="form-group form-attributes">
+						<?php echo $product->attributes; ?>
+					</div>
+					<?php } ?>			
+			</div>
+			<div class="col-md-12">
+				<h4><b>Have Artwork? Add Files Here:</b></h4>
+				<h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>
+				<div class="col-md-6 pruduct-quote-front">
+					<h5><b>Front</b></h5>
+					<div class="col-md-4">
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+	                       <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
+	                       	<img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
+	                       </div>
+	                       <div>
+	                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
+	                           <input type="file" name="banner" placeholder="Choose banner image"/>
+	                         </span> 
+	                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+	                       </div>
+	                    </div>
+                    </div>
+                     <div class="col-md-4">
+	                    <div class="form-group product-fields selectbox">
+							<label for="fields">Color</label>
+							<div class="dg-poduct-fields ">
+								<select class="form-control input-sm" name="attribute[1][1]"><option
+										value="0">1 Color</option>
+									<option value="1">2 Color</option>
+									<option value="2">3 Color</option></select>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="col-md-6 pruduct-quote-back">
+					<h5><b>Back</b></h5>
+					<div class="col-md-4">
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+	                       <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
+	                       	<img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back" alt="back_image" class="img-responsive">
+	                       </div>
+	                       <div>
+	                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image back</span> <span class="fileinput-exists">Change</span> 
+	                           <input type="file" name="banner" placeholder="Choose banner image"/>
+	                         </span> 
+	                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+	                       </div>
+	                    </div>
+                    </div>
+                    <div class="col-md-4">
+	                    <div class="form-group product-fields selectbox">
+							<label for="fields">Color</label>
+							<div class="dg-poduct-fields ">
+								<select class="form-control input-sm" name="attribute[1][1]"><option
+										value="0">1 Color</option>
+									<option value="1">2 Color</option>
+									<option value="2">3 Color</option></select>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="product-reviews">
-					<div class="fb-comments" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-				</div>			
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4><b>Don't Have Artwork? <a href="#" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
+				<div class="form-group"><textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea></div>
+			</div>
+			<hr>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-5 price">
+					<h4><b>Unit Price:</b><span> 100$</span></h4>
+					<h4><b>Total:</b> <span class="total">1000$</span></h4>
+				</div>
+				<div class="col-md-7">
+					<p><i>* All Inclusive Pricing, no Other Fees</i> </p>
+					<p><i>* Free 10 Day Shipping. Need it sooner? Call us: <a tel="(267) 538-5331" style="color:red">(267) 538-5331</a> </i></p>
+					<p><i>* You will receive a proof to review, edit, or approve within 24 hours. An approval is required before we start printing.</i></p>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class=" form-group clearfix">
+				<button type="submit" class="btn btn-primary pull-left">Checkout</button>
+				</div>
+			</div>
+		</div>
+		</form>
 	</div>
-	
 	<!-- RELATED PRODUCTS -->
 	<div class="row">
 		<?php $this->load->view('components/product/related', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
