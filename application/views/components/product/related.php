@@ -43,43 +43,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 		<div class="col-xs-6 col-sm-4 col-md-3 text-center form-group">
 			<div class="thumbnail layout-product">
-				
-				<!-- product sale -->
-				<?php if ($sale === true) { ?>
-				<span class="label label-primary label-sale"><?php echo lang('sale'); ?></span>
-				<?php } ?>
-				
-				
-				<!-- check product is new -->
-				<?php if ($days < $days_new) { ?>
-				<span class="label label-info label-new"><?php echo lang('new'); ?></span>
-				<?php } ?>
-				 
-				 
 				 <!-- product image -->
+				 <a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>">
 				<?php if ($product->image == '') { ?>
 					<img src="<?php echo base_url('assets/images/default.png'); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
 				<?php } else { ?>
 					<img src="<?php echo base_url($product->image); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
 				<?php } ?>
-				
-				
-				<div class="caption text-left">
-					<h5>
-						<a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
-					</h5>
-					<p class="price">
-						<?php if($price != $product->price) { ?>
-						<span class="price-old text-muted">
-							<del><small><?php echo $product->currency->currency_symbol .''. $product->price; ?></small></del>
-						</span>
-						<?php } ?>
-						
-						<span class="price-new text-danger">
-							<strong><?php echo $product->currency->currency_symbol .''. $price; ?></strong>
-						</span>
-					</p>
-				</div>
+				</a>
+			</div>
+			<div class="caption text-left">
+				<h5>
+					<a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
+				</h5>
 			</div>
 		</div>
 	<?php } ?>
