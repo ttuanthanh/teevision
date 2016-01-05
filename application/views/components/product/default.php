@@ -104,24 +104,12 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				</p>
 			</div>
                          
-			<!-- share -->
-<!--			<hr class="clearfix">-->
-                        <p class="font-bold">Share This</p>
-			<div class="form-group clearfix">
-				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
-				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
-				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
-			</div>
-                        
 			<!-- product attribute -->
 			<?php if (isset($product->attributes)) { ?>
 			<div class="form-group">
 				<?php echo $product->attributes; ?>
 			</div>
 			<?php } ?>			
-			
-			
 			
 			<!-- form -->
 			<div class="form-group clearfix">
@@ -136,38 +124,16 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				</form>
 			</div>
 			
-		</div>
-	</div>
-	
-	<!-- product tab -->
-	<div class="row">
-		<div class="col-md-12">
-			 <ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#product-description" class="outline-none" aria-controls="product-description" role="tab" data-toggle="tab">Description</a>
-				</li>
-				<li role="presentation">
-					<a href="#product-reviews" class="outline-none" aria-controls="product-reviews" role="tab" data-toggle="tab">Reviews</a>
-				</li>
-			</ul>
-			
-			<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=435908239812114&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-			<div class="tab-content tab-content-border">
-				<div role="tabpanel" class="tab-pane active" id="product-description">
-					<?php echo $product->description; ?>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="product-reviews">
-					<div class="fb-comments" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-				</div>			
+			<!-- share -->
+			<!-- <hr class="clearfix">-->
+			<p class="font-bold">Share This</p>
+			<div class="form-group clearfix">
+				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
+				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
+				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
 			</div>
+			
 		</div>
 	</div>
 	
