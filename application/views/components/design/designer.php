@@ -270,12 +270,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<?php } ?>
 							</div>
 							
+							<!--
 							<h3><?php echo $lang['designer_right_color_used']; ?></h3>
 							<div class="color-used"></div>
 							
 							<h3><?php echo $lang['designer_right_screen_size']; ?></h3>
 							<div class="screen-size"></div>
-							<!--
+							
 							<h3>Extra</h3>
 							<div>
 								Extra
@@ -343,10 +344,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 									<p class="product-detail-short_description"><?php echo $product->short_description; ?></p>
 								</div>
 							</div>
-							<div class="row col-sm-12">
-								<h4><?php echo $lang['designer_product_description']; ?></h4>										
-								<div class="product-detail-description"><?php echo $product->description; ?></div>
-							</div>								
+														
 						</div>
 					</div>
 				</div>

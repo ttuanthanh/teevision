@@ -19,11 +19,6 @@
 			<!-- start: TOP NAVIGATION MENU -->
 			<ul class="nav navbar-right">				
 				<!-- start: USER DROPDOWN -->
-				<li>
-					<a href="<?php echo site_url().'admin/update'; ?>">						
-						<?php echo lang('top_update_title');?> <span class="badge" style="background: #007AFF;"><i class="glyphicon glyphicon-download-alt"></i></span>
-					</a>
-				</li>
 				<li style="margin-top: 11px;">
 					<div class="btn-group">
 						<button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-user"></i> <?php echo $this->user['username'];?></button>

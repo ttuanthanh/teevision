@@ -106,7 +106,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 	<div class="col-md-4">
 		<div class="shop-info">
-			<h3>T Shirt eCommerce</h3>
+			<h3>Teevision Printing</h3>
 			<span>Online solution for printing</span><br/>
 			<span>Website: </span> <a target="_blank" href="http://teevisionprinting.com">http://teevisionprinting.com</a><br/>
 			<span>Email: </span> <a href="mailto:info@teevisionprinting.com">info@teevisionprinting.com</a>
