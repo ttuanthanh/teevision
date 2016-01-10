@@ -94,3 +94,5 @@ width: 30%;     padding: 0px;
 #dg-designer .col-right, #dg-designer .col-left {width:300px}
  #dg-designer .dg-share .dg-box {width:300px}
  
+ ul.p-color-sizes li input {width:50px;}
+ .p-color-sizes li label  {width:100%;}
