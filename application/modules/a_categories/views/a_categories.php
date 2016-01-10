@@ -34,7 +34,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		if(isset($content->layout) && $content->layout == 'list')
 		{
 			echo '<ul class="nav nav-list list-categories">';
-			$categories = dispayListCate($categories, $cate_id);
+			$categories = dispayListCate($categories, $cate_id,'blog/category/');
 			$categories = explode('<li>', $categories);
 			$i=0;
 			foreach($categories as $category)
@@ -48,7 +48,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		}else
 		{
 			echo '<ul class="thumb-categories">';
-			$categories = dispayThumbCate($categories, $cate_id, $show_level);
+			$categories = dispayThumbCate($categories, $cate_id, $show_level,'blog/category/');
 			$categories = explode('<li>', $categories);
 			$i=0;
 			foreach($categories as $category)

@@ -22,7 +22,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<?php if ($category->image != '' || $category->description != '') { ?>
 			<div class="media">
 				<?php if ($category->image != '') { ?>
-				<a class="pull-left col-xs-4 col-sm-3 col-md-3 thumbnail" href="<?php echo site_url().'categories/'.$category->id.'-'.$category->slug; ?>">
+				<a class="pull-left col-xs-4 col-sm-3 col-md-3 thumbnail" href="<?php echo site_url().'blog/category/'.$category->id.'-'.$category->slug; ?>">
 					<img src="<?php echo base_url($category->image); ?>" alt="<?php echo $category->title; ?>" class="img-responsive media-object">
 				</a>
 				<?php } ?>
@@ -51,14 +51,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				{
 			 ?>
 					<div class="col-xs-4 col-sm-3 col-md-2 text-center form-group">
-						<a href="<?php echo site_url('categories/'.$category->id.'-'.$category->slug); ?>" title="<?php echo $category->title; ?>">
+						<a href="<?php echo site_url('blog/category/'.$category->id.'-'.$category->slug); ?>" title="<?php echo $category->title; ?>">
 							<?php if ($category->image == '') { ?>
 								<img src="<?php echo base_url('assets/images/default.png'); ?>" alt="<?php echo $category->title; ?>" class="img-responsive img-thumbnail">
 							<?php } else { ?>
 								<img src="<?php echo base_url($category->image); ?>" alt="<?php echo $category->title; ?>" class="img-responsive img-thumbnail">
 							<?php } ?>
 						</a>
-						<a href="<?php echo site_url('categories/'.$category->id.'-'.$category->slug); ?>" title="<?php echo $category->title; ?>"><?php echo $category->title; ?></a>
+						<a href="<?php echo site_url('blog/category/'.$category->id.'-'.$category->slug); ?>" title="<?php echo $category->title; ?>"><?php echo $category->title; ?></a>
 					</div>
 				<?php } ?>
 			</div>
