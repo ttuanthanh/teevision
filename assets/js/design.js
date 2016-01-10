@@ -1238,20 +1238,19 @@ var design={
 					div.className = 'product-detail';
 					div.setAttribute('id', 'product-detail-' + product.id);
 				var html = 			'<div class="row">';
-					html = html + 		'<div class="col-sm-6">';
+					html = html + 		'<div class="col-sm-4">';
 					html = html + 			'<img alt="'+product.title+'" class="img-responsive img-thumbnail" src="'+baseURL+product.image+'">';
 					html = html + 		'</div>';
-					html = html + 		'<div class="col-sm-6">';
+					html = html + 		'<div class="col-sm-8">';
 					html = html + 			'<h3 class="margin-top">'+product.title+'</h3>';
-					html = html + 			'<p>ID: '+product.id+'</p>';
+					//html = html + 			'<p>ID: '+product.id+'</p>';
 					html = html + 			'<p>SKU: '+product.sku+'</p>';
+                    html = html + 		'<div class="form-group">'+product.short_description+'</div>';
 					html = html + 		'</div>';
+                    
 					html = html + 	'</div>';
 					
-					html = html + 	'<div class="row col-sm-12">';
-					html = html + 		'<h4>Description</h4>';
-					html = html + 		'<div>'+product.description+'</div>';
-					html = html + 	'</div>';
+					
 				div.innerHTML = html;
 				jQuery('#dg-products .products-detail').append(div);
 			}

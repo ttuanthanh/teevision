@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 <?php if (count($category) > 0 ) {?>
 	
-	<!-- category info -->
+	<!-- category info 
 	<div class="category-info clearfix">
 		<div class="page-header">
 		  <h1><?php echo $category->title; ?></h1>
@@ -36,10 +36,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 		<?php } ?>
 	</div>
-	
+	-->
 	<!-- List subcategory -->
 	<?php if ( isset($category->children) && count($category->children) > 0 ) { ?>
-	<hr>
+	
 	<h3><?php echo lang('categories_default_list_categories'); ?></h3>
 	<div class="row category-sub clearfix">
 		
@@ -62,8 +62,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 	<?php if ( isset($category->products) && count($category->products) > 0 ) { ?>
 		<!-- Product find -->
+        
 		<div class="toolbar product-filter clearfix row">
-			<?php echo $this->load->view('components/categories/filter', array('category'=>$category, 'page'=>$page)); ?>
+			  <?php echo $this->load->view('components/categories/filter', array('category'=>$category, 'page'=>$page)); ?>
+              <h1  class="category-title"><?php echo $category->title; ?></h1>
 		</div>
 		<hr>
 		

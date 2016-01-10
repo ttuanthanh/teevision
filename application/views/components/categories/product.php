@@ -43,23 +43,23 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				<!-- product sale -->
 				<?php if ($sale === true) { ?>
-				<span class="label label-primary label-sale"><?php echo lang('sale'); ?></span>
+				<!-- <span class="label label-primary label-sale"><?php echo lang('sale'); ?></span> -->
 				<?php } ?>
 				
 				
 				<!-- check product is new -->
 				<?php if ($days < $days_new) { ?>
-				<span class="label label-info label-new"><?php echo lang('new'); ?></span>
+				<!--  <span class="label label-info label-new"><?php echo lang('new'); ?></span>-->
 				<?php } ?>
 				 
-				 
+				 <a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>">
 				 <!-- product image -->
 				<?php if ($product->image == '') { ?>
 					<img src="<?php echo base_url('assets/images/default.png'); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
 				<?php } else { ?>
 					<img src="<?php echo base_url($product->image); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
 				<?php } ?>
-				
+				</a>
 				
 				<div class="caption text-left">
 					<h5>

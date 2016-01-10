@@ -65,3 +65,32 @@ font-family: Oswald,sans-serif;
 .module-search .has-feedback {  
   margin-bottom: 0px;
 }
+
+.menu-content img {
+    width: 60px;
+}
+
+.category-products .thumbnail {
+
+   border: none;
+}
+.category-products .thumbnail img {
+
+   border: 1px solid #ddd;
+   height:225px;
+}
+.box-product img.img-responsive {
+min-height:320px;    
+}
+.category-title {
+width: 30%;     padding: 0px;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.blog-page .category-sub .img-thumbnail { height:100px; width:150px}
+
+#dg-products .products-detail .img-thumbnail {height: 250px}
+#dg-designer .col-right, #dg-designer .col-left {width:300px}
+ #dg-designer .dg-share .dg-box {width:300px}
+ 
