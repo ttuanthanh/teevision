@@ -39,8 +39,17 @@ form.product-after-quote.checkout {
 			-moz-border-radius: 0;
 			-webkit-border-radius: 0;
 			background-color: #27aae0;
-			margin-left: 20px;
+			//margin-left: 20px;
+			width: 100%;
+			line-height: 2;
 		}
+	}
+	textarea {
+		border: none;
+	    border-radius: 0px;
+	    box-shadow: none;
+	    max-width: 100%;
+	    border-bottom: 1px solid #D6D6D6;
 	}
 }
 .price >h4 {     

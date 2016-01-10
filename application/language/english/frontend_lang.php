@@ -75,7 +75,8 @@ $lang['page_blog_list_article_title'] = 'List new article';
 
 // Products
 $lang['product_related'] = 'Related Products';
-
+/*------------QUOTE-----------*/
+$lang['product_quote_sample'] = 'Sample Proofs';
 // cart
 $lang['cart_your_cart_title']='Your shopping cart';
 $lang['cart_your_cart_summary']='Cart Summary';

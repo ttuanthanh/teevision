@@ -21,7 +21,14 @@ $colors 	= count($design->color_hex);
 		if ($i === $index) $active = 'active';
 		else $active = '';
 	?>
-	<a href="<?php echo site_url($product->href.'/'.$product->id.'-'.$product->slug.'/'.$i.'-'.url_title($design->color_title[$i])); ?>" class="color-swatch color-sm <?php echo $active; ?>" data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" title="<?php echo $design->color_title[$i]; ?>"></a>
+	<a href="<?php echo site_url($product->href.'/'.$product->id.'-'.$product->slug.'/'.$i.'-'.url_title($design->color_title[$i])); ?>" 
+		class="color-swatch color-sm color-hover-change <?php echo $active; ?>" 
+		data-toggle="tooltip" data-placement="top" 
+		style="background-color:#<?php echo $design->color_hex[$i]; ?>" 
+		title="<?php echo $design->color_title[$i]; ?>"
+		data-index="<?=$i?>"
+		data-url-image="/api/imagechangecolor/<?=$product->id?>/front/<?=$i?>"
+		data-element-load="#product-image-area"></a>
 	<?php } ?>
-	<input type="hidden" value="<?php echo $index; ?>" name="colors" class="product_color_active">
+	<input type="hidden" value="<?php echo $i; ?>" name="colors" class="product_color_active">
 </div>

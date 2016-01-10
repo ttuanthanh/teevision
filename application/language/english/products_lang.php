@@ -91,6 +91,8 @@ $lang["product_page"] = "Product page";
 $lang["product_page_click_save"] = "Drag to product pages and then click 'Save'";
 $lang["products_search_category_place"] = "Search category";
 
+/*------------QUOTE-----------*/
+$lang['product_quote_sample'] = 'Sample Proofs';
 
 /* ----------------- categories --------------------*/
 $lang["product_categories"] = "Product Categories";

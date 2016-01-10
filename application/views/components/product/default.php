@@ -52,7 +52,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         </h2>
                 </div>
 		<!-- product image -->
-		<div class="col-md-6">
+		<div class="col-md-6" id="product-image-area">
 			<?php
 			if ($color_load === true)
 			{
@@ -70,8 +70,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 						
 			<!-- rating -->
                         
-                        <p class="font-bold">Available color</p>
-                        <!-- product design -->
+            <p class="font-bold">Available color</p>
+             <!-- product design -->
 			<?php if (isset($product->design)) { ?>
 			<div class="form-group">
 				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>

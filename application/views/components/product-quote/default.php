@@ -63,7 +63,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         </h2>
                 </div>
 		<!-- product image -->
-		<div class="col-md-6">
+		<div class="col-md-6"  id="product-image-area">
 			<?php
 			if ($color_load === true)
 			{
@@ -160,40 +160,36 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-12">
-				<h4><b>Don't Have Artwork? <a href="#" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
+				<h4><b>Don't Have Artwork? <a href="javascript:;" onclick="requestArtist();" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
 				<div class="form-group"><textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea></div>
 			</div>
-			<hr>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="col-md-5 price">
+			
+			<div class="clearfix">
+				<div class="col-md-3 price">
 					<h4><b>Unit Price:</b><span> 100$</span></h4>
 					<h4><b>Total:</b> <span class="total">1000$</span></h4>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-9">
 					<p><i>* All Inclusive Pricing, no Other Fees</i> </p>
 					<p><i>* Free 10 Day Shipping. Need it sooner? Call us: <a tel="(267) 538-5331" style="color:red">(267) 538-5331</a> </i></p>
 					<p><i>* You will receive a proof to review, edit, or approve within 24 hours. An approval is required before we start printing.</i></p>
 				</div>
 			</div>
-			
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class=" form-group clearfix">
-				<button type="submit" class="btn btn-primary pull-left">Checkout</button>
+			<div class="clearfix">
+				<div class="col-md-3">
+					<div class=" form-group clearfix">
+						<button type="submit" class="btn btn-primary pull-left" style="">Checkout</button>
+					</div>
 				</div>
 			</div>
 		</div>
+		
 		</form>
 	</div>
 	<!-- RELATED PRODUCTS -->
 	<div class="row">
-		<?php $this->load->view('components/product/related', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
+		<?php $this->load->view('components/product-quote/sample', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
 	</div>
 	
 <script type="text/javascript">
@@ -211,6 +207,9 @@ jQuery(function() {
 		ez.swaptheimage(jQuery(this).data('zoom-image'), jQuery(this).data('zoom-image'));
 	});
 });
+function requestArtist() {
+	console.log('aaaaa');
+}
 </script>	
 
 <?php } else { ?>

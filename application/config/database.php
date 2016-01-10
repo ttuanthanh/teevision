@@ -8,12 +8,12 @@ $db['default']['password'] = '9@!Ze7z1x';
 $db['default']['database'] = 'binddesknoti';
 
 #### for local*/
-/*
+/**/
 $db['default']['hostname'] = '127.0.0.1';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'binddesknoti';
-*/
+
 
 
 

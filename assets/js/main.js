@@ -185,5 +185,5 @@ jQuery("document").ready(function() {
     jQuery("#click_login").click(function() {
         jQuery("#f-login-content").show();
         jQuery("#f-forgot-content").hide()
-    })
+    });
 })

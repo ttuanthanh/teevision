@@ -82,6 +82,52 @@ class Api extends Frontend_Controller {
 		header("Content-Type: image/png");
 		echo $thumbnail;
 	}
+	
+	function imagechangecolor($product_id = 0, $view = 'front', $index = 0) {
+		
+		$id 	= intval($product_id);
+		$index = intval($index);
+		// page not found
+		$found 	= true;
+		if ($id == 0) {
+			$found 	= false;
+		}
+		else {
+			// load product info
+			$this->load->model('product_m');
+			
+			$row	= $this->product_m->getProduct( array( 'id'=> $id, 'published' => 1 ) );
+			if (empty($row[0]) || count($row[0]) == 0) {
+				$found = false;
+			}
+		}
+		if ($found === false) {
+			// load 404
+			$data['subview'] = $this->load->view('layouts/404/404', array(), true);
+			return;
+		}
+		
+		$product 			= $row[0];
+		// get attributes
+		$attribute 			= $this->product_m->getAttribute($id);
+		if (count($attribute)) 
+		{
+			$this->load->helper('product');
+			$help_product 		= new helperProduct();
+			
+			$product->attributes	= $help_product->displayAttributes($attribute);
+		}
+		
+		// get product design
+		$design 	= $this->product_m->getProductDesign($id);
+		if (count($design))
+		{
+			$product->design		= $help_product->getDesign($design);
+		}	
+		
+		echo $this->load->view('components/product/image_design', array('index'=>$index, 'product'=>$product), true);
+		exit();
+	}
 }
 
 ?>

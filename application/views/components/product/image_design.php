@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <!-- main image -->
 <?php 
-if ( $product->design->front != '' && isset($product->design->front[$index]) && $product->design->front[$index] != '' ) {
+if ( !empty($product->design->front) && isset($product->design->front[$index]) && !empty($product->design->front[$index]) ) {
 ?>
 <div class="main-image text-center">
 	<a href="#" title="<?php echo $product->title; ?>">		
