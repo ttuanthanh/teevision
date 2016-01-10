@@ -21,6 +21,7 @@ $colors 	= count($design->color_hex);
 		if ($i === $index) $active = 'active';
 		else $active = '';
 	?>
+<<<<<<< HEAD
 	<a href="<?php echo site_url($product->href.'/'.$product->id.'-'.$product->slug.'/'.$i.'-'.url_title($design->color_title[$i])); ?>" 
 		class="color-swatch color-sm color-hover-change <?php echo $active; ?>" 
 		data-toggle="tooltip" data-placement="top" 
@@ -29,6 +30,11 @@ $colors 	= count($design->color_hex);
 		data-index="<?=$i?>"
 		data-url-image="/api/imagechangecolor/<?=$product->id?>/front/<?=$i?>"
 		data-element-load="#product-image-area"></a>
+=======
+	<!-- <a href="<?php echo site_url($product->href.'/'.$product->id.'-'.$product->slug.'/'.$i.'-'.url_title($design->color_title[$i])); ?>" class="color-swatch color-sm <?php echo $active; ?>" data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" title="<?php echo $design->color_title[$i]; ?>"></a> -->
+    
+    <a href="#" class="color-swatch color-sm <?php echo $active; ?>" data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" title="<?php echo $design->color_title[$i]; ?>"></a>
+>>>>>>> a54785eed2cd5c7f7a9f528ce4fb57258dfa7eeb
 	<?php } ?>
 	<input type="hidden" value="<?php echo $i; ?>" name="colors" class="product_color_active">
 </div>

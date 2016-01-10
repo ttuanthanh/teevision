@@ -15,9 +15,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		if($article->image != '')
 		{
 	?>
-		<div class="post-image">
+		<!-- <div class="post-image">
 			<img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>"/>
-		</div>
+		</div> -->
 	<?php } ?>
 	<h4>
 		<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
