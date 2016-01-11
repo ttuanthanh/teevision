@@ -234,13 +234,14 @@ class Ajax extends Frontend_Controller {
 		$date 	= new DateTime();
 		$year	= $date->format('Y');
 		$root 	= ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'uploaded' .DS. $year;
+		
 		if (!file_exists($root))
-			mkdir($root, 0755);
+			mkdir($root, 0755, true);
 		
 		$month 	= $date->format('m');
 		$root 	= $root .DS. $month .DS;
 		if (!file_exists($root))
-			mkdir($root, 0755);
+			mkdir($root, 0755, true);
 		
 		$config['upload_path']		= $root;
 		$config['allowed_types'] 	= 'gif|jpg|png|jpge';
