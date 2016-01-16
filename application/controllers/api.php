@@ -48,11 +48,11 @@ class Api extends Frontend_Controller {
 				
 			$string = str_replace("'", '"', $design[$view][$index]);
 			$string = str_replace('px"', '"', $string);		
-			
+			/*
 			$img = new Imagick();
 			$img->newImage(500, 500, new ImagickPixel('transparent'));
 			$img->setImageFormat('png');
-							
+				*/			
 			$design 	= json_decode($string, true);
 			
 			$n = count($design) - 1;
