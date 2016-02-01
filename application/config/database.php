@@ -1,20 +1,25 @@
 <?php
 $active_group = 'default';
 $active_record = TRUE;
-
+/*
 $db['default']['hostname'] = 'binddesk.com';
 $db['default']['username'] = 'binddesknoti';
 $db['default']['password'] = '9@!Ze7z1x';
 $db['default']['database'] = 'binddesknoti';
+*/
+$db['default']['hostname'] = 'mysql.hostinger.vn';
+$db['default']['username'] = 'u842852254_tee';
+$db['default']['password'] = '261083515';
+$db['default']['database'] = 'u842852254_tee';
 
-#### for local*/
-/**/
+#### for local
+/*
 $db['default']['hostname'] = '127.0.0.1';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'binddesknoti';
+$db['default']['database'] = 'tshirt';
 
-
+*/
 
 
 $db['default']['dbdriver'] = 'mysql';
