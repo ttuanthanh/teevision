@@ -96,7 +96,37 @@ var apps={
 }
 jQuery(function() {
 	apps.ini();
+        var _element = {"old": null};
+        jQuery("a.color-hover-change").click(function (){ 
+            
+            var url = jQuery(this).attr('data-url-image'), element_load = jQuery(this).attr('data-element-load'), index = jQuery(this).attr('data-index');
+            jQuery(".product_color_active").val(jQuery(this).attr('data-index'));
+            jQuery("#product-colors a").removeClass('active');
+            jQuery(this).addClass('active');
+            
+            if(_element.old == null) {
+            	jQuery(element_load).css({'min-height': jQuery(element_load).outerHeight()});
+            	_element.old = jQuery(element_load).html();
+            } 
+            
 
+            if(url && element_load) {
+            	if(typeof _element['color_'+index] === 'undefined') {
+            	 	jQuery.ajax({'url':url, beforeSend: function( xhr ) {
+                            jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
+                            }}).done(function(data){ 
+                                _element['color_'+index] = data; 
+                                jQuery(element_load).html(data);
+                                jQuery(".main-image img").elevateZoom();
+                            });
+            	} else {
+            		jQuery(element_load).html(_element['color_'+index]);
+            	}
+            	
+            }
+        
+        }) ;
+        /*
 	var _element = {"old": null};
 	jQuery("a.color-hover-change").hover( 
         function(e){
@@ -113,10 +143,9 @@ jQuery(function() {
             	 	jQuery.ajax({'url':url, beforeSend: function( xhr ) {
 						    	jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
 						  }}).done(function(data){ 
-
-	            	 		_element['color_'+index] = data; 
-	            	 		jQuery(element_load).html(data);
-            	 		});
+                                                            _element['color_'+index] = data; 
+                                                            jQuery(element_load).html(data);
+                                                    });
             	} else {
             		jQuery(element_load).html(_element['color_'+index]);
             	}
@@ -126,5 +155,5 @@ jQuery(function() {
         	jQuery(jQuery(this).attr('data-element-load')).html(_element.old);
         	
         } 
-    );
+    );*/
 });

@@ -85,7 +85,9 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<!-- product short description -->
                         <p class="font-bold">Key features</p>
 			<div class="form-group">
-				<?php echo $product->short_description; ?>
+				<?php echo $product->description; 
+ //var_dump($product);
+                                ?>
 			</div>
 			
 			<!-- product price -->

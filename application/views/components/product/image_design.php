@@ -17,10 +17,19 @@ if ( !empty($product->design->front) && isset($product->design->front[$index]) &
 ?>
 <div class="main-image text-center">
 	<a href="#" title="<?php echo $product->title; ?>">		
-		<img src="<?php echo site_url('api/image/'.$product->id.'/front/'.$index.'.png'); ?>" alt="<?php echo $product->title; ?>" class="img-thumbnail img-responsive">		
+		<img src="<?php echo site_url('api/image/'.$product->id.'/front/'.$index.'.png'); ?>" alt="<?php echo $product->title; ?>" data-zoom-image="<?php echo site_url('api/image/'.$product->id.'/front/'.$index.'.png'); ?>" class="img-thumbnail img-responsive">		
 	</a>
 </div>
-<?php } ?>
+<?php } 
+
+ else { ?>
+<div class="main-image text-center">
+     <a href="#" title="<?php echo $product->title; ?>">		
+		<img src="<?php echo site_url('/media/assets/products/no-ima.jpg'); ?>" alt="<?php echo $product->title; ?>"  class="img-thumbnail img-responsive">		
+	</a>
+</div>
+<?php }
+?>
 
 <div class="main-gallery">
 	<?php if ( $product->design->front != '' && isset($product->design->front[$index])  && $product->design->front[$index] != '' ) { ?>

@@ -141,7 +141,7 @@ class Api extends Frontend_Controller {
 			$product->design		= $help_product->getDesign($design);
 		}	
 		
-		echo $this->load->view('components/product/image_design', array('index'=>$index, 'product'=>$product), true);
+		echo $this->load->view('components/product/img_design_edit', array('index'=>$index, 'product'=>$product), true);
 		exit();
 	}
 }
