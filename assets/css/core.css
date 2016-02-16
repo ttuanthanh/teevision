@@ -82,11 +82,23 @@ ul.p-color-sizes .ui-icon-triangle-1-n {
   padding: 2px;
   width: 30px;
 }
-.color-swatches a.color-swatch.active, .color-swatches a.color-swatch:hover{
+.color-swatches a.color-swatch:hover{
 background-color: #000080;
 box-shadow: 0 0 0 3px #2e2423;
 outline-color: #2e2423;
 }
+
+.color-swatches a.color-swatch.active {
+	background-color: #000080;
+	box-shadow: 0 0 0 1.5px #e10606;
+	outline: none;
+	border: none;
+	border-radius: 100%;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	position: relative;
+}
+.color-swatches a.color-swatch.active:before{position:absolute;content:"✓";color:#FFF7F7;left:35%;top:11%;font-size:15px;mix-blend-mode:difference}
 
 .tab-content.tab-content-border {
   border: 1px solid #ddd;

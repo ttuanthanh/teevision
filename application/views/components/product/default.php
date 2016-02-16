@@ -112,13 +112,30 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<?php echo $product->attributes; ?>
 			</div>
 			<?php } ?>			
-			
+			<div class="form-group">
+                            <b>If you wish, select a decoration for one or more of the areas below.</b>
+                            <label for="">Select Number of Front Colors: </label>
+                            <select class="form-control text-center">
+                                <option value="" >==Select==</option>
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                            </select>
+                            <br>
+                            <label for="">Select Number of Back Colors: </label>
+                            <select class="form-control text-center">
+                                <option value="" >==Select==</option>
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                            </select>
+			</div>
 			<!-- form -->
 			<div class="form-group clearfix">
 				<form name="addtocart" class="addtocart" action="" method="post">
-					<!--
-					<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
-					-->
+					
+					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
+					
 					<a class="btn btn-primary pull-left btn-quote margin-right20" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>"> GET QUOTE</a>
 					<?php if (isset($product->design) && $product->design->front != '') { ?>
 					<a class="btn btn-primary pull-left btn-quote" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
