@@ -350,19 +350,26 @@ tinymce.init({
 													<div class="col-md-8">
 														<div class="attrbutes-fields">
 															<div class="row form-group">
-																<div class="col-md-3 pull-right">
+																<div class="col-md-1 pull-right">
 																	<center>
-																	<?php echo lang('remove'); ?>
+																	<?php //echo lang('remove'); ?>
 																	</center>
 																</div>
 																<div class="col-md-3 pull-right">
 																	<center>
-																	<?php echo lang('price'); ?>
+																	<?php echo lang('price_color'); ?>
 																	<br />
 																	<small>+/-</small>
 																	</center>
 																</div>
-																<div class="col-md-5 pull-right">
+                                                                                                                                <div class="col-md-3 pull-right">
+																	<center>
+																	<?php echo lang('price_white'); ?>
+																	<br />
+																	<small>+/-</small>
+																	</center>
+																</div>
+																<div class="col-md-4 pull-right">
 																	<?php echo lang('title'); ?>
 																</div>
 															</div>
@@ -370,13 +377,16 @@ tinymce.init({
 																for($j=0; $j<count($fields['titles'][$i]); $j++) { ?>
 																
 																<div class="row form-group row-fields">
-																	<div class="col-md-3 pull-right">
+																	<div class="col-md-1 pull-right">
 																		<center><small><a href="javascript:void(0);" onclick="dgUI.product.field(this,'remove')"><i class="clip-close"></i></a></small></center>
 																	</div>
 																	<div class="col-md-3 pull-right">
+																		<input type="text" class="form-control input-sm" value="<?php echo $fields['prices_color'][$i][$j]; ?>" name="product[fields][<?php echo $i; ?>][prices_color][]">
+																	</div>
+                                                                                                                                        <div class="col-md-3 pull-right">
 																		<input type="text" class="form-control input-sm" value="<?php echo $fields['prices'][$i][$j]; ?>" name="product[fields][<?php echo $i; ?>][prices][]">
 																	</div>
-																	<div class="col-md-5 pull-right">
+																	<div class="col-md-4 pull-right">
 																		<input type="text" class="form-control input-sm" value="<?php echo $fields['titles'][$i][$j]; ?>"  name="product[fields][<?php echo $i; ?>][titles][]">
 																	</div>
 																</div>

@@ -343,7 +343,7 @@ class Products extends Admin_Controller
 			$fields['type'] 		= json_decode($attribute->type);
 			$fields['titles'] 		= json_decode($attribute->titles);
 			$fields['prices'] 		= json_decode($attribute->prices);
-			
+			$fields['prices_color'] 	= json_decode($attribute->prices_color);
 		}
 		else
 		{
@@ -556,8 +556,9 @@ class Products extends Admin_Controller
 				if($field['name'] != '')
 				{
 					$fields['name'][] 	= $field['name'];
-					$fields['titles'][] = $field['titles'];
-					$fields['prices'][] = $field['prices'];				
+					$fields['titles'][]     = $field['titles'];
+					$fields['prices'][]     = $field['prices'];	
+                                        $fields['prices_color'][] = $field['prices_color'];	
 					$fields['type'][] 	= $field['type'];						
 				}
 			}
@@ -568,6 +569,7 @@ class Products extends Admin_Controller
 					'name' 		=> json_encode($fields['name']),
 					'titles' 	=> json_encode($fields['titles']),
 					'prices' 	=> json_encode($fields['prices']),
+                                        'prices_color' 	=> json_encode($fields['prices_color']),
 					'type' 		=> json_encode($fields['type']),
 					'product_id'=> $id					
 				);

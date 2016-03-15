@@ -9,6 +9,8 @@ $lang['products_meta_title'] = 'Products';
 $lang['products_sub_title'] = 'Manager';
 
 /* ----------------------- Product Detail ---------------------*/
+$lang["price_color"] = "Price Color";
+$lang["price_white"] = "Price White";
 $lang["product"] = "Product";
 $lang["products_manager"] = "Manager";
 $lang["products"] = "Products";
