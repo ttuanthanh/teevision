@@ -13,7 +13,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Settings extends Admin_Controller {
 
     public function __construct() {
-        parent::__construct();
+        parent::
+                __construct();
 		
 		// check user permission		
 		$this->users_m->userPermission('settings');
@@ -28,6 +29,7 @@ class Settings extends Admin_Controller {
         $this->data['subview'] = 'admin/settings/index';
 		
 		$this->load->model('settings_m');
+                $this->load->model('print_price_m');
 		
 		$settings = $this->settings_m->getSetting();
 		if(count($settings) > 0)
@@ -38,6 +40,21 @@ class Settings extends Admin_Controller {
 		//currencies.
 		$this->data['currencies'] = $this->settings_m->getCurrencies();
 		
+                //Get print list
+                $pfront                 = $this->print_price_m->getFrontPrintPriceList();
+                $arr_front['id']        = $pfront->id;
+                $arr_front['location']  = $pfront->location;
+                $arr_front['quantity']  = json_decode($pfront->quantity);
+                $arr_front['prices']    = json_decode($pfront->prices);                
+                $this->data['print_list']['front']  = $arr_front;                        
+                
+                $pback                  = $this->print_price_m->getBackPrintPriceList();
+                $arr_back['id']         = $pback->id;
+                $arr_back['location']   = $pback->location;
+                $arr_back['quantity']   = json_decode($pback->quantity);
+                $arr_back['prices']     = json_decode($pback->prices);                
+                $this->data['print_list']['back']  = $arr_back;
+                        
 		//language		
 		$path_lang = ROOTPATH.DS.'application'.DS.'language'.DS.'english'.DS.'lang.ini';
 		$path = ROOTPATH .DS. 'media'.DS.'data'.DS.'lang.ini';

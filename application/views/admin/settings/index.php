@@ -181,6 +181,48 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
+            
+                <!--New print price-->
+                <div class="container" style="border: none!important">
+                    <div class="row">
+                    <?php 
+                        foreach ($print_list as $key=>$plist) :
+                    ?>
+                        <h2>Print <?php echo $key ?></h2>
+                        <table class="table">
+                            <tr>
+                                <th></th>
+                                <th>0 color</th>
+                                <th>1 color</th>
+                                <th>2 color</th>
+                                <th>3 color</th>
+                                <th>4 color</th>
+                                <th>5 color</th>
+                                <th>6 color</th
+                            </tr>
+                        <?php
+                            $i = 0;
+                            foreach ($plist['quantity'] as $gk=>$group): ?>
+                            <tr>
+                                <td><?php 
+                                    echo 'From <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[0].'" class="form-control input-sm" style="width:50px;display: inline;"> -';
+                                    echo 'To <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[1].'" class="form-control input-sm" style="width:50px;display: inline;">';
+                                ?></td>
+                                <?php
+                                foreach ($plist['prices'][$i] as $pk=>$price)
+                                    echo "<td>"
+                                            .'<input type="text" name="print_list['.$key.'][prices]['.$pk.'][]" value="'.$price.'" class="form-control input-sm" style="width:50px;display: inline;">'
+                                        ."</td>";
+                                ?>    
+                            </tr>
+                            <?php $i++; endforeach; ?>    
+                        </table>                        
+                        
+                    <?php endforeach; ?>
+
+                    </div>
+                    
+                </div>
 	</div>
 	<!-- end price -->
 
