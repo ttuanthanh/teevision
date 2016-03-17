@@ -351,7 +351,8 @@ class Products extends Admin_Controller
 				'name'=>array(''), 
 				'type'=> array(''), 
 				'titles'=>array(), 
-				'prices'=>array()
+				'prices'=>array(),
+                                'prices_color'=>array()
 			);
 		}
 		$this->data['fields'] = $fields;
