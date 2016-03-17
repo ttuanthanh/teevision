@@ -106,6 +106,33 @@ class Settings extends Admin_Controller {
 					$this->session->set_flashdata('error', lang('settings_admin_insert_config_error_msg'));
 			}
 		}
+                if($print_list 	= $this->input->post('print_list')){			
+                        $price_front['quantity'] = json_encode($print_list['front']['quantity']);
+                        $price_front['prices'] = json_encode($print_list['front']['prices']);
+                        
+                        $price_back['quantity'] = json_encode($print_list['back']['quantity']);
+                        $price_back['prices'] = json_encode($print_list['back']['prices']);
+                        
+			$this->load->model('print_price_m');
+			
+			$print_price_back = $this->print_price_m->getBackPrintPriceList();
+                        $print_price_front = $this->print_price_m->getFrontPrintPriceList();
+                        if(count($print_price_front) > 0)
+			{
+				if($this->print_price_m->save($price_front, $print_price_front->id))
+					$this->session->set_flashdata('msg', lang('settings_admin_update_config_success_msg'));
+				else
+					$this->session->set_flashdata('error', lang('settings_admin_update_config_error_msg'));
+			}
+                        if(count($print_price_back) > 0)
+			{
+				if($this->print_price_m->save($price_back, $print_price_back->id))
+					$this->session->set_flashdata('msg', lang('settings_admin_update_config_success_msg'));
+				else
+					$this->session->set_flashdata('error', lang('settings_admin_update_config_error_msg'));
+			}
+			
+                }
 		redirect('admin/settings');
 	}
 	

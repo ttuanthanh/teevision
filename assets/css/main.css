@@ -1093,3 +1093,6 @@ ul.edit_language li:hover{background: #F7F7F9;}
     right: 2px;
     top: 2px;
 }
+.st-input{
+    width:50px;display: inline;
+}

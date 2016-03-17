@@ -87,7 +87,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 	<!-- start price -->
 	<div style=" min-height: 350px;" class="tab-pane" id="price">
-		<div class="row">
+<!--		<div class="row">
 			<div class="col-md-8">
 				<div class="form-group row">
 					<label class="col-sm-3 control-label"><?php echo lang('setting_shop_choose_currencies'); ?></label>
@@ -114,7 +114,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 				
-				<!-- print config -->
+				 print config 
 				<?php //echo '<pre>'; print_r($setting); exit; ?>
 				<div class="row col-md-12">
 					<h4><?php echo lang('settings_print'); ?></h4>
@@ -180,7 +180,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
             
                 <!--New print price-->
                 <div class="container" style="border: none!important">
@@ -188,7 +188,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <?php 
                         foreach ($print_list as $key=>$plist) :
                     ?>
-                        <h2>Print <?php echo $key ?></h2>
+                        <h4>Print <?php echo $key ?></h4>
                         <table class="table">
                             <tr>
                                 <th></th>
@@ -205,13 +205,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             foreach ($plist['quantity'] as $gk=>$group): ?>
                             <tr>
                                 <td><?php 
-                                    echo 'From <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[0].'" class="form-control input-sm" style="width:50px;display: inline;"> -';
-                                    echo 'To <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[1].'" class="form-control input-sm" style="width:50px;display: inline;">';
+                                    echo 'From <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[0].'" class="form-control input-sm st-input" > -> ';
+                                    echo 'To <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[1].'" class="form-control input-sm st-input" style="margin-right:20px">';
                                 ?></td>
                                 <?php
                                 foreach ($plist['prices'][$i] as $pk=>$price)
                                     echo "<td>"
-                                            .'<input type="text" name="print_list['.$key.'][prices]['.$pk.'][]" value="'.$price.'" class="form-control input-sm" style="width:50px;display: inline;">'
+                                            .'<input type="text" name="print_list['.$key.'][prices]['.$gk.'][]" value="'.$price.'" class="form-control input-sm st-input">'
                                         ."</td>";
                                 ?>    
                             </tr>
