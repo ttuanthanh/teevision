@@ -284,6 +284,70 @@ class Ajax extends Frontend_Controller {
 		}			
 		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
+        public function getQuote(){
+            $product_id 	= $this->input->post('product_id');
+            $color = $this->input->post('color');
+            $size = $this->input->post('size');
+            $print = $this->input->post('print');
+            
+            $product_id = 1;
+            $color = 0;
+            $size = [12,0,0,0,0,0];
+            $print = [2,2];
+            
+            
+            $price_total = 0;
+            $this->load->model('product_m');
+            $this->load->model('print_price_m');
+            $attribute          = $this->product_m->getAttribute($product_id);
+            $arr_attribute['prices'] 		= json_decode($attribute->prices);
+            $arr_attribute['prices_color'] 	= json_decode($attribute->prices_color);
+             //Get print list
+            $pfront                 = $this->print_price_m->getFrontPrintPriceList();
+            $arr_front['id']        = $pfront->id;
+            $arr_front['quantity']  = json_decode($pfront->quantity);
+            $arr_front['prices']    = json_decode($pfront->prices);                        
+
+            $pback                  = $this->print_price_m->getBackPrintPriceList();
+            $arr_back['id']         = $pback->id;
+            $arr_back['quantity']   = json_decode($pback->quantity);
+            $arr_back['prices']     = json_decode($pback->prices);           
+            
+            $price_product = 0;
+            $quantity = 0;
+            if($color == 0){ //white
+                for($i = 0; $i < count($size); $i++){                    
+                    $price_product += $size[$i] * $arr_attribute['prices'][0][$i];
+                    $quantity += $size[$i];
+                }
+            }else{ //color
+                for($i = 0; $i < count($size); $i++){                    
+                    $price_product += $size[$i] * $arr_attribute['prices_color'][0][$i];
+                    $quantity += $size[$i];
+                }
+            }
+            $index_price_front = 0;
+            $index_price_back = 0;
+            for($i = 0; $i < count($arr_front['quantity']); $i++){
+                if($quantity >= $arr_front['quantity'][$i][0] && $quantity <= $arr_front['quantity'][$i][1]){                    
+                    $index_price_front = $i;
+                    break;
+                }
+            }
+            for($i = 0; $i < count($arr_back['quantity']); $i++){
+                if($quantity >= $arr_back['quantity'][$i][0] && $quantity <= $arr_back['quantity'][$i][1]){
+                    $index_price_back = $i;
+                    break;
+                }                    
+            }
+            $price_print = ($arr_front['prices'][$index_price_front][$print[0]] + 
+                            $arr_back['prices'][$index_price_back][$print[0]]) * $quantity;
+            $price_total = $price_product + $price_print;
+            echo $price_total;
+            
+           
+        }
+                
 }
 
 ?>
