@@ -101,6 +101,7 @@ jQuery(function() {
             
             var url = jQuery(this).attr('data-url-image'), element_load = jQuery(this).attr('data-element-load'), index = jQuery(this).attr('data-index');
             jQuery(".product_color_active").val(jQuery(this).attr('data-index'));
+            jQuery("#is-color").val(jQuery(this).attr('data-iscolor'));
             jQuery("#product-colors a").removeClass('active');
             jQuery(this).addClass('active');
             
@@ -109,7 +110,7 @@ jQuery(function() {
             	_element.old = jQuery(element_load).html();
             } 
             
-
+                
             if(url && element_load) {
             	if(typeof _element['color_'+index] === 'undefined') {
             	 	jQuery.ajax({'url':url, beforeSend: function( xhr ) {
@@ -126,34 +127,49 @@ jQuery(function() {
             }
         
         }) ;
-        /*
-	var _element = {"old": null};
-	jQuery("a.color-hover-change").hover( 
-        function(e){
-            var url = jQuery(this).attr('data-url-image'), element_load = jQuery(this).attr('data-element-load'), index = jQuery(this).attr('data-index');
+        jQuery(".btn-quote").click(function (){ 
             
-            if(_element.old == null) {
-            	jQuery(element_load).css({'min-height': jQuery(element_load).outerHeight()});
-            	_element.old = jQuery(element_load).html();
-            } 
+            var product_id  = jQuery('#product_id').val(),
+                color       = jQuery('#is-color').val(),
+                attr_key    = jQuery('#attr-key').val(),
+                print = {},
+                attribute   = {};
             
-
-            if(url && element_load) {
-            	if(typeof _element['color_'+index] === 'undefined') {
-            	 	jQuery.ajax({'url':url, beforeSend: function( xhr ) {
-						    	jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
-						  }}).done(function(data){ 
-                                                            _element['color_'+index] = data; 
-                                                            jQuery(element_load).html(data);
-                                                    });
-            	} else {
-            		jQuery(element_load).html(_element['color_'+index]);
-            	}
-            	
+            i = 0;
+            size_flag = '';
+            $('input[name^="'+attr_key+'"]').each(function() {
+                size_flag += $(this).val();
+                attribute[i++] =$(this).val(); 
+                
+            });
+            if (size_flag == '') {
+                alert('Please select size and quantity!');
+                return false;
             }
-        }, function(e){
-        	jQuery(jQuery(this).attr('data-element-load')).html(_element.old);
-        	
-        } 
-    );*/
+            print[0]    = jQuery('#print-front-num').val() , 
+            print[1]    = jQuery('#print-back-num').val()
+            
+            //attribute = attribute.slice(0,-1) + ']';
+            //attribute   += ']';
+            if (color == "") {
+                alert('Please select color!');
+                return false
+            };
+            
+            var url = '/ajax/getQuote';
+            jQuery.ajax({   url:url, 
+                            type: 'POST', 
+                            data: { product_id: product_id, color: color, size: attribute, print: print},
+                            beforeSend: function( xhr ) {
+                                //jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
+                            }}).done(function(data){ 
+                                return_price = jQuery.parseJSON(data);
+                                jQuery('#price-detail').show();
+                                jQuery('.btn-order').show();
+                                jQuery('.btn-quote').html('UPDATE QUOTE');
+                                jQuery('#unit-price-value').html("$"+return_price.unit_price);
+                                jQuery('#total-price-value').html("$"+return_price.total_price);
+                            });
+            
+        })
 });

@@ -358,15 +358,13 @@ tinymce.init({
 																<div class="col-md-3 pull-right">
 																	<center>
 																	<?php echo lang('price_color'); ?>
-																	<br />
-																	<small>+/-</small>
+																	
 																	</center>
 																</div>
                                                                                                                                 <div class="col-md-3 pull-right">
 																	<center>
 																	<?php echo lang('price_white'); ?>
-																	<br />
-																	<small>+/-</small>
+																	
 																	</center>
 																</div>
 																<div class="col-md-4 pull-right">

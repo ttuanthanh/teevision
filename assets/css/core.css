@@ -1196,3 +1196,15 @@ outline-color: #2e2423;
     font-weight: bold;
 }
 .e-beadcrum a:hover{    color: #3AB6D5!important; text-decoration: none;}
+
+.price-calc{
+    text-align: right;
+    font-size: 17px;
+    font-weight: bold;
+}
+.price-total{
+    color: #3d9400;
+    font-size: 15px;
+}
+
+.hidden-box{ display: none}

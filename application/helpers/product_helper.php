@@ -11,10 +11,46 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class helperProduct
 {
-	function sortDesign($design, $orderby = 'ordering')	{		$rows 	= array();				foreach( $design as $key => $value )		{
+	function sortDesign($design, $orderby = 'ordering')
+	{
+		$rows 	= array();		
+		foreach( $design as $key => $value )
+		{
 			if(is_array($value))
-			{				for( $i=0; $i<count($value); $i++ )				{					$rows[$i][$key]	= $value[$i];				}
-			}		}					$sortArray = array(); 		foreach($rows as $row){			foreach($row as $key=>$value){				if(!isset($sortArray[$key])){ 					$sortArray[$key] = array(); 				}				$sortArray[$key][] = $value; 			} 		}		if( count($sortArray) )			array_multisort($sortArray[$orderby], SORT_ASC, $rows);				return $rows;	}		function json($design)	{		$rows = new stdClass();		foreach($design as $key => $value)		{			$rows->$key = json_decode($value);		}				return $rows;	}
+			{
+				for( $i=0; $i<count($value); $i++ )
+				{
+					$rows[$i][$key]	= $value[$i];
+				}
+			}
+		}
+			
+
+		$sortArray = array(); 
+		foreach($rows as $row){
+			foreach($row as $key=>$value){
+				if(!isset($sortArray[$key])){ 
+					$sortArray[$key] = array(); 
+				}
+				$sortArray[$key][] = $value; 
+			} 
+		}
+		if( count($sortArray) )
+			array_multisort($sortArray[$orderby], SORT_ASC, $rows);
+		
+		return $rows;
+	}
+	
+	function json($design)
+	{
+		$rows = new stdClass();
+		foreach($design as $key => $value)
+		{
+			$rows->$key = json_decode($value);
+		}
+		
+		return $rows;
+	}
 	
 	function getImgage($str)
 	{
@@ -155,7 +191,9 @@ class helperProduct
 					$html .= 	'<label>'.$title[$i].'</label>';
 					$html .= 	'<input type="text" class="form-control input-sm size-number" name="'.$id.'['.$i.']">';					
 					$html .= '</li>';
+                                         
 				}
+                                $html .= '<input type="hidden" id="attr-key" value="'.$id.'">';
 				$html 		.= '</ul>';
 			break;
 		}

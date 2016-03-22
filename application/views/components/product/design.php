@@ -25,9 +25,11 @@ $colors 	= count($design->color_hex);
 	 	data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" 
 	 	title="<?php echo $design->color_title[$i]; ?>"
 	 	data-index="<?=$i?>"
+                data-iscolor="<?php echo ($design->color_hex[$i] == 'ffffff' || $design->color_hex[$i] == 'FFFFFF') ? 0 : 1 ?>"
 		data-url-image="/api/imagechangecolor/<?=$product->id?>/front/<?=$i?>"
 		data-element-load="#product-image-area"></a>
 	
 	<?php } ?>
 	<input type="hidden" value="<?php echo $i; ?>" name="colors" class="product_color_active">
+        <input type="hidden" value="" name="is-color" id="is-color">
 </div>

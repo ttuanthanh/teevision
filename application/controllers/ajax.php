@@ -284,17 +284,25 @@ class Ajax extends Frontend_Controller {
 		}			
 		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
+        
+        /**
+         * 
+         * Calculate shirt price
+         * 
+         * total = quantity * ( base price + print front + print back ) + 8% tax
+         * 
+         */
         public function getQuote(){
-            $product_id 	= $this->input->post('product_id');
+            $product_id 	= $this->input->post('product_id', TRUE);
             $color = $this->input->post('color');
             $size = $this->input->post('size');
             $print = $this->input->post('print');
-            
+            /*
             $product_id = 1;
             $color = 0;
             $size = [12,0,0,0,0,0];
             $print = [2,2];
-            
+            */
             
             $price_total = 0;
             $this->load->model('product_m');
@@ -341,9 +349,18 @@ class Ajax extends Frontend_Controller {
                 }                    
             }
             $price_print = ($arr_front['prices'][$index_price_front][$print[0]] + 
-                            $arr_back['prices'][$index_price_back][$print[0]]) * $quantity;
+                            $arr_back['prices'][$index_price_back][$print[1]]) * $quantity;
             $price_total = $price_product + $price_print;
-            echo $price_total;
+            
+            // Addding 8% tax
+            
+            $price_total += ($price_total * 8 ) /100;            
+            
+            $data['quantity'] = $quantity;
+            $data['total_price']    = $price_total;
+            $data['unit_price']    = round($price_total/$quantity, 2);
+            
+            echo json_encode($data);
             
            
         }
