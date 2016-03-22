@@ -102,65 +102,68 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 					</div>
 					<?php } ?>			
 			</div>
-			<div class="col-md-12">
-				<h4><b>Have Artwork? Add Files Here:</b></h4>
-				<h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>
-				<div class="col-md-6 pruduct-quote-front">
-					<h5><b>Front</b></h5>
-					<div class="col-md-4">
-						<div class="fileinput fileinput-new" data-provides="fileinput">
-	                       <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-	                       	<img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
-	                       </div>
-	                       <div>
-	                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-	                           <input type="file" name="banner" placeholder="Choose banner image"/>
-	                         </span> 
-	                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
-	                       </div>
-	                    </div>
-                    </div>
-                     <div class="col-md-4">
-	                    <div class="form-group product-fields selectbox">
-							<label for="fields">Color</label>
-							<div class="dg-poduct-fields ">
-								<select class="form-control input-sm" name="attribute[1][1]"><option
-										value="0">1 Color</option>
-									<option value="1">2 Color</option>
-									<option value="2">3 Color</option></select>
-							</div>
-						</div>
-					</div>
-				</div>	
-				<div class="col-md-6 pruduct-quote-back">
-					<h5><b>Back</b></h5>
-					<div class="col-md-4">
-						<div class="fileinput fileinput-new" data-provides="fileinput">
-	                       <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-	                       	<img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back" alt="back_image" class="img-responsive">
-	                       </div>
-	                       <div>
-	                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image back</span> <span class="fileinput-exists">Change</span> 
-	                           <input type="file" name="banner" placeholder="Choose banner image"/>
-	                         </span> 
-	                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
-	                       </div>
-	                    </div>
-                    </div>
-                    <div class="col-md-4">
-	                    <div class="form-group product-fields selectbox">
-							<label for="fields">Color</label>
-							<div class="dg-poduct-fields ">
-								<select class="form-control input-sm" name="attribute[1][1]"><option
-										value="0">1 Color</option>
-									<option value="1">2 Color</option>
-									<option value="2">3 Color</option></select>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="col-md-12 clearfix">
+                            <h4><b>Have Artwork? Add Files Here:</b></h4>
+                            <h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>
+                            <div class="col-md-6 pruduct-quote-front">
+                                <h5><b>Front</b></h5>
+                                <div class="col-md-4">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
+                                            <img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
+                                                <input type="file" name="banner" placeholder="Choose banner image"/>
+                                            </span> 
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group product-fields selectbox">
+                                        <label for="fields">Color</label>
+                                        <div class="dg-poduct-fields ">
+                                            <select class="form-control input-sm" name="">
+                                                <option value="0">1 Color</option>
+                                                <option value="1">2 Color</option>
+                                                <option value="2">3 Color</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>	
+                            <div class="col-md-6 pruduct-quote-back">
+                                <h5><b>Back</b></h5>
+                                <div class="col-md-4">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
+                                            <img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back" alt="back_image" class="img-responsive">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select image back</span> <span class="fileinput-exists">Change</span> 
+                                                <input type="file" name="banner" placeholder="Choose banner image"/>
+                                            </span> 
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group product-fields selectbox">
+                                        <label for="fields">Color</label>
+                                        <div class="dg-poduct-fields ">
+                                            <select class="form-control input-sm" name="">
+                                                <option value="0">1 Color</option>
+                                                <option value="1">2 Color</option>
+                                                <option value="2">3 Color</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 			</div>
-			<div class="col-md-12">
+                    
+			<div class="col-md-12 clearfix">
 				<h4><b>Don't Have Artwork? <a href="javascript:;" onclick="requestArtist();" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
 				<div class="form-group"><textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea></div>
 			</div>
