@@ -30,6 +30,7 @@ class Settings extends Admin_Controller {
 		
 		$this->load->model('settings_m');
                 $this->load->model('print_price_m');
+                $this->load->model('boxes_m');
 		
 		$settings = $this->settings_m->getSetting();
 		if(count($settings) > 0)
@@ -54,7 +55,12 @@ class Settings extends Admin_Controller {
                 $arr_back['quantity']   = json_decode($pback->quantity);
                 $arr_back['prices']     = json_decode($pback->prices);                
                 $this->data['print_list']['back']  = $arr_back;
-                        
+                   
+                //add boxes
+                $boxes = $this->boxes_m->getBoxes();
+                $this->data['arr_boxes']['quantity'] = json_decode($boxes->quantity);
+                $this->data['arr_boxes']['boxes'] = json_decode($boxes->boxes);                
+                
 		//language		
 		$path_lang = ROOTPATH.DS.'application'.DS.'language'.DS.'english'.DS.'lang.ini';
 		$path = ROOTPATH .DS. 'media'.DS.'data'.DS.'lang.ini';
@@ -132,6 +138,19 @@ class Settings extends Admin_Controller {
 					$this->session->set_flashdata('error', lang('settings_admin_update_config_error_msg'));
 			}
 			
+                }
+                if($boxes_list 	= $this->input->post('boxes_list')){
+                    $boxes['quantity'] = json_encode($boxes_list['quantity']);
+                    $boxes['boxes'] = json_encode($boxes_list['boxes']);
+                    $this->load->model('boxes_m');
+                    $pboxes = $this->boxes_m->getBoxes();
+                    if(count($pboxes) > 0)
+                    {
+                        if($this->boxes_m->save($boxes, $pboxes->id))
+                                $this->session->set_flashdata('msg', lang('settings_admin_update_config_success_msg'));
+                        else
+                                $this->session->set_flashdata('error', lang('settings_admin_update_config_error_msg'));
+                    }
                 }
 		redirect('admin/settings');
 	}

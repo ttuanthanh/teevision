@@ -150,8 +150,9 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <input type="hidden" value="<?php echo $product->id; ?>" id="product_id">
 					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
 					
-                                        <p class="btn btn-primary btn-quote margin-right20" id="btn-getquote" title="Click to get quote"> GET QUOTE</p>
-					<a class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</a>
+                                        <p class="btn btn-primary btn-quote btn-product " id="btn-getquote" title="Click to get quote"> GET QUOTE</p>
+					<p class="btn btn-primary btn-order btn-product hidden-box" title="Click to get quote" >START ORDER</p>
+                                        <!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
 					<?php if (isset($product->design) && $product->design->front != '') { ?>
                                             <!--<a class="btn btn-primary btn-quote" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>-->
 					<?php } ?>

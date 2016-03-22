@@ -21,7 +21,7 @@ $colors 	= count($design->color_hex);
 		if ($i === $index) $active = 'active';
 		else $active = '';
 	?>
-	 <a href="#" class="color-swatch color-sm color-hover-change <?php echo $active; ?>" 
+	 <a href="javascript:void(0);" class="color-swatch color-sm color-hover-change <?php echo $active; ?>" 
 	 	data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" 
 	 	title="<?php echo $design->color_title[$i]; ?>"
 	 	data-index="<?=$i?>"

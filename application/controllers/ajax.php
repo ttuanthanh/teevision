@@ -334,27 +334,46 @@ class Ajax extends Frontend_Controller {
                     $quantity += $size[$i];
                 }
             }
-            $index_price_front = 0;
-            $index_price_back = 0;
+            
+            $price_front = 0;            
             for($i = 0; $i < count($arr_front['quantity']); $i++){
                 if($quantity >= $arr_front['quantity'][$i][0] && $quantity <= $arr_front['quantity'][$i][1]){                    
-                    $index_price_front = $i;
+                    $price_front = $arr_front['prices'][$i][$print[0]];
                     break;
                 }
             }
+            $price_back = 0;
             for($i = 0; $i < count($arr_back['quantity']); $i++){
                 if($quantity >= $arr_back['quantity'][$i][0] && $quantity <= $arr_back['quantity'][$i][1]){
-                    $index_price_back = $i;
+                    $price_back = $arr_back['prices'][$i][$print[1]];
                     break;
                 }                    
             }
-            $price_print = ($arr_front['prices'][$index_price_front][$print[0]] + 
-                            $arr_back['prices'][$index_price_back][$print[1]]) * $quantity;
+            $price_print = ($price_front + $price_back) * $quantity;
             $price_total = $price_product + $price_print;
             
             // Addding 8% tax
             
-            $price_total += ($price_total * 8 ) /100;            
+            $price_total += ($price_total * 8 ) /100;  
+            
+            //Add ship price - trangttm - 03/22/2016
+            $this->load->model('boxes_m');
+            $boxes = $this->boxes_m->getBoxes();
+            $arr_boxes['quantity']  = json_decode($boxes->quantity);
+            $arr_boxes['boxes']    = json_decode($boxes->boxes);
+            $number_boxes = 0;
+            for($i = 0; $i < count($arr_boxes['quantity']); $i++){
+                if($quantity >= $arr_boxes['quantity'][$i][0] && $quantity <= $arr_boxes['quantity'][$i][1]){                    
+                    $number_boxes = $arr_boxes['boxes'][$i];
+                    break;
+                }
+            }    
+            $this->load->model('settings_m');
+            $setting = $this->settings_m->getSetting();
+            $setting = json_decode($setting->settings);
+            $price_boxes = $setting->shippingbox;
+            
+            $price_total += ($number_boxes * $price_boxes);
             
             $data['quantity'] = $quantity;
             $data['total_price']    = $price_total;

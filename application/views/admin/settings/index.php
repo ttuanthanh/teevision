@@ -87,7 +87,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 	<!-- start price -->
 	<div style=" min-height: 350px;" class="tab-pane" id="price">
-		<div class="row">
+<!--		<div class="row">
 			<div class="col-md-8">
 				<div class="form-group row">
 					<label class="col-sm-3 control-label"><?php echo lang('setting_shop_choose_currencies'); ?></label>
@@ -180,10 +180,41 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div>
-            
+		</div>-->
+                <div class="row shipping col-md-5">
+                    <div class="col-md-12"><h4>Shipping</h4></div>
+                    <div class="col-md-4">Price (per box)</div>
+                    <div class="col-sm-8"><input class="col-sm-4" type="text" name="setting[shippingbox]" value="<?php if (isset($setting->shippingbox)) echo $setting->shippingbox; ?>" class="form-control input-sm"></div>
+                    <br clear='both'>
+                    <div class="col-md-12">Boxes</div>
+                    <div class="col-sm-8" style="border: none!important">
+                        <table class="table">
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Number Box</th>
+                            </tr>
+                        <?php
+                            $i = 0;
+                            foreach ($arr_boxes['boxes'] as $gk=>$group): ?>
+                            <tr>
+                                <td><?php 
+                                    echo '<input type="text" name="boxes_list[quantity]['.$gk.'][]" value="'.$arr_boxes['quantity'][$i][0].'" class="form-control input-sm st-input" >';
+                                ?></td>
+                                 <td><?php 
+                                    echo '<input type="text" name="boxes_list[quantity]['.$gk.'][]" value="'.$arr_boxes['quantity'][$i][1].'" class="form-control input-sm st-input" >';
+                                ?></td>
+                                <td><?php 
+                                    echo '<input type="text" name="boxes_list[boxes]['.$gk.']" value="'.$arr_boxes['boxes'][$i].'" class="form-control input-sm st-input" >';
+                                ?></td>
+                            </tr>
+                            <?php $i++; endforeach; ?>    
+                        </table>        
+
+                    </div>
+                </div>
                 <!--New print price-->
-                <div class="container" style="border: none!important">
+                <div class="container col-md-7" style="border: none!important">
                     <div class="row">
                     <?php 
                         foreach ($print_list as $key=>$plist) :
@@ -191,7 +222,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <h4>Print <?php echo $key ?></h4>
                         <table class="table">
                             <tr>
-                                <th></th>
+                                <th>From</th>
+                                <th>To</th>
                                 <th>0 color</th>
                                 <th>1 color</th>
                                 <th>2 color</th>
@@ -205,8 +237,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             foreach ($plist['quantity'] as $gk=>$group): ?>
                             <tr>
                                 <td><?php 
-                                    echo 'From <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[0].'" class="form-control input-sm st-input" > -> ';
-                                    echo 'To <input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[1].'" class="form-control input-sm st-input" style="margin-right:20px">';
+                                    echo '<input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[0].'" class="form-control input-sm st-input" >';
+                                ?></td>
+                                <td><?php                                     
+                                    echo '<input type="text" name="print_list['.$key.'][quantity]['.$gk.'][]" value="'.$group[1].'" class="form-control input-sm st-input" style="margin-right:20px">';
                                 ?></td>
                                 <?php
                                 foreach ($plist['prices'][$i] as $pk=>$price)
@@ -227,7 +261,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<!-- end price -->
 
 	<!-- start designer -->
-<!--	<div class="tab-pane" id="designer" style="display:none;">
+	<div class="tab-pane" id="designer" style="display:none;">
 		<div class="row" id="dg-designer">
 			<div id="tabs" style="border: none;">
 				<ul>
@@ -319,7 +353,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 					
 					<div class="col-xs-12 col-md-12 col-center align-center" style="float: left;">
-						 Begin sidebar 
+						<!-- Begin sidebar -->
 						<div id="dg-sidebar">
 							<ul class="dg-tools">
 								<li data-title="dg-product">
@@ -354,39 +388,39 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								</li>					
 							</ul>
 						</div>
-						 Begin sidebar 
+						<!-- Begin sidebar -->
 						
-						 design area 
+						<!-- design area -->
 						<div id="design-area">
 							<div id="app-wrap">
 													
-								 begin front design 						
+								<!-- begin front design -->						
 								<div id="view-front" class="labView active">
 									<div class="product-design"><img style="width: 85px; height: 60px; top: 8px; left: 126.5px; z-index: 300;" src="<?php echo site_url('assets/images/1-1.png')?>" id="front-img-images-0" class="modelImage"><img style="width: 220px; height: 370px; top: 0px; left: 108.5px; z-index: 100;" src="<?php echo site_url('assets/images/case.png')?>" id="front-img-images-1" class="modelImage"></div>
 									<div style="height: 342px; width: 178px; left: 130px; top: 10px; border-radius: 25px; z-index: 200;" class="design-area"><div class="content-inner"></div></div>
 								</div>						
-								 end front design 
+								<!-- end front design -->
 								
-								 begin back design 
+								<!-- begin back design -->
 								<div id="view-back" class="labView">
 									<div class="product-design"></div>
 									<div class="design-area"><div class="content-inner"></div></div>
 								</div>
-								 end back design 
+								<!-- end back design -->
 								
-								 begin left design 
+								<!-- begin left design -->
 								<div id="view-left" class="labView">
 									<div class="product-design"></div>
 									<div class="design-area"><div class="content-inner"></div></div>
 								</div>
-								 end left design 
+								<!-- end left design -->
 								
-								 begin right design 
+								<!-- begin right design -->
 								<div id="view-right" class="labView">
 									<div class="product-design"></div>
 									<div class="design-area"><div class="content-inner"></div></div>
 								</div>
-								 end right design 
+								<!-- end right design -->
 								
 							</div>
 						</div>
@@ -395,14 +429,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<div class="col-right">
 						<span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
 						<div id="dg-right">
-							 share 
+							<!-- share -->
 							<div class="dg-share">
 								<div class="row align-center">
 									<label style="font-family: Garamond; font-size: 20px;">Save and share this design<i id="right_1" type="button" style="float: right; margin: 10px 0px 0px 5px; font-size: 55%; cursor: pointer;" class="fa fa-pencil edit_text" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i></label>
 								</div>
 							</div>
 							
-							 product 
+							<!-- product -->
 							<div class="align-center" id="right-options">
 								<div class="dg-box">
 									<div role="tablist" class="accordion ui-accordion ui-widget ui-helper-reset">
@@ -418,12 +452,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<h3 tabindex="-1" aria-expanded="false" aria-selected="false" aria-controls="ui-accordion-2-panel-3" id="ui-accordion-2-header-3" role="tab" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons">Extra
 											<i id="right_5" type="button" style="float: right; margin-right: 5px; font-size: 80%;" class="fa fa-gear option" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</h3>
-										
+										<!--
 										<div aria-hidden="true" role="tabpanel" aria-labelledby="ui-accordion-2-header-3" id="ui-accordion-2-panel-3" style="display: none;" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
 											Extra
 											<i id="right_1" type="button" style="float: right; margin: 4px 0px 0px 5px; font-size: 80%;" class="fa fa-pencil edit_text" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</div>
-										
+										-->
 									</div>
 									<div class="product-prices">
 										<button type="button" class="btn btn-warning" style="margin: 5px 0;">Add to cart</button>
@@ -433,7 +467,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							</div>
 						</div>
 					</div>	
-					 footer 
+					<!-- footer -->
 					<div style="display: table; width: 103%;" class="row footer">
 						<div id="footer">
 							<div class="col-md-4 pull-left">
@@ -536,7 +570,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 				<div id="tabs-3">
 					<div class="col-left" style="position: relative">
-						 Begin sidebar 
+						<!-- Begin sidebar -->
 						<div id="dg-sidebar">
 							<ul class="dg-tools" style="width: 50%;">	
 								<li style="float: none;" data-title="dg-product">
@@ -565,21 +599,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								</li>								
 							</ul>
 						</div>
-						 Begin sidebar 
+						<!-- Begin sidebar -->
 					</div>	
 				</div>
 				<div id="tabs-4">
 					<div class="col-left" style="position: relative;">
 						<span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
 						<div id="dg-right">
-							 product 
+							<!-- product -->
 							<div class="align-center" id="right-options">
 								<div class="dg-box">
 									<div role="tablist" class="accordion ui-accordion ui-widget ui-helper-reset">
 										<h3 tabindex="0" aria-expanded="true" aria-selected="true" aria-controls="product-details" id="ui-accordion-2-header-0" role="tab" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons">Product Options
 											<i id="right_2" type="button" style="float: right; margin-right: 5px; font-size: 80%;" class="fa fa-gear option" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</h3>
-										
+										<!--
 										<div aria-hidden="false" role="tabpanel" aria-labelledby="ui-accordion-2-header-0" style="display: block;" class="product-options contentHolder ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active ps-container" id="product-details">
 										<div class="content-y">
 											
@@ -612,34 +646,34 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 											</a>
 											</div>
 											<div style="width: 198px; display: inherit; left: 0px; bottom: 3px;" class="ps-scrollbar-x-rail"><div style="left: 0px; width: 179px;" class="ps-scrollbar-x"></div></div><div style="top: 0px; height: 186px; display: inherit; right: 3px;" class="ps-scrollbar-y-rail"><div style="top: 0px; height: 167px;" class="ps-scrollbar-y"></div></div></div>
-										
+										-->
 										<h3 tabindex="-1" aria-expanded="false" aria-selected="false" aria-controls="ui-accordion-2-panel-1" id="ui-accordion-2-header-1" role="tab" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons">Color used
 											<i id="right_3" type="button" style="float: right; margin-right: 5px; font-size: 80%;" class="fa fa-gear option" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</h3>
-										
+										<!--
 										<div aria-hidden="true" role="tabpanel" aria-labelledby="ui-accordion-2-header-1" id="ui-accordion-2-panel-1" style="display: none;" class="color-used ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
 											Color used
 											<i id="right_1" type="button" style="float: right; margin: 4px 0px 0px 5px; font-size: 80%;" class="fa fa-pencil edit_text" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</div>
-										
+										-->
 										<h3 tabindex="-1" aria-expanded="false" aria-selected="false" aria-controls="ui-accordion-2-panel-2" id="ui-accordion-2-header-2" role="tab" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons">Screen size
 											<i id="right_4" type="button" style="float: right; margin-right: 5px; font-size: 80%;" class="fa fa-gear option" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</h3>
-										
+										<!--
 										<div aria-hidden="true" role="tabpanel" aria-labelledby="ui-accordion-2-header-2" id="ui-accordion-2-panel-2" style="display: none;" class="screen-size ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
 											Screen size
 											<i id="right_1" type="button" style="float: right; margin: 4px 0px 0px 5px; font-size: 80%;" class="fa fa-pencil edit_text" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</div>
-										
+										-->
 										<h3 tabindex="-1" aria-expanded="false" aria-selected="false" aria-controls="ui-accordion-2-panel-3" id="ui-accordion-2-header-3" role="tab" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons">Extra
 											<i id="right_5" type="button" style="float: right; margin-right: 5px; font-size: 80%;" class="fa fa-gear option" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</h3>
-										
+										<!--
 										<div aria-hidden="true" role="tabpanel" aria-labelledby="ui-accordion-2-header-3" id="ui-accordion-2-panel-3" style="display: none;" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
 											Extra
 											<i id="right_1" type="button" style="float: right; margin: 4px 0px 0px 5px; font-size: 80%;" class="fa fa-pencil edit_text" data-container="body" data-toggle="popover" data-html="true" data-placement="left"></i>
 										</div>
-										
+										-->
 									</div>
 									<div class="product-prices">
 										<button type="button" class="btn btn-warning" style="margin: 5px 0;">Add to cart</button>
@@ -652,7 +686,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-	</div>-->
+	</div>
 	<!-- end price -->
 	
 	<!-- start config -->
