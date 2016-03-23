@@ -183,14 +183,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>-->
                 <div class="row shipping col-md-5">
                     <div class="col-md-12"><h4>Shipping</h4></div>
-                    <div class="col-md-4">Price (per box)</div>
+                    <div class="col-md-4">Shipping fee (per box)</div>
                     <div class="col-sm-8"><input class="col-sm-4" type="text" name="setting[shippingbox]" value="<?php if (isset($setting->shippingbox)) echo $setting->shippingbox; ?>" class="form-control input-sm"></div>
-                    <br clear='both'>
+                    <br clear='both'><br>
                     <div class="col-md-12">Boxes</div>
                     <div class="col-sm-8" style="border: none!important">
                         <table class="table">
                             <tr>
-                                <th>From</th>
+                                <th class="width-50">From</th>
                                 <th>To</th>
                                 <th>Number Box</th>
                             </tr>
@@ -219,10 +219,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <?php 
                         foreach ($print_list as $key=>$plist) :
                     ?>
-                        <h4>Print <?php echo $key ?></h4>
+                        <h4> <?php echo strtoupper($key); ?> PRINT LOCATION</h4>
                         <table class="table">
                             <tr>
-                                <th>From</th>
+                                <th class="width-50">From</th>
                                 <th>To</th>
                                 <th>0 color</th>
                                 <th>1 color</th>
@@ -251,7 +251,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             </tr>
                             <?php $i++; endforeach; ?>    
                         </table>                        
-                        
+                        <br>
                     <?php endforeach; ?>
 
                     </div>

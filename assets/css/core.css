@@ -36,6 +36,7 @@ ul.p-color-sizes li {
   display: inline-block;
   margin: 0 6px;
   text-align: center;
+  width: 58px;
 }
 ul.p-color-sizes li:first-child {
   margin-left: 0;
@@ -1208,3 +1209,4 @@ outline-color: #2e2423;
 }
 
 .hidden-box{ display: none}
+
