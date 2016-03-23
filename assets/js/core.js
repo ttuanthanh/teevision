@@ -165,8 +165,9 @@ jQuery(function() {
                             }}).done(function(data){ 
                                 return_price = jQuery.parseJSON(data);
                                 jQuery('#price-detail').show();
-                                jQuery('.btn-order').show();
+                                jQuery('.btn-order').css('display','inline-block');
                                 jQuery('.btn-quote').html('UPDATE QUOTE');
+                                jQuery('.btn-quote').addClass('margin-right20');
                                 jQuery('#unit-price-value').html("$"+return_price.unit_price);
                                 jQuery('#total-price-value').html("$"+return_price.total_price);
                             });

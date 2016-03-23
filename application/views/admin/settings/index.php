@@ -181,7 +181,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>-->
-            
+                <div class="row">
+                    <div class="col-md-4">Shipping price</div>
+                    <div class="col-sm-8"> <span class="help-block">$</span><input type="text" name="setting[shippingbox]" value="<?php if (isset($setting->shippingbox)) echo $setting->shippingbox; ?>" class="form-control input-sm"> <span class="help-block">/box</span></div>
+                </div>
                 <!--New print price-->
                 <div class="container" style="border: none!important">
                     <div class="row">
