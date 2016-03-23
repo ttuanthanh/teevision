@@ -169,7 +169,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
 			</div>
                         
-                        <form id="submit-quote" action="/product/quote" method="post">
+                        <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
                             
                             
                         </form>

@@ -82,7 +82,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 						
 			<!-- rating -->
                         
-            <p class="font-bold">Selected color: <?php if (isset($color_active)) { ?><span style="color: <?php echo $color_active?>"><?php echo  ucfirst ($color_active); ?></span><?php } else echo 'none'; ?>
+            <p class="font-bold">Selected color: <?php if (isset($color_active)) { ?><span style="color: #<?php echo $color_hex?>"><?php echo  ucfirst ($color_title); ?></span><?php } else echo 'none'; ?>
             </p>
             <!-- product design -->
 			<?php if (isset($product->design)) { ?>
@@ -92,17 +92,17 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<?php } ?>
 			
 		</div>
-		
+		<div class="col-md-6">
+                        <!-- product attribute -->
+                                <?php if (isset($product->attributes)) { ?>
+                                <div class="form-group form-attributes">
+                                        <?php echo $product->attributes; ?>
+                                </div>
+                                <?php } ?>			
+                </div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				<!-- product attribute -->
-					<?php if (isset($product->attributes)) { ?>
-					<div class="form-group form-attributes">
-						<?php echo $product->attributes; ?>
-					</div>
-					<?php } ?>			
-			</div>
+			
 			<div class="col-md-12 clearfix">
                             <h4><b>Have Artwork? Add Files Here:</b></h4>
                             <h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>

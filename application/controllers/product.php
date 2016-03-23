@@ -124,7 +124,7 @@ class Product extends Frontend_Controller
 	
 	public function quote ($string = '', $color = '')
 	{
-		echo $color = $this->input->post('color');
+		$color = $this->input->post('color');
 		$id 	= (int) $string;
 		
 		// page not found
@@ -181,7 +181,9 @@ class Product extends Frontend_Controller
 			{
 				$index 	= (int) $color;
 				if (isset($product->design->color_hex[$index]))
-				{					
+				{
+                                        $this->data['color_title']	= $product->design->color_title[$index];
+                                        $this->data['color_hex']	= $product->design->color_hex[$index];
 					$this->data['index']		= $index;
 					$this->data['color_load']	= true;
 					$this->data['color_active']	= str_replace($index.'-', '', $color);
@@ -204,7 +206,7 @@ class Product extends Frontend_Controller
 			// load view data
 			
 			$data['content']	= $this->load->view('components/product-quote/default', $this->data, true);
-			
+			//var_dump($this->data);
 			// load layout of each product
 			$this->load->model('layout_m');
 			/*
