@@ -124,7 +124,7 @@ class Product extends Frontend_Controller
 	
 	public function quote ($string = '', $color = '')
 	{
-		
+		echo $color = $this->input->post('color');
 		$id 	= (int) $string;
 		
 		// page not found

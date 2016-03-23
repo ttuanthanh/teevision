@@ -168,6 +168,11 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
 				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
 			</div>
+                        
+                        <form id="submit-quote" action="/product/quote" method="post">
+                            
+                            
+                        </form>
 			
 		</div>
 	</div>

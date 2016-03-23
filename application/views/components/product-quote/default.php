@@ -26,6 +26,7 @@ $currency	= $product_m->getCurrency($product->currency_id);
 $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 $cateee = $product_m->getProductCateOrderParent($product->id);
 
+
 ?>
 
 <?php if (count($product)) { ?>	
