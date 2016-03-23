@@ -136,14 +136,14 @@ jQuery(function() {
                 attribute   = {};
             
             i = 0;
-            size_flag = '';
+            size_flag = 0;
             $('input[name^="'+attr_key+'"]').each(function() {
-                size_flag += $(this).val();
+                size_flag += Number($(this).val());
                 attribute[i++] =$(this).val(); 
                 
             });
-            if (size_flag == '') {
-                alert('Please select size and quantity!');
+            if (size_flag < 12) {
+                alert('Please select size and quantity! Minimum order is 12 pieces');
                 return false;
             }
             print[0]    = jQuery('#print-front-num').val() , 

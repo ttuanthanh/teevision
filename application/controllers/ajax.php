@@ -352,8 +352,11 @@ class Ajax extends Frontend_Controller {
             $price_print = ($price_front + $price_back) * $quantity;
             $price_total = $price_product + $price_print;
             
-            // Addding 8% tax
             
+            // Adding Setup charges : num of color * $20
+            $price_total += ( $print[0] + $print[1] ) * 20;            
+            
+            // Addding 8% tax            
             $price_total += ($price_total * 8 ) /100;  
             
             //Add ship price - trangttm - 03/22/2016
