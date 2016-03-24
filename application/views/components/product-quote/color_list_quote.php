@@ -22,15 +22,12 @@ $colors 	= count($design->color_hex);
 		if ($i === $index) $active = 'active';
 		else $active = '';
 	?>
-	 <a href="javascript:void(0);" class="color-swatch color-sm <?php echo ($index == '') ? 'color-hover-change': ''?>  <?php echo $active; ?>" 
+	 <a href="javascript:void(0);" class="color-swatch color-sm <?php echo $active; ?>" 
 	 	data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" 
 	 	title="<?php echo $design->color_title[$i]; ?>"
-	 	data-index="<?=$i?>"
-                data-iscolor="<?php echo ($design->color_hex[$i] == 'ffffff' || $design->color_hex[$i] == 'FFFFFF') ? 0 : 1 ?>"
-		data-url-image="/api/imagechangecolor/<?=$product->id?>/front/<?=$i?>"
-		data-element-load="#product-image-area"></a>
+		></a>
 	
 	<?php } ?>
-	<input type="hidden" value="<?php echo $i; ?>" name="colors" id="colors" class="product_color_active">
-        <input type="hidden" value="" name="is-color" id="is-color">
+	<input type="hidden" value="<?php echo $index; ?>" name="colors" id="colors" class="product_color_active">
+        <input type="hidden" value="<?php echo ( isset($design->color_hex[$index]) && ($design->color_hex[$index] == 'ffffff' || $design->color_hex[$index] == 'FFFFFF')) ? 0 : 1 ?>" name="is-color" id="is-color">
 </div>

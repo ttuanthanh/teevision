@@ -201,6 +201,90 @@ class helperProduct
 		
 		return $html;
 	}
+        
+        
+	public function displayAttributesQuote($attribute, $size)
+	{
+		if (isset($attribute->name) && $attribute->name != '')
+		{
+			$attrs = new stdClass();
+		
+			$attrs->name 		= json_decode($attribute->name);
+			$attrs->titles 		= json_decode($attribute->titles);
+			$attrs->prices 		= json_decode($attribute->prices);
+			$attrs->type 		= json_decode($attribute->type);
+			
+			$html 				= '';
+			for ($i=0; $i<count($attrs->name); $i++)
+			{
+				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
+				$html 	.= 		'<label for="fields">Selected Sizes and Print Location</label>';
+				
+				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
+				$html 	.= 		$this->fieldQuote($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id, $size);
+				
+				$html 	.= '</div>';
+			}
+			return $html;
+		}
+		else
+		{
+			return '';
+		}
+	}
+	
+	function fieldQuote($name, $title, $price, $type, $id, $size)
+	{
+		$html = '<div class="dg-poduct-fields ">';
+		switch($type)
+		{
+			case 'checkbox':
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<label class="checkbox-inline">';
+					$html .= 	'<input type="checkbox" name="'.$id.'['.$i.']" value="'.$i.'"> '.$title[$i];
+					$html .= '</label>';
+				}
+			break;
+			
+			case 'selectbox':
+				$html .= '<select class="form-control input-sm" name="'.$id.'">';
+				
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<option value="'.$i.'">'.$title[$i].'</option>';
+				}
+				
+				$html .= '</select>';
+			break;
+			
+			case 'radio':
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<label class="radio-inline">';
+					$html .= 	'<input type="radio" name="'.$id.'" value="'.$i.'"> '.$title[$i];
+					$html .= '</label>';
+				}
+			break;
+			
+			case 'textlist':
+				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<li>';
+					$html .= 	'<label>'.$title[$i].'</label>';
+					$html .= 	'<input type="text" class="form-control input-sm" name="'.$id.'['.$i.']" value="'.$size[$i].'" readonly>';					
+					$html .= '</li>';
+                                         
+				}
+                                $html .= '<input type="hidden" id="attr-key" value="'.$id.'">';
+				$html 		.= '</ul>';
+			break;
+		}
+		$html	.= '</div>';
+		
+		return $html;
+	}
 	
 	public function quantity($min = 1, $name = 'Quantity', $name2 = 'minimum quantity: '){
 		

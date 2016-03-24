@@ -1,1 +1,11 @@
-﻿.dg-poduct-fields li label{text-align:left;display:block}.color-swatches a.color-swatch.active{background-color:#000080;box-shadow:0 0 0 1.5px #e10606;outline:none;border:none;border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;position:relative}.color-swatches a.color-swatch.active:before{position:absolute;content:"✓";color:#FFF7F7;left:35%;top:11%;font-size:15px;mix-blend-mode:difference}.form-attributes .product-fields.selectbox{display:none}form.product-after-quote.checkout button[type="submit"]{border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;background-color:#27aae0;width:100%;line-height:2}form.product-after-quote.checkout textarea{border:none;border-radius:0px;box-shadow:none;max-width:100%;border-bottom:1px solid #D6D6D6}.price>h4{border-bottom:1px solid #D6D6D6;line-height:2}.price>h4>span{float:right}.price>h4>span.total{font-size:120%;color:red}
+﻿.dg-poduct-fields li label{text-align:left;display:block}
+.color-swatches a.color-swatch.active{background-color:#000080;box-shadow:0 0 0 1.5px #e10606;outline:none;border:none;border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;position:relative}
+.color-swatches a.color-swatch.active:before{position:absolute;content:"✓";color:#FFF7F7;left:35%;top:11%;font-size:15px;mix-blend-mode:difference}
+.form-attributes .product-fields.selectbox{display:none}
+form.product-after-quote.checkout button[type="submit"]{border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;background-color:#27aae0;width:100%;line-height:2}
+form.product-after-quote.checkout textarea{border:none;border-radius:0px;box-shadow:none;max-width:100%;border:1px solid #D6D6D6}
+.price>h4{border-bottom:1px solid #D6D6D6;line-height:2}
+.price>h4>span{float:right}
+.price>h4>span.total{font-size:120%;color:red}
+
+.text-shadow{ text-shadow: 1px 1px grey;}

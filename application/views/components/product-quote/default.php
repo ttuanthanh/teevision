@@ -58,9 +58,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         <h2>
                                 <?php echo $product->title; ?>
 
-                                <?php if (isset($color_active)) { ?>
-                                <small style="color: <?php echo $color_active?>"><?php echo  ucfirst ($color_active); ?></small>
-                                <?php } ?>
+                                
                         </h2>
                 </div>
 		<!-- product image -->
@@ -82,12 +80,15 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 						
 			<!-- rating -->
                         
-            <p class="font-bold">Selected color: <?php if (isset($color_active)) { ?><span style="color: #<?php echo $color_hex?>"><?php echo  ucfirst ($color_title); ?></span><?php } else echo 'none'; ?>
-            </p>
+                        <p class="font-bold">Selected color: 
+                            <?php if (isset($color_active)) { ?>
+                                <span class=""><?php echo  ucfirst ($color_title); ?></span>
+                            <?php } else echo 'none'; ?>
+                        </p>
             <!-- product design -->
 			<?php if (isset($product->design)) { ?>
 			<div class="form-group">
-				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
+				<?php $this->load->view('components/product-quote/color_list_quote', array('index'=>$index, 'product'=>$product)); ?>
 			</div>
 			<?php } ?>
 			
@@ -125,10 +126,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <div class="form-group product-fields selectbox">
                                         <label for="fields">Color</label>
                                         <div class="dg-poduct-fields ">
-                                            <select class="form-control input-sm" name="">
-                                                <option value="0">1 Color</option>
-                                                <option value="1">2 Color</option>
-                                                <option value="2">3 Color</option>
+                                            <select class="form-control text-center" id="print-front-num">
+                                                <option value="<?php echo $print_front ?>" selected><?php echo $print_front ?></option>                                                
                                             </select>
                                         </div>
                                     </div>
@@ -153,10 +152,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <div class="form-group product-fields selectbox">
                                         <label for="fields">Color</label>
                                         <div class="dg-poduct-fields ">
-                                            <select class="form-control input-sm" name="">
-                                                <option value="0">1 Color</option>
-                                                <option value="1">2 Color</option>
-                                                <option value="2">3 Color</option>
+                                            <select class="form-control text-center" id="print-back-num">
+                                                <option value="<?php echo $print_back ?>" selected><?php echo $print_back ?></option> 
                                             </select>
                                         </div>
                                     </div>
@@ -171,8 +168,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			
 			<div class="clearfix">
 				<div class="col-md-3 price">
-					<h4><b>Unit Price:</b><span> 100$</span></h4>
-					<h4><b>Total:</b> <span class="total">1000$</span></h4>
+					<h4><b>Unit Price:</b><span> $<?php echo $price_unit ?></span></h4>
+					<h4><b>Total:</b> <span class="total"> $<?php echo $price_total ?></span></h4>
 				</div>
 				<div class="col-md-9">
 					<p><i>* All Inclusive Pricing, no Other Fees</i> </p>

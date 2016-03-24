@@ -125,6 +125,10 @@ class Product extends Frontend_Controller
 	public function quote ($string = '', $color = '')
 	{
 		$color = $this->input->post('color');
+                $size = $this->input->post('sizes');
+                $print_front = $this->input->post('print-front');
+                $print_back = $this->input->post('print-back');
+                $price = $this->input->post('f-price');
 		$id 	= (int) $string;
 		
 		// page not found
@@ -163,7 +167,7 @@ class Product extends Frontend_Controller
 				$this->load->helper('product');
 				$help_product 		= new helperProduct();
 				
-				$product->attributes	= $help_product->displayAttributes($attribute);
+				$product->attributes	= $help_product->displayAttributesQuote($attribute, $size);
 			}
 			//set href URL
 			$product->href = 'product/after-quote';
@@ -191,7 +195,7 @@ class Product extends Frontend_Controller
 			}
 			
 			$this->data['product_m']	= $this->product_m;
-            $this->data['categories_m']	= $this->categories_m;
+                        $this->data['categories_m']	= $this->categories_m;
 			$this->data['product']		= $product;
 			
 			// load Related
@@ -203,6 +207,14 @@ class Product extends Frontend_Controller
 			}
 			$this->data['products'] = $this->product_m->getRelated($cate_id, $id);
 			
+                        // Print location 
+                        $this->data['print_front']  = $print_front;
+                        $this->data['print_back']   = $print_back;
+                        
+                        // Price
+                        $price = explode(',', $price);
+                        $this->data['price_unit']   = $price[0];
+                        $this->data['price_total']  = $price[1];
 			// load view data
 			
 			$data['content']	= $this->load->view('components/product-quote/default', $this->data, true);

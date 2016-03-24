@@ -127,6 +127,7 @@ jQuery(function() {
             }
         
         }) ;
+        
         jQuery(".btn-quote").click(function (){ 
             
             var product_id  = jQuery('#product_id').val(),
@@ -170,7 +171,41 @@ jQuery(function() {
                                 jQuery('.btn-quote').addClass('margin-right20');
                                 jQuery('#unit-price-value').html("$"+return_price.unit_price);
                                 jQuery('#total-price-value').html("$"+return_price.total_price);
+                                jQuery('#f-price').val(return_price.unit_price+','+return_price.total_price);
                             });
             
-        })
+        });
+        
+        jQuery(".btn-order").click(function (){  
+            var color       = jQuery('#colors').val(),
+                attr_size   = getAttributeArray(jQuery('#attr-key').val());
+                
+            //Add color to submit
+            var input = $("<input>").attr({"type":"hidden", "name": "color"}).val(color);
+            $('#submit-quote').append($(input));
+            
+            //Add list size to submit
+            $.each(attr_size, function(i, v){
+                var size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
+                $('#submit-quote').append(size);    
+            });
+            
+            //Add list print location to submit
+            var print_f = $("<input>").attr({"type":"hidden", "name": "print-front"}).val(jQuery('#print-front-num').val());
+            var print_b = $("<input>").attr({"type":"hidden", "name": "print-back"}).val(jQuery('#print-back-num').val());
+            $('#submit-quote').append(print_f, print_b); 
+            
+            //Submit from to after quote page
+            $('#submit-quote').submit();
+        });
+        
 });
+
+function getAttributeArray(key) {
+    var attribute = {},
+        i = 0;    
+    $('input[name^="'+key+'"]').each(function() {
+        attribute[i++] =$(this).val(); 
+    });
+    return attribute;
+}
