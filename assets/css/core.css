@@ -1165,6 +1165,8 @@ outline-color: #2e2423;
     margin: 20px 0;
     border-radius: 0;
     background: #27AAE0;
+    line-height: 25px;
+    width: 150px;
 }
 .tee-title{
     font-family: Lobster!important;

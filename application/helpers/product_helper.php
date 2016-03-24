@@ -218,7 +218,7 @@ class helperProduct
 			for ($i=0; $i<count($attrs->name); $i++)
 			{
 				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
-				$html 	.= 		'<label for="fields">Selected Sizes and Print Location</label>';
+				$html 	.= 		'<label for="fields">Size & Quantity: '.array_sum($size).' pieces </label>';
 				
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
 				$html 	.= 		$this->fieldQuote($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id, $size);

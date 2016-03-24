@@ -107,9 +107,9 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<div class="col-md-12 clearfix">
                             <h4><b>Have Artwork? Add Files Here:</b></h4>
                             <h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>
-                            <div class="col-md-6 pruduct-quote-front">
+                            <div class="col-md-5 pruduct-quote-front">
                                 <h5><b>Front</b></h5>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
                                             <img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
@@ -132,10 +132,15 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                     </div>
                                 </div>
+                                <br class="clear">
+                                <div class="">
+                                    <span class="font-bold">Describe Your Design Idea (Front)  </span>
+                                    <textarea rows="6" class="form-control"></textarea>
+                                </div>
                             </div>	
-                            <div class="col-md-6 pruduct-quote-back">
+                            <div class="col-md-5 col-md-offset-1 pruduct-quote-back">
                                 <h5><b>Back</b></h5>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
                                             <img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back" alt="back_image" class="img-responsive">
@@ -158,15 +163,52 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                     </div>
                                 </div>
+                                <br class="clear">
+                                <div class="">
+                                    <span class="font-bold">Describe Your Design Idea (Back) </span>
+                                    <textarea rows="6" class="form-control"></textarea>
+                                </div>
                             </div>
 			</div>
                     
 			<div class="col-md-12 clearfix">
-				<h4><b>Don't Have Artwork? <a href="javascript:;" onclick="requestArtist();" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
-				<div class="form-group"><textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea></div>
+				<h4><b>Don't Have Artwork? <a href="javascript:;" data-toggle="modal" data-target="#myModal" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
+<!--				<div class="form-group">
+                                    <textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea>
+                                </div>-->
+                                <!-- Modal -->
+                                <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Don't Have Artwork? Request An Artist</h4>
+                                                <span>Describe Your Design Idea</span>
+                                            </div>
+                                            <div class="modal-body clearfix">
+                                                
+                                                <div class="col-md-12">
+                                                    <h4 class="margin-bottom-0">Request a Proof</h4>
+                                                    <p class="text-italic">Orders will not print until customer approves the proofs.</p>
+                                                    <div class="row">
+                                                        <div class="col-md-6">Full name<input class="form-control"></div>
+                                                        <div class="col-md-6">Email<input class="form-control"></div>                                                        
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-6">Company<input class="form-control"></div>
+                                                        <div class="col-md-6">Phone number<input class="form-control"></div>                                                        
+                                                    </div>
+                                                    <button type="button" class="btn btn-primary btn-product">Submit</button>   
+                                                </div>  
+                                                                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 			</div>
 			
-			<div class="clearfix">
+			<div class="clearfix margin-top-30">
 				<div class="col-md-3 price">
 					<h4><b>Unit Price:</b><span> $<?php echo $price_unit ?></span></h4>
 					<h4><b>Total:</b> <span class="total"> $<?php echo $price_total ?></span></h4>
@@ -180,7 +222,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<div class="clearfix">
 				<div class="col-md-3">
 					<div class=" form-group clearfix">
-						<button type="submit" class="btn btn-primary pull-left" style="">Checkout</button>
+                                            <button type="button" class="btn btn-primary btn-product pull-left" style="">Checkout</button>
 					</div>
 				</div>
 			</div>
