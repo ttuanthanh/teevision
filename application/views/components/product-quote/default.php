@@ -30,15 +30,29 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 ?>
 
 <?php if (count($product)) { ?>	
+        <script type="text/javascript">
+            var uploadSize = [];
+		uploadSize['max']  = '10';
+		uploadSize['min']  = '0';
+		//if(typeof Holder !== 'undefined') Holder.run();
+                
+            document.getElementById('action-upload').addEventListener("click", function () {
+		var check = design.upload.computer();
+		if (check == true) traverseFiles(filesUpload.files);
+            }, false);
+            
+            function upload_f(){
+                traverseFiles(filesUpload.files);
+            }
+	</script>
 	<link href="<?php echo base_url('assets/css/product-quote.css'); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css'); ?>" rel="stylesheet"/>
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
 	
 	<script src="<?php echo base_url('assets/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/plugins/holder/holder.min.js');?>"></script>
-	<script type="text/javascript">
-		//if(typeof Holder !== 'undefined') Holder.run();
-	</script>
+        <script src="<?php echo base_url('assets/js/design_upload.js');?>"></script>
+	
 	<div class="row">
 		<form name="checkout" class="product-after-quote checkout" action="" method="post">
 		<div class="row">
@@ -116,7 +130,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                                <input type="file" name="banner" placeholder="Choose banner image"/>
+                                                <input type="file" id="files-upload" name="banner" placeholder="Choose banner image" onchange="upload_f();"/>
                                             </span> 
                                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                         </div>
@@ -147,7 +161,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image back</span> <span class="fileinput-exists">Change</span> 
-                                                <input type="file" name="banner" placeholder="Choose banner image"/>
+                                                <input type="file" id="" name="banner" placeholder="Choose banner image"/>
                                             </span> 
                                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                         </div>
