@@ -1,7 +1,7 @@
 jQuery(function () {
 	var filesUpload = document.getElementById("files-upload"),
-		dropArea 	= document.getElementById("drop-area"),
-		fileList 	= document.getElementById("dag-files-images"),
+		//dropArea 	= document.getElementById("drop-area"),
+		//fileList 	= document.getElementById("dag-files-images"),
 		fileType 	= ["png", "gif", "jpg", "jpeg"],
 		maxsize		= uploadSize['max'];
 		minsize		= uploadSize['min'];
@@ -155,40 +155,8 @@ jQuery(function () {
 		}	
 	}
 	
-	document.getElementById('action-upload').addEventListener("click", function () {
-		var check = design.upload.computer();
-		if (check == true) traverseFiles(filesUpload.files);
-	}, false);
-	
         function upload_f(){
                 traverseFiles(filesUpload.files);
         }
         
-	dropArea.addEventListener("dragleave", function (evt) {
-		var target = evt.target;
-		
-		if (target && target === dropArea) {
-			this.className = "";
-		}
-		evt.preventDefault();
-		evt.stopPropagation();
-	}, false);
-	
-	dropArea.addEventListener("dragenter", function (evt) {
-		this.className = "over";
-		evt.preventDefault();
-		evt.stopPropagation();
-	}, false);
-	
-	dropArea.addEventListener("dragover", function (evt) {
-		evt.preventDefault();
-		evt.stopPropagation();
-	}, false);
-	
-	dropArea.addEventListener("drop", function (evt) {
-		traverseFiles(evt.dataTransfer.files);
-		this.className = "";
-		evt.preventDefault();
-		evt.stopPropagation();
-	}, false);										
 });
