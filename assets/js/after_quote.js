@@ -1,4 +1,4 @@
-jQuery(function () {
+
 	var filesUpload = document.getElementById("files-upload"),
 		//dropArea 	= document.getElementById("drop-area"),
 		//fileList 	= document.getElementById("dag-files-images"),
@@ -159,4 +159,3 @@ jQuery(function () {
                 traverseFiles(filesUpload.files);
         }
         
-});

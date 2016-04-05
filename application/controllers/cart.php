@@ -43,6 +43,8 @@ class Cart extends Frontend_Controller {
 		$data['content']	= $content;		
 		$data['subview'] 	= $this->load->view('layouts/cart/cart', array(), true);
 		
+                
+                
 		$this->theme($data, 'cart');
 	}
 	
@@ -279,6 +281,187 @@ class Cart extends Frontend_Controller {
 		echo json_encode($content);
 	}
 	
+        // add to cart in after quote page
+	public function addToCart(){		
+		$data = $this->input->post();
+		
+		// get data post
+		$product_id		= $data['product_id'];
+		$colors			= $data['colors'];
+		$print			= $data['print'];		
+		$quantity		= $data['quantity'];		
+		
+		// get attribute
+		if ( isset( $data['attribute'] ) )
+		{
+			$attribute		= $data['attribute'];
+		}
+		else
+		{
+			$attribute		= false;
+		}
+				
+		if ($quantity < 1 ) $quantity = 1;
+		
+		$time = strtotime("now");
+		
+		if (isset($data['attribute'])) $attribute = $data['attribute'];
+		else $attribute = false;
+		
+		if (isset($data['cliparts'])) $cliparts = $data['cliparts'];
+		else $cliparts = false;			
+		
+		$content = array();
+		$content['error'] = 1;
+		$this->load->model('product_m');
+			
+		// check product and user shop
+		$options = array(
+			'id' => $data['product_id']				
+		);
+		$product 		= $this->product_m->getProduct($options);
+		if ($product == false)
+		{
+			$content['msg'] = 'Product could not be found';
+		}
+		else
+		{
+			$product 		= $product[0];
+			$content['error'] = 0;
+			$this->load->helper('cart');
+			$cart 		= new dgCart();
+			
+			$post 		= array(
+				'colors' 		=> $colors,
+				'print' 		=> $print,
+				'attribute' 	=> $attribute,
+				'quantity' 		=> $quantity,
+				'product_id' 	=> $product_id					
+			);
+			
+			// load setting
+			$this->load->model('settings_m');
+			$row 			= $this->settings_m->getSetting();			
+			$setting		= json_decode($row->settings);
+			$result 		= $cart->totalPrice($this->product_m, $product, $post, $setting);
+			$result->product	= new stdClass();
+			$result->product->name 	= $product->title;
+			$result->product->sku 	= $product->sku;
+			
+			// get cliparts
+			$clipartsPrice = array();			
+			if ( isset($data['cliparts']) )
+			{
+				$this->load->model('art_m');
+				
+				$cliparts = $data['cliparts'];
+				foreach($cliparts as $view => $arts)
+				{
+					if (count($arts))
+					{
+						$art = array();
+						foreach($arts as $art_id)
+						{
+							// check admin shop and desginer
+							$clipart 		= $this->art_m->getArt($art_id, 'system, add_price');
+							
+							if ( empty($clipart) ) continue;
+							if ($clipart->add_price == 0) continue;
+							
+							$prices 		= $clipart->add_price;
+							$art[$art_id] 	= $prices;							
+						}
+						$clipartsPrice[$view] = $art;
+					}
+				}
+			}
+			
+			$result->cliparts = $clipartsPrice;							
+				
+			$total	= new stdClass();
+			$total->old = $result->price->base + $result->price->colors + $result->price->prints;
+			$total->sale = $result->price->sale + $result->price->colors + $result->price->prints;
+			
+			if (count($result->cliparts))
+			{
+				foreach($result->cliparts as $view=>$art)
+				{
+					foreach($art as $id=>$amount)
+					{
+						$total->old 	= $total->old + $amount;
+						$total->sale 	= $total->sale + $amount;
+					}
+				}
+			}
+			
+			$result->total 	= $total;
+			
+			// get symbol
+			if (!isset($setting->currency_symbol))
+				$setting->currency_symbol = '$';
+			$result->symbol = $setting->currency_symbol;
+			
+			// save file image design
+			$design = array();
+			if (isset($data['design']['images']['front']))
+				$design['images']['front'] 	= createFile($data['design']['images']['front'], 'front', $time);
+					
+			if (isset($data['design']['images']['back']))	
+				$design['images']['back'] 	= createFile($data['design']['images']['back'], 'back', $time);
+				
+			if (isset($data['design']['images']['left']))
+				$design['images']['left'] 	= createFile($data['design']['images']['left'], 'left', $time);
+				
+			if (isset($data['design']['images']['right']))
+				$design['images']['right']	= createFile($data['design']['images']['right'], 'right', $time);
+			
+				
+			// add session design
+			$rowid			= md5($result->product->sku . $time);
+			$designs 		= $this->cache->get('orders_designs'.$this->session_id);
+			
+			$designs[$rowid]	= array(
+				'color' => $data['colors'][key($data['colors'])],
+				'images' => $design['images'],
+				'vector' => $data['design']['vectors'],
+				'fonts' => $data['fonts']
+			);
+			$this->cache->save('orders_designs'.$this->session_id, $designs, 36000);
+				
+			if (empty($result->options)) $result->options = array();
+			
+			if (isset($data['teams'])) $teams = $data['teams'];
+			else $teams = '';
+			
+			// add cart
+			$item 	= array(
+				'id'      		=> $result->product->sku,
+				'product_id'    => $data['product_id'],
+				'qty'     		=> $data['quantity'],
+				'teams'     	=> $teams,
+				'price'   		=> $result->total->sale,
+				'prices'   		=> json_encode($result->price),
+				'cliparts'   	=> json_encode($result->cliparts),
+				'symbol'   		=> $result->symbol,
+				'customPrice'   => $result->price->attribute,
+				'name'    		=> $result->product->name,
+				'time'    		=> $time,
+				'options' 		=> json_decode(json_encode($result->options), true)
+			);
+			$this->cart->product_name_rules = '[:print:]';
+			$this->cart->insert($item);
+			
+			$content['product'] = array(
+				'name'=> $result->product->name,
+				'quantity'=> $data['quantity'],
+				'image'=> base_url().$design['images']['front']
+			);
+		}
+		
+		echo json_encode($content);
+	}
+        
+        
 	public function prices()
 	{
 		$data 	= $this->input->post();

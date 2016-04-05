@@ -52,7 +52,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         </h2>
                 </div>
 		<!-- product image -->
-		<div class="col-md-6" id="product-image-area">
+		<div class="col-md-4" id="product-image-area">
 			<?php
 			if ($color_load === true)
 			{
@@ -66,7 +66,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 		</div>
 		
 		<!-- product info -->
-		<div class="col-md-6">
+		<div class="col-md-8">
 						
 			<!-- rating -->
                         
@@ -115,7 +115,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<div class="form-group">
                             <b>If you wish, select a decoration for one or more of the areas below.</b>
                             <label for="">Select Number of Front Colors: </label>
-                            <select class="form-control text-center" id="print-front-num">
+                            <select class="form-control text-center width-200" id="print-front-num">
                                 <option value="0" >==Select==</option>
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>
@@ -127,7 +127,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 
                             <br>
                             <label for="">Select Number of Back Colors: </label>
-                            <select class="form-control text-center" id="print-back-num">
+                            <select class="form-control text-center width-200" id="print-back-num">
                                 <option value="0" >==Select==</option>
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>
