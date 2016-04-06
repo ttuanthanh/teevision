@@ -255,7 +255,6 @@ class Orders extends Admin_Controller
 		$setting = json_decode($row->settings);
 		$this->data['setting'] = $setting;
 		
-		
 		// get histories
 		$this->data['histories'] = $this->order_m->getHistory($id);
 		

@@ -87,7 +87,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 	<!-- start price -->
 	<div style=" min-height: 350px;" class="tab-pane" id="price">
-<!--		<div class="row">
+            <div class="row" style="display: none">
 			<div class="col-md-8">
 				<div class="form-group row">
 					<label class="col-sm-3 control-label"><?php echo lang('setting_shop_choose_currencies'); ?></label>
@@ -180,7 +180,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div>-->
+		</div>
+            <!--[[[[[[[[[[[[ START NEW PRICE FEE ]]]]]]]]]]]]]]-->
                 <div class="row shipping col-md-5">
                     <div class="col-md-12"><h4>Shipping</h4></div>
                     <div class="col-md-4">Shipping fee (per box)</div>

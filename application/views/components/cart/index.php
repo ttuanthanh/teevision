@@ -48,7 +48,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 									<th class="col-sm-4 center"><?php echo lang('preview');?></th>
 									<th class="col-sm-4 center"><?php echo lang('description');?></th>
 									<th class="col-sm-2 center"><?php echo lang('quantity');?></th>
-									<th class="col-sm-1 center"><?php echo lang('price');?></th>
 									<th class="col-sm-1 center"><?php echo lang('total');?></th>
 								</tr>
 							</thead>
@@ -95,7 +94,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<div class="row">
 											<div class="col-sm-12 text-left">
 												<div class="form-group">
-													<strong><?php echo lang('color'); ?>: </strong>
+                                                                                                    <strong><?php echo lang('color');?>: </strong>
 												</div>
 												<div class="form-group">
 													<span class="bg-colors" style="background-color:#<?php echo $designs[$key]['color'] ?>"></span>
@@ -109,7 +108,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										
 											<?php foreach($item['options'] as $option) { ?>
 												<div class="col-sm-12 text-left">
-													<strong><?php echo $option['name']; ?>: </strong>
+													<strong>
+                                                                                                        <?php 
+                                                                                                            if ($option['type'] != 'textlist') 
+                                                                                                                echo $option['name'].' : '; 
+                                                                                                                
+                                                                                                        ?> 
+                                                                                                        
+                                                                                                        
+                                                                                                        </strong>
 													<?php 
 														if (is_string($option['value'])) echo $option['value'];
 														else if (is_array($option['value']) && count($option['value']))
@@ -168,7 +175,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 											<a class="clear_qty input-group-addon" onclick="apps.removeCart('<?php echo $key; ?>', this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a>
 										</div>										
 									</td>
-									<td class="center padding-top-55"><?php echo $item['symbol'] . number_format(($item['subtotal'] + $item['customPrice']), 2, '.', ','); ?></td>
+									<!--<td class="center padding-top-55"><?php echo $item['symbol'] . number_format(($item['subtotal'] + $item['customPrice']), 2, '.', ','); ?></td>-->
 									<td class="center padding-top-55"><strong><?php echo $item['symbol'] . number_format(($item['subtotal'] + $item['customPrice']), 2, '.', ','); ?><strong></td>
 								</tr>
 								<?php 
@@ -177,7 +184,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								} 
 								?>
 								<tr>
-									<td class="text-right" colspan="4"><strong><?php echo lang('total');?></strong></td>
+									<td class="text-right" colspan="3"><strong><?php echo lang('total');?></strong></td>
 									<td><strong><?php echo $symbol . number_format($total, 2, '.', ','); ?></strong></td>
 								</tr>
 							</tbody>

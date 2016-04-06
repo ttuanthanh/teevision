@@ -402,8 +402,9 @@ class Cart extends Frontend_Controller {
 				$setting->currency_symbol = '$';
 			$result->symbol = $setting->currency_symbol;
 			
-			// save file image design
+			// save file image design                        
 			$design = array();
+                        $design['images']['front'] = '/media/assets/not-uploaded.jpg';
 			if (isset($data['design']['images']['front']))
 				$design['images']['front'] 	= createFile($data['design']['images']['front'], 'front', $time);
 					
@@ -424,8 +425,8 @@ class Cart extends Frontend_Controller {
 			$designs[$rowid]	= array(
 				'color' => $data['colors'][key($data['colors'])],
 				'images' => $design['images'],
-				'vector' => $data['design']['vectors'],
-				'fonts' => $data['fonts']
+				'vector' => '{"front":{}}',//$data['design']['vectors'],
+				'fonts' => ''
 			);
 			$this->cache->save('orders_designs'.$this->session_id, $designs, 36000);
 				
@@ -437,14 +438,14 @@ class Cart extends Frontend_Controller {
 			// add cart
 			$item 	= array(
 				'id'      		=> $result->product->sku,
-				'product_id'    => $data['product_id'],
+				'product_id'            => $data['product_id'],
 				'qty'     		=> $data['quantity'],
-				'teams'     	=> $teams,
+				'teams'                 => $teams,
 				'price'   		=> $result->total->sale,
 				'prices'   		=> json_encode($result->price),
-				'cliparts'   	=> json_encode($result->cliparts),
+				'cliparts'              => json_encode($result->cliparts),
 				'symbol'   		=> $result->symbol,
-				'customPrice'   => $result->price->attribute,
+				'customPrice'           => 0,//$result->price->attribute,
 				'name'    		=> $result->product->name,
 				'time'    		=> $time,
 				'options' 		=> json_decode(json_encode($result->options), true)
