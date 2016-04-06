@@ -46,7 +46,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
         
 	
 	<div class="row">
-		<form name="checkout" class="product-after-quote checkout" action="" method="post">
+		<form name="checkout" id="check-out" class="product-after-quote checkout" action="/cart/addToCart" method="post">
 		<div class="row">
                 <!-- breadcrumb -->
                 <ol class="breadcrumb e-beadcrum">
@@ -218,6 +218,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<div class="col-md-3 price">
 					<h4><b>Unit Price:</b><span> $<?php echo $price_unit ?></span></h4>
 					<h4><b>Total:</b> <span class="total"> $<?php echo $price_total ?></span></h4>
+                                        <input name="total_price" value="<?php echo $price_unit ?>" type="hidden" >
+                                        <input name="unit-price-full" value="<?php echo $unit_price_full ?>" type="hidden" >
 				</div>
 				<div class="col-md-9">
 					<p><i>* All Inclusive Pricing, no Other Fees</i> </p>
@@ -228,7 +230,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<div class="clearfix">
 				<div class="col-md-3">
 					<div class=" form-group clearfix">
-                                            <button type="button" class="btn btn-primary btn-product pull-left" style="">Checkout</button>
+                                            <input type="hidden" value="<?php echo $product->id; ?>" id="product_id" name="product_id">
+                                            <button id="btn-checkout" type="submit" class="btn btn-primary btn-product pull-left" style="">Checkout</button>
                                             
 					</div>
 				</div>

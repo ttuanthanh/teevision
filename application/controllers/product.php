@@ -124,12 +124,13 @@ class Product extends Frontend_Controller
 	
 	public function quote ($string = '', $color = '')
 	{
-		$color = $this->input->post('color');
-                $size = $this->input->post('sizes');
-                $print_front = $this->input->post('print-front');
-                $print_back = $this->input->post('print-back');
-                $price = $this->input->post('f-price');
-		$id 	= (int) $string;
+		$color          = $this->input->post('color');
+                $size           = $this->input->post('sizes');
+                $print_front    = $this->input->post('print-front');
+                $print_back     = $this->input->post('print-back');
+                $price          = $this->input->post('f-price');
+                $price_full     = $this->input->post('unit-price-full');
+		$id             = (int) $string;
 		
 		// page not found
 		$found 	= true;
@@ -213,8 +214,9 @@ class Product extends Frontend_Controller
                         
                         // Price
                         $price = explode(',', $price);
-                        $this->data['price_unit']   = $price[0];
-                        $this->data['price_total']  = $price[1];
+                        $this->data['price_unit']       = $price[0];
+                        $this->data['price_total']      = $price[1];
+                        $this->data['unit_price_full']  = $price[2];
 			// load view data
 			
 			$data['content']	= $this->load->view('components/product-quote/default', $this->data, true);

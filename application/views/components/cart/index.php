@@ -105,7 +105,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										
 										<!-- product options -->
 										<div class="row">
-                                                                                <?php var_dump($item['options']); ?>
 										<?php if ($item['options']) { ?>
 										
 											<?php foreach($item['options'] as $option) { ?>

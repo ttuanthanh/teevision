@@ -170,8 +170,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			</div>
                         
                         <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
-                            <input type="hidden" name="f-price" id="f-price">
-                            
+                            <input type="hidden" name="f-price" id="f-price">                            
                         </form>
 			
 		</div>

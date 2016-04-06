@@ -29,5 +29,6 @@ $colors 	= count($design->color_hex);
 	
 	<?php } ?>
 	<input type="hidden" value="<?php echo $index; ?>" name="colors" id="colors" class="product_color_active">
+        <input type="hidden" value="<?php echo $design->color_hex[$index] ?>" name="color-name" id="color-name">
         <input type="hidden" value="<?php echo ( isset($design->color_hex[$index]) && ($design->color_hex[$index] == 'ffffff' || $design->color_hex[$index] == 'FFFFFF')) ? 0 : 1 ?>" name="is-color" id="is-color">
 </div>

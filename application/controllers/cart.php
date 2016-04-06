@@ -284,10 +284,11 @@ class Cart extends Frontend_Controller {
         // add to cart in after quote page
 	public function addToCart(){		
 		$data = $this->input->post();
-		
+		//exit();
 		// get data post
 		$product_id		= $data['product_id'];
-		$colors			= $data['colors'];
+		$colors[$data['colors']]= $data['color-name'];
+                $data['colors']          = $colors;
 		$print			= $data['print'];		
 		$quantity		= $data['quantity'];		
 		
@@ -379,8 +380,8 @@ class Cart extends Frontend_Controller {
 			$result->cliparts = $clipartsPrice;							
 				
 			$total	= new stdClass();
-			$total->old = $result->price->base + $result->price->colors + $result->price->prints;
-			$total->sale = $result->price->sale + $result->price->colors + $result->price->prints;
+			$total->old = $data['total_price'];
+			$total->sale = $data['unit-price-full'];
 			
 			if (count($result->cliparts))
 			{
@@ -457,8 +458,8 @@ class Cart extends Frontend_Controller {
 				'image'=> base_url().$design['images']['front']
 			);
 		}
-		
-		echo json_encode($content);
+		redirect('cart');
+		//echo json_encode($content);
 	}
         
         

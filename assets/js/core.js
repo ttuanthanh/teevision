@@ -171,7 +171,7 @@ jQuery(function() {
                                 jQuery('.btn-quote').addClass('margin-right20');
                                 jQuery('#unit-price-value').html("$"+return_price.unit_price);
                                 jQuery('#total-price-value').html("$"+return_price.total_price);
-                                jQuery('#f-price').val(return_price.unit_price+','+return_price.total_price);
+                                jQuery('#f-price').val(return_price.unit_price+','+return_price.total_price+','+return_price.unit_price_full);
                             });
             
         });

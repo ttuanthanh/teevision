@@ -378,9 +378,10 @@ class Ajax extends Frontend_Controller {
             
             $price_total += ($number_boxes * $price_boxes);
             
-            $data['quantity'] = $quantity;
-            $data['total_price']    = number_format(round($price_total,2),2);
-            $data['unit_price']     = number_format(round($price_total/$quantity, 2),2);
+            $data['quantity']           = $quantity;
+            $data['total_price']        = number_format(round($price_total,2),2);
+            $data['unit_price']         = number_format(round($price_total/$quantity, 2),2);
+            $data['unit_price_full']    = $price_total/$quantity;
             
             echo json_encode($data);
             
