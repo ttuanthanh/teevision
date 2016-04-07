@@ -141,7 +141,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                 <br class="clear">
                                 <div class="">
                                     <span class="font-bold">Describe Your Design Idea (Front)  </span>
-                                    <textarea rows="6" class="form-control"></textarea>
+                                    <textarea id="design-area-front" name="design-area-front" rows="6" class="form-control"></textarea>
                                 </div>
                             </div>	
                             <div class="col-md-5 col-md-offset-1 pruduct-quote-back">
@@ -172,7 +172,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                 <br class="clear">
                                 <div class="">
                                     <span class="font-bold">Describe Your Design Idea (Back) </span>
-                                    <textarea rows="6" class="form-control"></textarea>
+                                    <textarea id="design-area-back" name="design-area-back" rows="6" class="form-control"></textarea>
                                 </div>
                             </div>
 			</div>

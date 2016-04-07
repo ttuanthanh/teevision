@@ -96,22 +96,22 @@ class Payment extends Frontend_Controller
 				$this->load->model('design_m');
 				foreach($items['design'] as $i=>$design)
 				{
-					$design_id 				= $this->order_m->creteOrderNumber(15);
-					$design_ids[$i]			= $design_id;
+					$design_id 		= $this->order_m->creteOrderNumber(15);
+					$design_ids[$i]         = $design_id;
 					$insert = array(
-						'title'				=> '', 
-						'description'		=> '', 
-						'design_id'			=> $design_id,						
-						'modified'			=> '',
-						'fonts'				=> $design['fonts'],
-						'system_id'			=> 0,
-						'user_id'			=> $this->user['id'], 
-						'product_id'		=> $items['cart'][$i]['product_id'], 
-						'product_options'	=> $design['color'], 
-						'vectors'			=> $design['vector'], 
-						'teams'				=> json_encode($items['cart'][$i]['teams']), 
-						'image' 			=> $design['images']['front'],						
-						'created' 			=> date("Y-m-d H:i:s")
+						'title'		=> '', 
+						'description'   => '',
+						'design_id'	=> $design_id,						
+						'modified'	=> '',
+						'fonts'		=> $design['fonts'],
+						'system_id'	=> 0,
+						'user_id'	=> $this->user['id'], 
+						'product_id'    => $items['cart'][$i]['product_id'], 
+						'product_options' => $design['color'], 
+						'vectors'	=> $design['vector'], 
+						'teams'		=> json_encode($items['cart'][$i]['teams']), 
+						'image'         => $design['images']['front'],						
+						'created' 	=> date("Y-m-d H:i:s")
 					);
 					
 					$this->design_m->save($insert, null);					
@@ -249,16 +249,17 @@ class Payment extends Frontend_Controller
 				$prices							= json_decode($item['prices']);
 				$order_item['design_id'] 		= $design_ids[$i];
 				$order_item['product_id'] 		= $item['product_id'];				
-				$order_item['product_name'] 	= $item['name'];				
+				$order_item['product_name']             = $item['name'];				
 				$order_item['product_sku'] 		= $item['id'];				
-				$order_item['product_price'] 	= $prices->sale;				
+				$order_item['product_price']            = round($item['price'],2);//$prices->sale;				
 				$order_item['price_print'] 		= $prices->prints;				
-				$order_item['price_clipart'] 	= $price_clipart;				
-				$order_item['price_attributes'] = $item['customPrice'];				
-				$order_item['quantity'] 		= $item['qty'];				
-				$order_item['poduct_status'] 	= 'pending';				
+				$order_item['price_clipart']            = $price_clipart;				
+				$order_item['price_attributes']         = $item['customPrice'];				
+				$order_item['quantity'] 		= $item['qty'];			
+				$order_item['poduct_status']            = 'pending';				
 				$order_item['attributes'] 		= json_encode($item['options']);				
-				
+				$order_item['design_area'] 		= json_encode($item['design_area']);
+                                
 				$this->order_m->save($order_item, null);
 				
 				// html email.

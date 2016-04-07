@@ -291,7 +291,7 @@ class Cart extends Frontend_Controller {
                 $data['colors']          = $colors;
 		$print			= $data['print'];		
 		$quantity		= $data['quantity'];		
-		
+		$design_area            = array('front'=> $data['design-area-front'], 'back'=> $data['design-area-back']);       
 		// get attribute
 		if ( isset( $data['attribute'] ) )
 		{
@@ -448,6 +448,7 @@ class Cart extends Frontend_Controller {
 				'customPrice'           => 0,//$result->price->attribute,
 				'name'    		=> $result->product->name,
 				'time'    		=> $time,
+                                'design_area'           => $design_area,
 				'options' 		=> json_decode(json_encode($result->options), true)
 			);
 			$this->cart->product_name_rules = '[:print:]';
