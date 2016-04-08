@@ -407,10 +407,10 @@ class Cart extends Frontend_Controller {
                         $design['images']['front'] = '/media/assets/not-uploaded.jpg';
                         //var_dump($data['design']);
                         //exit();
-			if (isset($data['design']['images']['front']))
+			if (isset($data['design']['images']['front']) && $data['design']['images']['front'] != '')
 				$design['images']['front'] 	= $data['design']['images']['front'];
 					
-			if (isset($data['design']['images']['back']))	
+			if (isset($data['design']['images']['back']) && $data['design']['images']['back'] != '')	
 				$design['images']['back'] 	= $data['design']['images']['back'];
 				
 			if (isset($data['design']['images']['left']))
