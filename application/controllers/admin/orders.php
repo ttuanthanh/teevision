@@ -218,8 +218,8 @@ class Orders extends Admin_Controller
 			redirect('admin/orders');
 			
 		$this->data['breadcrumb'] = lang('orders_admin_order_title');
-        $this->data['meta_title'] = lang('orders_admin_order_title');
-        $this->data['sub_title'] = lang('detail');
+                $this->data['meta_title'] = lang('orders_admin_order_title');
+                $this->data['sub_title'] = lang('detail');
 		
 		// get order detail
 		$order 	= $this->order_m->getOrder($id);

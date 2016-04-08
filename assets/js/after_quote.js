@@ -17,13 +17,14 @@
         });
     });
 
-    var filesUpload = document.getElementById("files-upload"),
+    var filefront = document.getElementById("files-upload-front"),
+            fileback = document.getElementById("files-upload-back"),
             //dropArea 	= document.getElementById("drop-area"),
             //fileList 	= document.getElementById("dag-files-images"),
             fileType 	= ["png", "gif", "jpg", "jpeg"],
             maxsize		= uploadSize['max'];
             minsize		= uploadSize['min'];
-    function uploadFile (file) {
+    function uploadFile (file, locat) {
             var ext = file.name.substr(file.name.lastIndexOf('.') + 1);
             var check = fileType.indexOf(ext);//alert(file.type);		
             if(check == -1)
@@ -142,12 +143,15 @@
                             if (xhr.status === 200) {
                                     var media 					= eval('('+this.responseText+')');
                                     if (media.status == '')
-                                    {
+                                    {                                            
+                                            $('#design-image-'+locat).val(media.msg.url);                                            
+                                            /*
                                             img.setAttribute('src', media.msg.thumb);
                                             span.item = media.msg;
                                             jQuery(span).bind('click', function(){
                                                     design.myart.create(span);
                                             });
+                                            */
                                     }
                             }
                             jQuery('#upload-copyright').attr('checked', false);
@@ -162,10 +166,10 @@
             fileList.appendChild(span);
     }
 
-    function traverseFiles (files) {
+    function traverseFiles (files, locat) {
             if (typeof files !== "undefined") {
                     for (var i=0, l=files.length; i<l; i++) {
-                            uploadFile(files[i]);
+                            uploadFile(files[i], locat);
                     }
             }
             else {
@@ -173,7 +177,10 @@
             }	
     }
 
-    function upload_f(){
-            traverseFiles(filesUpload.files);
+    function upload_f(locat){
+        if(locat == 'front')
+            traverseFiles(filefront.files, locat);
+        else
+            traverseFiles(fileback.files, locat);
     }
         

@@ -405,11 +405,13 @@ class Cart extends Frontend_Controller {
 			// save file image design                        
 			$design = array();
                         $design['images']['front'] = '/media/assets/not-uploaded.jpg';
+                        //var_dump($data['design']);
+                        //exit();
 			if (isset($data['design']['images']['front']))
-				$design['images']['front'] 	= createFile($data['design']['images']['front'], 'front', $time);
+				$design['images']['front'] 	= $data['design']['images']['front'];
 					
 			if (isset($data['design']['images']['back']))	
-				$design['images']['back'] 	= createFile($data['design']['images']['back'], 'back', $time);
+				$design['images']['back'] 	= $data['design']['images']['back'];
 				
 			if (isset($data['design']['images']['left']))
 				$design['images']['left'] 	= createFile($data['design']['images']['left'], 'left', $time);
@@ -424,6 +426,7 @@ class Cart extends Frontend_Controller {
 			
 			$designs[$rowid]	= array(
 				'color' => $data['colors'][key($data['colors'])],
+                                'color_title' => $data['color-title'],
 				'images' => $design['images'],
 				'vector' => '{"front":{}}',//$data['design']['vectors'],
 				'fonts' => ''
@@ -449,6 +452,8 @@ class Cart extends Frontend_Controller {
 				'name'    		=> $result->product->name,
 				'time'    		=> $time,
                                 'design_area'           => $design_area,
+                                'design_images'         => $design['images'],
+                                'print_number'          => array('front'=>$data['print-front-num'], 'back'=>$data['print-back-num']),
 				'options' 		=> json_decode(json_encode($result->options), true)
 			);
 			$this->cart->product_name_rules = '[:print:]';

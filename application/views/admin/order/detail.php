@@ -199,13 +199,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_view_design_title'); ?></th>
 						<th class="center" style="width: 18%;"><?php echo lang('name'); ?></th>
 						<th class="center" style="width: 6%;"><?php echo lang('sku'); ?></th>
-						<th class="center" style="width: 12%;"><?php echo lang('orders_admin_status_of_order_product_title'); ?></th>
-						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_price_title'); ?></th>
-						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_print_price_title'); ?></th>
+						<th class="center" style="width: 12%;"><?php echo lang('orders_admin_status_of_order_product_title'); ?></th>						
+<!--						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_print_price_title'); ?></th>
 						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_clipart_title'); ?></th>
-						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_attributes_title'); ?></th>
+						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_attributes_title'); ?></th>-->
+                                                <th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_price_title'); ?></th>
 						<th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_qty_title'); ?></th>
-						<th class="center" style="width: 14%;"><?php echo lang('orders_admin_product_option_title'); ?></th>
+						<th class="center" style="width: 35%;"><?php echo lang('orders_admin_product_option_title'); ?></th>
 						<th class="center"  style="width: 10%;"><?php echo lang('total'); ?></th>
 					</tr>
 				</thead>
@@ -236,10 +236,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								?>
 								<a href="javascript:void(0)" onclick="changeStatus(this)" rel="" data-id="<?php echo $product->id;?>" class="save_product_status tooltips" data-toggle="tooltip" data-placement="top" title="<?php echo lang('orders_admin_change_status_tooltip');?>"><i class="fa fa-save"></i></a>
 							</td>
-							<td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?></td>
-							<td class="right"><?php echo $setting->currency_symbol.number_format($product->price_print, 2);?></td>
+							
+<!--							<td class="right"><?php echo $setting->currency_symbol.number_format($product->price_print, 2);?></td>
 							<td class="right"><?php echo $setting->currency_symbol.number_format($product->price_clipart, 2);?></td>
-							<td class="right"><?php echo $setting->currency_symbol.number_format($product->price_attributes, 2);?></td>
+							<td class="right"><?php echo $setting->currency_symbol.number_format($product->price_attributes, 2);?></td>-->
+                                                        <td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?></td>
 							<td class="right"><?php echo $product->quantity;?></td>
 							<td class="left">
 								<?php
@@ -268,8 +269,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 												</div>
 											<?php }
 										}
-									}
+									} 
+                                                                        $print          = json_decode($product->print_number);
+                                                                        $design_area    = json_decode($product->design_area);
 								?>
+                                                                <div>
+                                                                    <strong>Print Front: <?php echo $print->front; ?> color, Back: <?php echo $print->back; ?> color</strong>
+                                                                </div>
+                                                                <div>
+                                                                    <strong>Design describe: </strong><br>
+                                                                    <strong> - Front</strong>: <?php echo $design_area->front ?><br>
+                                                                    <strong> - Back</strong>: <?php echo $design_area->back ?>
+                                                                </div>
+                                                                
 							</td>
 							<?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
 							<td class="right"><?php echo $setting->currency_symbol.number_format($total_row, 2);?></td>
@@ -281,7 +293,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<?php } ?>
 					<!-- shipping -->
 					<tr>
-						<td colspan="10" class="right">
+						<td colspan="7" class="right">
 							<?php echo lang('orders_admin_shipment_fee_title');?>
 							
 							<?php if (count($shipping)) { ?>								
@@ -295,7 +307,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					
 					<!-- payment -->
 					<tr>
-						<td colspan="10" class="right">
+						<td colspan="7" class="right">
 							<?php echo lang('orders_admin_payment_fee_title');?>
 							
 							<?php if (count($payment)) { ?>								
@@ -308,7 +320,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					
 					<!-- discount -->
 					<tr>
-						<td colspan="10" class="right">
+						<td colspan="7" class="right">
 							<?php echo lang('orders_admin_discount');?>
 							
 							<?php if (count($discount)) { ?>								
@@ -321,7 +333,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<!-- total -->
 					<tr>
 						<?php $total = $total + $shipping_price - $order->discount; ?>
-						<td colspan="10" class="right"><?php echo lang('orders_admin_total_title');?></td>
+						<td colspan="7" class="right"><?php echo lang('orders_admin_total_title');?></td>
 						<td class="right" colspan="7"><strong><?php echo $setting->currency_symbol.number_format($total, 2);?><strong></td>
 					</tr>
 				</tbody>

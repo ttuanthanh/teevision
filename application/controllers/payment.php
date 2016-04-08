@@ -70,9 +70,10 @@ class Payment extends Frontend_Controller
 			
 			
 			$items	= array();
-			$i 			= 0;
+			$i 		= 0;
 			$total 		= 0;
-			$subtotal 	= 0;				
+			$subtotal 	= 0;	
+                        $design_save    = array();
 			foreach($this->items as $key => $item)
 			{
 				$subtotal  = $subtotal + $item['subtotal'] + $item['customPrice'];
@@ -96,6 +97,7 @@ class Payment extends Frontend_Controller
 				$this->load->model('design_m');
 				foreach($items['design'] as $i=>$design)
 				{
+                                        $design_save = $design;
 					$design_id 		= $this->order_m->creteOrderNumber(15);
 					$design_ids[$i]         = $design_id;
 					$insert = array(
@@ -245,13 +247,13 @@ class Payment extends Frontend_Controller
 					if (count($arts))
 						$this->db->insert_batch('order_cliparts', $arts);
 				}				
-				
-				$prices							= json_decode($item['prices']);
+				$design_color_s = array('color_hex' => $design_save['color'], 'color_name' => $design_save['color_title']);
+				$prices					= json_decode($item['prices']);
 				$order_item['design_id'] 		= $design_ids[$i];
 				$order_item['product_id'] 		= $item['product_id'];				
 				$order_item['product_name']             = $item['name'];				
 				$order_item['product_sku'] 		= $item['id'];				
-				$order_item['product_price']            = round($item['price'],2);//$prices->sale;				
+				$order_item['product_price']            = $item['price'];//$prices->sale;				
 				$order_item['price_print'] 		= $prices->prints;				
 				$order_item['price_clipart']            = $price_clipart;				
 				$order_item['price_attributes']         = $item['customPrice'];				
@@ -259,6 +261,12 @@ class Payment extends Frontend_Controller
 				$order_item['poduct_status']            = 'pending';				
 				$order_item['attributes'] 		= json_encode($item['options']);				
 				$order_item['design_area'] 		= json_encode($item['design_area']);
+                                $order_item['design_images'] 		= json_encode($item['design_images']);
+                                $order_item['print_number'] 		= json_encode($item['print_number']);
+                                $order_item['design_option'] 		= json_encode(array('design_area'   =>$item['design_area'], 
+                                                                                            'design_images' => $item['design_images'],
+                                                                                            'print_number'  => $item['print_number'],
+                                                                                            'colors'        => $design_color_s));
                                 
 				$this->order_m->save($order_item, null);
 				

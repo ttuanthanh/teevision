@@ -89,6 +89,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         <p class="font-bold">Selected color: 
                             <?php if (isset($color_active)) { ?>
                                 <span class=""><?php echo  ucfirst ($color_title); ?></span>
+                                <input type="hidden" name="color-title" value="<?php echo $color_title; ?>" >
                             <?php } else echo 'none'; ?>
                         </p>
             <!-- product design -->
@@ -122,7 +123,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                                <input type="file" id="files-upload" name="banner" placeholder="Choose banner image" onchange="upload_f()"/>
+                                                <input class="upload-act" type="file" id="files-upload-front" placeholder="Choose banner image" onchange="upload_f('front')"/>
                                             </span> 
                                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                         </div>
@@ -132,7 +133,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <div class="form-group product-fields selectbox">
                                         <label for="fields">Color</label>
                                         <div class="dg-poduct-fields ">
-                                            <select class="form-control text-center" id="print-front-num">
+                                            <select class="form-control text-center" id="print-front-num" name="print-front-num">
                                                 <option value="<?php echo $print_front ?>" selected><?php echo $print_front ?></option>                                                
                                             </select>
                                         </div>
@@ -153,7 +154,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image back</span> <span class="fileinput-exists">Change</span> 
-                                                <input type="file" id="" name="banner" placeholder="Choose banner image"/>
+                                                <!--<input type="file" id="" name="banner" placeholder="Choose banner image"/>-->
+                                                <input class="upload-act" type="file" id="files-upload-back" placeholder="Choose banner image" onchange="upload_f('back')"/>
                                             </span> 
                                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
                                         </div>
@@ -163,7 +165,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <div class="form-group product-fields selectbox">
                                         <label for="fields">Color</label>
                                         <div class="dg-poduct-fields ">
-                                            <select class="form-control text-center" id="print-back-num">
+                                            <select class="form-control text-center" id="print-back-num" name="print-back-num">
                                                 <option value="<?php echo $print_back ?>" selected><?php echo $print_back ?></option> 
                                             </select>
                                         </div>
@@ -237,8 +239,9 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				</div>
 			</div>
 		</div>
-		
-		</form>
+                <input type="hidden" id="design-image-front" name="design[images][front]" value="">
+                <input type="hidden" id="design-image-back" name="design[images][back]" value="">
+            </form>
 	</div>
 	<!-- RELATED PRODUCTS -->
 	<div class="row">
