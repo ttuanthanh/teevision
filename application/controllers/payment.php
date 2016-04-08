@@ -260,9 +260,9 @@ class Payment extends Frontend_Controller
 				$order_item['quantity'] 		= $item['qty'];			
 				$order_item['poduct_status']            = 'pending';				
 				$order_item['attributes'] 		= json_encode($item['options']);				
-				$order_item['design_area'] 		= json_encode($item['design_area']);
-                                $order_item['design_images'] 		= json_encode($item['design_images']);
-                                $order_item['print_number'] 		= json_encode($item['print_number']);
+				//$order_item['design_area'] 		= json_encode($item['design_area']);
+                                //$order_item['design_images'] 		= json_encode($item['design_images']);
+                                //$order_item['print_number'] 		= json_encode($item['print_number']);
                                 $order_item['design_option'] 		= json_encode(array('design_area'   =>$item['design_area'], 
                                                                                             'design_images' => $item['design_images'],
                                                                                             'print_number'  => $item['print_number'],

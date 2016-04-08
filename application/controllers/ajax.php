@@ -266,6 +266,7 @@ class Ajax extends Frontend_Controller {
 			$image->height		= $data['image_height'];
 			$image->change_color= 0;
 			$image->url			= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $image->file_name;
+                        $image->url_short		= 'media/assets/uploaded/'. $year .'/'. $month .'/'. $image->file_name;
 			
 			$config['image_library'] = 'gd2';
 			$config['source_image']	= $root .DS. $image->file_name;

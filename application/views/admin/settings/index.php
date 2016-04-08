@@ -87,7 +87,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 	<!-- start price -->
 	<div style=" min-height: 350px;" class="tab-pane" id="price">
-            <div class="row" style="display: none">
+            <div class="row" >
 			<div class="col-md-8">
 				<div class="form-group row">
 					<label class="col-sm-3 control-label"><?php echo lang('setting_shop_choose_currencies'); ?></label>
@@ -114,9 +114,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 				
-				 print config 
+				 
 				<?php //echo '<pre>'; print_r($setting); exit; ?>
-				<div class="row col-md-12">
+				<div class="row col-md-12" style="display: none">
+                                    print config 
 					<h4><?php echo lang('settings_print'); ?></h4>
 					
 					<div class="form-group row">

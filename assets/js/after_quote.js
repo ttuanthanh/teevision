@@ -21,7 +21,7 @@
             fileback = document.getElementById("files-upload-back"),
             //dropArea 	= document.getElementById("drop-area"),
             //fileList 	= document.getElementById("dag-files-images"),
-            fileType 	= ["png", "gif", "jpg", "jpeg"],
+            fileType 	= ["png", "gif", "jpg", "jpeg", "PNG", "JPG", "JPEG"],
             maxsize		= uploadSize['max'];
             minsize		= uploadSize['min'];
     function uploadFile (file, locat) {
@@ -144,7 +144,7 @@
                                     var media 					= eval('('+this.responseText+')');
                                     if (media.status == '')
                                     {                                            
-                                            $('#design-image-'+locat).val(media.msg.url);                                            
+                                            $('#design-image-'+locat).val(media.msg.url_short);                                            
                                             /*
                                             img.setAttribute('src', media.msg.thumb);
                                             span.item = media.msg;

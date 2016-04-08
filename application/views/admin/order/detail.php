@@ -12,7 +12,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.css'; ?>" media="screen" />
 <script type="text/javascript" src="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.js'; ?>"></script>
-
+<style>
+    .bg-colors {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        outline: 1px solid #337AB7;
+    }
+    .top-align td{ vertical-align: top!important; }
+</style>
 <?php if (count($order)) { ?>
 
 <div id="order_detail_body">
@@ -217,7 +226,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						$payment_price = 0.0;
 					?>
 					<?php foreach($items as $product){?>
-						<tr>
+                                                <tr class="top-align">
 							<td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>
 							<td>
 								<a href="<?php echo site_url('admin/products/edit/'.$product->product_id); ?>" title="<?php echo $product->product_name; ?>">
@@ -244,15 +253,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<td class="right"><?php echo $product->quantity;?></td>
 							<td class="left">
 								<?php
-									
+									$design_option   = json_decode($product->design_option);
+                                                                        $colors = $design_option->colors;
+                                                                ?>
+                                                            <p>
+                                                                <strong>Color: </strong> <?php echo $colors->color_name  ?> <br>
+                                                                <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
+                                                            </p>
+                                                                <?php
+                                                                        
+                                                                        
+                                                                        
 									if($product->attributes != '' && $product->attributes != '"[]"')
 									{
 										$size = json_decode(json_decode($product->attributes), true);										
 										if (count($size) > 0)
 										{
 											foreach($size as $option) { ?>
-												<div>
-													<strong><?php echo $option['name']; ?>: </strong>
+												<p>
+                                                                                                    <strong><?php echo $option['name']; ?>: </strong><br>
 													<?php 
 														if (is_string($option['value'])) echo $option['value'];
 														elseif (is_array($option['value']) && count($option['value']))
@@ -266,21 +285,38 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 															}
 														}
 													?>
-												</div>
+												</p>
 											<?php }
 										}
 									} 
-                                                                        $print          = json_decode($product->print_number);
-                                                                        $design_area    = json_decode($product->design_area);
+                                                                        
+                                                                        //var_dump($design_option);
+                                                                        $print          = $design_option->print_number;
+                                                                        $design_area    = $design_option->design_area;
+                                                                        $design_images  = $design_option->design_images;
 								?>
-                                                                <div>
-                                                                    <strong>Print Front: <?php echo $print->front; ?> color, Back: <?php echo $print->back; ?> color</strong>
-                                                                </div>
-                                                                <div>
+                                                                <p>
+                                                                    <strong>Print </strong>Front: <?php echo $print->front; ?> colors, Back: <?php echo $print->back; ?> colors
+                                                                </p>
+                                                                <p>
+                                                                    
+                                                                    <strong>Design upload: </strong><br>
+                                                                    <strong> - Front</strong>: <?php 
+                                                                                                    if(isset($design_images->front))
+                                                                                                        echo '<a href="'.site_url() .$design_images->front.'" target="_blank">View image</a>';
+                                                                                                    else echo 'none';
+                                                                                                ?><br>
+                                                                    <strong> - Back</strong>: <?php 
+                                                                                                    if(isset($design_images->back))
+                                                                                                        echo '<a href="'.site_url() .$design_images->back.'" target="_blank">View image</a>';
+                                                                                                    else echo 'none';
+                                                                                                ?>
+                                                                </p>
+                                                                <p>
                                                                     <strong>Design describe: </strong><br>
                                                                     <strong> - Front</strong>: <?php echo $design_area->front ?><br>
                                                                     <strong> - Back</strong>: <?php echo $design_area->back ?>
-                                                                </div>
+                                                                </p>
                                                                 
 							</td>
 							<?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
