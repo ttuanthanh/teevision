@@ -385,10 +385,14 @@ class Ajax extends Frontend_Controller {
             $data['unit_price_full']    = $price_total/$quantity;
             
             echo json_encode($data);
-            
-           
         }
-                
+        
+        
+        function sendEmailArtist()
+        {
+            
+        }
+             
 }
 
 ?>

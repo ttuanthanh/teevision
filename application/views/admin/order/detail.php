@@ -296,7 +296,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                                         $design_images  = $design_option->design_images;
 								?>
                                                                 <p>
-                                                                    <strong>Print </strong>Front: <?php echo $print->front; ?> colors, Back: <?php echo $print->back; ?> colors
+                                                                    <strong>Print </strong>Front: <?php echo isset($print->front) ? $print->front : 0; ?> colors, Back: <?php echo isset($print)? $print->back : 0; ?> colors
                                                                 </p>
                                                                 <p>
                                                                     
@@ -314,8 +314,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                                 </p>
                                                                 <p>
                                                                     <strong>Design describe: </strong><br>
-                                                                    <strong> - Front</strong>: <?php echo $design_area->front ?><br>
-                                                                    <strong> - Back</strong>: <?php echo $design_area->back ?>
+                                                                    <strong> - Front</strong>: <?php echo isset($design_area) ? $design_area->front: '' ?><br>
+                                                                    <strong> - Back</strong>: <?php echo isset($design_area) ? $design_area->back : ''?>
                                                                 </p>
                                                                 
 							</td>
