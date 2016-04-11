@@ -271,7 +271,7 @@ class Payment extends Frontend_Controller
 				$html .= '<tr>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['name'].'</td>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['id'].'</td>';				
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($item['customPrice'], 2).'</td>';
+				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($item['price'], 2).'</td>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['qty'].'</td>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">';
                                 $html .= '<p>'
@@ -334,7 +334,7 @@ class Payment extends Frontend_Controller
 			
 			// html email.
 			$html .= '<tr>
-				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="8">
+				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="5">
 					'.lang("orders_admin_shipment_fee_title");
 					if (count($shipping)) {							
 						$html .= '<br><small>'.lang("orders_admin_shipping_method").': <a href="'.site_url().'"><strong>'.$shipping->title.'</strong></a></small>
@@ -345,7 +345,7 @@ class Payment extends Frontend_Controller
 				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;">'.$setting->currency_symbol.number_format($shipping_price, 2).'</td>
 			</tr>
 			<tr>
-				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="8">
+				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="5">
 					'.lang("orders_admin_payment_fee_title");
 					if (count($payment)) {							
 						$html .= '<br><small>'.lang("orders_admin_payment_method").': <a href="'.site_url().'"><strong>'.$payment->title.'</strong></a></small>
@@ -355,7 +355,7 @@ class Payment extends Frontend_Controller
 				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;">'.$setting->currency_symbol.number_format($payment_price, 2).'</td>
 			</tr>
 			<tr>
-				<td colspan="8" style="border: 1px solid #ccc; text-align: right; padding: 5px;">
+				<td colspan="5" style="border: 1px solid #ccc; text-align: right; padding: 5px;">
 					'.lang("orders_admin_discount");
 					if (count($discount)) {							
 						$html .= '<br><small>'.$discount->name.': <a href="'.site_url().'"><strong>'.$discount->code.'</strong></a></small>';							
@@ -380,7 +380,13 @@ class Payment extends Frontend_Controller
 			
 			//config email.
 			$config = array(
-				'mailtype' => 'html',
+				'protocol' => 'smtp',
+                                'smtp_host' => 'screenprintingphilad.ipage.com',
+                                'smtp_port' => 587,
+                                'smtp_user' => 'thanh@teevisionprinting.com',
+                                'smtp_pass' => 'thanhA123',
+                                'mailtype'  => 'html',
+                                'charset'   => 'iso-8859-1'
 			);
 			$subject = configEmail('sub_order_detai', $params);
 			$message = configEmail('order_detai', $params);
