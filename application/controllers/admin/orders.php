@@ -134,8 +134,9 @@ class Orders extends Admin_Controller
 						}
 						
 						$doc = new SimpleXMLElement($item->svg);
-						unset($doc->attributes()['x']);
-						unset($doc->attributes()['y']);						
+                                                $tt = $doc->attributes();
+						unset($tt['x']);
+						unset($tt['y']);						
 						$item->svg = $doc->asXml();					
 						
 						if ($item->rotate != 0)

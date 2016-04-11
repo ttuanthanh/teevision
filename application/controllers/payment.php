@@ -207,9 +207,6 @@ class Payment extends Frontend_Controller
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("name").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("sku").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_price_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_print_price_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_clipart_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_attributes_title").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_qty_title").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_option_title").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("total").'</td>';
@@ -273,13 +270,37 @@ class Payment extends Frontend_Controller
 				// html email.
 				$html .= '<tr>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['name'].'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['id'].'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($prices->sale, 2).'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($prices->prints, 2).'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($price_clipart, 2).'</td>';
+				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['id'].'</td>';				
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($item['customPrice'], 2).'</td>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['qty'].'</td>';
 				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">';
+                                $html .= '<p>'
+                                               .'<strong>Color: </strong> '.$design_save['color_title'].'<br>'
+                                               .'<span class="bg-colors" style="width:20px;height:20px;display:inline-block;border:1px solid #ccc;outline: 1px solid #337AB7;background-color:#'.$design_save['color'].'"></span>'
+                                          .'</p>'
+                                          .'<p>'
+                                                .'<strong>Print </strong>Front: '.$item['print_number']['front'].' colors, Back: '.$item['print_number']['back'].' colors'
+                                          .'</p>' ;
+                                        
+                                        if(isset($item['design_images']['front']))
+                                            $imf = '<a href="'.site_url() .$item['design_images']['front'].'" target="_blank">View image</a>';
+                                        else $imf =  'none';
+                                        
+                                        if(isset($item['design_images']['back']))
+                                            $imb = '<a href="'.site_url() .$item['design_images']['back'].'" target="_blank">View image</a>';
+                                        else $imb =  'none';
+                                        
+                                $html .=    '<p>                                                                    
+                                                <strong>Design upload: </strong><br>
+                                                <strong> - Front</strong>: '.$imf.'<br>
+                                                <strong> - Back</strong>: '.$imb.' 
+                                            </p>
+                                            <p>
+                                                <strong>Design describe: </strong><br>
+                                                <strong> - Front</strong>: '.$item['design_area']['front'].'<br>
+                                                <strong> - Back</strong>: '.$item['design_area']['back'].'
+                                            </p>';        
+                                
 					if($item['options'] != '')
 					{
 						$size = json_decode($item['options'], true);										
@@ -287,7 +308,7 @@ class Payment extends Frontend_Controller
 						{
 							foreach($size as $option) {
 								$html .= '<div>
-									<strong>'.$option['name'].': </strong>'; 
+									<strong>'.$option['name'].': </strong><br>'; 
 										if (is_string($option['value'])) 
 										{
 											$html .= $option['value'];
@@ -306,7 +327,7 @@ class Payment extends Frontend_Controller
 						}
 					}
 				$html .= '</td>';
-				$total_row = $item['qty']*($prices->sale+$prices->prints+$price_clipart)+$item['customPrice'];
+				$total_row = $item['qty']*($item['price']+$prices->prints+$price_clipart)+$item['customPrice'];
 				$html .= '<td style="border: 1px solid #ccc; text-align: right;">'.$setting->currency_symbol.number_format($total_row, 2).'</td>
 				</tr>';
 			}
@@ -344,7 +365,7 @@ class Payment extends Frontend_Controller
 			</tr>
 			<tr>';
 			$total = $order['total'];
-			$html .= '<td colspan="8" style="border: 1px solid #ccc; text-align: right;">'.lang("orders_admin_total_title").'</td>
+			$html .= '<td colspan="5" style="border: 1px solid #ccc; text-align: right;">'.lang("orders_admin_total_title").'</td>
 				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="7"><strong>'.$setting->currency_symbol.number_format($total, 2).'<strong></td>
 			</tr></table>';
 			

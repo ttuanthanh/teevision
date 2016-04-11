@@ -491,7 +491,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<div id="tabs-2">
 					<div class="col-left" style="position: relative;">
 						<span class="arrow-mobile" data="left"><i class="glyphicons chevron-right"></i></span>
-						<div id="dg-left" class="width-100;">
+						<div id="dg-left" class="width-100">
 							<div class="dg-box width-100">
 								<ul class="menu-left">
 									<li>

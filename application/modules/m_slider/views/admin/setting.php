@@ -256,7 +256,7 @@ $j = 0;
 						<?php $i++; $j++; } ?>
 					<?php } ?>
 				</div>
-				<div style="text-align: center; margin: 10px; 0px;"><button type="button" class="btn btn-primary btn-sm" onclick="add_item_m_slider(this);"><i class="glyphicon glyphicon-plus"></i></button></div>
+				<div style="text-align: center; margin: 10px 0px;"><button type="button" class="btn btn-primary btn-sm" onclick="add_item_m_slider(this);"><i class="glyphicon glyphicon-plus"></i></button></div>
 			</div>
 			
 		</div>
