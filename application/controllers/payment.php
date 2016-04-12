@@ -139,7 +139,7 @@ class Payment extends Frontend_Controller
 				}
 				else
 				{
-					$order['discount']	=  ($order['sub_total'] * $items['metod']->discount->value)/100;
+					$order['discount']	=  ($subtotal * $items['metod']->discount->value)/100;
 				}
 				
 				// update coupon
@@ -202,7 +202,7 @@ class Payment extends Frontend_Controller
 			$payment_price = 0.0;
 			
 			$this->load->language('order');
-			$html = '<table style="border-collapse:collapse;">';
+			$html = '<table style="border-collapse:collapse; width:100%">';
 			$html .= '<tr>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("name").'</td>';
 			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("sku").'</td>';
