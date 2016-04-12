@@ -94,10 +94,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<div class="row">
 											<div class="col-sm-12 text-left">
 												<div class="form-group">
-                                                                                                    <strong><?php echo lang('color');?>: </strong>
+                                                                                                    <strong><?php echo lang('color');?>: </strong> 
+                                                                                                    <span class="bg-colors" style="background-color:#<?php echo $designs[$key]['color'] ?>"></span>
 												</div>
 												<div class="form-group">
-													<span class="bg-colors" style="background-color:#<?php echo $designs[$key]['color'] ?>"></span>
+													
 												</div>
 											</div>
 										</div>

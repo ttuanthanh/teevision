@@ -588,12 +588,12 @@ class Cart extends Frontend_Controller {
 		$id	= (int) $id;
 		
 		$this->load->model('shipping_m');		
-		$shipping 					= $this->shipping_m->get($id, true);		
+		$shipping 	= $this->shipping_m->get($id, true);		
 		
 		if ($this->session->userdata('cart') === false)
 		{
-			$cart 					= new stdClass();
-			$cart->shipping			= new stdClass();
+			$cart 		= new stdClass();
+			$cart->shipping	= new stdClass();
 			
 		}
 		else
@@ -602,8 +602,10 @@ class Cart extends Frontend_Controller {
 			if (empty($cart->shipping))
 				$cart->shipping		= new stdClass();
 		}
+                $ses = $this->session->userdata('cart_contents');
+                
 		$cart->shipping->id 	= $id;
-		$cart->shipping->price 	= $shipping->price;
+		$cart->shipping->price 	= ($shipping->price * $ses['cart_total'])/100;
 		$this->session->set_userdata('cart', $cart);
 				
 		$this->data['designs'] 	= $this->cache->get('orders_designs'.$this->session_id);

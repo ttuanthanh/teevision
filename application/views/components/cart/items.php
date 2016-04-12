@@ -12,7 +12,6 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $cart	= $this->session->userdata('cart');
-
 // check shipping
 if (isset($cart->shipping) && isset($cart->shipping->price))
 	$shipping_active	= $cart->shipping->price;

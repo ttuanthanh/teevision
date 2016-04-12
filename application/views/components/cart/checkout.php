@@ -118,7 +118,7 @@ else
 											<div class="checkbox">
 												<label>
 													<input class="choose-shipping" type="radio" name="shipping" onclick="apps.shipping(<?php echo $ship->id;?>)" value="<?php echo $ship->id;?>" <?php echo $checked;?> id="ship_<?php echo $ship->id;?>"/>
-													 <strong><?php echo $ship->title;?> <span class="text-success"><?php echo $ship->price;?></span></strong>
+													 <strong><?php echo $ship->title;?> <span class="text-success"> (<?php echo ($ship->price != 0) ? '+'.$ship->price.'%' : 'Free!';?>)</span></strong>
 												</label>
 												
 												<?php if ($ship->description != ''){?>
