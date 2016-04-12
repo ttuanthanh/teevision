@@ -46,7 +46,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
         
 	
 	<div class="row">
-		<form name="checkout" id="check-out" class="product-after-quote checkout" action="/cart/addToCart" method="post">
+            <form name="checkout" id="check-out" class="product-after-quote checkout" action="/cart/addToCart" method="post">
 		<div class="row">
                 <!-- breadcrumb -->
                 <ol class="breadcrumb e-beadcrum">

@@ -358,7 +358,7 @@ class Orders extends Admin_Controller
 					
 					$this->load->library('email');
 					$this->email->initialize($config);
-					$this->email->from(getEmail(config_item('admin_email')), getEmail(config_item('site_name')));
+					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($customer->email);    
 					$this->email->subject ( $subject);
 					$this->email->message ($message);   
@@ -455,7 +455,7 @@ class Orders extends Admin_Controller
 					
 					$this->load->library('email');
 					$this->email->initialize($config);
-					$this->email->from(getEmail(config_item('admin_email')), getEmail(config_item('site_name')));
+					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($customer->email);    
 					$this->email->subject ( $subject);
 					$this->email->message ($message);   
