@@ -390,7 +390,19 @@ class Ajax extends Frontend_Controller {
         
         function sendEmailArtist()
         {
-            
+            $data = $this->input->post();
+            $product_id = $data['product_id'];
+            $size       = $data['sizes'];
+            $this->load->model('product_m');
+            $attribute  = $this->product_m->getAttribute($product_id);
+            if (count($attribute)) 
+            {
+                    $this->load->helper('product');
+                    $help_product 		= new helperProduct();
+                    $attributes	= $help_product->displayAttributesQuote($attribute, $size);
+            }
+            //echo json_encode($data);
+            echo $attributes;
         }
              
 }

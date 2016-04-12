@@ -10,13 +10,46 @@
             $('input[name^="'+attr_key+'"]').each(function() {
                 size_flag += Number($(this).val());            
             });
-            var quantity = $("<input>").attr({"type":"hidden", "name": "quantity"}).val(size_flag);
-            $('#check-out').append($(quantity));
+            $("#quantity").val(size_flag);
+            
             
             
         });
     });
-
+    
+    function send_artist(){
+            size_flag = 0;
+            $('input[name^="'+jQuery('#attr-key').val()+'"]').each(function() {
+                size_flag += Number($(this).val());            
+            });
+            $("#quantity").val(size_flag);            
+            var form = $('#check-out'),
+                attr_size   = getAttributeArray(jQuery('#attr-key').val());
+        
+            //Add list size to submit
+            $.each(attr_size, function(i, v){
+                var size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
+                form.append(size);    
+            });
+            
+            $.ajax( {
+                type: "POST",
+                url: '/ajax/sendEmailArtist',
+                data: form.serialize(),
+                success: function( response ) {
+                  //console.log( response );
+                }
+            });
+    }
+    function getAttributeArray(key) {
+        var attribute = {},
+            i = 0;    
+        $('input[name^="'+key+'"]').each(function() {
+            attribute[i++] =$(this).val(); 
+        });
+        return attribute;
+    }
+    
     var filefront = document.getElementById("files-upload-front"),
             fileback = document.getElementById("files-upload-back"),
             //dropArea 	= document.getElementById("drop-area"),

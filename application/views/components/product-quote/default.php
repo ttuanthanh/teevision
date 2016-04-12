@@ -199,15 +199,15 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                                     <h4 class="margin-bottom-0">Request a Proof</h4>
                                                     <p class="text-italic">Orders will not print until customer approves the proofs.</p>
                                                     <div class="row">
-                                                        <div class="col-md-6">Full name<input class="form-control"></div>
-                                                        <div class="col-md-6">Email<input class="form-control"></div>                                                        
+                                                        <div class="col-md-6">Full name<input name="u-name" class="form-control"></div>
+                                                        <div class="col-md-6">Email<input name="u-email" class="form-control"></div>                                                        
                                                     </div>
                                                     <br>
                                                     <div class="row">
-                                                        <div class="col-md-6">Company<input class="form-control"></div>
-                                                        <div class="col-md-6">Phone number<input class="form-control"></div>                                                        
+                                                        <div class="col-md-6">Company<input name="u-company" class="form-control"></div>
+                                                        <div class="col-md-6">Phone number<input name="u-phone" class="form-control"></div>                                                        
                                                     </div>
-                                                    <button type="button" class="btn btn-primary btn-product">Submit</button>   
+                                                    <button type="button" onclick="send_artist()" class="btn btn-primary btn-product">Submit</button>   
                                                 </div>  
                                                                                            
                                             </div>
@@ -241,6 +241,8 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 		</div>
                 <input type="hidden" id="design-image-front" name="design[images][front]" value="">
                 <input type="hidden" id="design-image-back" name="design[images][back]" value="">
+                <input type="hidden" id="quantity" name="quantity" value="">
+                
             </form>
 	</div>
 	<!-- RELATED PRODUCTS -->
