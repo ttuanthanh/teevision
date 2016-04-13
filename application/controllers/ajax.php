@@ -336,6 +336,13 @@ class Ajax extends Frontend_Controller {
                 }
             }
             
+            // SELECT THE LARGER PRINT LOCAT FOR FRONT PRICE
+            if ($print[0] < $print[1] )
+            {
+                $stem = $print[0]; $print[0] = $print[1]; $print[1] = $stem;
+            }
+            
+            
             $price_front = 0;            
             for($i = 0; $i < count($arr_front['quantity']); $i++){
                 if($quantity >= $arr_front['quantity'][$i][0] && $quantity <= $arr_front['quantity'][$i][1]){                    
