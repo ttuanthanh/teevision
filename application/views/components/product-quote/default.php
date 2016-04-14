@@ -180,7 +180,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			</div>
                     
 			<div class="col-md-12 clearfix">
-				<h4><b>Don't Have Artwork? <a href="javascript:;" data-toggle="modal" data-target="#myModal" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
+                            <h4><b>Don't Have Artwork? <a href="javascript:;" id="bt-mymodal" data-toggle="modal" data-target="#myModal" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
 <!--				<div class="form-group">
                                     <textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea>
                                 </div>-->
@@ -199,15 +199,17 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                                     <h4 class="margin-bottom-0">Request a Proof</h4>
                                                     <p class="text-italic">Orders will not print until customer approves the proofs.</p>
                                                     <div class="row">
-                                                        <div class="col-md-6">Full name<input name="u-name" class="form-control"></div>
-                                                        <div class="col-md-6">Email<input name="u-email" class="form-control"></div>                                                        
+                                                        <div class="col-md-6">Full name<input id="u-name" name="u-name" class="form-control"></div>
+                                                        <div class="col-md-6">Email<input type="email" id="u-email" name="u-email" class="form-control"></div>                                                        
                                                     </div>
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-6">Company<input name="u-company" class="form-control"></div>
                                                         <div class="col-md-6">Phone number<input name="u-phone" class="form-control"></div>                                                        
                                                     </div>
-                                                    <button type="button" onclick="send_artist()" class="btn btn-primary btn-product">Submit</button>   
+                                                    <button id="btn-sendemail" type="button" onclick="send_artist()" class="btn btn-primary btn-product">Submit</button>   
+                                                    <img src="/assets/images/ajax-loader.gif" id="ajax-load" style="display: none">
+                                                    <p id="send-success" style="color: #24AA7A; font-weight: bold; display: none; margin-top: 20px;">Sent email Successful!</p>
                                                 </div>  
                                                                                            
                                             </div>

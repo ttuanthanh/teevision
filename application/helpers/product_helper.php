@@ -203,7 +203,7 @@ class helperProduct
 	}
         
         
-	public function displayAttributesQuote($attribute, $size)
+	public function displayAttributesQuote($attribute, $size, $option = FALSE)
 	{
 		if (isset($attribute->name) && $attribute->name != '')
 		{
@@ -218,11 +218,17 @@ class helperProduct
 			for ($i=0; $i<count($attrs->name); $i++)
 			{
 				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
-				$html 	.= 		'<label for="fields">Size & Quantity: '.array_sum($size).' pieces </label>';
+				
 				
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
+                            if ($option == FALSE)
+                            {
+                                $html 	.= 		'<label for="fields">Size & Quantity: '.array_sum($size).' pieces </label>';
 				$html 	.= 		$this->fieldQuote($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id, $size);
-				
+                            }else {
+                                $html 	.= 		'<label for="fields"><strong>Size & Quantity: </strong>'.array_sum($size).' pieces </label>';
+                                $html 	.= 		$this->fieldQuoteOption($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id, $size);
+                            }
 				$html 	.= '</div>';
 			}
 			return $html;
@@ -274,6 +280,29 @@ class helperProduct
 					$html .= '<li>';
 					$html .= 	'<label>'.$title[$i].'</label>';
 					$html .= 	'<input type="text" class="form-control input-sm" name="'.$id.'['.$i.']" value="'.$size[$i].'" readonly>';					
+					$html .= '</li>';
+                                         
+				}
+                                $html .= '<input type="hidden" id="attr-key" value="'.$id.'">';
+				$html 		.= '</ul>';
+			break;
+		}
+		$html	.= '</div>';
+		
+		return $html;
+	}
+        
+        function fieldQuoteOption($name, $title, $price, $type, $id, $size)
+	{
+		$html = '<div class="dg-poduct-fields ">';
+		switch($type)
+		{						
+			case 'textlist':
+				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<li>';
+					$html .= 	'<label>'.$title[$i].'</label>: '.$size[$i];					
 					$html .= '</li>';
                                          
 				}

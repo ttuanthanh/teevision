@@ -401,15 +401,76 @@ class Ajax extends Frontend_Controller {
             $product_id = $data['product_id'];
             $size       = $data['sizes'];
             $this->load->model('product_m');
-            $attribute  = $this->product_m->getAttribute($product_id);
+            
+            $options = array(
+                    'id' => $data['product_id']				
+            );
+            $product 		= $this->product_m->getProduct($options);
+            $product 		= $product[0];
+            
+            $attribute  = $this->product_m->getAttribute($product_id);  
             if (count($attribute)) 
             {
                     $this->load->helper('product');
                     $help_product 		= new helperProduct();
-                    $attributes	= $help_product->displayAttributesQuote($attribute, $size);
+                    $attributes	= $help_product->displayAttributesQuote($attribute, $size, TRUE);
             }
+            $str = '<style>
+                        table tr td, tr th{border: 1px solid #ccc; padding: 5px;}
+                        p{margin:10px}
+                        .color-swatch {background-color: #'.$data['color-name'].';border: 2px solid #fff;cursor: pointer;display: inline-block;height: 10px;margin-bottom:-4px;outline: 1px solid #ccc;padding: 2px;width: 40px;}
+                    </style>';
+                    
+            $str .= '<div>
+                        <strong>Full name: </strong>'.$data['u-name'].'<br>
+                        <strong>Email: </strong>'.$data['u-email'].'<br>
+                        <strong>Company: </strong>'.$data['u-company'].'<br>
+                        <strong>Phone: </strong>'.$data['u-phone'].'<br>
+                    </div>';
+            $str .='<table style="border-collapse:collapse; width: 100%">
+                        <tr>
+                            <th>Product name</th>
+                            <th>Detail</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;"><strong>'.$product->title.'</strong></td>
+                            <td>
+                                <p>
+                                    <strong>Color: </strong>'.$data['color-title'].' <span class="color-swatch"></span>
+                                </p>
+                                <p>
+                                    <strong>Print: </strong> Front '.$data['print-front-num'].', Back '.$data['print-back-num'].'
+                                </p>
+                                <p>
+                                    <strong>Describe Design Idea: </strong> <br>
+                                    <strong> -Front: </strong>'.$data['design-area-front'].'<br>
+                                    <strong> -Back: </strong>'.$data['design-area-back'].'
+                                </p>
+                                <p>'.$attributes.'</p>
+                            </td>
+                            <td style="text-align: center;vertical-align: top;">
+                                <strong>'.  number_format($data['unit-price-full'], 2).' </strong>
+                            </td>
+                            <td style="text-align: center;vertical-align: top;">
+                                <strong>'.  number_format($data['unit-price-full']*$data['quantity'], 2).' </strong>
+                            </td>
+                        </tr>
+                    </table>';
+            $str .= '<div style="margin-top: 20px;">http://teevisionprinting.com</div>';
             //echo json_encode($data);
-            echo $attributes;
+            $this->load->library('email');
+            $config = array(
+                    'mailtype'  => 'html'
+            );
+            $this->load->library('email', $config);
+            $this->email->from($data['u-email'], $data['u-name']);
+            $this->email->to(getEmail(config_item('admin_email')));    
+            $this->email->subject ( 'Request An Artist');
+            $this->email->message ($str);   
+            $result = $this->email->send();
+            echo $result;
         }
              
 }

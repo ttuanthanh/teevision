@@ -16,8 +16,26 @@
             
         });
     });
-    
+    $('#bt-mymodal').click(function() {
+            var decs_front = $('#design-area-front').val(),
+                decs_back = $('#design-area-back').val();
+            
+            if(decs_front == '' && decs_back == ''){
+                //$('#myModal').modal('hide');
+                alert('Please enter your Describe Design Idea!')
+                return false;
+            }
+                
+    });
     function send_artist(){
+            
+            if(!validateEmail(jQuery('#u-email').val()) && jQuery('#u-email').val() == '') {
+                
+                alert('Please enter your name and email');
+                return false;
+            }
+            $('#btn-sendemail').hide();
+            $('#ajax-load').show();
             size_flag = 0;
             $('input[name^="'+jQuery('#attr-key').val()+'"]').each(function() {
                 size_flag += Number($(this).val());            
@@ -27,8 +45,9 @@
                 attr_size   = getAttributeArray(jQuery('#attr-key').val());
         
             //Add list size to submit
+            var size
             $.each(attr_size, function(i, v){
-                var size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
+                size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
                 form.append(size);    
             });
             
@@ -37,9 +56,25 @@
                 url: '/ajax/sendEmailArtist',
                 data: form.serialize(),
                 success: function( response ) {
-                  //console.log( response );
+                    $('#ajax-load').hide();
+                    if(response == 1){                        
+                        $('#send-success').show();
+                    }
+                    else {
+                        alert('An error occurred. Please try again!')
+                        $('#btn-sendemail').show();
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
                 }
             });
+    }
+    function validateEmail(sEmail) {
+        var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+        if (filter.test(sEmail)) 
+            return true;
+        return false;
     }
     function getAttributeArray(key) {
         var attribute = {},
