@@ -38,7 +38,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <div id="dg-wapper">
 	<div id="dg-mask" class="loading"></div>
-	
+        <div id="dg-mask-dimiss" class="dg-mask-dimiss">
+            <img src="<?php echo base_url('assets/images/coming-soon-dots.png'); ?>" class="img-responsive">
+        </div>
 	<!-- Begin main -->
 	<div id="dg-designer">
 		<div class="col-left">
