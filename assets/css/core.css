@@ -1222,3 +1222,6 @@ outline-color: #2e2423;
     z-index: 10000;
     background: white ;
 }
+.dg-mask-dimiss .img-responsive {
+    margin: 0 auto;
+}
