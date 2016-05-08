@@ -1201,17 +1201,26 @@ outline-color: #2e2423;
 .e-beadcrum a:hover{    color: #3AB6D5!important; text-decoration: none;}
 
 .price-calc{
-    text-align: right;
     font-size: 17px;
     font-weight: bold;
 }
+.price-unit{ font-size: 19px}
 .price-total{
     color: #3d9400;
     font-size: 15px;
 }
-
+.margin-0{ margin: 0}
+.ship-free{
+    font-size: 19px;
+}
+.ship-rush{
+    font-size: 15px;
+}
+.red{ color: red}
 .hidden-box{ display: none}
 .width-200{ width: 200px;}
+.dev-opt{font-size: 20px; font-weight: bold}
+
 .dg-mask-dimiss{
     height: 100%;
     left: 0;

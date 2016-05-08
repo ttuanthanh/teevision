@@ -52,18 +52,46 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         </h2>
                 </div>
 		<!-- product image -->
-		<div class="col-md-4" id="product-image-area">
-			<?php
-			if ($color_load === true)
-			{
-				$this->load->view('components/product/image_design', array('index'=>$index, 'product'=>$product));
-			}
-			else
-			{
-				$this->load->view('components/product/image', array('product'=>$product));
-			}
-			?>			
-		</div>
+                <div class="col-md-4">
+                    <div id="product-image-area">
+                            <?php
+                            if ($color_load === true)
+                            {
+                                    $this->load->view('components/product/image_design', array('index'=>$index, 'product'=>$product));
+                            }
+                            else
+                            {
+                                    $this->load->view('components/product/image', array('product'=>$product));
+                            }
+                            ?>			
+                    </div>
+
+                    <!-- SKU -->
+    <!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
+
+                    <!-- product short description -->
+                    <br>
+                    <p class="font-bold">Key features</p>
+                    <div class="form-group">
+                            <?php echo $product->description;                             ?>
+                    </div>
+
+                    <!-- product price -->
+                    <div class="form-group">
+                            <p class="price">
+                                    <?php echo lang('price'); ?>: 
+                                    <?php if($price != $product->price) { ?>
+                                    <span class="price-old text-muted">
+                                            <del><small><?php echo $currency->currency_symbol .''. $product->price; ?></small></del>
+                                    </span>
+                                    <?php } ?>
+
+                                    <span class="price-new text-danger">
+                                            <strong><?php echo $currency->currency_symbol .''. $price; ?></strong>
+                                    </span>
+                            </p>
+                    </div>
+                </div>
 		
 		<!-- product info -->
 		<div class="col-md-8">
@@ -79,33 +107,6 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<?php } ?>
                         
 			
-			<!-- SKU -->
-<!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
-			
-			<!-- product short description -->
-                        <p class="font-bold">Key features</p>
-			<div class="form-group">
-				<?php echo $product->description; 
- //var_dump($product);
-                                ?>
-			</div>
-			
-			<!-- product price -->
-			<div class="form-group">
-				<p class="price">
-					<?php echo lang('price'); ?>: 
-					<?php if($price != $product->price) { ?>
-					<span class="price-old text-muted">
-						<del><small><?php echo $currency->currency_symbol .''. $product->price; ?></small></del>
-					</span>
-					<?php } ?>
-					
-					<span class="price-new text-danger">
-						<strong><?php echo $currency->currency_symbol .''. $price; ?></strong>
-					</span>
-				</p>
-			</div>
-                         
 			<!-- product attribute -->
 			<?php if (isset($product->attributes)) { ?>
 			<div class="form-group">
@@ -140,8 +141,15 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         <!-- Price detail -->
                         <div class="form-group price-calc hidden-box" id="price-detail">
                             <hr>
-                            <p class="price-unit">Unit price: <span id="unit-price-value"></span></p>
-                            <p class="price-total">Total price: <span id="total-price-value"></span></p>
+                            <div class="col-md-8 text-center">
+                                <p class="ship-free"><span class="red">Free Shipping </span>by (10 days) Guaranteed </p>
+                                <p class="ship-rush"><span class="red">Rushed Delivery:</span> (5 days) Guaranteed </p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="price-unit red margin-0">Unit price: <span id="unit-price-value"></span></p>
+                                <p class="price-total">Total price: <span id="total-price-value"></span></p>
+                            </div>
+                            <br clear="all">
                             <hr>
                         </div>
 			<!-- form -->

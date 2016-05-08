@@ -78,7 +78,14 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			{
 				$this->load->view('components/product/image', array('product'=>$product));
 			}
-			?>			
+			?>
+                    <br>
+                    <div>
+                            <p><i>* All Inclusive Pricing, no Other Fees</i> </p>
+                            <p><i>* Free 10 Day Shipping.  </i></p>
+                            <p><i>* Need it sooner? Call us: <a tel="(267) 538-5331" style="color:red">(267) 538-5331</a> </i></p>
+                            <p><i>* You will receive a proof to review, edit, or approve within 24 hours. An approval is required before we start printing.</i></p>
+                    </div>
 		</div>
 		
 		<!-- product info -->
@@ -98,23 +105,19 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 				<?php $this->load->view('components/product-quote/color_list_quote', array('index'=>$index, 'product'=>$product)); ?>
 			</div>
 			<?php } ?>
+            
+            <!-- product attribute -->
+                        <?php if (isset($product->attributes)) { ?>
+                        <div class="form-group form-attributes">
+                                <?php echo $product->attributes; ?>
+                        </div>
+                        <?php } ?>
 			
-		</div>
-		<div class="col-md-6">
-                        <!-- product attribute -->
-                                <?php if (isset($product->attributes)) { ?>
-                                <div class="form-group form-attributes">
-                                        <?php echo $product->attributes; ?>
-                                </div>
-                                <?php } ?>			
-                </div>
-		</div>
-		<div class="row">
-			
-			<div class="col-md-12 clearfix">
-                            <h4><b>Have Artwork? Add Files Here:</b></h4>
+                        <hr>
+			<div class="clearfix">
+                            <b>Have Artwork? Add Files Here:</b>
                             <h5><b>Notice:</b> <i>Adobe Illustrator, Photoshop, PDF, PNG, JPEG is preferred.</i></h5>
-                            <div class="col-md-5 pruduct-quote-front">
+                            <div class="col-md-6 pruduct-quote-front">
                                 <h5><b>Front</b></h5>
                                 <div class="col-md-6">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -145,7 +148,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     <textarea id="design-area-front" name="design-area-front" rows="6" class="form-control"></textarea>
                                 </div>
                             </div>	
-                            <div class="col-md-5 col-md-offset-1 pruduct-quote-back">
+                            <div class="col-md-6 pruduct-quote-back">
                                 <h5><b>Back</b></h5>
                                 <div class="col-md-6">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -179,7 +182,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                             </div>
 			</div>
                     
-			<div class="col-md-12 clearfix">
+			<div class="clearfix">
                             <h4><b>Don't Have Artwork? <a href="javascript:;" id="bt-mymodal" data-toggle="modal" data-target="#myModal" style="color:#e00000">Click Here</a> to Request An Artist.</b></h4>
 <!--				<div class="form-group">
                                     <textarea class="form-control" rows="" cols="" style="height: 150px" placeholder="Describe Your Design Idea"></textarea>
@@ -217,22 +220,26 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                     </div>
                                 </div>
 			</div>
-			
-			<div class="clearfix margin-top-30">
-				<div class="col-md-3 price">
+                        <hr>
+                        <div class="clearfix margin-top-30">				
+				<div class="col-md-8 ship-free">
+                                    <p class="dev-opt red">Delivery option</p>
+                                    <p class="margin-bottom-0">Guaranteed <span class="red">free</span> Shipping by (10 days)</p>
+                                    <p class="margin-bottom-0"><span class="red">Rushed </span>Shipping by (7 days)</p>
+                                    <p class="margin-bottom-0"><span class="red">Super Rushed</span> by (5 days) </p>
+				</div>
+                                <div class="col-md-4 price">
 					<h4><b>Unit Price:</b><span> $<?php echo $price_unit ?></span></h4>
 					<h4><b>Total:</b> <span class="total"> $<?php echo $price_total ?></span></h4>
                                         <input name="total_price" value="<?php echo $price_unit ?>" type="hidden" >
                                         <input name="unit-price-full" value="<?php echo $unit_price_full ?>" type="hidden" >
 				</div>
-				<div class="col-md-9">
-					<p><i>* All Inclusive Pricing, no Other Fees</i> </p>
-					<p><i>* Free 10 Day Shipping. Need it sooner? Call us: <a tel="(267) 538-5331" style="color:red">(267) 538-5331</a> </i></p>
-					<p><i>* You will receive a proof to review, edit, or approve within 24 hours. An approval is required before we start printing.</i></p>
-				</div>
 			</div>
+                    </div>
+		</div>
+		<div class="row">
 			<div class="clearfix">
-				<div class="col-md-3">
+				<div class="col-md-3 col-md-offset-9">
 					<div class=" form-group clearfix">
                                             <input type="hidden" value="<?php echo $product->id; ?>" id="product_id" name="product_id">
                                             <button id="btn-checkout" type="submit" class="btn btn-primary btn-product pull-left" style="">Checkout</button>
