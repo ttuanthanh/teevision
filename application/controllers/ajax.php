@@ -244,7 +244,7 @@ class Ajax extends Frontend_Controller {
 			mkdir($root, 0755, true);
 		
 		$config['upload_path']		= $root;
-		$config['allowed_types'] 	= 'gif|jpg|png|jpge';
+		$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
 		$config['max_size'] 		= 1024 * 10;		
  
 		$this->load->library('upload', $config);

@@ -116,7 +116,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 			<div class="form-group">
                             <b>If you wish, select a decoration for one or more of the areas below.</b>
                             <label for="">Select Number of Front Colors: </label>
-                            <select class="form-control text-center width-200" id="print-front-num">
+                            <select class="form-control text-center width-200" id="print-front-num" onchange="getQuote()">
                                 <option value="0" >==Select==</option>
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>
@@ -128,7 +128,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 
                             <br>
                             <label for="">Select Number of Back Colors: </label>
-                            <select class="form-control text-center width-200" id="print-back-num">
+                            <select class="form-control text-center width-200" id="print-back-num" onchange="getQuote()">
                                 <option value="0" >==Select==</option>
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>

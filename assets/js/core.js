@@ -129,6 +129,52 @@ jQuery(function() {
         }) ;
         
         jQuery(".btn-quote").click(function (){ 
+            getQuote();
+        });
+        jQuery(".color-swatches a").click(function (){ 
+            getQuote();
+        });
+        jQuery("ul.p-color-sizes li input").change(function (){ 
+            getQuote();
+        });
+        
+        
+        jQuery(".btn-order").click(function (){  
+            getQuote();
+            var color       = jQuery('#colors').val(),
+                attr_size   = getAttributeArray(jQuery('#attr-key').val());
+                
+            //Add color to submit
+            var input = $("<input>").attr({"type":"hidden", "name": "color"}).val(color);
+            $('#submit-quote').append($(input));
+            
+            //Add list size to submit
+            $.each(attr_size, function(i, v){
+                var size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
+                $('#submit-quote').append(size);    
+            });
+            
+            //Add list print location to submit
+            var print_f = $("<input>").attr({"type":"hidden", "name": "print-front"}).val(jQuery('#print-front-num').val());
+            var print_b = $("<input>").attr({"type":"hidden", "name": "print-back"}).val(jQuery('#print-back-num').val());
+            $('#submit-quote').append(print_f, print_b); 
+            
+            //Submit from to after quote page
+            $('#submit-quote').submit();
+        });
+        
+});
+
+function getAttributeArray(key) {
+    var attribute = {},
+        i = 0;    
+    $('input[name^="'+key+'"]').each(function() {
+        attribute[i++] =$(this).val(); 
+    });
+    return attribute;
+}
+
+function getQuote(){
             
             var product_id  = jQuery('#product_id').val(),
                 color       = jQuery('#is-color').val(),
@@ -174,38 +220,5 @@ jQuery(function() {
                                 jQuery('#f-price').val(return_price.unit_price+','+return_price.total_price+','+return_price.unit_price_full);
                             });
             
-        });
         
-        jQuery(".btn-order").click(function (){  
-            var color       = jQuery('#colors').val(),
-                attr_size   = getAttributeArray(jQuery('#attr-key').val());
-                
-            //Add color to submit
-            var input = $("<input>").attr({"type":"hidden", "name": "color"}).val(color);
-            $('#submit-quote').append($(input));
-            
-            //Add list size to submit
-            $.each(attr_size, function(i, v){
-                var size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
-                $('#submit-quote').append(size);    
-            });
-            
-            //Add list print location to submit
-            var print_f = $("<input>").attr({"type":"hidden", "name": "print-front"}).val(jQuery('#print-front-num').val());
-            var print_b = $("<input>").attr({"type":"hidden", "name": "print-back"}).val(jQuery('#print-back-num').val());
-            $('#submit-quote').append(print_f, print_b); 
-            
-            //Submit from to after quote page
-            $('#submit-quote').submit();
-        });
-        
-});
-
-function getAttributeArray(key) {
-    var attribute = {},
-        i = 0;    
-    $('input[name^="'+key+'"]').each(function() {
-        attribute[i++] =$(this).val(); 
-    });
-    return attribute;
-}
+        };
