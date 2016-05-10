@@ -196,12 +196,18 @@ class Cart extends Frontend_Controller {
 				}
 			}
 			
-			$result->cliparts = $clipartsPrice;							
-				
+			$result->cliparts = $clipartsPrice;	
+                        
+                        $print = array(0,0);
+                        $nprice = $this->getQuote($product_id, $colors, $attribute, $print);
+                        
 			$total	= new stdClass();
-			$total->old = $result->price->base + $result->price->colors + $result->price->prints;
-			$total->sale = $result->price->sale + $result->price->colors + $result->price->prints;
+			//$total->old = $result->price->base + $result->price->colors + $result->price->prints + $result->price->attribute;
+			//$total->sale = $result->price->sale + $result->price->colors + $result->price->prints+ $result->price->attribute;
 			
+                        $total->old     = $nprice['unit_price'];
+                        $total->sale    = $nprice['unit_price_full'];
+                        
 			if (count($result->cliparts))
 			{
 				foreach($result->cliparts as $view=>$art)
@@ -572,8 +578,8 @@ class Cart extends Frontend_Controller {
 				}
 			}
 			
-			$total->old 	= ($total->old * $quantity) + $result->price->attribute;
-			$total->sale 	= ($total->sale * $quantity) + $result->price->attribute;
+			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
+			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
 			
 			$total->old 	= number_format($total->old, 2, '.', ',');
 			$total->sale 	= number_format($total->sale, 2, '.', ',');
@@ -718,6 +724,122 @@ class Cart extends Frontend_Controller {
 		if ($this->cache->get('orders_designs'.$this->session_id))
 			$this->cache->delete('orders_designs'.$this->session_id);
 	}
+        
+        /**
+         * 
+         * Calculate shirt price
+         * 
+         * total = quantity * ( base price + print front + print back ) + 8% tax
+         * 
+         */
+        function getQuote($product_id, $colors, $attribute, $print)
+        {
+            //$product_id 	= $this->input->post('product_id', TRUE);
+            //$color = $this->input->post('color');
+            //$size = $this->input->post('size');
+            //$print = $this->input->post('print');
+            
+            /*
+            $product_id = 1;
+            $color = 0;
+            $size = [12,0,0,0,0,0];
+            $print = [2,2];
+            */
+            $color =  (strtoupper( $colors[key($colors)]) == 'FFFFFF') ? 0 : 1;
+                        
+            foreach ($attribute as $a)
+                foreach ($a as $b)
+                    foreach ($b as $value)
+                        $size[] = $value;
+            
+            $price_total = 0;
+            $this->load->model('product_m');
+            $this->load->model('print_price_m');
+            $attribute          = $this->product_m->getAttribute($product_id);
+            $arr_attribute['prices'] 		= json_decode($attribute->prices);
+            $arr_attribute['prices_color'] 	= json_decode($attribute->prices_color);
+             //Get print list
+            $pfront                 = $this->print_price_m->getFrontPrintPriceList();
+            $arr_front['id']        = $pfront->id;
+            $arr_front['quantity']  = json_decode($pfront->quantity);
+            $arr_front['prices']    = json_decode($pfront->prices);                        
+
+            $pback                  = $this->print_price_m->getBackPrintPriceList();
+            $arr_back['id']         = $pback->id;
+            $arr_back['quantity']   = json_decode($pback->quantity);
+            $arr_back['prices']     = json_decode($pback->prices);           
+            
+            $price_product = 0;
+            $quantity = 0;
+            if($color == 0){ //white
+                for($i = 0; $i < count($size); $i++){                    
+                    $price_product += $size[$i] * $arr_attribute['prices'][0][$i];
+                    $quantity += $size[$i];
+                }
+            }else{ //color
+                for($i = 0; $i < count($size); $i++){                    
+                    $price_product += $size[$i] * $arr_attribute['prices_color'][0][$i];
+                    $quantity += $size[$i];
+                }
+            }
+            
+            // SELECT THE LARGER PRINT LOCAT FOR FRONT PRICE
+            if ($print[0] < $print[1] )
+            {
+                $stem = $print[0]; $print[0] = $print[1]; $print[1] = $stem;
+            }
+            
+            
+            $price_front = 0;            
+            for($i = 0; $i < count($arr_front['quantity']); $i++){
+                if($quantity >= $arr_front['quantity'][$i][0] && $quantity <= $arr_front['quantity'][$i][1]){                    
+                    $price_front = $arr_front['prices'][$i][$print[0]];
+                    break;
+                }
+            }
+            $price_back = 0;
+            for($i = 0; $i < count($arr_back['quantity']); $i++){
+                if($quantity >= $arr_back['quantity'][$i][0] && $quantity <= $arr_back['quantity'][$i][1]){
+                    $price_back = $arr_back['prices'][$i][$print[1]];
+                    break;
+                }                    
+            }
+            $price_print = ($price_front + $price_back) * $quantity;
+            $price_total = $price_product + $price_print;
+            
+            
+            // Adding Setup charges : num of color * $20
+            $price_total += ( $print[0] + $print[1] ) * 20;            
+            
+            // Addding 8% tax            
+            $price_total += ($price_total * 8 ) /100;  
+            
+            //Add ship price - trangttm - 03/22/2016
+            $this->load->model('boxes_m');
+            $boxes = $this->boxes_m->getBoxes();
+            $arr_boxes['quantity']  = json_decode($boxes->quantity);
+            $arr_boxes['boxes']    = json_decode($boxes->boxes);
+            $number_boxes = 0;
+            for($i = 0; $i < count($arr_boxes['quantity']); $i++){
+                if($quantity >= $arr_boxes['quantity'][$i][0] && $quantity <= $arr_boxes['quantity'][$i][1]){                    
+                    $number_boxes = $arr_boxes['boxes'][$i];
+                    break;
+                }
+            }    
+            $this->load->model('settings_m');
+            $setting = $this->settings_m->getSetting();
+            $setting = json_decode($setting->settings);
+            $price_boxes = $setting->shippingbox;
+            
+            $price_total += ($number_boxes * $price_boxes);
+            
+            $data['quantity']           = $quantity;
+            $data['total_price']        = number_format(round($price_total,2),2);
+            $data['unit_price']         = number_format(round($price_total/$quantity, 2),2);
+            $data['unit_price_full']    = $price_total/$quantity;
+            
+            return $data;
+        }
 }
 
 ?>
