@@ -269,7 +269,7 @@ class Cart extends Frontend_Controller {
 				'prices'   		=> json_encode($result->price),
 				'cliparts'   	=> json_encode($result->cliparts),
 				'symbol'   		=> $result->symbol,
-				'customPrice'   => $result->price->attribute,
+				'customPrice'   => 0,//$result->price->attribute,
 				'name'    		=> $result->product->name,
 				'time'    		=> $time,
 				'options' 		=> json_decode(json_encode($result->options), true)
@@ -578,8 +578,8 @@ class Cart extends Frontend_Controller {
 				}
 			}
 			
-			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
-			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
+			$total->old 	= ($total->old * $quantity) + $result->price->attribute;
+			$total->sale 	= ($total->sale * $quantity) + $result->price->attribute;
 			
 			$total->old 	= number_format($total->old, 2, '.', ',');
 			$total->sale 	= number_format($total->sale, 2, '.', ',');
