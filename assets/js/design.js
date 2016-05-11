@@ -251,9 +251,9 @@ var design={
 		addJs: function(e){
 			var quantity = document.getElementById('quantity').value;
 				quantity = parseInt(quantity);
-			if (quantity == NaN || quantity < 1)
+			if (quantity == NaN || quantity < 12)
 			{
-				alert('Please add quantity or size');
+				alert('Please add quantity or size! Minimum order is 12 pieces');
 				return false;
 			}
 			if (quantity < min_order){
@@ -577,7 +577,7 @@ var design={
 		colors:function(view){
 			if (jQuery('#view-'+view+ ' .product-design').html() == '')
 			{
-				return design.colors;
+				return [];// design.colors;
 			}
 			
 			if (print_type == 'screen' || print_type == 'embroidery')
@@ -1162,7 +1162,7 @@ var design={
 				{
 					items['design'] = {};
 					print_type = data.product.print_type;
-					min_order = data.product.min_order;
+					min_order = 12;//data.product.min_order;
 					var list_color = jQuery('#product-list-colors');
 					list_color.html('');
 					jQuery.each(data.product.design.color_hex, function(i, color){

@@ -196,10 +196,11 @@ class Cart extends Frontend_Controller {
 				}
 			}
 			
-			$result->cliparts = $clipartsPrice;	
+			$result->cliparts = $clipartsPrice;	                        
                         
-                        $print = array(0,0);
-                        $nprice = $this->getQuote($product_id, $colors, $attribute, $print);
+                        $color_num = json_decode($print['colors']);
+                        $print_num = array(sizeof($color_num->front),sizeof($color_num->back));
+                        $nprice = $this->getQuote($product_id, $colors, $attribute, $print_num);
                         
 			$total	= new stdClass();
 			//$total->old = $result->price->base + $result->price->colors + $result->price->prints + $result->price->attribute;
@@ -271,6 +272,7 @@ class Cart extends Frontend_Controller {
 				'symbol'   		=> $result->symbol,
 				'customPrice'   => 0,//$result->price->attribute,
 				'name'    		=> $result->product->name,
+                                'print_number'          => array('front'=>$print_num[0], 'back'=>$print_num[1]),
 				'time'    		=> $time,
 				'options' 		=> json_decode(json_encode($result->options), true)
 			);
