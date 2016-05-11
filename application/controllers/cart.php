@@ -562,12 +562,18 @@ class Cart extends Frontend_Controller {
 			*/
 			
 			$result->cliparts = $clipartsPrice;
-			$result->quantity = $quantity;				
-				
+			$result->quantity = $quantity;	
+                        
+			$color_num = json_decode($print['colors']);
+	                $print_num = array(sizeof($color_num->front),sizeof($color_num->back));
+	                $nprice = $this->getQuote($product_id, $colors, $attribute, $print_num);
+	                        
 			$total	= new stdClass();
-			$total->old = $result->price->base + $result->price->colors + $result->price->prints;
-			$total->sale = $result->price->sale + $result->price->colors + $result->price->prints;
-				
+			//$total->old = $result->price->base + $result->price->colors + $result->price->prints;
+			//$total->sale = $result->price->sale + $result->price->colors + $result->price->prints;
+                        
+			$total->old     = $nprice['unit_price'];
+                        $total->sale    = $nprice['unit_price_full'];	
 			if (count($result->cliparts))
 			{
 				foreach($result->cliparts as $view=>$art)
@@ -580,8 +586,8 @@ class Cart extends Frontend_Controller {
 				}
 			}
 			
-			$total->old 	= ($total->old * $quantity) + $result->price->attribute;
-			$total->sale 	= ($total->sale * $quantity) + $result->price->attribute;
+			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
+			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
 			
 			$total->old 	= number_format($total->old, 2, '.', ',');
 			$total->sale 	= number_format($total->sale, 2, '.', ',');
@@ -783,6 +789,11 @@ class Cart extends Frontend_Controller {
                     $price_product += $size[$i] * $arr_attribute['prices_color'][0][$i];
                     $quantity += $size[$i];
                 }
+            }
+            
+            if($quantity == 0){
+                $data['quantity'] = $data['total_price'] = $data['unit_price'] = $data['unit_price_full'] = 0;
+                return $data;
             }
             
             // SELECT THE LARGER PRINT LOCAT FOR FRONT PRICE

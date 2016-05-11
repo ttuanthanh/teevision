@@ -236,10 +236,10 @@ var design={
 						jQuery('.price-sale-number').html(data.sale);
 						jQuery('.price-old-number').html(data.old);
 						
-						if (data.sale == data.old)
-							jQuery('#product-price-old').css('display', 'none');
-						else
-							jQuery('#product-price-old').css('display', 'inline');
+						//if (data.sale == data.old)
+						jQuery('#product-price-old').css('display', 'none');
+						//else
+						//	jQuery('#product-price-old').css('display', 'inline');
 					}
 				}
 			}).always(function(){
