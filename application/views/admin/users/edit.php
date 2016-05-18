@@ -120,8 +120,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 									
 								if($form->validate == 1)
 									echo '<input class="form-control validate required" type="text" name="fields['.$form->id.']" placeholder="'.$form->title.'" data-minlength="2" data-maxlength="200" data-msg="'.$form->title.' must be at least 2 to 200 characters." value="'.$data_fields[$form->id].'">';
-								else
-									echo '<input class="form-control" type="text" name="'.$form->name.'" value="'.$data_fields('fields')[$form->id].'">';
+								else{
+                                                                    $dataf = $data_fields('fields');
+                                                                    echo '<input class="form-control" type="text" name="'.$form->name.'" value="'.$dataf[$form->id].'">';
+                                                                }
+									
 							}
 							echo '</div>';
 						}else if($form->type == 'email'){
