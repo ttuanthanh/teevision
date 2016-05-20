@@ -207,6 +207,7 @@ function getQuote(){
             jQuery.ajax({   url:url, 
                             type: 'POST', 
                             data: { product_id: product_id, color: color, size: attribute, print: print},
+                            async: false,
                             beforeSend: function( xhr ) {
                                 //jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
                             }}).done(function(data){ 
@@ -218,7 +219,5 @@ function getQuote(){
                                 jQuery('#unit-price-value').html("$"+return_price.unit_price);
                                 jQuery('#total-price-value').html("$"+return_price.total_price);
                                 jQuery('#f-price').val(return_price.unit_price+','+return_price.total_price+','+return_price.unit_price_full);
-                            });
-            
-        
+                            });        
         };
