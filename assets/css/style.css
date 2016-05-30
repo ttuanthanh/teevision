@@ -1983,7 +1983,6 @@ width: 100%;
 .product-price-title {
   display: inline-block;
   float: left;
-  line-height: 28px;
   text-indent: 12px;
 }
 .product-price-list {

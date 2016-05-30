@@ -59,7 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						</li>
 						
 						<li>
-							<a href="javascript:void(0)" class="add_item_text" title="">
+                                                    <a href="javascript:void(0)" class="add_item_text" title="">
 								<i class="glyphicons text_bigger"></i> <?php echo $lang['designer_menu_add_text']; ?>
 							</a>
 						</li>

@@ -1143,6 +1143,7 @@ var design={
 			design.item.designini(items, n);
 			var a = jQuery('#product-thumbs a');
 			design.products.changeView(a[0], 'front');
+                        design.ajax.getPrice();
 		},
 		changeDesign: function(e){
 			var a = document.getElementById('product-thumbs').getElementsByTagName('a');
@@ -1652,7 +1653,8 @@ var design={
 			txt.fontFamily = 'arial';
 			txt.stroke = 'none';
 			txt.strokew = '0';
-			this.add(txt);			
+			this.add(txt);	
+                        design.ajax.getPrice();
 		},
 		setValue: function(o){
 			$jd('#enter-text').val(o.text);
@@ -2111,7 +2113,8 @@ var design={
 							var svg = elm.children('svg');
 							var html = jQuery(svg[0]).html();
 							jQuery(svg[0]).html('<g>'+html+'</g>');
-							$jd('.modal').modal('hide');					
+							$jd('.modal').modal('hide');
+                                                        design.ajax.getPrice();
 					},
 					failure: function(errMsg) {
 						alert(errMsg+ '. Please try again');
@@ -2121,6 +2124,7 @@ var design={
 					}
 				});
 			}
+                        
 		},
 		/*
 		* change object e from color1 to color2
@@ -2318,6 +2322,9 @@ var design={
 			{
 				alert('Please select a color.');
 			}
+                        else if ( i > 5) {
+                            alert('Maximum color is 5.');
+                        }
 			else
 			{
 				var o = this.get();
@@ -2330,6 +2337,7 @@ var design={
 				jQuery('#screen_colors_body').hide();
 			}
 			design.print.colors();
+                        design.ajax.getPrice();
 		},
 		printColor: function(o){
 			var box = jQuery('#item-print-colors');
@@ -2633,6 +2641,7 @@ var design={
 			jQuery( "#dg-popover" ).hide('slow');			
 			design.print.colors();
 			design.print.size();
+                        design.ajax.getPrice();
 			return;
 		},
 		setup: function(item){
@@ -2777,6 +2786,7 @@ var design={
 			}
 			jQuery('.dropdown-color').popover('hide');
 			design.print.colors();
+                        design.ajax.getPrice();
 		},
 		update: function(e){			
 			var o = $jd(e),
@@ -2885,6 +2895,7 @@ var design={
 			$jd('#layer-'+id).remove();
 			if (typeof e[0] != 'undefined')
 			design.item.remove(e[0]);
+                        design.ajax.getPrice();
 		},
 		sort: function(){
 			var zIndex = $jd('#layers .layer').length;
