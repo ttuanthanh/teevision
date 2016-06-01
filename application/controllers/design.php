@@ -66,7 +66,7 @@ class Design extends Frontend_Controller {
 				$attribute 				= $this->product_m->getAttribute($product->id);
 				if (count($attribute)) 
 				{					
-					$product->attribute = $help_design->displayAttributes($attribute);
+					$product->attribute = $help_design->displayAttributesDesign($attribute);
 				}
 				else
 				{

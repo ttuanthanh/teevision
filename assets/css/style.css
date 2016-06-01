@@ -1391,7 +1391,7 @@ width: 100%;
 .product-prices {
   padding: 10px 0;
 }
-.product-prices button.btn-addcart{
+.product-prices button.btn-addcart, .modal-footer button.btn-addcart{
       background-color: #f65e13;
     font-size: 14px;
     font-weight: bold;
@@ -1401,7 +1401,7 @@ width: 100%;
     border-radius: 0px;
     height: 45px;
 }
-}
+
 .product-prices .glyphicons.shopping_cart:before {
   color: #fff;
   font-size: 18px;
@@ -2146,4 +2146,10 @@ color: #fff;
   margin-bottom: 0;
   font-size: 14px;
     border-radius: 4px;
+}
+
+#dg-total-mess{
+    font-size: 16px;
+    font-weight: bold;
+    color: #08C;
 }

@@ -260,14 +260,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										</div>										
 									</div>
 									<?php } ?>
-									
-									<form method="POST" id="tool_cart" name="tool_cart" action="">
-									<div class="product-info" id="product-attributes">
-										<?php if (isset($product->attribute)) { ?>
-											<?php echo $product->attribute; ?>
-										<?php } ?>										
-									</div>
-									</form>									
+																	
 								</div>
 							<?php } ?>
 							</div>
@@ -294,7 +287,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								</div>
 								<span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i class="glyphicons restart"></i></span>
 							</div>
-							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								
+<!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
+                                                        <button type="button" class="btn btn-warning btn-addcart" data-toggle="modal" data-target="#dg-select-quality"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>
 						</div>
 					</div>
 				</div>
@@ -373,7 +367,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 	</div>
 	<!-- End product info -->
-	
+        
+	<!-- begin select quality -->
+        <form method="POST" id="tool_cart" name="tool_cart" action="">
+        <div class="product-info" id="product-attributes">
+                <?php if (isset($product->attribute)) { ?>
+                        <?php echo $product->attribute; ?>
+                <?php } ?>										
+        </div>
+        </form>	
+        <!-- begin select quality -->
+        
 	<!-- Begin Login -->
 	<div class="modal fade" id="f-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div id="f-login-content" class="modal-dialog">

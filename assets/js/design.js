@@ -209,6 +209,7 @@ var design={
 			{
 				var obj = JSON.parse('{"' + decodeURI(attributes).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
 				datas = jQuery.extend(datas, obj);
+                                
 			}
 			
 			datas.cliparts = design.exports.cliparts();
@@ -217,7 +218,7 @@ var design={
 		},
 		getPrice: function(){
 			var datas = this.form();
-			
+			if (datas == false) return;
 			var lable = jQuery('#product-price .product-price-title');
 			var div = jQuery('#product-price .product-price-list');
 			var title = lable.html();
@@ -227,13 +228,15 @@ var design={
 				type: "POST",
 				dataType: "json",
 				url: baseURL + "cart/prices",
-				data: datas
+				data: datas,
+                                async: false
 			}).done(function( data ) {
 				if (data != '')
 				{
 					if (typeof data.sale != 'undefined')
 					{
 						jQuery('.price-sale-number').html(data.sale);
+                                                jQuery('#dg-total-mess').html('Total: $'+data.sale);
 						jQuery('.price-old-number').html(data.old);
 						
 						//if (data.sale == data.old)
@@ -248,10 +251,24 @@ var design={
 				design.print.colors();
 			});
 		},
+                checkGetPrice: function(quantity){
+                        if (quantity < 12)
+                        {
+                            jQuery('#dg-messq').show().html('*Minimum order is 12 pieces');
+                            jQuery('#dg-total-mess').hide();
+                            jQuery('#change-product-quanlity').hide();
+                        }
+                        else{
+                            jQuery('#dg-messq').hide();
+                            jQuery('#dg-total-mess').show();
+                            jQuery('#change-product-quanlity').show();
+                            design.ajax.getPrice()
+                        }
+		},
 		addJs: function(e){
 			var quantity = document.getElementById('quantity').value;
 				quantity = parseInt(quantity);
-			if (quantity == NaN || quantity < 12)
+			if (quantity == NaN)
 			{
 				alert('Please add quantity or size! Minimum order is 12 pieces');
 				return false;
@@ -1122,7 +1139,9 @@ var design={
 				}
 				sizes = parseInt(sizes) + parseInt(value);
 			});
+                        
 			document.getElementById('quantity').value = sizes;
+                        design.ajax.checkGetPrice(sizes);
 		},
 		changeView: function(e, postion){
 			design.item.unselect();

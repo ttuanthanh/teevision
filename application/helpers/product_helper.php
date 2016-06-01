@@ -203,6 +203,108 @@ class helperProduct
 		return $html;
 	}
         
+        public function displayAttributesDesign($attribute)
+	{
+		if (isset($attribute->name) && $attribute->name != '')
+		{
+			$attrs = new stdClass();
+		
+			$attrs->name 		= json_decode($attribute->name);
+			$attrs->titles 		= json_decode($attribute->titles);
+			$attrs->prices 		= json_decode($attribute->prices);
+			$attrs->type 		= json_decode($attribute->type);
+			
+			$html 				= '';
+			for ($i=0; $i<count($attrs->name); $i++)
+			{
+                                $html = '<div class="modal fade" id="dg-select-quality" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>						
+                                                                    <h4 class="modal-title" id="myModalLabel">'.$attrs->name[$i].'</h4>
+                                                            </div>
+                                                            <div class="modal-body" id="design-quality">';
+				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
+				
+				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
+				$html 	.= 		$this->field($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id);
+				
+				$html 	.= '</div>';
+                                
+                                $html .= '<div id="dg-messq" style="display:none; color:red"></div>';
+                                $html .= '<hr>'
+                                        . '<div id="dg-total-mess"></div>';
+                                $html .=     '</div>
+                                                <div class="modal-footer">                                                        
+                                                        <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>';
+			}
+			return $html;
+		}
+		else
+		{
+			return '';
+		}
+	}
+	
+	function fieldDesign($name, $title, $price, $type, $id)
+	{
+		$html = '<div class="dg-poduct-fields ">';
+		switch($type)
+		{
+			case 'checkbox':
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<label class="checkbox-inline">';
+					$html .= 	'<input type="checkbox" name="'.$id.'['.$i.']" value="'.$i.'"> '.$title[$i];
+					$html .= '</label>';
+				}
+			break;
+			
+			case 'selectbox':
+				$html .= '<select class="form-control input-sm" name="'.$id.'">';
+				
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<option value="'.$i.'">'.$title[$i].'</option>';
+				}
+				
+				$html .= '</select>';
+			break;
+			
+			case 'radio':
+				for ($i=0; $i<count($title); $i++)
+				{
+					$html .= '<label class="radio-inline">';
+					$html .= 	'<input type="radio" name="'.$id.'" value="'.$i.'"> '.$title[$i];
+					$html .= '</label>';
+				}
+			break;
+			
+			case 'textlist':
+				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
+				for ($i=0; $i<count($title); $i++)
+				{
+                                        if ($i == 0) $value = 'value="12"'; else $value = '';
+					$html .= '<li>';
+					$html .= 	'<label>'.$title[$i].'</label>';
+					$html .= 	'<input type="text" class="form-control input-sm size-number" name="'.$id.'['.$i.']" '.$value.'>';					
+					$html .= '</li>';
+                                         
+				}
+                                $html .= '<input type="hidden" id="attr-key" value="'.$id.'">';
+				$html 		.= '</ul>';
+			break;
+		}
+		$html	.= '</div>';
+		
+		return $html;
+	}
+        
         
 	public function displayAttributesQuote($attribute, $size, $option = FALSE)
 	{
