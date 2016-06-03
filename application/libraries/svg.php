@@ -7,6 +7,7 @@
  * @license    GNU General Public License version 2 or later; see LICENSE
  *
  */
+ini_set('allow_url_fopen',1);
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class svg{
@@ -21,7 +22,13 @@ class svg{
 			$this->file = $file;
 			if($xml === true)
 			{
-				$data = file_get_contents($file);							
+				//$data = file_get_contents($file);
+                                $url = $file;
+                                $ch = curl_init();
+                                curl_setopt ($ch, CURLOPT_URL, $url);
+                                curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                                curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+                                $data = curl_exec($ch);
 				$this->xml = simplexml_load_string($data);
 			}
 		}
