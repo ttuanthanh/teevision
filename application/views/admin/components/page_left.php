@@ -75,6 +75,11 @@
 					<span class="selected"></span>
 				</a>
 				<ul class="sub-menu">
+                                        <li <?php if($segments[2] == 'schedules') echo 'class="active open"'; ?>>
+						<a href="<?php echo site_url("admin/orders/schedules"); ?>">
+							<span class="title">Scheduler</span>
+						</a>
+					</li>
 					<li <?php if($segments[2] == 'orders') echo 'class="active open"'; ?>>
 						<a href="<?php echo site_url("admin/orders"); ?>">
 							<span class="title"><?php echo lang('page_left_admin_customer_orders');?></span>
