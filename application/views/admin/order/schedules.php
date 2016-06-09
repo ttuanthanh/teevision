@@ -97,21 +97,23 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</tr>
 			</thead>
 			<tbody>
+                            <?php //var_dump($orders); ?>
+                            <?php foreach($orders as $order) { ?>
 				<tr>
                                     <td class="center">    
                                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCr6Vm-aDHk3qstdsbedE0QNc55b02tjYb6rM2TvlJ6uv13KHD" width="20" height="20"/>
                                     </td>
                                     <td class="center">    
-                                        <a href="kaka">1234</a>
+                                        <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                       May 7
+                                      <?php echo $order->created_on; ?>
                                     </td>
                                     <td class="center">   
-                                        Trần thị mỹ trang
+                                        <?php echo $order->name; ?>
                                     </td>
                                     <td class="center">
-                                        12
+                                       12
                                     </td>
                                     <td class="center"> 
                                         No
@@ -137,7 +139,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <td class="center">    
                                         Yes
                                     </td>
-				</tr>
+				</tr>				
+			<?php } ?>
 			</tbody>
 		</table>
 		<div class="pull-right">

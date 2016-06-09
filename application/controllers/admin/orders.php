@@ -213,7 +213,7 @@ class Orders extends Admin_Controller
 	}
 		
 	
-	function detail($id = '')
+	function detailbk($id = '')
 	{		
 		if((int)$id == 0)
 			redirect('admin/orders');
@@ -747,6 +747,92 @@ class Orders extends Admin_Controller
 		
                 // Load view
 		$this->data['subview'] = 'admin/order/schedules';
+		$this->load->view('admin/_layout_main', $this->data);
+	}
+        function detail($id = '')
+	{		
+		if((int)$id == 0)
+			redirect('admin/orders');
+			
+		$this->data['breadcrumb'] = lang('orders_admin_order_title');
+                $this->data['meta_title'] = lang('orders_admin_orders_title');
+                $this->data['sub_title'] = lang('detail');
+		
+		// get order detail
+		$order 	= $this->order_m->getOrder($id);
+		
+		if(count($order) == 0)
+		{		
+			$this->session->set_flashdata('error', lang('orders_admin_item_id_not_found_msg'.$id));
+			redirect('admin/orders');			
+		}		
+		
+		// get items
+		$this->data['order'] = $order;
+		$items = $this->order_m->getItems($id);
+		$this->data['items'] = $items;
+		
+		// get cliparts
+		$listClipart = array();
+		$cliparts = $this->order_m->getCliparts($id);
+		
+		$i = 0;
+		foreach($cliparts as $clipart)
+		{
+			foreach($clipart as $key=>$val)
+			{				
+			}
+			$i++;
+		}
+		$this->data['listClipart'] = $listClipart;
+		
+		// get setting
+		$this->load->model('settings_m');
+		$row 	= $this->settings_m->getSetting();
+		$setting = json_decode($row->settings);
+		$this->data['setting'] = $setting;
+		
+		// get histories
+		$this->data['histories'] = $this->order_m->getHistory($id);
+		
+		// get user info
+		$userInfo	= $this->order_m->getUserInfo($id);
+		if ($userInfo !== false)
+		{
+			$address	= json_decode($userInfo->address);
+		}
+		else
+		{
+			$address	= false;
+		}
+		$this->data['address'] = $address;
+		
+		
+		// get shipping method
+		$this->load->model('shipping_m');
+		$shipping	= $this->shipping_m->get($order->shipping_id, true);
+		$this->data['shipping'] = $shipping;
+		
+		// get payment method
+		$this->load->model('payment_m');
+		$payment	= $this->payment_m->get($order->payment_id, true);
+		$this->data['payment'] = $payment;
+		
+		// get discount
+		if ($order->discount_id > 0)
+		{
+			$this->load->model('coupon_m');
+			$discount	= $this->coupon_m->get($order->discount_id, true);
+		}
+		else
+		{
+			$discount	= array();
+		}
+		$this->data['discount'] = $discount;
+		
+		
+		// Load view
+		$this->data['subview'] = 'admin/order/detail';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 

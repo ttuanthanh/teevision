@@ -39,6 +39,7 @@ $this->load->view('admin/components/page_head');
 								<a href="http://teevisionprinting.com/" target="_blank">Help & Support</a>
 							</li>
 						</ol>
+                                                <?php if($meta_title != 'Orders' ) { ?>
 						<div class="page-header">
 							<h1>
 								<?php echo $meta_title; ?>
@@ -47,6 +48,10 @@ $this->load->view('admin/components/page_head');
 								<?php } ?>
 							</h1>
 						</div>
+                                                <?php } else {
+                                                    echo '<br>';
+                                                }
+?>
 						<!-- end: PAGE TITLE & BREADCRUMB -->
 					</div>
 				</div>
