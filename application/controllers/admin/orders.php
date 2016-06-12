@@ -835,5 +835,64 @@ class Orders extends Admin_Controller
 		$this->data['subview'] = 'admin/order/detail';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
+        
+        function garment($id = '')
+	{		
+		$this->data['breadcrumb'] = lang('orders_admin_orders_title');
+                $this->data['meta_title'] = lang('orders_admin_orders_title');
+                $this->data['sub_title'] = '';
+		
+		// load settting
+		$this->load->model('settings_m');
+		$row 	= $this->settings_m->getSetting();
+		$setting = json_decode($row->settings);
+		
+		$this->data['setting'] 	= $setting;	
+
+		if ($this->input->post('option'))
+		{		
+			$this->session->set_userdata('search_order', $this->input->post('search'));
+			$this->session->set_userdata('option_order', $this->input->post('option_order'));
+		}
+		
+		// pagination
+		$this->load->library('pagination');
+		$config['base_url'] 		= site_url('admin/orders/index');
+		$config['total_rows']		= $this->order_m->getOrders(true, 5, 1, $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		
+		if ($this->input->post('option'))
+		{
+			if ($this->input->post('option') == '')
+				$this->session->set_userdata('per_page', $config['total_rows']);
+			else
+				$this->session->set_userdata('per_page', $this->input->post('per_page'));
+		}
+		
+		if($this->session->userdata('per_page') != '')
+			$config['per_page'] = $this->session->userdata('per_page');
+		else
+			$config['per_page'] 	= 20;
+		
+		$config['uri_segment'] 		= 4;
+		$config['prev_link'] 		= '&larr;';
+		$config['next_link'] 		= '&rarr;';
+		$config['first_link']		= '&laquo;';
+		$config['last_link'] 		= '&raquo;';
+		
+		$this->pagination->initialize($config); 
+		$this->data['per_page'] = $config['per_page'];
+		$this->data['links'] 	= $this->pagination->create_links();
+		$this->data['per_page'] 	= $config['per_page'];
+		$this->data['search'] = $this->session->userdata('search_order');
+		$this->data['option'] = $this->session->userdata('option_order');
+		
+		$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		$this->data['orders'] = $orders; 
+		
+		
+		// Load view
+		$this->data['subview'] = 'admin/order/garment';
+		$this->load->view('admin/_layout_main', $this->data);
+	}
 
 }
