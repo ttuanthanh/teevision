@@ -117,9 +117,11 @@ class Order_m extends MY_Model
 	// get all orders
 	public function getOrders($count = false, $number = 5, $offset = 1, $search='', $option='')
 	{
-		$this->db->select('orders.*, name');
+		$this->db->select('orders.*, name, (created_on + INTERVAL ship_day DAY ) ship_date');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
+                
+                $this->db->join('shippings', 'orders.shipping_id = shippings.id');
 		
 		if($option == 'order_number' && $search != '')
 		{

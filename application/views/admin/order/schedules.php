@@ -97,7 +97,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</tr>
 			</thead>
 			<tbody>
-                            <?php //var_dump($orders); ?>
+                            <?php //var_dump($orders[0]); ?>
                             <?php foreach($orders as $order) { ?>
 				<tr>
                                     <td class="center">    
@@ -116,13 +116,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                        12
                                     </td>
                                     <td class="center"> 
-                                        No
+                                        <?php if( $order->custom_file=='')
+                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; ?>
                                     </td>
-                                    <td class="center">  
-                                        <input type="checkbox">
+                                    <td class="center"> 
+                                        <?php if( $order->apparel != '') {?>
+                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <?php } else {?>
+                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                        <?php } ?>
                                     </td>
                                     <td class="center">      
-                                        May 26
+                                        <?php 
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        ?>
                                     </td>
                                     <td class="center">
                                         May 30
