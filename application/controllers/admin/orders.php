@@ -296,7 +296,7 @@ class Orders extends Admin_Controller
 		
 		
 		// Load view
-		$this->data['subview'] = 'admin/order/detail';
+		$this->data['subview'] = 'admin/order/detailnew';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 	
@@ -742,7 +742,7 @@ class Orders extends Admin_Controller
 		$this->data['search'] = $this->session->userdata('search_order');
 		$this->data['option'] = $this->session->userdata('option_order');
 		
-		$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		$orders = $this->order_m->getOrdersSched(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
 		$this->data['orders'] = $orders; 
 		
                 // Load view

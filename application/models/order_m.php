@@ -150,6 +150,45 @@ class Order_m extends MY_Model
 		}
 	}
 	
+        
+	// get all orders
+	public function getOrdersSched($count = false, $number = 5, $offset = 1, $search='', $option='')
+	{
+		$this->db->select('orders.*, name, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
+				
+		$this->db->join('users', 'orders.user_id = users.id');
+                
+                $this->db->join('shippings', 'orders.shipping_id = shippings.id');
+                
+                $this->db->join('order_items', 'orders.id = order_items.order_id');
+		
+		if($option == 'order_number' && $search != '')
+		{
+			$this->db->like('orders.order_number', $search);
+		}
+		elseif( $option == 'customer' && $search != '')
+		{			
+			$this->db->like('users.username', $search);
+		}
+		elseif($option == 'date' && $search != '')
+		{
+			$this->db->like('orders.created_on', $search);
+		}
+		
+		$this->db->order_by("created_on", "DESC"); 
+		
+		if ( $count == true )
+		{
+			$query = $this->db->get('orders');			
+			return count($query->result());
+		}
+		else 
+		{
+			$query = $this->db->get('orders', $number, $offset);			
+			return $query->result();
+		}
+	}
+        
 	// get order detail
 	function getOrder($id)
 	{

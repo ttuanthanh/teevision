@@ -139,10 +139,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         Yes
                                     </td>
                                     <td class="center">     
-                                        Yes
+                                        <?php
+                                            $design_option   = json_decode($order->design_option);
+                                            $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
+                                            //var_dump($design_images);
+                                            if ( isset($design_images->front) || isset($design_images->back))
+                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>';
+                                        ?>
                                     </td>
                                     <td class="center">  
-                                        <input value="" />
+                                        <b>#1221433</b>
                                     </td>
                                     <td class="center">    
                                         Yes
