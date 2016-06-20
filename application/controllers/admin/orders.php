@@ -759,7 +759,7 @@ class Orders extends Admin_Controller
                 $this->data['sub_title'] = lang('detail');
 		
 		// get order detail
-		$order 	= $this->order_m->getOrder($id);
+		$order 	= $this->order_m->getOrderSchedule($id);
 		
 		if(count($order) == 0)
 		{		

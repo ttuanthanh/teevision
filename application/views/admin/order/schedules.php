@@ -136,9 +136,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         May 30
                                     </td>
                                     <td class="center">     
-                                        Yes
-                                    </td>
-                                    <td class="center">     
                                         <?php
                                             $design_option   = json_decode($order->design_option);
                                             $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
@@ -146,6 +143,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             if ( isset($design_images->front) || isset($design_images->back))
                                                 echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>';
                                         ?>
+                                    </td>
+                                    <td class="center">     
+                                        <?php if( $order->proof_approved != 0) {?>
+                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <?php } else {?>
+                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                        <?php } ?>
                                     </td>
                                     <td class="center">  
                                         <b>#1221433</b>

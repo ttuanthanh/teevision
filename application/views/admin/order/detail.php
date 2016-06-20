@@ -31,53 +31,78 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <table id="sample-table-1" class="table table-bordered table-hover">
                             <thead>
                                     <tr>
-                                            <th class="center">Number</th>
-                                            <th class="center">Name</th>
+                                            <th class="center">Order</th>
                                             <th class="center">Order Date</th>
-                                            <th class="center">Ship date</th>
-                                            <th class="center">Due Date</th>
-                                            <th class="center">Garments</th>
-                                            <th class="center">Artwork</th>
+                                            <th class="center">Name</th>
+                                            <th class="center">#</th>
                                             <th class="center">C?</th>
+                                            <th class="center">Apparel Order</th>
+                                            <th class="center">Ship Date</th>
+                                            <th class="center">Due Date</th>
+                                            <th class="center">Artwork</th>
+                                            <th class="center">Proof</th>
                                             <th class="center">Tracking Number</th>
                                             <th class="center">Balance</th>
                                     </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($order)) { ?>
+                                
                                     <tr>
                                         <td class="center">    
-                                            <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
-                                        </td>                                    
-                                        <td class="center">   
-                                            <?php echo $order->name; ?>
-                                        </td>
-                                        <td class="center"> 
-                                          <?php echo $order->created_on; ?>
-                                        </td>
-                                        <td class="center">      
-                                            May 26
-                                        </td>
-                                        <td class="center">
-                                            May 30
-                                        </td>
-                                        <td class="center">     
-                                            Yes
-                                        </td>
-                                        <td class="center">     
-                                            Yes
-                                        </td>
-                                        <td class="center">      
-                                            No
-                                        </td>
-                                        <td class="center">  
-                                            <input value="" />
-                                        </td>
-                                        <td class="center">    
-                                            Yes
-                                        </td>
-                                    </tr>				
-                            <?php } ?>
+                                        <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
+                                    </td>
+                                    <td class="center"> 
+                                      <?php echo $order->created_on; ?>
+                                    </td>
+                                    <td class="center">   
+                                        <?php echo $order->name; ?>
+                                    </td>
+                                    <td class="center">
+                                       12
+                                    </td>
+                                    <td class="center"> 
+                                        <?php if( $order->custom_file=='')
+                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; ?>
+                                    </td>
+                                    <td class="center"> 
+                                        <?php if( $order->apparel != '') {?>
+                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <?php } else {?>
+                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                        <?php } ?>
+                                    </td>
+                                    <td class="center">      
+                                        <?php 
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        ?>
+                                    </td>
+                                    <td class="center">
+                                        May 30
+                                    </td>
+                                    <td class="center">     
+                                        <?php
+                                            $design_option   = json_decode($order->design_option);
+                                            $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
+                                            //var_dump($design_images);
+                                            if ( isset($design_images->front) || isset($design_images->back))
+                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>';
+                                        ?>
+                                    </td>
+                                    <td class="center">     
+                                        <?php if( $order->proof_approved != 0) {?>
+                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <?php } else {?>
+                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                        <?php } ?>
+                                    </td>
+                                    <td class="center">  
+                                        <b>#1221433</b>
+                                    </td>
+                                    <td class="center">    
+                                        Yes
+                                    </td>
+                                    </tr>
                             </tbody>
                     </table>
     </div> 

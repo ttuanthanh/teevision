@@ -8,3 +8,6 @@ ADD COLUMN `apparel`  varchar(255) NULL AFTER `custom_file`;
 ALTER TABLE `dg_shippings`
 ADD COLUMN `ship_day`  int NULL AFTER `price`;
 
+ALTER TABLE `dg_orders`
+ADD COLUMN `proof_approved`  tinyint NULL DEFAULT 0 AFTER `apparel`;
+

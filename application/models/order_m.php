@@ -202,6 +202,24 @@ class Order_m extends MY_Model
 		
 		return $query->row();
 	}
+        
+        // get order detail
+	function getOrderSchedule($id)
+	{
+                $this->db->select('orders.*, name, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
+				
+		$this->db->join('users', 'orders.user_id = users.id');
+                
+                $this->db->join('shippings', 'orders.shipping_id = shippings.id');
+                
+                $this->db->join('order_items', 'orders.id = order_items.order_id'); 
+		
+		$this->db->where('orders.id', $id);
+		
+		$query = $this->db->get('orders');
+		
+		return $query->row();
+	}
 	
 	// get all items of order
 	function getItems($order_id)
