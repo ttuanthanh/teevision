@@ -159,11 +159,17 @@ class Payment extends Frontend_Controller
 				}
 				$this->coupon_m->save($coupon, $items['metod']->discount->id);
 			}
+                        $totalq = 0;
+                        foreach($items['cart'] as $item)
+                            $totalq += $item['qty'];
+                        
+                        
 			$order['shipping_id']	= $items['metod']->shipping->id;
 			$order['shipping_price']= $items['metod']->shipping->price;
 			$order['sub_total']		= $items['metod']->subtotal;
 			$order['total']			= $order['sub_total'] + $order['shipping_price'] - $order['discount'];			
 			$order['status']		= 'pending';
+                        $order['total_qty']		= $totalq;
 			$order_id 				= $this->order_m->save($order, null);
 			
 			

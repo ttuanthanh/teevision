@@ -113,7 +113,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php echo $order->name; ?>
                                     </td>
                                     <td class="center">
-                                       12
+                                       <?php echo $order->total_qty; ?>
                                     </td>
                                     <td class="center"> 
                                         <?php if( $order->custom_file=='')

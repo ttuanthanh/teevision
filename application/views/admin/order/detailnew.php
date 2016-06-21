@@ -49,7 +49,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<div class="col-sm-5 pull-left">
 								<div class="order_detail">
 									<h4><?php echo lang('orders_admin_billing_details_title');?></h4>
-                                                                        <?php var_dump($order) ?>
+                                                                        <?php //var_dump($order) ?>
 									<div class="row">
 										<label class="col-sm-5 text-right"><?php echo lang('name'); ?>:</label>
 										<span class="col-sm-7 text-left">
