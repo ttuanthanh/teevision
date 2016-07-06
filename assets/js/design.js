@@ -172,6 +172,9 @@ var design={
 			});
 		});
 		
+                jQuery('.inp-team-name').hide();
+                jQuery('.inp-team-num').hide();
+                
 		design.item.designini(items);		
 		design.designer.loadColors();
 		design.designer.loadFonts();
@@ -1455,6 +1458,7 @@ var design={
 				var index = id.replace('item-', '');
 				design.layers.remove(index);
 				jQuery('.labView.active .drag-item-name').remove();
+                                this.hideTableTeam();
 			}
 		},
 		addNumber: function(e){
@@ -1479,10 +1483,19 @@ var design={
 				var index = id.replace('item-', '');
 				design.layers.remove(index);
 				jQuery('.labView.active .drag-item-number').remove();
+                                this.hideTableTeam();
 			}
 		},
 		addMember: function(team){
-			var i = 1;
+			var i = 1,
+                            cname   = document.getElementById('team_add_name').checked,
+                            cnum    = document.getElementById('team_add_number').checked;
+                        
+                        if(!cname && !cnum){
+                            jQuery('#team_msg_error').html('Please select add name or number first.').css('display', 'block');
+                            return;
+                        }
+                            
 			jQuery('#table-team-list tbody tr').each(function(){
 				var td = jQuery(this).find('td');
 					td[0].innerHTML = i;
@@ -1498,10 +1511,10 @@ var design={
 			var sizes = this.sizes(team.size);
 			var html = '<tr>'
 					 + 	'<td>'+i+'</td>'					 
-					 + 	'<td>'
+					 + 	'<td class="inp-team-name">'
 					 + 		'<input type="text" class="form-control input-sm" value="'+team.name+'" placeholder="Enter Name">'
 					 + 	'</td>'
-					 + 	'<td>'
+					 + 	'<td class="inp-team-num">'
 					 + 		'<input type="text" class="form-control input-sm" value="'+team.number+'" placeholder="Enter Number">'
 					 + 	'</td>'
 					 + 	'<td>'+sizes+'</td>'
@@ -1510,6 +1523,11 @@ var design={
 					 + 	'</td>'
 					 + '</tr>';
 			jQuery('#table-team-list tbody').append(html);
+                        if(!cname) jQuery('.inp-team-name').hide();
+                        else jQuery('.inp-team-name').show();
+                        if(!cnum) jQuery('.inp-team-num').hide();
+                        else jQuery('.inp-team-num').show();
+                        
 		},
 		removeMember: function(e){
 			jQuery(e).parents('tr').remove();
@@ -1520,6 +1538,54 @@ var design={
 				i++;
 			});
 		},
+                checkSelect: function(){
+                    var cname   = document.getElementById('team_add_name').checked,
+                        cnum    = document.getElementById('team_add_number').checked;
+                    if(!cname) jQuery('.inp-team-name').hide();
+                    else jQuery('.inp-team-name').show();
+                    if(!cnum) jQuery('.inp-team-num').hide();
+                    else jQuery('.inp-team-num').show();
+                },
+                hideTableTeam: function(){
+                    var cname   = document.getElementById('team_add_name').checked,
+                        cnum    = document.getElementById('team_add_number').checked,
+                        table   = jQuery('#item_team_list tbody');
+                        tableb   = jQuery('#table-team-list tbody');
+                    console.log(table.html());
+                    if(!cname && !cnum) {
+                        delete design.teams.name ;
+                        delete design.teams.number ;
+                        table.html('');
+                        tableb.html('');
+                        this.resetSizeNumber();
+                        design.ajax.getPrice();
+                    }                        
+                },
+                resetTeam: function(){
+                    console.log(design.teams);
+                    var cname   = document.getElementById('team_add_name').checked,
+                        cnum    = document.getElementById('team_add_number').checked;
+                    if(!cname)
+                        delete design.teams.name ;
+                    if(!cnum)
+                        delete design.teams.number ;
+                },
+                resetSizeNumber: function (){
+                    var i=0;
+                    jQuery('.size-number').each(function(){
+                            var lable = jQuery(this).parent().find('label').text();
+                            var value = jQuery(this).attr('name');
+                                    value = value.replace('][', '-');
+                                    value = value.replace('][', '-');
+                                    value = value.replace(']', '');
+                                    value = value.replace('[', '');
+                                    value = value.replace('attribute', '');                           
+                            if (i == 0) jQuery(this).val(12);
+                            else jQuery(this).val(0);
+                            i++
+                    });
+                    design.products.sizes();
+                },
 		setup: function(){
 			var sizes = this.sizes('');
 			jQuery('#table-team-list tbody tr').each(function(){
@@ -1561,7 +1627,8 @@ var design={
 			return select;
 		},
 		changeSize: function(){
-			if(typeof design.teams.name != 'undefined')
+                        console.log(design.teams.name);
+			if(typeof design.teams.name != 'undefined' || typeof design.teams.number != 'undefined')
 			{
 				this.create();
 				jQuery('#dg-item_team_list').modal();
@@ -1578,7 +1645,7 @@ var design={
 				var name = jQuery(td[1]).find('input').val();
 				var number = jQuery(td[2]).find('input').val();
 				var size = jQuery(td[3]).find('select').val();
-				if (name == '' || number == '')
+				if (name == '' && number == '')
 				{
 					checked = false;
 				}
@@ -1597,8 +1664,10 @@ var design={
 				jQuery('#team_msg_error').css('display', 'none');
 				jQuery('#dg-item_team_list').modal('hide');
 				this.tableView(teams);
+                                this.checkSelect();
+                                design.teams = teams;
 			}
-			design.teams = teams;
+			
 		},
 		tableView: function(teams){
 			if (typeof teams.name != 'undefined')
@@ -1617,8 +1686,8 @@ var design={
 					}
 					
 					var html = '<tr>'
-							+  	'<td>'+teams.name[i]+'</td>'
-							+  	'<td>'+teams.number[i]+'</td>'
+							+  	'<td class="inp-team-name">'+teams.name[i]+'</td>'
+							+  	'<td class="inp-team-num">'+teams.number[i]+'</td>'
 							+  	'<td>'+temp[0]+'</td>'
 							+  '</tr>';
 					div.append(html);

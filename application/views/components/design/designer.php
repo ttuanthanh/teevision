@@ -288,7 +288,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								<span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i class="glyphicons restart"></i></span>
 							</div>
 <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                                                        <button type="button" class="btn btn-warning btn-addcart" data-toggle="modal" data-target="#dg-select-quality"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>
+                                                    <button type="button" class="btn btn-warning btn-addcart" data-toggle="modal" data-target="#dg-select-quality" onclick="design.team.resetTeam()"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>
 						</div>
 					</div>
 				</div>
@@ -767,8 +767,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<thead>
 							<tr>
 								<th width="5%"><?php echo $lang['designer_team_order']; ?></th>
-								<th width="40%"><?php echo $lang['designer_team_name']; ?></th>
-								<th width="25%"><?php echo $lang['designer_team_number']; ?></th>
+                                                                <th width="40%" class="inp-team-name"><?php echo $lang['designer_team_name']; ?></th>
+								<th width="25%" class="inp-team-num"><?php echo $lang['designer_team_number']; ?></th>
 								<th width="20%"><?php echo $lang['designer_team_size']; ?></th>
 								<th width="10%"><?php echo $lang['designer_team_remove']; ?></th>
 							</tr>
@@ -1196,15 +1196,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<table id="item_team_list" class="table table-bordered">
 								<thead>
 									<tr>
-										<td width="70%"><strong><?php echo $lang['designer_clipart_edit_name']; ?></strong></td>
-										<td width="10%"><strong><?php echo $lang['designer_clipart_edit_number']; ?></strong></td>
+                                                                            <td width="70%"  class="inp-team-name"><strong><?php echo $lang['designer_clipart_edit_name']; ?></strong></td>
+										<td width="10%" class="inp-team-num"><strong><?php echo $lang['designer_clipart_edit_number']; ?></strong></td>
 										<td width="20%"><strong><?php echo $lang['designer_clipart_edit_size']; ?></strong></td>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td align="left"> </td>
-										<td align="center"> </td>
+										<td align="left" class="inp-team-name"> </td>
+										<td align="center" class="inp-team-num"> </td>
 										<td align="center"> </td>
 									</tr>
 								</tbody>
@@ -1214,7 +1214,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<div class="clear-line"></div><br>
 					<div class="row toolbar-action-add-list">
 						<div class="col-md-12">
-							<center><button class="btn btn-primary input-sm" data-target="#dg-item_team_list" data-toggle="modal" type="button"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button><center>
+                                                    <center><button class="btn btn-primary input-sm" data-target="#dg-item_team_list" data-toggle="modal" type="button" onclick="design.team.checkSelect()"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button><center>
 						</div>
 					</div>
 				</div>
