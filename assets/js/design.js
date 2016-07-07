@@ -1274,6 +1274,10 @@ var design={
 					html = html + 		'</div>';
                     
 					html = html + 	'</div>';
+                                        html = html + '<div class="modal-footer">'+
+                                                        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+                                                        '<button type="button" class="btn btn-primary" id="loading-change-product" data-loading-text="Loading..." onclick="design.products.changeDesign(this)">Change Product</button>'+
+                                                '</div>';
 					
 					
 				div.innerHTML = html;

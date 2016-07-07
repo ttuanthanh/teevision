@@ -520,11 +520,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<button type="button" class="btn btn-danger btn-sm" id="close-product-detail">Close</button>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
+                                        <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang['designer_close_btn']; ?></button>
 					<button type="button" class="btn btn-primary" id="loading-change-product" data-loading-text="<?php echo $lang['designer_loading_btn']; ?>..." onclick="design.products.changeDesign(this)"><?php echo $lang['designer_product_change_product']; ?></button>
 				</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
