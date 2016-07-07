@@ -216,7 +216,9 @@ var design={
 			}
 			
 			datas.cliparts = design.exports.cliparts();
-			
+                        datas.teams 		= {};	
+			datas.teams.name = document.getElementById('team_add_name').checked;
+                        datas.teams.number = document.getElementById('team_add_number').checked;
 			return datas;
 		},
 		getPrice: function(){

@@ -486,7 +486,8 @@ class Cart extends Frontend_Controller {
 		$product_id		= $data['product_id'];
 		$colors			= $data['colors'];
 		$print			= $data['print'];		
-		$quantity		= $data['quantity'];		
+		$quantity		= $data['quantity'];
+                $teams                  = $data['teams'];
 		
 		// get attribute
 		if ( isset( $data['attribute'] ) )
@@ -585,6 +586,21 @@ class Cart extends Frontend_Controller {
 					}
 				}
 			}
+                        
+                        //------- new price add --------
+                        //calculator price with team number
+                        // name + $5
+                        // number + $4
+                        if ($teams['name'] == 'true')
+                        {
+                            $total->old += 5;
+                            $total->sale +=5;
+                        }
+                        if ($teams['number'] == 'true')
+                        {
+                            $total->old += 4;
+                            $total->sale +=4;
+                        }
 			
 			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
 			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
