@@ -26,7 +26,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="alert alert-danger" style="margin: 0px;"><?php echo $error; ?></div>
 		<?php }  ?>
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 				<ul class="login_info">
 					<?php foreach($data as $key=>$val) {
 						if($key == 'name')
@@ -49,7 +49,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</ul>
 			</div>
 			
-			<div class="col-sm-6">
+			<div class="col-sm-6 hidden">
 				<h4><?php lang('user_change_password'); ?></h4>
 				<form id="fr-change-pass" style="margin-bottom: 5px;" role="form">
 					<div class="form-group" style="display: table; width: 100%;">
