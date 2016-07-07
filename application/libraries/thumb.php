@@ -58,4 +58,18 @@ class thumb{
 		$image->destroy();
 	}
 	
+        public function resize2($file, $size = array('width'=>100, 'height'=>100), $type = 'png', $fixed = false)
+	{
+                $info = pathinfo($file);
+                $ext = strtolower($info['extension']);
+                list($width, $height) = getimagesize($file); 
+
+
+                $tn= imagecreatetruecolor($image['width'], $image['height']); 
+                if ( $ext == 'jpg' ) 
+                    $source = imagecreatefromjpeg($file); 
+                else if ($ext == 'png')
+                    $source = imagecreatefrompng($file); 
+                imagecopyresampled($tn, $source, 0, 0, 0, 0, $image['width'], $image['height'], $width, $height); 
+        }
 }
