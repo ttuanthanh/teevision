@@ -209,6 +209,21 @@ class Cart extends Frontend_Controller {
                         $total->old     = $nprice['unit_price'];
                         $total->sale    = $nprice['unit_price_full'];
                         
+                        if (isset($data['teamcheck'])) {
+                            $teamc = $data['teamcheck'];
+                            if ($teamc['name']){
+                                 $total->old = $total->old + 5;
+                                 $total->sale = $total->sale + 5;
+                            }
+                                
+                            if ($teamc['number']){
+                                $total->old = $total->old + 4;
+                                $total->sale = $total->sale + 4;
+                            }
+                                                            
+                        }
+                        
+                        
 			if (count($result->cliparts))
 			{
 				foreach($result->cliparts as $view=>$art)
@@ -258,7 +273,7 @@ class Cart extends Frontend_Controller {
 			if (empty($result->options)) $result->options = array();
 			
 			if (isset($data['teams'])) $teams = $data['teams'];
-			else $teams = '';
+                        else $teams = '';
 			
 			// add cart
 			$item 	= array(

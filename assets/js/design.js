@@ -347,7 +347,10 @@ var design={
 			
 			var datas = design.ajax.form();
 			datas.design = options;				
-			datas.teams = design.teams;				
+			datas.teams = design.teams;
+                        datas.teamcheck = {};
+                        datas.teamcheck.name = jQuery('#sel-name').val() > 0;
+                        datas.teamcheck.number = jQuery('#sel-num').val() > 0;
 			datas.fonts = design.fonts;				
 			jQuery.ajax({
 				type: "POST",
