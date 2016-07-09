@@ -217,8 +217,9 @@ var design={
 			
 			datas.cliparts = design.exports.cliparts();
                         datas.teams 		= {};	
-			datas.teams.name = document.getElementById('team_add_name').checked;
-                        datas.teams.number = document.getElementById('team_add_number').checked;
+                        
+			datas.teams.name = jQuery('#sel-name').val() > 0;
+                        datas.teams.number = jQuery('#sel-num').val() > 0;
 			return datas;
 		},
 		getPrice: function(){
@@ -1427,7 +1428,8 @@ var design={
 				});
 			}
 		},
-		changeView: function(){			
+		changeView: function(){	
+                    
 			if (jQuery('.labView.active .drag-item-name').length > 0)
 				document.getElementById('team_add_name').checked = true;
 			else
@@ -1457,6 +1459,7 @@ var design={
 				var o = design.item.get();
 				o.addClass('drag-item-name');
 				design.popover('add_item_team');
+                                jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val())+1);
 			}
 			else
 			{
@@ -1464,8 +1467,11 @@ var design={
 				var index = id.replace('item-', '');
 				design.layers.remove(index);
 				jQuery('.labView.active .drag-item-name').remove();
+                                jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val())-1);
                                 this.hideTableTeam();
 			}
+                        design.ajax.getPrice();
+                        
 		},
 		addNumber: function(e){
 			if (jQuery(e).is(':checked') == true)
@@ -1482,6 +1488,7 @@ var design={
 				var o = design.item.get();
 				o.addClass('drag-item-number');
 				design.popover('add_item_team');
+                                jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val())+1);
 			}
 			else
 			{
@@ -1489,8 +1496,10 @@ var design={
 				var index = id.replace('item-', '');
 				design.layers.remove(index);
 				jQuery('.labView.active .drag-item-number').remove();
+                                jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val())-1);
                                 this.hideTableTeam();
 			}
+                        design.ajax.getPrice();
 		},
 		addMember: function(team){
 			var i = 1,
@@ -1557,7 +1566,7 @@ var design={
                         cnum    = document.getElementById('team_add_number').checked,
                         table   = jQuery('#item_team_list tbody');
                         tableb   = jQuery('#table-team-list tbody');
-                    console.log(table.html());
+                    
                     if(!cname && !cnum) {
                         delete design.teams.name ;
                         delete design.teams.number ;
@@ -1568,7 +1577,6 @@ var design={
                     }                        
                 },
                 resetTeam: function(){
-                    console.log(design.teams);
                     var cname   = document.getElementById('team_add_name').checked,
                         cnum    = document.getElementById('team_add_number').checked;
                     if(!cname)
@@ -1633,7 +1641,7 @@ var design={
 			return select;
 		},
 		changeSize: function(){
-                        console.log(design.teams.name);
+                        
 			if(typeof design.teams.name != 'undefined' || typeof design.teams.number != 'undefined')
 			{
 				this.create();
@@ -1646,21 +1654,27 @@ var design={
 				teams.number 	= {};
 				teams.size 		= {};
 			var i = 1, checked = true;
-			jQuery('#table-team-list tbody tr').each(function(){
-				var td = jQuery(this).find('td');
-				var name = jQuery(td[1]).find('input').val();
-				var number = jQuery(td[2]).find('input').val();
-				var size = jQuery(td[3]).find('select').val();
-				if (name == '' && number == '')
-				{
-					checked = false;
-				}
-				teams.name[i] = name;
-				teams.number[i] = number;
-				teams.size[i] = size;
-				
-				i++;
-			});
+                        if (typeof jQuery('#table-team-list tbody tr').html() == 'undefined'){
+                            checked = false;
+                        }
+                        else {
+                            jQuery('#table-team-list tbody tr').each(function(){
+                                    var td = jQuery(this).find('td');
+                                    var name = jQuery(td[1]).find('input').val();
+                                    var number = jQuery(td[2]).find('input').val();
+                                    var size = jQuery(td[3]).find('select').val();
+
+                                    if (name == '' && number == '')
+                                    {
+                                            checked = false;
+                                    }
+                                    teams.name[i] = name;
+                                    teams.number[i] = number;
+                                    teams.size[i] = size;
+
+                                    i++;
+                            });
+                        }
 			if (checked == false)
 			{
 				jQuery('#team_msg_error').html('Please add name & number.').css('display', 'block');
@@ -2286,6 +2300,7 @@ var design={
 						
 						var a = document.createElement('a');
 						jQuery(a).bind('click', function(){design.products.changeView(this, view)});
+                                                
 						a.setAttribute('class', 'box-thumb');
 						a.setAttribute('href', 'javascript:void(0)');
 						a.innerHTML = '<img width="40" height="40" src="'+baseURL+thumbView+'">';
