@@ -1149,6 +1149,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				<div class="dg-options-content">
 					<input type="hidden" id="team-height" value="">
+                                        <input type="hidden" id="sel-name" value="0">
+                                        <input type="hidden" id="sel-num" value="0">
 					<input type="hidden" id="team-width" value="">
 					<input type="hidden" id="team-rotate-value" value="0">
 					<div class="row toolbar-action-name-number">
