@@ -313,7 +313,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <tbody>
                           <tr>     
                             <th>Client Name:</th>
-                            <td>Tran Thi My Trang</td>
+                            <td>Tran Tuan Thanh</td>
                           </tr>
                           <tr>
                             <th>Shipping Adress:</th>
