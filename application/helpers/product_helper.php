@@ -228,7 +228,7 @@ class helperProduct
 				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
 				
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
-				$html 	.= 		$this->field($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id);
+				$html 	.= 		$this->fieldDesign($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id);
 				
 				$html 	.= '</div>';
                                 
@@ -289,7 +289,7 @@ class helperProduct
 				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
 				for ($i=0; $i<count($title); $i++)
 				{
-                                        if ($i == 0) $value = 'value="12"'; else $value = '';
+                                        if ($i == 0) $value = 'value="12"'; else $value = '0';
 					$html .= '<li>';
 					$html .= 	'<label>'.$title[$i].'</label>';
 					$html .= 	'<input type="text" class="form-control input-sm size-number" name="'.$id.'['.$i.']" '.$value.'>';					
@@ -423,7 +423,7 @@ class helperProduct
 		$html = '<div class="form-group product-fields product-quantity">';
 		$html .= 	'<label class="col-sm-4">'.$name.'</label>';
 		$html .= 	'<div class="col-sm-6">';
-		$html .= 		'<input type="text" class="form-control input-sm" value="0" name="quantity" id="quantity">';
+		$html .= 		'<input type="text" class="form-control input-sm" value="12" name="quantity" id="quantity">';
 		$html .= 	'</div>';
 		$html .= 	'<span class="help-block"><small>'.$name2.$min.'</small></span>';
 		$html .= '</div>';

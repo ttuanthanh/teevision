@@ -1235,7 +1235,7 @@ var design={
 					jQuery('#product-attributes .size-number').keyup(function(){
 						design.products.sizes();
 					});
-					design.ajax.getPrice();
+					//design.ajax.getPrice();
 					design.team.setup();
 					
 					jQuery('#modal-product-info .product-detail-image').attr('src', baseURL + data.product.image);
@@ -1246,6 +1246,7 @@ var design={
 					jQuery('#modal-product-info .product-detail-sku').html(data.product.sku);
 					jQuery('#modal-product-info .product-detail-short_description').html(data.product.short_description);
 					jQuery('.product-detail-size').html(data.product.size);
+                                        design.ajax.getPrice();
 				}
 				else
 				{
