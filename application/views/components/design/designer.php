@@ -288,7 +288,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								<span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i class="glyphicons restart"></i></span>
 							</div>
 <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                                                    <button type="button" class="btn btn-warning btn-addcart" data-toggle="modal" data-target="#dg-select-quality" onclick="design.team.resetTeam()"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>
+                                                    <button type="button" class="btn btn-warning btn-addcart" onclick="return design.team.resetTeam()"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>
 						</div>
 					</div>
 				</div>

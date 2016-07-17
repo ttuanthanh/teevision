@@ -194,9 +194,26 @@ var design={
 			var index = jQuery('#product-list-colors span').index(jQuery('#product-list-colors span.active'));					
 			datas.colors = {};
 			datas.colors[index] = hex;			
-			
+			console.log("Maximum color is: ",design.print.colors('front').length);
 			/* get Design color and size*/
 			colors 				= {};
+                        if(design.print.colors('front').length > 6){
+                            alert('Front has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect front color!');                            
+                            return false;
+                        }
+                        if(design.print.colors('back').length > 6){
+                            alert('Back has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect back color!');                            
+                            return false;
+                        }
+                        if(design.print.colors('left').length > 6){
+                            alert('Left has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect left color!');                            
+                            return false;
+                        }
+                        if(design.print.colors('right').length > 6){
+                            alert('Right has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect right color!');                            
+                            return false;
+                        }
+                            
 			colors.front 		= design.print.colors('front');			
 			colors.back 		= design.print.colors('back');			
 			colors.left 		= design.print.colors('left');			
@@ -1583,10 +1600,30 @@ var design={
                 resetTeam: function(){
                     var cname   = document.getElementById('team_add_name').checked,
                         cnum    = document.getElementById('team_add_number').checked;
+                    var check = true;
                     if(!cname)
                         delete design.teams.name ;
                     if(!cnum)
                         delete design.teams.number ;
+                    if(design.print.colors('front').length > 6){
+                        alert('Front has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect front color!');                            
+                           check = false;
+                    }
+                    if(design.print.colors('back').length > 6){
+                        alert('Back has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect back color!');                            
+                        check = false;
+                    }
+                    if(design.print.colors('left').length > 6){
+                        alert('Left has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect left color!');                            
+                        check = false;
+                    }
+                    if(design.print.colors('right').length > 6){
+                        alert('Right has '+design.print.colors('front').length+' color. Maximum color is 6. Please reselect right color!');                            
+                        check = false;
+                    }
+                    if(check == true)
+                        jQuery('#dg-select-quality').modal('show');
+                    
                 },
                 resetSizeNumber: function (){
                     var i=0;
