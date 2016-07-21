@@ -503,6 +503,7 @@ class Cart extends Frontend_Controller {
 		$print			= $data['print'];		
 		$quantity		= $data['quantity'];
                 $teams                  = $data['teams'];
+                $teamList               = isset($data['teamlist']) ? $data['teamlist'] : array();
 		
 		// get attribute
 		if ( isset( $data['attribute'] ) )
@@ -602,24 +603,29 @@ class Cart extends Frontend_Controller {
 				}
 			}
                         
+                        
+			
+			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
+			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
+			
                         //------- new price add --------
                         //calculator price with team number
                         // name + $5
                         // number + $4
                         if ($teams['name'] == 'true')
                         {
-                            $total->old += 5;
-                            $total->sale +=5;
+                            $price_name = count($teamList['name']) * 5;
+                            $total->old     += $price_name;
+                            $total->sale    += $price_name;
                         }
                         if ($teams['number'] == 'true')
                         {
-                            $total->old += 4;
-                            $total->sale +=4;
+                            $price_num = count($teamList['number']) * 4;
+                            $total->old     += $price_num;
+                            $total->sale    += $price_num;
                         }
 			
-			$total->old 	= ($total->old * $quantity);// + $result->price->attribute;
-			$total->sale 	= ($total->sale * $quantity);// + $result->price->attribute;
-			
+                        
 			$total->old 	= number_format($total->old, 2, '.', ',');
 			$total->sale 	= number_format($total->sale, 2, '.', ',');
 			

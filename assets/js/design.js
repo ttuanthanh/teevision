@@ -237,6 +237,8 @@ var design={
                         
 			datas.teams.name = jQuery('#sel-name').val() > 0;
                         datas.teams.number = jQuery('#sel-num').val() > 0;
+                        datas.teamlist  ={};
+                        datas.teamlist = design.teams;
 			return datas;
 		},
 		getPrice: function(){
@@ -634,16 +636,20 @@ var design={
 					var o = document.getElementById(jQuery(this).parent().attr('id'));
 					if(o.item.confirmColor == true && typeof o.item.colors != 'undefined')
 					{
-						var colors = o.item.colors;
+                                            if(o.item.type!="team"){
+                                                var colors = o.item.colors;
 						jQuery.each(colors, function(i, hex){
 							if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none')
 							{
 								design.colors.push('#'+hex);
 							}
-						});					
+						});
+                                            }    
+											
 					}
 					else
 					{
+                                            if(o.item.type!="team"){
 						var colors = design.svg.getColors(jQuery(this));
 						jQuery.each(colors, function(hex, i){
 							if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none')
@@ -651,6 +657,7 @@ var design={
 								design.colors.push(hex);
 							}
 						});
+                                            }
 					}
 				});
 				jQuery('.color-used').html('<div id="colors-used" class="list-colors"></div>');
@@ -1756,7 +1763,7 @@ var design={
 						sizes[teams.size[i]] = [];
 					sizes[teams.size[i]].push(i);
 				});
-				
+				/*
 				jQuery('.size-number').each(function(){
 					var lable = jQuery(this).parent().find('label').text();
 					var value = jQuery(this).attr('name');
@@ -1771,6 +1778,7 @@ var design={
 					else
 						jQuery(this).val(0);
 				});
+                        */
 			}
 			design.products.sizes();
 		}
