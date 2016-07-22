@@ -95,7 +95,7 @@ var design={
 			design.products.sizes();
 		});
 		jQuery('#product-attributes .size-number').click(function(){
-			design.team.changeSize();
+			//design.team.changeSize();
 		});
 		design.products.sizes();
 		
@@ -1488,6 +1488,7 @@ var design={
 				o.addClass('drag-item-name');
 				design.popover('add_item_team');
                                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val())+1);
+                                design.ajax.getPrice();
 			}
 			else
 			{
@@ -1498,7 +1499,7 @@ var design={
                                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val())-1);
                                 this.hideTableTeam();
 			}
-                        design.ajax.getPrice();
+                        
                         
 		},
 		addNumber: function(e){
@@ -1517,6 +1518,7 @@ var design={
 				o.addClass('drag-item-number');
 				design.popover('add_item_team');
                                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val())+1);
+                                design.ajax.getPrice();
 			}
 			else
 			{
@@ -1527,7 +1529,7 @@ var design={
                                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val())-1);
                                 this.hideTableTeam();
 			}
-                        design.ajax.getPrice();
+                        
 		},
 		addMember: function(team){
 			var i = 1,
@@ -1601,7 +1603,7 @@ var design={
                         table.html('');
                         tableb.html('');
                         this.resetSizeNumber();
-                        design.ajax.getPrice();
+                        //design.ajax.getPrice();
                     }                        
                 },
                 resetTeam: function(){
@@ -1735,6 +1737,7 @@ var design={
                                 this.checkSelect();
                                 design.teams = teams;
 			}
+                        design.ajax.getPrice();
 			
 		},
 		tableView: function(teams){

@@ -110,7 +110,7 @@ class Cart extends Frontend_Controller {
 		$colors			= $data['colors'];
 		$print			= $data['print'];		
 		$quantity		= $data['quantity'];		
-		
+		$teamList               = $data['teamlist'];
 		// get attribute
 		if ( isset( $data['attribute'] ) )
 		{
@@ -209,16 +209,17 @@ class Cart extends Frontend_Controller {
                         $total->old     = $nprice['unit_price'];
                         $total->sale    = $nprice['unit_price_full'];
                         
+                        $price_cus = 0;
                         if (isset($data['teamcheck'])) {
-                            $teamc = $data['teamcheck'];
-                            if ($teamc['name']){
-                                 $total->old = $total->old + 5;
-                                 $total->sale = $total->sale + 5;
+                            $teamc = $data['teamcheck'];                            
+                            if ($teamc['name'] == 'true' && isset($teamList['name']))
+                            {
+                                $price_cus += (count($teamList['name']) - $this->countArrayValue($teamList['name'])) * 5;
                             }
-                                
-                            if ($teamc['number']){
-                                $total->old = $total->old + 4;
-                                $total->sale = $total->sale + 4;
+                            if ($teamc['number'] == 'true' && isset($teamList['number']))
+                            {
+
+                                $price_cus += (count($teamList['number'])- $this->countArrayValue($teamList['number'])) * 4;
                             }
                                                             
                         }
@@ -285,7 +286,7 @@ class Cart extends Frontend_Controller {
 				'prices'   		=> json_encode($result->price),
 				'cliparts'   	=> json_encode($result->cliparts),
 				'symbol'   		=> $result->symbol,
-				'customPrice'   => 0,//$result->price->attribute,
+				'customPrice'   => $price_cus,//$result->price->attribute,
 				'name'    		=> $result->product->name,
                                 'print_number'          => array('front'=>$print_num[0], 'back'=>$print_num[1]),
 				'time'    		=> $time,
@@ -612,15 +613,16 @@ class Cart extends Frontend_Controller {
                         //calculator price with team number
                         // name + $5
                         // number + $4
-                        if ($teams['name'] == 'true')
+                        if ($teams['name'] == 'true' && isset($teamList['name']))
                         {
-                            $price_name = count($teamList['name']) * 5;
+                            $price_name = (count($teamList['name']) - $this->countArrayValue($teamList['name'])) * 5;
                             $total->old     += $price_name;
                             $total->sale    += $price_name;
                         }
-                        if ($teams['number'] == 'true')
+                        if ($teams['number'] == 'true' && isset($teamList['number']))
                         {
-                            $price_num = count($teamList['number']) * 4;
+                            
+                            $price_num = (count($teamList['number'])- $this->countArrayValue($teamList['number'])) * 4;
                             $total->old     += $price_num;
                             $total->sale    += $price_num;
                         }
@@ -633,8 +635,17 @@ class Cart extends Frontend_Controller {
 			exit;
 		}	
 	}
-	
-	public function shipping($id = '')
+        
+        private function countArrayValue($arr){
+            $count = 0;
+            foreach ($arr as $a){
+                if ($a == "")
+                    $count++;
+            }
+            return $count;
+        }
+
+        public function shipping($id = '')
 	{
 		$id	= (int) $id;
 		
