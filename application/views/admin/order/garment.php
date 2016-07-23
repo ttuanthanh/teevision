@@ -44,107 +44,140 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
-		<?php echo lang('orders_admin_orders_title'); ?>           
+		Garment           
 	</div>
 	<?php
-	$attribute = array('class' => 'form-orders', 'id' => 'form-orders');		
-	echo form_open(site_url('admin/orders'), $attribute);
+	$attribute = array('class' => 'form-horizontal', 'id' => 'form-orders');		
+	echo form_open(site_url('admin/garment/save'), $attribute);
 	?>
 	<div class="panel-body" id="panelbody">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-2">
-						<?php $option_s = array(''=>  lang('all'), '5'=>5, '10'=>10, '15'=>15, '20'=>20, '25'=>25, '100'=>100); ?>
-						<?php echo form_dropdown('per_page', $option_s, $per_page, 'class="form-control" id="per_page"'); ?>
-					</div>
-					<div class="col-md-4">
-						<?php 
-							$search = array('name' => 'search', 'id' => 'search', 'class' => 'form-control datepicker', 'placeholder' => lang('orders_admin_search_place'), 'autocomplete'=>'off', 'value'=>$search);
-							echo form_input($search);
-						?>
-					</div>					
-					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary"><?php echo lang('search');?></button>
-					</div>
-				</div>
-			</div>
+		<div class="row">			
+                        <div class="col-sm-6">
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Order<span class="symbol"></span></label>
+                                        <div class="col-md-8">                                            
+                                            <input class="form-control" type="text" placeholder="order" value="<?php echo $order->order_number; ?>" name="gar[order_number]" readonly="readonly">
+                                            <input value="<?php echo $order->id; ?>" name="gar[order_id]" type="hidden">
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Distributor<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                                <input class="form-control" type="text"  placeholder="" value="" name="gar[distributor]">
+                                                
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Order #<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[number]">
+                                        </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Date ordered<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="date"  data-type="" placeholder="" value="" name="gar[date_order]">
+                                        </div>
+                                </div>
+
+                                
+                        </div>
+                        <div class="col-sm-6">
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">ETA<span class="symbol"></span></label>
+                                        <div class="col-md-8">                                            
+                                            <input class="form-control" type="date" placeholder="order" value="" name="gar[eta]">
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Tracking number<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                                <input class="form-control" type="text"  placeholder="" value="" name="gar[tracking_number]">
+                                                
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">Cost<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[cost]">
+                                        </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                        <label class="control-label col-md-3">MISC. FEES<span class="symbol"></span></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="text"  data-type="" placeholder="" value="" name="gar[misc_fees]">
+                                        </div>
+                                </div>
+
+                                
+                        </div>
+                        
 			
-			<div class="col-md-6">
-				<p style="text-align:right;">
-					<a id="btn-delete" class="btn btn-bricky tooltips" title="<?php echo lang('delete'); ?>" href="javascript:void(0);" > 
-						<i class="fa fa-trash-o"></i>
-					</a>
-				</p>
-			</div>
+			
 		</div>
+                <div class="col-sm-12">
+                        <p class="pull-right">
+                                <button type="submit" class="btn btn-primary" ><?php echo lang('save'); ?></button>
+                                <a href="<?php echo site_url().'admin/users'?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
+                        </p>
+                </div>
 		<table id="sample-table-1" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-                                        <th class="center"></th>
+                                        
 					<th class="center">Order</th>
-					<th class="center">Order Date</th>
-					<th class="center">Name</th>
-					<th class="center">#</th>
-					<th class="center">C?</th>
-					<th class="center">Apparel Order</th>
-					<th class="center">Ship Date</th>
-                                        <th class="center">Due Date</th>
-                                        <th class="center">Artwork</th>
-                                        <th class="center">Proof</th>
-                                        <th class="center">Tracking Number</th>
-                                        <th class="center">Balance</th>
+					<th class="center">Distributor</th>
+					<th class="center">Order #</th>
+					<th class="center">Date ordered</th>
+					<th class="center">ETA</th>
+					<th class="center">Tracking nuber</th>
+					<th class="center">Cost</th>
+                                        <th class="center">MISC.FEES</th>
 				</tr>
 			</thead>
 			<tbody>
                             <?php //var_dump($orders); ?>
-                            <?php foreach($orders as $order) { ?>
+                            <?php foreach($garments as $gar) { ?>
 				<tr>
                                     <td class="center">    
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCr6Vm-aDHk3qstdsbedE0QNc55b02tjYb6rM2TvlJ6uv13KHD" width="20" height="20"/>
-                                    </td>
-                                    <td class="center">    
-                                        <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
+                                        <a href="<?php echo site_url('admin/orders/detail/'.$gar->order_id); ?>"><?php echo $gar->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $order->created_on; ?>
+                                      <?php echo $gar->distributor; ?>
                                     </td>
                                     <td class="center">   
-                                        <?php echo $order->name; ?>
+                                         <?php echo $gar->number; ?>
                                     </td>
                                     <td class="center">
-                                       12
+                                        <?php echo $gar->date_order; ?>
                                     </td>
                                     <td class="center"> 
-                                        No
+                                        <?php echo $gar->eta; ?>
                                     </td>
                                     <td class="center">  
-                                        <input type="checkbox">
+                                        <?php echo $gar->tracking_number; ?>
                                     </td>
                                     <td class="center">      
-                                        May 26
+                                        <?php echo $gar->cost; ?>
                                     </td>
                                     <td class="center">
-                                        May 30
+                                        <?php echo $gar->misc_fees; ?>
                                     </td>
-                                    <td class="center">     
-                                        Yes
-                                    </td>
-                                    <td class="center">     
-                                        Yes
-                                    </td>
-                                    <td class="center">  
-                                        <input value="" />
-                                    </td>
-                                    <td class="center">    
-                                        Yes
-                                    </td>
+                                    
 				</tr>				
 			<?php } ?>
 			</tbody>
 		</table>
 		<div class="pull-right">
-			<?php echo $links; ?>
+			<?php //echo $links; ?>
 		</div>
 	</div>
 	<?php echo form_close(); ?>        
