@@ -24,6 +24,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         padding-right: 0px;
     }
 </style>
+<style>
+    .bg-colors {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        outline: 1px solid #337AB7;
+    }
+    .top-align td{ vertical-align: top!important; }
+</style>
 <?php if (count($order)) { ?>
 
 <div id="order_detail_body">
@@ -66,9 +76,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center"> 
                                         <?php if( $order->apparel != '') {?>
-                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
                                         <?php } else {?>
-                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                            <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">      
@@ -91,105 +101,169 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">     
                                         <?php if( $order->proof_approved != 0) {?>
-                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
                                         <?php } else {?>
-                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">  
                                         <b>#1221433</b>
                                     </td>
                                     <td class="center">    
-                                        Yes
+                                        <?php if( $order->balance != 0) {?>
+                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Yes</a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish">No</a>
+                                        <?php } ?>
                                     </td>
                                     </tr>
                             </tbody>
                     </table>
     </div> 
-    <div class="panel panel-default">
-	<div class="panel-heading">
-		<i class="fa fa-external-link-square icon-external-link-sign"></i>
-		Art Information
-	</div>
-	<div class="panel-body" id="panelbody">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="col-md-6">
-                        <img src="" width="170" height="220">
+    <?php foreach($items as $product){?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                    Art Information
+            </div>
+            <?php
+                    $design_option   = json_decode($product->design_option);
+                    $colors = $design_option->colors;
+            ?>
+            <div class="panel-body" id="panelbody">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="col-md-6">
+                            <img src="" width="170" height="220">
+                        </div>
+                        <div class="col-md-6">
+                             <img src="" width="170" height="220">
+                        </div>
+                        <br clear="all">
+                        <div  class="col-md-12 button-preview">
+                            <a class="btn btn-info active btn-block fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" >Preview Artwork</a>
+                            <!--<button type="button" class="btn btn-info active btn-block"></button>-->
+                        </div>
+                        <div class="col-md-12 button-preview">
+                            <button type="button" class="btn btn-info active btn-block">Download Artwork</button>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                         <img src="" width="170" height="220">
+                    <div class="col-md-7">
+                        <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
+                        <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
+                        <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
+                        </p>
+                        <div>
+                            <?php
+                            if($product->attributes != '' && $product->attributes != '"[]"')
+                            {
+                                    $size = json_decode(json_decode($product->attributes), true);
+                                    $sizename = '';
+                                    $sizenum = '';
+                                    if (count($size) > 0)
+                                    {
+                                            foreach($size as $option) { ?>
+                                                    <p>
+<!--                                                        <strong><?php echo $option['name']; ?>: </strong><br>-->
+                                                            <?php 
+                                                                    if (is_string($option['value'])) echo $option['value'];
+                                                                    elseif (is_array($option['value']) && count($option['value']))
+                                                                    {
+                                                                            foreach($option['value'] as $v=>$value)
+                                                                            {
+                                                                                    if ($option['type'] == 'textlist'){
+                                                                                        $sizename .= '<td>'.$v.'</td>';
+                                                                                        $sizenum .= '<td>'.$value.'</td>';
+                                                                                    }
+                                                                                    else
+                                                                                            echo $value.'; ';
+                                                                            }
+                                                                    }
+                                                            ?>
+                                                    </p>
+                                            <?php } ?>
+                                    <table id="sample-table-1" class="table table-bordered table-hover">
+                                        <thead>
+                                                <tr>
+                                                    <?php echo $sizename ?>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    <?php echo $sizenum ?>
+                                                </tr>
+                                        </tbody>
+                                    </table>            
+                            <?php                
+                                    }
+                            } 
+                            ?>
+                            <table id="sample-table-1" class="table table-bordered table-hover">
+                                <thead>
+                                        <tr>
+                                                
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                              
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>       
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="col-md-6 button-preview">
+                                    <a href="" type="button" class="btn btn-info active btn-block">ArtWork
+                                        <?php if( $order->custom_file=='')
+                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
+                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
+                                        
+                                        ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 button-preview">
+                                    <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Garments                                    
+                                    <?php if( $order->apparel!='')
+                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
+                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
+                                        
+                                        ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 button-preview">
+                                    <a href="" type="button" class="btn btn-info active btn-block">Customs names/numbers
+                                    
+                                    <?php
+                                        $design_option   = json_decode($order->design_option);
+                                        $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
+                                        //var_dump($design_images);
+                                        if ( isset($design_images->front) || isset($design_images->back))
+                                            echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>';
+                                        else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
+                                    ?>
+                                    </a>
+                                </div>
+                                <?php //var_dump($order); ?>
+                                <div class="col-md-6 button-preview">
+                                    <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Balance
+                                    <?php if( $order->balance!=0)
+                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
+                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
+                                        
+                                    ?>
+                                    </a>
+                                </div>
+                            </div>  
+                            <div class="col-md-2"></div>
+                        </div>                    
                     </div>
-                    <br clear="all">
-                    <div  class="col-md-12 button-preview">
-                        <button type="button" class="btn btn-info active btn-block">Preview Artwork</button>
-                    </div>
-                    <div class="col-md-12 button-preview">
-                        <button type="button" class="btn btn-info active btn-block">Download Artwork</button>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <p><b>Apparel Style: gi gi do</b></p>
-                    <p><b>Apparel Style: gi gi do</b></p>
-                    <div>
-                        <table id="sample-table-1" class="table table-bordered table-hover">
-                            <thead>
-                                    <tr>
-                                            <th class="center">S</th>
-                                            <th class="center">M</th>
-                                            <th class="center">L</th>
-                                            <th class="center">XL</th>
-                                            <th class="center">XXL</th>
-                                            <th class="center">XXXL</th>
-                                    </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td class="center">    
-                                            0
-                                        </td>                                    
-                                        <td class="center">   
-                                           12
-                                        </td>
-                                        <td class="center"> 
-                                          1
-                                        </td>
-                                        <td class="center">      
-                                           5
-                                        </td>
-                                        <td class="center">
-                                           6 
-                                        </td>    
-                                        <td class="center">
-                                           6 
-                                        </td>   
-                                    </tr>
-                            </tbody>
-                    </table>
-                    </div>
-                    <div>       
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <div class="col-md-6 button-preview">
-                                <button type="button" class="btn btn-info active btn-block">Default button 1</button>
-                            </div>
-                            <div class="col-md-6 button-preview">
-                                <button type="button" class="btn btn-info active btn-block">Default button 2</button>
-                            </div>
-                            <div class="col-md-6 button-preview">
-                                <button type="button" class="btn btn-info active btn-block">Default button 3</button>
-                            </div>
-                            <div class="col-md-6 button-preview">
-                                <button type="button" class="btn btn-info active btn-block">Default button 4</button>
-                            </div>
-                        </div>  
-                        <div class="col-md-2"></div>
-                    </div>                    
-                </div>
-            </div>	
+                </div>	
+            </div>
+
         </div>
-	
-    </div>
+    <?php } ?>
     <div class="panel panel-default col-md-6 no-padding">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
@@ -346,6 +420,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 </div>
 <?php } ?>
 <script type="text/javascript">	
+        jQuery('document').ready(function(){
+		jQuery('.tooltips').tooltip();
+		jQuery('.fancybox').fancybox();
+	});
 	function load() 
 	{
         jQuery('#order_detail_body').block({

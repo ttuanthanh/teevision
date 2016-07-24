@@ -851,8 +851,9 @@ class Orders extends Admin_Controller
                 {
                     $order = $this->order_m->getOrder($id); 
                     $this->data['order'] = $order;
+                    if ($order->apparel)
+                        $this->data['garment'] = $this->garment_m->getData($order->apparel);
                 }
-                    
                 
 		//
 		//$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
@@ -862,6 +863,58 @@ class Orders extends Admin_Controller
 		// Load view
 		$this->data['subview'] = 'admin/order/garment';
 		$this->load->view('admin/_layout_main', $this->data);
+	}
+        
+        public function proof_approved ($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+                //$this->load->model('garment_m');
+                
+                if ($id != '')
+                {
+                    $data = $this->order_m->getOrder($id);
+                    $order = new Order_m();//  
+                    
+                    $proof['proof_approved'] = 0;
+                    if ($data->proof_approved == 0)
+                        $proof['proof_approved'] = 1;
+                    
+                    $order->update($proof, $id);
+                    //return $proof['proof_approved'];
+                }
+                
+                //echo 'history.go(-1)';
+                //redirect('admin/orders/detail/'.$id);
+                redirect($_SERVER['HTTP_REFERER']);
+
+	}
+        
+        public function balance ($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+                //$this->load->model('garment_m');
+                
+                if ($id != '')
+                {
+                    $data = $this->order_m->getOrder($id);
+                    $order = new Order_m();//  
+                    
+                    $proof['balance'] = 0;
+                    if ($data->balance == 0)
+                        $proof['balance'] = 1;
+                    
+                    $order->update($proof, $id);
+                    //return $proof['proof_approved'];
+                }
+                
+                //echo 'history.go(-1)';
+                //redirect('admin/orders/detail/'.$id);
+                redirect($_SERVER['HTTP_REFERER']);
+
 	}
 
 }

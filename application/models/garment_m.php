@@ -31,6 +31,14 @@ class Garment_m extends MY_Model
 			return $query->row();
 		}
 	}
+        
+        function getByOrder($id = '')
+	{	
+		$this->db->where('order_id ', $id);
+                $query = $this->db->get('order_garment');
+                return $query->row();
+		
+	}
 	
 	
 	function delete($id = '')

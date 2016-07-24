@@ -1097,3 +1097,9 @@ ul.edit_language li:hover{background: #F7F7F9;}
     width:50px;display: inline;
 }
 .width-50{ width: 50px;}
+.button-preview i{
+    color: white;
+    float: right;
+    margin-right: 5px;
+        
+}

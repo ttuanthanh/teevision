@@ -34,48 +34,27 @@ class Garment extends Admin_Controller {
         
         public function save(){
                 $data = $this->input->post('gar');
-                $this->garment_m->save($data);
+                
+                $garment = $this->garment_m->getByOrder($data['order_id']);
+                $gar_id = 
+                
+                var_dump($garment);
+                if(!$garment)
+                    $gar_id = $this->garment_m->save($data);
+                else
+                {
+                    $this->garment_m->update($data, $garment->id);
+                    $gar_id = $garment->id;                        
+                }
+                
+                
+                $this->load->model('order_m');
+                $order = new order_m();
+                //$order = $this->order_m->getOrder($data['order_id']);
+                $or['apparel'] = $gar_id;
+                $order->update($or, $data['order_id']);
         }
 
-                public function tool($ver = '')
-	{
-		if($ver != '')
-		{
-			$file = 'http://updates.teevisionprinting.com/'.$ver.'.zip';
-			$data = file_get_contents($file);
-			if($data != '')
-			{				
-				$path = ROOTPATH .DS. $ver.'.zip';
-				if(file_put_contents($path, $data))
-				{
-					//unzip.
-					$this->load->library('unzip');
-					if($this->unzip->extract($path) !== false)
-					{						
-						$this->session->set_flashdata('msg', $this->lang->line('update_admin_update_success_msg'));
-					}
-					else
-					{
-						$this->session->set_flashdata('error', 'Can not unzip files');
-					}
-					redirect(site_url().'admin/update');
-				}
-				else
-				{
-					$this->session->set_flashdata('error', 'Can not unzip files');
-					redirect(site_url().'admin/update');
-				}
-			}
-			else
-			{
-				$this->session->set_flashdata('error', $this->lang->line('update_admin_download_error_msg'));
-				redirect(site_url().'admin/update');
-			}
-		}
-		else
-		{
-			redirect(site_url().'admin/update');
-		}
-	}
+        
 	
 }

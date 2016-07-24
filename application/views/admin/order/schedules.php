@@ -116,14 +116,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                        <?php echo $order->total_qty; ?>
                                     </td>
                                     <td class="center"> 
-                                        <?php if( $order->custom_file=='')
-                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; ?>
+                                        <?php if( $order->custom_file!='')
+                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; 
+
+                                        ?>
                                     </td>
                                     <td class="center"> 
                                         <?php if( $order->apparel != '') {?>
-                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                        <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
                                         <?php } else {?>
-                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                            <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">      
@@ -146,9 +148,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">     
                                         <?php if( $order->proof_approved != 0) {?>
-                                            <a class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish" data-id="1704" data-flag="1">Yes</a>
+                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
                                         <?php } else {?>
-                                            <a class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish" data-id="2649" data-flag="0">No</a>
+                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">  

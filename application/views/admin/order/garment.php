@@ -65,7 +65,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Distributor<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                                <input class="form-control" type="text"  placeholder="" value="" name="gar[distributor]">
+                                            <?php //var_dump($garment); ?>
+                                            <input class="form-control" type="text"  placeholder="" value="<?php echo (isset($garment)) ? $garment->distributor : '' ?>" name="gar[distributor]">
                                                 
                                         </div>
                                 </div>
@@ -73,14 +74,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Order #<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[number]">
+                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="<?php echo (isset($garment)) ? $garment->number : '' ?>" name="gar[number]">
                                         </div>
                                 </div>
                             
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Date ordered<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="date"  data-type="" placeholder="" value="" name="gar[date_order]">
+                                            <input class="form-control" type="date"  data-type="" placeholder="" value="<?php echo (isset($garment)) ? $garment->date_order : '' ?>" name="gar[date_order]">
                                         </div>
                                 </div>
 
@@ -91,14 +92,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">ETA<span class="symbol"></span></label>
                                         <div class="col-md-8">                                            
-                                            <input class="form-control" type="date" placeholder="order" value="" name="gar[eta]">
+                                            <input class="form-control" type="date" placeholder="order" value="<?php echo (isset($garment)) ? $garment->eta : '' ?>" name="gar[eta]">
                                         </div>
                                 </div>
 
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Tracking number<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                                <input class="form-control" type="text"  placeholder="" value="" name="gar[tracking_number]">
+                                                <input class="form-control" type="text"  placeholder="" value="<?php echo (isset($garment)) ? $garment->tracking_number : '' ?>" name="gar[tracking_number]">
                                                 
                                         </div>
                                 </div>
@@ -106,14 +107,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Cost<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[cost]">
+                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="<?php echo (isset($garment)) ? $garment->cost : '' ?>" name="gar[cost]">
                                         </div>
                                 </div>
                             
                                 <div class="form-group">
                                         <label class="control-label col-md-3">MISC. FEES<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="text"  data-type="" placeholder="" value="" name="gar[misc_fees]">
+                                            <input class="form-control" type="text"  data-type="" placeholder="" value="<?php echo (isset($garment)) ? $garment->misc_fees : '' ?>" name="gar[misc_fees]">
                                         </div>
                                 </div>
 
@@ -126,7 +127,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="col-sm-12">
                         <p class="pull-right">
                                 <button type="submit" class="btn btn-primary" ><?php echo lang('save'); ?></button>
-                                <a href="<?php echo site_url().'admin/users'?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
+                                <a href="<?php echo $_SERVER['HTTP_REFERER']?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
                         </p>
                 </div>
 		<table id="sample-table-1" class="table table-bordered table-hover">
