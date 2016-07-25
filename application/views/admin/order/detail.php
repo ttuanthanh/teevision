@@ -133,12 +133,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <div class="panel-body" id="panelbody">
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="col-md-6">
-                            <img src="" width="170" height="220">
-                        </div>
-                        <div class="col-md-6">
-                             <img src="" width="170" height="220">
-                        </div>
+                        <?php
+                            $desi = $this->order_m->getDesign($product->id);
+                            if(isset($desi->vectors)){ 
+                                $vectors = json_decode($desi->vectors, true);
+                                if(is_array($vectors))foreach($vectors as $key=>$vector){
+                                    if(count($vector) != 0){ ?>
+                                        <div class="col-md-6">
+                                            <img src="<?php echo base_url(str_replace('front', $key, $desi->image));?>" width="200">
+                                        </div>
+                                    <?php   
+                                    }
+                                    
+                                }
+                            }
+                            else 
+                            {
+                                    //$design_option   = json_decode($order->design_option);
+                                    $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
+                                    echo '<div class="col-md-6">'
+                                        .   '<img src="'.$design_images->$key .'" width="200">'
+                                        .'</div>';
+                                }
+                        ?>
+                        
                         <br clear="all">
                         <div  class="col-md-12 button-preview">
                             <a class="btn btn-info active btn-block fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" >Preview Artwork</a>

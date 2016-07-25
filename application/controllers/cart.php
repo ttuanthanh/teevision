@@ -110,7 +110,7 @@ class Cart extends Frontend_Controller {
 		$colors			= $data['colors'];
 		$print			= $data['print'];		
 		$quantity		= $data['quantity'];		
-		$teamList               = $data['teamlist'];
+		$teamList               = isset($data['teamlist']) ? $data['teamlist'] : '';
 		// get attribute
 		if ( isset( $data['attribute'] ) )
 		{

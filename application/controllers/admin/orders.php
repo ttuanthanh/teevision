@@ -685,7 +685,11 @@ class Orders extends Admin_Controller
 		$this->data['setting'] = $setting;
 		
 		$data = $this->order_m->getDesign($id);
-		$this->data['product'] = $data;				
+		$this->data['product'] = $data;		
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
 		$this->load->view('admin/order/view_lightbox', $this->data);
 	}
         

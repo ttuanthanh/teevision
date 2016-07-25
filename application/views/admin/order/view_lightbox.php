@@ -18,6 +18,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<h4 class="modal-title"><?php echo lang('orders_admin_detail_view_title');?></h4>
 	<span class="help-block"><?php echo lang('orders_admin_detail_view_title_help');?></span>
 </div>
+
 	<div class="modal-body">
 		<div class="row">
 			<?php if(isset($product->vectors)){ ?>
@@ -82,7 +83,27 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				<?php } ?>
 			<?php } ?>
-			<?php }else{ echo '<div class="col-sm-12"><div class="alert alert-danger" role="alert">'.lang('orders_admin_detail_view_not_found_msg').'</div></div>';} ?>
+			<?php }
+                        else if (isset($order->design_option)){
+                            $design_option   = json_decode($order->design_option);
+                            $design_images  = isset($design_option->design_images) ? $design_option->design_images : ''; ?>
+                            <div class="col-sm-12">
+                                <fieldset>
+                                        <legend><?php echo lang('designer_view_lightbox_design_front_legend');?></legend>
+                                        <div>
+                                            <img id="view_product-front" src="<?php echo isset($design_images->front) ? $design_images->front : ''?>" alt=""/>
+                                            <span>
+                                            <?php echo lang('designer_view_lightbox_download_design');?>:
+                                            <?php if (isset($design_images->front))
+                                                echo '<a href="'.$design_images->front.'"><strong>download</strong></a>';
+                                            ?>
+                                            </span>
+                                        </div>
+                                </fieldset>
+                            </div>
+                        <?php
+                        }
+                        else{ echo '<div class="col-sm-12"><div class="alert alert-danger" role="alert">'.lang('orders_admin_detail_view_not_found_msg').'</div></div>';} ?>
 		</div>
 	</div>
 <div class="modal-footer">

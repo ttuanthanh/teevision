@@ -127,7 +127,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="col-sm-12">
                         <p class="pull-right">
                                 <button type="submit" class="btn btn-primary" ><?php echo lang('save'); ?></button>
-                                <a href="<?php echo $_SERVER['HTTP_REFERER']?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
+                                <?php
+                                    if (isset($garment))
+                                        echo '<a href="'.site_url('admin/garment/delete/'.$garment->id).'" class="btn btn-danger" >Delete</a>'
+                                ?>
+                                <a href="<?php echo site_url('admin/orders/schedules')?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
                         </p>
                 </div>
 		<table id="sample-table-1" class="table table-bordered table-hover">

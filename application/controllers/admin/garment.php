@@ -36,9 +36,9 @@ class Garment extends Admin_Controller {
                 $data = $this->input->post('gar');
                 
                 $garment = $this->garment_m->getByOrder($data['order_id']);
-                $gar_id = 
+                $gar_id = '';
                 
-                var_dump($garment);
+                //var_dump($garment);
                 if(!$garment)
                     $gar_id = $this->garment_m->save($data);
                 else
@@ -53,6 +53,30 @@ class Garment extends Admin_Controller {
                 //$order = $this->order_m->getOrder($data['order_id']);
                 $or['apparel'] = $gar_id;
                 $order->update($or, $data['order_id']);
+                
+                redirect($_SERVER['HTTP_REFERER']);
+        }
+        
+        
+        public function delete($id = '')
+        {        
+                //var_dump($garment);
+                if($id == ''){
+                    redirect($_SERVER['HTTP_REFERER']);
+                    exit();
+                }      
+                else
+                {
+                    $garment = $this->garment_m->getData($id);
+                    $this->load->model('order_m');
+                    $order = new order_m();
+                    $order->update(array('apparel'=>''), $garment->order_id);
+                    
+                    $gar = new Garment_m();
+                    $gar->delete($id);
+                }
+                
+                redirect($_SERVER['HTTP_REFERER']);
         }
 
         

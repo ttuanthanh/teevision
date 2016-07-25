@@ -99,6 +99,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<tbody>
                             <?php //var_dump($orders[0]); ?>
                             <?php foreach($orders as $order) { ?>
+                            <?php $desi = $this->order_m->getDesign($order->id); ?>
 				<tr>
                                     <td class="center">    
                                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCr6Vm-aDHk3qstdsbedE0QNc55b02tjYb6rM2TvlJ6uv13KHD" width="20" height="20"/>
@@ -116,6 +117,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                        <?php echo $order->total_qty; ?>
                                     </td>
                                     <td class="center"> 
+                                        <?php //var_dump($desi->teams) ?>
                                         <?php if( $order->custom_file!='')
                                                 echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; 
 
@@ -141,8 +143,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php
                                             $design_option   = json_decode($order->design_option);
                                             $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                            //var_dump($design_images);
-                                            if ( isset($design_images->front) || isset($design_images->back))
+                                            $art_front = isset($design_images->front) ? explode('assets/', $design_images->front)[1] : 'not-uploaded.jpg';
+                                            
+                                            //var_dump($desi);
+                                            if ( isset($desi->vectors) || $art_front != 'not-uploaded.jpg'  || isset($design_images->back))
                                                 echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>';
                                         ?>
                                     </td>
@@ -157,7 +161,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <b>#1221433</b>
                                     </td>
                                     <td class="center">    
-                                        Yes
+                                        <?php if( $order->balance != 0) {?>
+                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Yes</a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish">No</a>
+                                        <?php } ?>
                                     </td>
 				</tr>				
 			<?php } ?>
