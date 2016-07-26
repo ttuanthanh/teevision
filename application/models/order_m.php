@@ -176,6 +176,8 @@ class Order_m extends MY_Model
 		}
 		
 		$this->db->order_by("created_on", "DESC"); 
+                
+                $this->db->group_by("id"); 
 		
 		if ( $count == true )
 		{
@@ -206,7 +208,7 @@ class Order_m extends MY_Model
         // get order detail
 	function getOrderSchedule($id)
 	{
-                $this->db->select('orders.*, name, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
+                $this->db->select('orders.*, name, username, email, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
                 

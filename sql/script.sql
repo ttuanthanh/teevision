@@ -13,3 +13,6 @@ ADD COLUMN `proof_approved`  tinyint NULL DEFAULT 0 AFTER `apparel`;
 
 ALTER TABLE `dg_orders`
 ADD COLUMN `total_qty`  int NULL AFTER `total`;
+
+ALTER TABLE `dg_orders`
+ADD COLUMN `tracking_num`  int NULL AFTER `balance`;

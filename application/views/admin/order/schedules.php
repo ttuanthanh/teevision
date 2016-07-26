@@ -78,7 +78,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</p>
 			</div>
 		</div>
-		<table id="sample-table-1" class="table table-bordered table-hover">
+		<table id="sample-table-1" class="table table-bordered">
 			<thead>
 				<tr>
                                         <th class="center"></th>
@@ -100,9 +100,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <?php //var_dump($orders[0]); ?>
                             <?php foreach($orders as $order) { ?>
                             <?php $desi = $this->order_m->getDesign($order->id); ?>
-				<tr>
+                                <?php
+                                    $shipDate = (new DateTime($order->ship_date))->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                                    $today = date("Y-m-d");
+                                ?>
+                            <tr class="<?php 
+                                        if ($shipDate <= $today) echo 'duedate';
+                                        else if ($order->status == 'completed') echo 'o-complete';
+                                        ?>">
                                     <td class="center">    
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCr6Vm-aDHk3qstdsbedE0QNc55b02tjYb6rM2TvlJ6uv13KHD" width="20" height="20"/>
+                                        <?php
+                                            if ($shipDate <= $today)
+                                                echo '<img src="http://www.clker.com/cliparts/E/C/p/S/0/F/exclamation-mark-red-md.png" width="20" height="20"/>';
+                                        ?>
+                                        
                                     </td>
                                     <td class="center">    
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
@@ -137,7 +148,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>
                                     </td>
                                     <td class="center">
-                                        May 30
+                                        <?php 
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        ?>
                                     </td>
                                     <td class="center">     
                                         <?php
@@ -158,7 +172,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php } ?>
                                     </td>
                                     <td class="center">  
-                                        <b>#1221433</b>
+                                        <b>
+                                            <?php
+                                                echo isset($order->tracking_num) ? '#'.$order->tracking_num : '';
+                                            ?>                                            
+                                        </b>
                                     </td>
                                     <td class="center">    
                                         <?php if( $order->balance != 0) {?>

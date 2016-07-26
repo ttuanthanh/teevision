@@ -920,5 +920,95 @@ class Orders extends Admin_Controller
                 redirect($_SERVER['HTTP_REFERER']);
 
 	}
+        
+        
+        public function changeStatusOrder ($id = '', $type = '', $tracking_num = '')
+	{		
+                if ($id == '' || !$_SERVER['HTTP_REFERER'])
+                    redirect('admin/orders/schedules');
+                
+                //$this->load->model('garment_m');
+                
+                if ($id != '')
+                {
+                    $order = new Order_m();// 
+                    $track['tracking_num'] = $tracking_num;
+                    $order->update($track, $id);
+                    
+                    
+			$data['status'] = $type;
+			
+			if($this->order_m->checkStatus($id, $type, true)) //status order exists.
+			{
+				$this->session->set_flashdata('error', lang('orders_admin_cannot_change_status_msg'));
+				redirect(site_url('admin/orders'));
+			}
+				
+			$where = array(
+				'id'=>$id,
+			);
+			$this->order_m->_table_name = "orders";
+			if($this->order_m->updateOrder($where, $data))
+			{	
+				$order = $this->order_m->getOrder($id);
+				$order_name = $order->order_number;
+				$content = array(
+					$order_name=>$type
+				);
+				$data_his = array(
+					'order_id'=>$id,
+					'label'=>'order_status',
+					'content'=>json_encode($content),
+					'date'=>date('Y-m-d H:i:s'),
+				);
+				$this->order_m->_table_name = "orders_histories";
+				if($this->order_m->save($data_his))
+				{
+					$customer = $this->order_m->getUser($id);
+					
+					$this->load->library('email');
+					
+					//params shortcode
+					$params = array(
+						'username'=>$customer->username,
+						'email'=>$customer->email,
+						'date'=>date('Y-m-d H:i:s'),
+						'total'=>$customer->total,
+						'order_number'=>$customer->order_number,
+						'status'=>$type,
+					);
+					
+					//config email.
+					// send email to customer 
+					$config = array(
+						'mailtype' => 'html',
+						'charset'  => 'utf-8',
+						'priority' => '1'
+					);
+					$subject = configEmail('sub_order_status', $params);
+					$message = configEmail('order_status', $params);
+					
+					$this->load->library('email');
+					$this->email->initialize($config);
+					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
+					$this->email->to($customer->email);    
+					$this->email->subject ( $subject);
+					$this->email->message ($message);   
+				
+					if ($this->email->send())
+						$this->session->set_flashdata('msg', lang('orders_admin_email_change_status_order_msg').$type);
+					else
+						$this->session->set_flashdata('error', lang('orders_admin_change_status_not_send_email_msg'));
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+			}
+                    
+                }
+                
+                //echo 'history.go(-1)';
+                //redirect('admin/orders/detail/'.$id);
+                redirect($_SERVER['HTTP_REFERER']);
+
+	}
 
 }

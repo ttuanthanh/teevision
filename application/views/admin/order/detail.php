@@ -34,10 +34,40 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     }
     .top-align td{ vertical-align: top!important; }
 </style>
+<div class="row">
+<?php if($this->session->flashdata('msg') != ''){?> 
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			<button class="close" data-dismiss="alert"> × </button>
+			<i class="fa fa-check-circle"></i>
+			<?php echo $this->session->flashdata('msg');?>
+		</div>
+	</div>
+<?php }?>
+<?php if($this->session->flashdata('error') != ''){?> 
+	<div class="col-md-12">
+		<div class="alert alert-danger">
+			<button class="close" data-dismiss="alert"> × </button>
+			<i class="fa fa-times-circle"></i>
+			<?php echo $this->session->flashdata('error');?>
+		</div>
+	</div>
+<?php }?>
+</div>
 <?php if (count($order)) { ?>
 
 <div id="order_detail_body">
-    <div class="row info-table">		
+    <div class="row info-table">
+        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
+                <?php
+                    if ($order->status != 'completed'){
+                    ?>
+                    <button onclick="changeStatus()" type="button" class="btn btn-warning active btn-block">Complete order</button>
+                    <?php
+                    }
+                ?>
+                
+            </div>
                 <table id="sample-table-1" class="table table-bordered table-hover">
                             <thead>
                                     <tr>
@@ -56,8 +86,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </tr>
                             </thead>
                             <tbody>
-                                
-                                    <tr>
+                                <?php
+                                    $shipDate = (new DateTime($order->ship_date))->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                                    $today = date("Y-m-d");
+                                ?>
+                                    <tr class="<?php 
+                                        if ($shipDate <= $today) echo 'duedate';
+                                        else if ($order->status == 'completed') echo 'o-complete';
+                                        ?>">
                                         <td class="center">    
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
@@ -68,7 +104,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php echo $order->name; ?>
                                     </td>
                                     <td class="center">
-                                       12
+                                       <?php echo $order->total_qty; ?>
                                     </td>
                                     <td class="center"> 
                                         <?php if( $order->custom_file=='')
@@ -88,7 +124,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>
                                     </td>
                                     <td class="center">
-                                        May 30
+                                        <?php 
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        ?>
                                     </td>
                                     <td class="center">     
                                         <?php
@@ -107,7 +146,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php } ?>
                                     </td>
                                     <td class="center">  
-                                        <b>#1221433</b>
+                                        <?php
+                                            if ($order->tracking_num == '')
+                                                echo '<input id="tracking-num" type="text" style="width: 110px">';
+                                            else
+                                                echo '#'.$order->tracking_num;
+                                        ?>
+                                                
+                                        
                                     </td>
                                     <td class="center">    
                                         <?php if( $order->balance != 0) {?>
@@ -119,6 +165,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </tr>
                             </tbody>
                     </table>
+            
     </div> 
     <?php foreach($items as $product){?>
         <div class="panel panel-default">
@@ -151,8 +198,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             {
                                     //$design_option   = json_decode($order->design_option);
                                     $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
+                                    var_dump($design_images);
                                     echo '<div class="col-md-6">'
-                                        .   '<img src="'.$design_images->$key .'" width="200">'
+                                        .   '<img src="'.$design_images->front .'" width="200">'
                                         .'</div>';
                                 }
                         ?>
@@ -400,24 +448,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     Billing Detail
             </div>
             <div class="panel-body" id="panelbody">
-                <div class="row">
-                    <table class="table table-reflow">
-                        <tbody>
-                          <tr>     
-                            <th>Client Name:</th>
-                            <td>Tran Tuan Thanh</td>
-                          </tr>
-                          <tr>
-                            <th>Shipping Adress:</th>
-                            <td>793/35/15 Tran Xuan Soan, P.Tan quy q.7</td>
-                          </tr>
-                          <tr>
-                           <th>Telephone:</th>
-                            <td>263261973027</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
+                    <div class="row">
+                            <label class="col-sm-5 text-right"><?php echo lang('name'); ?>:</label>
+                            <span class="col-sm-7 text-left">
+                                    <a href="<?php site_url('admin/users/edit/'.$order->user_id); ?>" title="<?php echo $order->name; ?>">
+                                            <strong><?php echo $order->name; ?></strong>
+                                    </a>
+                            </span>
+                    </div>
+
+                    <div class="row">
+                            <label class="col-sm-5 text-right"><?php echo lang('username'); ?>:</label>
+                            <span class="col-sm-7 text-left">
+                                    <a href="<?php site_url('admin/users/edit/'.$order->user_id); ?>" title="<?php echo $order->username; ?>">
+                                            <strong><?php echo $order->username; ?></strong>
+                                    </a>
+                            </span>
+                    </div>
+
+                    <div class="row">
+                            <label class="col-sm-5 text-right"><?php echo lang('email'); ?>:</label>
+                            <span class="col-sm-7 text-left"><?php echo $order->email; ?></span>
+                    </div>
             </div>
         </div>
     </div>    
@@ -455,6 +507,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 background: 'none'
             }
         });
+        }
+        
+    function changeStatus(){
+        var track = jQuery('#tracking-num').val();    
+        window.location.replace("<?php echo site_url('admin/orders/changeStatusOrder/'.$order->id.'/completed'); ?>/"+track);
     }
 	
 </script>

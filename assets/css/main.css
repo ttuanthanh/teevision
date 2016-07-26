@@ -1103,3 +1103,12 @@ ul.edit_language li:hover{background: #F7F7F9;}
     margin-right: 5px;
         
 }
+.duedate{
+    background-color: #faf0e6;
+    font-weight: bold;
+    color: #cc0000;
+}
+.o-complete{
+    background-color: #ccff99;
+    color:#00cc33;
+}
