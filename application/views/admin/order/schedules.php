@@ -157,7 +157,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php
                                             $design_option   = json_decode($order->design_option);
                                             $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                            $art_front = isset($design_images->front) ? explode('assets/', $design_images->front)[1] : 'not-uploaded.jpg';
+                                            $art_front = 'not-uploaded.jpg';
+                                            if(isset($design_images->front)){
+                                                $temp = explode('assets/', $design_images->front);
+                                                $art_front = $temp[1];
+                                            }
                                             
                                             //var_dump($desi);
                                             if ( isset($desi->vectors) || $art_front != 'not-uploaded.jpg'  || isset($design_images->back))

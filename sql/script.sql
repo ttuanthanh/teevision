@@ -16,3 +16,17 @@ ADD COLUMN `total_qty`  int NULL AFTER `total`;
 
 ALTER TABLE `dg_orders`
 ADD COLUMN `tracking_num`  int NULL AFTER `balance`;
+
+
+CREATE TABLE  `dg_order_garment` (
+ `id` BIGINT NOT NULL ,
+ `order_number` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ `distributor` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ `number` INT NULL ,
+ `date_order` DATE NULL ,
+ `eta` DATE NULL ,
+ `tracking_number` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ `cost` FLOAT NULL ,
+ `misc_fees` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+PRIMARY KEY (  `id` )
+) ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
