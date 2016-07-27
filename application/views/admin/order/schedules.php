@@ -103,14 +103,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <?php
                                     $shipDate = (new DateTime($order->ship_date))->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
+                                    
                                 ?>
                             <tr class="<?php 
-                                        if ($shipDate <= $today) echo 'duedate';
-                                        else if ($order->status == 'completed') echo 'o-complete';
+                                        if ($order->status == 'completed') echo 'o-complete';
+                                        else if ($shipDate <= $today) echo 'duedate';                                         
                                         ?>">
                                     <td class="center">    
                                         <?php
-                                            if ($shipDate <= $today)
+                                            if ($shipDate <= $today && $order->status != 'completed')
                                                 echo '<img src="http://www.clker.com/cliparts/E/C/p/S/0/F/exclamation-mark-red-md.png" width="20" height="20"/>';
                                         ?>
                                         
@@ -160,7 +161,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             $art_front = 'not-uploaded.jpg';
                                             if(isset($design_images->front)){
                                                 $temp = explode('assets/', $design_images->front);
-                                                $art_front = $temp[1];
+                                                if (isset($temp[1]))
+                                                    $art_front = $temp[1];
                                             }
                                             
                                             //var_dump($desi);

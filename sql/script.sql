@@ -15,7 +15,8 @@ ALTER TABLE `dg_orders`
 ADD COLUMN `total_qty`  int NULL AFTER `total`;
 
 ALTER TABLE `dg_orders`
-ADD COLUMN `tracking_num`  int NULL AFTER `balance`;
+ADD COLUMN `balance`  varchar(255) NULL AFTER `status`,
+ADD COLUMN `tracking_num`  varchar(255) NULL AFTER `balance`;
 
 
 CREATE TABLE  `dg_order_garment` (
