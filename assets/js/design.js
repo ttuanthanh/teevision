@@ -1298,8 +1298,8 @@ var design={
 					html = html + 		'<div class="col-sm-8">';
 					html = html + 			'<h3 class="margin-top">'+product.title+'</h3>';
 					//html = html + 			'<p>ID: '+product.id+'</p>';
-					html = html + 			'<p>SKU: '+product.sku+'</p>';
-                    html = html + 		'<div class="form-group">'+product.short_description+'</div>';
+					//html = html + 			'<p>SKU: '+product.sku+'</p>';
+                                        html = html + 		'<div class="form-group">'+product.short_description+'</div>';
 					html = html + 		'</div>';
                     
 					html = html + 	'</div>';

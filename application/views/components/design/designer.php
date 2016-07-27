@@ -336,7 +336,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								<div class="col-xs-6 col-md-6">
 									<h3 class="margin-top product-detail-title"><?php echo $product->title; ?></h3>
 									<p><?php echo $lang['designer_product_id']; ?>: <strong class="product-detail-id"><?php echo $product->id; ?></strong></p>
-									<p><?php echo $lang['designer_product_sku']; ?>: <strong class="product-detail-sku"><?php echo $product->sku; ?></strong></p>
+									<!--<p><?php echo $lang['designer_product_sku']; ?>: <strong class="product-detail-sku"><?php echo $product->sku; ?></strong></p>-->
 									<p class="product-detail-short_description"><?php echo $product->short_description; ?></p>
 								</div>
 							</div>
