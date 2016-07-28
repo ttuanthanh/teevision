@@ -516,11 +516,11 @@ class Orders extends Admin_Controller
 				$this->order_m->deleteOrder($where_his);
 				
 				$this->session->set_flashdata('msg', lang('orders_admin_delete_order_success_msg'));
-				redirect(site_url('admin/orders'));
+				redirect(site_url('admin/orders/schedules'));
 			}else
 			{
 				$this->session->set_flashdata('error', lang('orders_admin_delete_order_error_msg'));
-				redirect(site_url('admin/orders'));
+				redirect(site_url('admin/orders/schedules'));
 			}
 		}else
 		{
@@ -564,10 +564,10 @@ class Orders extends Admin_Controller
 					}
 				}
 				$this->session->set_flashdata('msg', lang('orders_admin_delete_order_success_msg'));
-				redirect(site_url('admin/orders'));
+				redirect(site_url('admin/orders/schedules'));
 			}
 			$this->session->set_flashdata('error', lang('orders_admin_delete_order_error_msg'));
-			redirect(site_url('admin/orders'));
+			redirect(site_url('admin/orders/schedules'));
 		}
 	}
 	

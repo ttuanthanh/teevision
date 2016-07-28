@@ -94,6 +94,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <th class="center">Proof</th>
                                         <th class="center">Tracking Number</th>
                                         <th class="center">Balance</th>
+                                        <th class="center">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -101,7 +102,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <?php foreach($orders as $order) { ?>
                             <?php $desi = $this->order_m->getDesign($order->id); ?>
                                 <?php
-                                    $shipDate = (new DateTime($order->ship_date))->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                                    $newda = new DateTime($order->ship_date);
+                                    $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
                                     
                                 ?>
@@ -145,13 +147,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <td class="center">      
                                         <?php 
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         ?>
                                     </td>
                                     <td class="center">
                                         <?php 
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         ?>
                                     </td>
                                     <td class="center">     
@@ -190,6 +192,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php } else {?>
                                             <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
+                                    </td>
+                                    <td>
+                                        <a class="remove btn btn-bricky tooltips" onclick="return confirm('<?php echo lang('orders_admin_confirm_delete');?>');" href="<?php echo site_url('admin/orders/delete/'.$order->id); ?>" data-original-title="<?php echo lang('remove');?>" data-placement="top">
+							<i class="fa fa-trash-o"></i>
+						</a>
                                     </td>
 				</tr>				
 			<?php } ?>

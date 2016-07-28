@@ -87,12 +87,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             </thead>
                             <tbody>
                                 <?php
-                                    $shipDate = (new DateTime($order->ship_date))->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                                    $newda = new DateTime($order->ship_date);
+                                    $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
                                 ?>
                                     <tr class="<?php 
-                                        if ($shipDate <= $today) echo 'duedate';
-                                        else if ($order->status == 'completed') echo 'o-complete';
+                                        if ($order->status == 'completed') echo 'o-complete';
+                                        else if ($shipDate <= $today) echo 'duedate';
                                         ?>">
                                         <td class="center">    
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
@@ -120,13 +121,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <td class="center">      
                                         <?php 
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         ?>
                                     </td>
                                     <td class="center">
                                         <?php 
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('M').' '.$newDate->format('d'); 
+                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         ?>
                                     </td>
                                     <td class="center">     
