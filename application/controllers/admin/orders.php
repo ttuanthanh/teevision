@@ -717,7 +717,7 @@ class Orders extends Admin_Controller
 		
 		// pagination
 		$this->load->library('pagination');
-		$config['base_url'] 		= site_url('admin/orders/index');
+		$config['base_url'] 		= site_url('admin/orders/schedules/index');
 		$config['total_rows']		= $this->order_m->getOrders(true, 5, 1, $this->session->userdata('search_order'), $this->session->userdata('option_order'));
 		
 		if ($this->input->post('option'))
