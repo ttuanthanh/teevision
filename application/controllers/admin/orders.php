@@ -1021,22 +1021,20 @@ class Orders extends Admin_Controller
                 $this->data['sub_title'] = '';
 		
                 $items = $this->order_m->getItems($id);
+                foreach ($items as $key=>$item){
+                    $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                }
+                
+                
 		$this->data['items'] = $items;
                 
                 $order = $this->order_m->getOrder($id); 
                 $this->data['order'] = $order;
-                if ($order->artwork)
-                    $this->data['artworks'] = $this->order_m->getArtworkByOrder($order->artwork);
+
                 
                 
-                
-		//
-		//$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
-		$this->data['garments'] = $this->garment_m->getByOrder($id); 
-		
-		
 		// Load view
-		$this->data['subview'] = 'admin/order/garment';
+		$this->data['subview'] = 'admin/order/artwork';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
