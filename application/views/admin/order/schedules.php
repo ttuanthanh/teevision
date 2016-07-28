@@ -193,7 +193,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
                                     </td>
-                                    <td>
+                                    <td class="center">
                                         <a class="remove btn btn-bricky tooltips" onclick="return confirm('<?php echo lang('orders_admin_confirm_delete');?>');" href="<?php echo site_url('admin/orders/delete/'.$order->id); ?>" data-original-title="<?php echo lang('remove');?>" data-placement="top">
 							<i class="fa fa-trash-o"></i>
 						</a>
