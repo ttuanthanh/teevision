@@ -36,7 +36,7 @@ class Garment_m extends MY_Model
 	{	
 		$this->db->where('order_id ', $id);
                 $query = $this->db->get('order_garment');
-                return $query->row();
+                return $query->result();
 		
 	}
 	

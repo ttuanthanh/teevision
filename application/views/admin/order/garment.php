@@ -66,22 +66,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <label class="control-label col-md-3">Distributor<span class="symbol"></span></label>
                                         <div class="col-md-8">
                                             <?php //var_dump($garment); ?>
-                                            <input class="form-control" type="text"  placeholder="" value="<?php echo (isset($garment)) ? $garment->distributor : '' ?>" name="gar[distributor]">
+                                            <input class="form-control" type="text"  placeholder="" value="" name="gar[distributor]">
                                                 
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                        <label class="control-label col-md-3">Order #<span class="symbol"></span></label>
+                                        <label class="control-label col-md-3">Invoice #<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="<?php echo (isset($garment)) ? $garment->number : '' ?>" name="gar[number]">
+                                            <input class="form-control" type="text"  data-type="text" placeholder="" value="" name="gar[invoice]">
                                         </div>
                                 </div>
                             
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Date ordered<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="date"  data-type="" placeholder="" value="<?php echo (isset($garment)) ? $garment->date_order : '' ?>" name="gar[date_order]">
+                                            <input class="form-control" type="date"  data-type="" placeholder="" value="" name="gar[date_order]">
                                         </div>
                                 </div>
 
@@ -92,14 +92,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">ETA<span class="symbol"></span></label>
                                         <div class="col-md-8">                                            
-                                            <input class="form-control" type="date" placeholder="order" value="<?php echo (isset($garment)) ? $garment->eta : '' ?>" name="gar[eta]">
+                                            <input class="form-control" type="date" placeholder="order" value="" name="gar[eta]">
                                         </div>
                                 </div>
 
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Tracking number<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                                <input class="form-control" type="text"  placeholder="" value="<?php echo (isset($garment)) ? $garment->tracking_number : '' ?>" name="gar[tracking_number]">
+                                                <input class="form-control" type="text"  placeholder="" value="" name="gar[tracking_number]">
                                                 
                                         </div>
                                 </div>
@@ -107,14 +107,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Cost<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="<?php echo (isset($garment)) ? $garment->cost : '' ?>" name="gar[cost]">
+                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[cost]">
                                         </div>
                                 </div>
                             
                                 <div class="form-group">
                                         <label class="control-label col-md-3">MISC. FEES<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="text"  data-type="" placeholder="" value="<?php echo (isset($garment)) ? $garment->misc_fees : '' ?>" name="gar[misc_fees]">
+                                            <input class="form-control" type="text"  data-type="" placeholder="" value="" name="gar[misc_fees]">
                                         </div>
                                 </div>
 
@@ -126,31 +126,31 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
                 <div class="col-sm-12">
                         <p class="pull-right">
-                                <button type="submit" class="btn btn-primary" ><?php echo lang('save'); ?></button>
-                                <?php
-                                    if (isset($garment))
-                                        echo '<a href="'.site_url('admin/garment/delete/'.$garment->id).'" class="btn btn-danger" >Delete</a>'
-                                ?>
+                                <button type="submit" class="btn btn-primary" >Add new</button>                                
                                 <a href="<?php echo site_url('admin/orders/schedules')?>" class="btn btn-danger" ><?php echo lang('cancel'); ?></a>
                         </p>
                 </div>
+                <?php //var_dump($garments); ?>
 		<table id="sample-table-1" class="table table-bordered table-hover">
 			<thead>
 				<tr>
                                         
 					<th class="center">Order</th>
 					<th class="center">Distributor</th>
-					<th class="center">Order #</th>
+					<th class="center">Invoice #</th>
 					<th class="center">Date ordered</th>
 					<th class="center">ETA</th>
 					<th class="center">Tracking nuber</th>
 					<th class="center">Cost</th>
                                         <th class="center">MISC.FEES</th>
+                                        <th class="center"></th>
 				</tr>
 			</thead>
 			<tbody>
                             <?php //var_dump($orders); ?>
-                            <?php foreach($garments as $gar) { ?>
+                            <?php
+                                $cost = 0;
+                                foreach($garments as $gar) { ?>
 				<tr>
                                     <td class="center">    
                                         <a href="<?php echo site_url('admin/orders/detail/'.$gar->order_id); ?>"><?php echo $gar->order_number; ?></a>
@@ -159,7 +159,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                       <?php echo $gar->distributor; ?>
                                     </td>
                                     <td class="center">   
-                                         <?php echo $gar->number; ?>
+                                         <?php echo $gar->invoice; ?>
                                     </td>
                                     <td class="center">
                                         <?php echo $gar->date_order; ?>
@@ -171,14 +171,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php echo $gar->tracking_number; ?>
                                     </td>
                                     <td class="center">      
-                                        <?php echo $gar->cost; ?>
+                                        <?php echo $gar->cost; $cost += $gar->cost;?>
                                     </td>
                                     <td class="center">
                                         <?php echo $gar->misc_fees; ?>
                                     </td>
-                                    
+                                    <td class="center">
+                                        <a href="<?php echo site_url('admin/garment/delete/'.$gar->id) ?>" class="btn btn-danger" >
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </td>
 				</tr>				
 			<?php } ?>
+                                <tr style="font-weight: bold; font-size: 16px;">
+                                    <td colspan="6" class="text-right">Total cost</td>
+                                    <td colspan="3" class="bold"><?php echo $cost; ?></td>
+                                </tr>
 			</tbody>
 		</table>
 		<div class="pull-right">

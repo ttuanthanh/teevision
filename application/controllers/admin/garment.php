@@ -39,13 +39,13 @@ class Garment extends Admin_Controller {
                 $gar_id = '';
                 
                 //var_dump($garment);
-                if(!$garment)
+                //if(!$garment)
                     $gar_id = $this->garment_m->save($data);
-                else
-                {
-                    $this->garment_m->update($data, $garment->id);
-                    $gar_id = $garment->id;                        
-                }
+                //else
+//                {
+//                    $this->garment_m->update($data, $garment->id);
+//                    $gar_id = $garment->id;                        
+//                }
                 
                 
                 $this->load->model('order_m');

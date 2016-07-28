@@ -861,7 +861,7 @@ class Orders extends Admin_Controller
                 
 		//
 		//$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
-		$this->data['garments'] = $this->garment_m->getData(); 
+		$this->data['garments'] = $this->garment_m->getByOrder($id); 
 		
 		
 		// Load view
@@ -1009,6 +1009,35 @@ class Orders extends Admin_Controller
                 //redirect('admin/orders/detail/'.$id);
                 redirect($_SERVER['HTTP_REFERER']);
 
+	}
+        
+        function artwork($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		$this->data['breadcrumb'] = lang('orders_admin_orders_title');
+                $this->data['meta_title'] = lang('orders_admin_orders_title');
+                $this->data['sub_title'] = '';
+		
+                $items = $this->order_m->getItems($id);
+		$this->data['items'] = $items;
+                
+                $order = $this->order_m->getOrder($id); 
+                $this->data['order'] = $order;
+                if ($order->artwork)
+                    $this->data['artworks'] = $this->order_m->getArtworkByOrder($order->artwork);
+                
+                
+                
+		//
+		//$orders = $this->order_m->getOrders(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		$this->data['garments'] = $this->garment_m->getByOrder($id); 
+		
+		
+		// Load view
+		$this->data['subview'] = 'admin/order/garment';
+		$this->load->view('admin/_layout_main', $this->data);
 	}
 
 }

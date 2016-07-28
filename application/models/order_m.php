@@ -371,4 +371,12 @@ class Order_m extends MY_Model
 		$query = $this->db->get('orders');
 		return $query->row();
 	}
+        
+        function getArtworkByOrder($id = '')
+	{	
+		$this->db->where('order_id ', $id);
+                $query = $this->db->get('order_artwork');
+                return $query->result();
+		
+	}
 }

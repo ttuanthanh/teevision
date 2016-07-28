@@ -31,3 +31,13 @@ CREATE TABLE  `dg_order_garment` (
  `misc_fees` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
 PRIMARY KEY (  `id` )
 ) ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+
+<!-- new backend -->
+ALTER TABLE `dg_order_garment`
+CHANGE COLUMN `number` `invoice`  varchar(11) NULL DEFAULT NULL AFTER `distributor`;
+
+ALTER TABLE `dg_orders`
+ADD COLUMN `artwork`  varchar(255) NULL AFTER `apparel`;
