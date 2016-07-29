@@ -847,8 +847,8 @@ class Orders extends Admin_Controller
                 
                 $this->load->model('garment_m');
                 
-		$this->data['breadcrumb'] = lang('orders_admin_orders_title');
-                $this->data['meta_title'] = lang('orders_admin_orders_title');
+		$this->data['breadcrumb'] = 'Garment';
+                $this->data['meta_title'] = 'Order Garment';
                 $this->data['sub_title'] = '';
 		
                 if ($id != '')
@@ -1016,8 +1016,8 @@ class Orders extends Admin_Controller
                 if ($id == '')
                     redirect('admin/orders/schedules');
                 
-		$this->data['breadcrumb'] = lang('orders_admin_orders_title');
-                $this->data['meta_title'] = lang('orders_admin_orders_title');
+		$this->data['breadcrumb'] = 'artwork';
+                $this->data['meta_title'] = 'Order Artwork';
                 $this->data['sub_title'] = '';
 		
                 $items = $this->order_m->getItems($id);

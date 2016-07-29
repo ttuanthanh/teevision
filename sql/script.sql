@@ -22,6 +22,7 @@ ADD COLUMN `tracking_num`  varchar(255) NULL AFTER `balance`;
 CREATE TABLE  `dg_order_garment` (
  `id` BIGINT NOT NULL ,
  `order_number` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ `order_id` BIGINT NULL ,
  `distributor` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
  `number` INT NULL ,
  `date_order` DATE NULL ,
@@ -41,3 +42,14 @@ CHANGE COLUMN `number` `invoice`  varchar(11) NULL DEFAULT NULL AFTER `distribut
 
 ALTER TABLE `dg_orders`
 ADD COLUMN `artwork`  varchar(255) NULL AFTER `apparel`;
+
+CREATE TABLE `dg_order_artwork` (
+`id`  bigint NOT NULL ,
+`front_color`  tinyint NULL ,
+`back_color`  tinyint NULL ,
+`front_file`  varchar(255) NULL ,
+`back_file`  varchar(255) NULL ,
+`createdt`  datetime NULL ,
+`modidt`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP ,
+PRIMARY KEY (`id`)
+)ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
