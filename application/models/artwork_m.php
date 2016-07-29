@@ -11,7 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Artwork_m extends MY_Model
 {
-	public $_table_name = 'order_garment';
+	public $_table_name = 'order_artwork';
 	public $_primary_key = 'id';
 	public $_timestamps = False;
 	

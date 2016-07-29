@@ -18,7 +18,7 @@ class Artwork extends Admin_Controller {
 		
 		$this->load->library('session');
 		$this->user = $this->session->userdata('user');
-                $this->load->model('garment_m');
+                $this->load->model('artwork_m');
     }
 
         public function garment() 
@@ -33,28 +33,26 @@ class Artwork extends Admin_Controller {
         }
         
         public function save(){
-                $data = $this->input->post('gar');
+            
+                $data = $this->input->post();
+                $art_id = $data['artwork_id'];
+                unset($data['artwork_id']);
+                if ($art_id == '')
+                {                    
+                    $data['createdt'] = date("Y-m-d h:i:sa");
+                    $data['modidt'] = date("Y-m-d h:i:sa");
+                    $gar_id = $this->artwork_m->save($data);
+                }
+                else
+                {
+                    $gar_id =  $this->artwork_m->update($data, $art_id);
+                    //var_dump($gar_id);
+                }
                 
-                $garment = $this->garment_m->getByOrder($data['order_id']);
-                $gar_id = '';
-                
-                //var_dump($garment);
-                //if(!$garment)
-                    $gar_id = $this->garment_m->save($data);
-                //else
-//                {
-//                    $this->garment_m->update($data, $garment->id);
-//                    $gar_id = $garment->id;                        
-//                }
                 
                 
-                $this->load->model('order_m');
-                $order = new order_m();
-                //$order = $this->order_m->getOrder($data['order_id']);
-                $or['apparel'] = $gar_id;
-                $order->update($or, $data['order_id']);
                 
-                redirect($_SERVER['HTTP_REFERER']);
+                //redirect($_SERVER['HTTP_REFERER']);
         }
         
         

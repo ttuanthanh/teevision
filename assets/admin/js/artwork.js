@@ -234,7 +234,7 @@
     }
 
     function upload_f(locat){
-        if(locat == 'front')
+        if(locat.search("front"))
             traverseFiles(filefront.files, locat);
         else
             traverseFiles(fileback.files, locat);

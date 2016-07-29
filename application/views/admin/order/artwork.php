@@ -50,89 +50,96 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <?php
                     $design_option   = json_decode($product->design_option);
                     $colors = $design_option->colors;
-                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-orders');		
+                    $artwork = $product->artwork;
+                    var_dump($artwork);
+                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id);		
                     echo form_open(site_url('admin/artwork/save'), $attribute);
             ?>
             <div class="panel-body" id="panelbody">
                 
                 <div class="row">
-                    
-                    <div class="col-md-7">
-                        <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
-                        <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
-                        <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
-                        </p>
-                        <div>
-                            <?php
-                            if($product->attributes != '' && $product->attributes != '"[]"')
-                            {
-                                    $size = json_decode(json_decode($product->attributes), true);
-                                    $sizename = '';
-                                    $sizenum = '';
-                                    if (count($size) > 0)
-                                    {
-                                            foreach($size as $option) { ?>
-                                                    <p>
-<!--                                                        <strong><?php echo $option['name']; ?>: </strong><br>-->
-                                                            <?php 
-                                                                    if (is_string($option['value'])) echo $option['value'];
-                                                                    elseif (is_array($option['value']) && count($option['value']))
-                                                                    {
-                                                                            foreach($option['value'] as $v=>$value)
-                                                                            {
-                                                                                    if ($option['type'] == 'textlist'){
-                                                                                        $sizename .= '<td>'.$v.'</td>';
-                                                                                        $sizenum .= '<td>'.$value.'</td>';
-                                                                                    }
-                                                                                    else
-                                                                                            echo $value.'; ';
-                                                                            }
-                                                                    }
-                                                            ?>
-                                                    </p>
-                                            <?php } ?>
-                                    <table id="sample-table-1" class="table table-bordered table-hover">
-                                        <thead>
-                                                <tr>
-                                                    <?php echo $sizename ?>
-                                                </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                    <?php echo $sizenum ?>
-                                                </tr>
-                                        </tbody>
-                                    </table>            
-                            <?php                
-                                    }
-                            } 
-                            ?>
-                            <table id="sample-table-1" class="table table-bordered table-hover">
-                                <thead>
-                                        <tr>
-                                                
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <tr>
-                                              
-                                        </tr>
-                                </tbody>
-                            </table>
+                    <div class="row-content">    
+                        <div class="col-md-7">
+                            <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
+                            <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
+                            <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
+                            </p>
+                            <div>
+                                <?php
+                                if($product->attributes != '' && $product->attributes != '"[]"')
+                                {
+                                        $size = json_decode(json_decode($product->attributes), true);
+                                        $sizename = '';
+                                        $sizenum = '';
+                                        if (count($size) > 0)
+                                        {
+                                                foreach($size as $option) { ?>
+                                                        <p>
+    <!--                                                        <strong><?php echo $option['name']; ?>: </strong><br>-->
+                                                                <?php 
+                                                                        if (is_string($option['value'])) echo $option['value'];
+                                                                        elseif (is_array($option['value']) && count($option['value']))
+                                                                        {
+                                                                                foreach($option['value'] as $v=>$value)
+                                                                                {
+                                                                                        if ($option['type'] == 'textlist'){
+                                                                                            $sizename .= '<td>'.$v.'</td>';
+                                                                                            $sizenum .= '<td>'.$value.'</td>';
+                                                                                        }
+                                                                                        else
+                                                                                                echo $value.'; ';
+                                                                                }
+                                                                        }
+                                                                ?>
+                                                        </p>
+                                                <?php } ?>
+                                        <table id="sample-table-1" class="table table-bordered table-hover">
+                                            <thead>
+                                                    <tr>
+                                                        <?php echo $sizename ?>
+                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <?php echo $sizenum ?>
+                                                    </tr>
+                                            </tbody>
+                                        </table>            
+                                <?php                
+                                        }
+                                } 
+                                ?>
+
+                            </div>
+
                         </div>
-                          
+                        <div class="col-md-5">
+                            <div class="art-ordernum">Order: <?php echo $order->order_number ?></div>
+                            <div>
+                                <h4>Updated:</h4>
+                                <?php 
+                                    if(isset($artwork->id)){
+                                ?>
+                                    <p>Date: <?php echo $artwork->modidt; ?></p>
+                                    <p>Time: <?php echo $artwork->modidt; ?></p>
+                                    <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-content clearfix">
+                         
                         <div class="col-md-6 pruduct-quote-front">
                             <h5><b>Front</b></h5>
                             <div class="col-md-6">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput <?php echo isset($artwork->front_file) ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                        <img data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
+                                        <img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->front_file.'"' : '' ?>data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
                                     </div>
                                     <div>
                                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                            <input class="upload-act" type="file" id="files-upload-front" placeholder="Choose banner image" onchange="upload_f('front')"/>
+                                            <input class="upload-act" type="file" id="files-upload-front" placeholder="Choose banner image" onchange="upload_f('front<?php echo $product->id ?>')"/>
                                         </span> 
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="return remove_f('front')">Remove</a> 
+                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="return remove_f('front<?php echo $product->id ?>')">Remove</a> 
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +147,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group product-fields selectbox">
                                     <label for="fields">Color</label>
                                     <div class="dg-poduct-fields ">
-                                        <select class="form-control text-center" id="print-front-num" name="print-front-num">
+                                        <select class="form-control text-center" id="print-front-num" name="front_color">
                                             <option value="0" selected>0</option>
-                                            <!--<option value="<?php echo $print_front ?>" selected><?php echo $print_front ?></option>-->                                                
+                                            <option value="1" selected>1</option>   
+                                            <option value="2" selected>2</option>
+                                            <option value="3" selected>3</option> 
+                                            <option value="4" selected>4</option>
+                                            <option value="5" selected>5</option> 
+                                            <option value="6" selected>6</option>                                                
                                         </select>
                                     </div>
                                 </div>
@@ -150,17 +162,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <br class="clear"> 
                         </div>
                         <div class="col-md-6 pruduct-quote-back">
-                            <h5><b>Front</b></h5>
+                            <h5><b>Back</b></h5>
                             <div class="col-md-6">
-                                <div class="fileinput fileinput-exists" data-provides="fileinput">
+                                <div class="fileinput <?php echo isset($artwork->back_file) ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                        <img data-src="holder.js/172x90?http://tshirt.local/media/assets/uploaded/2016/07/20-113_thumb.jpg" src="http://tshirt.local/media/assets/uploaded/2016/07/20-113_thumb.jpg" alt="back_image" class="img-responsive">
+                                        <img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back." alt="back_image" class="img-responsive">
                                     </div>
                                     <div>
                                         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                            <input class="upload-act" type="file" id="files-upload-front" placeholder="Choose banner image" onchange="upload_f('back')"/>
+                                            <input class="upload-act" type="file" id="files-upload-back" placeholder="Choose banner image" onchange="upload_f('back<?php echo $product->id ?>')"/>
                                         </span> 
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="return remove_f('back')">Remove</a> 
+                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="return remove_f('back<?php echo $product->id ?>')">Remove</a> 
                                     </div>
                                 </div>
                             </div>
@@ -168,19 +180,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group product-fields selectbox">
                                     <label for="fields">Color</label>
                                     <div class="dg-poduct-fields ">
-                                        <select class="form-control text-center" id="print-front-num" name="print-front-num">
+                                        <select class="form-control text-center" id="print-front-num" name="back_color">
                                             <option value="0" selected>0</option>
-                                            <!--<option value="<?php echo $print_front ?>" selected><?php echo $print_front ?></option>-->                                                
+                                            <option value="1" selected>1</option>   
+                                            <option value="2" selected>2</option>
+                                            <option value="3" selected>3</option> 
+                                            <option value="4" selected>4</option>
+                                            <option value="5" selected>5</option> 
+                                            <option value="6" selected>6</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <br class="clear"> 
                         </div>
-                        <input type="hidden" id="design-image-front" name="design[images][front]" value="">
-                        <input type="hidden" id="design-image-back" name="design[images][back]" value="">
+                        <input type="hidden" id="design-image-front<?php echo $product->id ?>" name="front_file" value="<?php echo isset($artwork->front_file) ? $artwork->back_file : '' ?>">
+                        <input type="hidden" id="design-image-back<?php echo $product->id ?>" name="back_file" value="<?php echo isset($artwork->back_file) ? $artwork->back_file : '' ?>">
+                        <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
+                        <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
+                        <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
                     </div>
-                    <div class="col-md-5">
+                    <div class="row-content clearfix">
+                        <button type="submit" class="btn btn-default">Save</button>
                     </div>
                 </div>	
             </div>

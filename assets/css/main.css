@@ -1112,3 +1112,10 @@ ul.edit_language li:hover{background: #F7F7F9;}
     background-color: #ccff99;
     color:#00cc33;
 }
+.art-ordernum{
+    text-align: center;
+    color: #cc0000;
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom: 1px solid #cc0000;
+}
