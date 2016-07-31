@@ -73,8 +73,7 @@
         return attribute;
     }
     
-    var filefront = document.getElementById("files-upload-front"),
-            fileback = document.getElementById("files-upload-back"),
+    var 
             //dropArea 	= document.getElementById("drop-area"),
             //fileList 	= document.getElementById("dag-files-images"),
             fileType 	= ["png", "gif", "jpg", "jpeg", "PNG", "JPG", "JPEG"],
@@ -234,18 +233,16 @@
     }
 
     function upload_f(locat){
-        if(locat.search("front"))
+        
+        var filefront = document.getElementById("files-upload-"+locat),
+            fileback = document.getElementById("files-upload-"+locat);
+        if(locat.search("front") > -1)
             traverseFiles(filefront.files, locat);
         else
             traverseFiles(fileback.files, locat);
     }
     
     function remove_f(locat){
-        var r = confirm("Are you sure want to remove artwork?");
-        if (r == true) {
-            $('#design-image-'+locat).val('');
-            return true;
-        }
-        return false;
+        $('#design-image-'+locat).val('');
     }
         

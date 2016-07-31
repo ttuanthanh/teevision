@@ -52,7 +52,7 @@ class Artwork extends Admin_Controller {
                 
                 
                 
-                //redirect($_SERVER['HTTP_REFERER']);
+                redirect($_SERVER['HTTP_REFERER']);
         }
         
         
