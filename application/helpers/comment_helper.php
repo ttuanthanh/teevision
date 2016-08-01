@@ -1,0 +1,56 @@
+<?php
+/**
+ * @author teevisionprinting - www.teevisionprinting.com
+ * @date: 2015-01-10
+ * 
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
+ *
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+function comment_box($comments)
+{
+    $thml = '';
+    $i = 0;
+    
+    foreach ($comments as $row){
+        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);        
+        $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('m-d H:i').')</small>: <i><b>'.$row->text.'</b></i></p>';
+    }
+
+    $return =   '<div class="panel panel-default">
+                    <div class="panel-heading">
+                            <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                            Comment
+                    </div>
+                    <div class="comment-box">
+                        <div class="comment-content">
+                            <div class="col-md-12" id="comment-container">
+                                '.$thml.'
+                            </div>
+
+                        </div>
+                        <div class="comment-nav clearfix">
+                            <div class="col-md-8">
+                                <textarea class="form-control" rows="2" id="comment-text"></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary btn-comment" id="comment-submit">Send</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>';
+    return $return;
+}
+
+function profile()
+{	
+	$CI = &get_instance();
+	$CI->db->join('user_profiles', 'user_profiles.user_id = users.id');
+	$CI->db->where('id', $CI->user['id']);
+	$query = $CI->db->get('users');
+	return $query->row();
+}
+?>

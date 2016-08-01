@@ -1119,3 +1119,26 @@ ul.edit_language li:hover{background: #F7F7F9;}
     font-size: 15px;
     border-bottom: 1px solid #cc0000;
 }
+.comment-content{
+    max-height: 150px;
+    min-height: 50px;
+    padding: 5px 0;
+    overflow: auto;
+}
+.comment-nav{
+    margin: 5px 0;
+    padding: 5px 0;
+    border-top: 2px #DDD  solid;
+}
+.cm-bg-0{
+    margin: 0;
+    padding: 6px;
+}
+.cm-bg-1{
+    margin: 0;
+    padding: 6px;
+}
+.btn-comment{
+    width: 100%;
+    
+}

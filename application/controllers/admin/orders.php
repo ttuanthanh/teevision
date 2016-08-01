@@ -1025,13 +1025,18 @@ class Orders extends Admin_Controller
                     $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
                 }
                 
-                
 		$this->data['items'] = $items;
                 
                 $order = $this->order_m->getOrder($id); 
                 $this->data['order'] = $order;
-
                 
+                $this->load->model('comment_m');
+                $this->load->helper('comment');
+                $comments = $this->comment_m->getByOrder($id);
+                $cm_box  = comment_box($comments);
+                $this->data['comment'] = $cm_box;
+                
+                var_dump($this->user);
                 
 		// Load view
 		$this->data['subview'] = 'admin/order/artwork';

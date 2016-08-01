@@ -10,15 +10,15 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Artwork extends Admin_Controller {
+class Comment extends Admin_Controller {
 
     public function __construct(){
 	
         parent::__construct();
-		
+		$this->users_m->userPermission('orders');
 		$this->load->library('session');
 		$this->user = $this->session->userdata('user');
-                $this->load->model('artwork_m');
+                $this->load->model('comment_m');
     }
 
         public function garment() 
@@ -35,29 +35,17 @@ class Artwork extends Admin_Controller {
         public function save(){
             
                 $data = $this->input->post();
-                $art_id = $data['artwork_id'];
-                unset($data['artwork_id']);
-                if ($art_id == '')
+                $order_id = $data['order_id'];
+                $text = $data['comment_text'];
+                $user = $this->user;
+                if ($order_id != '')
                 {                    
-                    $data['createdt'] = date("Y-m-d h:i:sa");
-                    $data['modidt'] = date("Y-m-d h:i:sa");
+                    $comment['order_id'] = $order_id;
+                    $comment['user_name']   = $user['username'];
+                    $comment['text']        = $text;
+                    $comment['createdt']    = date("Y-m-d h:i:sa");;
                     $gar_id = $this->artwork_m->save($data);
                 }
-                else
-                {
-                    $gar_id =  $this->artwork_m->update($data, $art_id);
-                    //var_dump($gar_id);
-                }
-                
-                $this->load->model('comment_m');
-                $comm = new comment_m();
-                $user = $this->user;
-                $comment = array();
-                $comment['order_id']    = $data['order_id'];
-                $comment['user_name']   = $user['username'];
-                $comment['text']        = 'Update artwork.';
-                $comment['createdt']    = date("Y-m-d h:i:sa");;
-                $comm->save($comment);
                 
                 redirect($_SERVER['HTTP_REFERER']);
         }

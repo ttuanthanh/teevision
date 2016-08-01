@@ -115,13 +115,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <div class="col-md-5">
                             <div class="art-ordernum">Order: <?php echo $order->order_number ?></div>
-                            <div>
+                            <div class="bold">
                                 <?php 
                                     if(isset($artwork->id)){
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $artwork->modidt);
                                 ?>
                                     <h4>Updated:</h4>
-                                    <p>Date: <?php echo $artwork->modidt; ?></p>
-                                    <p>Time: <?php echo $artwork->modidt; ?></p>
+                                    <h4 class="text-center">Date: <?php echo $newDate->format('m-d-Y') ?></h4>
+                                    <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
                                     <?php } ?>
                             </div>
                         </div>
@@ -212,14 +213,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
                         <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
                     </div>
-                    <div class="row-content clearfix">
-                        <button type="submit" class="btn btn-default">Save</button>
+                    <div class="row-content clearfix text-right" style="margin-right: 20px">
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>	
             </div>
             <?php echo form_close(); ?>  
         </div>
     <?php } ?>
+    
+    <?php
+        echo $comment;
+    ?>
+        
+    </div>
 </div>
 <script type="text/javascript">
     var uploadSize = [];
