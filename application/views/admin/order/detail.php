@@ -131,13 +131,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>
                                     </td>
                                     <td class="center">     
-                                        <?php
-                                            $design_option   = json_decode($order->design_option);
-                                            $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                            //var_dump($design_images);
-                                            if ( isset($design_images->front) || isset($design_images->back))
-                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>';
-                                        ?>
+                                        <?php if( $order->artwork != '') {?>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
+                                        <?php } ?>
                                     </td>
                                     <td class="center">     
                                         <?php if( $order->proof_approved != 0) {?>

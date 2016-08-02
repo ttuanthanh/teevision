@@ -1036,7 +1036,7 @@ class Orders extends Admin_Controller
                 $cm_box  = comment_box($comments);
                 $this->data['comment'] = $cm_box;
                 
-                var_dump($this->user);
+                
                 
 		// Load view
 		$this->data['subview'] = 'admin/order/artwork';

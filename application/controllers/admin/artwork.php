@@ -59,6 +59,10 @@ class Artwork extends Admin_Controller {
                 $comment['createdt']    = date("Y-m-d h:i:sa");;
                 $comm->save($comment);
                 
+                $this->load->model('order_m');
+                $order = new order_m();
+                $order->update(array('artwork'=>'1'), $data['order_id']);
+                
                 redirect($_SERVER['HTTP_REFERER']);
         }
         
