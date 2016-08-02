@@ -36,7 +36,7 @@ function comment_box($comments)
                                 <textarea class="form-control" rows="2" id="comment-text"></textarea>
                             </div>
                             <div class="col-md-4">
-                                <button class="btn btn-primary btn-comment" id="comment-submit">Send</button>
+                                <button class="btn btn-primary btn-comment" id="comment-submit" onclick="add_comment()">Send</button>
                             </div>
                         </div>
 

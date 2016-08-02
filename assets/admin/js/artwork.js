@@ -1,76 +1,31 @@
     
     
     jQuery(function() {
-        
-        
+        jQuery("#comment-content").animate({ scrollTop: jQuery('#comment-content').prop("scrollHeight")}, 1000);
     });
-    $('#bt-mymodal').click(function() {
-            var decs_front = $('#design-area-front').val(),
-                decs_back = $('#design-area-back').val();
-            
-            if(decs_front == '' && decs_back == ''){
-                //$('#myModal').modal('hide');
-                alert('Please enter your Describe Design Idea!')
-                return false;
-            }
-                
-    });
-    function send_artist(){
-            
-            if(!validateEmail(jQuery('#u-email').val()) && jQuery('#u-email').val() == '') {
-                
-                alert('Please enter your name and email');
-                return false;
-            }
-            $('#btn-sendemail').hide();
-            $('#ajax-load').show();
-            size_flag = 0;
-            $('input[name^="'+jQuery('#attr-key').val()+'"]').each(function() {
-                size_flag += Number($(this).val());            
-            });
-            $("#quantity").val(size_flag);            
-            var form = $('#check-out'),
-                attr_size   = getAttributeArray(jQuery('#attr-key').val());
-        
-            //Add list size to submit
-            var size
-            $.each(attr_size, function(i, v){
-                size = $("<input>").attr({"type":"hidden","name":"sizes[]"}).val(v);
-                form.append(size);    
-            });
-            
-            $.ajax( {
-                type: "POST",
-                url: '/ajax/sendEmailArtist',
-                data: form.serialize(),
-                success: function( response ) {
-                    $('#ajax-load').hide();
-                    if(response == 1){                        
-                        $('#send-success').show();
-                    }
-                    else {
-                        alert('An error occurred. Please try again!')
-                        $('#btn-sendemail').show();
-                    }
-                },
-                error: function (request, status, error) {
-                    alert(request.responseText);
-                }
-            });
-    }
-    function validateEmail(sEmail) {
-        var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-        if (filter.test(sEmail)) 
-            return true;
-        return false;
-    }
-    function getAttributeArray(key) {
-        var attribute = {},
-            i = 0;    
-        $('input[name^="'+key+'"]').each(function() {
-            attribute[i++] =$(this).val(); 
-        });
-        return attribute;
+    
+    function add_comment(){
+        var url = '/admin/comment/add_new';
+        var order_id = jQuery('#order_id').val();
+        var comment_text = jQuery('#comment-text').val();
+        if(comment_text == '')
+        {
+            alert('Please enter comment message!');
+            return false;
+        }
+        jQuery.ajax({   
+                url:url, 
+                type: 'POST', 
+                data: { order_id: order_id, comment_text: comment_text},
+                async: false,
+                beforeSend: function( xhr ) {
+                    //jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
+                }}).done(function(data){ 
+                   jQuery('#comment-container').prepend(data);
+                   jQuery('#comment-text').val('');
+                   //jQuery("#comment-container").scrollTop($("#comment-container")[0].scrollHeight);
+                   jQuery("#comment-content").animate({ scrollTop: $('#comment-content').prop("scrollHeight")}, 1000);
+                });
     }
     
     var 

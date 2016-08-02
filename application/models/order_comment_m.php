@@ -9,9 +9,9 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Comment_m extends MY_Model
+class Order_comment_m extends MY_Model
 {
-	public $_table_name = 'comment';
+	public $_table_name = 'order_comment';
 	public $_primary_key = 'id';
 	public $_timestamps = False;
 	
@@ -19,20 +19,21 @@ class Comment_m extends MY_Model
 	
 	function getByOrder($id = '')
 	{	
-		if($id == '')
-		{			
-			return '';
-		}
-		else
+		if($id != '')
 		{
-			$this->db->where('order_id ', $id);
-                        $this->db->order_by('id ', 'DESC');
-			$query = $this->db->get('comment');
-			return $query->result();
+                    $this->db->where('order_id ', $id);
+                    $query = $this->db->get('order_comment');
+                    return $query->result();
 		}
 	}
         
-        
+        function getdata($id = '')
+	{	
+		$this->db->where('order_id ', $id);
+                $query = $this->db->get('order_garment');
+                return $query->result();
+		
+	}
 	
 	
 	function delete($id = '')

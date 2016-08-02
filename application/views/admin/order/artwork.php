@@ -234,5 +234,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         uploadSize['min']  = '0';
         //if(typeof Holder !== 'undefined') Holder.run();
         var baseURL	= '<?php echo base_url(); ?>';
+        
+        
+        
+        
+        
+        
 </script>
 <script type="text/javascript" src="<?php echo site_url().'assets/admin/js/artwork.js'; ?>"></script>
