@@ -9,7 +9,7 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-function comment_box($comments)
+function comment_box($comments, $order_id)
 {
     $thml = '';
     $i = 0;
@@ -18,7 +18,7 @@ function comment_box($comments)
         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);        
         $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('m-d H:i').')</small>: <i><b>'.$row->text.'</b></i></p>';
     }
-
+    
     $return =   '<div class="panel panel-default">
                     <div class="panel-heading">
                             <i class="fa fa-external-link-square icon-external-link-sign"></i>
@@ -37,6 +37,7 @@ function comment_box($comments)
                             </div>
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-comment" id="comment-submit" onclick="add_comment()">Send</button>
+                                <input type="hidden" id="order_id_cm" value="'.$order_id.'">
                             </div>
                         </div>
 

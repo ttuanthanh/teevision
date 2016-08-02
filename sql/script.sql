@@ -53,3 +53,16 @@ CREATE TABLE `dg_order_artwork` (
 `modidt`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP ,
 PRIMARY KEY (`id`)
 )ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+CREATE TABLE `dg_comment` (
+`id`  bigint NOT NULL AUTO_INCREMENT ,
+`order_id`  bigint NULL ,
+`user_id`  bigint NULL ,
+`user_name`  varchar(255) NULL ,
+`text`  text NULL ,
+`createdt`  datetime NULL ,
+PRIMARY KEY (`id`)
+)
+;

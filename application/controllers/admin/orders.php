@@ -834,6 +834,11 @@ class Orders extends Admin_Controller
 		}
 		$this->data['discount'] = $discount;
 		
+                $this->load->model('comment_m');
+                $this->load->helper('comment');
+                $comments = $this->comment_m->getByOrder($id);
+                $cm_box  = comment_box($comments, $id);
+                $this->data['comment'] = $cm_box;
 		
 		// Load view
 		$this->data['subview'] = 'admin/order/detail';
@@ -1033,7 +1038,7 @@ class Orders extends Admin_Controller
                 $this->load->model('comment_m');
                 $this->load->helper('comment');
                 $comments = $this->comment_m->getByOrder($id);
-                $cm_box  = comment_box($comments);
+                $cm_box  = comment_box($comments, $id);
                 $this->data['comment'] = $cm_box;
                 
                 

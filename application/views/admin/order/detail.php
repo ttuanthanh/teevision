@@ -473,17 +473,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>    
     <div class="col-md-6 no-padding-right">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                    <i class="fa fa-external-link-square icon-external-link-sign"></i>
-                    Comment
-            </div>
-            <div class="panel-body" id="panelbody">
-                <div class="row">
-
-                </div>
-            </div>
-        </div>
+        <?php
+            echo $comment;
+        ?>
     </div>
     <br clear="all">
 </div>
@@ -514,3 +506,4 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     }
 	
 </script>
+<script type="text/javascript" src="<?php echo site_url().'assets/admin/js/comment.js'; ?>"></script>

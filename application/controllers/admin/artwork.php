@@ -15,7 +15,8 @@ class Artwork extends Admin_Controller {
     public function __construct(){
 	
         parent::__construct();
-		
+		// check user permission		
+		$this->users_m->userPermission('orders');
 		$this->load->library('session');
 		$this->user = $this->session->userdata('user');
                 $this->load->model('artwork_m');
