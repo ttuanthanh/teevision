@@ -1022,7 +1022,7 @@ class Orders extends Admin_Controller
                     redirect('admin/orders/schedules');
                 
 		$this->data['breadcrumb'] = 'artwork';
-                $this->data['meta_title'] = 'Order Artwork';
+                $this->data['meta_title'] = 'Artwork';
                 $this->data['sub_title'] = '';
 		
                 $items = $this->order_m->getItems($id);
@@ -1045,6 +1045,39 @@ class Orders extends Admin_Controller
                 
 		// Load view
 		$this->data['subview'] = 'admin/order/artwork';
+		$this->load->view('admin/_layout_main', $this->data);
+	}
+        
+        
+        function proof($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		$this->data['breadcrumb'] = 'proof';
+                $this->data['meta_title'] = 'Proof';
+                $this->data['sub_title'] = '';
+		
+                $items = $this->order_m->getItems($id);
+                foreach ($items as $key=>$item){
+                    $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                }
+                
+		$this->data['items'] = $items;
+                
+                $order = $this->order_m->getOrder($id); 
+                $this->data['order'] = $order;
+                
+                $this->load->model('comment_m');
+                $this->load->helper('comment');
+                $comments = $this->comment_m->getByOrder($id);
+                $cm_box  = comment_box($comments, $id);
+                $this->data['comment'] = $cm_box;
+                
+                
+                
+		// Load view
+		$this->data['subview'] = 'admin/order/proof';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
