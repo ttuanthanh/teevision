@@ -41,7 +41,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <?php //var_dump($items); exit(); ?>
 <div class="">
-    <?php foreach($items as $product){?>
+    <?php 
+    $i = 0;
+    foreach($items as $product){?>
         <div class="panel panel-default">
             <div class="panel-heading">
                     <i class="fa fa-external-link-square icon-external-link-sign"></i>
@@ -154,88 +156,108 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>    
                                     <br class="clear"> 
                                 </div>
-                                <input type="hidden" id="design-image-front<?php echo $product->id ?>" name="front_file" value="<?php echo isset($artwork->front_file) ? $artwork->front_file : '' ?>">
-                                <input type="hidden" id="design-image-back<?php echo $product->id ?>" name="back_file" value="<?php echo isset($artwork->back_file) ? $artwork->back_file : '' ?>">
-                                <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
-                                <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
-                                <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
                             </div>
                             
                         </div>
                     </div>
                     <br clear="both">
                     <div class="row-content clearfix" style="">
-                        <?php
-                        $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
-                        echo form_open(site_url('admin/proof/save'), $attribute);
-                        ?>
+                        
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Proof (Not Approve)
+                            <div class="panel-heading font-bold" >
+                                Proof <span class="color">(Not Approved)</span>
                             </div>
                             <p style="margin: 10px 20px 0; font-weight: bold">Add Proof: </p>
-                            <div class="col-md-6 col-md-offset-1">
+                            <div class="col-md-6 col-md-offset-1 r-border">
+                                <?php
+                                $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
+                                echo form_open(site_url('admin/proof/save'), $attribute);
+                                $proof = isset($proofs[$i]) ? $proofs[$i] : array();
+                                //var_dump($proofs);
+                                ?>
+                                <div class="fileinput <?php echo (isset($proof->proof_file) && $proof->proof_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
+                                                    <img <?php echo isset($proof->proof_file) ? 'src="/'.$proof->proof_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=You have not selected any Proof." alt="back_image" class="img-responsive">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="margin-left: 20px">
+                                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select proof</span> <span class="fileinput-exists">Change</span> 
+                                                        <input class="upload-act" type="file" id="files-upload-front<?php echo $product->id; ?>" placeholder="Choose proof file" onchange="upload_f('front<?php echo $product->id; ?>')"/>
+                                                    </span> 
+                                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="remove_f('front<?php echo $product->id; ?>')">Remove</a> 
+                                                    <a href="<?php echo isset($proof->proof_file) ? site_url().$proof->proof_file : '' ?>" target="_blank" class="btn btn-default fileinput-exists"  >Download</a>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                        <div class="fileinput <?php echo (isset($artwork->back_file) && $artwork->back_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                                            <img <?php echo isset($artwork->back_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=You have not selected any Proof." alt="back_image" class="img-responsive">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div style="margin-left: 20px">
-                                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select proof</span> <span class="fileinput-exists">Change</span> 
-                                                                <input class="upload-act" type="file" id="files-upload-back<?php echo $product->id ?>" placeholder="Choose banner image" onchange="upload_f('back<?php echo $product->id ?>')"/>
-                                                            </span> 
-                                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="remove_f('back<?php echo $product->id ?>')">Remove</a> 
-                                                            <a href="<?php echo isset($artwork->back_file) ? site_url().$artwork->back_file : '' ?>" target="_blank" class="btn btn-default fileinput-exists"  >Download</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                
-                                            </table>
-                                            
-                                            
-                                        </div>
+                                    </table>
+                                    <input type="hidden" id="design-image-front<?php echo $product->id; ?>" name="proof_file" value="<?php echo isset($artwork->front_file) ? $artwork->front_file : '' ?>">
+                                    <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
+                                    <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
+                                    <input type="hidden" id="proof_id" name="proof_id" value="<?php echo isset($proof->id) ? $proof->id : ''; ?>">
 
-                            </div>
-                            <div class="col-md-4 col-md-offset-1">
+                                </div>
+                                
+                                <hr>
                                 <div class="bold">
                                     <?php 
-                                        if(isset($artwork->id)){
-                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $artwork->modidt);
+                                        if(isset($proof->id)){
+                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $proof->proof_update);
                                     ?>
                                         <h4>Updated:</h4>
                                         <h4 class="text-center">Date: <?php echo $newDate->format('m-d-Y') ?></h4>
                                         <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
                                         <?php } ?>
                                 </div>
+                                <div class="clearfix text-right" style="margin-right: 20px">                        
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                                <?php echo form_close(); ?>
+                            </div>
+                            <div class="col-md-5 text-center">
+                                
+                                <h4>Ready to print?</h4>
+                                <?php                                  
+                                $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
+                                echo form_open(site_url('admin/proof/approve/'.$proof->id), $attribute);
+                                if(isset($proof->id)){ 
+                                ?>
+                                <button type="submit" class="btn btn-success">Approve Proof</button>
+                                <input type="hidden" value="<?php echo $proof->is_approved ?>" name="approved">
+                                <input type="hidden" value="<?php echo $order->id; ?>" name="order_id">
+                                <hr>
+                                <div class="bold">
+                                    <?php if(isset($proof->approvedt)){ 
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $proof->approvedt);
+                                    ?>
+                                        <h4>Updated:</h4>
+                                        <h4 class="text-center">Date: <?php echo $newDate->format('m-d-Y') ?></h4>
+                                        <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
+                                    <?php } ?>   
+                                </div>
+                                <?php } 
+                                echo form_close();
+                                ?>
                             </div>
                             <br clear="both">
-                            <div class="col-md-12 clearfix text-right" style="margin-right: 20px">                        
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                            <hr>
-                            <div class="col-md-12 clearfix" style="margin-right: 20px"> 
-                                <div class="col-md-8">
-                                    <h4>Ready to print?</h4>
-                                </div>
-                                <div class="col-md-4  text-right">
-                                   
-                                </div>
+                            <div class="col-md-12 clearfix text-right" style="min-height: 10px;">                        
                                 
                             </div>
+                            
+                            
                         </div>
-                        <?php echo form_close(); ?>
+                        
                     </div>
                     
                 </div>	
             </div>
              
         </div>
-    <?php } ?>
+    <?php $i++; } ?>
     
     <?php
         echo $comment;

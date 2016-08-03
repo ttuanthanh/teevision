@@ -1068,6 +1068,10 @@ class Orders extends Admin_Controller
                 $order = $this->order_m->getOrder($id); 
                 $this->data['order'] = $order;
                 
+                $this->load->model('proof_m');
+                $proof = $this->proof_m->getByOrder($id); 
+                $this->data['proofs'] = $proof;
+                
                 $this->load->model('comment_m');
                 $this->load->helper('comment');
                 $comments = $this->comment_m->getByOrder($id);

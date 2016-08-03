@@ -66,3 +66,16 @@ CREATE TABLE `dg_comment` (
 PRIMARY KEY (`id`)
 )
 ;
+
+
+CREATE TABLE `dg_order_proof` (
+`id`  bigint NOT NULL AUTO_INCREMENT ,
+`order_id`  bigint NULL ,
+`item_id`  bigint NULL ,
+`proof_file`  varchar(255) NULL ,
+`proof_update`  datetime NULL ,
+`is_approved`  tinyint NULL ,
+`approvedt`  datetime NULL ,
+PRIMARY KEY (`id`)
+)
+;

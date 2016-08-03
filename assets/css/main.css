@@ -1142,3 +1142,9 @@ ul.edit_language li:hover{background: #F7F7F9;}
     width: 100%;
     
 }
+.r-border{
+    border-right: 1px solid #DDD;
+}
+.font-bold{
+    font-weight: bold;
+}
