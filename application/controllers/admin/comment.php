@@ -43,7 +43,7 @@ class Comment extends Admin_Controller {
                     $comment['order_id'] = $order_id;
                     $comment['user_name']   = $user['username'];
                     $comment['text']        = $text;
-                    $comment['createdt']    = date("Y-m-d h:i:sa");;
+                    $comment['createdt']    = date("Y-m-d H:i:sa");;
                     $gar_id = $this->comment_m->save($data);
                 }
                 
@@ -61,10 +61,10 @@ class Comment extends Admin_Controller {
                     $comment['order_id'] = $order_id;
                     $comment['user_name']   = $user['username'];
                     $comment['text']        = $text;
-                    $comment['createdt']    = date("Y-m-d h:i:sa");
+                    $comment['createdt']    = date("Y-m-d H:i:sa");
                     $gar_id = $this->comment_m->save($comment);
                 }
-                //$newDate = date("Y-m-d h:i:sa"); 
+                //$newDate = date("Y-m-d H:i:sa"); 
                 echo '<p class="cm-bg-0"><b>'.$user['username'].'</b> <small>('.date('m-d H:i').')</small>: <i><b>'.$text.'</b></i></p>';
                                
         }

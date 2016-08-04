@@ -221,10 +221,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="col-md-5 text-center">
                                 
                                 <h4>Ready to print?</h4>
-                                <?php                                  
-                                $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
-                                echo form_open(site_url('admin/proof/approve/'.$proof->id), $attribute);
+                                <?php    
                                 if(isset($proof->id)){ 
+                                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
+                                    echo form_open(site_url('admin/proof/approve/'.$proof->id), $attribute);
                                 ?>
                                 <button type="submit" class="btn btn-success">Approve Proof</button>
                                 <input type="hidden" value="<?php echo $proof->is_approved ?>" name="approved">

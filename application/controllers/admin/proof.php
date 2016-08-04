@@ -30,7 +30,7 @@ class Proof extends Admin_Controller {
                 $pr['order_id']     = $data['order_id'];
                 $pr['item_id']      = $data['item_id'];
                 $pr['proof_file']   = $data['proof_file']; //
-                $pr['proof_update'] = date("Y-m-d h:i:sa");
+                $pr['proof_update'] = date("Y-m-d H:i:sa");
                 if ($proof_id == '')
                 {    
                     $gar_id = $this->proof_m->save($pr);
@@ -48,7 +48,7 @@ class Proof extends Admin_Controller {
                 $comment['order_id']    = $data['order_id'];
                 $comment['user_name']   = $user['username'];
                 $comment['text']        = 'Update proof.';
-                $comment['createdt']    = date("Y-m-d h:i:sa");;
+                $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
                 
 //                $this->load->model('order_m');
@@ -63,7 +63,7 @@ class Proof extends Admin_Controller {
             if ($id != '')
             {    
                 $data['is_approved'] = $this->input->post('approved') == 1 ? 0 : 1;
-                $data['approvedt'] = date("Y-m-d h:i:sa");
+                $data['approvedt'] = date("Y-m-d H:i:sa");
                 $gar_id = $this->proof_m->update($data, $id);
                 
                 $this->load->model('comment_m');
@@ -75,7 +75,7 @@ class Proof extends Admin_Controller {
                 $comment['text']        = 'Approved proof for print.';
                 if ($data['is_approved'] === 0)
                     $comment['text']        = 'Remove proof approved.';
-                $comment['createdt']    = date("Y-m-d h:i:sa");;
+                $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
             }
             

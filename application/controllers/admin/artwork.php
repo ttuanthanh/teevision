@@ -40,8 +40,8 @@ class Artwork extends Admin_Controller {
                 unset($data['artwork_id']);
                 if ($art_id == '')
                 {                    
-                    $data['createdt'] = date("Y-m-d h:i:sa");
-                    $data['modidt'] = date("Y-m-d h:i:sa");
+                    $data['createdt'] = date("Y-m-d H:i:sa");
+                    $data['modidt'] = date("Y-m-d H:i:sa");
                     $gar_id = $this->artwork_m->save($data);
                 }
                 else
@@ -57,7 +57,7 @@ class Artwork extends Admin_Controller {
                 $comment['order_id']    = $data['order_id'];
                 $comment['user_name']   = $user['username'];
                 $comment['text']        = 'Update artwork.';
-                $comment['createdt']    = date("Y-m-d h:i:sa");;
+                $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
                 
                 $this->load->model('order_m');

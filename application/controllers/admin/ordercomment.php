@@ -44,8 +44,8 @@ class Ordercomment extends Admin_Controller {
                 unset($data['artwork_id']);
                 if ($art_id == '')
                 {                    
-                    $data['createdt'] = date("Y-m-d h:i:sa");
-                    $data['modidt'] = date("Y-m-d h:i:sa");
+                    $data['createdt'] = date("Y-m-d H:i:sa");
+                    $data['modidt'] = date("Y-m-d H:i:sa");
                     $gar_id = $this->artwork_m->save($data);
                 }
                 else
