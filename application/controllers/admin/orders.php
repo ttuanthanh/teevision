@@ -1092,9 +1092,8 @@ class Orders extends Admin_Controller
 		if((int)$id == 0)
 			redirect('admin/orders');
 			
-		$this->data['breadcrumb'] = lang('orders_admin_order_title');
-                $this->data['meta_title'] = lang('orders_admin_orders_title');
-                $this->data['sub_title'] = lang('detail');
+		$this->data['breadcrumb'] = 'Ship date';
+                $this->data['meta_title'] = 'Ship date';
 		
 		// get order detail
 		$order 	= $this->order_m->getOrderSchedule($id);
@@ -1110,12 +1109,21 @@ class Orders extends Admin_Controller
 		$items = $this->order_m->getItems($id);
 		$this->data['items'] = $items;
 		
-		// get setting
-		$this->load->model('settings_m');
-		$row 	= $this->settings_m->getSetting();
-		$setting = json_decode($row->settings);
-		$this->data['setting'] = $setting;
 		
+		$this->load->model('shipdate_m');
+		$shipdate = $this->shipdate_m->getByOrder($id);
+		$this->data['shipdate'] = $shipdate;
+                
+                $userInfo	= $this->order_m->getUserInfo($id);
+		if ($userInfo !== false)
+		{
+			$address	= json_decode($userInfo->address);
+		}
+		else
+		{
+			$address	= false;
+		}
+		$this->data['address'] = $address;
 		
 		// get shipping method
 		$this->load->model('shipping_m');
@@ -1129,7 +1137,7 @@ class Orders extends Admin_Controller
                 $this->data['comment'] = $cm_box;
 		
 		// Load view
-		$this->data['subview'] = 'admin/order/detail';
+		$this->data['subview'] = 'admin/order/ship_date';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 }

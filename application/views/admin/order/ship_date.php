@@ -120,9 +120,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">      
                                         <?php 
-                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        ?>
+                                        if(isset($order->shipdate))                                        
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);                                        
+                                        else
+                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        if( $order->ship_approved != '') {?>
+                                        <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                        <?php } ?>
                                     </td>
                                     <td class="center">
                                         <?php 
@@ -166,170 +173,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     </table>
             
     </div> 
-    <?php foreach($items as $product){?>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                    <i class="fa fa-external-link-square icon-external-link-sign"></i>
-                    Art Information
-            </div>
-            <?php
-                    $design_option   = json_decode($product->design_option);
-                    $colors = $design_option->colors;
-            ?>
-            <div class="panel-body" id="panelbody">
-                <div class="row">
-                    <div class="col-md-5">
-                        <?php
-                            $desi = $this->order_m->getDesign($product->id);
-                            if(isset($desi->vectors)){ 
-                                $vectors = json_decode($desi->vectors, true);
-                                if(is_array($vectors))foreach($vectors as $key=>$vector){
-                                    if(count($vector) != 0){ ?>
-                                        <div class="col-md-6">
-                                            <img src="<?php echo base_url(str_replace('front', $key, $desi->image));?>" width="200">
-                                        </div>
-                                    <?php   
-                                    }
-                                    
-                                }
-                            }
-                            else 
-                            {
-                                    //$design_option   = json_decode($order->design_option);
-                                    $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                    var_dump($design_images);
-                                    echo '<div class="col-md-6">'
-                                        .   '<img src="'.$design_images->front .'" width="200">'
-                                        .'</div>';
-                                }
-                        ?>
-                        
-                        <br clear="all">
-                        <div  class="col-md-12 button-preview">
-                            <a class="btn btn-info active btn-block fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" >Preview Artwork</a>
-                            <!--<button type="button" class="btn btn-info active btn-block"></button>-->
-                        </div>
-                        <div class="col-md-12 button-preview">
-                            <button type="button" class="btn btn-info active btn-block">Download Artwork</button>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
-                        <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
-                        <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
-                        </p>
-                        <div>
-                            <?php
-                            if($product->attributes != '' && $product->attributes != '"[]"')
-                            {
-                                    $size = json_decode(json_decode($product->attributes), true);
-                                    $sizename = '';
-                                    $sizenum = '';
-                                    if (count($size) > 0)
-                                    {
-                                            foreach($size as $option) { ?>
-                                                    <p>
-<!--                                                        <strong><?php echo $option['name']; ?>: </strong><br>-->
-                                                            <?php 
-                                                                    if (is_string($option['value'])) echo $option['value'];
-                                                                    elseif (is_array($option['value']) && count($option['value']))
-                                                                    {
-                                                                            foreach($option['value'] as $v=>$value)
-                                                                            {
-                                                                                    if ($option['type'] == 'textlist'){
-                                                                                        $sizename .= '<td>'.$v.'</td>';
-                                                                                        $sizenum .= '<td>'.$value.'</td>';
-                                                                                    }
-                                                                                    else
-                                                                                            echo $value.'; ';
-                                                                            }
-                                                                    }
-                                                            ?>
-                                                    </p>
-                                            <?php } ?>
-                                    <table id="sample-table-1" class="table table-bordered table-hover">
-                                        <thead>
-                                                <tr>
-                                                    <?php echo $sizename ?>
-                                                </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                    <?php echo $sizenum ?>
-                                                </tr>
-                                        </tbody>
-                                    </table>            
-                            <?php                
-                                    }
-                            } 
-                            ?>
-                            <table id="sample-table-1" class="table table-bordered table-hover">
-                                <thead>
-                                        <tr>
-                                                
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <tr>
-                                              
-                                        </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>       
-                            <div class="col-md-1"></div>
-                            <div class="col-md-10">
-                                <div class="col-md-6 button-preview">
-                                    <a href="" type="button" class="btn btn-info active btn-block">ArtWork
-                                        <?php if( $order->custom_file=='')
-                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
-                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
-                                        
-                                        ?>
-                                    </a>
-                                </div>
-                                <div class="col-md-6 button-preview">
-                                    <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Garments                                    
-                                    <?php if( $order->apparel!='')
-                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
-                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
-                                        
-                                        ?>
-                                    </a>
-                                </div>
-                                <div class="col-md-6 button-preview">
-                                    <a href="" type="button" class="btn btn-info active btn-block">Customs names/numbers
-                                    
-                                    <?php
-                                        $design_option   = json_decode($order->design_option);
-                                        $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                        //var_dump($design_images);
-                                        if ( isset($design_images->front) || isset($design_images->back))
-                                            echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>';
-                                        else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
-                                    ?>
-                                    </a>
-                                </div>
-                                <?php //var_dump($order); ?>
-                                <div class="col-md-6 button-preview">
-                                    <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Balance
-                                    <?php if( $order->balance!=0)
-                                                echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
-                                                else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';
-                                        
-                                    ?>
-                                    </a>
-                                </div>
-                            </div>  
-                            <div class="col-md-2"></div>
-                        </div>                    
-                    </div>
-                </div>	
-            </div>
-
-        </div>
-    <?php } ?>
-    <div class="panel panel-default col-md-6 no-padding">
+    
+        
+    <div class="panel panel-default col-md-4 no-padding">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
 		Shipping Information
@@ -351,132 +197,100 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <div class="col-md-6 no-padding-right">  
-        <div class="row">
-            <div class="col-md-12">
-                    <table id="table_order_detail" class="table table-bordered table-hover">
-                            <thead>
-                                    <tr>
-                                            <th class="center" style="width: 7%;"><?php echo lang('orders_admin_view_design_title'); ?></th>
-                                            <th class="center" style="width: 18%;"><?php echo lang('name'); ?></th>					
-                                            <th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_price_title'); ?></th>
-                                            <th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_qty_title'); ?></th>
-                                            <th class="center"  style="width: 10%;"><?php echo lang('total'); ?></th>
-                                    </tr>
-                            </thead>
-                            <tbody>					
-                                    <?php 
-                                            $total = 0;
-                                            $count = 1;
-                                            $shipping_price = $order->shipping_price;
-                                            $payment_price = 0.0;
-                                    ?>
-                                    <?php foreach($items as $product){?>
-                                            <tr class="top-align">
-                                                    <td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>
-                                                    <td>
-                                                            <a href="<?php echo site_url('admin/products/edit/'.$product->product_id); ?>" title="<?php echo $product->product_name; ?>">
-                                                                    <strong><?php echo $product->product_name; ?></strong>
-                                                            </a>
-                                                    </td>
-                                                    <td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?></td>
-                                                    <td class="right"><?php echo $product->quantity;?></td>
-                                                    <?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
-                                                    <td class="right"><?php echo $setting->currency_symbol.number_format($total_row, 2);?></td>
-                                            </tr>
-                                            <?php 
-                                                    $total = $total+$total_row;
-                                                    $count++;
-                                            ?>
-                                    <?php } ?>
-                                    <!-- shipping -->
-                                    <tr>
-                                            <td colspan="4" class="right">
-                                                    <?php echo lang('orders_admin_shipment_fee_title');?>
-
-                                                    <?php if (count($shipping)) { ?>								
-                                                            <br><small><?php echo lang('orders_admin_shipping_method'); ?>: <a href="<?php echo site_url('admin/settings/shipping'); ?>"><strong><?php echo $shipping->title; ?></strong></a></small>
-                                                            <br><small><?php echo $shipping->description; ?></small>
-                                                    <?php } ?>
-
-                                            </td>
-                                            <td class="right"><?php echo $setting->currency_symbol.number_format($shipping_price, 2);?></td>
-                                    </tr>
-
-                                    <!-- payment -->
-                                    <tr>
-                                            <td colspan="4" class="right">
-                                                    <?php echo lang('orders_admin_payment_fee_title');?>
-
-                                                    <?php if (count($payment)) { ?>								
-                                                            <br><small><?php echo lang('orders_admin_payment_method'); ?>: <a href="<?php echo site_url('admin/settings/payment'); ?>"><strong><?php echo $payment->title; ?></strong></a></small>
-                                                            <br><small><?php echo $payment->description; ?></small>
-                                                    <?php } ?>
-                                            </td>
-                                            <td class="right"><?php echo $setting->currency_symbol.number_format($payment_price, 2) ;?></td>
-                                    </tr>
-
-                                    <!-- discount -->
-                                    <tr>
-                                            <td colspan="4" class="right">
-                                                    <?php echo lang('orders_admin_discount');?>
-
-                                                    <?php if (count($discount)) { ?>								
-                                                            <br><small><?php echo $discount->name; ?>: <a href="<?php echo site_url('admin/coupon/edit/'.$discount->id); ?>"><strong><?php echo $discount->code; ?></strong></a></small>								
-                                                    <?php } ?>
-                                            </td>
-                                            <td class="right"><?php echo $setting->currency_symbol.number_format($order->discount, 2) ;?></td>
-                                    </tr>
-
-                                    <!-- total -->
-                                    <tr>
-                                            <?php $total = $total + $shipping_price - $order->discount; ?>
-                                            <td colspan="4" class="right"><?php echo lang('orders_admin_total_title');?></td>
-                                            <td class="right" colspan="4"><strong><?php echo $setting->currency_symbol.number_format($total, 2);?><strong></td>
-                                    </tr>
-                            </tbody>
-                    </table>
+    <div class="col-md-8 no-padding-right">  
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                Change Ship date
+            </div>
+            <div class="panel-body" id="panelbody">
+                <div class="ship-date clearfix">
+                    <div class="col-md-5 text-center">Original date<br> <?php echo $newDate->format('m').'-'.$newDate->format('d'); ?></div>
+                    <div class="col-md-2 text-center"><i class="fa fa-arrow-right"></i></div>
+                    <div class="col-md-5 text-center">Changed to<br> 
+                        <?php 
+                        if( isset($shipdate->ship_date) ) 
+                        {
+                            $newDate = DateTime::createFromFormat('Y-m-d', $shipdate->ship_date);
+                            echo $newDate->format('m').'-'.$newDate->format('d');
+                        }
+                        ?>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <?php 
+                        $attribute = array('class' => 'form-horizontal', 'id' => 'form-shipdate');	
+                        $ship_id = isset($shipdate->id) ? $shipdate->id : '';
+                        echo form_open(site_url('admin/shipdate/save/'.$ship_id), $attribute);
+                    ?>
+                    <div class="col-md-4 text-right">Change to</div>
+                    <div class="col-md-4"><input class="form-control" type="date" name="ship_date"></div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-default">Save</button>
+                        <input class="form-control" type="hidden" name="order_id" value="<?php echo $order->id; ?>">
+                    </div>
+                    <?php echo form_close();?>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                Approve Ship date
+            </div>
+            <div class="panel-body" id="panelbody">
+                <?php    
+                if(isset($shipdate->id)){ 
+                    //var_dump($proof);
+                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-shipdate-app');		
+                    echo form_open(site_url('admin/shipdate/approve/'.$shipdate->id), $attribute);
+                    $classtxt = 'btn-success';
+                    $bttxt = 'Approve Ship date';
+                    $statustxt = 'Removed';
+                    if($shipdate->is_approved){
+                        $classtxt = 'btn-warning';$bttxt = 'Remove Ship date';$statustxt='Approved';                                        
+                    }
+                ?>
+                <div class="col-md-5">
+                    
+                    <button type="submit" class="btn <?php echo $classtxt; ?> "><?php echo $bttxt; ?></button>
+                    <input type="hidden" value="<?php echo $shipdate->is_approved ?>" name="approved">
+                    <input type="hidden" value="<?php echo $order->id; ?>" name="order_id">
+                </div>
+                <div class="col-md-7">
+                    <div class="font-bold border2 text-color<?php echo $shipdate->is_approved; ?>">
+                    <?php if(isset($shipdate->approvedt)){ 
+                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $shipdate->approvedt);
+                    ?>
+                        <h4 class="text-left padding-left20"><?php echo $statustxt; ?>:</h4>
+                        <h4 class="text-center">Date: <?php echo $newDate->format('m-d-Y') ?></h4>
+                        <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
+                    <?php } ?>   
+                </div>
+                </div>
+                
+                
+                
+                <hr>
+                
+                <?php  
+                echo form_close();
+                }
+                ?>
+                
             </div>
         </div>
     </div>
     <br clear="all">   
-    <div class="col-md-6 no-padding">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                    <i class="fa fa-external-link-square icon-external-link-sign"></i>
-                    Billing Detail
-            </div>
-            <div class="panel-body" id="panelbody">
-                    <div class="row">
-                            <label class="col-sm-5 text-right"><?php echo lang('name'); ?>:</label>
-                            <span class="col-sm-7 text-left">
-                                    <a href="<?php site_url('admin/users/edit/'.$order->user_id); ?>" title="<?php echo $order->name; ?>">
-                                            <strong><?php echo $order->name; ?></strong>
-                                    </a>
-                            </span>
-                    </div>
-
-                    <div class="row">
-                            <label class="col-sm-5 text-right"><?php echo lang('username'); ?>:</label>
-                            <span class="col-sm-7 text-left">
-                                    <a href="<?php site_url('admin/users/edit/'.$order->user_id); ?>" title="<?php echo $order->username; ?>">
-                                            <strong><?php echo $order->username; ?></strong>
-                                    </a>
-                            </span>
-                    </div>
-
-                    <div class="row">
-                            <label class="col-sm-5 text-right"><?php echo lang('email'); ?>:</label>
-                            <span class="col-sm-7 text-left"><?php echo $order->email; ?></span>
-                    </div>
-            </div>
-        </div>
-    </div>    
-    <div class="col-md-6 no-padding-right">
+       
+    
         <?php
             echo $comment;
         ?>
-    </div>
+    
     <br clear="all">
 </div>
 <?php } ?>

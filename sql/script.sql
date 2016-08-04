@@ -83,3 +83,16 @@ PRIMARY KEY (`id`)
 
 # --- 04/08/2016
 
+ALTER TABLE `dg_orders`
+ADD COLUMN `ship_approved` tinyint NULL AFTER `apparel`;
+
+CREATE TABLE `dg_orders_shipdate` (
+`id`  bigint NULL AUTO_INCREMENT ,
+`order_id`  bigint NULL ,
+`ship_date`  date NULL ,
+`is_approved`  tinyint NULL ,
+`approvedt`  datetime NULL ,
+`approved_name`  varchar(255) NULL ,
+PRIMARY KEY (`id`)
+)
+;

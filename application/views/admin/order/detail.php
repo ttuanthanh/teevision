@@ -120,9 +120,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">      
                                         <?php 
-                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        ?>
+                                        if(isset($order->shipdate))                                        
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);                                        
+                                        else
+                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        if( $order->ship_approved != '') {?>
+                                        <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                        <?php } ?>
                                     </td>
                                     <td class="center">
                                         <?php 

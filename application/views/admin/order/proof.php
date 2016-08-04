@@ -247,8 +247,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
                                     <?php } ?>   
                                 </div>
-                                <?php } 
+                                <?php  
                                 echo form_close();
+                                }
                                 ?>
                             </div>
                             <br clear="both">

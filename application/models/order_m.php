@@ -154,11 +154,13 @@ class Order_m extends MY_Model
 	// get all orders
 	public function getOrdersSched($count = false, $number = 5, $offset = 1, $search='', $option='')
 	{
-		$this->db->select('orders.*, name, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
+		$this->db->select('orders.*, name, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.ship_date shipdate');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
                 
                 $this->db->join('shippings', 'orders.shipping_id = shippings.id');
+                
+                $this->db->join('order_shipdate', 'orders.id = order_shipdate.order_id', 'left');
                 
                 $this->db->join('order_items', 'orders.id = order_items.order_id');
 		
@@ -208,13 +210,15 @@ class Order_m extends MY_Model
         // get order detail
 	function getOrderSchedule($id)
 	{
-                $this->db->select('orders.*, name, username, email, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option');
+                $this->db->select('orders.*, name, username, email, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.ship_date shipdate');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
                 
                 $this->db->join('shippings', 'orders.shipping_id = shippings.id');
                 
                 $this->db->join('order_items', 'orders.id = order_items.order_id'); 
+                
+                $this->db->join('order_shipdate', 'orders.id = order_shipdate.order_id', 'left');
 		
 		$this->db->where('orders.id', $id);
 		

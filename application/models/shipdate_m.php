@@ -1,0 +1,53 @@
+<?php
+/**
+ * @author teevisionprinting - www.teevisionprinting.com
+ * @date: 2015-01-10
+ * 
+ * @copyright  Copyright (C) 2015 teevisionprinting.com. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
+ *
+ */
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Shipdate_m extends MY_Model
+{
+	public $_table_name = 'order_shipdate';
+	public $_primary_key = 'id';
+	public $_timestamps = False;
+	
+	
+        
+        function getByOrder($id = '')
+	{	
+		$this->db->where('order_id ', $id);
+                $query = $this->db->get('order_shipdate');
+                return $query->row();
+		
+	}
+        
+        function checkProofApproved($order_id = '')
+	{	
+		$this->db->select('COUNT(*) total, SUM(is_approved) approved');
+                $this->db->where('order_id ', $order_id);
+		$query = $this->db->get('order_proof');		
+		return $query->row();
+		
+	}
+	
+	
+	function delete($id = '')
+	{
+		if($id != ''){
+			$this->db->where('id ',$id);
+			if($this->db->delete('order_garment')) 
+				return true; 
+			else 
+				return false;
+		}else
+		{
+			return true;
+		}
+	}
+	
+}
+?>
