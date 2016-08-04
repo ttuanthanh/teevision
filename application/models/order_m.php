@@ -333,6 +333,15 @@ class Order_m extends MY_Model
 		
 		return $orderNumber;
 	}
+        
+        // get order number
+	public function creteOrderNumberNew()
+	{
+		$id = $this->getLatestId();
+                $num = 2001 + $id->id;
+		$text = 'TVP'.$num;
+		return $text;
+	}
 	
 	// get design.
 	public function getDesigns($id = '')
@@ -382,5 +391,12 @@ class Order_m extends MY_Model
                 $query = $this->db->get('order_artwork');
                 return $query->row();
 		
+	}
+        
+        function getLatestId()
+	{
+                $this->db->select('max(id) id');
+		$query = $this->db->get('orders');
+		return $query->row();
 	}
 }

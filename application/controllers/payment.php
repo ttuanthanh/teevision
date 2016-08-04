@@ -123,7 +123,7 @@ class Payment extends Frontend_Controller
 			
 			// save order
 			$order 					= $this->order_m->addNew('order');
-			$order['order_number']	= $this->order_m->creteOrderNumber();
+			$order['order_number']	= $this->order_m->creteOrderNumberNew();
 			$order['order_pass']	= $this->order_m->creteOrderNumber();
 			$order['user_id']		= $this->user['id'];			
 			$order['payment_id']	= $items['metod']->payment;
