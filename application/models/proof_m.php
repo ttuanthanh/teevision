@@ -24,6 +24,15 @@ class Proof_m extends MY_Model
                 return $query->result();
 		
 	}
+        
+        function checkProofApproved($order_id = '')
+	{	
+		$this->db->select('COUNT(*) total, SUM(is_approved) approved');
+                $this->db->where('order_id ', $order_id);
+		$query = $this->db->get('order_proof');		
+		return $query->row();
+		
+	}
 	
 	
 	function delete($id = '')

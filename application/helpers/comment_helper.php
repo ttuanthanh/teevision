@@ -33,7 +33,7 @@ function comment_box($comments, $order_id)
                         </div>
                         <div class="comment-nav clearfix">
                             <div class="col-md-8">
-                                <textarea class="form-control" rows="2" id="comment-text"></textarea>
+                                <textarea placeholder="Enter your comment here..." class="form-control" rows="2" id="comment-text"></textarea>
                             </div>
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-comment" id="comment-submit" onclick="add_comment()">Send</button>

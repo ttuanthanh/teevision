@@ -166,9 +166,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">     
                                         <?php if( $order->proof_approved != 0) {?>
-                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
+                                            <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
                                         <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/proof_approved/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
+                                            <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">  

@@ -77,11 +77,24 @@ class Proof extends Admin_Controller {
                     $comment['text']        = 'Remove proof approved.';
                 $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
+                
+                $this->load->model('order_m');
+                $order = new order_m();
+                $order->update(array('proof_approved'=>  $this->checkApprove($comment['order_id'])), $comment['order_id']);
+                
             }
             
             
                 
             redirect($_SERVER['HTTP_REFERER']);
+        }
+        
+        function checkApprove($id = ''){
+            $row =  $this->proof_m->checkProofApproved($id); 
+            if ($row->total == $row->approved)
+                return 1;
+            return 0;
+                   
         }
 
         public function delete($id = '')

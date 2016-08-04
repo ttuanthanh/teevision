@@ -165,14 +165,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         
                         <div class="panel panel-default">
                             <div class="panel-heading font-bold" >
-                                Proof <span class="color">(Not Approved)</span>
+                                <?php $proof = isset($proofs[$i]) ? $proofs[$i] : array(); ?>
+                                Proof <span class="text-color<?php echo (isset($proof->is_approved) && $proof->is_approved ==1) ? 1 : 0 ?>"><?php echo (isset($proof->is_approved) && $proof->is_approved ==1) ? '(Approved)' : '(Not Approved)'?> </span>
                             </div>
                             <p style="margin: 10px 20px 0; font-weight: bold">Add Proof: </p>
                             <div class="col-md-6 col-md-offset-1 r-border">
                                 <?php
                                 $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
                                 echo form_open(site_url('admin/proof/save'), $attribute);
-                                $proof = isset($proofs[$i]) ? $proofs[$i] : array();
+                                
                                 //var_dump($proofs);
                                 ?>
                                 <div class="fileinput <?php echo (isset($proof->proof_file) && $proof->proof_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
@@ -220,21 +221,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="col-md-5 text-center">
                                 
-                                <h4>Ready to print?</h4>
+                                <h4 class="text-left">Ready to print?</h4>
                                 <?php    
                                 if(isset($proof->id)){ 
+                                    //var_dump($proof);
                                     $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
                                     echo form_open(site_url('admin/proof/approve/'.$proof->id), $attribute);
+                                    $classtxt = 'btn-success';
+                                    $bttxt = 'Approve Proof';
+                                    $statustxt = 'Removed';
+                                    if($proof->is_approved){
+                                        $classtxt = 'btn-warning';$bttxt = 'Remove Proof';$statustxt='Approved';                                        
+                                    }
                                 ?>
-                                <button type="submit" class="btn btn-success">Approve Proof</button>
+                                <button type="submit" class="btn <?php echo $classtxt; ?> "><?php echo $bttxt; ?></button>
                                 <input type="hidden" value="<?php echo $proof->is_approved ?>" name="approved">
                                 <input type="hidden" value="<?php echo $order->id; ?>" name="order_id">
                                 <hr>
-                                <div class="bold">
+                                <div class="font-bold border2 text-color<?php echo $proof->is_approved; ?>">
                                     <?php if(isset($proof->approvedt)){ 
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $proof->approvedt);
                                     ?>
-                                        <h4>Updated:</h4>
+                                        <h4 class="text-left padding-left20"><?php echo $statustxt; ?>:</h4>
                                         <h4 class="text-center">Date: <?php echo $newDate->format('m-d-Y') ?></h4>
                                         <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
                                     <?php } ?>   
