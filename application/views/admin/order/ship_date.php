@@ -59,13 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <div id="order_detail_body">
     <div class="row info-table">
         <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
-                <?php
-                    if ($order->status != 'completed'){
-                    ?>
-                    <button onclick="changeStatus()" type="button" class="btn btn-warning active btn-block">Complete order</button>
-                    <?php
-                    }
-                ?>
+               
                 
             </div>
                 <table id="sample-table-1" class="table table-bordered table-hover">
