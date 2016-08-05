@@ -37,6 +37,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<input class="form-control validate required" type="text" data-maxlength="150" data-minlength="2" data-msg="<?php echo lang('coupon_edit_msg_validate_name');?>" placeholder="<?php echo lang('coupon_edit_name_place')?>" value="<?php echo set_value('data[name]', $coupon->name);?>" name="data[name]">
 					</div>
 				</div>
+                            
+                                <div class="form-group" style="display: table; width: 100%;">
+					<label class="control-label col-md-2"><?php echo 'coupon code';?><span class="symbol required"></span></label>
+					<div class="col-md-4">
+						<input class="form-control validate required" type="text" data-maxlength="150" data-minlength="2" data-msg="<?php echo lang('coupon_edit_msg_validate_name');?>" placeholder="<?php echo lang('coupon_edit_name_place')?>" value="<?php echo set_value('data[code]', $coupon->name);?>" name="data[cpde]">
+					</div>
+				</div>
 				
 				<div class="form-group" style="display: table; width: 100%;">
 					<label class="control-label col-md-2"><?php echo lang('coupon_value');?> ($) <span class="symbol required"></span></label>

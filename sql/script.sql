@@ -86,7 +86,7 @@ PRIMARY KEY (`id`)
 ALTER TABLE `dg_orders`
 ADD COLUMN `ship_approved` tinyint NULL AFTER `apparel`;
 
-CREATE TABLE `dg_orders_shipdate` (
+CREATE TABLE `dg_order_shipdate` (
 `id`  bigint NULL AUTO_INCREMENT ,
 `order_id`  bigint NULL ,
 `ship_date`  date NULL ,

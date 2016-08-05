@@ -106,7 +106,8 @@ class Coupon extends Admin_Controller
 			// Set form  
 			$this->form_validation->set_rules('data[name]', lang('coupon_name'), 'trim|required|min_length[2]|max_length[150]'); 
 			$this->form_validation->set_rules('data[value]', lang('coupon_value'), 'trim|required|numeric|min_length[1]|max_length[10]'); 
-			$this->form_validation->set_rules('data[minimum]', lang('minimum'), 'trim|required|numeric|min_length[1]|max_length[10]'); 
+                        $this->form_validation->set_rules('data[code]', lang('coupon_name'), 'trim|required|min_length[2]|max_length[150]'); 
+			$this->form_validation->set_rules('data[minimum]', lang('minimum'), 'trim|numeric|min_length[1]|max_length[10]'); 
 			$this->form_validation->set_rules('data[coupon_type]', lang('coupon_type'), 'trim|required|min_length[1]|max_length[10]|callback_couponType'); 
 			$this->form_validation->set_rules('data[discount_type]', lang('coupon_percent_or_total'), 'trim|required|min_length[1]|max_length[10]|callback_discounType'); 
 			$this->form_validation->set_rules('data[start_date]', lang('date_start'), 'trim|required|min_length[1]|max_length[10]|callback_checkdate'); 
@@ -127,7 +128,7 @@ class Coupon extends Admin_Controller
 					}
 				}else
 				{
-					$data['code'] = $this->createCode($this->user['id']);
+					//$data['code'] = $this->createCode($this->user['id']);
 					$cou_id = $this->coupon_m->save($data);
 					if($cou_id > 0)
 					{
