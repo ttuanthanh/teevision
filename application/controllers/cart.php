@@ -274,7 +274,7 @@ class Cart extends Frontend_Controller {
 			if (empty($result->options)) $result->options = array();
 			
 			if (isset($data['teams'])) $teams = $data['teams'];
-                        else $teams = '';
+                        else $teams = array();
 			
 			// add cart
 			$item 	= array(
@@ -460,7 +460,7 @@ class Cart extends Frontend_Controller {
 			if (empty($result->options)) $result->options = array();
 			
 			if (isset($data['teams'])) $teams = $data['teams'];
-			else $teams = '';
+			else $teams = array();
 			
 			// add cart
 			$item 	= array(

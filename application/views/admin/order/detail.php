@@ -82,7 +82,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <th class="center">Artwork</th>
                                             <th class="center">Proof</th>
                                             <th class="center">Tracking Number</th>
-                                            <th class="center">Balance</th>
+                                            <th class="center">Print Ready</th>
                                     </tr>
                             </thead>
                             <tbody>
@@ -108,7 +108,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                        <?php echo $order->total_qty; ?>
                                     </td>
                                     <td class="center"> 
-                                        <?php if( $order->custom_file=='')
+                                        <?php if( $order->custom_file==1)
                                                 echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; ?>
                                     </td>
                                     <td class="center"> 
@@ -125,10 +125,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         else
                                             $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        if( $order->ship_approved != '') {?>
-                                        <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
-                                        <?php } else {?>
+                                        if( $order->ship_approved != 1) {?>
                                             <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                        <?php } else {?>
+                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>   
                                         <?php } ?>
                                     </td>
                                     <td class="center">
@@ -162,11 +162,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         
                                     </td>
                                     <td class="center">    
-                                        <?php if( $order->balance != 0) {?>
-                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Yes</a>
-                                        <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" rel="publish">No</a>
-                                        <?php } ?>
+                                        <?php 
+                                            if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
+                                                echo '<a href="'.site_url('admin/orders/balance/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
+                                            else
+                                                echo '<a href="javascript:void(0)" class="btn btn-danger btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
+                                        ?>
                                     </td>
                                     </tr>
                             </tbody>
@@ -319,7 +320,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <?php //var_dump($order); ?>
                                 <div class="col-md-6 button-preview">
-                                    <a href="<?php echo site_url('admin/orders/balance/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Balance
+                                    <a href="<?php echo site_url('admin/orders/orderPrint/'.$order->id); ?>" type="button" class="btn btn-info active btn-block">Balance
                                     <?php if( $order->balance!=0)
                                                 echo '<i class="fa fa-check-square-o" style="font-size: 20px;"></i>'; 
                                                 else echo '<i class="fa fa-square-o" style="font-size: 20px;"></i>';

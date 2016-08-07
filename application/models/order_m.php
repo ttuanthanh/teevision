@@ -393,6 +393,14 @@ class Order_m extends MY_Model
 		
 	}
         
+        function getProofByItem($id = '')
+	{	
+		$this->db->where('item_id ', $id);
+                $query = $this->db->get('order_proof');
+                return $query->row();
+		
+	}
+        
         function getLatestId()
 	{
                 $this->db->select('max(id) id');

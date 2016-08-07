@@ -390,4 +390,123 @@ class Pdf
 		}
 		$pdf->Output($file_name, $this->write_type);
 	}
+        
+        function orderPrint($file_name, $data=array())
+	{
+            //var_dump($data);
+            $order      = $data['order'];
+            $items      = $data['items'];
+            $shipdate   = $data['shipdate'];
+            require_once('lang/lang.php');
+		$pdf = new TCPDF($this->orientation, $this->unit, $this->page_fomat, true, $this->unicode, false);
+
+		$html = '';
+		//header.
+                //$product = $data['items'][0];
+                foreach($data['items'] as $product){
+                    $pdf->AddPage();
+                    $proof = $product->proof;
+                    $html ='<div style="width: 100%">
+                                <img src="'.site_url($proof->proof_file).'">
+                            </div>';
+
+                    $pdf->writeHTML($html, true, 0, true, 0);
+                    $pdf->lastPage();
+                    $pdf->AddPage();
+                    $html = '<table style="font-family: nimbussanl; color: #333333; font-size: 8px">
+                            <thead>
+                                    <tr>
+                                            <th class="center">Order</th>
+                                            <th class="center">Order Date</th>
+                                            <th class="center">Name</th>
+                                            <th class="center">#</th>
+                                            <th class="center">C?</th>
+                                            <th class="center">Apparel Order</th>
+                                            <th class="center">Ship Date</th>
+                                            <th class="center">Due Date</th>
+                                            <th class="center">Artwork</th>
+                                            <th class="center">Proof</th>
+                                            <th class="center">Tracking Number</th>
+                                    </tr>
+                            </thead>
+                            <tbody>';
+                                
+                            $newda = new DateTime($order->ship_date);
+                            $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                            $today = date("Y-m-d");
+                            $html .= '    
+                                    <tr>
+                                        <td class="center">    
+                                        '.$order->order_number.'
+                                    </td>
+                                    <td class="center"> 
+                                      '.$order->created_on.'
+                                    </td>
+                                    <td class="center">   
+                                        '.$order->name.'
+                                    </td>
+                                    <td class="center">
+                                       '.$order->total_qty.'
+                                    </td>
+                                    <td class="center">';
+                            
+                                        if( $order->custom_file==1)
+                            $html .=                     'Y
+                                    </td>
+                                    <td class="center"> ';
+                                        if( $order->apparel != '') {
+                            $html .=            'Yes';
+                                        } else {
+                            $html .=               'No';
+                                        } 
+                            $html .='</td>
+                                    <td class="center">  ';    
+                                        
+                                        if(isset($order->shipdate))                                        
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);                                        
+                                        else
+                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        if( $order->ship_approved != 1) {
+                            $html .='               '.$newDate->format('m').'-'.$newDate->format('d') ;
+                                        } else {
+                            $html .='                '. $newDate->format('m').'-'.$newDate->format('d') .''   ;
+                                        } 
+                            $html .='        </td>
+                                    <td class="center">';
+                                         
+                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                            $html .=             $newDate->format('m').'-'.$newDate->format('d'); 
+                                        
+                            $html .='        </td>
+                                    <td class="center">    '; 
+                                        if( $order->artwork != 0) {
+                            $html .='            Yes';
+                                        } else {
+                            $html .='            no';
+                                         } 
+                            $html .='        </td>
+                                    <td class="center">  ';   
+                                        if( $order->proof_approved != 0) {
+                            $html .='            Yes';
+                                        } else {
+                            $html .='            no';
+                                         }
+                            $html .='        </td>
+                                    <td class="center">  ';                                       
+ 
+                            $html .='                   #'.$order->tracking_num;
+                                        
+                                                
+                                        
+                            $html .='        </td>
+                                    
+                                    </tr>
+                            </tbody>
+                    </table>';
+                    $pdf->writeHTML($html, true, 0, true, 0);
+                    $pdf->lastPage();
+                }                
+		$pdf->Output($file_name, $this->write_type);
+	}
 }

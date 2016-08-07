@@ -1140,4 +1140,104 @@ class Orders extends Admin_Controller
 		$this->data['subview'] = 'admin/order/ship_date';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
+        
+        function orderPrint($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		$this->data['breadcrumb'] = 'Print order';
+                $this->data['meta_title'] = 'Print order';
+                $this->data['sub_title'] = '';
+		
+                $items = $this->order_m->getItems($id);
+                foreach ($items as $key=>$item){
+                    $items[$key]->proof = $this->order_m->getProofByItem($item->id) != null ? $this->order_m->getProofByItem($item->id) : '';
+                }
+                
+		$this->data['items'] = $items;
+                
+                $this->load->model('shipdate_m');
+		$shipdate = $this->shipdate_m->getByOrder($id);
+		$this->data['shipdate'] = $shipdate;
+                
+                $order = $this->order_m->getOrderSchedule($id); 
+                $this->data['order'] = $order;
+                
+                $this->load->model('comment_m');
+                $this->load->helper('comment');
+                $comments = $this->comment_m->getByOrder($id);
+                $cm_box  = comment_box($comments, $id);
+                $this->data['comment'] = $cm_box;
+                
+                
+                
+		// Load view
+		$this->data['subview'] = 'admin/order/order_print';
+		$this->load->view('admin/_layout_main', $this->data);
+	}
+        
+        
+        function printorder($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+
+		
+                $items = $this->order_m->getItems($id);
+                foreach ($items as $key=>$item){
+                    $items[$key]->proof = $this->order_m->getProofByItem($item->id) != null ? $this->order_m->getProofByItem($item->id) : '';
+                }
+                
+		$data['items'] = $items;
+                
+                $this->load->model('shipdate_m');
+		$shipdate = $this->shipdate_m->getByOrder($id);
+		$data['shipdate'] = $shipdate;
+                
+                $order = $this->order_m->getOrderSchedule($id); 
+                $data['order'] = $order;
+                
+                
+		//create pdf.
+		$this->load->library('pdf/pdf.php');
+		$config = array(
+			'write_type'=>'I'
+		);
+
+		$pdf = new Pdf($config);
+		$file_name = 'Print-Order-'.$order->order_number.'.pdf';
+		$pdf->orderPrint($file_name, $data);
+                
+                
+		// Load view
+		//$this->data['subview'] = 'admin/order/order_print';
+		//$this->load->view('admin/_layout_main', $this->data);
+	}
+//        
+//	function orderPrint($file_name, $data=array())
+//	{
+//            //var_dump($data);
+//		require_once('lang/lang.php');
+//		$pdf = new TCPDF($this->orientation, $this->unit, $this->page_fomat, true, $this->unicode, false);
+//
+//		
+//		
+//                
+//		$html = '';
+//		//header.
+//                $product = $data['items'][0];
+//                //foreach($data['items'] as $product){
+//                    $pdf->AddPage();
+//                    $proof = $product->proof;
+//                    $html .='<div style="width: 100%">
+//                                <img src="'.site_url($proof->proof_file).'" width="100%">
+//                            </div>';
+//
+//                    $pdf->writeHTML($html, true, 0, true, 0);
+//
+//                    $pdf->lastPage();
+//                //}                
+//		$pdf->Output($file_name, $this->write_type);
+//	}
 }

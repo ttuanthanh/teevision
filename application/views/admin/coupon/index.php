@@ -92,7 +92,7 @@ echo form_open(site_url().'admin/coupon', $attribute);
 			<th class="center"><?php echo lang('coupon_code'); ?></th>
 			<th class="center"><?php echo lang('value'); ?></th>
 			<th class="center"><?php echo lang('type'); ?></th>
-			<th class="center"><?php echo lang('minimum'); ?></th>
+			<!--<th class="center"><?php echo lang('minimum'); ?></th>-->
 			<th class="center"><?php echo lang('publish'); ?></th>
 			<th class="center"><?php echo lang('count'); ?></th>
 			<th class="center"><?php echo lang('date_start'); ?></th>
@@ -126,7 +126,7 @@ echo form_open(site_url().'admin/coupon', $attribute);
 									else echo 'Gift';
 								?>
 							</td>
-							<td class="center"><?php echo $coupon->minimum.'$'; ?></td>
+							<!--<td class="center"><?php echo $coupon->minimum.'$'; ?></td>-->
 							<td class="center">
 								<?php 
 									if($coupon->publish == 1)

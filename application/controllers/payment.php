@@ -68,19 +68,23 @@ class Payment extends Frontend_Controller
 			$session_id 	= $this->session->userdata('order_session_id');
 			$designs 		= $this->cache->get('orders_designs'.$session_id);
 			
-			
+			$is_teams = 0;
 			$items	= array();
 			$i 		= 0;
 			$total 		= 0;
 			$subtotal 	= 0;	
                         $design_save    = array();
 			foreach($this->items as $key => $item)
-			{
+			{                            
 				$subtotal  = $subtotal + $item['subtotal'] + $item['customPrice'];
 				$items['design'][$i] = $designs[$key];
 				$items['cart'][$i]	= $item;
+                                if(is_array($items['cart'][$i]['teams']) && count($items['cart'][$i]['teams']))
+                                    $is_teams = 1;
 				$items['cart'][$i]['teams']	= json_encode($items['cart'][$i]['teams']);
 				$items['cart'][$i]['options']	= json_encode($items['cart'][$i]['options']);
+                                
+                                
 				$i++;
 									
 			}
@@ -170,6 +174,7 @@ class Payment extends Frontend_Controller
 			$order['total']			= $order['sub_total'] + $order['shipping_price'] - $order['discount'];			
 			$order['status']		= 'pending';
                         $order['total_qty']		= $totalq;
+                        $order['custom_file']		= $is_teams;
 			$order_id 				= $this->order_m->save($order, null);
 			
 			

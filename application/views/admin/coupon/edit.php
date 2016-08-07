@@ -41,7 +41,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group" style="display: table; width: 100%;">
 					<label class="control-label col-md-2"><?php echo 'coupon code';?><span class="symbol required"></span></label>
 					<div class="col-md-4">
-						<input class="form-control validate required" type="text" data-maxlength="150" data-minlength="2" data-msg="<?php echo lang('coupon_edit_msg_validate_name');?>" placeholder="<?php echo lang('coupon_edit_name_place')?>" value="<?php echo set_value('data[code]', $coupon->name);?>" name="data[cpde]">
+						<input class="form-control validate required" type="text" data-maxlength="150" data-minlength="2" data-msg="<?php echo lang('coupon_edit_msg_validate_name');?>" placeholder="Coupon code" value="<?php echo set_value('data[code]', $coupon->code);?>" name="data[code]">
 					</div>
 				</div>
 				
@@ -52,10 +52,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 				
-				<div class="form-group" style="display: table; width: 100%;">
+				<div class="form-group" style="display: none; width: 100%;">
 					<label class="control-label col-md-2"><?php echo lang('coupon_minimum');?> ($) <span class="symbol required"></span></label>
 					<div class="col-md-4">
-						<input class="form-control validate required" type="text" data-msg="<?php echo lang('coupon_edit_msg_validate_minimum');?>" data-maxlength="10" data-minlength="1" placeholder="<?php echo lang('coupon_edit_minimum_place');?>" value="<?php echo set_value('data[minimum]', $coupon->minimum);?>" name="data[minimum]">
+						<input class="form-control validate required" type="text" data-msg="<?php echo lang('coupon_edit_msg_validate_minimum');?>" data-maxlength="10" data-minlength="1" placeholder="<?php echo lang('coupon_edit_minimum_place');?>" value="1" name="data[minimum]">
 					</div>
 				</div>
 				
