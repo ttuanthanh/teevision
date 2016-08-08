@@ -406,6 +406,10 @@ class Pdf
                 foreach($data['items'] as $product){
                     $pdf->AddPage();
                     $proof = $product->proof;
+                    
+                    $design_option   = json_decode($product->design_option);
+                    $colors = $design_option->colors;
+                    //var_dump($colors);
                     $html ='<div style="width: 100%">
                                 <img src="'.site_url($proof->proof_file).'">
                             </div>';
@@ -413,54 +417,55 @@ class Pdf
                     $pdf->writeHTML($html, true, 0, true, 0);
                     $pdf->lastPage();
                     $pdf->AddPage();
-                    $html = '<table style="font-family: nimbussanl; color: #333333; font-size: 8px">
+                    $html = '<table cellpadding="4" style="font-family: nimbussanl; color: #333333; font-size: 8px">
                             <thead>
                                     <tr>
-                                            <th class="center">Order</th>
-                                            <th class="center">Order Date</th>
-                                            <th class="center">Name</th>
-                                            <th class="center">#</th>
-                                            <th class="center">C?</th>
-                                            <th class="center">Apparel Order</th>
-                                            <th class="center">Ship Date</th>
-                                            <th class="center">Due Date</th>
-                                            <th class="center">Artwork</th>
-                                            <th class="center">Proof</th>
-                                            <th class="center">Tracking Number</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Order</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Order Date</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Name</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">#</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">C?</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Apparel Order</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Ship Date</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Due Date</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Artwork</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Proof</th>
+                                            <th style="text-align: right; border: 0.3px solid #ccc; " class="center">Tracking Number</th>
                                     </tr>
                             </thead>
                             <tbody>';
                                 
                             $newda = new DateTime($order->ship_date);
+                            $createdate = new DateTime($order->created_on);
                             $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                             $today = date("Y-m-d");
                             $html .= '    
                                     <tr>
-                                        <td class="center">    
+                                        <td class="center" style="text-align: right; border: 0.3px solid #ccc; ">    
                                         '.$order->order_number.'
                                     </td>
-                                    <td class="center"> 
-                                      '.$order->created_on.'
+                                    <td style="text-align: right; border: 0.3px solid #ccc; "> 
+                                      '.$createdate->format('m-d-Y H:i').'
                                     </td>
-                                    <td class="center">   
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">   
                                         '.$order->name.'
                                     </td>
-                                    <td class="center">
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">
                                        '.$order->total_qty.'
                                     </td>
-                                    <td class="center">';
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">';
                             
                                         if( $order->custom_file==1)
-                            $html .=                     'Y
-                                    </td>
-                                    <td class="center"> ';
+                            $html .=                     'Yes';
+                            $html .='        </td>
+                                    <td style="text-align: right; border: 0.3px solid #ccc; "> ';
                                         if( $order->apparel != '') {
                             $html .=            'Yes';
                                         } else {
                             $html .=               'No';
                                         } 
                             $html .='</td>
-                                    <td class="center">  ';    
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">  ';    
                                         
                                         if(isset($order->shipdate))                                        
                                             $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);                                        
@@ -473,27 +478,27 @@ class Pdf
                             $html .='                '. $newDate->format('m').'-'.$newDate->format('d') .''   ;
                                         } 
                             $html .='        </td>
-                                    <td class="center">';
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">';
                                          
                                         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
                             $html .=             $newDate->format('m').'-'.$newDate->format('d'); 
                                         
                             $html .='        </td>
-                                    <td class="center">    '; 
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">    '; 
                                         if( $order->artwork != 0) {
                             $html .='            Yes';
                                         } else {
                             $html .='            no';
                                          } 
                             $html .='        </td>
-                                    <td class="center">  ';   
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">  ';   
                                         if( $order->proof_approved != 0) {
                             $html .='            Yes';
                                         } else {
                             $html .='            no';
                                          }
                             $html .='        </td>
-                                    <td class="center">  ';                                       
+                                    <td style="text-align: right; border: 0.3px solid #ccc; ">  ';                                       
  
                             $html .='                   #'.$order->tracking_num;
                                         
@@ -504,6 +509,62 @@ class Pdf
                                     </tr>
                             </tbody>
                     </table>';
+                    $html .= '<br/><br/>';
+                    $html .= '<table style="font-family: nimbussanl; color: #333333; font-size: 10px">'
+                                .'<tr>
+                                        <th style="text-align: left; border: 0.3px solid #ccc" colspan="2"><h3>Artwork</h3></th>
+                                </tr>'
+                                .'<tr>
+                                    <td width="45%" style="text-align: left; border: 0.3px solid #ccc">
+                                        <h3>Froof:</h3>
+                                        <img src="'.site_url($proof->proof_file).'">
+                                    </td>
+                                    <td width="55%" style="text-align: left; border: 0.3px solid #ccc">
+                                        <p><b>Apparel Style: </b>'.$product->product_name.'</p>
+                                        <p>
+                                            <b>Apparel color: </b>'.$colors->color_name.'
+                                            <span style="display: inline-block; border: 1px solid #ccc; outline: 1px solid #337AB7; width: 20px; height: 20px; background-color:#'.$colors->color_hex .'">	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</span>
+                                        </p>';
+                                        if($product->attributes != '' && $product->attributes != '"[]"')
+                                        {
+                                            $size = json_decode(json_decode($product->attributes), true);
+                                            $sizename = '';
+                                            $sizenum = '';
+                                            if (count($size) > 0)
+                                            {
+                                                    foreach($size as $option) {  
+                                                            if (is_string($option['value'])) echo $option['value'];
+                                                            elseif (is_array($option['value']) && count($option['value']))
+                                                            {
+                                                                    foreach($option['value'] as $v=>$value)
+                                                                    {
+                                                                            if ($option['type'] == 'textlist'){
+                                                                                $sizename .= '<td style="text-align: left; border: 0.3px solid #ccc">'.$v.'</td>';
+                                                                                $sizenum .= '<td style="text-align: left; border: 0.3px solid #ccc; padding-top:10px">'.$value.'</td>';
+                                                                            }
+
+                                                                    }
+                                                            }
+                                                                    
+                                                    }
+                                        $html .=    '<table id="sample-table-1" class="table table-bordered table-hover">
+                                                <thead>
+                                                        <tr>
+                                                            '.$sizename .'
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                        <tr>
+                                                            '.$sizenum .'
+                                                        </tr>
+                                                </tbody>
+                                            </table>   '  ;       
+                                                    
+                                            }
+                                    }
+                    $html .=        '</td>                                    
+                                </tr>'
+                            .'</table>';
                     $pdf->writeHTML($html, true, 0, true, 0);
                     $pdf->lastPage();
                 }                

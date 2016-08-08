@@ -141,7 +141,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <td class="center">    
                                         <?php 
                                             if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
-                                                echo '<a href="'.site_url('admin/orders/balance/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
+                                                echo '<a href="'.site_url('admin/orders/orderPrint/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
                                             else
                                                 echo '<a href="javascript:void(0)" class="btn btn-danger btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
                                         ?>
@@ -149,7 +149,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </tr>
                             </tbody>
                     </table>
-            
+        <div class="text-center">
+            <a target="_blank" href="<?php echo site_url('admin/orders/printorder/'.$order->id) ?>" class="btn btn-success" style="width: 200px">PRINT ORDER</a>
+        </div>
+    <br clear="all">
     </div>
 <div class="">
     <?php foreach($items as $product){?>
