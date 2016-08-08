@@ -337,8 +337,8 @@ class Order_m extends MY_Model
         // get order number
 	public function creteOrderNumberNew()
 	{
-		$id = $this->getLatestId();
-                $num = 2001 + $id->id;
+		$id = $this->getLatestIdNew();
+                $num = 2000 + $id->id;
 		$text = 'TVP'.$num;
 		return $text;
 	}
@@ -406,5 +406,16 @@ class Order_m extends MY_Model
                 $this->db->select('max(id) id');
 		$query = $this->db->get('orders');
 		return $query->row();
+	}
+        
+        function getLatestIdNew()
+	{
+                $query = 'SELECT `AUTO_INCREMENT` id
+                        FROM  INFORMATION_SCHEMA.TABLES
+                        WHERE TABLE_SCHEMA = "'.$this->db->database.'" AND TABLE_NAME   = "dg_orders"';
+//                $this->db->select('AUTO_INCREMENT id');
+//		$query = $this->db->get('`INFORMATION_SCHEMA.TABLES`');
+//                $this->db->where('TABLE_NAME', 'orders');
+		return $this->db->query($query)->row();
 	}
 }
