@@ -55,7 +55,7 @@ class Artwork extends Admin_Controller {
                 $user = $this->user;
                 $comment = array();
                 $comment['order_id']    = $data['order_id'];
-                $comment['user_name']   = $user['username'];
+                $comment['user_name']   = $user['name'];
                 $comment['text']        = 'Update artwork.';
                 $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);

@@ -46,7 +46,7 @@ class Proof extends Admin_Controller {
                 $user = $this->user;
                 $comment = array();
                 $comment['order_id']    = $data['order_id'];
-                $comment['user_name']   = $user['username'];
+                $comment['user_name']   = $user['name'];
                 $comment['text']        = 'Update proof.';
                 $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
@@ -71,7 +71,7 @@ class Proof extends Admin_Controller {
                 $user = $this->user;
                 $comment = array();
                 $comment['order_id']    = $this->input->post('order_id');
-                $comment['user_name']   = $user['username'];
+                $comment['user_name']   = $user['name'];
                 $comment['text']        = 'Approved proof for print.';
                 if ($data['is_approved'] === 0)
                     $comment['text']        = 'Remove proof approved.';

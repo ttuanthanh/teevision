@@ -264,10 +264,11 @@ class Cart extends Frontend_Controller {
 			$designs 		= $this->cache->get('orders_designs'.$this->session_id);
 			
 			$designs[$rowid]	= array(
-				'color' => $data['colors'][key($data['colors'])],
-				'images' => $design['images'],
-				'vector' => $data['design']['vectors'],
-				'fonts' => $data['fonts']
+				'color'         => $data['colors'][key($data['colors'])],
+                                'color_title'   => $data['color_title'],
+				'images'        => $design['images'],
+				'vector'        => $data['design']['vectors'],
+				'fonts'         => $data['fonts']
 			);
 			$this->cache->save('orders_designs'.$this->session_id, $designs, 36000);
 				

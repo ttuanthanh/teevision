@@ -160,6 +160,11 @@ var design={
 			jQuery('#dg-products .products-detail').hide('slow');
 			jQuery('#dg-products .product-detail.active').removeClass('active');
 		});
+                
+                jQuery('#close-product-detail2').click(function(){
+			jQuery('#dg-products .products-detail').hide('slow');
+			jQuery('#dg-products .product-detail.active').removeClass('active');
+		});
 		
 		/* text update */
 		$jd('.text-update').each(function(){
@@ -191,6 +196,9 @@ var design={
 			
 			/* get product color */
 			var hex = design.exports.productColor();
+                        var colortt = design.exports.productColorTitle();
+                        datas.color_title = colortt;
+                        
 			var index = jQuery('#product-list-colors span').index(jQuery('#product-list-colors span.active'));					
 			datas.colors = {};
 			datas.colors[index] = hex;			
@@ -1304,16 +1312,21 @@ var design={
                     
 					html = html + 	'</div>';
                                         html = html + '<div class="modal-footer">'+
-                                                        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+                                                        '<button type="button" class="btn btn-danger btn-sm close-product-detail2" id="">Go back</button>'+
                                                         '<button type="button" class="btn btn-primary" id="loading-change-product" data-loading-text="Loading..." onclick="design.products.changeDesign(this)">Change Product</button>'+
                                                 '</div>';
 					
 					
 				div.innerHTML = html;
 				jQuery('#dg-products .products-detail').append(div);
+                                
 			}
 			jQuery('#product-detail-' + id).addClass('active');			
-			jQuery('#dg-products .products-detail').show('slow');			
+			jQuery('#dg-products .products-detail').show('slow');	
+                        jQuery('.close-product-detail2').click(function(){
+                                        jQuery('#dg-products .products-detail').hide('slow');
+                                        jQuery('#dg-products .product-detail.active').removeClass('active');
+                                });
 		},
 		productCate: function(id){
 			var seft = this;
@@ -3580,6 +3593,9 @@ var design={
 	exports:{
 		productColor: function(){
 			return jQuery('#product-list-colors span.active').data('color');
+		},
+                productColorTitle: function(){
+			return jQuery('#product-list-colors span.active').data('original-title');
 		},
 		cliparts: function(){
 			var arts = {};

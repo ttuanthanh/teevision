@@ -510,14 +510,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 				</div>
 				<div class="modal-body">
-					<div class="row">
+                                    <div class="row" style="height: 450px; overflow: auto">
 						<!-- list product category -->
 						<div class="product-list col-sm-12">
 						</div>
 						
 						<!-- product detail -->
 						<div class="products-detail col-sm-12">
-							<button type="button" class="btn btn-danger btn-sm" id="close-product-detail">Close</button>
+							<button type="button" class="btn btn-danger btn-sm" id="close-product-detail">Go back</button>
 						</div>
 					</div>
                                         <div class="modal-footer">

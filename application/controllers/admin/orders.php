@@ -1136,6 +1136,7 @@ class Orders extends Admin_Controller
                 $cm_box  = comment_box($comments, $id);
                 $this->data['comment'] = $cm_box;
 		
+                var_dump($this->user);
 		// Load view
 		$this->data['subview'] = 'admin/order/ship_date';
 		$this->load->view('admin/_layout_main', $this->data);
