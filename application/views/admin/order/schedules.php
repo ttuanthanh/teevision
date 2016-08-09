@@ -103,6 +103,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <?php $desi = $this->order_m->getDesign($order->id); ?>
                                 <?php
                                     $newda = new DateTime($order->ship_date);
+                                    $credate = new DateTime($order->created_on);
                                     $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
                                     
@@ -122,7 +123,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $order->created_on; ?>
+                                      <?php echo $credate->format('m-d-Y (H:i)'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>
