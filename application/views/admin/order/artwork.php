@@ -151,9 +151,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="container-fluid clearfix">
                                 <div class="col-md-8">
+                                    <?php //var_dump($artwork->front_file) ?>
                                     <div class="fileinput <?php echo (isset($artwork->front_file) && $artwork->front_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                            <img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->front_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the front." alt="front_image" class="img-responsive">
+                                            <?php 
+                                             $ext = @pathinfo(site_url($artwork->front_file), PATHINFO_EXTENSION);
+                                             $isimage = true;
+                                             if (in_array($ext, array('psd','pdf','ai')));
+                                                $isimage = FALSE;
+                                            ?>
+                                            <img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->front_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=<?php echo (isset($artwork->front_file) && !$isimage) ?  'Uploaded file not image. Please download to view!' : 'You have not selected any artwork for the front.' ?>" alt="front_image" class="img-responsive">
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
@@ -192,7 +199,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="col-md-8">
                                     <div class="fileinput <?php echo (isset($artwork->back_file) && $artwork->back_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                            <img <?php echo isset($artwork->back_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=You have not selected any artwork for the back." alt="back_image" class="img-responsive">
+                                            <?php 
+                                             $ext = @pathinfo(site_url($artwork->back_file), PATHINFO_EXTENSION);
+                                             $isimage = true;
+                                             if (in_array($ext, array('psd','pdf','ai')));
+                                                $isimage = FALSE;
+                                            ?>
+                                            <img <?php echo isset($artwork->back_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=<?php echo (isset($artwork->back_file) && !$isimage) ? 'Uploaded file not image. Please download to view!' : 'You have not selected any artwork for the front.'  ?>" alt="back_image" class="img-responsive">
                                         </div>
                                         <div>
                                             <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
