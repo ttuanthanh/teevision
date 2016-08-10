@@ -133,7 +133,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center"> 
                                         <?php //var_dump($desi->teams) ?>
-                                        <?php if( $order->custom_file!='')
+                                        <?php if( $order->custom_file==1)
                                                 echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; 
 
                                         ?>

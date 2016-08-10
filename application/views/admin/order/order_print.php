@@ -177,7 +177,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="col-md-6">
                             <div class="art-ordernum text-left">PROOF: <?php echo $order->order_number ?></div><br>
                             <div class="bold">
-                                <img class="img-responsive" src="<?php echo site_url($proof->proof_file); ?>">
+                                <img class="img-responsive" src="<?php echo isset($proof->proof_file) ? site_url($proof->proof_file) : ''; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
