@@ -18,7 +18,8 @@ class Api extends Frontend_Controller {
 	// get image design of product
 	function image($product_id = 0, $view = 'front', $index = 0)
 	{
-		
+		error_reporting(E_ALL);
+                ini_set('display_errors', '1');
 		$product_id	= (int) $product_id;
 		$index		= (int) $index;
 		
