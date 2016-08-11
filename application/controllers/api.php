@@ -48,11 +48,11 @@ class Api extends Frontend_Controller {
 				
 			$string = str_replace("'", '"', $design[$view][$index]);
 			$string = str_replace('px"', '"', $string);		
-			/*
+			
 			$img = new Imagick();
 			$img->newImage(500, 500, new ImagickPixel('transparent'));
 			$img->setImageFormat('png');
-				*/			
+							
 			$design 	= json_decode($string, true);
 			
 			$n = count($design) - 1;
@@ -64,28 +64,28 @@ class Api extends Frontend_Controller {
 				
 				$file 	= ROOTPATH .DS. str_replace('/', DS, $image['img']);
 				
-                                /*
+                                
 				$newfile = new Imagick($file);
 				$newfile->resizeImage($image['width'], $image['height'], Imagick::FILTER_LANCZOS, 1);
 				$img->compositeImage($newfile, Imagick::COMPOSITE_DEFAULT, $image['left'], $image['top']);
                                  
-                                 */
-                                
-                                $info = pathinfo($file);
-                                $ext = strtolower($info['extension']);
-                                list($width, $height) = getimagesize($file); 
-                                
-                                
-                                $tn= imagecreatetruecolor($image['width'], $image['height']); 
-                                if ( $ext == 'jpg' ) 
-                                    $source = imagecreatefromjpeg($file); 
-                                else if ($ext == 'png')
-                                    $source = imagecreatefrompng($file); 
-                                imagecopyresampled($tn, $source, 0, 0, 0, 0, $image['width'], $image['height'], $width, $height); 
+                                 
+//                                
+//                                $info = pathinfo($file);
+//                                $ext = strtolower($info['extension']);
+//                                list($width, $height) = getimagesize($file); 
+//                                
+//                                
+//                                $tn= imagecreatetruecolor($image['width'], $image['height']); 
+//                                if ( $ext == 'jpg' ) 
+//                                    $source = imagecreatefromjpeg($file); 
+//                                else if ($ext == 'png')
+//                                    $source = imagecreatefrompng($file); 
+//                                imagecopyresampled($tn, $source, 0, 0, 0, 0, $image['width'], $image['height'], $width, $height); 
 			}
-                        header("Content-Type: image/png");
-			imagejpeg($tn, null, 100); 
-			//$thumbnail = $img->getImageBlob();	
+//                        header("Content-Type: image/png");
+//			imagejpeg($tn, null, 100); 
+			$thumbnail = $img->getImageBlob();	
 			
 			//$this->cache->file->save('product-img-'.$product_id.'-'.$view.'-'.$index, base64_encode($thumbnail), 300000);			
 		}
@@ -95,8 +95,8 @@ class Api extends Frontend_Controller {
 			$thumbnail = base64_decode($img);
 		}
 			
-		//header("Content-Type: image/png");
-		//echo $tn;
+		header("Content-Type: image/png");
+		echo $tn;
 	}
 	
 	function imagechangecolor($product_id = 0, $view = 'front', $index = 0) {
