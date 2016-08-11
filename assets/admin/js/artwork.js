@@ -8,7 +8,7 @@
     var 
             //dropArea 	= document.getElementById("drop-area"),
             //fileList 	= document.getElementById("dag-files-images"),
-            fileType 	= ["png", "gif", "jpg", "jpeg", "PNG", "JPG", "JPEG", "psd", "pdf"],
+            fileType 	= ["png", "gif", "jpg", "jpeg", "psd", "pdf", "eps", "ai", "PNG", "JPG", "JPEG", "PSD", "PDF", "EPS", "AI"],
             maxsize		= uploadSize['max'];
             minsize		= uploadSize['min'];
     function uploadFile (file, locat) {

@@ -79,7 +79,7 @@ font-family: Oswald,sans-serif;
    border: 1px solid #ddd;
    height:225px;
 }
-.box-product img.img-responsive {
+.box-product .col-md-3 img.img-responsive {
 min-height:320px;    
 }
 .category-title {
