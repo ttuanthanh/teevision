@@ -274,15 +274,15 @@ class Ajax extends Frontend_Controller {
 			$config['maintain_ratio'] = TRUE;
 			$config['width']	= 300;
 			$config['height']	= 300;
-                        
-                        $config['new_image'] = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. 'test1111.jpg';
+                        $config['library_path'] = '/usr/bin';
+                        //$config['new_image'] = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. 'test1111.jpg';
 
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 			$thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
 			
-			//$image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
-			$image->thumb  = $config['new_image'];
+			$image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+			//$image->thumb  = $config['new_image'];
 			$msg 				= $image;
 		}			
 		echo json_encode(array('status' => $status, 'msg' => $msg));
