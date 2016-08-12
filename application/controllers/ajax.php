@@ -276,18 +276,72 @@ class Ajax extends Frontend_Controller {
 			$config['height']	= 300;
                         $config['library_path'] = '/usr/bin';
                         //$config['new_image'] = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. 'test1111.jpg';
-
-			$this->load->library('image_lib', $config);
-			$this->image_lib->resize();
-			$thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
-			$thumb = 'thanhtest.jpg';
-			$image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+                        
+                        if($data['file_ext'] != '.psd') 
+                        {
+                            $this->load->library('image_lib', $config);
+                            $this->image_lib->resize();
+                            $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
+                            $thumb = 'thanhtest.jpg';
+                            $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+			
+                        }
+                        else
+                        {
+                            $dir = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/';
+                            $image->thumb = $this->thumbGenerator($dir, $data['raw_name'], $data['file_ext'], 'small');
+                        }
 			//$image->thumb  = $config['new_image'];
 			$msg 				= $image;
 		}			
 		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
         
+        
+        function thumbGenerator($dir,$tmpName,$fileType,$size)
+        {
+            $saveFileType = "png";
+            $imagePath = $dir.$tmpName."".$fileType;
+            $image = new Imagick();
+            $image->readimage($imagePath);
+            if($fileType == ".psd"){
+                $image->setIteratorIndex(0);
+            }
+            $dimensions = $image->getImageGeometry();
+            $width = $dimensions['width'];
+            $height = $dimensions['height'];
+            if($size == "large"){
+                $maxWidth = 720;
+                $maxHeight =720;
+            }
+            if($size == "small"){
+                $maxWidth = 300;
+                $maxHeight =300;
+            }
+            if($height > $width){
+                //Portrait
+                if($height > $maxHeight)
+                    $image->thumbnailImage(0, $maxHeight);
+                    $dimensions = $image->getImageGeometry();
+                    if($dimensions['width'] > $maxWidth){
+                        $image->thumbnailImage($maxWidth, 0);
+                    }
+            }elseif($height < $width){
+                //Landscape
+                $image->thumbnailImage($maxWidth, 0);
+            }else{
+                //square
+                $image->thumbnailImage($maxWidth, 0);
+            }
+            if($size == "large"){
+                $image->writeImage($dir . $tmpName."-lg.".$saveFileType);
+                return $dir . $tmpName."-lg.".$saveFileType;
+            }
+            if($size == "small"){
+                $image->writeImage($dir . $tmpName."-sm.".$saveFileType);;
+                return $dir . $tmpName."-sm.".$saveFileType;
+            }
+        }
         /**
          * 
          * Calculate shirt price
