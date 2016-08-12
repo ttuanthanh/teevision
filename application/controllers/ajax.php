@@ -291,7 +291,7 @@ class Ajax extends Frontend_Controller {
                             $this->load->library('thumb');
                             $this->thumb->file	= $data['full_path'];				
 
-                            $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/';				
+                            $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';				
                             //if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
                             $this->thumb->resize($thumbs .DS. md5($data['full_path']), array('width'=>100, 'height'=>100));
                             $image->thumb  = $thumbs .DS. md5($data['full_path']).'.png';
