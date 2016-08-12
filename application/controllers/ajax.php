@@ -202,7 +202,7 @@ class Ajax extends Frontend_Controller {
 			$image->title		= str_replace('.png', '', $file);
 			$image->change_color= 0;
 			
-			$config['image_library'] 	= 'gd2';
+			$config['image_library'] 	= 'imagemagick';
 			$config['source_image']		= $path_file;
 			$config['create_thumb'] 	= TRUE;
 			$config['maintain_ratio'] 	= TRUE;
@@ -268,7 +268,7 @@ class Ajax extends Frontend_Controller {
 			$image->url			= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $image->file_name;
                         $image->url_short		= 'media/assets/uploaded/'. $year .'/'. $month .'/'. $image->file_name;
 			
-			$config['image_library'] = 'gd2';
+			$config['image_library'] = 'imagemagick';
 			$config['source_image']	= $root .DS. $image->file_name;
 			$config['create_thumb'] = TRUE;
 			$config['maintain_ratio'] = TRUE;
