@@ -282,7 +282,7 @@ class Ajax extends Frontend_Controller {
                             $this->load->library('image_lib', $config);
                             $this->image_lib->resize();
                             $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
-                            $thumb = 'thanhtest.jpg';
+                            //$thumb = 'thanhtest.jpg';
                             $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
 			
                         }
@@ -300,7 +300,7 @@ class Ajax extends Frontend_Controller {
         
         function thumbGenerator($dir,$tmpName,$fileType,$size)
         {
-            $saveFileType = "png";
+            $saveFileType = "jpg";
             $imagePath = $dir.$tmpName."".$fileType;
             $image = new Imagick();
             $image->readimage($imagePath);
