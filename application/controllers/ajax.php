@@ -280,7 +280,7 @@ class Ajax extends Frontend_Controller {
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 			$thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
-			
+			$thumb = 'thanhtest.jpg';
 			$image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
 			//$image->thumb  = $config['new_image'];
 			$msg 				= $image;
