@@ -2,7 +2,7 @@ jQuery(function () {
 	var filesUpload = document.getElementById("files-upload"),
 		dropArea 	= document.getElementById("drop-area"),
 		fileList 	= document.getElementById("dag-files-images"),
-		fileType 	= ["png", "gif", "jpg", "jpeg"],
+		fileType 	= ["png", "gif", "jpg", "jpeg", "ai", "psd", "pdf"],
 		maxsize		= uploadSize['max'];
 		minsize		= uploadSize['min'];
 	function uploadFile (file) {
