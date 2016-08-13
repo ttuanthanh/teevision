@@ -92,7 +92,7 @@ class thumb{
 		
 		$image->resizeImage($newWidth, $newHeight, imagick::FILTER_LANCZOS, 1); 
                 
-		$image->writeImage(str_replace('.'.$ext,"_thumb",$file).'.'.$type);	
+		$image->writeImage(str_replace($ext,"_thumb",$file).'.'.$type);	
 		$image->clear();
 		$image->destroy();
 	}
