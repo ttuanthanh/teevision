@@ -293,8 +293,8 @@ class Ajax extends Frontend_Controller {
 
                             $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';				
                             //if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
-                            $this->thumb->resize($data['full_path'], array('width'=>300, 'height'=>300));
-                            $image->thumb  = $thumbs .DS. $data['raw_name'].'.png';
+                            $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300));
+                            $image->thumb  = $thumbs .DS. $data['raw_name'].'_thumb.png';
                         }
 			//$image->thumb  = $config['new_image'];
 			$msg 				= $image;
