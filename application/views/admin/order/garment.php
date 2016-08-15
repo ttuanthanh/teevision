@@ -107,7 +107,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="form-group">
                                         <label class="control-label col-md-3">Cost<span class="symbol"></span></label>
                                         <div class="col-md-8">
-                                            <input class="form-control" type="number"  data-type="number" placeholder="" value="" name="gar[cost]">
+                                            <input class="form-control" type="text"  data-type="number" placeholder="" value="" name="gar[cost]">
                                         </div>
                                 </div>
                             
