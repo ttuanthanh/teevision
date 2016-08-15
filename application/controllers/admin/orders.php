@@ -1215,30 +1215,43 @@ class Orders extends Admin_Controller
 		//$this->data['subview'] = 'admin/order/order_print';
 		//$this->load->view('admin/_layout_main', $this->data);
 	}
-//        
-//	function orderPrint($file_name, $data=array())
-//	{
-//            //var_dump($data);
-//		require_once('lang/lang.php');
-//		$pdf = new TCPDF($this->orientation, $this->unit, $this->page_fomat, true, $this->unicode, false);
-//
-//		
-//		
-//                
-//		$html = '';
-//		//header.
-//                $product = $data['items'][0];
-//                //foreach($data['items'] as $product){
-//                    $pdf->AddPage();
-//                    $proof = $product->proof;
-//                    $html .='<div style="width: 100%">
-//                                <img src="'.site_url($proof->proof_file).'" width="100%">
-//                            </div>';
-//
-//                    $pdf->writeHTML($html, true, 0, true, 0);
-//
-//                    $pdf->lastPage();
-//                //}                
-//		$pdf->Output($file_name, $this->write_type);
-//	}
+        
+        // view detail of design
+	function edit_shipping($id = '')
+	{
+		// get user info
+		$userInfo	= $this->order_m->getUserInfo($id);
+		if ($userInfo !== false)
+		{
+			$address	= json_decode($userInfo->address);
+		}
+		else
+		{
+			$address	= false;
+		}
+		$this->data['address'] = $address;		
+                $this->data['order'] = $id;
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/edit_shipping', $this->data);
+	}
+        
+        // view detail of design
+	function newAddress()
+	{
+                $oder_id = $this->input->post('order_id');
+                $data = $this->input->post('data');
+                $arr = array();
+                for ( $i = 0; $i < count($data); ){
+                    $arr[$data[$i++]] = $data[$i++];
+                }
+                
+                $order_info['address'] 	= json_encode($arr);
+                
+                $this->db->where('order_id', $oder_id);
+                $this->db->update('orders_userinfo' , $order_info);
+  
+                
+	}
 }

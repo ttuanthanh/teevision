@@ -279,6 +279,7 @@ class Ajax extends Frontend_Controller {
                         
                         if( !in_array($data['file_ext'], array('.svg', '.psd', '.ai', '.pdf')) ) 
                         {
+                            $config['image_library'] = 'gd2';
                             $this->load->library('image_lib', $config);
                             $this->image_lib->resize();
                             $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
