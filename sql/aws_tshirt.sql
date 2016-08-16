@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : tshirt-aws
-Source Server Version : 50546
-Source Host           : 54.236.222.177:3306
-Source Database       : demo_tshirt
+Source Server         : localhost
+Source Server Version : 50617
+Source Host           : localhost:3306
+Source Database       : tshirt
 
 Target Server Type    : MYSQL
-Target Server Version : 50546
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-08-16 16:34:50
+Date: 2016-08-16 17:13:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,9 +40,9 @@ CREATE TABLE `dg_article` (
 -- ----------------------------
 -- Records of dg_article
 -- ----------------------------
-INSERT INTO `dg_article` VALUES ('13', 'Starting over for 2016', 'starting-over-for-2016', '86', 'Starting over for 2016', 'Starting over for 2016', '', '<p>Its a new year! I have decided to start over with this blog since somehow everything I have written got deleted. It has been an amazing year for me. I have learned so much as a printer as well a business owner. The most important thing I have to say that I &Acirc;&nbsp;learned this year is starting over. I got kicked off google listing twice, website malfunctioning, reviews being deleted, dryers dying on me, and the list goes on..</p>\r\n<p>All it takes is getting back up when you fall and trying again. &Acirc;&nbsp;I am extremely blessed to experience everything I had in 2013 and I am eager to see what the new year holds in store for me. So 2014, I am ready to kick you in the face and bring the house down.</p>', '/media/assets/logo-150x150.jpg', '1', '2015-01-30 10:30:10', 'Teevision Printing', '28', '');
-INSERT INTO `dg_article` VALUES ('14', '5 Pointz', 'class-aptent-taciti-sociosqu-ad-litora-torquent', '86', '5 Pointz', '5 Pointz', '5 Pointz', '<p>Yes, I am rewriting about this place since it is awesome. I&rsquo;m so glad I got the chance to see it before it was destroyed by the owner. This place was pretty much the mecca of graffiti out in long island city. I remember as soon as I parked I could hear the music on full blast at the heart of the buildings and you would see people on each wall creating their next master piece.</p>\r\n<p>What I loved the most was that when you looked around everyone came from all different backgrounds. It didn&rsquo;t matter what color you were or how old you were. The passion they had for this brought them all together whether they knew or not. Too bad it&rsquo;s all gone now and I won&rsquo;t ever see people tagging in broad daylight without the cops chasing you.&Acirc;&nbsp;I just wished I &Acirc;&nbsp;handed out business cards so I could of made them&nbsp;<a title=\"custom t-shirts\" href=\"http://teevisionprinting.com/\" target=\"_blank\">custom t-shirts</a>&nbsp;of their stuff. Oh wells. Enjoy the pictures</p>\r\n<p><img class=\"alignnone size-medium wp-image-2162\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1423291-300x225.jpg\" alt=\"20130914_142329\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2163\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1423331-300x225.jpg\" alt=\"20130914_142333\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2164\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1425061-300x225.jpg\" alt=\"20130914_142506\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2165\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1425291-300x225.jpg\" alt=\"20130914_142529\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2166\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_142737-300x225.jpg\" alt=\"20130914_142737\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2169\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143412-300x225.jpg\" alt=\"20130914_143412\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2170\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143418-300x225.jpg\" alt=\"20130914_143418\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2171\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143523-300x225.jpg\" alt=\"20130914_143523\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2173\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144058-300x225.jpg\" alt=\"20130914_144058\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2174\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144416-300x225.jpg\" alt=\"20130914_144416\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2176\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144800-300x225.jpg\" alt=\"20130914_144800\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2178\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143009-225x300.jpg\" alt=\"20130914_143009\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2179\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143943-225x300.jpg\" alt=\"20130914_143943\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2180\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144446-225x300.jpg\" alt=\"20130914_144446\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2161\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_141713-225x300.jpg\" alt=\"20130914_141713\" width=\"225\" height=\"300\" /></p>', '/media/assets/20130914_1423291-300x225.jpg', '1', '2015-01-30 10:30:46', 'admin', '74', '');
-INSERT INTO `dg_article` VALUES ('15', 'Past and Present', 'past-and-present', '85', 'Past and Present', 'Past and Present', 'Past and Present', '<div class=\"post-content\">\r\n<p>When I first started&nbsp;<a title=\"customer screen printing\" href=\"http://teevisionprinting.com/\" target=\"_blank\">custom screen printing</a>&nbsp;it was NOT easy. I think I researched on forums and and watched youtube videos more than I actually printed for several months. It didn&rsquo;t help that my first machine was probably 10x older than me. However, It was an awesome press. It was a 6/8 &Acirc;&nbsp;Hopkins international manual press and I learned everything I needed to on it. Custom T-shirt printing became an obsession for me, and even though everyday was a challenge, I couldn&rsquo;t wait to get into the shop and tackle on the next thing. It all started with this press.&nbsp;<img class=\"alignnone size-medium wp-image-2059\" src=\"http://teevisionprinting.com/wp-content/uploads/IMG_20130619_2248182-300x300.jpg\" alt=\"IMG_20130619_224818\" width=\"300\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2307\" src=\"http://teevisionprinting.com/wp-content/uploads/20131119_101500-300x225.jpg\" alt=\"20131119_101500\" width=\"401\" height=\"301\" /></p>\r\n<p>I upgraded to something newer with micro registrations so that set-up would be much easier but I always remember from time to time what I started with. Here&rsquo;s a photo of my current setup before I put the auto together.&nbsp;</p>\r\n<div id=\"wpcr_respond_1\">&nbsp;</div>\r\n<div class=\"fix\">&nbsp;</div>\r\n</div>', 'media/assets/IMG_20130619_2248182-300x300.jpg', '1', '2015-03-09 21:33:34', 'Teevision Printing', '21', '');
+INSERT INTO `dg_article` VALUES ('13', 'Starting over for 2016', 'starting-over-for-2016', '86', 'Starting over for 2016', 'Starting over for 2016', '', '<p>Its a new year! I have decided to start over with this blog since somehow everything I have written got deleted. It has been an amazing year for me. I have learned so much as a printer as well a business owner. The most important thing I have to say that I &Acirc;&nbsp;learned this year is starting over. I got kicked off google listing twice, website malfunctioning, reviews being deleted, dryers dying on me, and the list goes on..</p>\r\n<p>All it takes is getting back up when you fall and trying again. &Acirc;&nbsp;I am extremely blessed to experience everything I had in 2013 and I am eager to see what the new year holds in store for me. So 2014, I am ready to kick you in the face and bring the house down.</p>', '/media/assets/logo-150x150.jpg', '1', '2015-01-30 10:30:10', 'Teevision Printing', '27', '');
+INSERT INTO `dg_article` VALUES ('14', '5 Pointz', 'class-aptent-taciti-sociosqu-ad-litora-torquent', '86', '5 Pointz', '5 Pointz', '5 Pointz', '<p>Yes, I am rewriting about this place since it is awesome. I&rsquo;m so glad I got the chance to see it before it was destroyed by the owner. This place was pretty much the mecca of graffiti out in long island city. I remember as soon as I parked I could hear the music on full blast at the heart of the buildings and you would see people on each wall creating their next master piece.</p>\r\n<p>What I loved the most was that when you looked around everyone came from all different backgrounds. It didn&rsquo;t matter what color you were or how old you were. The passion they had for this brought them all together whether they knew or not. Too bad it&rsquo;s all gone now and I won&rsquo;t ever see people tagging in broad daylight without the cops chasing you.&Acirc;&nbsp;I just wished I &Acirc;&nbsp;handed out business cards so I could of made them&nbsp;<a title=\"custom t-shirts\" href=\"http://teevisionprinting.com/\" target=\"_blank\">custom t-shirts</a>&nbsp;of their stuff. Oh wells. Enjoy the pictures</p>\r\n<p><img class=\"alignnone size-medium wp-image-2162\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1423291-300x225.jpg\" alt=\"20130914_142329\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2163\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1423331-300x225.jpg\" alt=\"20130914_142333\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2164\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1425061-300x225.jpg\" alt=\"20130914_142506\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2165\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_1425291-300x225.jpg\" alt=\"20130914_142529\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2166\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_142737-300x225.jpg\" alt=\"20130914_142737\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2169\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143412-300x225.jpg\" alt=\"20130914_143412\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2170\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143418-300x225.jpg\" alt=\"20130914_143418\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2171\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143523-300x225.jpg\" alt=\"20130914_143523\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2173\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144058-300x225.jpg\" alt=\"20130914_144058\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2174\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144416-300x225.jpg\" alt=\"20130914_144416\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2176\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144800-300x225.jpg\" alt=\"20130914_144800\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-2178\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143009-225x300.jpg\" alt=\"20130914_143009\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2179\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_143943-225x300.jpg\" alt=\"20130914_143943\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2180\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_144446-225x300.jpg\" alt=\"20130914_144446\" width=\"225\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2161\" src=\"http://teevisionprinting.com/wp-content/uploads/20130914_141713-225x300.jpg\" alt=\"20130914_141713\" width=\"225\" height=\"300\" /></p>', '/media/assets/20130914_1423291-300x225.jpg', '1', '2015-01-30 10:30:46', 'admin', '73', '');
+INSERT INTO `dg_article` VALUES ('15', 'Past and Present', 'past-and-present', '85', 'Past and Present', 'Past and Present', 'Past and Present', '<div class=\"post-content\">\r\n<p>When I first started&nbsp;<a title=\"customer screen printing\" href=\"http://teevisionprinting.com/\" target=\"_blank\">custom screen printing</a>&nbsp;it was NOT easy. I think I researched on forums and and watched youtube videos more than I actually printed for several months. It didn&rsquo;t help that my first machine was probably 10x older than me. However, It was an awesome press. It was a 6/8 &Acirc;&nbsp;Hopkins international manual press and I learned everything I needed to on it. Custom T-shirt printing became an obsession for me, and even though everyday was a challenge, I couldn&rsquo;t wait to get into the shop and tackle on the next thing. It all started with this press.&nbsp;<img class=\"alignnone size-medium wp-image-2059\" src=\"http://teevisionprinting.com/wp-content/uploads/IMG_20130619_2248182-300x300.jpg\" alt=\"IMG_20130619_224818\" width=\"300\" height=\"300\" /><img class=\"alignnone size-medium wp-image-2307\" src=\"http://teevisionprinting.com/wp-content/uploads/20131119_101500-300x225.jpg\" alt=\"20131119_101500\" width=\"401\" height=\"301\" /></p>\r\n<p>I upgraded to something newer with micro registrations so that set-up would be much easier but I always remember from time to time what I started with. Here&rsquo;s a photo of my current setup before I put the auto together.&nbsp;</p>\r\n<div id=\"wpcr_respond_1\">&nbsp;</div>\r\n<div class=\"fix\">&nbsp;</div>\r\n</div>', 'media/assets/IMG_20130619_2248182-300x300.jpg', '1', '2015-03-09 21:33:34', 'Teevision Printing', '20', '');
 
 -- ----------------------------
 -- Table structure for dg_attributes
@@ -192,7 +192,7 @@ CREATE TABLE `dg_cliparts` (
   `published` tinyint(1) NOT NULL DEFAULT '1',
   `remove` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`clipart_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_cliparts
@@ -266,8 +266,9 @@ INSERT INTO `dg_cliparts` VALUES ('85', '0', '0', 'cs00078', 'cs00078', 'cs00078
 INSERT INTO `dg_cliparts` VALUES ('86', '0', '0', 'cs00163', 'cs00163', 'cs00163', '80', '0', '1', '0', '0', '0', '80/503cs00163.svg', '503cs00163.svg', 'svg', '[]', '1', '0', '0', '2015-03-09 16:43:09', '2015-03-09 00:00:00', '1', '0');
 INSERT INTO `dg_cliparts` VALUES ('87', '0', '0', 'cs00515', 'cs00515', 'cs00515', '80', '0', '1', '0', '0', '0', '80/415cs00515.svg', '415cs00515.svg', 'svg', '[]', '1', '0', '0', '2015-03-09 16:43:12', '2015-03-09 00:00:00', '1', '0');
 INSERT INTO `dg_cliparts` VALUES ('88', '0', '0', 'cs00405', 'cs00405', 'cs00405', '80', '0', '1', '0', '0', '0', '80/398cs00405.svg', '398cs00405.svg', 'svg', '[]', '1', '0', '0', '2015-03-09 16:43:16', '2015-03-09 00:00:00', '1', '0');
-INSERT INTO `dg_cliparts` VALUES ('120', '0', '0', 'cardd', 'ww', 'w', '36', '0', '1', '0', '0', '0', '36/39cs000801.svg', '39cs000801.svg', 'svg', '[\"#F49D9D\",\"#000000\"]', '1', '0', '0', '2016-08-11 12:42:14', '0000-00-00 00:00:00', '1', '0');
-INSERT INTO `dg_cliparts` VALUES ('121', '0', '0', 'test1', 't2', '', '36', '0', '1', '0', '0', '0', '36/12858952164ca53430795052.svg', '12858952164ca53430795052.svg', 'svg', '[\"#000000\"]', '1', '0', '0', '2016-08-12 12:44:41', '0000-00-00 00:00:00', '1', '0');
+INSERT INTO `dg_cliparts` VALUES ('89', '0', '0', 'ddddd', 'dddd', 'dddd', '80', '0', '1', '0', '0', '1', '80/icon1024.png', 'icon1024.png', 'png', '0', '1', '0', '0', '2016-06-02 05:03:48', '0000-00-00 00:00:00', '1', '0');
+INSERT INTO `dg_cliparts` VALUES ('114', '0', '0', 'yuj', 'hg', 'h', '29', '0', '1', '0', '0', '0', '29/1193cs01100.svg', '1193cs01100.svg', 'svg', '[\"#000000\",\"#008FD5\",\"#808285\",\"#FFFFFF\",\"#6D9D31\",\"#F7941E\"]', '0', '0', '0', '2016-08-11 05:56:32', '0000-00-00 00:00:00', '1', '0');
+INSERT INTO `dg_cliparts` VALUES ('115', '0', '0', 'yuj', 'hg', 'h', '29', '0', '1', '0', '0', '0', '29/1193cs011001.svg', '1193cs011001.svg', 'svg', '[\"#000000\",\"#008FD5\",\"#808285\",\"#FFFFFF\",\"#6D9D31\",\"#F7941E\"]', '0', '0', '0', '2016-08-11 06:03:14', '0000-00-00 00:00:00', '1', '0');
 
 -- ----------------------------
 -- Table structure for dg_colors
@@ -366,7 +367,7 @@ CREATE TABLE `dg_comment` (
   `createdt` datetime DEFAULT NULL,
   `text` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_comment
@@ -443,12 +444,6 @@ INSERT INTO `dg_comment` VALUES ('69', '21', null, 'admin', '2016-08-05 04:00:33
 INSERT INTO `dg_comment` VALUES ('70', '21', null, 'admin', '2016-08-05 04:00:36', 'Approved ship date.');
 INSERT INTO `dg_comment` VALUES ('71', '25', null, 'tthanh', '2016-08-08 10:31:28', '???\n');
 INSERT INTO `dg_comment` VALUES ('72', '21', null, 'tthanh', '2016-08-08 10:38:53', 'Update artwork.');
-INSERT INTO `dg_comment` VALUES ('73', '26', null, 'Tran Tuan Thanh', '2016-08-12 10:25:06', 'Changed ship date to 2016-08-08');
-INSERT INTO `dg_comment` VALUES ('74', '26', null, 'Tran Tuan Thanh', '2016-08-12 10:25:17', 'Approved ship date.');
-INSERT INTO `dg_comment` VALUES ('75', '26', null, 'Tran Tuan Thanh', '2016-08-12 10:25:42', 'Update artwork.');
-INSERT INTO `dg_comment` VALUES ('76', '26', null, 'Tran Tuan Thanh', '2016-08-12 10:26:00', 'Update proof.');
-INSERT INTO `dg_comment` VALUES ('77', '26', null, 'Tran Tuan Thanh', '2016-08-12 10:26:03', 'Approved proof for print.');
-INSERT INTO `dg_comment` VALUES ('78', '28', null, 'Tran Tuan Thanh', '2016-08-15 10:15:51', 'Changed ship date to 2016-08-14');
 
 -- ----------------------------
 -- Table structure for dg_config_emails
@@ -1039,7 +1034,7 @@ CREATE TABLE `dg_fields_value` (
   `value` text NOT NULL,
   `object` varchar(200) NOT NULL COMMENT 'user_id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_fields_value
@@ -1060,14 +1055,6 @@ INSERT INTO `dg_fields_value` VALUES ('13', '19', 'checkout', '230', '1');
 INSERT INTO `dg_fields_value` VALUES ('14', '20', 'checkout', '3780', '1');
 INSERT INTO `dg_fields_value` VALUES ('15', '18', 'checkout', '1213124124', '1');
 INSERT INTO `dg_fields_value` VALUES ('16', '17', 'checkout', '700000', '1');
-INSERT INTO `dg_fields_value` VALUES ('17', '15', 'checkout', 'tran', '4');
-INSERT INTO `dg_fields_value` VALUES ('18', '12', 'checkout', 'tuan thanh', '4');
-INSERT INTO `dg_fields_value` VALUES ('19', '16', 'checkout', 'home', '4');
-INSERT INTO `dg_fields_value` VALUES ('20', '21', 'checkout', '123 home', '4');
-INSERT INTO `dg_fields_value` VALUES ('21', '19', 'checkout', '223', '4');
-INSERT INTO `dg_fields_value` VALUES ('22', '20', 'checkout', '3618', '4');
-INSERT INTO `dg_fields_value` VALUES ('23', '18', 'checkout', '1231234123', '4');
-INSERT INTO `dg_fields_value` VALUES ('24', '17', 'checkout', '222145', '4');
 
 -- ----------------------------
 -- Table structure for dg_fonts
@@ -1149,26 +1136,6 @@ INSERT INTO `dg_layout` VALUES ('28', 'Footer', 'components/footer', '<div class
 INSERT INTO `dg_layout` VALUES ('29', 'After quote', 'product-quote/default', '<div class=\"row-elment col-md-12\"><div class=\"container\"><div class=\"row-content row\"><div class=\"col-elment col-md-12\"><div class=\"module-margin module-product-quote\"><div class=\"module-border\"><div class=\"module-padding\"><div class=\"module-content\"><div class=\"module-main\">{page:product-quote}</div></div></div></div></div></div></div></div></div>', '<div class=\"row-elment col-md-12\"><div class=\"js-elment js-control\"><div class=\"js-control-col btn-group\"><button type=\"button\" class=\"btn-xs btn-elment-row btn dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"js-control-text\">Row</span> <span class=\"caret\"></span></button><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"javascript:void(0)\" onclick=\"grid.row.config(this, \'row\')\"><i class=\"fa fa-wrench\"></i> Settings</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.layout(this)\"><i class=\"clip-grid\"></i> Change layout</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.add(this)\"><i class=\"glyphicon glyphicon-plus\"></i> Add new row</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.remove(this)\"><i class=\"glyphicon glyphicon-trash\"></i> Delete row</a></li></ul></div></div><div class=\"container\"><div class=\"row-content row\"><div class=\"col-elment col-md-12\"><div class=\"js-elment js-control\"><div class=\"js-control-col btn-group\"><button type=\"button\" class=\"btn-xs btn-elment-col btn dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"js-control-text\">Column</span> <span class=\"caret\"></span></button><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"javascript:void(0)\" onclick=\"grid.col.config(this)\"><i class=\"fa fa-wrench\"></i> Settings</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.col.addRow(this)\"><i class=\"clip-list-5\"></i> Add new row</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.col.remove(this)\"><i class=\"glyphicon glyphicon-trash\"></i> Delete column</a></li></ul></div></div><div class=\"module-margin module-product-quote\"><div class=\"module-border\"><div class=\"module-padding\"><div class=\"module-content\"><div class=\"js-elment js-button\"><center><div class=\"btn-group\"><button class=\"btn btn btn-teal btn-xs js-control-edit\" onclick=\"grid.module.view(this)\"><i class=\"fa fa-pencil\"></i></button><button class=\"btn btn btn-teal btn-xs\" onclick=\"grid.module.view(this)\"><i class=\"fa fa-plus\"></i></button><button class=\"btn btn btn-teal btn-xs\" onclick=\"grid.row.remove(this)\"><i class=\"fa fa-trash-o\"></i></button></div></center></div><div class=\"module-main\">{page:product-quote}</div><div class=\"js-elment module-info\"><strong>Page: product-quote - Product quote</strong></div></div></div></div></div></div></div></div></div>', 'After quote', '1', '1', '');
 
 -- ----------------------------
--- Table structure for dg_menu_type
--- ----------------------------
-DROP TABLE IF EXISTS `dg_menu_type`;
-CREATE TABLE `dg_menu_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `params` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of dg_menu_type
--- ----------------------------
-INSERT INTO `dg_menu_type` VALUES ('1', 'Main menu', 'Main menu', '');
-INSERT INTO `dg_menu_type` VALUES ('2', 'Menu footer', 'Menu footer', '');
-INSERT INTO `dg_menu_type` VALUES ('3', 'Nav Menu', '', '');
-INSERT INTO `dg_menu_type` VALUES ('4', 'test page', '', '');
-
--- ----------------------------
 -- Table structure for dg_menus
 -- ----------------------------
 DROP TABLE IF EXISTS `dg_menus`;
@@ -1194,6 +1161,26 @@ INSERT INTO `dg_menus` VALUES ('283', 'BLOG', '', 'blog', '', '', '{\"type\":\"b
 INSERT INTO `dg_menus` VALUES ('280', 'CATEGORY', '', '#', '	<div class=\"row-elment col-md-12\"><div class=\"container\"><div class=\"row-content row\"><div class=\"col-elment col-md-12\"><ul class=\"list-menu ui-sortable\"><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-r0to05xko6r\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Ladies\" href=\"/categories/63-Ladies\"><img src=\"/media/assets/ladies2.png\" alt=\"\">Ladies</a></div></li><li class=\"menu-item\" style=\"position: relative;\"><div class=\"text-editline\" id=\"editline-rq30izfr\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Polos \" href=\"/categories/65-polo-dress-shirts\"><img src=\"/media/assets/polo.png\" alt=\"\">Polos </a></div></li><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-zcih9ofxbt9\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Sweatshirts\" href=\"/categories/66-ladies-tshirts\"><img src=\"/media/assets/sweat.png\" alt=\"\">Sweatshirts</a></div></li><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-df527xk1emi\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"T-Shirts\" href=\"/categories/89-T-Shirts\"><img src=\"/media/assets/tshirt.png\" alt=\"\">T-Shirts</a></div></li></ul></div></div></div></div>', '<div class=\"row-elment col-md-12\"><div class=\"js-elment js-control\"><div class=\"js-control-col btn-group\"><button type=\"button\" class=\"btn-xs btn-elment-row btn dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"js-control-text\">Row</span> <span class=\"caret\"></span></button><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"javascript:void(0)\" onclick=\"grid.row.config(this, \'row\')\"><i class=\"fa fa-wrench\"></i> Settings</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.layout(this)\"><i class=\"clip-grid\"></i> Change layout</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.add(this)\"><i class=\"glyphicon glyphicon-plus\"></i> Add new row</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.row.remove(this)\"><i class=\"glyphicon glyphicon-trash\"></i> Delete row</a></li></ul></div></div><div class=\"container\"><div class=\"row-content row\"><div class=\"col-elment col-md-12\"><div class=\"js-elment js-control\"><div class=\"js-control-col btn-group\"><button type=\"button\" class=\"btn-xs btn-elment-col btn dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"js-control-text\">Column</span> <span class=\"caret\"></span></button><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"javascript:void(0)\" onclick=\"grid.col.config(this)\"><i class=\"fa fa-wrench\"></i> Settings</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.col.addRow(this)\"><i class=\"clip-list-5\"></i> Add new row</a></li><li><a href=\"javascript:void(0)\" onclick=\"grid.col.remove(this)\"><i class=\"glyphicon glyphicon-trash\"></i> Delete column</a></li></ul></div></div><div class=\"js-elment js-button\"><center><div class=\"btn-group\"><button class=\"btn btn btn-teal btn-xs\" onclick=\"grid.module.view(this)\"><i class=\"fa fa-plus\"></i></button><button class=\"btn btn btn-teal btn-xs\" onclick=\"grid.row.remove(this)\"><i class=\"fa fa-trash-o\"></i></button></div></center></div><ul class=\"list-menu ui-sortable\"><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-r0to05xko6r\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Ladies\" href=\"/categories/63-Ladies\"><img src=\"/media/assets/ladies2.png\" alt=\"\">Ladies</a></div><div class=\"js-elment js-menu\"><button class=\"btn btn-default btn-xs\" onclick=\"grid.menu.edit(this)\" type=\"button\" title=\"Click to edit\"><i class=\"glyphicon glyphicon-pencil\"></i></button><button class=\"btn btn-default btn-xs\" onclick=\"jQuery(this).parents(\'.menu-item\').remove()\" type=\"button\" title=\"Click to remove\"><i class=\"glyphicon glyphicon-trash\"></i></button></div><div class=\"js-elment js-handle btn btn-default btn-xs\"><i class=\"fa fa-arrows-alt\"></i></div></li><li class=\"menu-item\" style=\"position: relative;\"><div class=\"text-editline\" id=\"editline-rq30izfr\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Polos \" href=\"/categories/65-polo-dress-shirts\"><img src=\"/media/assets/polo.png\" alt=\"\">Polos </a></div><div class=\"js-elment js-menu\"><button class=\"btn btn-default btn-xs\" onclick=\"grid.menu.edit(this)\" type=\"button\" title=\"Click to edit\"><i class=\"glyphicon glyphicon-pencil\"></i></button><button class=\"btn btn-default btn-xs\" onclick=\"jQuery(this).parents(\'.menu-item\').remove()\" type=\"button\" title=\"Click to remove\"><i class=\"glyphicon glyphicon-trash\"></i></button></div><div class=\"js-elment js-handle btn btn-default btn-xs\"><i class=\"fa fa-arrows-alt\"></i></div></li><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-zcih9ofxbt9\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"Sweatshirts\" href=\"/categories/66-ladies-tshirts\"><img src=\"/media/assets/sweat.png\" alt=\"\">Sweatshirts</a></div><div class=\"js-elment js-menu\"><button class=\"btn btn-default btn-xs\" onclick=\"grid.menu.edit(this)\" type=\"button\" title=\"Click to edit\"><i class=\"glyphicon glyphicon-pencil\"></i></button><button class=\"btn btn-default btn-xs\" onclick=\"jQuery(this).parents(\'.menu-item\').remove()\" type=\"button\" title=\"Click to remove\"><i class=\"glyphicon glyphicon-trash\"></i></button></div><div class=\"js-elment js-handle btn btn-default btn-xs\"><i class=\"fa fa-arrows-alt\"></i></div></li><li class=\"menu-item\"><div class=\"text-editline\" id=\"editline-df527xk1emi\" spellcheck=\"false\" style=\"position: relative;\"><a title=\"T-Shirts\" href=\"/categories/89-T-Shirts\"><img src=\"/media/assets/tshirt.png\" alt=\"\">T-Shirts</a></div><div class=\"js-elment js-menu\"><button class=\"btn btn-default btn-xs\" onclick=\"grid.menu.edit(this)\" type=\"button\" title=\"Click to edit\"><i class=\"glyphicon glyphicon-pencil\"></i></button><button class=\"btn btn-default btn-xs\" onclick=\"jQuery(this).parents(\'.menu-item\').remove()\" type=\"button\" title=\"Click to remove\"><i class=\"glyphicon glyphicon-trash\"></i></button></div><div class=\"js-elment js-handle btn btn-default btn-xs\"><i class=\"fa fa-arrows-alt\"></i></div></li></ul></div></div></div></div>', '{\"type\":\"custom\",\"responsive\":\"r\"}', '1', '3');
 INSERT INTO `dg_menus` VALUES ('284', 'CONTACT US', '', 'page/21-contact-us', '', '', '{\"type\":\"page\",\"responsive\":\"r\"}', '1', '3');
 INSERT INTO `dg_menus` VALUES ('279', 'HOME', '', 'home', '', '', '{\"type\":\"Menu items\",\"responsive\":\"r\"}', '1', '3');
+
+-- ----------------------------
+-- Table structure for dg_menu_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_menu_type`;
+CREATE TABLE `dg_menu_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `params` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of dg_menu_type
+-- ----------------------------
+INSERT INTO `dg_menu_type` VALUES ('1', 'Main menu', 'Main menu', '');
+INSERT INTO `dg_menu_type` VALUES ('2', 'Menu footer', 'Menu footer', '');
+INSERT INTO `dg_menu_type` VALUES ('3', 'Nav Menu', '', '');
+INSERT INTO `dg_menu_type` VALUES ('4', 'test page', '', '');
 
 -- ----------------------------
 -- Table structure for dg_modules
@@ -1338,6 +1325,125 @@ INSERT INTO `dg_modules` VALUES ('181', 'thanh test', 'p_categories', 'categorie
 INSERT INTO `dg_modules` VALUES ('182', 'How to Order', 'custom', 'custom568d1ab423302', '<h2 class=\"order-list\"><span style=\"text-decoration: underline;\">How to Order</span></h2>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\"><img src=\"http://teevisionprinting.com/wp-content/themes/Emporium56/images/order1.jpg\" alt=\"\" align=\"left\" /><br /><strong>Choose a product you need a quote on!</strong>&ndash; Browse through our selection and contact us if you do not see what you are looking for.</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"order-list\"><img src=\"http://teevisionprinting.com/wp-content/themes/Emporium56/images/order2.jpg\" alt=\"\" align=\"left\" /><br /><strong>Receive a Free Quote</strong>&ndash; Once you have chosen your garment color, quantity, sizes, and location of print we will send you a quote</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"order-list\"><img src=\"http://teevisionprinting.com/wp-content/themes/Emporium56/images/order3.jpg\" alt=\"\" align=\"left\" /><br /><strong>Place an Order</strong>&ndash; Either place an order over the phone or come in and place an order with us in person! We will contact you with further instructions in regards of artwork and payment.</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"order-list\"><img src=\"http://teevisionprinting.com/wp-content/themes/Emporium56/images/order4.jpg\" alt=\"\" align=\"left\" /><br /><strong>Approve your Design</strong>&ndash; We will send you an online proof of your new design. You can request for any revision and changes then. With your final approval we will begin to print!</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"order-list\">&nbsp;</div>\r\n<div class=\"clear\">&nbsp;</div>\r\n<div class=\"order-list\"><img src=\"http://teevisionprinting.com/wp-content/themes/Emporium56/images/order5.jpg\" alt=\"\" align=\"left\" /><br /><strong>Have your order shipped, delivered, or picked up!</strong>&ndash; Upon completion of your order, you can have your shirts shipped, delivered (Within Philadelphia only), or you can come pick it up at our location at&nbsp;<strong>920 E. Hunting Park Ave, Philadelphia Pa 19124</strong></div>', '{\"class_sfx\":\"\"}', '{\"margin\":{\"left\":\"\",\"right\":\"\",\"top\":\"\",\"bottom\":\"\"},\"border\":{\"left\":\"\",\"right\":\"\",\"top\":\"\",\"bottom\":\"\"},\"padding\":{\"left\":\"\",\"right\":\"\",\"top\":\"\",\"bottom\":\"\"},\"borderColor\":\"\",\"borderStyle\":\"Defaults\",\"background\":{\"color\":\"\",\"image\":\"\",\"style\":\"Defaults\"}}');
 
 -- ----------------------------
+-- Table structure for dg_orders
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_orders`;
+CREATE TABLE `dg_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_number` varchar(10) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_pass` varchar(10) NOT NULL COMMENT 'Help client check order',
+  `payment_id` int(11) NOT NULL,
+  `payment_price` float NOT NULL DEFAULT '0',
+  `shipping_id` int(11) NOT NULL,
+  `shipping_price` float NOT NULL DEFAULT '0',
+  `sub_total` float NOT NULL DEFAULT '0',
+  `total` float NOT NULL DEFAULT '0',
+  `total_qty` int(11) DEFAULT NULL,
+  `discount_id` int(11) NOT NULL DEFAULT '0',
+  `discount` float NOT NULL DEFAULT '0',
+  `tax` float NOT NULL,
+  `custom_file` varchar(255) DEFAULT NULL,
+  `apparel` varchar(255) DEFAULT NULL,
+  `ship_approved` tinyint(4) DEFAULT NULL,
+  `artwork` varchar(255) DEFAULT NULL,
+  `proof_approved` tinyint(4) DEFAULT '0',
+  `status` varchar(200) NOT NULL,
+  `balance` varchar(255) DEFAULT NULL,
+  `tracking_num` varchar(255) DEFAULT NULL,
+  `created_on` datetime NOT NULL,
+  `modified_on` datetime NOT NULL,
+  `client_note` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='Used to store all orders';
+
+-- ----------------------------
+-- Records of dg_orders
+-- ----------------------------
+INSERT INTO `dg_orders` VALUES ('1', '3EDA85A', '2', '3EDA85A', '1', '0', '1', '10.5', '120', '130.5', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-01-08 02:06:06', '2016-01-08 02:06:06', '');
+INSERT INTO `dg_orders` VALUES ('2', 'FC63F91', '1', 'FC63FE8', '4', '0', '4', '5.1', '30', '35.1', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-02-01 09:57:32', '2016-02-01 09:57:32', '');
+INSERT INTO `dg_orders` VALUES ('4', 'FA76DEF', '1', 'FA76E45', '1', '0', '5', '12', '192.12', '204.12', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-06 11:12:26', '2016-04-06 11:12:26', '');
+INSERT INTO `dg_orders` VALUES ('5', '7098123', '1', '7098175', '1', '0', '1', '10.5', '110.04', '120.54', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-06 12:14:08', '2016-04-06 12:14:08', '');
+INSERT INTO `dg_orders` VALUES ('6', 'D09F6A0', '1', 'D09F6FC', '4', '0', '4', '5.1', '258', '263.1', null, '0', '0', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-07 08:44:32', '2016-04-07 08:44:32', '');
+INSERT INTO `dg_orders` VALUES ('7', '6B1F9C6', '1', '6B1FA17', '1', '0', '1', '10.5', '237.48', '247.98', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-08 05:58:35', '2016-04-08 05:58:35', '');
+INSERT INTO `dg_orders` VALUES ('8', 'EA4E0CA', '1', 'EA4E125', '1', '0', '1', '10.5', '75.48', '85.98', null, '0', '0', '0', null, null, null, null, '0', 'completed', null, '111445', '2016-04-08 11:54:50', '2016-04-08 11:54:50', '');
+INSERT INTO `dg_orders` VALUES ('9', '388DD64', '1', '388DDB7', '1', '0', '1', '10.5', '275.28', '285.78', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-08 11:56:08', '2016-04-08 11:56:08', '');
+INSERT INTO `dg_orders` VALUES ('10', '2B77819', '1', '2B77880', '1', '0', '1', '10.5', '75.48', '85.98', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 03:49:31', '2016-04-12 03:49:31', '');
+INSERT INTO `dg_orders` VALUES ('11', '40B3B8F', '1', '40B3BEC', '1', '0', '1', '10.5', '110.04', '120.54', null, '0', '0', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-12 03:58:24', '2016-04-12 03:58:24', '');
+INSERT INTO `dg_orders` VALUES ('12', '5FACB38', '1', '5FACB93', '4', '0', '1', '10.5', '75.48', '85.98', null, '17', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 04:15:59', '2016-04-12 04:15:59', '');
+INSERT INTO `dg_orders` VALUES ('13', 'BE462D1', '1', 'BE4632E', '1', '0', '1', '10.5', '75.48', '85.98', null, '17', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 04:43:10', '2016-04-12 04:43:10', '');
+INSERT INTO `dg_orders` VALUES ('14', '7FBBB73', '1', '7FBBBCF', '4', '0', '1', '10.5', '75.48', '83.7156', null, '17', '2.2644', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 05:07:43', '2016-04-12 05:07:43', '');
+INSERT INTO `dg_orders` VALUES ('15', 'E690D32', '1', 'E690D94', '4', '0', '4', '5.1', '75.48', '75.08', null, '14', '5.5', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-12 05:13:42', '2016-04-12 05:13:42', '');
+INSERT INTO `dg_orders` VALUES ('16', '6249381', '1', '62493D6', '4', '0', '1', '0', '110.04', '110.04', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-05-10 08:44:50', '2016-05-10 08:44:50', '');
+INSERT INTO `dg_orders` VALUES ('17', '0A05F80', '1', '0A05FE3', '4', '0', '4', '53.7', '214.8', '268.5', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-05-11 09:23:54', '2016-05-11 09:23:54', '');
+INSERT INTO `dg_orders` VALUES ('18', '0ADBF1A', '1', '0ADBF6E', '1', '0', '1', '0', '261.24', '261.24', null, '0', '0', '0', null, '', null, '1', '0', 'pending', null, null, '2016-05-11 09:32:26', '2016-05-11 09:32:26', '');
+INSERT INTO `dg_orders` VALUES ('19', '7FC1789', '2', '7FC17E4', '1', '0', '1', '0', '40.92', '40.92', null, '0', '0', '0', null, null, null, '1', '0', 'pending', null, null, '2016-05-17 06:26:39', '2016-05-17 06:26:39', '');
+INSERT INTO `dg_orders` VALUES ('20', 'CC31355', '2', 'CC313A5', '1', '0', '1', '0', '40.92', '40.92', null, '0', '0', '0', null, null, null, '1', '0', 'completed', null, '123456', '2016-05-17 06:27:56', '2016-05-17 06:27:56', '');
+INSERT INTO `dg_orders` VALUES ('21', '23F2F07', '1', '23F2F5C', '1', '0', '1', '0', '108.96', '108.96', '14', '0', '0', '0', null, '1', '1', '1', '1', 'pending', null, null, '2016-07-27 09:52:03', '2016-07-27 09:52:03', '');
+INSERT INTO `dg_orders` VALUES ('25', 'TVP2026', '1', '9A01DA0', '4', '0', '1', '0', '150', '150', '13', '0', '0', '0', '0', null, null, null, '0', 'pending', null, null, '2016-08-08 09:24:10', '2016-08-08 09:24:10', '');
+
+-- ----------------------------
+-- Table structure for dg_orders_histories
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_orders_histories`;
+CREATE TABLE `dg_orders_histories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `label` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='store change of each order';
+
+-- ----------------------------
+-- Records of dg_orders_histories
+-- ----------------------------
+INSERT INTO `dg_orders_histories` VALUES ('1', '15', 'item_status', '{\"(Gildan 2000) Ultra Cotton 6.1oz.\":\"completed\"}', '2016-04-12 05:21:43');
+INSERT INTO `dg_orders_histories` VALUES ('2', '15', 'item_status', '{\"(Gildan 2000) Ultra Cotton 6.1oz.\":\"pending\"}', '2016-04-12 05:26:01');
+INSERT INTO `dg_orders_histories` VALUES ('3', '20', 'order_status', '{\"CC31355\":\"completed\"}', '2016-07-27 03:39:57');
+INSERT INTO `dg_orders_histories` VALUES ('4', '8', 'order_status', '{\"EA4E0CA\":\"completed\"}', '2016-07-29 08:42:22');
+
+-- ----------------------------
+-- Table structure for dg_orders_userinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_orders_userinfo`;
+CREATE TABLE `dg_orders_userinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `address` text NOT NULL COMMENT 'save with json',
+  `created_on` datetime NOT NULL,
+  `modified_on` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dg_orders_userinfo
+-- ----------------------------
+INSERT INTO `dg_orders_userinfo` VALUES ('1', '1', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"\",\"Telephone\":\"+84919068986\",\"Zip\\/Postal Code\":\"70000\"}', '2016-01-08 02:06:10', '2016-01-08 02:06:10');
+INSERT INTO `dg_orders_userinfo` VALUES ('2', '2', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-02-01 09:57:35', '2016-02-01 09:57:35');
+INSERT INTO `dg_orders_userinfo` VALUES ('24', '24', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-08-08 09:15:13', '2016-08-08 09:15:13');
+INSERT INTO `dg_orders_userinfo` VALUES ('4', '4', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-06 11:12:29', '2016-04-06 11:12:29');
+INSERT INTO `dg_orders_userinfo` VALUES ('5', '5', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-06 12:14:10', '2016-04-06 12:14:10');
+INSERT INTO `dg_orders_userinfo` VALUES ('6', '6', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-07 08:44:35', '2016-04-07 08:44:35');
+INSERT INTO `dg_orders_userinfo` VALUES ('7', '7', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 05:58:37', '2016-04-08 05:58:37');
+INSERT INTO `dg_orders_userinfo` VALUES ('8', '8', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 11:54:52', '2016-04-08 11:54:52');
+INSERT INTO `dg_orders_userinfo` VALUES ('9', '9', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 11:56:10', '2016-04-08 11:56:10');
+INSERT INTO `dg_orders_userinfo` VALUES ('10', '10', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 03:49:42', '2016-04-12 03:49:42');
+INSERT INTO `dg_orders_userinfo` VALUES ('11', '11', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 03:58:35', '2016-04-12 03:58:35');
+INSERT INTO `dg_orders_userinfo` VALUES ('12', '12', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 04:16:11', '2016-04-12 04:16:11');
+INSERT INTO `dg_orders_userinfo` VALUES ('13', '13', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 04:54:03', '2016-04-12 04:54:03');
+INSERT INTO `dg_orders_userinfo` VALUES ('14', '14', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 05:08:15', '2016-04-12 05:08:15');
+INSERT INTO `dg_orders_userinfo` VALUES ('15', '15', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 05:14:06', '2016-04-12 05:14:06');
+INSERT INTO `dg_orders_userinfo` VALUES ('16', '16', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-10 08:45:00', '2016-05-10 08:45:00');
+INSERT INTO `dg_orders_userinfo` VALUES ('17', '17', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-11 09:24:03', '2016-05-11 09:24:03');
+INSERT INTO `dg_orders_userinfo` VALUES ('18', '18', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-11 09:32:35', '2016-05-11 09:32:35');
+INSERT INTO `dg_orders_userinfo` VALUES ('19', '19', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"An Giang\",\"Telephone\":\"+84919068986\",\"Zip\\/Postal Code\":\"70000\"}', '2016-05-17 06:26:48', '2016-05-17 06:26:48');
+INSERT INTO `dg_orders_userinfo` VALUES ('20', '20', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"United States\",\"State\\/Province\":\"Alaska\",\"Telephone\":\"84919068986\",\"Zip\\/Postal Code\":\"123456\"}', '2016-05-17 06:28:03', '2016-05-17 06:28:03');
+INSERT INTO `dg_orders_userinfo` VALUES ('21', '21', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-07-27 09:52:13', '2016-07-27 09:52:13');
+INSERT INTO `dg_orders_userinfo` VALUES ('25', '25', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-08-08 09:24:19', '2016-08-08 09:24:19');
+
+-- ----------------------------
 -- Table structure for dg_order_artwork
 -- ----------------------------
 DROP TABLE IF EXISTS `dg_order_artwork`;
@@ -1352,7 +1458,7 @@ CREATE TABLE `dg_order_artwork` (
   `createdt` datetime DEFAULT NULL,
   `modidt` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_order_artwork
@@ -1360,7 +1466,6 @@ CREATE TABLE `dg_order_artwork` (
 INSERT INTO `dg_order_artwork` VALUES ('1', '21', '21', '1', '1', 'media/assets/uploaded/2016/08/cat-111222.jpg', '', '2016-07-29 13:53:59', '2016-08-02 11:10:02');
 INSERT INTO `dg_order_artwork` VALUES ('2', '20', '20', '2', '2', '', 'media/assets/uploaded/2016/08/Pimgpsh_fullsize_distr2.jpg', '2016-08-01 04:28:17', '2016-08-02 12:46:22');
 INSERT INTO `dg_order_artwork` VALUES ('4', '18', '18', '2', '1', '', '', '2016-08-02 09:18:55', '2016-08-02 09:18:55');
-INSERT INTO `dg_order_artwork` VALUES ('5', '26', '26', '3', '0', 'media/assets/uploaded/2016/08/1462458975759_663.jpg', '', '2016-08-12 10:25:42', '2016-08-12 10:25:42');
 
 -- ----------------------------
 -- Table structure for dg_order_cliparts
@@ -1415,14 +1520,12 @@ CREATE TABLE `dg_order_garment` (
   `cost` float DEFAULT NULL,
   `misc_fees` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_order_garment
 -- ----------------------------
 INSERT INTO `dg_order_garment` VALUES ('1', '23F2F07', '21', 'order distributor', '123q', '0000-00-00', '0000-00-00', '', '0', '');
-INSERT INTO `dg_order_garment` VALUES ('2', 'TVP2026', '25', 'qeew', 'www', '2016-08-10', '2016-08-17', 'ee', '123', 'ee');
-INSERT INTO `dg_order_garment` VALUES ('3', 'TVP2026', '26', '123331', '12s', '2016-08-12', '2016-08-12', '11cw', '133', '');
 
 -- ----------------------------
 -- Table structure for dg_order_items
@@ -1449,7 +1552,7 @@ CREATE TABLE `dg_order_items` (
   `created_on` datetime NOT NULL,
   `modified_on` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='Stores all items (products) which are part of an order';
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='Stores all items (products) which are part of an order';
 
 -- ----------------------------
 -- Records of dg_order_items
@@ -1476,9 +1579,6 @@ INSERT INTO `dg_order_items` VALUES ('20', '20', 'FC573A9DCC2FF83', '1', '(Gilda
 INSERT INTO `dg_order_items` VALUES ('21', '21', '5657986823EA3B8', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '5.85429', '0', '0', '27', '14', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\",\\\"XL\\\":\\\"1\\\",\\\"3XL\\\":\\\"1\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":1,\"back\":0},\"colors\":{\"color_hex\":\"000000\",\"color_name\":null}}', '2016-07-27 09:52:04', '2016-07-27 09:52:04');
 INSERT INTO `dg_order_items` VALUES ('24', '24', '2057A8317974151', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '11.1', '0', '0', '0', '14', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\",\\\"LG\\\":\\\"2\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":1,\"back\":2},\"colors\":{\"color_hex\":\"000000\",\"color_name\":null}}', '2016-08-08 09:15:05', '2016-08-08 09:15:05');
 INSERT INTO `dg_order_items` VALUES ('25', '25', '7857A8339A0051F', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '11.5385', '0', '0', '0', '13', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\",\\\"LG\\\":\\\"1\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":2,\"back\":1},\"colors\":{\"color_hex\":\"000000\",\"color_name\":null}}', '2016-08-08 09:24:10', '2016-08-08 09:24:10');
-INSERT INTO `dg_order_items` VALUES ('26', '26', 'AC57ADDBE64D640', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '9.17', '0', '0', '0', '12', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":2,\"back\":0},\"colors\":{\"color_hex\":\"000000\",\"color_name\":\"black\"}}', '2016-08-12 10:23:34', '2016-08-12 10:23:34');
-INSERT INTO `dg_order_items` VALUES ('27', '27', 'D457AF427359AA6', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '13.96', '0', '0', '0', '15', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\",\\\"LG\\\":\\\"3\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":3,\"back\":0},\"colors\":{\"color_hex\":\"000000\",\"color_name\":\"black\"}}', '2016-08-13 11:53:23', '2016-08-13 11:53:23');
-INSERT INTO `dg_order_items` VALUES ('28', '28', '1E57AF46961C1E3', '1', '(Gildan 2000) Ultra Cotton 6.1oz.', 'SKU001', '14.93', '0', '0', '0', '12', 'pending', '\"[{\\\"name\\\":\\\"Enter Sizes and Print Location\\\",\\\"type\\\":\\\"textlist\\\",\\\"value\\\":{\\\"SM\\\":\\\"12\\\"}}]\"', null, null, null, '{\"design_area\":null,\"design_images\":null,\"print_number\":{\"front\":2,\"back\":2},\"colors\":{\"color_hex\":\"000000\",\"color_name\":\"black\"}}', '2016-08-13 12:11:02', '2016-08-13 12:11:02');
 
 -- ----------------------------
 -- Table structure for dg_order_proof
@@ -1493,14 +1593,13 @@ CREATE TABLE `dg_order_proof` (
   `is_approved` tinyint(4) DEFAULT NULL,
   `approvedt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_order_proof
 -- ----------------------------
 INSERT INTO `dg_order_proof` VALUES ('1', '21', '21', 'media/assets/uploaded/2016/08/balo1.jpg', '2016-08-04 06:56:42', '1', '2016-08-04 10:48:13');
 INSERT INTO `dg_order_proof` VALUES ('2', '19', '19', 'media/assets/uploaded/2016/08/av-d862b.jpg', '2016-08-04 09:00:54', '0', '2016-08-04 10:26:25');
-INSERT INTO `dg_order_proof` VALUES ('3', '26', '26', 'media/assets/uploaded/2016/08/1462458975759_663.jpg', '2016-08-12 10:26:00', '1', '2016-08-12 10:26:03');
 
 -- ----------------------------
 -- Table structure for dg_order_shipdate
@@ -1514,139 +1613,12 @@ CREATE TABLE `dg_order_shipdate` (
   `approvedt` datetime DEFAULT NULL,
   `approved_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_order_shipdate
 -- ----------------------------
 INSERT INTO `dg_order_shipdate` VALUES ('1', '21', '2016-08-10', '1', '2016-08-05 04:00:36', null);
-INSERT INTO `dg_order_shipdate` VALUES ('2', '26', '2016-08-08', '1', '2016-08-12 10:25:17', null);
-INSERT INTO `dg_order_shipdate` VALUES ('3', '28', '2016-08-14', null, null, null);
-
--- ----------------------------
--- Table structure for dg_orders
--- ----------------------------
-DROP TABLE IF EXISTS `dg_orders`;
-CREATE TABLE `dg_orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_number` varchar(10) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `order_pass` varchar(10) NOT NULL COMMENT 'Help client check order',
-  `payment_id` int(11) NOT NULL,
-  `payment_price` float NOT NULL DEFAULT '0',
-  `shipping_id` int(11) NOT NULL,
-  `shipping_price` float NOT NULL DEFAULT '0',
-  `sub_total` float NOT NULL DEFAULT '0',
-  `total` float NOT NULL DEFAULT '0',
-  `total_qty` int(11) DEFAULT NULL,
-  `discount_id` int(11) NOT NULL DEFAULT '0',
-  `discount` float NOT NULL DEFAULT '0',
-  `tax` float NOT NULL,
-  `custom_file` varchar(255) DEFAULT NULL,
-  `apparel` varchar(255) DEFAULT NULL,
-  `ship_approved` tinyint(4) DEFAULT NULL,
-  `artwork` varchar(255) DEFAULT NULL,
-  `proof_approved` tinyint(4) DEFAULT '0',
-  `status` varchar(200) NOT NULL,
-  `balance` varchar(255) DEFAULT NULL,
-  `tracking_num` varchar(255) DEFAULT NULL,
-  `created_on` datetime NOT NULL,
-  `modified_on` datetime NOT NULL,
-  `client_note` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='Used to store all orders';
-
--- ----------------------------
--- Records of dg_orders
--- ----------------------------
-INSERT INTO `dg_orders` VALUES ('1', '3EDA85A', '2', '3EDA85A', '1', '0', '1', '10.5', '120', '130.5', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-01-08 02:06:06', '2016-01-08 02:06:06', '');
-INSERT INTO `dg_orders` VALUES ('2', 'FC63F91', '1', 'FC63FE8', '4', '0', '4', '5.1', '30', '35.1', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-02-01 09:57:32', '2016-02-01 09:57:32', '');
-INSERT INTO `dg_orders` VALUES ('4', 'FA76DEF', '1', 'FA76E45', '1', '0', '5', '12', '192.12', '204.12', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-06 11:12:26', '2016-04-06 11:12:26', '');
-INSERT INTO `dg_orders` VALUES ('5', '7098123', '1', '7098175', '1', '0', '1', '10.5', '110.04', '120.54', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-06 12:14:08', '2016-04-06 12:14:08', '');
-INSERT INTO `dg_orders` VALUES ('6', 'D09F6A0', '1', 'D09F6FC', '4', '0', '4', '5.1', '258', '263.1', null, '0', '0', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-07 08:44:32', '2016-04-07 08:44:32', '');
-INSERT INTO `dg_orders` VALUES ('7', '6B1F9C6', '1', '6B1FA17', '1', '0', '1', '10.5', '237.48', '247.98', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-08 05:58:35', '2016-04-08 05:58:35', '');
-INSERT INTO `dg_orders` VALUES ('8', 'EA4E0CA', '1', 'EA4E125', '1', '0', '1', '10.5', '75.48', '85.98', null, '0', '0', '0', null, null, null, null, '0', 'completed', null, '111445', '2016-04-08 11:54:50', '2016-04-08 11:54:50', '');
-INSERT INTO `dg_orders` VALUES ('9', '388DD64', '1', '388DDB7', '1', '0', '1', '10.5', '275.28', '285.78', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-08 11:56:08', '2016-04-08 11:56:08', '');
-INSERT INTO `dg_orders` VALUES ('10', '2B77819', '1', '2B77880', '1', '0', '1', '10.5', '75.48', '85.98', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 03:49:31', '2016-04-12 03:49:31', '');
-INSERT INTO `dg_orders` VALUES ('11', '40B3B8F', '1', '40B3BEC', '1', '0', '1', '10.5', '110.04', '120.54', null, '0', '0', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-12 03:58:24', '2016-04-12 03:58:24', '');
-INSERT INTO `dg_orders` VALUES ('12', '5FACB38', '1', '5FACB93', '4', '0', '1', '10.5', '75.48', '85.98', null, '17', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 04:15:59', '2016-04-12 04:15:59', '');
-INSERT INTO `dg_orders` VALUES ('13', 'BE462D1', '1', 'BE4632E', '1', '0', '1', '10.5', '75.48', '85.98', null, '17', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 04:43:10', '2016-04-12 04:43:10', '');
-INSERT INTO `dg_orders` VALUES ('14', '7FBBB73', '1', '7FBBBCF', '4', '0', '1', '10.5', '75.48', '83.7156', null, '17', '2.2644', '0', null, null, null, null, '0', 'pending', null, null, '2016-04-12 05:07:43', '2016-04-12 05:07:43', '');
-INSERT INTO `dg_orders` VALUES ('15', 'E690D32', '1', 'E690D94', '4', '0', '4', '5.1', '75.48', '75.08', null, '14', '5.5', '0', null, '1', null, null, '0', 'pending', null, null, '2016-04-12 05:13:42', '2016-04-12 05:13:42', '');
-INSERT INTO `dg_orders` VALUES ('16', '6249381', '1', '62493D6', '4', '0', '1', '0', '110.04', '110.04', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-05-10 08:44:50', '2016-05-10 08:44:50', '');
-INSERT INTO `dg_orders` VALUES ('17', '0A05F80', '1', '0A05FE3', '4', '0', '4', '53.7', '214.8', '268.5', null, '0', '0', '0', null, null, null, null, '0', 'pending', null, null, '2016-05-11 09:23:54', '2016-05-11 09:23:54', '');
-INSERT INTO `dg_orders` VALUES ('18', '0ADBF1A', '1', '0ADBF6E', '1', '0', '1', '0', '261.24', '261.24', null, '0', '0', '0', null, '', null, '1', '0', 'pending', null, null, '2016-05-11 09:32:26', '2016-05-11 09:32:26', '');
-INSERT INTO `dg_orders` VALUES ('19', '7FC1789', '2', '7FC17E4', '1', '0', '1', '0', '40.92', '40.92', null, '0', '0', '0', null, null, null, '1', '0', 'pending', null, null, '2016-05-17 06:26:39', '2016-05-17 06:26:39', '');
-INSERT INTO `dg_orders` VALUES ('20', 'CC31355', '2', 'CC313A5', '1', '0', '1', '0', '40.92', '40.92', null, '0', '0', '0', null, null, null, '1', '0', 'completed', null, '123456', '2016-05-17 06:27:56', '2016-05-17 06:27:56', '');
-INSERT INTO `dg_orders` VALUES ('21', '23F2F07', '1', '23F2F5C', '1', '0', '1', '0', '108.96', '108.96', '14', '0', '0', '0', null, '1', '1', '1', '1', 'pending', null, null, '2016-07-27 09:52:03', '2016-07-27 09:52:03', '');
-INSERT INTO `dg_orders` VALUES ('25', 'TVP2026', '1', '9A01DA0', '4', '0', '1', '0', '150', '150', '13', '0', '0', '0', '0', '2', null, null, '0', 'pending', null, null, '2016-08-08 09:24:10', '2016-08-08 09:24:10', '');
-INSERT INTO `dg_orders` VALUES ('26', 'TVP2026', '4', 'E64DCFB', '4', '0', '1', '0', '110.04', '110.04', '12', '0', '0', '0', '1', '3', '1', '1', '1', 'pending', null, null, '2016-08-12 10:23:34', '2016-08-12 10:23:34', '');
-INSERT INTO `dg_orders` VALUES ('27', 'TVP2027', '4', '7359E1B', '4', '0', '1', '0', '209.4', '209.4', '15', '0', '0', '0', '0', null, null, null, '0', 'pending', null, null, '2016-08-13 11:53:23', '2016-08-13 11:53:23', '');
-INSERT INTO `dg_orders` VALUES ('28', 'TVP2028', '4', '961CD21', '4', '0', '1', '0', '179.16', '179.16', '12', '0', '0', '0', '0', null, null, null, '0', 'pending', null, null, '2016-08-13 12:11:02', '2016-08-13 12:11:02', '');
-
--- ----------------------------
--- Table structure for dg_orders_histories
--- ----------------------------
-DROP TABLE IF EXISTS `dg_orders_histories`;
-CREATE TABLE `dg_orders_histories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NOT NULL,
-  `label` varchar(200) NOT NULL,
-  `content` text NOT NULL,
-  `date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='store change of each order';
-
--- ----------------------------
--- Records of dg_orders_histories
--- ----------------------------
-INSERT INTO `dg_orders_histories` VALUES ('1', '15', 'item_status', '{\"(Gildan 2000) Ultra Cotton 6.1oz.\":\"completed\"}', '2016-04-12 05:21:43');
-INSERT INTO `dg_orders_histories` VALUES ('2', '15', 'item_status', '{\"(Gildan 2000) Ultra Cotton 6.1oz.\":\"pending\"}', '2016-04-12 05:26:01');
-INSERT INTO `dg_orders_histories` VALUES ('3', '20', 'order_status', '{\"CC31355\":\"completed\"}', '2016-07-27 03:39:57');
-INSERT INTO `dg_orders_histories` VALUES ('4', '8', 'order_status', '{\"EA4E0CA\":\"completed\"}', '2016-07-29 08:42:22');
-
--- ----------------------------
--- Table structure for dg_orders_userinfo
--- ----------------------------
-DROP TABLE IF EXISTS `dg_orders_userinfo`;
-CREATE TABLE `dg_orders_userinfo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `address` text NOT NULL COMMENT 'save with json',
-  `created_on` datetime NOT NULL,
-  `modified_on` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of dg_orders_userinfo
--- ----------------------------
-INSERT INTO `dg_orders_userinfo` VALUES ('1', '1', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"\",\"Telephone\":\"+84919068986\",\"Zip\\/Postal Code\":\"70000\"}', '2016-01-08 02:06:10', '2016-01-08 02:06:10');
-INSERT INTO `dg_orders_userinfo` VALUES ('2', '2', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-02-01 09:57:35', '2016-02-01 09:57:35');
-INSERT INTO `dg_orders_userinfo` VALUES ('24', '24', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-08-08 09:15:13', '2016-08-08 09:15:13');
-INSERT INTO `dg_orders_userinfo` VALUES ('4', '4', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-06 11:12:29', '2016-04-06 11:12:29');
-INSERT INTO `dg_orders_userinfo` VALUES ('5', '5', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-06 12:14:10', '2016-04-06 12:14:10');
-INSERT INTO `dg_orders_userinfo` VALUES ('6', '6', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-07 08:44:35', '2016-04-07 08:44:35');
-INSERT INTO `dg_orders_userinfo` VALUES ('7', '7', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 05:58:37', '2016-04-08 05:58:37');
-INSERT INTO `dg_orders_userinfo` VALUES ('8', '8', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 11:54:52', '2016-04-08 11:54:52');
-INSERT INTO `dg_orders_userinfo` VALUES ('9', '9', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-08 11:56:10', '2016-04-08 11:56:10');
-INSERT INTO `dg_orders_userinfo` VALUES ('10', '10', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 03:49:42', '2016-04-12 03:49:42');
-INSERT INTO `dg_orders_userinfo` VALUES ('11', '11', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 03:58:35', '2016-04-12 03:58:35');
-INSERT INTO `dg_orders_userinfo` VALUES ('12', '12', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 04:16:11', '2016-04-12 04:16:11');
-INSERT INTO `dg_orders_userinfo` VALUES ('13', '13', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 04:54:03', '2016-04-12 04:54:03');
-INSERT INTO `dg_orders_userinfo` VALUES ('14', '14', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 05:08:15', '2016-04-12 05:08:15');
-INSERT INTO `dg_orders_userinfo` VALUES ('15', '15', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-04-12 05:14:06', '2016-04-12 05:14:06');
-INSERT INTO `dg_orders_userinfo` VALUES ('16', '16', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-10 08:45:00', '2016-05-10 08:45:00');
-INSERT INTO `dg_orders_userinfo` VALUES ('17', '17', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-11 09:24:03', '2016-05-11 09:24:03');
-INSERT INTO `dg_orders_userinfo` VALUES ('18', '18', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-05-11 09:32:35', '2016-05-11 09:32:35');
-INSERT INTO `dg_orders_userinfo` VALUES ('19', '19', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"An Giang\",\"Telephone\":\"+84919068986\",\"Zip\\/Postal Code\":\"70000\"}', '2016-05-17 06:26:48', '2016-05-17 06:26:48');
-INSERT INTO `dg_orders_userinfo` VALUES ('20', '20', '2', '{\"First Name\":\"Cao\",\"Last Name\":\"Van-Toai\",\"Company\":\"PVAC\",\"Address\":\"Phan Van Han, Binh Thanh, Ho Chi Minh, Viet Nam\",\"Country\":\"United States\",\"State\\/Province\":\"Alaska\",\"Telephone\":\"84919068986\",\"Zip\\/Postal Code\":\"123456\"}', '2016-05-17 06:28:03', '2016-05-17 06:28:03');
-INSERT INTO `dg_orders_userinfo` VALUES ('21', '21', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-07-27 09:52:13', '2016-07-27 09:52:13');
-INSERT INTO `dg_orders_userinfo` VALUES ('25', '25', '1', '{\"First Name\":\"thanh\",\"Last Name\":\"tran\",\"Company\":\"\",\"Address\":\"233 oigijf\",\"Country\":\"Viet Nam\",\"State\\/Province\":\"Ho Chi Minh City\",\"Telephone\":\"1213124124\",\"Zip\\/Postal Code\":\"700000\"}', '2016-08-08 09:24:19', '2016-08-08 09:24:19');
-INSERT INTO `dg_orders_userinfo` VALUES ('26', '26', '4', '{\"First Name\":\"tran\",\"Last Name\":\"tuan thanh\",\"Company\":\"home\",\"Address\":\"123 home\",\"Country\":\"United States\",\"State\\/Province\":\"Armed Forces Africa\",\"Telephone\":\"1231234123\",\"Zip\\/Postal Code\":\"222145\"}', '2016-08-12 10:23:37', '2016-08-12 10:23:37');
-INSERT INTO `dg_orders_userinfo` VALUES ('27', '27', '4', '{\"First Name\":\"tran\",\"Last Name\":\"tuan thanh\",\"Company\":\"home\",\"Address\":\"123 home\",\"Country\":\"United States\",\"State\\/Province\":\"Armed Forces Africa\",\"Telephone\":\"1231234123\",\"Zip\\/Postal Code\":\"222145\"}', '2016-08-13 11:53:27', '2016-08-13 11:53:27');
-INSERT INTO `dg_orders_userinfo` VALUES ('28', '28', '4', '{\"First Name\":\"tran\",\"Last Name\":\"tuan thanh\",\"Company\":\"home\",\"Address\":\"123 home\",\"Country\":\"United States\",\"State\\/Province\":\"Armed Forces Africa\",\"Telephone\":\"1231234123\",\"Zip\\/Postal Code\":\"222145\"}', '2016-08-13 12:11:04', '2016-08-13 12:11:04');
 
 -- ----------------------------
 -- Table structure for dg_pages
@@ -1713,61 +1685,6 @@ CREATE TABLE `dg_print_price` (
 -- ----------------------------
 INSERT INTO `dg_print_price` VALUES ('1', '[[\"12\",\"12\"],[\"13\",\"24\"],[\"25\",\"36\"],[\"37\",\"48\"],[\"49\",\"72\"],[\"73\",\"96\"],[\"97\",\"120\"],[\"121\",\"200\"],[\"201\",\"300\"],[\"301\",\"400\"],[\"401\",\"500\"],[\"501\",\"750\"],[\"751\",\"1000\"],[\"1001\",\"1500\"]]', '[[\"0\",\"1\",\"2\",\"4\",\"5\",\"6\",\"7\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"3\",\"4\",\"5\",\"6\",\"7\"],[\"0\",\"1\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"]]', 'front');
 INSERT INTO `dg_print_price` VALUES ('2', '[[\"12\",\"12\"],[\"13\",\"24\"],[\"25\",\"36\"],[\"37\",\"48\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"12\",\"12\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"13\",\"30\"],[\"13\",\"30\"]]', '[[\"0\",\"1\",\"2\",\"3\",\"5\",\"6\",\"7\"],[\"0\",\"1\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"1\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"2\",\"3\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"],[\"0\",\"8\",\"7\",\"6\",\"5\",\"4\",\"3\"]]', 'back');
-
--- ----------------------------
--- Table structure for dg_product_categories
--- ----------------------------
-DROP TABLE IF EXISTS `dg_product_categories`;
-CREATE TABLE `dg_product_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
-  `cate_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of dg_product_categories
--- ----------------------------
-INSERT INTO `dg_product_categories` VALUES ('30', '4', '16');
-INSERT INTO `dg_product_categories` VALUES ('28', '3', '16');
-INSERT INTO `dg_product_categories` VALUES ('26', '2', '16');
-INSERT INTO `dg_product_categories` VALUES ('58', '1', '89');
-INSERT INTO `dg_product_categories` VALUES ('60', '6', '74');
-INSERT INTO `dg_product_categories` VALUES ('61', '0', '89');
-INSERT INTO `dg_product_categories` VALUES ('37', '8', '66');
-INSERT INTO `dg_product_categories` VALUES ('76', '9', '65');
-INSERT INTO `dg_product_categories` VALUES ('73', '10', '89');
-INSERT INTO `dg_product_categories` VALUES ('72', '11', '89');
-INSERT INTO `dg_product_categories` VALUES ('71', '12', '89');
-INSERT INTO `dg_product_categories` VALUES ('70', '13', '89');
-INSERT INTO `dg_product_categories` VALUES ('69', '14', '89');
-INSERT INTO `dg_product_categories` VALUES ('65', '15', '63');
-INSERT INTO `dg_product_categories` VALUES ('63', '18', '66');
-INSERT INTO `dg_product_categories` VALUES ('66', '17', '89');
-INSERT INTO `dg_product_categories` VALUES ('68', '16', '63');
-INSERT INTO `dg_product_categories` VALUES ('81', '20', '89');
-INSERT INTO `dg_product_categories` VALUES ('83', '21', '63');
-INSERT INTO `dg_product_categories` VALUES ('84', '21', '66');
-INSERT INTO `dg_product_categories` VALUES ('85', '22', '89');
-
--- ----------------------------
--- Table structure for dg_product_prices
--- ----------------------------
-DROP TABLE IF EXISTS `dg_product_prices`;
-CREATE TABLE `dg_product_prices` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
-  `min_quantity` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `max_quantity` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `price` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of dg_product_prices
--- ----------------------------
-INSERT INTO `dg_product_prices` VALUES ('1', '1', '[\"1\",\"11\",\"101\"]', '[\"10\",\"100\",\"1000\"]', '[\"12\",\"10\",\"8\"]');
-INSERT INTO `dg_product_prices` VALUES ('2', '0', '[\"20\"]', '[\"50\"]', '[\"11.5\"]');
 
 -- ----------------------------
 -- Table structure for dg_products
@@ -1846,6 +1763,61 @@ INSERT INTO `dg_products_design` VALUES ('23', '13', '[\"E3E4E6\",\"FF78D1\",\"0
 INSERT INTO `dg_products_design` VALUES ('24', '22', '[\"E3E4E6\",\"000000\",\"534A48\",\"E3FF0F\",\"C4D8F6\",\"1C2041\",\"510090\",\"AC1223\",\"154396\",\"304328\",\"EA6016\",\"CCC6AD\",\"999D9E\",\"6C1039\"]', '[\"Ash\",\"Black\",\"Charcoal\",\"Safety Green\",\"Light Blue\",\"Navy\",\"Purple\",\"Red\",\"Royal\",\"Green\",\"Safety Orange (50\\/50)\",\"Sand\",\"Sport Grey (90\\/10)\",\"Maroon\"]', '[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"]', '', '[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"{\'0\':{\'id\':\'area-design\'},\'1\':{\'id\':\'images-0\',\'width\':\'297px\',\'height\':\'397px\',\'top\':\'47px\',\'left\':\'105px\',\'zIndex\':\'auto\',\'img\':\'media\\/assets\\/products\\/(Gildan 2300) Ultra Cotton T-Shirt with Pocket\\/1084_ccc6ad.jpg\'}}\",\"{\'0\':{\'id\':\'area-design\'},\'1\':{\'id\':\'images-0\',\'width\':\'297px\',\'height\':\'371px\',\'top\':\'69px\',\'left\':\'99px\',\'zIndex\':\'auto\',\'img\':\'media\\/assets\\/products\\/(Gildan 2300) Ultra Cotton T-Shirt with Pocket\\/1084_999d9e.jpg\'}}\",\"\"]', '[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]', '[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]', '[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]', '{\"front\":\"{\'width\':283,\'height\':390,\'left\':\'111px\',\'top\':\'51px\',\'radius\':\'0px\',\'zIndex\':\'\'}\",\"back\":\"{\'width\':204,\'height\':283,\'left\':\'135px\',\'top\':\'90px\',\'radius\':\'0px\',\'zIndex\':\'\'}\",\"left\":\"{\'width\':204,\'height\':283,\'left\':\'135px\',\'top\':\'90px\',\'radius\':\'0px\',\'zIndex\':\'\'}\",\"right\":\"{\'width\':204,\'height\':283,\'left\':\'135px\',\'top\':\'90px\',\'radius\':\'0px\',\'zIndex\':\'\'}\"}', '1', '{\"front\":\"{\'width\':\'29\',\'height\':\'40\',\'lockW\':true,\'lockH\':true,\'setbg\':false,\'shape\':\'square\',\'shapeVal\':0}\",\"back\":\"{\'width\':\'21\',\'height\':\'29\',\'lockW\':true,\'lockH\':true,\'setbg\':false,\'shape\':\'square\',\'shapeVal\':0}\",\"left\":\"{\'width\':\'21\',\'height\':\'29\',\'lockW\':true,\'lockH\':true,\'setbg\':false,\'shape\':\'square\',\'shapeVal\':0}\",\"right\":\"{\'width\':\'21\',\'height\':\'29\',\'lockW\':true,\'lockH\':true,\'setbg\':false,\'shape\':\'square\',\'shapeVal\':0}\"}', '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\"]');
 
 -- ----------------------------
+-- Table structure for dg_product_categories
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_product_categories`;
+CREATE TABLE `dg_product_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `cate_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of dg_product_categories
+-- ----------------------------
+INSERT INTO `dg_product_categories` VALUES ('30', '4', '16');
+INSERT INTO `dg_product_categories` VALUES ('28', '3', '16');
+INSERT INTO `dg_product_categories` VALUES ('26', '2', '16');
+INSERT INTO `dg_product_categories` VALUES ('58', '1', '89');
+INSERT INTO `dg_product_categories` VALUES ('60', '6', '74');
+INSERT INTO `dg_product_categories` VALUES ('61', '0', '89');
+INSERT INTO `dg_product_categories` VALUES ('37', '8', '66');
+INSERT INTO `dg_product_categories` VALUES ('76', '9', '65');
+INSERT INTO `dg_product_categories` VALUES ('73', '10', '89');
+INSERT INTO `dg_product_categories` VALUES ('72', '11', '89');
+INSERT INTO `dg_product_categories` VALUES ('71', '12', '89');
+INSERT INTO `dg_product_categories` VALUES ('70', '13', '89');
+INSERT INTO `dg_product_categories` VALUES ('69', '14', '89');
+INSERT INTO `dg_product_categories` VALUES ('65', '15', '63');
+INSERT INTO `dg_product_categories` VALUES ('63', '18', '66');
+INSERT INTO `dg_product_categories` VALUES ('66', '17', '89');
+INSERT INTO `dg_product_categories` VALUES ('68', '16', '63');
+INSERT INTO `dg_product_categories` VALUES ('81', '20', '89');
+INSERT INTO `dg_product_categories` VALUES ('83', '21', '63');
+INSERT INTO `dg_product_categories` VALUES ('84', '21', '66');
+INSERT INTO `dg_product_categories` VALUES ('85', '22', '89');
+
+-- ----------------------------
+-- Table structure for dg_product_prices
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_product_prices`;
+CREATE TABLE `dg_product_prices` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `min_quantity` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `max_quantity` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `price` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of dg_product_prices
+-- ----------------------------
+INSERT INTO `dg_product_prices` VALUES ('1', '1', '[\"1\",\"11\",\"101\"]', '[\"10\",\"100\",\"1000\"]', '[\"12\",\"10\",\"8\"]');
+INSERT INTO `dg_product_prices` VALUES ('2', '0', '[\"20\"]', '[\"50\"]', '[\"11.5\"]');
+
+-- ----------------------------
 -- Table structure for dg_sessions
 -- ----------------------------
 DROP TABLE IF EXISTS `dg_sessions`;
@@ -1860,339 +1832,25 @@ CREATE TABLE `dg_sessions` (
 -- ----------------------------
 -- Records of dg_sessions
 -- ----------------------------
-INSERT INTO `dg_sessions` VALUES ('605039bff5d3f4802616c1014a980afd', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('e8206565481cdb432b969794b3a3437c', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('0c3328de60918cd9166f19dbc931ea18', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('08e5e7afd57e233730eea624c6dedefd', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('dc0515c2c5060686b14613c87e4ea573', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('d89b5dda95d65c95b14509a84775c8fc', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('b2b81fde7d3b61ffa90425e25e36b802', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('32f81056284f845b1542addfeacfaa13', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('8152351713deb4197da4c78017203860', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('9d604299dce6f1d8a711db3412d3a74d', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('9d90594af604eb2c488267f096a29581', '0', '121.41.9.246', '1471331238', '');
-INSERT INTO `dg_sessions` VALUES ('74b6a2be191cc20c86f39f21c46cb5d1', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('7d769dfc23c3eab5beea2472e913ecea', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('f60eb066159191c1fbf2515a75894ef2', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('f0b8f8df8979348d540879d4e8b5524b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('6e4237a7c73888dd0c1b8c34456be43c', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('1555cde22dfbc15676edaab3fa15cbf3', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('80345f78b4f33d4c6cbd1081f32733b6', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('ece8793ae8c0e8975e0aa8923420c216', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '24.138.15.161', '1471319500', '');
-INSERT INTO `dg_sessions` VALUES ('b6842de35af88b46dd64f5328fdc91a4', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('06b7e2355e3b4fe16d8b0f2b57d1ac82', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('c9b6471dee1d78ec27393e486b88f3b1', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('0e1a6310cc6b1bac47d0044cb67f2a73', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('06a43269740fbd5994042e0983d513c2', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('6ba7b16e687955e85495a985484850df', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('e31766225d33a88bdcb2bf2572dc9558', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('def200e90737ee2464cb386dcc151bbc', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('3f3143e0c760488a1cbb04d5efcd084b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('513dc2ee84e93ece741798ac971df0bb', '0', '168.1.128.50', '1471318527', '');
-INSERT INTO `dg_sessions` VALUES ('3e370cdf704fefa24594286efb917bdb', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('fb098a0e0b23bedfc5e2646c189038eb', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('52b2d7713b65c359275b588e8bc5c8e2', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('cf6d198137150bd696fde685023d0e08', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('6b34ce9dc08294da5bb225d6b6f259cc', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('86a08fb0401491804f34f6c9f7c79809', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('7b492bfc6e81a8a82670b6ed1a1b5f6f', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.225', '1471308138', '');
-INSERT INTO `dg_sessions` VALUES ('aa00a3c8885a484a12c3362d1a2db93c', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('a0c2ba51694aeb12f0f442bb31a4c9f2', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('d789075cc6e91d4498f359468ee3f88b', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('403bacdc6aa3cf1707251e264c776d45', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('6813ec45a95b1a8e884b6145eaac21c8', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('6ccdec704492503b39a30345ff302581', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('37ee635a0a05e9679f758557bc04dbee', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('286712aac53944c0b10d5ba47497daf2', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.148.240', '1471307223', '');
-INSERT INTO `dg_sessions` VALUES ('2077c27cd3a49d76b77abf24089bb1a1', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('81acf2bb7805a5398f740e5b48a96253', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('52e549775355599a938eba1f44051744', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('b7cddadf95aeb3a9e51c4acecb8243de', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('59b383cad0a446305ac7bae821f52a2b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('41a052ba03c0d5309b321d4dd46c8e5e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('b356ddce04ea71ec734bf399d6b3de9a', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('2921f63715ae8f91e3d1f7e4918abf28', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('fa56e21f40431a9d9bfa7d92ed6eee06', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.253', '1471307094', '');
-INSERT INTO `dg_sessions` VALUES ('4a08ef4c6a29a2d2c54dd6b620bda978', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('18e66bf4a13da1c9cf3a54ee529b8d3e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('3c2b8efa938fef79a726faf81b073c78', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('3de5af85277726a675c7d6535da74e8e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('c1fddc5909bfcf2226eb19ad8e3d4e26', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('283322547c76871ddb95931169b23c7f', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('24e1b857421848cde26adaf38df2014f', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('cc7dd578e3517f6dc11867c3fe76f4ab', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('9712493ead0c380fff7604e5442c199d', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('ddc366aaed83658c5c50339b4af77b16', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('76778ded175299eac5d12cc5609a4393', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('0a75f1278c0b4c70c727a54a6bcd0bdf', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('6fd94ca762b86107f91832a2b68d3c3b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.241.206', '1471305767', '');
-INSERT INTO `dg_sessions` VALUES ('d494f82f994d5d5ecd4489344103588c', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('6d7c1ea3877777d634f34ff870c9f0f9', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('dc4f4b26ef03048ed7ba59606b13e006', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('2a41e3062fb530d394f7c5371457d895', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', '95.213.177.126', '1471304962', '');
-INSERT INTO `dg_sessions` VALUES ('aa62ea3842fa3caca063ad5256586376', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('a378893c096e5cf312783f6fbad3373b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('48d77e5931ea9cdd74ccf8b6eeec8a8a', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('5de74b67ffab84afc09f56a5dc0839da', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('273683b2d3c82cb4295cf00669d2cb6f', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('54d7007017ddbc7c7d71d74c8648fc7b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('ad8c4bf8aca5ebb767f35bcaf206d2d0', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('52b27a59f59585cb2a6565fee9a9f0be', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('9a0336f946f2463728dba80d76edb7bd', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.243.89', '1471281297', '');
-INSERT INTO `dg_sessions` VALUES ('04d809d2d48936dd1e2074c2e8e14690', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('a8f37ad9e9e937be9a1492b950f7f7be', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('99fa62d1611ed0c476f4004723a65260', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('b3706dec6d52ccdae4480fecf29c00ed', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('30f9c5930a1617449ddb2ddfe0f5e44c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('896152a13d232e9d3ae88b831b050e7d', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('3c3fb98c1cd994c6bbeb6d314028231f', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('f7bbbb25a68cc4f272a08924eabe856e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('1bb327a495ece6c9d08e4d50c01e466e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('bd80d09e89d551ef867110b380edc940', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('6274dff654c7bce5be9442305fe4cade', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('ef57176d0e95eaa0e0ba1e6dd2661355', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('ca571f3ef991e3309b4552d408be30e3', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471190093', '');
-INSERT INTO `dg_sessions` VALUES ('c3c4a20a82e872cfbf72c9c0c3d5f39f', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('fe45e04f27c0e7c71e10b1fdb0a5e91c', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('e0b4184a26ddf8dee6124f0d1382caab', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('0c833d2c37ff89246a701bee2c0aa7e0', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('68df590d45c4fd40f2e6b4aa0e24a1ac', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('ddcffbb2d98c95d28faec5935d08a21d', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('1b1701e4313a324c18ee3391e584b6e9', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('909fe921b21f57d3cf557460816750ff', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '104.245.212.122', '1471184453', '');
-INSERT INTO `dg_sessions` VALUES ('ce4e0478a8bf93afeab0286ceebe9f6b', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('3b27848afccdd4e0b2484ca9a8e32e0b', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('e00e3a0a0316025073182c551e9cbee2', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('a19690515f786a835ab5db569b625060', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('20dcbf978a903c3f997e50c2a2926996', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('679da1f8f908ecb79b2eebb3729d505a', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('9c8f30f11efa8d593442cb971daea990', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('51f01dd71ab13ae7ba6c67019b46a6bf', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', '');
-INSERT INTO `dg_sessions` VALUES ('0c71421806219415deb0791c9f77df5e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('f3c41fd04190cb8790002af519fca4d9', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('7a2ba76fa8b0fe7014733882208bde0b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('2d67898daaf31fbb41abe1add193dd81', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('c5000ba1861001003688a621d4bffa31', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('a9e2935aa84b12396a675d4cd9ed92ca', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('48dd362ebd2124a3e418bf6f3e4a92e0', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('8acbf0489dac1976f9a415a6ced48caf', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('8ea051951bb1d5588d2a446a2e537cf4', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '109.238.223.169', '1471229335', '');
-INSERT INTO `dg_sessions` VALUES ('1b3f01855cd08181812f84635854b6b0', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('a540da4d2a2e47830548cc8de22996cf', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('9bd860080d1f872e5f1443089f95f130', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('d6f73b9035b00f01f21d2da2e2bab92a', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('44af4866b983ca8f1809d9eb812955f0', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('30ff8e6be3f2aca7d4865a09e097d17e', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('28a92cb7e6eac7f9bc703ae334fd0ecb', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('3e34ca3ad9f3282ce762daf8b5c97a0a', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('9256dd9af4e53775d4653e1615a6a4c8', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('08f3d1aa0721d6a3ccacccb65bea3078', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('e4aba05379eaf21830e4f081fc88da22', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('a25960f300d4074f2cfb1fc11a2a0d00', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.204', '1471223047', '');
-INSERT INTO `dg_sessions` VALUES ('925d0c5509df949c227a6d5fa9071398', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('ab967207577ef56ae770b1db83f6f0ca', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('c2692de8ab316f78324863da6a642e29', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('31de71e869ed6f1b49eb6dbbc0dba836', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('652c3234167e7836a727e61fd038aaaa', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('0624a208994f4852cdd953338b882728', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('ebf73d452dfe99b18be51b9d799c6a57', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('1326d4ed7b6fc84d7bf255e122101e3a', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '120.76.153.34', '1471226596', '');
-INSERT INTO `dg_sessions` VALUES ('873e34baff1b3221c81538cccb42fb14', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('d4ee041ee333a127b580b5bc4f283e7f', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('2d5bafd014018d214b0d2bf1914d98a0', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('b076704ac882f25e05db9cb0cd689bac', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('0cf13a2138c81ffc0e68b1c545936192', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('e2ce0b1ddf67194e713231785df4f346', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('e7532371fc6ef5bed5855936c4ea04f5', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('8b5be78d060c5e827d8aad356c669a29', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '207.46.230.40', '1471227036', '');
-INSERT INTO `dg_sessions` VALUES ('1c0a063c92b50e0aca4e6b38e8f45cb0', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('d29e147a343004856f5d195ac102439d', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('b66a5c0aa1e8ada02245dd61b92179a4', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('ab93765c18d29042ef18799305323c7c', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('d3d9e7d661da80e8aa343bf86a89aad8', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '13.67.107.167', '1471228043', '');
-INSERT INTO `dg_sessions` VALUES ('76ba5ca8c73ff874153d195e769d3839', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('5316be8446bfafab9df0dd13f0c3feda', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('4170711275b02ad436f58ee03db9bc5d', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('f5a4cdcb689aa42da44274cf8c549610', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('ba7e874ccd6fcca15304455018bbf90a', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '222.186.55.197', '1471280118', '');
-INSERT INTO `dg_sessions` VALUES ('ca2e3d600c789375dbbcb5de348773c4', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('03f27434479e8671450baded00601e77', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('a4a416fa38d5417e9f2acc1a6d810c80', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('9644730fe603c4f7f1433c00d03b42ce', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('bef1093d0edabac2540aa0646a0c5ee6', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('c47d8908e170892043ba09865e8b86ed', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('c181acc4e9e2f7318f90566a44d40dea', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('ea7fa2c67061b566e2cd0b5f33ca9f92', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('a3a9860b5696868bddab91cfa7fcabea', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.247.80', '1471274619', '');
-INSERT INTO `dg_sessions` VALUES ('0c37d39a59b29c6f10d8c8ee70b32b3c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('087ad70d32bea96114e60caca59e222b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('7d4562d2392b0a35ce5bf27f11981b8d', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('4e7659378906e30b6fb13edb3d0ecab5', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('b7f2a5b8d21843467d280ad2bacdeb0c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('ec0f5d7324c7fa900ed574e6e64dc1dd', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('f25203ef7b22c5f9eb198bc31323a4c6', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('1f836019a9c216f94d1cbc15465a4a25', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('c6a4609ac676f67fa6337ba5e6420f7d', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.246.102', '1471274272', '');
-INSERT INTO `dg_sessions` VALUES ('6496d8c0321b48f34ada36c8664b7570', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '183.81.9.30', '1471270530', 'a:4:{s:9:\"user_data\";s:0:\"\";s:4:\"user\";a:6:{s:2:\"id\";s:1:\"4\";s:4:\"name\";s:15:\"Tran Tuan Thanh\";s:8:\"username\";s:6:\"tthanh\";s:5:\"email\";s:17:\"tthanh@tthanh.com\";s:5:\"admin\";b:1;s:8:\"loggedin\";b:1;}s:5:\"token\";a:1:{s:32:\"02e203af77db0f062c79b304aec5e559\";s:32:\"7dd460fba4ee5db50394eae438f0b5d7\";}s:16:\"order_session_id\";s:32:\"6496d8c0321b48f34ada36c8664b7570\";}');
-INSERT INTO `dg_sessions` VALUES ('20b8d88be8c469e6a8b6ea95f269b0b5', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('523af1824d86d79f86f33ec5a1d4998b', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('f78ecc15c963cb2c813664ba0335f9ba', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('b2fa554848ab1dcc9a89b5852a9c4838', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('bcf85e3931a8c833d58cd2922d1718e0', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('62a7df584b5414d38d680421d32023c4', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('bfc4480e3a94dcda57bce00d7d6e0dfc', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('326351baac6eb1ce83c4b1959e234452', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('32bd967c8a8234af32ab595ccfae5828', 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)', '52.64.206.96', '1471269621', '');
-INSERT INTO `dg_sessions` VALUES ('862af833d4d13a5627e3c5b59274c06c', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('f4fc34019933fc5dbb397af74cbe1090', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('224e90c186cc399c5e9157161d8616f6', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('e4f79b5384ca4fe25c9311de830aa347', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('21baefc863bbbb4669df9e11b4a9b531', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('b729a9627ce874fea3d3cf79d339451a', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('e97407a256c4e58c7bedd91aa405c064', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('5e482b945c86a8168042dfe78bb36d02', 'Scanbot', '185.93.185.10', '1471265998', '');
-INSERT INTO `dg_sessions` VALUES ('301fcaa4272861a7a84b478d429f8078', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('75e4715c4b94328e65c9a616fceb9e0c', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('40b7d18de87187945a9f5e534e2a9bf8', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('aed56009ef7cd0b0ab4ff5300e175965', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('0766f48673939e568ce1bb31e454e1d6', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('d43701e481b530075cf6ff39034ef269', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('bea5425f6332a267888e568f584a1a56', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('d1c3251d36e4dd49ce10b383ecce945e', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('1d5c97011ab5f175306a081677c3aacb', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', '120.132.50.135', '1471252843', '');
-INSERT INTO `dg_sessions` VALUES ('a147118eb98ef65f0a2e231252419520', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', 'a:3:{s:9:\"user_data\";s:0:\"\";s:16:\"order_session_id\";s:32:\"a147118eb98ef65f0a2e231252419520\";s:5:\"token\";a:1:{s:32:\"33f47ac4048c87087fc525619c0df354\";s:32:\"09abfd4a8ad18f7c69f0e280feb784b2\";}}');
-INSERT INTO `dg_sessions` VALUES ('79a704c133e4f67fcb90552c03946b3e', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', '');
-INSERT INTO `dg_sessions` VALUES ('29458769d28c5ff89f74891b1ca17a1a', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', '');
-INSERT INTO `dg_sessions` VALUES ('052ea2c878cf5c85b5e5ec4eacd80151', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', '');
-INSERT INTO `dg_sessions` VALUES ('5ba321952827224af31d10f846796548', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', '');
-INSERT INTO `dg_sessions` VALUES ('21e82480abaa0b65f9f8370b56bb21b4', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231915', '');
-INSERT INTO `dg_sessions` VALUES ('7c3a487fbe9e2023b986d20a5bb00aa2', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '115.79.40.217', '1471231914', 'a:2:{s:9:\"user_data\";s:0:\"\";s:5:\"token\";a:1:{s:32:\"a4cc40430b64b2b0245550c8f0d1c927\";s:32:\"5059b70c0fbc774e7774b5d570766872\";}}');
-INSERT INTO `dg_sessions` VALUES ('b4b6ca915fca2a93ffa5b8b0348c8e2b', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '115.79.40.217', '1471231794', 'a:3:{s:9:\"user_data\";s:0:\"\";s:5:\"token\";a:1:{s:32:\"1a71d354067660d999e4a159f6a263fb\";s:32:\"b049b30cc0547660de7b4db0a8152fe0\";}s:16:\"order_session_id\";s:32:\"b4b6ca915fca2a93ffa5b8b0348c8e2b\";}');
-INSERT INTO `dg_sessions` VALUES ('58dcfa177bee693ea8e8af61ca513845', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', 'a:3:{s:9:\"user_data\";s:0:\"\";s:16:\"order_session_id\";s:32:\"58dcfa177bee693ea8e8af61ca513845\";s:5:\"token\";a:1:{s:32:\"8c4e81cc14bfa65aa89c66d263e5d04a\";s:32:\"0f852cd84bab5e847422e7f922761441\";}}');
-INSERT INTO `dg_sessions` VALUES ('70f4169b80f6d8b155beb32c0050ed4c', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', '');
-INSERT INTO `dg_sessions` VALUES ('09747ee7669d2fd06dd3251bfac2fb0d', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', '');
-INSERT INTO `dg_sessions` VALUES ('4a137f8c2165c0de6faa3f9dbadef839', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', '');
-INSERT INTO `dg_sessions` VALUES ('20fc9281cbf796238d660e1fe2839edd', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', '');
-INSERT INTO `dg_sessions` VALUES ('44ca3f6c9761aa2d2ca85b620bbadcf8', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', '');
-INSERT INTO `dg_sessions` VALUES ('ac4c1b47e1b0b3b4df784befe23eeeaa', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Safari/537.36', '66.249.82.204', '1471217450', 'a:2:{s:9:\"user_data\";s:0:\"\";s:5:\"token\";a:1:{s:32:\"13281f8cb31e1182eaa5dc9b1ea38590\";s:32:\"600eedae11396aca217a9655330f0634\";}}');
-INSERT INTO `dg_sessions` VALUES ('8aaf85291ef48f2a260ea64124c46924', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', 'a:3:{s:9:\"user_data\";s:0:\"\";s:5:\"token\";a:1:{s:32:\"3e192542ee8262df63706626b76d5ac1\";s:32:\"361ff87536ef4317ed9259fb84dd9d92\";}s:16:\"order_session_id\";s:32:\"8aaf85291ef48f2a260ea64124c46924\";}');
-INSERT INTO `dg_sessions` VALUES ('e781859a4fd3dca0ec383bb7783b99d0', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('a34327d065d4f8d3702a416b1a25cb01', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('c8ce46dc005d4db534fa5c8352eff74a', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('1dfc74b3b45161ea6798600f3303ffaf', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('8cc82298ba3b5c07fa1e0304cb2e968c', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('65a18fdaa16016df3ebd5020306a708d', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('5520e9841d5138987b0a71885b6c42ca', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('c131e60582792a0bf0a914d3b853f760', 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920P Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mob', '66.249.82.207', '1471217431', '');
-INSERT INTO `dg_sessions` VALUES ('94ed4f563e63a84f47cafc5e972392d9', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('a4e5f08794e93a65553067103f8cc178', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('9221e23e8ec6b7201232839acc256fb6', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('186b80ab3f1664767f72d4ebfb4b168b', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('a48475e5cc5467c75a2804176683f6a5', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('c7d5fa695cf9c678f25a18895c8023e8', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('9fadd8f7bd37168bb461f2660211cf72', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('b0fd800b52ce994f0d07cf6d88c22894', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('fe1b27448f4f5cdd52649fc53c14f7fa', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('3368b99763ae50cfb05a10fde2b3bf88', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('587e2f93de1fc7c289abcb2cc48bf1fa', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('079a44a55d442aa9473b1cf99510bb7c', 'Mozilla/5.0 (Windows NT 5.1; rv:32.0) Gecko/20100101 Firefox/31.0', '185.25.151.159', '1471216628', '');
-INSERT INTO `dg_sessions` VALUES ('c2470da631b697735d49d81e3f13c6e3', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('5f029f6ef698118b2fa6dd97397b4c3f', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('d9b2dd156b680973dd67ef231ea6bb71', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('044da0c0fa6c8cdbe4db576e353e335f', 'Wget(linux)', '201.175.99.65', '1471212372', '');
-INSERT INTO `dg_sessions` VALUES ('3ddbecb943753865fa29b5273136fbcc', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('4e53323749de861a09e78c9b83705c25', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('afa310999d5d05b9b52be2ded22e16e8', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('5b9e01bbba818aa1575fb2582746f031', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('509f808f9270e9a1baad38d79ddc8803', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('1b2fae155b0498176469bb9ccb5f5a9d', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('8b5b20bc6f47802c23314afa27012d7f', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('ecf3920a7010486f50a802683521a7e1', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('5c13ed1a25b1a54349fdde687ad328b7', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('421c1b7c01e604b01ba1d07c57314171', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('538447b73e3549de35df45fc9caf466d', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('6ce51bf5d42c36521b8a1a3d5bf9c2b6', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('b9c1d4a4e932fc4c0f9eca1468368cdf', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('ccf723e46e0ad677f6cce41afaa5fe0d', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('1770f97666872d6c998aa9a5b3226557', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('b6453c78443a4b2ff43ef45fe822aff7', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('a41f50fbd06e0d3925d51e719d3c97ac', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('79f417dd7e28c3c482d9985351e9104f', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('4ee13b226586cd47c8780522e4402aff', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('a5bfcd69db7211947833c55cc7f6acef', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('cd09466adf50be75677504b9b726d400', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('ccb25332aaf4f184558ccc87261e3f01', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('0d00179957cf5c12f18013fd1c375055', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('06dcdb684505e22973fa711ded31d076', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('cf91f830b3374c8f23343ff7c12b4536', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('13718abab0e409b346fb8724945a3b4b', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('cbc849e0fe167f651ea4a898a482409e', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('44d1f1d417f3f38775aa1712e5dfe948', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('7167caf0e599ec26fe45fa4417c577f8', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('78907705d7a71a8ca9c3c8e57177a238', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('81d7e586a4d0bb1fd1ea593b0a8f8353', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('ea0744ea8fc3ffea96544cf3da250e66', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('78949d1f3af16ace0ad17e9bdc0c905b', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('b1e9782b112df569b50326ec53754bda', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('918f73290014b7b0212128069ad23b30', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('27f8cf9449ec6f8a310cd7a7b49abff9', 'Wget(linux)', '201.175.99.65', '1471212371', '');
-INSERT INTO `dg_sessions` VALUES ('90a5c1fa3f4853b57b8f89e73800efbd', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('15013f5d421294834c7b7850769007d4', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('d783d3e3eedb7a5e74b37bb257cede7c', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('4c5d2cc1e2a6ad8ed74c656f714274cb', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('ebf4495b7af3441de2ed3fb5d978b508', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('53432dbeec303d42c88ac8fa62da6155', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('6409f2d666cc37af75f102b31d782bf8', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('d64fd626bcb4acb996341a6ab9b8bfdc', 'Wget(linux)', '201.175.99.65', '1471212370', '');
-INSERT INTO `dg_sessions` VALUES ('65c963b587c55d966815ff82edb5c3f7', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('4dcfc48cf74159d684e6d874c8190720', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('333b43f85611ef75e78d4208f6b9a102', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('60416a7c6d5d453e4c87e07814127467', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('5ee1d36d1cf044d5e1c4ecefadb400ee', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('d438b63b105eb1766eec774bcdca5b1a', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('763ab2e2819129c88923fad2de3ff574', 'Scanbot', '185.93.185.10', '1471210140', '');
-INSERT INTO `dg_sessions` VALUES ('304575cea04a528e66dbe6f221a0c999', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('6a8aa5f651a12bb0f39208633b17f80b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('6c540e541fb7de13b46e7ae60ecf105c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('20d5bb081ba91a30fcb2f33b02dc6b1c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('aabf3d35e44d441d6cd2d3ecbf92f950', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('718af7a3f4a83d0e7d0dffbf4d893d7d', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('86803a7b53eacdc99c23caa73d85e1e3', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('b47a892a771bee280baadabc2df92233', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.75', '1471200732', '');
-INSERT INTO `dg_sessions` VALUES ('25bcbc9478a4857b43b5dd6c27a79dbd', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('f3677c687d2cc70f1f2a7ef3e7ef7f90', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('c2e81a63597dd9846c49b68f13f976b3', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('9a7843ec3afa3d5a7fa03d60b93945bc', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('457c46a2972deb5a6c1f8ec112fd9eb5', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('e19e60ef41caa47e851f358544fba381', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('e75550e2599db8ac7951399098b48256', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('012252268255647e0bc57225baf97627', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('acd4b7bbe941309c6fc7dfae4a559021', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.125.25.6', '1471195167', '');
-INSERT INTO `dg_sessions` VALUES ('322eae90ad7fa949a0ef8749e841e066', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('94b21166ef5518d8b24c9e480521ed91', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('758f9776c1a57c660c41239379f957b6', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('b4c6679bd434d21f92d1f4c165b10ba7', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('60aea149792368003361dca4b5ca8bcb', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('69c15f3baa3014101d6da95599f7679c', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('8aa01b47622a2b1785cf48a97a5fb8ec', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('5974eb767f27e913e1d33e0a543b69a3', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('e1d10046aa364ead449403c74ca16f6b', 'curl/7.17.1 (mips-unknown-linux-gnu) libcurl/7.17.1 OpenSSL/0.9.8i zlib/1.2.3', '177.222.245.167', '1471193588', '');
-INSERT INTO `dg_sessions` VALUES ('ae30bd4bbbe0fe0ae69252cbc86d7e8f', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('4f874a43ad04b5f794d97456dea60f72', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('487cc385fd49e8c9343b4655c1d2b149', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('a58767cc9d3931a5dad6ab03a5fb2958', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('3224a6727339cbe063447eeb151e4ff1', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('20b0da1e51b30a5c7c89c0811c6db42f', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('2f36f3f6b10960a8025d793e9cda0570', 'python-requests/2.7.0 CPython/2.7.8 Windows/2003Server', '107.179.43.2', '1471191583', '');
-INSERT INTO `dg_sessions` VALUES ('f6b89fde4f7bfa77d5c6698e9714384f', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('32e586131dd3179ee9bb42f5865c9f41', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('d4fdfcbf9b08e3473897a6b3478d9e32', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('27e9eb03e73f01d4124e0394c497a9a1', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('eca150f646efff6e0142801605d47c3d', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('51e1d97d54882504e119e301a6e94bcc', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('db0bd6a86618d5120527382d8288efe4', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('8af80d13fc7579b5fdaa5c2e135693ef', 'Scanbot', '185.93.185.10', '1471338546', '');
-INSERT INTO `dg_sessions` VALUES ('2890e0846a3aa9600013237afdd29fb5', 'Scanbot', '185.93.185.10', '1471338546', '');
+INSERT INTO `dg_sessions` VALUES ('8e96f943af5cef86bd2a7502133f6b05', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('105eb861ecde955f18acee2fd3d49a48', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('3efef2f5472080c0c2e253b767160196', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('318f46443dbe9f3b1aab4d7d13f5c68d', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('2f6d6aa403773cee46bfdc3430a7ee90', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('37026c3129c342d8e7bb51aeef565969', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('280cf327126edac05fd9973f71902de3', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('307bdefa76ce8d6c2ba049f2a4af57df', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('33d2188759896f57d815735767adac96', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('a5f15f413840d940b402e63d27b2216a', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', '');
+INSERT INTO `dg_sessions` VALUES ('7ce8dc563af97bb1dc34d29fbce0c7b5', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470880350', 'a:2:{s:9:\"user_data\";s:0:\"\";s:4:\"user\";a:6:{s:2:\"id\";s:1:\"1\";s:4:\"name\";s:11:\"admin Thanh\";s:8:\"username\";s:5:\"admin\";s:5:\"email\";s:25:\"t_tuan_thanh@yahoo.com.vn\";s:5:\"admin\";b:1;s:8:\"loggedin\";b:1;}}');
+INSERT INTO `dg_sessions` VALUES ('7736a6d8550a5952320d72d6c29b432f', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('ef6726d7edb5f3b529debc599a24d59c', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('7010b37aeb57dcec7f25d3a3a7007cbe', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('8f31d6e54450fa70e5a03b71a076c0bf', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('90e14b063a1ba5a5fcf8f5140f055620', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('193baa1e8e6526c25a3c40977fbe6db2', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('8c7dc19ce96ec76ee1dbd7702bac855d', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 FirePHP/0', '127.0.0.1', '1470882397', '');
+INSERT INTO `dg_sessions` VALUES ('52cd5d9e83a3b1f1df813905e292430c', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', '127.0.0.1', '1470887699', 'a:2:{s:9:\"user_data\";s:0:\"\";s:4:\"user\";a:6:{s:2:\"id\";s:1:\"1\";s:4:\"name\";s:11:\"admin Thanh\";s:8:\"username\";s:5:\"admin\";s:5:\"email\";s:25:\"t_tuan_thanh@yahoo.com.vn\";s:5:\"admin\";b:1;s:8:\"loggedin\";b:1;}}');
 
 -- ----------------------------
 -- Table structure for dg_settings
@@ -6236,25 +5894,6 @@ INSERT INTO `dg_states` VALUES ('4031', '248', 'Western Bahr el-Ghazal', 'BW', '
 INSERT INTO `dg_states` VALUES ('4032', '248', 'Western Equatoria', 'EW', '1');
 
 -- ----------------------------
--- Table structure for dg_user_groups
--- ----------------------------
-DROP TABLE IF EXISTS `dg_user_groups`;
-CREATE TABLE `dg_user_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) NOT NULL,
-  `default` varchar(1) NOT NULL DEFAULT '0',
-  `permissions` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of dg_user_groups
--- ----------------------------
-INSERT INTO `dg_user_groups` VALUES ('1', 'admin', '0', '[\"edit_user\",\"ajax\",\"art\",\"categories\",\"coupon\",\"custom\",\"dashboard\",\"design\",\"idea\",\"layout\",\"media\",\"menu\",\"module\",\"orders\",\"page\",\"products\",\"settings\",\"update\",\"users\"]');
-INSERT INTO `dg_user_groups` VALUES ('2', 'manager', '0', '[\"custom\",\"dashboard\",\"settings\",\"users\"]');
-INSERT INTO `dg_user_groups` VALUES ('4', 'customer', '1', 'false');
-
--- ----------------------------
 -- Table structure for dg_users
 -- ----------------------------
 DROP TABLE IF EXISTS `dg_users`;
@@ -6302,7 +5941,7 @@ CREATE TABLE `dg_users_designs` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dg_users_designs
@@ -6338,9 +5977,6 @@ INSERT INTO `dg_users_designs` VALUES ('28', '', '', 'F457A8309082029', '1', '0'
 INSERT INTO `dg_users_designs` VALUES ('29', '', '', '0A57A831004EF41', '1', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"100px\",\"top\":\"107px\",\"left\":\"73px\",\"zIndex\":\"1\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" x=\\\"0px\\\" y=\\\"0px\\\" width=\\\"100px\\\" height=\\\"100px\\\" viewBox=\\\"0 0 612 612\\\" enable-background=\\\"new 0 0 612 612\\\" xml:space=\\\"preserve\\\"><g>\\n<g id=\\\"Layer_1_x23_000000\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M548,566.981c-8.72,4.61-25.96,0.71-38,2c-113.26-5.34-216.51-26.55-301-64c-81.53-36.14-157.38-88.4-179-185     c0-12.33,0-24.67,0-37c6.35-44.74,34.94-86.47,66-114c95.03-84.24,239.6-124.68,402-135c16.33,0.67,35.33-1.33,50,1     c-78.42,39.37-150.13,85.7-195,162c-19.28,32.78-32.84,66.77-30,118c3.82,69,43.53,118.53,82,157     C446.48,513.462,496.93,541.422,548,566.981z M537,564.981c-52.02-27.44-102.52-55.22-142-98c-36.96-40.05-75.74-91.56-76-165     c-0.26-72.89,37.21-126.21,76-165c41.23-41.23,87.91-73.35,141-100c-180.94,4.32-340.4,44.39-439,136     c-29.89,27.77-60.21,65.84-64,115c-5.29,68.61,32.35,113.63,69,147c33.99,30.95,76.18,53.06,118,71     C309.81,544.491,413.97,564.401,537,564.981z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n<g id=\\\"Layer_2_x23_FFF200\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"#FFF200\\\" d=\\\"M395,466.981c39.48,42.78,89.98,70.56,142,98c-123.03-0.58-227.19-20.49-317-59     c-41.82-17.94-84.01-40.05-118-71c-36.65-33.37-74.29-78.39-69-147c3.79-49.16,34.11-87.23,64-115     c98.6-91.61,258.06-131.68,439-136c-53.09,26.65-99.77,58.77-141,100c-38.79,38.79-76.26,92.11-76,165     C319.26,375.422,358.04,426.932,395,466.981z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n</g></svg>\",\"rotate\":0,\"change_color\":1,\"title\":\"cs00393\",\"file_name\":\"388cs00393.svg\",\"file\":{\"type\":\"svg\",\"colors\":[]},\"thumb\":\"http://tshirt.local/media/cliparts/80/thumbs/d09bf41544a3365a46c9077ebb5e35c3.png\",\"url\":\"http://tshirt.local/media/cliparts/80/\",\"clipart_id\":\"75\"}},\"back\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"129px\",\"top\":\"84px\",\"left\":\"64px\",\"zIndex\":\"6\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" id=\\\"Layer_1_x23_000000\\\" x=\\\"0px\\\" y=\\\"0px\\\" width=\\\"100px\\\" height=\\\"129.41176470588px\\\" viewBox=\\\"0 0 612 792\\\" enable-background=\\\"new 0 0 612 792\\\" xml:space=\\\"preserve\\\"><g>\\n<g>\\n\\t<g>\\n\\t\\t<path fill=\\\"#000000\\\" d=\\\"M498.95,426.96c0,0.66,0,1.33,0,2c-8.28,9.71-18.04,17.95-27,26.99c2.84,35.41-16.75,56.39-36.99,71.99    c1.17,4.829,5.39,6.609,7,11c5.69-3.5,8.021,0.17,14-1c16.71,13.85-11.93,32.1-21,15c-2.32,0.81-2.19,3.54-5,0    c1.88-2.021,0.29-3.301,4-2c-0.55-3.11-0.82-6.521-2-9c-4.85,1.18-11.07,3.96-16,2c-13.15,11.27-27.61,28.17-40,34    c3.43,0.409-0.47,1.14,1,3c-7.229,7.439-24.11,22.109-37.99,35.989c-16.05,16.051-32.67,26.86-40.99,48    c1.5,3.49,2.2,7.79,7.99,6.99c3.99-1.53-2.58-5.86,0-5.99c4.81,0.86,8.129,3.2,8,8.99c1.59-0.08,3.82,0.49,4-1    c8.88,16.94-16.4,21.3-23.99,10c0.48-3.15-1.81-3.53-1-7c-7.7-8.53-14.97,1.25-28,7c-13.04,5.76-26.28,10.09-44,12c-1,0-2,0-3,0    c-7.69-1.63-17.14-1.52-19.99-8c1.52-7.14,8.08-9.25,12-14c-1.06-5.27-2.71-9.96-6-12.99c-5.85-29.229,27.5-23.3,28.99-42    c-3.52-0.81-4.82-3.84-4-9c5.59-3.41,10.82-7.18,16-11c-1.32-11.05-12.3-21.84-7-32.989c6.41,1.239,5.09,9.63,7,14    c0.71,1.609,3.6,2.93,4,4c2.5,6.54,1.35,15.189,2,23.989c7.29-3.699,2.22-19.779,14-18.989c3.02-6.58-7.97-22.33,1-25    c0.73-18.221,2.8-33.73,6-51c3.23-17.431,7.52-27.4-4-34.99c4.47-10.69-5.95-14.16-8-22c-4.32-16.521,2.15-48.61,11-56.99    c9.8-9.28,20.05-7.88,27-19c-3.62-3.38-12.29-1.71-15-6c-3.15-0.48-0.75,4.59-3,5c-13.99-8.66-40.55-21.3-50-36.99    c-3.39-5.65-3.25-12.86-2-22c8.76-11.91,14.01-27.32,24-38c9.23-1.79,20.33-1.54,26,3c0.69-8.15-14.67-8.57-17-16.99    c-5.8,1.88-11.2-4.62-15-8c-5.6,2.48-6.45-1.92-13-1c-0.6-2.4-1.43-4.57-1-8c-1.99,2.34-0.37,8.29-3,10c-3.26,0.26-2.12-3.88-5-4    c-6.28,12.51-15.52,8.81-34.99,5c-5.12-1.01-11.95-1.7-16-3c-8.91-2.86-16.57-10.48-24-13c-2.61-0.89-5.9-0.12-8-1    c-5.23-2.2-11.88-9.17-18.99-4c-5.03-3.55-8.61-2.59-16-4c-3.38-6.76-2.59-11.9-7-18c0.49-4.17,3.73-5.6,5-9    c-0.18-2.82-4.75-1.24-4-5c11.74-2.75,9.39-11.63,11-21.99c1.63-1.41,3.65-3.9,4-9c2,0,4,0,6,0c0.16-3.17-2.66-3.34-2-7    c3.08-0.75,1.92,2.74,5,2c5.92-9.18,20.09-20.28,27.99-11c3.74,1.07,2.85-2.48,6-2c2.54,2.44-2.11,2.13-1,6c2.34,0,4.67,0,7,0    c10.78,4.89,16.67,14.66,25,22c7.22-1.23,8.12,3.87,13,5c0.95,1.86-3,3.34,0,3.99c9.9-20.95,31.47-38.37,54.99-48.99    c3.9-0.23,5.18,2.15,8,3c1.28-17.38,11.05-26.28,16-39.99c-4.96-4.72-9.2-10.14-16-13c-1.33-13.87,12.96-21.62,21-21    c20.45,1.57,25.48,51.12,15.99,68.99c31.6-0.98,73.1-3.31,92.99,13c17.53,0.47,31.26,4.74,39,15c3,0,6,0,9,0    c10.6,6,29.4,19.89,15,32.99c0.16,7.5,3.021,12.31,6.99,16c4.54,0.54,0.68-7.33,5-7c0.17,1.17,1.83,0.85,3,1    c0.28,4.28-3.05,4.95-2,10c6.7-1.29,5.63-11.11,13-9c-1.12,6.55-3.38,11.95-8,15c7.24,9.09,12.6,20.06,13,36    c-2.09,2.18-2.851-0.5-6,0c0.62,0.89,1.21,1.78,0,2c-0.42,3.74,3,3.07,4,1c1.63-1.23-1.601,8.18,1,4.99    c-7.641,19.94-34.92,36.89-48.99,57c-3.99-0.32-7.39-0.06-9,2c0,3.33,0,6.66,0,10c-10.03,6.3-18.69,13.97-27,21.99    c16.21,12.19,37.76,23.04,54,38c1.21-0.58-0.66-3.78,1-6C475.49,402.42,485.81,416.1,498.95,426.96z M410.96,447.95    c3.14-8.86,9.84-14.16,9-26.99c-7.19-1.3-21.83,15.95-12,5c7.15-7.979-2.729-0.54-11-4c2.53-6.81,23.37-0.63,23-7    c-0.06,0.61-0.15,1.18-1,1c-5.41-3.26-9.86-7.47-13-13c-11.55,1.3-13.12-9.28-29-10c0.19,2.18-0.81,3.18-2.99,3    c1.511,33.37-4.029,59.7-6,92.99c0.9,1.77,2.41,2.92,3,5c-6.21,5.71-5.34,19.91-2,27.99c13.87-8.79,24.57-20.75,36.99-30.99    C392.77,477.04,416.99,462.78,410.96,447.95z M335.97,509.95c4.23-20.01,0.19-39.94,2-62c-9.38,3.62-0.319,25.67-10,29    c0.271,2.06,4.431,0.24,4,3c0.3,2.63-3.88,0.79-3,4c-4.68,35.31-23.86,56.12-33.99,85.99c4.27,4.909-0.67,12.6-1,19    c2.71,1.14,3.58-0.61,4,1.989c4.25-5.34,27.65-23.739,28.99-28.989c2.07-8.08-3.3-16.051-2-25    C326.26,528.09,333.9,519.77,335.97,509.95z\\\"></path>\\n\\t\\t<path fill=\\\"#000000\\\" d=\\\"M466.95,203.98c-2.17,1.5-1.59,5.74-5,6c-1.37-1.29-0.99-4.34-0.99-7C464,201.73,464.84,202.22,466.95,203.98z\\\"></path>\\n\\t</g>\\n</g>\\n</g></svg>\",\"rotate\":0,\"change_color\":1,\"title\":\"sports 1\",\"file_name\":\"12858952164ca5343079505.svg\",\"file\":{\"type\":\"svg\",\"colors\":0},\"thumb\":\"http://tshirt.local/media/cliparts/77/thumbs/d3d9446802a44259755d38e6d163e820.png\",\"url\":\"http://tshirt.local/media/cliparts/77/\",\"clipart_id\":\"10\"}}}', '', '\"[]\"', 'media/assets/system/2016/08/front_1470640377.png', '2016-08-08 09:13:04', '0000-00-00 00:00:00');
 INSERT INTO `dg_users_designs` VALUES ('30', '', '', '2057A8317974151', '1', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"text\",\"width\":\"55px\",\"height\":\"24px\",\"top\":\"179px\",\"left\":\"93px\",\"zIndex\":\"1\",\"svg\":\"<svg width=\\\"55\\\" height=\\\"24\\\" viewBox=\\\"0 0 55 24\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g id=\\\"0.7962532030915255\\\"><text fill=\\\"#FF0000\\\" stroke=\\\"none\\\" stroke-width=\\\"0\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" x=\\\"27\\\" y=\\\"20\\\" text-anchor=\\\"middle\\\" font-size=\\\"24px\\\" font-family=\\\"arial\\\"><tspan x=\\\"50%\\\" dy=\\\"0\\\">Hello</tspan></text></g></svg>\",\"rotate\":0,\"text\":\"Hello\",\"color\":\"#FF0000\",\"fontFamily\":\"arial\"}},\"back\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"133px\",\"top\":\"78px\",\"left\":\"57px\",\"zIndex\":\"6\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" x=\\\"0px\\\" y=\\\"0px\\\" width=\\\"100px\\\" height=\\\"133.33333333333px\\\" viewBox=\\\"0 0 432 576\\\" enable-background=\\\"new 0 0 432 576\\\" xml:space=\\\"preserve\\\"><g>\\n<g id=\\\"Layer_2_x23_CADB2A\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"#CBDB2A\\\" d=\\\"M410,473.53c-13.48,27.399,24.12,78.46,1.63,91.67c-23.28,13.67-57.56-34.46-88.39-29.47     c-15.431-13.671-23.26-34.48-32.74-52.381c-28.87-54.52-58.63-111.89-98.21-157.149c-19.25,5.59-25.94,19.81-39.29,36.01     c-15.79,19.15-56.54,54.03-50.75-8.18c3.73-39.96,28.34-75.99,57.3-93.3c-23.99-51.32-58.3-92.3-81.85-144.06     c-3.22,5.73,6.66,23.33-1.64,29.47C23.18,152.97,7.67,75.53,10.58,18.46C74.62-8.01,155.14,29.76,153,93.76     c-10.8,11.15-28.59,0.45-36.01-6.55c25.35,53.76,71.25,86.98,99.85,137.5c18.25-8.69,36.95-26.3,47.47-44.19     c6.221-10.58,7.03-26.47,18.011-29.47c16.47-4.5,30.51,26.47,31.1,42.56c1.45,39.8-29.439,69-49.11,88.4     C310.17,348.55,361.23,409.89,410,473.53z M405.09,553.74c-1.729-27.2-10.74-47.101-8.189-78.58     c-50.7-64.43-102.54-127.72-148.96-196.43c30.819-16.73,76.21-79.69,36.01-116.22c-12.55,37.1-37.4,61.9-70.38,78.57     C181.12,179.13,117.33,139.8,98.98,69.2c20.68-10.58,24.41,17.52,44.2,18.01c-10.36-49.6-60.05-73.84-121.14-62.2     c1.27,51.11,6.42,98.34,45.84,111.31c-4.28-13.69-7.95-41.7,11.46-40.93c28.41,61.07,68.77,110.21,96.58,171.88     c-39.94,17.91-62.91,52.77-62.21,111.31c36.38-13.271,39.81-59.5,83.49-65.47c53.12,60.92,89.729,138.34,129.31,212.8     C363.95,523.94,372.63,550.72,405.09,553.74z\\\"></path>\\n\\t\\t\\t<path fill=\\\"none\\\" d=\\\"M398.54,570.11c-130.96,0-261.91,0-392.87,0c0-174.61,0-349.22,0-523.82C9.7,87.18,26.01,151.75,64.6,152.69     c12.47,0.3,13.84-6.11,21.28-13.1c20.53,41.68,47.56,76.85,68.76,117.86c-24.65,22.94-43.54,39.2-52.39,80.21     c-3.94,18.26-11.27,54.08,9.83,57.29c16.99,2.59,33.99-19.46,42.56-29.46c13.12-15.33,20.14-28.09,36.01-36.01     c38.06,43.93,67.2,101.02,96.581,157.14c7.109,13.6,20.5,46.06,32.739,52.38c5.931,3.07,16,2.78,22.91,4.92     C361.34,549.62,381.91,567.55,398.54,570.11z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n<g id=\\\"Layer_1_x23_000000\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"none\\\" d=\\\"M398.54,570.11c-130.96,0-261.91,0-392.87,0c0-174.61,0-349.22,0-523.82C9.7,87.18,26.01,151.75,64.6,152.69     c12.47,0.3,13.84-6.11,21.28-13.1c20.53,41.68,47.56,76.85,68.76,117.86c-24.65,22.94-43.54,39.2-52.39,80.21     c-3.94,18.26-11.27,54.08,9.83,57.29c16.99,2.59,33.99-19.46,42.56-29.46c13.12-15.33,20.14-28.09,36.01-36.01     c38.06,43.93,67.2,101.02,96.581,157.14c7.109,13.6,20.5,46.06,32.739,52.38c5.931,3.07,16,2.78,22.91,4.92     C361.34,549.62,381.91,567.55,398.54,570.11z\\\"></path>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M421.46,543.92c0,4.91,0,9.82,0,14.73c-0.55,0-1.09,0-1.64,0c0.29,7.38-6.36,7.83-9.82,11.46c-3.82,0-7.64,0-11.46,0     c-16.63-2.561-37.2-20.49-55.66-26.19c-6.91-2.14-16.979-1.85-22.91-4.92c-12.239-6.32-25.63-38.78-32.739-52.38     C257.85,430.5,228.71,373.41,190.65,329.48c-15.87,7.92-22.89,20.68-36.01,36.01c-8.57,10-25.57,32.05-42.56,29.46     c-21.1-3.21-13.77-39.03-9.83-57.29c8.85-41.01,27.74-57.27,52.39-80.21c-21.2-41.01-48.23-76.18-68.76-117.86     c-7.44,6.99-8.81,13.4-21.28,13.1C26.01,151.75,9.7,87.18,5.67,46.29c0-8.19,0-16.37,0-24.56C8.43,13.03,16.65,9.79,25.32,7     c15.82,0,31.64,0,47.47,0c0,0.55,0,1.09,0,1.64c20.84,1.34,41.38,9.68,58.93,27.82c20.3,20.99,46.81,73.34-3.28,65.48     c26.56,42.75,64,74.6,90.041,117.86c16.029-7.39,24.64-17.68,36.01-34.37c7.479-10.99,15.819-39.35,31.1-39.29     c16.01,0.07,29.49,26.3,31.101,42.56c4.27,43.04-31.421,74.36-45.83,96.58c32.79,47.27,69.409,92.31,108.04,140.78     c10.05,12.61,31.6,34.721,34.369,47.471C418.79,498.93,410,520.14,421.46,543.92z M411.63,565.2     c22.49-13.21-15.11-64.271-1.63-91.67c-48.77-63.641-99.83-124.98-145.69-191.521c19.671-19.4,50.561-48.6,49.11-88.4     c-0.59-16.09-14.63-47.06-31.1-42.56c-10.98,3-11.79,18.89-18.011,29.47c-10.52,17.89-29.22,35.5-47.47,44.19     c-28.6-50.52-74.5-83.74-99.85-137.5c7.42,7,25.21,17.7,36.01,6.55c2.14-64-78.38-101.77-142.42-75.3     c-2.91,57.07,12.6,134.51,65.48,127.68c8.3-6.14-1.58-23.74,1.64-29.47c23.55,51.76,57.86,92.74,81.85,144.06     c-28.96,17.31-53.57,53.34-57.3,93.3c-5.79,62.21,34.96,27.33,50.75,8.18c13.35-16.2,20.04-30.42,39.29-36.01     c39.58,45.26,69.34,102.63,98.21,157.149c9.48,17.9,17.31,38.71,32.74,52.381C354.07,530.74,388.35,578.87,411.63,565.2z\\\"></path>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M396.9,475.16c-2.551,31.479,6.46,51.38,8.189,78.58c-32.46-3.021-41.14-29.8-78.58-27.83     c-39.58-74.46-76.189-151.88-129.31-212.8c-43.68,5.97-47.11,52.199-83.49,65.47c-0.7-58.54,22.27-93.4,62.21-111.31     c-27.81-61.67-68.17-110.81-96.58-171.88c-19.41-0.77-15.74,27.24-11.46,40.93c-39.42-12.97-44.57-60.2-45.84-111.31     c61.09-11.64,110.78,12.6,121.14,62.2c-19.79-0.49-23.52-28.59-44.2-18.01c18.35,70.6,82.14,109.93,114.59,171.88     c32.98-16.67,57.831-41.47,70.38-78.57c40.2,36.53-5.19,99.49-36.01,116.22C294.36,347.44,346.2,410.73,396.9,475.16z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n</g></svg>\",\"rotate\":0,\"change_color\":1,\"title\":\"cs00505\",\"file_name\":\"924cs00505.svg\",\"file\":{\"type\":\"svg\",\"colors\":[]},\"thumb\":\"http://tshirt.local/media/cliparts/80/thumbs/3295c76acbf4caaed33c36b1b5fc2cb1.png\",\"url\":\"http://tshirt.local/media/cliparts/80/\",\"clipart_id\":\"66\"}}}', '', '\"[]\"', 'media/assets/system/2016/08/front_1470640499.png', '2016-08-08 09:15:05', '0000-00-00 00:00:00');
 INSERT INTO `dg_users_designs` VALUES ('31', '', '', '7857A8339A0051F', '1', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"100px\",\"top\":\"113px\",\"left\":\"63px\",\"zIndex\":\"1\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" x=\\\"0px\\\" y=\\\"0px\\\" width=\\\"100px\\\" height=\\\"100px\\\" viewBox=\\\"0 0 648 648\\\" enable-background=\\\"new 0 0 648 648\\\" xml:space=\\\"preserve\\\"><g>\\n<g id=\\\"Layer_1_x23_000000\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"none\\\" d=\\\"M541.34,125.62c0,139.24,0,278.479,0,417.72c-139.24,0-278.48,0-417.72,0c0-138.78,0-277.56,0-416.35     c-0.04-0.65-0.08-1.29,0.46-1.37C263.16,125.62,402.25,125.62,541.34,125.62z\\\"></path>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M550.96,125.62c0,139.24,0,278.479,0,417.72c-1.02,5.391-4.229,8.601-9.62,9.62c-139.24,0-278.48,0-417.72,0     c-5.39-1.02-8.6-4.229-9.62-9.62c0-139.24,0-278.48,0-417.72c1.02-5.39,4.23-8.6,9.62-9.62c139.24,0,278.479,0,417.72,0     C546.73,117.02,549.94,120.23,550.96,125.62z M541.34,543.34c0-139.24,0-278.48,0-417.72c-139.09,0-278.18,0-417.26,0     c-0.54,0.08-0.5,0.72-0.46,1.37c0,138.79,0,277.569,0,416.35C262.86,543.34,402.1,543.34,541.34,543.34z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n<g id=\\\"Layer_2_x23_F2811C\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"#F08121\\\" d=\\\"M541.34,125.62c0,139.24,0,278.479,0,417.72c-139.24,0-278.48,0-417.72,0c0-138.78,0-277.56,0-416.35     c-0.04-0.65-0.08-1.29,0.46-1.37C263.16,125.62,402.25,125.62,541.34,125.62z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n</g></svg>\",\"rotate\":0,\"change_color\":1,\"title\":\"cs00349\",\"file_name\":\"385cs00349.svg\",\"file\":{\"type\":\"svg\",\"colors\":[]},\"thumb\":\"http://tshirt.local/media/cliparts/80/thumbs/ad61ab143223efbc24c7d2583be69251.png\",\"url\":\"http://tshirt.local/media/cliparts/80/\",\"clipart_id\":\"74\"}},\"back\":{\"0\":{\"type\":\"text\",\"width\":\"55px\",\"height\":\"24px\",\"top\":\"134px\",\"left\":\"77px\",\"zIndex\":\"6\",\"svg\":\"<svg width=\\\"55\\\" height=\\\"24\\\" viewBox=\\\"0 0 55 24\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g id=\\\"0.5931108322620473\\\"><text fill=\\\"#FF0000\\\" stroke=\\\"none\\\" stroke-width=\\\"0\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" x=\\\"27\\\" y=\\\"20\\\" text-anchor=\\\"middle\\\" font-size=\\\"24px\\\" font-family=\\\"arial\\\"><tspan x=\\\"50%\\\" dy=\\\"0\\\">Hello</tspan></text></g></svg>\",\"rotate\":0,\"text\":\"Hello\",\"color\":\"#FF0000\",\"fontFamily\":\"arial\"}}}', '', '\"[]\"', 'media/assets/system/2016/08/front_1470641043.png', '2016-08-08 09:24:10', '0000-00-00 00:00:00');
-INSERT INTO `dg_users_designs` VALUES ('32', '', '', 'AC57ADDBE64D640', '4', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"63px\",\"top\":\"140px\",\"left\":\"79px\",\"zIndex\":\"11\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" x=\\\"0px\\\" y=\\\"0px\\\" width=\\\"100px\\\" height=\\\"62.5px\\\" viewBox=\\\"0 0 576 360\\\" enable-background=\\\"new 0 0 576 360\\\" xml:space=\\\"preserve\\\"><g>\\n<g id=\\\"Layer_2_x23_F49D9D\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<g>\\n\\t\\t\\t\\t<g>\\n\\t\\t\\t\\t\\t<path fill=\\\"none\\\" d=\\\"M508.79,78.13c0,2.2,0,4.39,0,6.59c9.05-2.68,15.229-14.06,16.479-20.88       C520.8,69.62,516.88,75.96,508.79,78.13z M86.7,112.2c11.63-12.18,22.5-25.13,35.18-36.27c-19.56-9.39-34.75-29-54.96-34.08       c11.02,11.69,20.62,24.82,29.67,38.48C86.08,69.59,78.32,56.1,66.92,46.25C68.43,73.31,81.19,89.14,86.7,112.2z M220.8,338.63       c2.47-1.2,1.93-5.39,4.4-6.59c0.81,4.03-2.7,6.11,0,8.79c3.66,0,7.33,0,10.99,0c2.11-5.21,5.92-8.73,7.69-14.29       c-3.45-4.97-3.16-13.69-9.89-15.39c-5.23,3.93-12.51,5.81-19.78,7.699c0.59,7.19-0.68,12.511-1.1,18.681       C216.58,337,216.99,339.51,220.8,338.63z M199.92,45.15c11.4,27.44,24.69,58.84,29.68,89.04       c-12.85-32.59-20.19-76.54-40.67-97.83c2.59,5.63,4.94,11.74,7.04,18.2l-1.31,0.42c-4.45-13.56-11.16-24.86-22.22-31.81       c-12.92,24.66-2.76,65.93-3.3,93.43c-1.42-19.46-5.54-36.23-6.59-56.06c-22.43,2-33.92,13.78-47.27,25.28       C82.52,114.06,58.46,165,62.52,221.02c10.6-5.909,22.21-2.689,32.59,4.811l-0.81,1.12c-4.18-3.03-8.61-5.13-13.09-5.931       c-15.6-2.77-24.02,8.561-23.09,19.79c0.79,9.5,18.09,28.87,29.68,38.471c8.01,6.63,24.63,14.149,32.03,5.649l2.45,0.53       c-2.38,2.13-5.06,3.98-5.9,7.01c9.57,6.181,20.5,11.011,32.98,14.29c3.59-11.16,16.14,0.53,18.68,4.391       c40.14,7.229,65.91-14.471,87.94-25.28c-3.72,7.649-13.3,9.43-17.59,16.49c9.71,9.71,11.67,27.17,19.78,38.47       c2.93,0,5.87,0,8.8,0c3.68-0.72,1.91-6.88,4.39-8.79c0,2.93,0,5.86,0,8.79c34-1.29,27.03-49.84,28.581-76.94       c4.13,11.83,3.47,27.021,1.1,40.67c66.43,10.181,114.43-21.17,135.2-67.05c-10.32,28.521-29.05,48.62-50.561,65.95       c-1.18,9.45-5.04,16.21-5.5,26.38c5.051,0.09,7.09,3.18,13.19,2.2c4.2-1.3,3.5-7.49,7.7-8.8c-0.98,2.689-2.561,4.77-2.2,8.8       c10.76-0.97,20.729-2.72,29.68-5.5C454,285.89,484.28,228.32,489,166.06c1.17-15.39-1.07-31.28-5.49-40.67       c6.641-8.39,20.17-16.15,23.08-30.77c4.271-21.49-9.439-49.85-25.28-48.37c-19.14,1.8-10.449,42.29,8.79,36.27l2.521,0.4       c-4.05,9.1-12.45,16.63-22.3,16.09c-3.74,2.67,5.279,4.86,2.189,6.6c-15.88-18.59-26.77-39.35-48.359-53.86       c-19.9-13.38-45.65-25.04-72.551-30.78C294.52,8.79,248.14,32.02,199.92,45.15z M528.57,42.95       c13.569,16.8-4.471,40.92-15.391,50.57c3.38,14.16-16.39,25.11-18.68,35.17c-2.02,8.86,3.17,29.31,2.2,42.87       c-1.38,19.18-9.82,39.93-12.101,58.25c-3.93,31.62,1.881,62.891,0,93.431c-10.42,7.899-23.46,13.18-42.859,12.1       c-3.34,0.03-2.74-3.859-3.3-6.6c-14.23,12.02-51.341,12.89-68.15,2.2c0.15-11.21,7.11-15.61,8.79-25.28       c-19.04,3.67-45.74,9.21-73.64,7.689c-5.431,9.96-6.2,24.58-14.29,31.881c-15.47-3.511-41.271,10.319-46.17-6.601       c-3.75,1.75-3.43,7.57-6.59,9.9c-13.97,0.04-24.96-2.9-34.08-7.7c1.52-6.54,0.54-15.59,2.2-21.98       c-34.93,7.16-71.98-5.42-93.43-21.989c-3.3,0-6.59,0-9.89,0c-21.23-16.511-59.48-36.95-45.07-74.74       c-5.44-44.32,5.4-81.77,21.99-107.72C71.8,89.73,63.78,64.78,59.22,36.36c13.62-7.11,24.37,4.27,34.08,10.99       c10.41,7.21,20.63,15.06,31.87,19.79c10.89-3.41,18.59-10,30.78-12.09c3.24-15.45,6.43-30.94,15.39-40.67       c17.06,0.52,22.88,12.29,31.87,20.88c40.52-14.3,88.6-31.35,138.5-24.18c46.04,6.62,85.04,28.68,111.021,56.06       c3.93,4.13,8.859,9.21,13.189,14.29c2.85,3.34,7.58,13.04,14.29,6.59c-2.63-6.12-12.14-8.55-14.29-17.59       c-2.84-11.92,3.021-27.66,12.09-29.67c18.51-4.12,26.16,17.9,34.07,28.57C522.78,65.74,526.44,55.11,528.57,42.95z        M475.81,322.15c0.351-23.99,3.11-44.62,1.101-67.051c-8.99,20.69-37.25,44.83-34.07,71.44c2.72,0.96,8.521,2.15,10.99,0       c2.92-2.57,1.8-9.19,4.39-12.09c0,3.66,0,7.33,0,10.99C465.89,326.15,469.1,322.39,475.81,322.15z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"none\\\" d=\\\"M508.79,78.13c0,2.2,0,4.39,0,6.59c9.05-2.68,15.229-14.06,16.479-20.88       C520.8,69.62,516.88,75.96,508.79,78.13z M86.7,112.2c11.63-12.18,22.5-25.13,35.18-36.27c-19.56-9.39-34.75-29-54.96-34.08       c11.02,11.69,20.62,24.82,29.67,38.48C86.08,69.59,78.32,56.1,66.92,46.25C68.43,73.31,81.19,89.14,86.7,112.2z M220.8,338.63       c2.47-1.2,1.93-5.39,4.4-6.59c0.81,4.03-2.7,6.11,0,8.79c3.66,0,7.33,0,10.99,0c2.11-5.21,5.92-8.73,7.69-14.29       c-3.45-4.97-3.16-13.69-9.89-15.39c-5.23,3.93-12.51,5.81-19.78,7.699c0.59,7.19-0.68,12.511-1.1,18.681       C216.58,337,216.99,339.51,220.8,338.63z M199.92,45.15c11.4,27.44,24.69,58.84,29.68,89.04       c-12.85-32.59-20.19-76.54-40.67-97.83c2.59,5.63,4.94,11.74,7.04,18.2l-1.31,0.42c-4.45-13.56-11.16-24.86-22.22-31.81       c-12.92,24.66-2.76,65.93-3.3,93.43c-1.42-19.46-5.54-36.23-6.59-56.06c-22.43,2-33.92,13.78-47.27,25.28       C82.52,114.06,58.46,165,62.52,221.02c10.6-5.909,22.21-2.689,32.59,4.811l-0.81,1.12c-4.18-3.03-8.61-5.13-13.09-5.931       c-15.6-2.77-24.02,8.561-23.09,19.79c0.79,9.5,18.09,28.87,29.68,38.471c8.01,6.63,24.63,14.149,32.03,5.649l2.45,0.53       c-2.38,2.13-5.06,3.98-5.9,7.01c9.57,6.181,20.5,11.011,32.98,14.29c3.59-11.16,16.14,0.53,18.68,4.391       c40.14,7.229,65.91-14.471,87.94-25.28c-3.72,7.649-13.3,9.43-17.59,16.49c9.71,9.71,11.67,27.17,19.78,38.47       c2.93,0,5.87,0,8.8,0c3.68-0.72,1.91-6.88,4.39-8.79c0,2.93,0,5.86,0,8.79c34-1.29,27.03-49.84,28.581-76.94       c4.13,11.83,3.47,27.021,1.1,40.67c66.43,10.181,114.43-21.17,135.2-67.05c-10.32,28.521-29.05,48.62-50.561,65.95       c-1.18,9.45-5.04,16.21-5.5,26.38c5.051,0.09,7.09,3.18,13.19,2.2c4.2-1.3,3.5-7.49,7.7-8.8c-0.98,2.689-2.561,4.77-2.2,8.8       c10.76-0.97,20.729-2.72,29.68-5.5C454,285.89,484.28,228.32,489,166.06c1.17-15.39-1.07-31.28-5.49-40.67       c6.641-8.39,20.17-16.15,23.08-30.77c4.271-21.49-9.439-49.85-25.28-48.37c-19.14,1.8-10.449,42.29,8.79,36.27l2.521,0.4       c-4.05,9.1-12.45,16.63-22.3,16.09c-3.74,2.67,5.279,4.86,2.189,6.6c-15.88-18.59-26.77-39.35-48.359-53.86       c-19.9-13.38-45.65-25.04-72.551-30.78C294.52,8.79,248.14,32.02,199.92,45.15z M528.57,42.95       c13.569,16.8-4.471,40.92-15.391,50.57c3.38,14.16-16.39,25.11-18.68,35.17c-2.02,8.86,3.17,29.31,2.2,42.87       c-1.38,19.18-9.82,39.93-12.101,58.25c-3.93,31.62,1.881,62.891,0,93.431c-10.42,7.899-23.46,13.18-42.859,12.1       c-3.34,0.03-2.74-3.859-3.3-6.6c-14.23,12.02-51.341,12.89-68.15,2.2c0.15-11.21,7.11-15.61,8.79-25.28       c-19.04,3.67-45.74,9.21-73.64,7.689c-5.431,9.96-6.2,24.58-14.29,31.881c-15.47-3.511-41.271,10.319-46.17-6.601       c-3.75,1.75-3.43,7.57-6.59,9.9c-13.97,0.04-24.96-2.9-34.08-7.7c1.52-6.54,0.54-15.59,2.2-21.98       c-34.93,7.16-71.98-5.42-93.43-21.989c-3.3,0-6.59,0-9.89,0c-21.23-16.511-59.48-36.95-45.07-74.74       c-5.44-44.32,5.4-81.77,21.99-107.72C71.8,89.73,63.78,64.78,59.22,36.36c13.62-7.11,24.37,4.27,34.08,10.99       c10.41,7.21,20.63,15.06,31.87,19.79c10.89-3.41,18.59-10,30.78-12.09c3.24-15.45,6.43-30.94,15.39-40.67       c17.06,0.52,22.88,12.29,31.87,20.88c40.52-14.3,88.6-31.35,138.5-24.18c46.04,6.62,85.04,28.68,111.021,56.06       c3.93,4.13,8.859,9.21,13.189,14.29c2.85,3.34,7.58,13.04,14.29,6.59c-2.63-6.12-12.14-8.55-14.29-17.59       c-2.84-11.92,3.021-27.66,12.09-29.67c18.51-4.12,26.16,17.9,34.07,28.57C522.78,65.74,526.44,55.11,528.57,42.95z        M475.81,322.15c0.351-23.99,3.11-44.62,1.101-67.051c-8.99,20.69-37.25,44.83-34.07,71.44c2.72,0.96,8.521,2.15,10.99,0       c2.92-2.57,1.8-9.19,4.39-12.09c0,3.66,0,7.33,0,10.99C465.89,326.15,469.1,322.39,475.81,322.15z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M525.27,63.84c-1.25,6.82-7.43,18.2-16.479,20.88c0-2.2,0-4.39,0-6.59       C516.88,75.96,520.8,69.62,525.27,63.84z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M94.3,226.95c16.21,11.78,28.75,37.689,26.48,56.72c-0.3,0.45-0.62,0.88-0.95,1.26       c-7.4,8.5-24.02,0.98-32.03-5.649c-11.59-9.601-28.89-28.971-29.68-38.471c-0.93-11.229,7.49-22.56,23.09-19.79       C85.69,221.82,90.12,223.92,94.3,226.95z M76.81,250.7c5.91,10.66,18.5,24.84,34.07,18.689       C108.45,256,90.76,241.74,76.81,250.7z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M121.88,75.93C109.2,87.07,98.33,100.02,86.7,112.2c-5.51-23.06-18.27-38.89-19.78-65.95       c11.4,9.85,19.16,23.34,29.67,34.08c-9.05-13.66-18.65-26.79-29.67-38.48C87.13,46.93,102.32,66.54,121.88,75.93z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M243.88,326.54c-1.77,5.56-5.58,9.08-7.69,14.29c-3.66,0-7.33,0-10.99,0c-2.7-2.68,0.81-4.76,0-8.79       c-2.47,1.2-1.93,5.39-4.4,6.59c-3.81,0.88-4.22-1.63-7.69-1.1c0.42-6.17,1.69-11.49,1.1-18.681       c7.27-1.89,14.55-3.77,19.78-7.699C240.72,312.85,240.43,321.57,243.88,326.54z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M476.91,255.1c2.01,22.431-0.75,43.061-1.101,67.051c-6.71,0.239-9.92,4-17.59,3.29       c0-3.66,0-7.33,0-10.99c-2.59,2.899-1.47,9.52-4.39,12.09c-2.47,2.15-8.271,0.96-10.99,0       C439.66,299.93,467.92,275.79,476.91,255.1z\\\"></path>\\n\\t\\t\\t\\t\\t<path fill=\\\"#F49D9D\\\" d=\\\"M188.93,36.36c20.48,21.29,27.82,65.24,40.67,97.83c-4.99-30.2-18.28-61.6-29.68-89.04       c48.22-13.13,94.6-36.36,151.68-24.18c26.9,5.74,52.65,17.4,72.551,30.78c21.59,14.51,32.479,35.27,48.359,53.86       c3.09-1.74-5.93-3.93-2.189-6.6c9.85,0.54,18.25-6.99,22.3-16.09c4.68-10.54,3.52-23.19-8.021-27.87       c-16.239,9.91,9.851,16.26,5.5,27.47c-19.239,6.02-27.93-34.47-8.79-36.27c15.841-1.48,29.551,26.88,25.28,48.37       c-2.91,14.62-16.439,22.38-23.08,30.77c4.42,9.39,6.66,25.28,5.49,40.67c-4.72,62.26-35,119.83-60.45,160.48       c-8.95,2.78-18.92,4.53-29.68,5.5c-0.36-4.03,1.22-6.11,2.2-8.8c-4.2,1.31-3.5,7.5-7.7,8.8c-6.101,0.979-8.14-2.11-13.19-2.2       c0.46-10.17,4.32-16.93,5.5-26.38c21.511-17.33,40.24-37.43,50.561-65.95c-20.771,45.88-68.771,77.23-135.2,67.05       c2.37-13.649,3.03-28.84-1.1-40.67c-1.551,27.101,5.42,75.65-28.581,76.94c0-2.93,0-5.86,0-8.79       c-2.48,1.91-0.71,8.07-4.39,8.79c-2.93,0-5.87,0-8.8,0c-8.11-11.3-10.07-28.76-19.78-38.47c4.29-7.061,13.87-8.841,17.59-16.49       c-22.03,10.81-47.8,32.51-87.94,25.28c-2.54-3.86-15.09-15.551-18.68-4.391c-12.48-3.279-23.41-8.109-32.98-14.29       c0.84-3.029,3.52-4.88,5.9-7.01c1.86-1.67,3.53-3.5,3.99-6.18c2.23-12.73-12.48-39.99-31.16-53.45       c-10.38-7.5-21.99-10.72-32.59-4.811c-4.06-56.02,20-106.959,52.76-135.2c13.35-11.5,24.84-23.28,47.27-25.28       c1.05,19.83,5.17,36.6,6.59,56.06c0.54-27.5-9.62-68.77,3.3-93.43c11.06,6.95,17.77,18.25,22.22,31.81       c8.49,25.89,8.73,60.04,15.15,88c-0.78-29.83-5.28-62.07-13.84-88.42C193.87,48.1,191.52,41.99,188.93,36.36z M96.59,188.05       c6.08-3.31,3-16.78-5.49-15.39C88.68,178.02,90.22,187.91,96.59,188.05z\\\"></path>\\n\\t\\t\\t\\t</g>\\n\\t\\t\\t</g>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n<g id=\\\"Layer_1_x23_000000\\\">\\n\\t<g>\\n\\t\\t<g>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M528.57,42.952c13.569,16.8-4.471,40.92-15.391,50.57c3.38,14.16-16.39,25.11-18.68,35.17     c-2.02,8.86,3.17,29.31,2.2,42.87c-1.38,19.18-9.82,39.93-12.101,58.25c-3.93,31.62,1.881,62.89,0,93.43     c-10.42,7.9-23.46,13.18-42.859,12.1c-3.34,0.03-2.74-3.859-3.3-6.6c-14.23,12.02-51.341,12.89-68.15,2.2     c0.15-11.21,7.11-15.61,8.79-25.28c-19.04,3.67-45.74,9.21-73.64,7.69c-5.431,9.96-6.2,24.58-14.29,31.88     c-15.47-3.51-41.271,10.319-46.17-6.601c-3.75,1.75-3.43,7.57-6.59,9.9c-13.97,0.04-24.96-2.9-34.08-7.7     c1.52-6.54,0.54-15.59,2.2-21.979c-34.93,7.159-71.98-5.42-93.43-21.99c-3.3,0-6.59,0-9.89,0     c-21.23-16.51-59.48-36.95-45.07-74.74c-5.44-44.32,5.4-81.77,21.99-107.72c-8.31-24.67-16.33-49.62-20.89-78.04     c13.62-7.11,24.37,4.27,34.08,10.99c10.41,7.21,20.63,15.06,31.87,19.79c10.89-3.41,18.59-10,30.78-12.09     c3.24-15.45,6.43-30.94,15.39-40.67c17.06,0.52,22.88,12.29,31.87,20.88c40.52-14.3,88.6-31.35,138.5-24.18     c46.04,6.62,85.04,28.68,111.021,56.06c3.93,4.13,8.859,9.21,13.189,14.29c2.85,3.34,7.58,13.04,14.29,6.59     c-2.63-6.12-12.14-8.55-14.29-17.59c-2.84-11.92,3.021-27.66,12.09-29.67c18.51-4.12,26.16,17.9,34.07,28.57     C522.78,65.742,526.44,55.112,528.57,42.952z M508.79,84.722c9.05-2.68,15.229-14.06,16.479-20.88     c-4.47,5.78-8.39,12.12-16.479,14.29C508.79,80.332,508.79,82.522,508.79,84.722z M506.59,94.622     c4.271-21.49-9.439-49.85-25.28-48.37c-19.14,1.8-10.449,42.29,8.79,36.27c4.351-11.21-21.739-17.56-5.5-27.47     c21.5,8.72,6.971,45.12-14.279,43.96c-3.74,2.67,5.279,4.86,2.189,6.6c-15.88-18.59-26.77-39.35-48.359-53.86     c-19.9-13.38-45.65-25.04-72.551-30.78c-57.08-12.18-103.459,11.05-151.68,24.18c11.4,27.44,24.69,58.84,29.68,89.04     c-12.85-32.59-20.19-76.54-40.67-97.83c13.17,28.59,19.91,69.48,20.88,106.62c-9.79-42.6-5.21-99.58-37.37-119.81     c-12.92,24.66-2.76,65.93-3.3,93.43c-1.42-19.46-5.54-36.23-6.59-56.06c-22.43,2-33.92,13.78-47.27,25.28     c-32.76,28.24-56.82,79.18-52.76,135.2c29.67-16.54,67.22,38.46,63.75,58.26c-1.07,6.13-8.4,7.81-9.89,13.19     c9.57,6.18,20.5,11.01,32.98,14.289c3.59-11.159,16.14,0.53,18.68,4.391c40.14,7.229,65.91-14.47,87.94-25.28     c-3.72,7.65-13.3,9.43-17.59,16.49c9.71,9.71,11.67,27.17,19.78,38.47c2.93,0,5.87,0,8.8,0c3.68-0.72,1.91-6.88,4.39-8.79     c0,2.931,0,5.86,0,8.79c34-1.29,27.03-49.84,28.581-76.939c4.13,11.83,3.47,27.02,1.1,40.67     c66.43,10.18,114.43-21.17,135.2-67.051c-10.32,28.521-29.05,48.62-50.561,65.95c-1.18,9.45-5.04,16.21-5.5,26.38     c5.051,0.091,7.09,3.181,13.19,2.2c4.2-1.3,3.5-7.49,7.7-8.8c-0.98,2.69-2.561,4.77-2.2,8.8c10.76-0.97,20.729-2.72,29.68-5.5     c25.45-40.649,55.73-98.22,60.45-160.48c1.17-15.39-1.07-31.28-5.49-40.67C490.15,117.002,503.68,109.242,506.59,94.622z      M475.81,322.152c0.351-23.99,3.11-44.62,1.101-67.05c-8.99,20.689-37.25,44.83-34.07,71.439c2.72,0.96,8.521,2.15,10.99,0     c2.92-2.569,1.8-9.189,4.39-12.09c0,3.66,0,7.33,0,10.99C465.89,326.152,469.1,322.393,475.81,322.152z M236.19,340.832     c2.11-5.21,5.92-8.729,7.69-14.29c-3.45-4.97-3.16-13.689-9.89-15.39c-5.23,3.93-12.51,5.81-19.78,7.7     c0.59,7.189-0.68,12.51-1.1,18.68c3.47-0.53,3.88,1.979,7.69,1.1c2.47-1.199,1.93-5.39,4.4-6.59c0.81,4.03-2.7,6.11,0,8.79     C228.86,340.832,232.53,340.832,236.19,340.832z M120.78,283.672c2.86-23.939-17.72-58.76-39.57-62.649     c-15.6-2.771-24.02,8.56-23.09,19.79c0.79,9.5,18.09,28.87,29.68,38.47C96.18,286.212,113.96,294.122,120.78,283.672z      M86.7,112.202c11.63-12.18,22.5-25.13,35.18-36.27c-19.56-9.39-34.75-29-54.96-34.08c11.02,11.69,20.62,24.82,29.67,38.48     c-10.51-10.74-18.27-24.23-29.67-34.08C68.43,73.312,81.19,89.142,86.7,112.202z\\\"></path>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M110.88,269.393c-15.57,6.149-28.16-8.03-34.07-18.69C90.76,241.742,108.45,256.002,110.88,269.393z\\\"></path>\\n\\t\\t\\t<path fill=\\\"#000000\\\" d=\\\"M91.1,172.662c8.49-1.39,11.57,12.08,5.49,15.39C90.22,187.912,88.68,178.022,91.1,172.662z\\\"></path>\\n\\t\\t</g>\\n\\t</g>\\n</g>\\n</g></svg>\",\"rotate\":0,\"change_color\":1,\"title\":\"cardd\",\"file_name\":\"39cs000801.svg\",\"file\":{\"type\":\"svg\",\"colors\":[\"#F49D9D\",\"#000000\"]},\"thumb\":\"http://teevision.tk/media/cliparts/36/thumbs/da4fb5c6e93e74d3df8527599fa62642.png\",\"url\":\"http://teevision.tk/media/cliparts/36/\",\"clipart_id\":\"120\"}},\"back\":{\"0\":{\"type\":\"team\",\"width\":\"69px\",\"height\":\"24px\",\"top\":\"134px\",\"left\":\"70px\",\"zIndex\":\"1\",\"svg\":\"<svg width=\\\"69\\\" height=\\\"24\\\" viewBox=\\\"0 0 69 24\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g id=\\\"0.8939649834523109\\\"><text fill=\\\"#000000\\\" stroke=\\\"none\\\" stroke-width=\\\"0\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" x=\\\"34\\\" y=\\\"20\\\" text-anchor=\\\"middle\\\" font-size=\\\"24px\\\" font-family=\\\"arial\\\"><tspan x=\\\"50%\\\" dy=\\\"0\\\">NAME</tspan></text></g></svg>\",\"text\":\"NAME\",\"color\":\"#000000\",\"fontFamily\":\"arial\"},\"1\":{\"type\":\"team\",\"width\":\"27px\",\"height\":\"24px\",\"top\":\"167px\",\"left\":\"95px\",\"zIndex\":\"6\",\"svg\":\"<svg width=\\\"27\\\" height=\\\"24\\\" viewBox=\\\"0 0 27 24\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g id=\\\"0.012647993661575985\\\"><text fill=\\\"#000000\\\" stroke=\\\"none\\\" stroke-width=\\\"0\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" x=\\\"13\\\" y=\\\"20\\\" text-anchor=\\\"middle\\\" font-size=\\\"24px\\\" font-family=\\\"arial\\\"><tspan x=\\\"50%\\\" dy=\\\"0\\\">00</tspan></text></g></svg>\",\"text\":\"00\",\"color\":\"#000000\",\"fontFamily\":\"arial\"}}}', '', '\"{\\\"size\\\":{\\\"1\\\":\\\"SM::1-0-0\\\"}}\"', 'media/assets/system/2016/08/front_1471011722.png', '2016-08-12 10:23:34', '0000-00-00 00:00:00');
-INSERT INTO `dg_users_designs` VALUES ('33', '', '', 'D457AF427359AA6', '4', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"141px\",\"top\":\"116px\",\"left\":\"69px\",\"zIndex\":\"1\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xml:space=\\\"preserve\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g><image x=\\\"0\\\" y=\\\"0\\\" width=\\\"100\\\" height=\\\"140.66666666666666\\\" xlink:href=\\\"http://teevision.tk/media/assets/uploaded/2016/08/970cs00198_thumb.png\\\"></image></g></svg>\",\"rotate\":0,\"change_color\":0,\"title\":\"970cs00198\",\"file_name\":\"970cs00198.svg\",\"file\":{\"type\":\"image\"},\"thumb\":\"http://teevision.tk/media/assets/uploaded/2016/08/970cs00198_thumb.png\",\"url\":\"http://teevision.tk/media/assets/uploaded/2016/08/970cs00198.svg\"}},\"back\":{}}', '', '\"[]\"', 'media/assets/system/2016/08/front_1471103591.png', '2016-08-13 11:53:23', '0000-00-00 00:00:00');
-INSERT INTO `dg_users_designs` VALUES ('34', '', '', '1E57AF46961C1E3', '4', '0', '1', '000000', '{\"front\":{\"0\":{\"type\":\"clipart\",\"width\":\"100px\",\"height\":\"125px\",\"top\":\"127px\",\"left\":\"68px\",\"zIndex\":\"1\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xml:space=\\\"preserve\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><g><image x=\\\"0\\\" y=\\\"0\\\" width=\\\"100\\\" height=\\\"125\\\" xlink:href=\\\"http://teevision.tk/media/assets/uploaded/2016/08/43cs00084.svg_thumb.png\\\"></image></g></svg>\",\"rotate\":0,\"change_color\":0,\"title\":\"43cs00084\",\"file_name\":\"43cs00084.svg\",\"file\":{\"type\":\"image\"},\"thumb\":\"http://teevision.tk/media/assets/uploaded/2016/08/43cs00084.svg_thumb.png\",\"url\":\"http://teevision.tk/media/assets/uploaded/2016/08/43cs00084.svg\"}},\"back\":{\"0\":{\"type\":\"clipart\",\"width\":\"78px\",\"height\":\"104px\",\"top\":\"92.0317px\",\"left\":\"71.2816px\",\"zIndex\":\"6\",\"svg\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xml:space=\\\"preserve\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" width=\\\"77\\\" height=\\\"104\\\" preserveAspectRatio=\\\"none\\\"><g><image x=\\\"0\\\" y=\\\"0\\\" width=\\\"77\\\" height=\\\"104\\\" xlink:href=\\\"http://teevision.tk/media/assets/uploaded/2016/08/1462551770549_366_thumb.jpg\\\"></image></g></svg>\",\"rotate\":91,\"change_color\":0,\"title\":\"1462551770549_366\",\"file_name\":\"1462551770549_366.jpg\",\"file\":{\"type\":\"image\"},\"thumb\":\"http://teevision.tk/media/assets/uploaded/2016/08/1462551770549_366_thumb.jpg\",\"url\":\"http://teevision.tk/media/assets/uploaded/2016/08/1462551770549_366.jpg\"}}}', '', '\"[]\"', 'media/assets/system/2016/08/front_1471104651.png', '2016-08-13 12:11:02', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for dg_users_temp
@@ -6362,3 +5998,22 @@ CREATE TABLE `dg_users_temp` (
 -- ----------------------------
 INSERT INTO `dg_users_temp` VALUES ('1', 'toaicv', 'nhn.toaicv@gmail.com', '5b797112eaf260ae0847275e49f62807cf1ce06af4afbb9928c04d3bd432c68582c65bc33b5d9c7b8a69015227ecce447af06d24006a524addd59e065c41e519', '18157965412469608debea124f0a1a9f', '2015-11-18 08:56:55', '');
 INSERT INTO `dg_users_temp` VALUES ('2', 'tttt', 'webuser.t1@gmail.com', '01da41a750f7889d20a9efa96bda366d6e3174c7beb75815596ab37bd985ad8cfee4b9811dc71523a8ebcd0344a7350c3d9b67450cd263db8cff6f7a304a9597', '44318dcd1e296e7a670ee57fa021e91d', '2016-05-11 04:07:47', '');
+
+-- ----------------------------
+-- Table structure for dg_user_groups
+-- ----------------------------
+DROP TABLE IF EXISTS `dg_user_groups`;
+CREATE TABLE `dg_user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `default` varchar(1) NOT NULL DEFAULT '0',
+  `permissions` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dg_user_groups
+-- ----------------------------
+INSERT INTO `dg_user_groups` VALUES ('1', 'admin', '0', '[\"edit_user\",\"ajax\",\"art\",\"categories\",\"coupon\",\"custom\",\"dashboard\",\"design\",\"idea\",\"layout\",\"media\",\"menu\",\"module\",\"orders\",\"page\",\"products\",\"settings\",\"update\",\"users\"]');
+INSERT INTO `dg_user_groups` VALUES ('2', 'manager', '0', '[\"custom\",\"dashboard\",\"settings\",\"users\"]');
+INSERT INTO `dg_user_groups` VALUES ('4', 'customer', '1', 'false');
