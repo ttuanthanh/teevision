@@ -1252,6 +1252,6 @@ class Orders extends Admin_Controller
                 $this->db->where('order_id', $oder_id);
                 $this->db->update('orders_userinfo' , $order_info);
   
-                
+                redirect($_SERVER['HTTP_REFERER']);
 	}
 }

@@ -15,8 +15,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
 <div class="modal-header">
-	<h4 class="modal-title"><?php echo lang('orders_admin_detail_view_title');?></h4>
-	<span class="help-block"><?php echo lang('orders_admin_detail_view_title_help');?></span>
+	<h4 class="modal-title">Edit shipping information</h4>
 </div>
         
 	<div class="modal-body">
@@ -41,9 +40,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 </tr>
                                 <?php } ?>
                             <?php } ?>
-                                <tr>
+                                <tr class="row text-right">
                                     <td colspan="2">
                                         <button class="btn btn-success">Save</button>
+                                        <button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
                                     </td>
                                 </tr>
                         </tbody>
@@ -53,7 +53,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 </div>
 	</div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
+	
 </div>
 <script type="text/javascript">
 function downloadPNG(url)
