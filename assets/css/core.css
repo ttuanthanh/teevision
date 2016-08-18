@@ -35,7 +35,7 @@ ul.p-color-sizes {
 ul.p-color-sizes li {
   display: inline-block;
   margin: 0 6px;
-  text-align: center;
+  text-align: left;
   width: 58px;
 }
 ul.p-color-sizes li:first-child {
@@ -1248,3 +1248,11 @@ outline-color: #2e2423;
 .f-size18{
     font-size: 18px;
 }
+.main-image a img.img-thumbnail{
+    border: none!important;
+}
+.main-image{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.btn-godesign{ margin: 0;}
