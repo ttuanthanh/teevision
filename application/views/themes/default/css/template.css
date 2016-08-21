@@ -91,8 +91,9 @@ width: 30%;     padding: 0px;
 .blog-page .category-sub .img-thumbnail { height:100px; width:150px}
 
 #dg-products .products-detail .img-thumbnail {height: 250px}
-#dg-designer .col-right, #dg-designer .col-left {width:300px}
- #dg-designer .dg-share .dg-box {width:300px}
+#dg-designer .col-right{width:300px}
+#dg-designer .col-left{width: 500px}
+#dg-designer .dg-share .dg-box {width:300px}
  
  ul.p-color-sizes li input {width:50px;}
  .p-color-sizes li label  {width:100%;}
