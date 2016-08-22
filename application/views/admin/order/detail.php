@@ -357,6 +357,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <?php } ?>
                     </tbody>
                   </table>
+                <div class="text-center">
+                    <a href="<?php echo site_url('admin/orders/edit_shipping/'.$order->id); ?>" class="btn btn-success fancybox.iframe ship-info" >Edit Information</a>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -493,7 +497,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         jQuery('document').ready(function(){
 		jQuery('.tooltips').tooltip();
 		jQuery('.fancybox').fancybox();
+                jQuery('.ship-info').fancybox({ 
+                    afterClose: function() {
+                            location.reload();
+                        },
+                        width : 400,
+                        height: 400
+                });
 	});
+        function reload(){
+            alert('Test');
+        }
 	function load() 
 	{
         jQuery('#order_detail_body').block({

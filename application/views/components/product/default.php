@@ -52,7 +52,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                         </h2>
                 </div>
 		<!-- product image -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div id="product-image-area">
                             <?php
                             if ($color_load === true)
@@ -69,6 +69,108 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                     <!-- SKU -->
     <!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
 
+                    
+                </div>
+		
+		<!-- product info -->
+		<div class="col-md-6">
+						
+			<!-- rating -->
+                        
+            <p class="font-bold">Available color</p>
+             <!-- product design -->
+			<?php if (isset($product->design)) { ?>
+			<div class="form-group">
+				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
+			</div>
+			<?php } ?>
+                        <?php if (isset($product->design) && $product->design->front != '') { ?>
+                            <a class="btn btn-primary btn-product btn-godesign" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
+                        <?php } ?>
+                        
+                        <br><br>
+			<!-- product attribute -->
+			<?php if (isset($product->attributes)) { ?>
+			<div class="form-group">
+				<?php echo $product->attributes; ?>
+			</div>
+			<?php } ?>			
+			<div class="form-group clearfix">
+                            <div>
+                                <p><b>Decoration</b></p>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label class="font-nor" for="">Select Number of Front Colors: </label>
+                                <select class="form-control text-center width-200" id="print-front-num" onchange="getQuote()">
+                                    <option value="0" >==Select==</option>
+                                    <option value="1" >1 color</option>
+                                    <option value="2" >2 colors</option>
+                                    <option value="3" >3 colors</option>
+                                    <option value="4" >4 colors</option>
+                                    <option value="5" >5 colors</option>
+                                    <option value="6" >6 colors</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <label class="font-nor" for="">Select Number of Back Colors: </label>
+                                <select class="form-control text-center width-200" id="print-back-num" onchange="getQuote()">
+                                    <option value="0" >==Select==</option>
+                                    <option value="1" >1 color</option>
+                                    <option value="2" >2 colors</option>
+                                    <option value="3" >3 colors</option>
+                                    <option value="4" >4 colors</option>
+                                    <option value="5" >5 colors</option>
+                                    <option value="6" >6 colors</option>
+                                </select>
+                            </div>
+                            
+			</div>
+                        <!-- Price detail -->
+                        <div class="form-group price-calc hidden-box clearfix" id="price-detail">
+                            <hr>
+                            <div class="col-md-7 text-center">
+                                <p class="ship-free margin-0"><span class="cl-blue">Free Shipping </span>by (10 days) Guaranteed </p>
+                                <p class="ship-rush"><span class="cl-pink">Rush Shipping </span> available at checkout! </p>
+                            </div>
+                            <div class="col-md-5 text-right">
+                                <p class="price-unit  margin-0">Unit price: <span id="unit-price-value" class="cl-pink"></span></p>
+                                <p class="price-total cl-blue">Total price: <span id="total-price-value"></span></p>
+                            </div>
+                            <br clear="all">
+                            <hr style="margin-top: 0">
+                        </div>
+			<!-- form -->
+			<div class="form-group clearfix row">
+				<form name="addtocart" class="addtocart" action="" method="post">
+                                        <input type="hidden" value="<?php echo $product->id; ?>" id="product_id">
+					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
+					
+                                        
+					
+                                        <!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
+                                        <div class="col-md-6 text-left"><p class="btn btn-primary btn-quote btn-product width100o" id="btn-getquote" title="Click to get quote"> GET QUOTE</p></div>
+                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product hidden-box width100o" title="Click to get quote" >START ORDER</p></div>
+				</form>
+			</div>
+			
+			<!-- share -->
+			<!-- <hr class="clearfix">-->
+			
+			<div class="form-group clearfix text-right">
+                                <p class="font-bold">Share This product:</p>
+				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
+				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
+				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
+			</div>
+                        
+                        <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
+                            <input type="hidden" name="f-price" id="f-price">                            
+                        </form>
+			
+		</div>
+                <br clear="all">
+                <div class="col-md-12">
                     <!-- product short description -->
                     <br>
                     <p class="font-bold">Key features</p>
@@ -92,96 +194,6 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                             </p>
                     </div>
                 </div>
-		
-		<!-- product info -->
-		<div class="col-md-8">
-						
-			<!-- rating -->
-                        
-            <p class="font-bold">Available color</p>
-             <!-- product design -->
-			<?php if (isset($product->design)) { ?>
-			<div class="form-group">
-				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
-			</div>
-			<?php } ?>
-                        
-			
-			<!-- product attribute -->
-			<?php if (isset($product->attributes)) { ?>
-			<div class="form-group">
-				<?php echo $product->attributes; ?>
-			</div>
-			<?php } ?>			
-			<div class="form-group">
-                            <b>If you wish, select a decoration for one or more of the areas below.</b>
-                            <label for="">Select Number of Front Colors: </label>
-                            <select class="form-control text-center width-200" id="print-front-num" onchange="getQuote()">
-                                <option value="0" >==Select==</option>
-                                <option value="1" >1</option>
-                                <option value="2" >2</option>
-                                <option value="3" >3</option>
-                                <option value="4" >4</option>
-                                <option value="5" >5</option>
-                                <option value="6" >6</option>
-                            </select>
-
-                            <br>
-                            <label for="">Select Number of Back Colors: </label>
-                            <select class="form-control text-center width-200" id="print-back-num" onchange="getQuote()">
-                                <option value="0" >==Select==</option>
-                                <option value="1" >1</option>
-                                <option value="2" >2</option>
-                                <option value="3" >3</option>
-                                <option value="4" >4</option>
-                                <option value="5" >5</option>
-                                <option value="6" >6</option>
-                            </select>
-			</div>
-                        <!-- Price detail -->
-                        <div class="form-group price-calc hidden-box" id="price-detail">
-                            <hr>
-                            <div class="col-md-8 text-center">
-                                <p class="ship-free"><span class="red">Free Shipping </span>by (10 days) Guaranteed </p>
-                                <p class="ship-rush"><span class="red">Rushed Delivery:</span> (5 days) Guaranteed </p>
-                            </div>
-                            <div class="col-md-4 text-right">
-                                <p class="price-unit red margin-0">Unit price: <span id="unit-price-value"></span></p>
-                                <p class="price-total">Total price: <span id="total-price-value"></span></p>
-                            </div>
-                            <br clear="all">
-                            <hr>
-                        </div>
-			<!-- form -->
-			<div class="form-group clearfix text-right">
-				<form name="addtocart" class="addtocart" action="" method="post">
-                                    <input type="hidden" value="<?php echo $product->id; ?>" id="product_id">
-					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
-					
-                                        <p class="btn btn-primary btn-quote btn-product " id="btn-getquote" title="Click to get quote"> GET QUOTE</p>
-					<p class="btn btn-primary btn-order btn-product hidden-box" title="Click to get quote" >START ORDER</p>
-                                        <!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
-					<?php if (isset($product->design) && $product->design->front != '') { ?>
-                                            <!--<a class="btn btn-primary btn-quote" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>-->
-					<?php } ?>
-				</form>
-			</div>
-			
-			<!-- share -->
-			<!-- <hr class="clearfix">-->
-			<p class="font-bold">Share This</p>
-			<div class="form-group clearfix">
-				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
-				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
-				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
-			</div>
-                        
-                        <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
-                            <input type="hidden" name="f-price" id="f-price">                            
-                        </form>
-			
-		</div>
 	</div>
 	
 	<!-- RELATED PRODUCTS -->

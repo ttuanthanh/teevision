@@ -28,7 +28,7 @@ if ($product->gallery != '') {
 <div class="main-gallery">
 	<?php foreach ($gallery as $image) { ?>
 	<a href="javascript:void(0)" class="outline-none" data-zoom-image="<?php echo base_url($image); ?>">
-		<img src="<?php echo base_url($image); ?>" width="50" alt="<?php echo $product->title; ?>" class="img-thumbnail img-responsive">
+		<img src="<?php echo base_url($image); ?>" width="100" alt="<?php echo $product->title; ?>" class="img-thumbnail img-responsive">
 	</a>
 	<?php } ?>
 </div>
