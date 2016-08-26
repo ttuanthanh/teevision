@@ -2990,7 +2990,11 @@ ul.choose_payment .description {
 }
 #dg-designer #uploaded-art{
     overflow: auto;
-    height: 300px;
+    height: 280px;
+}
+#dg-designer .row-selected{
+    position: absolute;
+    bottom: 0;
 }
 
 /*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/

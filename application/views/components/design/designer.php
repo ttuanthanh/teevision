@@ -262,7 +262,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <div id="drop-area"></div>
 
                             </div>
-                            <div class="row">
+                            <div class="row row-selected">
                                 <div class="col-md-12">
                                     <div class="result-area align-center">
                                         <p><strong><span>SELECTED IMAGE</span></strong></p>
