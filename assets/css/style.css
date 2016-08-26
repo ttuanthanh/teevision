@@ -2988,7 +2988,10 @@ ul.choose_payment .description {
     height: 100px;
     width: 100%;
 }
-
+#dg-designer #uploaded-art{
+    overflow: auto;
+    height: 300px;
+}
 
 /*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/
     /*border-radius: 10px;*/
