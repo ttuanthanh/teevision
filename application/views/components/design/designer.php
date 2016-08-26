@@ -11,6 +11,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
 <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap-toggle.min.css'); ?>" rel="stylesheet">
 
 <script src="<?php echo base_url('assets/js/add-ons.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.ui.rotatable.js'); ?>"></script>
@@ -19,6 +20,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap-toggle.min.js'); ?>"></script>
 
 <script type="text/javascript">
     var baseURL = '<?php echo base_url(); ?>';
@@ -47,6 +49,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <div id="dg-left" class="width-100">
                 <div class="width-100 tab-left">
                     <ul class="menu-left" role="tablist">
+                        <!-- product-->
                         <li role="presentation" class="active">
                             <a href="#dg-products" aria-controls="#dg-products" role="tab" data-toggle="tab"
                                class="view_change_products">
@@ -54,8 +57,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <span><?php echo $lang['designer_menu_choose_product']; ?></span>
                             </a>
                         </li>
+                        <!-- upload-->
                         <li role="presentation">
-                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                            <a href="#dg-myclipart" aria-controls="profile" role="tab" data-toggle="tab">
                                 <i class="glyphicons camera"></i>
                                 <span> <?php echo $lang['designer_menu_upload_image']; ?></span>
                             </a>
@@ -101,13 +105,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 						-->
                     </ul>
                     <!-- Tab panes -->
-                    <div class="tab-content">
+                    <div class="main-tab tab-content">
                         <!-- Begin products -->
                         <div id="dg-products" role="tabpanel" class="tab-pane active">
                             <div class="row nav-product">
                                 <div class="col-md-4 text-left backButton">
                                     <a href="javascript:void(0)" class="btn-link" style="color: gray;cursor: default;">
-                                        <span class="glyphicon glyphicon-arrow-left" ></span>
+                                        <span class="glyphicon glyphicon-arrow-left"></span>
                                         Back
                                     </a>
                                 </div>
@@ -124,7 +128,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="row nav-select" style="display:none;">
                                 <div class="col-md-12 center nav-info">
-                                    <span class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
+                                    <span
+                                        class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
                                 </div>
                             </div>
                             <div class="products-detail col-sm-12">
@@ -174,7 +179,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                 </ul>
                                 <div class="modal-body">
-                                    <div class="row" style="height: 440px; overflow: auto">
+                                    <div class="row" style="height: 100%; overflow: auto">
                                         <!-- list product category -->
                                         <div class="product-list col-sm-12">
                                         </div>
@@ -184,147 +189,243 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                         </div>
                         <!-- End products -->
-                        <!-- Begin product Detail -->
-                        <!-- End product Detail -->
-                        <div role="tabpanel" class="tab-pane" id="profile">profile</div>
-                        <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                        <!--Start Add image-->
+                        <div class="tab-pane" id="dg-myclipart" role="tabpanel">
+                            <div class="row nav-bar">
+                                <div class="col-md-12 center nav-info">
+                                    <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs nav-category" role="tablist"">
+                                <li role="presentation" class="active"><a href="#upload-conputer" role="tab" id="tab-upload-conputer"
+                                                                          class="btn-link"
+                                                                          aria-controls="#uploaded-conputer"
+                                                                          data-toggle="tab"><?php echo $lang['designer_upload_upload_photo']; ?></a>
+                                </li>
+                                <li role="presentation"><a href="#uploaded-art" role="tab"
+                                                           class="btn-link"
+                                                           aria-controls="#uploaded-art" id="tab-uploaded-art"
+                                                           data-toggle="tab"><?php echo $lang['designer_upload_photo_uploaded']; ?></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="upload-conputer">
+                                    <div class="row">
+                                        <div class="col-md-12 align-center">
+                                            <div class="upload-area">
+                                                <input type="file" id="files-upload" class="input-upload"
+                                                       autocomplete="off"/>
+                                                <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                <p>
+                                                    <span>Drag & Drop files here to upload or</span>
+                                                </p>
+                                                <p>
+                                                    <button class="browse-file">BROWSE FILES</button>
+                                                </p>
+                                                <p>
+                                                    <label>
+                                                        <small>
+                                                            <?php echo $lang['designer_upload_max_file_size']; ?>
+                                                            : <?php echo settingValue($setting, 'site_upload_max', '0.5'); ?>
+                                                            MB
+                                                        </small>
+                                                    </label>
+                                                </p>
+                                                <p><?php echo $lang['designer_upload_accept_the_following']; ?>:
+                                                    <strong>PNG,
+                                                        JPG, GIF</strong></p>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" autocomplete="off"
+                                                           id="upload-copyright"> <span
+                                                        class="help-block"><?php echo $lang['designer_upload_please_read']; ?>
+                                                        <a
+                                                            href="<?php echo settingValue($setting, 'site_upload_terms', '#'); ?>"
+                                                            target="_blank"><?php echo $lang['designer_upload_copyright_terms']; ?></a>. <?php echo $lang['designer_upload_if_you_do_not_have_the_complete']; ?></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="uploaded-art">
+                                    <div class="row col-md-12 margin-left-0">
+                                <span
+                                    class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
+                                    </div>
+                                    <div class="row margin-0" id="dag-files-images" >
+                                    </div>
+
+                                    <div id="drop-area"></div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="result-area align-center">
+                                        <p><strong><span>SELECTED IMAGE</span></strong></p>
+                                        <p>
+                                            <image class="selected-image"/>
+                                        </p>
+                                    </div>
+                                    <div class="form-group action-area align-left">
+                                        <div class="checkbox">
+                                            <input type="checkbox" autocomplete="off" id="remove-bg"
+                                                   data-toggle="toggle" data-size="small">
+                                            <span
+                                                class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
+                                        </div>
+
+                                        <button type="button" class="upload-button"
+                                                id="action-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                        <button type="button" class="upload-button" style="display: none;"
+                                                id="add-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-xs-12 col-md-12 col-center align-center">
-        <!-- Begin sidebar -->
-        <div id="dg-sidebar">
-            <ul class="dg-tools">
-                <li>
-                    <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
-                        <i class="glyphicons circle_question_mark"></i>
-                        <span><?php echo $lang['designer_top_help']; ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="preview" class="dg-tool">
-                        <i class="glyphicons eye_open"></i>
-                        <span><?php echo $lang['designer_top_preview']; ?></span>
-                    </a>
-                </li>
-                <!--
-                <li>
-                    <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                        <i class="glyphicons undo"></i>
-                        <span>undo</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                        <i class="glyphicons redo"></i>
-                        <span>redo</span>
-                    </a>
-                </li>
-                -->
-                <li>
-                    <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
-                        <i class="glyphicons search"></i>
-                        <span><?php echo $lang['designer_top_zoom']; ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                        <i class="glyphicons bin"></i>
-                        <span><?php echo $lang['designer_top_reset']; ?></span>
-                    </a>
-                </li>
-            </ul>
+<div class="col-xs-12 col-md-12 col-center align-center">
+    <!-- Begin sidebar -->
+    <div id="dg-sidebar">
+        <ul class="dg-tools">
+            <li>
+                <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                    <i class="glyphicons circle_question_mark"></i>
+                    <span><?php echo $lang['designer_top_help']; ?></span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" data-type="preview" class="dg-tool">
+                    <i class="glyphicons eye_open"></i>
+                    <span><?php echo $lang['designer_top_preview']; ?></span>
+                </a>
+            </li>
+            <!--
+            <li>
+                <a href="javascript:void(0)" data-type="undo" class="dg-tool">
+                    <i class="glyphicons undo"></i>
+                    <span>undo</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" data-type="redo" class="dg-tool">
+                    <i class="glyphicons redo"></i>
+                    <span>redo</span>
+                </a>
+            </li>
+            -->
+            <li>
+                <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
+                    <i class="glyphicons search"></i>
+                    <span><?php echo $lang['designer_top_zoom']; ?></span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
+                    <i class="glyphicons bin"></i>
+                    <span><?php echo $lang['designer_top_reset']; ?></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Begin sidebar -->
+
+    <!-- design area -->
+    <div id="design-area" class="div-design-area">
+        <div id="app-wrap" class="div-design-area">
+            <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
+                <div id="view-front" class="labView active">
+                    <div class="product-design">
+                        <strong><?php echo $lang['designer_product_data_found']; ?></strong>
+                    </div>
+                </div>
+            <?php } else { ?>
+
+                <!-- begin front design -->
+                <div id="view-front" class="labView active">
+                    <div class="product-design"></div>
+                    <div class="design-area">
+                        <div class="content-inner"></div>
+                    </div>
+                </div>
+                <!-- end front design -->
+
+                <!-- begin back design -->
+                <div id="view-back" class="labView">
+                    <div class="product-design"></div>
+                    <div class="design-area">
+                        <div class="content-inner"></div>
+                    </div>
+                </div>
+                <!-- end back design -->
+
+                <!-- begin left design -->
+                <div id="view-left" class="labView">
+                    <div class="product-design"></div>
+                    <div class="design-area">
+                        <div class="content-inner"></div>
+                    </div>
+                </div>
+                <!-- end left design -->
+
+                <!-- begin right design -->
+                <div id="view-right" class="labView">
+                    <div class="product-design"></div>
+                    <div class="design-area">
+                        <div class="content-inner"></div>
+                    </div>
+                </div>
+                <!-- end right design -->
+
+            <?php } ?>
         </div>
-        <!-- Begin sidebar -->
+    </div>
 
-        <!-- design area -->
-        <div id="design-area" class="div-design-area">
-            <div id="app-wrap" class="div-design-area">
-                <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
-                    <div id="view-front" class="labView active">
-                        <div class="product-design">
-                            <strong><?php echo $lang['designer_product_data_found']; ?></strong>
-                        </div>
-                    </div>
-                <?php } else { ?>
+    <div class="" id="product-thumbs"></div>
+</div>
 
-                    <!-- begin front design -->
-                    <div id="view-front" class="labView active">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end front design -->
-
-                    <!-- begin back design -->
-                    <div id="view-back" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end back design -->
-
-                    <!-- begin left design -->
-                    <div id="view-left" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end left design -->
-
-                    <!-- begin right design -->
-                    <div id="view-right" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end right design -->
-
-                <?php } ?>
+<div class="col-right">
+    <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
+    <div id="dg-right">
+        <!-- share -->
+        <div class="dg-share">
+            <div class="row align-center">
+                <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
+                            alt="Save and share this design"/></label>
+            </div>
+            <div class="row align-center">
+                <div class="dg-box">
+                    <a href="javascript:void(0)" onclick="design.save()"
+                       class="btn btn-sm btn-warning btn-margin pull-left"
+                       title="save"><?php echo $lang['designer_save_btn']; ?></a>
+                    <ul class="list-share pull-right">
+                        <li>
+                            <span class="icon-25 share-email" data-type="email"></span>
+                            <span class="icon-25 share-facebook" data-type="facebook"></span>
+                            <span class="icon-25 share-twitter" data-type="twitter"></span>
+                            <span class="icon-25 share-pinterest" data-type="pinterest"></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="" id="product-thumbs"></div>
+        <!-- product -->
+
     </div>
-
-    <div class="col-right">
-        <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
-        <div id="dg-right">
-            <!-- share -->
-            <div class="dg-share">
-                <div class="row align-center">
-                    <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
-                                alt="Save and share this design"/></label>
-                </div>
-                <div class="row align-center">
-                    <div class="dg-box">
-                        <a href="javascript:void(0)" onclick="design.save()"
-                           class="btn btn-sm btn-warning btn-margin pull-left"
-                           title="save"><?php echo $lang['designer_save_btn']; ?></a>
-                        <ul class="list-share pull-right">
-                            <li>
-                                <span class="icon-25 share-email" data-type="email"></span>
-                                <span class="icon-25 share-facebook" data-type="facebook"></span>
-                                <span class="icon-25 share-twitter" data-type="twitter"></span>
-                                <span class="icon-25 share-pinterest" data-type="pinterest"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- product -->
-
-        </div>
-    </div>
+</div>
 </div>
 <!-- End main -->
 </div>
@@ -638,92 +739,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!-- End clipart -->
 
     <!-- Begin Upload -->
-    <div class="modal fade" id="dg-myclipart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                    <ul role="tablist" id="upload-tabs">
-                        <li class="active"><a href="#upload-conputer" role="tab"
-                                              data-toggle="tab"><?php echo $lang['designer_upload_upload_photo']; ?></a>
-                        </li>
-                        <!--<li><a href="#upload-facebook" role="tab" data-toggle="tab">Facebook</a></li>-->
-                        <li><a href="#uploaded-art" role="tab"
-                               data-toggle="tab"><?php echo $lang['designer_upload_photo_uploaded']; ?></a></li>
-                        <!--
-                        <li><a href="#upload-instagram" role="tab" data-toggle="tab"><i class="fa fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#upload-facebook" role="tab" data-toggle="tab"><i class="fa fa-flickr"></i> Flickr</a></li>
-                        -->
-                    </ul>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="upload-conputer">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-6">
-                                    <div class="form-group">
-                                        <label><?php echo $lang['designer_upload_choose_a_file_upload']; ?></label>
-                                        <input type="file" id="files-upload" autocomplete="off"/>
-                                    </div>
-
-                                    <div class="checkbox" style="display:none;">
-                                        <label>
-                                            <input type="checkbox" autocomplete="off" id="remove-bg"> <span
-                                                class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-6 col-md-6">
-                                    <div class="form-group">
-                                        <label><strong><?php echo $lang['designer_upload_accepted_file_types']; ?></strong>
-                                            <small>(<?php echo $lang['designer_upload_max_file_size']; ?>
-                                                : <?php echo settingValue($setting, 'site_upload_max', '0.5'); ?>MB)
-                                            </small>
-                                        </label>
-                                        <p><?php echo $lang['designer_upload_accept_the_following']; ?>: <strong>PNG,
-                                                JPG, GIF</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" autocomplete="off" id="upload-copyright"> <span
-                                                class="help-block"><?php echo $lang['designer_upload_please_read']; ?><a
-                                                    href="<?php echo settingValue($setting, 'site_upload_terms', '#'); ?>"
-                                                    target="_blank"><?php echo $lang['designer_upload_copyright_terms']; ?></a>. <?php echo $lang['designer_upload_if_you_do_not_have_the_complete']; ?></span>
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-primary"
-                                                id="action-upload"><?php echo $lang['designer_upload_upload_btn']; ?></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="upload-facebook">
-                            <?php echo $lang['designer_upload_facebook']; ?>
-                        </div>
-                        <div class="tab-pane" id="uploaded-art">
-                            <div class="row" id="dag-files-images">
-                            </div>
-
-                            <div id="drop-area"></div>
-                            <div class="row col-md-12">
-                                <span
-                                    class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- End Upload -->
 
     <!-- Begin Note -->

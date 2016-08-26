@@ -23,6 +23,8 @@ var design = {
         });
         //jQuery('#product-details').perfectScrollbar({useBothWheelAxes: true});
 
+
+
         design.item.move();
         $jd("#dg-outline-width").slider({
             animate: true,
@@ -3044,14 +3046,12 @@ var design = {
                 alert('Please tick the checkbox');
                 return false;
             }
-
             if (jQuery('#files-upload').val() == '') {
                 alert('Please choose a file upload.');
                 return false;
             }
-
             return true;
-        }
+        },
     },
     svg: {
         getColors: function (e) {

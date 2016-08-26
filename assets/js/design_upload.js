@@ -87,7 +87,7 @@ jQuery(function () {
 			span.appendChild(img);
 		}
 		
-		jQuery('#upload-tabs a[href="#uploaded-art"]').tab('show');
+		jQuery('a[href="#uploaded-art"]').tab('show');
 		
 		progressBarContainer.className = "progress progress-bar-container";
 		progressBar.className = "progress-bar";
@@ -127,9 +127,10 @@ jQuery(function () {
 					{
 						img.setAttribute('src', media.msg.thumb);
 						span.item = media.msg;
-						jQuery(span).bind('click', function(){
-							design.myart.create(span);
-						});
+						jQuery("#dag-files-images").find(".view-thumb").removeClass("selected");
+						jQuery("#action-upload").hide();
+						jQuery("#add-upload").show();
+						span.className += " selected";
 					}
 				}
 				jQuery('#upload-copyright').attr('checked', false);
@@ -163,7 +164,11 @@ jQuery(function () {
         function upload_f(){
                 traverseFiles(filesUpload.files);
         }
-        
+	document.getElementById('add-upload').addEventListener("click", function () {
+		var span = jQuery("#dag-files-images").find(".view-thumb.selected");
+			design.myart.create(span[0]);
+	});
+
 	dropArea.addEventListener("dragleave", function (evt) {
 		var target = evt.target;
 		
@@ -190,5 +195,30 @@ jQuery(function () {
 		this.className = "";
 		evt.preventDefault();
 		evt.stopPropagation();
-	}, false);										
+	}, false);
+	jQuery('.browse-file').click(function(){
+		jQuery('#files-upload').trigger("click");
+	})
+	jQuery('#files-upload').change(function(evt){
+		var f = evt.target.files[0];
+
+		var r = new FileReader();
+		r.onload = function (e) {
+			jQuery('.selected-image').attr("src", e.target.result);
+		};
+		r.readAsDataURL(f);
+	});
+	jQuery("#dag-files-images").on("click" ,".view-thumb img" ,function (e) {
+		jQuery("#dag-files-images").find(".view-thumb").removeClass("selected");
+		e.target.parentElement.className += " selected";
+		jQuery('.selected-image').attr("src", e.target.src);
+	});
+	jQuery("#tab-upload-conputer").on("click", function(e){
+		jQuery("#action-upload").show();
+		jQuery("#add-upload").hide();
+	})
+	jQuery("#tab-uploaded-art").on("click", function(e){
+		jQuery("#action-upload").hide();
+		jQuery("#add-upload").show();
+	})
 });
