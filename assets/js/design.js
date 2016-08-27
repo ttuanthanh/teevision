@@ -24,7 +24,6 @@ var design = {
         //jQuery('#product-details').perfectScrollbar({useBothWheelAxes: true});
 
 
-
         design.item.move();
         $jd("#dg-outline-width").slider({
             animate: true,
@@ -1764,9 +1763,9 @@ var design = {
             $jd('.ui-lock').attr('checked', false);
             var txt = {};
             var text_input = jQuery('.text-update').val();
-            if(text_input === ''){
+            if (text_input === '') {
                 txt.text = 'Hello';
-            }else{
+            } else {
                 txt.text = text_input;
             }
             txt.color = '#FF0000';
@@ -1957,11 +1956,12 @@ var design = {
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        if(obj){
+                        if (obj) {
                             obj.item.text = text;
                         }
                         var texts = text.split('\n');
                         var svgNS = "http://www.w3.org/2000/svg";
+                        
                         txt[0].textContent = '';
                         var fontSize = txt[0].getAttribute('font-size').split('px');
                         for (var i = 0; i < texts.length; i++) {
@@ -2717,14 +2717,16 @@ var design = {
             });
             design.print.size();
         },
-        select: function (e) {
+        select: function (e, focus) {
             this.unselect();
             jQuery('.labView.active .design-area').css('overflow', 'visible');
             $jd(e).addClass('drag-item-selected');
             $jd(e).css('border', '1px dashed #444444');
             $jd(e).resizable({disabled: false, handles: 'e'});
             $jd(e).draggable({disabled: false});
-            design.popover('add_item_' + jQuery(e).data('type'));
+            if (focus) {
+                design.popover('add_item_' + jQuery(e).data('type'));
+            }
             jQuery('.add_item_' + jQuery(e).data('type')).addClass('active');
             design.menu(jQuery(e).data('type'));
             this.update(e);
@@ -2791,7 +2793,7 @@ var design = {
             }
 
             if (item.type == 'text') {
-             //   jQuery('.popover-title').children('span').html('Edit text');
+                //   jQuery('.popover-title').children('span').html('Edit text');
             }
             document.getElementById(item.type + '-width').value = parseInt(item.width);
             document.getElementById(item.type + '-height').value = parseInt(item.height);
@@ -2823,7 +2825,7 @@ var design = {
                 jQuery('.dropdown-color').popover('hide');
             });
             jQuery('.dg-tooltip').tooltip();
-           // design.popover('add_item_' + item.type);
+            // design.popover('add_item_' + item.type);
         },
         get: function () {
             var e = $jd('#app-wrap .drag-item-selected');
@@ -2944,7 +2946,7 @@ var design = {
             var o = jQuery('#item-' + index);
             if (o.hasClass('drag-item-selected') == false) {
                 if (document.getElementById('item-' + index) != null)
-                    design.item.select(document.getElementById('item-' + index));
+                    design.item.select(document.getElementById('item-' + index), false);
             }
         },
         setup: function () {
@@ -3016,10 +3018,10 @@ var design = {
     },
     popover: function (e) {
         jQuery('.dg-options').not(".tab-pane").css('display', 'none');
-        var name = ".menu-left a[href=\"#options-"+ e+ "\"]";
+        var name = ".menu-left a[href=\"#options-" + e + "\"]";
 
-        jQuery(name).tab('show');
-        jQuery('#options-' + e).css('display', 'block');
+        jQuery(name).click();
+        jQuery('#options-' + e).not(".tab-pane").css('display', 'block');
         // jQuery('.popover').css({'top': '40px', 'display': 'block'});
         //
         // var index = jQuery('.menu-left li').index(jQuery('.menu-left .' + e).parent());
