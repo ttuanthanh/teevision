@@ -59,13 +59,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </li>
                         <!-- upload-->
                         <li role="presentation">
-                            <a href="#dg-myclipart" aria-controls="profile" role="tab" data-toggle="tab">
+                            <a href="#dg-myclipart" aria-controls="#dg-myclipart" role="tab" data-toggle="tab">
                                 <i class="glyphicons camera"></i>
                                 <span> <?php echo $lang['designer_menu_upload_image']; ?></span>
                             </a>
                         </li>
                         <li role="presentation">
-                            <a href="javascript:void(0)" class="add_item_text" title="">
+                            <a href="#options-add_item_text" aria-controls="#options-add_item_text" role="tab"
+                               data-toggle="tab">
                                 <i class="glyphicons text_bigger"></i><span><span> <?php echo $lang['designer_menu_add_text']; ?></span>
                             </a>
                         </li>
@@ -193,12 +194,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="tab-pane" id="dg-myclipart" role="tabpanel">
                             <div class="row nav-bar">
                                 <div class="col-md-12 center nav-info">
-                                    <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
+                                    <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
                                     </span>
                                 </div>
                             </div>
-                            <ul class="nav nav-tabs nav-category" role="tablist"">
-                                <li role="presentation" class="active"><a href="#upload-conputer" role="tab" id="tab-upload-conputer"
+                            <ul class="nav nav-tabs nav-category" role="tablist">
+                                <li role="presentation" class="active"><a href="#upload-conputer" role="tab"
+                                                                          id="tab-upload-conputer"
                                                                           class="btn-link"
                                                                           aria-controls="#uploaded-conputer"
                                                                           data-toggle="tab"><?php echo $lang['designer_upload_upload_photo']; ?></a>
@@ -256,176 +258,413 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <span
                                     class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
                                     </div>
-                                    <div class="row margin-0" id="dag-files-images" >
+                                    <div class="row margin-0" id="dag-files-images">
                                     </div>
 
                                     <div id="drop-area"></div>
 
-                            </div>
-                            <div class="row row-selected">
-                                <div class="col-md-12">
-                                    <div class="result-area align-center">
-                                        <p><strong><span>SELECTED IMAGE</span></strong></p>
-                                        <p>
-                                            <image class="selected-image"/>
-                                        </p>
-                                    </div>
-                                    <div class="form-group action-area align-left">
-                                        <div class="checkbox">
-                                            <input type="checkbox" autocomplete="off" id="remove-bg"
-                                                   data-toggle="toggle" data-size="small">
-                                            <span
-                                                class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
+                                </div>
+                                <div class="row row-selected">
+                                    <div class="col-md-12">
+                                        <div class="result-area align-center">
+                                            <p><strong><span>SELECTED IMAGE</span></strong></p>
+                                            <p>
+                                                <image class="selected-image"/>
+                                            </p>
                                         </div>
+                                        <div class="form-group action-area align-left">
+                                            <div class="checkbox">
+                                                <input type="checkbox" autocomplete="off" id="remove-bg"
+                                                       data-toggle="toggle" data-size="small">
+                                                <span
+                                                    class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
+                                            </div>
 
-                                        <button type="button" class="upload-button"
-                                                id="action-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
-                                        <button type="button" class="upload-button" style="display: none;"
-                                                id="add-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                            <button type="button" class="upload-button"
+                                                    id="action-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                            <button type="button" class="upload-button" style="display: none;"
+                                                    id="add-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                        </div>
                                     </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- BEGIN Text edit options -->
+                        <div role="tabpanel" id="options-add_item_text" class="dg-options tab-pane tab-padding">
+                            <div class="row">
+                                <div class="col-md-12 nav-info left text_edit_header">
+                                    <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="dg-options-toolbar">
+                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
+                                    <button class="btn btn-default" type="button" data-type="text">
+                                        <i class="fa fa-pencil"></i>
+                                        <small class="clearfix">Text</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="fonts">
+                                        <i class="fa fa-font"></i>
+                                        <small class="clearfix">Fonts</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="style">
+                                        <i class="fa fa-align-justify"></i>
+                                        <small class="clearfix">Style</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="outline">
+                                        <i class="fa fa-crop"></i>
+                                        <small class="clearfix">Outline</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="size">
+                                        <i class="fa fa-text-height"></i>
+                                        <small class="clearfix">Size</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="rotate">
+                                        <i class="fa fa-rotate-right"></i>
+                                        <small class="clearfix">Rotate</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="functions">
+                                        <i class="fa fa-cogs"></i>
+                                        <small class="clearfix">Functions</small>
+                                    </button>
                                 </div>
                             </div>
 
+                            <div class="dg-options-content">
+                                <!-- edit text -->
+                                <div class="row toolbar-action-text">
+                                    <h5 class="col-md-12" style="color: grey">Enter text below</h5>
+                                    <div class="col-md-9">
+                                    <textarea class="form-control text-update" data-event="keyup" data-label="text"
+                                              id="enter-text"></textarea>
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0">
+                                        <button class="add_item_text btn btn-info" role="button">Add Text</button>
+                                    </div>
+                                </div>
+                                <div class="edit_text_info margin-top-20" style="display: none;">
+                                    <div class="row toolbar-action-fonts">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <strong><?php echo $lang['designer_clipart_edit_choose_a_font']; ?></strong>
+                                                <div class="dropdown" data-target="#dg-fonts" data-toggle="modal">
+                                                    <a id="txt-fontfamily" class="pull-left btn btn-default"
+                                                       href="javascript:void(0)">
+                                                        <?php echo $lang['designer_clipart_edit_arial']; ?>
+                                                    </a>
+                                                    <span
+                                                        class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right ui-pull-right"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <div class="form-group">
+                                                <small><?php echo $lang['designer_clipart_edit_text_color']; ?></small>
+                                                <div class="list-colors">
+                                                    <a class="dropdown-color" id="txt-color"
+                                                       title="Click to change color"
+                                                       href="javascript:void(0)" data-color="black" data-label="color"
+                                                       style="background-color:black">
+                                                <span
+                                                    class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <strong><?php echo $lang['designer_clipart_edit_out_line']; ?></strong>
+                                            <div class="option-outline">
+                                                <div class="list-colors">
+                                                    <a class="dropdown-color bg-none" data-label="outline"
+                                                       data-placement="top"
+                                                       data-original-title="Click to change color"
+                                                       href="javascript:void(0)"
+                                                       data-color="none">
+                                                <span
+                                                    class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="dropdown-outline">
+                                                    <a data-toggle="dropdown" class="dg-outline-value"
+                                                       href="javascript:void(0)"><span
+                                                            class="outline-value pull-left">0</span> <span
+                                                            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right"></span></a>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                        <li>
+                                                            <div id="dg-outline-width"></div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row toolbar-action-style">
+                                        <div class="col-xs-6">
+                                            <strong><?php echo $lang['designer_clipart_edit_text_style']; ?></strong>
+                                            <div id="text-style">
+                                                <span id="text-style-i"
+                                                      class="text-update btn btn-default btn-xs glyphicons italic glyphicons-12"
+                                                      data-event="click" data-label="styleI"></span>
+                                                <span id="text-style-b"
+                                                      class="text-update btn btn-default btn-xs glyphicons bold glyphicons-12"
+                                                      data-event="click" data-label="styleB"></span>
+                                                <span id="text-style-u"
+                                                      class="text-update btn btn-default btn-xs glyphicons text_underline glyphicons-12"
+                                                      data-event="click" data-label="styleU"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <strong><?php echo $lang['designer_clipart_edit_text_align']; ?></strong>
+                                            <div id="text-align">
+                            <span id="text-align-left"
+                                  class="text-update btn btn-default btn-xs glyphicons align_left glyphicons-12"
+                                  data-event="click" data-label="alignL"></span>
+                                                <span id="text-align-center"
+                                                      class="text-update btn btn-default btn-xs glyphicons align_center glyphicons-12"
+                                                      data-event="click" data-label="alignC"></span>
+                                                <span id="text-align-right"
+                                                      class="text-update btn btn-default btn-xs glyphicons align_right glyphicons-12"
+                                                      data-event="click" data-label="alignR"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="display:none;">
+                                        <div class="col-lg-12">
+                                            <small><?php echo $lang['designer_clipart_edit_adjust_shape']; ?></small>
+                                            <div id="dg-shape-width"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row toolbar-action-functions margin-top-20">
+                                        <div class="col-xs-6">
+                                            <span class="text_align">
+                                                <strong>
+                                                    <?php echo $lang['designer_clipart_edit_transform']; ?>
+                                                </strong>
+                                            </span>
+                                            <span class="btn btn-default btn-xs" onclick="design.item.flip('x')">
+                                                <i class="glyphicons transfer glyphicons-12"></i>
+                                                <?php echo $lang['designer_clipart_edit_flip']; ?>
+                                            </span>
+                                        </div>
+                                        <div class="col-xs-6">
+                                             <span class="text_align">
+                                            <strong><?php echo $lang['designer_clipart_edit_align_with_shirft']; ?></strong>
+                                                 </span>
+                                            <span class="btn btn-default btn-xs" onclick="design.item.center()">
+                                                <i class="glyphicons align_center glyphicons-12"></i>
+                                                <?php echo $lang['designer_clipart_edit_center']; ?>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row toolbar-action-size margin-top-20">
+                                        <div class="col-xs-4 col-lg-4 align-left">
+                                            <div class="form-group">
+                                                <strong><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></strong>
+                                                <br/>
+                                                <input type="checkbox" class="ui-lock" id="text-lock" />
+                                                <span>Free Transform"</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-lg-2 align-center">
+                                            <div class="form-group">
+                                                <strong><?php echo $lang['designer_clipart_edit_width']; ?></strong>
+                                                <br/>
+                                                <input type="text" size="2" id="text-width" readonly disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-lg-2 align-center">
+                                            <div class="form-group">
+                                                <strong><?php echo $lang['designer_clipart_edit_height']; ?></strong>
+                                                <br/>
+                                                <input type="text" size="2" id="text-height" readonly disabled>
+                                            </div>
+                                        </div>
+                                        <div class="toolbar-action-rotate col-xs-4 col-lg-4 align-center">
+                                            <div class="form-group col-lg-12">
+                                                        <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
+                                                    <div class="col-xs-12 col-lg-12 align-right">
+                                                    <span class="rotate-values"><input type="text" value="0"
+                                                                                       class="input-small rotate-value"
+                                                                                       id="text-rotate-value"/>&deg;</span>
+                                                        <span class="rotate-refresh glyphicons refresh"></span>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END clipart edit options -->
+                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12 col-center align-center">
+        <!-- Begin sidebar -->
+        <div id="dg-sidebar">
+            <ul class="dg-tools">
+                <li>
+                    <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                        <i class="glyphicons circle_question_mark"></i>
+                        <span><?php echo $lang['designer_top_help']; ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-type="preview" class="dg-tool">
+                        <i class="glyphicons eye_open"></i>
+                        <span><?php echo $lang['designer_top_preview']; ?></span>
+                    </a>
+                </li>
+                <!--
+                <li>
+                    <a href="javascript:void(0)" data-type="undo" class="dg-tool">
+                        <i class="glyphicons undo"></i>
+                        <span>undo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-type="redo" class="dg-tool">
+                        <i class="glyphicons redo"></i>
+                        <span>redo</span>
+                    </a>
+                </li>
+                -->
+                <li>
+                    <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
+                        <i class="glyphicons search"></i>
+                        <span><?php echo $lang['designer_top_zoom']; ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
+                        <i class="glyphicons bin"></i>
+                        <span><?php echo $lang['designer_top_reset']; ?></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Begin sidebar -->
+
+        <!-- design area -->
+        <div id="design-area" class="div-design-area">
+            <div id="app-wrap" class="div-design-area">
+                <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
+                    <div id="view-front" class="labView active">
+                        <div class="product-design">
+                            <strong><?php echo $lang['designer_product_data_found']; ?></strong>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-                </div>
+                <?php } else { ?>
+
+                    <!-- begin front design -->
+                    <div id="view-front" class="labView active">
+                        <div class="product-design"></div>
+                        <div class="design-area">
+                            <div class="content-inner"></div>
+                        </div>
+                    </div>
+                    <!-- end front design -->
+
+                    <!-- begin back design -->
+                    <div id="view-back" class="labView">
+                        <div class="product-design"></div>
+                        <div class="design-area">
+                            <div class="content-inner"></div>
+                        </div>
+                    </div>
+                    <!-- end back design -->
+
+                    <!-- begin left design -->
+                    <div id="view-left" class="labView">
+                        <div class="product-design"></div>
+                        <div class="design-area">
+                            <div class="content-inner"></div>
+                        </div>
+                    </div>
+                    <!-- end left design -->
+
+                    <!-- begin right design -->
+                    <div id="view-right" class="labView">
+                        <div class="product-design"></div>
+                        <div class="design-area">
+                            <div class="content-inner"></div>
+                        </div>
+                    </div>
+                    <!-- end right design -->
+
+                <?php } ?>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="col-xs-12 col-md-12 col-center align-center">
-    <!-- Begin sidebar -->
-    <div id="dg-sidebar">
-        <ul class="dg-tools">
-            <li>
-                <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
-                    <i class="glyphicons circle_question_mark"></i>
-                    <span><?php echo $lang['designer_top_help']; ?></span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" data-type="preview" class="dg-tool">
-                    <i class="glyphicons eye_open"></i>
-                    <span><?php echo $lang['designer_top_preview']; ?></span>
-                </a>
-            </li>
-            <!--
-            <li>
-                <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                    <i class="glyphicons undo"></i>
-                    <span>undo</span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                    <i class="glyphicons redo"></i>
-                    <span>redo</span>
-                </a>
-            </li>
-            -->
-            <li>
-                <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
-                    <i class="glyphicons search"></i>
-                    <span><?php echo $lang['designer_top_zoom']; ?></span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                    <i class="glyphicons bin"></i>
-                    <span><?php echo $lang['designer_top_reset']; ?></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- Begin sidebar -->
-
-    <!-- design area -->
-    <div id="design-area" class="div-design-area">
-        <div id="app-wrap" class="div-design-area">
-            <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
-                <div id="view-front" class="labView active">
-                    <div class="product-design">
-                        <strong><?php echo $lang['designer_product_data_found']; ?></strong>
-                    </div>
-                </div>
-            <?php } else { ?>
-
-                <!-- begin front design -->
-                <div id="view-front" class="labView active">
-                    <div class="product-design"></div>
-                    <div class="design-area">
-                        <div class="content-inner"></div>
-                    </div>
-                </div>
-                <!-- end front design -->
-
-                <!-- begin back design -->
-                <div id="view-back" class="labView">
-                    <div class="product-design"></div>
-                    <div class="design-area">
-                        <div class="content-inner"></div>
-                    </div>
-                </div>
-                <!-- end back design -->
-
-                <!-- begin left design -->
-                <div id="view-left" class="labView">
-                    <div class="product-design"></div>
-                    <div class="design-area">
-                        <div class="content-inner"></div>
-                    </div>
-                </div>
-                <!-- end left design -->
-
-                <!-- begin right design -->
-                <div id="view-right" class="labView">
-                    <div class="product-design"></div>
-                    <div class="design-area">
-                        <div class="content-inner"></div>
-                    </div>
-                </div>
-                <!-- end right design -->
-
-            <?php } ?>
-        </div>
+        <div class="" id="product-thumbs"></div>
     </div>
 
-    <div class="" id="product-thumbs"></div>
-</div>
-
-<div class="col-right">
-    <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
-    <div id="dg-right">
-        <!-- share -->
-        <div class="dg-share">
-            <div class="row align-center">
-                <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
-                            alt="Save and share this design"/></label>
+    <div class="col-right">
+        <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
+        <div id="dg-right">
+            <!-- share -->
+            <div class="dg-share">
+                <div class="row align-center">
+                    <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
+                                alt="Save and share this design"/></label>
+                </div>
+                <div class="row align-center">
+                    <div class="dg-box">
+                        <a href="javascript:void(0)" onclick="design.save()"
+                           class="btn btn-sm btn-warning btn-margin pull-left"
+                           title="save"><?php echo $lang['designer_save_btn']; ?></a>
+                        <ul class="list-share pull-right">
+                            <li>
+                                <span class="icon-25 share-email" data-type="email"></span>
+                                <span class="icon-25 share-facebook" data-type="facebook"></span>
+                                <span class="icon-25 share-twitter" data-type="twitter"></span>
+                                <span class="icon-25 share-pinterest" data-type="pinterest"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="row align-center">
+
+            <!-- product -->
+            <div class="align-center" id="right-options">
                 <div class="dg-box">
-                    <a href="javascript:void(0)" onclick="design.save()"
-                       class="btn btn-sm btn-warning btn-margin pull-left"
-                       title="save"><?php echo $lang['designer_save_btn']; ?></a>
-                    <ul class="list-share pull-right">
-                        <li>
-                            <span class="icon-25 share-email" data-type="email"></span>
-                            <span class="icon-25 share-facebook" data-type="facebook"></span>
-                            <span class="icon-25 share-twitter" data-type="twitter"></span>
-                            <span class="icon-25 share-pinterest" data-type="pinterest"></span>
-                        </li>
-                    </ul>
+
+                    <div class="product-prices">
+                        <div id="product-price">
+                            <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
+                            <div class="product-price-list">
+                                <span
+                                    id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
+                                    <span class="price-old-number">123</span></span>
+                                <span
+                                    id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
+                                    <span class="price-sale-number">100</span></span>
+                            </div>
+                            <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i
+                                    class="glyphicons restart"></i></span>
+                        </div>
+                        <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
+                        <button type="button" class="btn btn-warning btn-addcart"
+                                onclick="return design.team.resetTeam()"><i
+                                class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?>
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
-
-        <!-- product -->
-
     </div>
-</div>
 </div>
 <!-- End main -->
 </div>
@@ -738,8 +977,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     </div>
     <!-- End clipart -->
 
-    <!-- Begin Upload -->
-    <!-- End Upload -->
 
     <!-- Begin Note -->
     <div class="modal fade" id="dg-note" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1054,214 +1291,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
         <!-- END clipart edit options -->
 
-        <!-- BEGIN Text edit options -->
-        <div id="options-add_item_text" class="dg-options">
-            <div class="dg-options-toolbar">
-                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                    <button class="btn btn-default" type="button" data-type="text">
-                        <i class="fa fa-pencil"></i>
-                        <small class="clearfix">Text</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="fonts">
-                        <i class="fa fa-font"></i>
-                        <small class="clearfix">Fonts</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="style">
-                        <i class="fa fa-align-justify"></i>
-                        <small class="clearfix">Style</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="outline">
-                        <i class="fa fa-crop"></i>
-                        <small class="clearfix">Outline</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="size">
-                        <i class="fa fa-text-height"></i>
-                        <small class="clearfix">Size</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="rotate">
-                        <i class="fa fa-rotate-right"></i>
-                        <small class="clearfix">Rotate</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="functions">
-                        <i class="fa fa-cogs"></i>
-                        <small class="clearfix">Functions</small>
-                    </button>
-                </div>
-            </div>
-
-            <div class="dg-options-content">
-                <!-- edit text -->
-                <div class="row toolbar-action-text">
-                    <div class="col-xs-12">
-                        <textarea class="form-control text-update" data-event="keyup" data-label="text"
-                                  id="enter-text"></textarea>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-fonts">
-                    <div class="col-xs-8">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_choose_a_font']; ?></small>
-                            <div class="dropdown" data-target="#dg-fonts" data-toggle="modal">
-                                <a id="txt-fontfamily" class="pull-left" href="javascript:void(0)">
-                                    <?php echo $lang['designer_clipart_edit_arial']; ?>
-                                </a>
-                                <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_text_color']; ?></small>
-                            <div class="list-colors">
-                                <a class="dropdown-color" id="txt-color" title="Click to change color"
-                                   href="javascript:void(0)" data-color="black" data-label="color"
-                                   style="background-color:black">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear-line"></div>
-                <div class="clear"></div>
-
-                <div class="row toolbar-action-style">
-                    <div class="col-xs-6">
-                        <small><?php echo $lang['designer_clipart_edit_text_style']; ?></small>
-                        <div id="text-style">
-                            <span id="text-style-i"
-                                  class="text-update btn btn-default btn-xs glyphicons italic glyphicons-12"
-                                  data-event="click" data-label="styleI"></span>
-                            <span id="text-style-b"
-                                  class="text-update btn btn-default btn-xs glyphicons bold glyphicons-12"
-                                  data-event="click" data-label="styleB"></span>
-                            <span id="text-style-u"
-                                  class="text-update btn btn-default btn-xs glyphicons text_underline glyphicons-12"
-                                  data-event="click" data-label="styleU"></span>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <small><?php echo $lang['designer_clipart_edit_text_align']; ?></small>
-                        <div id="text-align">
-                            <span id="text-align-left"
-                                  class="text-update btn btn-default btn-xs glyphicons align_left glyphicons-12"
-                                  data-event="click" data-label="alignL"></span>
-                            <span id="text-align-center"
-                                  class="text-update btn btn-default btn-xs glyphicons align_center glyphicons-12"
-                                  data-event="click" data-label="alignC"></span>
-                            <span id="text-align-right"
-                                  class="text-update btn btn-default btn-xs glyphicons align_right glyphicons-12"
-                                  data-event="click" data-label="alignR"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clear"></div>
-
-                <div class="row toolbar-action-outline">
-                    <!--
-                    <div class="col-xs-6">
-                        <small>Text Options</small>
-                        <div id="text-shape">
-                            <div class="dropdown">
-                                <a href="#" class="pull-left" data-toggle="dropdown">
-                                Normal <i class="caret"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><span class="text-update" data-label="wspacing" data-event="click">Word Spacing</span></li>
-                                    <li><span class="text-update" data-label="style" data-value="letter-spacing:2" data-event="click">Letter Spacing</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <div class="col-xs-6">
-                        <small><?php echo $lang['designer_clipart_edit_out_line']; ?></small>
-                        <div class="option-outline">
-                            <div class="list-colors">
-                                <a class="dropdown-color bg-none" data-label="outline" data-placement="top"
-                                   data-original-title="Click to change color" href="javascript:void(0)"
-                                   data-color="none">
-                                    <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
-                                </a>
-                            </div>
-                            <div class="dropdown-outline">
-                                <a data-toggle="dropdown" class="dg-outline-value" href="javascript:void(0)"><span
-                                        class="outline-value pull-left">0</span> <span
-                                        class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right"></span></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li>
-                                        <div id="dg-outline-width"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" style="display:none;">
-                    <div class="col-lg-12">
-                        <small><?php echo $lang['designer_clipart_edit_adjust_shape']; ?></small>
-                        <div id="dg-shape-width"></div>
-                    </div>
-                </div>
-
-                <div class="clear"></div>
-
-                <div class="row toolbar-action-size">
-                    <div class="col-xs-3 col-lg-3 align-center">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_width']; ?></small>
-                            <input type="text" size="2" id="text-width" readonly disabled>
-                        </div>
-                    </div>
-                    <div class="col-xs-3 col-lg-3 align-center">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_height']; ?></small>
-                            <input type="text" size="2" id="text-height" readonly disabled>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-6 align-left">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></small>
-                            <br/>
-                            <input type="checkbox" class="ui-lock" id="text-lock"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-rotate">
-                    <div class="form-group col-lg-12">
-                        <div class="row">
-                            <div class="col-xs-6 col-lg-6">
-                                <small><?php echo $lang['designer_clipart_edit_rotate']; ?></small>
-                            </div>
-                            <div class="col-xs-6 col-lg-6 align-right">
-                                <span class="rotate-values"><input type="text" value="0"
-                                                                   class="input-small rotate-value"
-                                                                   id="text-rotate-value"/>&deg;</span>
-                                <span class="rotate-refresh glyphicons refresh"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-functions">
-                    <div class="col-lg-12">
-							<span class="btn btn-default btn-xs" onclick="design.item.flip('x')">
-								<i class="glyphicons transfer glyphicons-12"></i>
-                                <?php echo $lang['designer_clipart_edit_flip']; ?>
-							</span>
-                        <span class="btn btn-default btn-xs" onclick="design.item.center()">
-								<i class="glyphicons align_center glyphicons-12"></i>
-                            <?php echo $lang['designer_clipart_edit_center']; ?>
-							</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END clipart edit options -->
 
         <!-- BEGIN team edit options -->
         <div id="options-add_item_team" class="dg-options">

@@ -64,11 +64,10 @@ var design = {
         /* menu */
         $jd('.menu-left a').click(function () {
             $jd('.menu-left a').removeClass('active');
-            if ($jd(this).hasClass('add_item_text')) self.text.create();
             if ($jd(this).hasClass('add_item_team')) self.team.create();
             $jd(this).addClass('active');
         });
-
+        $jd('.add_item_text').on('click', self.text.create.bind(self.text));
         /* share */
         jQuery('.list-share span').click(function () {
             design.share.ini(jQuery(this).data('type'));
@@ -1764,14 +1763,19 @@ var design = {
         create: function () {
             $jd('.ui-lock').attr('checked', false);
             var txt = {};
-
-            txt.text = 'Hello';
+            var text_input = jQuery('.text-update').val();
+            if(text_input === ''){
+                txt.text = 'Hello';
+            }else{
+                txt.text = text_input;
+            }
             txt.color = '#FF0000';
             txt.fontSize = '24px';
             txt.fontFamily = 'arial';
             txt.stroke = 'none';
             txt.strokew = '0';
             this.add(txt);
+            jQuery('.edit_text_info').show();
             design.ajax.getPrice();
         },
         setValue: function (o) {
@@ -1953,7 +1957,9 @@ var design = {
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        obj.item.text = text;
+                        if(obj){
+                            obj.item.text = text;
+                        }
                         var texts = text.split('\n');
                         var svgNS = "http://www.w3.org/2000/svg";
                         txt[0].textContent = '';
@@ -2785,7 +2791,7 @@ var design = {
             }
 
             if (item.type == 'text') {
-                jQuery('.popover-title').children('span').html('Edit text');
+             //   jQuery('.popover-title').children('span').html('Edit text');
             }
             document.getElementById(item.type + '-width').value = parseInt(item.width);
             document.getElementById(item.type + '-height').value = parseInt(item.height);
@@ -2817,7 +2823,7 @@ var design = {
                 jQuery('.dropdown-color').popover('hide');
             });
             jQuery('.dg-tooltip').tooltip();
-            design.popover('add_item_' + item.type);
+           // design.popover('add_item_' + item.type);
         },
         get: function () {
             var e = $jd('#app-wrap .drag-item-selected');
@@ -3009,13 +3015,16 @@ var design = {
         jQuery('.add_item_' + type).addClass('active');
     },
     popover: function (e) {
-        jQuery('.dg-options').css('display', 'none');
-        jQuery('#options-' + e).css('display', 'block');
-        jQuery('.popover').css({'top': '40px', 'display': 'block'});
+        jQuery('.dg-options').not(".tab-pane").css('display', 'none');
+        var name = ".menu-left a[href=\"#options-"+ e+ "\"]";
 
-        var index = jQuery('.menu-left li').index(jQuery('.menu-left .' + e).parent());
-        var top = (40 * index) - (index * 2 - 1) + 18;
-        jQuery('.popover .arrow').css('top', top + 'px');
+        jQuery(name).tab('show');
+        jQuery('#options-' + e).css('display', 'block');
+        // jQuery('.popover').css({'top': '40px', 'display': 'block'});
+        //
+        // var index = jQuery('.menu-left li').index(jQuery('.menu-left .' + e).parent());
+        // var top = (40 * index) - (index * 2 - 1) + 18;
+        // jQuery('.popover .arrow').css('top', top + 'px');
 
     },
     convert: {
