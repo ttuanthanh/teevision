@@ -22,7 +22,12 @@ var design = {
             jQuery(".popover").hide('show');
         });
         //jQuery('#product-details').perfectScrollbar({useBothWheelAxes: true});
-
+        jQuery('.dropdown').click(function(){
+            jQuery('.dropdown').removeClass('active');
+        })
+        jQuery('#options-add_item_team .dropdown').click(function(){
+            jQuery(this).addClass('active');
+        })
 
         design.item.move();
         $jd("#dg-outline-width").slider({
@@ -1035,11 +1040,18 @@ var design = {
         },
         changeFont: function (e) {
             var selected = design.item.get();
-            if (selected.length == 0) {
+            var teamSelected = jQuery('.dg-options-content .dropdown.active');
+            var dragNumber = jQuery('.drag-item-name text');
+            var dragText = jQuery('.drag-item-number text');
+            if ((dragText.length==0 && dragNumber.length ==0)||
+                (dragText.length==0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
+                (dragNumber.length==0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
+                jQuery('#dg-fonts').modal('hide');
+                return false;
+            }if(selected.length == 0 && teamSelected.length == 0){
                 jQuery('#dg-fonts').modal('hide');
                 return false;
             }
-
             jQuery('.list-fonts a').removeClass('active');
             jQuery(e).addClass('active');
             var id = jQuery(e).data('id');
@@ -1048,7 +1060,15 @@ var design = {
                 var title = jQuery(e).data('title');
                 jQuery('#txt-fontfamily').html(title);
                 if (typeof design.designer.fontActive[id] != 'undefined' || jQuery(e).data('type') == 'google') {
-                    design.text.update('fontfamily', title);
+                    if(typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-number-fontfamly').length >0){
+                        design.text.update('fontfamily', title, 'number');
+                    }else if(typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-name-fontfamly').length >0){
+                        design.text.update('fontfamily', title, 'text');
+                    }else if(selected.length != 0){
+                        design.text.update('fontfamily', title, selected.data('const'));
+                    }
+                }
+
                     jQuery('.labView.active .content-inner').removeClass('loading');
                     setTimeout(function () {
                         var e = design.item.get();
@@ -1101,7 +1121,6 @@ var design = {
                         }, 200);
                     }
                 }
-            }
             jQuery('#dg-fonts').modal('hide');
         }
     },
@@ -1409,8 +1428,14 @@ var design = {
     },
     team: {
         updateBack: function (e) {
-            jQuery('#txt-team-fontfamly').html(e.item.fontfamly);
-            jQuery('#team-name-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+            if(jQuery(e).is('.drag-item-name')){
+            jQuery('#txt-team-name-fontfamly').html(e.item.fontfamly);
+            jQuery('#team-name--color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+            }else if(jQuery(e).is('.drag-item-number')){
+                jQuery('#txt-team-number-fontfamly').html(e.item.fontfamly);
+                jQuery('#team-number-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+
+            }
         },
         load: function (teams) {
             var $this = this;
@@ -1438,8 +1463,6 @@ var design = {
                 document.getElementById('team_add_number').checked = false;
         },
         create: function () {
-            design.popover('add_item_team');
-            jQuery('.popover-title').children('span').html('Team Name & Number');
         },
         addName: function (e) {
             if (jQuery(e).is(':checked') == true) {
@@ -1451,7 +1474,7 @@ var design = {
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                design.text.add(txt, 'team');
+                design.text.add(txt, 'team', 'text');
                 var o = design.item.get();
                 o.addClass('drag-item-name');
                 design.popover('add_item_team');
@@ -1479,7 +1502,7 @@ var design = {
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                design.text.add(txt, 'team');
+                design.text.add(txt, 'team', 'number');
                 var o = design.item.get();
                 o.addClass('drag-item-number');
                 design.popover('add_item_team');
@@ -1504,6 +1527,8 @@ var design = {
             if (!cname && !cnum) {
                 jQuery('#team_msg_error').html('Please select add name or number first.').css('display', 'block');
                 return;
+            }else{
+                jQuery('#team_msg_error').css('display', 'none');
             }
 
             jQuery('#table-team-list tbody tr').each(function () {
@@ -1528,7 +1553,7 @@ var design = {
                 + '</td>'
                 + '<td>' + sizes + '</td>'
                 + '<td>'
-                + '<a href="javascript:void(0)" onclick="design.team.removeMember(this)" title="remove">Remove</a>'
+                + '<a href="javascript:void(0)" onclick="design.team.removeMember(this)" title="remove" class="btn-remove">x</a>'
                 + '</td>'
                 + '</tr>';
             jQuery('#table-team-list tbody').append(html);
@@ -1836,7 +1861,7 @@ var design = {
             jQuery('.outline-value.pull-left').html(o.outlineW);
             jQuery('#dg-outline-width a').css('left', o.outlineW + '%');
         },
-        add: function (o, type) {
+        add: function (o, type, constraint) {
             var item = {};
             if (typeof type == 'undefined') {
                 item.type = 'text';
@@ -1847,6 +1872,9 @@ var design = {
                 item.type = type;
                 item.remove = false;
                 item.edit = false;
+            }
+            if(constraint){
+                item.constraint = constraint;
             }
             item.text = o.text;
             item.fontFamily = o.fontFamily;
@@ -1888,7 +1916,9 @@ var design = {
             text.setAttributeNS(null, 'text-anchor', 'middle');
             text.setAttributeNS(null, 'font-size', o.fontSize);
             text.setAttributeNS(null, 'font-family', o.fontFamily);
-
+            if(constraint){
+                text.setAttributeNS(null, 'constraint', constraint);
+            }
             if (typeof o.fontWeight != 'undefined')
                 text.setAttributeNS(null, 'font-weight', o.fontWeight);
 
@@ -1925,19 +1955,34 @@ var design = {
 
             design.item.create(item);
         },
-        update: function (lable, value) {
+        update: function (lable, value, detail) {
             var e = design.item.get();
             var txt = e.find('text');
             if (typeof lable != 'undefined' && lable != '') {
                 var obj = document.getElementById(e.attr('id'));
                 switch (lable) {
                     case 'fontfamily':
+                        if(detail) {
+                            if (detail == 'text') {
+                                var text = jQuery('.drag-item-name text');
+                                text[0].setAttributeNS(null, 'font-family', value);
+                                var object = jQuery('.drag-item-name');
+                                object[0].item.fontFamily = value;
+                                jQuery('#txt-team-name-fontfamly').html(value);
+
+                            } else if (detail == 'number') {
+                                var text = jQuery('.drag-item-number text');
+                                text[0].setAttributeNS(null, 'font-family', value);
+                                var object = jQuery('.drag-item-number');
+                                object[0].item.fontFamily = value;
+                                jQuery('#txt-team-number-fontfamly').html(value);
+                            }
+                        }else{
                         txt[0].setAttributeNS(null, 'font-family', value);
                         obj.item.fontFamily = value;
                         if (obj.item.type == 'text')
                             jQuery('#txt-fontfamly').html(value);
-                        else
-                            jQuery('#txt-team-fontfamly').html(value);
+                        }
                         break;
                     case 'color':
                         var color = $jd('#txt-color').data('value');
@@ -1947,11 +1992,32 @@ var design = {
                         obj.item.color = hex;
                         break;
                     case 'colorT':
+                        if(detail){
+                            if(detail =='text'){
+                                var color = $jd('#team-name-color').data('value');
+                                if (color == 'none') var hex = color;
+                                else var hex = '#' + color;
+                                var object = jQuery('.drag-item-name');
+                                var text = jQuery('.drag-item-name text');
+                                text[0].setAttributeNS(null, 'fill', hex);
+                                object[0].item.color = hex;
+                            }else if(detail =='number'){
+                                var color = $jd('#team-number-color').data('value');
+                                if (color == 'none') var hex = color;
+                                else var hex = '#' + color;
+                                var object = jQuery('.drag-item-number');
+                                var text = jQuery('.drag-item-number text');
+                                text[0].setAttributeNS(null, 'fill', hex);
+                                object[0].item.color = hex;
+                            }
+                        }else{
                         var color = $jd('#team-name-color').data('value');
                         if (color == 'none') var hex = color;
                         else var hex = '#' + color;
                         txt[0].setAttributeNS(null, 'fill', hex);
                         obj.item.color = hex;
+                        }
+
                         break;
                     case 'text':
                         var text = $jd('#enter-text').val();
@@ -2354,7 +2420,7 @@ var design = {
             span.item = item;
             item.id = n;
             jQuery(span).bind('click', function () {
-                design.item.select(this)
+                design.item.select(this, true)
             });
             var center = this.align.center(item);
             span.style.left = center.left + 'px';
@@ -2367,6 +2433,7 @@ var design = {
             jQuery(span).data('file', item.file);
             jQuery(span).data('width', item.width);
             jQuery(span).data('height', item.height);
+            jQuery(span).data('const', item.constraint);
 
             span.style.zIndex = design.zIndex;
             design.zIndex = design.zIndex + 5;
@@ -2888,8 +2955,19 @@ var design = {
                 design.text.update(a.data('label'), color);
             }
             else if (o.data('type') == 'team') {
-                design.text.update(a.data('label'), '#' + color);
+                if(o.data('const')){
+                    design.text.update(a.data('label'), '#' + color, o.data('const'));
+                }else {
+                    design.text.update(a.data('label'), '#' + color);
+                }
             }
+            //no select
+            if(a.attr('id') == 'team-name-color' ){
+                design.text.update(a.data('label'), '#' + color, 'text');
+            }else if(a.attr('id') == 'team-number-color'){
+                design.text.update(a.data('label'), '#' + color, 'number');
+            }
+            // var chooseTeam = e.
             jQuery('.dropdown-color').popover('hide');
             design.print.colors();
             design.ajax.getPrice();

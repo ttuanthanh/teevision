@@ -72,7 +72,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </li>
 
                         <li role="presentation">
-                            <a href="javascript:void(0)" class="add_item_team" title="">
+                            <a href="#options-add_item_team" class="add_item_team" role="tab"
+                               data-toggle="tab">
                                 <i class="glyphicons soccer_ball"></i>
                                 <span> <?php echo $lang['designer_menu_name_number']; ?></span>
                             </a>
@@ -291,7 +292,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                         </div>
                         <!-- BEGIN Text edit options -->
-                        <div role="tabpanel" id="options-add_item_text" class="dg-options tab-pane tab-padding">
+                        <div id="options-add_item_text" class="dg-options tab-pane tab-padding" role="tabpanel">
                             <div class="row">
                                 <div class="col-md-12 nav-info left text_edit_header">
                                     <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
@@ -349,7 +350,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_choose_a_font']; ?></strong>
                                                 <div class="dropdown" data-target="#dg-fonts" data-toggle="modal">
-                                                    <a id="txt-fontfamily" class="pull-left btn btn-default"
+                                                    <a id="txt-fontfamily" class="drop-font pull-left btn btn-default"
                                                        href="javascript:void(0)">
                                                         <?php echo $lang['designer_clipart_edit_arial']; ?>
                                                     </a>
@@ -466,7 +467,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></strong>
                                                 <br/>
-                                                <input type="checkbox" class="ui-lock" id="text-lock" />
+                                                <input type="checkbox" class="ui-lock" id="text-lock"/>
                                                 <span>Free Transform"</span>
                                             </div>
                                         </div>
@@ -486,23 +487,187 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
                                         <div class="toolbar-action-rotate col-xs-4 col-lg-4 align-center">
                                             <div class="form-group col-lg-12">
-                                                        <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
-                                                    <div class="col-xs-12 col-lg-12 align-right">
+                                                <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
+                                                <div class="col-xs-12 col-lg-12 align-right">
                                                     <span class="rotate-values"><input type="text" value="0"
                                                                                        class="input-small rotate-value"
                                                                                        id="text-rotate-value"/>&deg;</span>
-                                                        <span class="rotate-refresh glyphicons refresh"></span>
-                                                    </div>
+                                                    <span class="rotate-refresh glyphicons refresh"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-
                                 </div>
                             </div>
                         </div>
-                        <!-- END clipart edit options -->
+                        <!-- END Text edit options -->
+                        <!-- Begin team edit options-->
+                        <div id="options-add_item_team" class="dg-options tab-pane tab-padding" role="tabpanel">
+                            <div class="dg-options-toolbar">
+                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
+                                    <button class="btn btn-default" type="button" data-type="name-number">
+                                        <i class="glyphicons soccer_ball glyphicons-small"></i>
+                                        <small class="clearfix">Add Name</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="teams">
+                                        <i class="fa fa-users"></i>
+                                        <small class="clearfix">Teams</small>
+                                    </button>
+                                    <button class="btn btn-default" type="button" data-type="add-list">
+                                        <i class="fa fa-user"></i>
+                                        <small class="clearfix">Add Team</small>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="dg-options-content">
+                                <input type="hidden" id="team-height" value="">
+                                <input type="hidden" id="sel-name" value="0">
+                                <input type="hidden" id="sel-num" value="0">
+                                <input type="hidden" id="team-width" value="">
+                                <input type="hidden" id="team-rotate-value" value="0">
+                                <div class="row toolbar-action-name-number">
+                                    <div class="col-md-12 position-static">
+                                        <div class="col-xs-6 team-add-check-area">
+                                            <label>
+                                                <input type="checkbox" id="team_add_name"
+                                                       onclick="design.team.addName(this)"
+                                                       autocomplete="off">
+                                                <strong
+                                                    class="text align-top"><?php echo $lang['designer_clipart_edit_add_name']; ?></strong>
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-6 team-add-check-area">
+                                            <label>
+                                                <input type="checkbox" id="team_add_number"
+                                                       onclick="design.team.addNumber(this)"
+                                                       autocomplete="off">
+                                                <strong
+                                                    class="text align-top"><?php echo $lang['designer_clipart_edit_add_number']; ?></strong>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group col-xs-6">
+                                            <div class="col-xs-4 position-static">
+                                                <div class="list-colors">
+                                                    <a class="dropdown-color" id="team-name-color"
+                                                       data-placement="right"
+                                                       title="Click to change color" href="javascript:void(0)"
+                                                       data-color="000000"
+                                                       data-label="colorT" style="background-color:black">
+                                                        <span
+                                                            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-name"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div data-toggle="modal" data-target="#dg-fonts" class="dropdown">
+                                                    <a href="javascript:void(0)"
+                                                       class="drop-font pull-left btn btn-default"
+                                                       id="txt-team-name-fontfamly"><?php echo $lang['designer_clipart_edit_arial']; ?></a>
+                                                    <span
+                                                        class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right ui-pull-right"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <div class="col-xs-4 position-static">
+                                                <div class="list-colors">
+                                                    <a class="dropdown-color" id="team-number-color"
+                                                       data-placement="right"
+                                                       title="Click to change color" href="javascript:void(0)"
+                                                       data-color="000000"
+                                                       data-label="colorT" style="background-color:black">
+                                                        <span
+                                                            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-number"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div data-toggle="modal" data-target="#dg-fonts" class="dropdown">
+                                                    <a href="javascript:void(0)"
+                                                       class="drop-font pull-left btn btn-default"
+                                                       id="txt-team-number-fontfamly"><?php echo $lang['designer_clipart_edit_arial']; ?></a>
+                                                    <span
+                                                        class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right ui-pull-right"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row toolbar-action-teams">
+                                    <div class="col-md-12 name-number-data">
+                                        <span>
+                                            <strong class="text"><?php echo $lang['designer_clipart_edit_enter_your_full_list']; ?></strong>
+                                        </span>
+                                    </div>
+
+
+
+                                    <div class="col-md-12 div-box-team-list">
+<!--                                        <table id="item_team_list" class="table table-bordered">-->
+<!--                                            <thead>-->
+<!--                                            <tr>-->
+<!--                                                <td width="70%" class="inp-team-name">-->
+<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_name']; ?><!--</strong>-->
+<!--                                                </td>-->
+<!--                                                <td width="10%" class="inp-team-num">-->
+<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_number']; ?><!--</strong>-->
+<!--                                                </td>-->
+<!--                                                <td width="20%">-->
+<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_size']; ?><!--</strong>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            </thead>-->
+<!--                                            <tbody>-->
+<!--                                            <tr>-->
+<!--                                                <td align="left" class="inp-team-name"></td>-->
+<!--                                                <td align="center" class="inp-team-num"></td>-->
+<!--                                                <td align="center"></td>-->
+<!--                                            </tr>-->
+<!--                                            </tbody>-->
+<!--                                        </table>-->
+                                        <!--name-->
+                                            <div class="col-md-12">
+                                                <table class="table" id="table-team-list">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="5%"><?php echo $lang['designer_team_order']; ?></th>
+                                                        <th width="40%"
+                                                            class="inp-team-name"><?php echo $lang['designer_team_name']; ?></th>
+                                                        <th width="25%"
+                                                            class="inp-team-num"><?php echo $lang['designer_team_number']; ?></th>
+                                                        <th width="20%"><?php echo $lang['designer_team_size']; ?></th>
+                                                        <th width="10%"><?php echo $lang['designer_team_remove']; ?></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        <!--end table-->
+                                    </div>
+                                </div>
+                                <div class="clear-line"></div>
+                                <br>
+                                <div class="row toolbar-action-add-list">
+                                    <div class="col-md-12">
+                                        <center>
+<!--                                            <button class="btn btn-primary input-sm" data-target="#dg-item_team_list"-->
+<!--                                                    data-toggle="modal" type="button"-->
+<!--                                                    onclick="design.team.checkSelect()">--><?php //echo $lang['designer_clipart_edit_add_list_name']; ?><!--</button>-->
+                                                    <div class="alert alert-danger fade in col-md-8 full-width" id="team_msg_error"
+                                                         style="display: none;"></div>
+                                                    <button class="btn btn-primary input-sm pull-right full-width" style="height: 50px;" onclick="design.team.addMember()"
+                                                            type="button"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button>
+                                            </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END team edit options -->
                         <div role="tabpanel" class="tab-pane" id="settings">...</div>
                     </div>
                 </div>
@@ -1292,117 +1457,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         <!-- END clipart edit options -->
 
 
-        <!-- BEGIN team edit options -->
-        <div id="options-add_item_team" class="dg-options">
-            <div class="dg-options-toolbar">
-                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                    <button class="btn btn-default" type="button" data-type="name-number">
-                        <i class="glyphicons soccer_ball glyphicons-small"></i>
-                        <small class="clearfix">Add Name</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="teams">
-                        <i class="fa fa-users"></i>
-                        <small class="clearfix">Teams</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="add-list">
-                        <i class="fa fa-user"></i>
-                        <small class="clearfix">Add Team</small>
-                    </button>
-                </div>
-            </div>
-
-            <div class="dg-options-content">
-                <input type="hidden" id="team-height" value="">
-                <input type="hidden" id="sel-name" value="0">
-                <input type="hidden" id="sel-num" value="0">
-                <input type="hidden" id="team-width" value="">
-                <input type="hidden" id="team-rotate-value" value="0">
-                <div class="row toolbar-action-name-number">
-                    <div class="col-md-12 position-static">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="team_add_name" onclick="design.team.addName(this)"
-                                       autocomplete="off">
-                                <strong><?php echo $lang['designer_clipart_edit_add_name']; ?></strong>
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="team_add_number" onclick="design.team.addNumber(this)"
-                                       autocomplete="off">
-                                <strong><?php echo $lang['designer_clipart_edit_add_number']; ?></strong>
-                            </label>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-xs-3 col-md-3 position-static">
-                                <div class="list-colors">
-                                    <a class="dropdown-color" id="team-name-color" data-placement="right"
-                                       title="Click to change color" href="javascript:void(0)" data-color="000000"
-                                       data-label="colorT" style="background-color:black">
-                                        <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xs-9 col-md-9">
-                                <div data-toggle="modal" data-target="#dg-fonts" class="dropdown">
-                                    <a href="javascript:void(0)" class="pull-left"
-                                       id="txt-team-fontfamly"><?php echo $lang['designer_clipart_edit_arial']; ?></a>
-                                    <span
-                                        class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s pull-right"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-teams">
-                    <div class="col-md-12">
-							<span class="help-block">
-								<?php echo $lang['designer_clipart_edit_enter_your_full_list']; ?>
-							</span>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="clear-line"></div>
-                        <br>
-                    </div>
-
-                    <div class="col-md-12 div-box-team-list">
-                        <table id="item_team_list" class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <td width="70%" class="inp-team-name">
-                                    <strong><?php echo $lang['designer_clipart_edit_name']; ?></strong></td>
-                                <td width="10%" class="inp-team-num">
-                                    <strong><?php echo $lang['designer_clipart_edit_number']; ?></strong></td>
-                                <td width="20%"><strong><?php echo $lang['designer_clipart_edit_size']; ?></strong></td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td align="left" class="inp-team-name"></td>
-                                <td align="center" class="inp-team-num"></td>
-                                <td align="center"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="clear-line"></div>
-                <br>
-                <div class="row toolbar-action-add-list">
-                    <div class="col-md-12">
-                        <center>
-                            <button class="btn btn-primary input-sm" data-target="#dg-item_team_list"
-                                    data-toggle="modal" type="button"
-                                    onclick="design.team.checkSelect()"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button>
-                            <center>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END team edit options -->
     </div>
 </div>
 

@@ -1555,7 +1555,7 @@ input.input-small {
     height: 70px;
 }
 
-#txt-fontfamily {
+.drop-font {
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
@@ -2720,7 +2720,7 @@ ul.choose_payment .description {
 }
 
 .div-box-team-list {
-    max-height: 200px;
+    max-height: 380px;
     overflow: auto;
 }
 
@@ -3033,12 +3033,35 @@ ul.choose_payment .description {
     width: 100%;
     display: inline-block;
 }
+#dg-designer #team_add_name, #dg-designer #team_add_number{
+    margin: 0px;
+    vertical-align: middle;
+}
+#dg-designer .team-add-check-area{
+    padding: 0;
+    margin-top: 20px;
+}
+#dg-designer .team-add-check-area .text, .name-number-data .text{
+    font-size: 15px;
+    vertical-align: middle;
+}
 
+#dg-designer .btn-remove{
+    text-align: right;
+    font-size: 30px;
+    color: red;
+    text-decoration: none;
+    line-height: 25px;
+}
 .margin-top-20{
     margin-top: 20px;
+
 }
 .full-width{
     width: 100%;
+}
+.align-top{
+    vertical-align: top;
 }
 /*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/
     /*border-radius: 10px;*/
