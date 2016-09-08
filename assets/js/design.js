@@ -97,7 +97,12 @@ var design = {
                     break;
             }
         });
+        jQuery('.btn-close-clipart').click(function(){
 
+            jQuery(".cliparts-2").hide();
+            jQuery(".cliparts-3").hide();
+            jQuery(".cliparts-1").show();
+        })
         jQuery('#product-attributes .size-number').keyup(function () {
             design.products.sizes();
         });
@@ -106,10 +111,10 @@ var design = {
         });
         design.products.sizes();
 
-        $jd('.add_item_clipart').click(function () {
+        $jd('.cliparts').click(function () {
             self.designer.art.categories(true, 0);
-            if (jQuery('#dag-list-arts').html() == '')
-                self.designer.art.arts('');
+            // if (jQuery('#dag-list-arts').html() == '')
+            //     self.designer.art.arts('');
         });
 
         $jd('.add_item_mydesign').click(function () {
@@ -117,6 +122,8 @@ var design = {
         });
 
         $jd('#dag-art-panel a').click(function () {
+            jQuery('cliparts-1').hide();
+            jQuery('cliparts-2').show();
             jQuery('#dag-art-categories').children('ul').hide();
             var index = $jd('#dag-art-panel a').index(this);
             self.designer.art.categories(true, index);
@@ -124,7 +131,7 @@ var design = {
         });
         $jd('#dag-art-detail button').click(function () {
             jQuery('#dag-art-detail').hide('slow');
-            jQuery('#dag-list-arts').show('slow');
+            jQuery('.cliparts-2').show('slow');
             jQuery('#arts-add').hide();
             jQuery('#arts-pagination').css('display', 'block');
         });
@@ -746,15 +753,24 @@ var design = {
                     });
                 }
             },
-            arts: function (cate_id) {
+            arts: function (cate_id, cate_title) {
                 var self = this;
                 var parent = document.getElementById('dag-list-arts');
                 parent.innerHTML = '';
-                jQuery('#dag-art-detail').hide('slow');
-                jQuery('#dag-list-arts').show('slow');
+                jQuery('#dag-art-detail').hide();
+                jQuery('.cliparts-1').hide();
+                jQuery('.cliparts-2').show();
                 jQuery('#arts-add').hide();
                 jQuery('#dag-list-arts').addClass('loading');
-
+                jQuery('.back-cliparts').bind('click', function(){
+                    jQuery('#dag-art-detail').hide();
+                    jQuery('.cliparts-2').hide();
+                    jQuery('#arts-add').hide();
+                    jQuery('.cliparts-1').show();
+                });
+                if(cate_title){
+                    jQuery('.cliparts-title').html(cate_title);
+                }
                 var page = jQuery('#art-number-page').val();
                 var keyword = jQuery('#art-keyword').val();
                 jQuery.ajax({
@@ -774,12 +790,12 @@ var design = {
                         jQuery.each(data.arts, function (i, art) {
                             var url = art.path;
                             var div = document.createElement('div');
-                            div.className = 'col-xs-3 col-md-2 box-art';
+                            div.className = 'col-xs-4 col-md-4 box-art';
                             var a = document.createElement('a');
                             a.setAttribute('title', art.title);
                             a.setAttribute('class', 'thumbnail');
                             a.setAttribute('href', 'javascript:void(0)');
-                            a.setAttribute('onclick', 'design.designer.art.artDetail(this)');
+                            a.setAttribute('onclick', 'design.art.create(this);');
                             jQuery(a).data('id', art.clipart_id);
                             jQuery(a).data('clipart_id', art.clipart_id);
                             jQuery(a).data('medium', url + art.medium);
@@ -845,9 +861,7 @@ var design = {
                                 info.append('<h4>' + data.info.title + '</h4>');
                             info.append('<p>' + data.info.description + '</p>');
                             e.item.title = data.info.title;
-
                             jQuery('.art-detail-price').html('From ' + data.price.currency_symbol + data.price.amount);
-
                         }
                         jQuery('#art-detail-' + id + ' .art-detail-right').removeClass('loading');
                     }).fail(function () {
@@ -857,7 +871,7 @@ var design = {
                 else {
                     jQuery('#art-detail-' + id).css('display', 'block');
                 }
-                jQuery('#dag-list-arts').hide('slow');
+                jQuery('.cliparts-2').hide('slow');
                 jQuery('#dag-art-detail').show('slow');
                 jQuery('#arts-add').show();
                 jQuery('#arts-add button').unbind('click');
@@ -897,7 +911,7 @@ var design = {
                         jQuery(a).addClass('active');
                         jQuery('#art-number-page').val(0);
                         jQuery('#arts-pagination .pagination').html('');
-                        self.arts(cate.id);
+                        self.arts(cate.id, cate.title);
                     });
                     a.innerHTML = cate.title;
                     li.appendChild(a);
@@ -2228,7 +2242,7 @@ var design = {
                     design.item.create(o);
                     $jd('#dg-myclipart').modal('hide');
                     design.mask(false);
-                }
+                };
                 img.src = item.thumb;
                 return true;
             }
@@ -2280,7 +2294,7 @@ var design = {
                     jQuery('#arts-add button').button('reset');
                     design.item.create(o);
                     $jd('.modal').modal('hide');
-                }
+                };
                 img.src = urlCase + '?src=' + item.imgMedium + '&w=250&h=atuto&q=90';
             }
             else {
@@ -2486,7 +2500,7 @@ var design = {
         },
         setupColorprint: function (o) {
             var item = o.item;
-            jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
+             jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
             if (item.colors != 'undefined') {
                 jQuery('#screen_colors_list span').each(function () {
                     var color = jQuery(this).data('color');
@@ -2532,8 +2546,8 @@ var design = {
                 if (o.item.confirmColor == true) {
                     if (typeof o.item.colors != 'undefined') {
                         var item = o.item;
-                        jQuery('#item-print-colors').html('<div class="col-xs-6 col-md-6"><img class="img-thumbnail img-responsive" src="' + item.thumb + '"></div><div class="col-xs-6 col-md-6"><div id="print-color-added" class="list-colors"></div><br/><span id="print-color-edit">Edit ink colors</span></div>');
-
+                        jQuery('#item-print-colors').html('<span id="print-color-edit">Edit colors</span><div id="print-color-added" class="list-colors">');
+                        jQuery('#item-print-colors').show();
                         jQuery('#print-color-edit').click(function () {
                             design.item.setupColorprint(o);
                         });
@@ -2809,6 +2823,10 @@ var design = {
             });
             jQuery('.labView.active .design-area').css('overflow', 'hidden');
             jQuery(".popover").hide();
+            jQuery('.cliparts-2').hide();
+            jQuery('.cliparts-3').hide();
+            jQuery('.cliparts-1').show();
+
             jQuery('.menu-left a').removeClass('active');
             jQuery('#layers li').removeClass('active');
             jQuery('#dg-popover .dg-options-toolbar button').removeClass('active');
@@ -2827,10 +2845,11 @@ var design = {
         },
         setup: function (item) {
             if (item.type == 'clipart') {
-                jQuery('.popover-title').children('span').html('Edit clipart');
+                jQuery('.detail-title').children('span').html('Edit clipart');
 
                 /* color of clipart */
                 var e = this.get();
+                jQuery('.image-clipart').html('<image class="image-result full-width" src="'+item.thumb +'"/>');
                 if (item.change_color == 1) {
                     var colors = design.svg.getColors(e.children('svg'));
                 }
@@ -2857,6 +2876,10 @@ var design = {
                     jQuery('#' + item.type + '-colors').css('display', 'none');
                     jQuery('.btn-action-colors').css('display', 'none');
                 }
+                jQuery('.cliparts-1').hide();
+                jQuery('.cliparts-2').hide();
+                jQuery('.cliparts-3').show();
+
             }
 
             if (item.type == 'text') {
@@ -3096,10 +3119,10 @@ var design = {
     },
     popover: function (e) {
         jQuery('.dg-options').not(".tab-pane").css('display', 'none');
-        var name = ".menu-left a[href=\"#options-" + e + "\"]";
+        var name = ".menu-left a[href=\"#tab-" + e + "\"]";
 
         jQuery(name).click();
-        jQuery('#options-' + e).not(".tab-pane").css('display', 'block');
+        // jQuery('#options-' + e).not(".tab-pane").css('display', 'block');
         // jQuery('.popover').css({'top': '40px', 'display': 'block'});
         //
         // var index = jQuery('.menu-left li').index(jQuery('.menu-left .' + e).parent());

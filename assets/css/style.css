@@ -1137,12 +1137,14 @@ body {
         font-size: 15px;
     }
 
+
     .toolbar-action-edit.active #item-print-colors {
         border: 0 none;
         margin: 0;
         overflow: hidden;
         text-align: left;
     }
+
 
     #list-clipart-colors .popover {
         background-color: #fff;
@@ -1266,9 +1268,9 @@ body {
 
 #dag-art-categories li {
     float: left;
-    line-height: 22px;
-    text-align: left;
-    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    width: 32%;
 }
 
 #dag-art-categories a {
@@ -1335,7 +1337,8 @@ body {
 
 #dag-list-arts {
     min-height: 100px;
-    overflow: hidden;
+    overflow: auto;
+    max-height: 500px;
 }
 
 #arts-add {
@@ -1878,7 +1881,7 @@ input.input-small {
 }
 
 #item-print-colors {
-    border-bottom: 1px solid #ccc;
+
     clear: both;
     color: #007aff;
     font-size: 12px;
@@ -2852,7 +2855,7 @@ ul.choose_payment .description {
 
 }
 #dg-designer .tab-content .nav-product, #dg-designer .tab-content .nav-select, #dg-designer .tab-content .nav-bar{
-    padding: 20px 5px;
+    padding: 20px 15px;
 }
 #dg-designer .tab-content .nav-product .btn-link{
     text-align: center;
@@ -3053,9 +3056,45 @@ ul.choose_payment .description {
     text-decoration: none;
     line-height: 25px;
 }
+#dg-designer .form-search{
+    height:50px;
+}
+#dg-designer .btn-search{
+    width: inherit;
+    height:inherit;
+    -webkit-border-radius:0;
+    -moz-border-radius:0 ;
+    border-radius:0;;
+}
+#dg-designer .search-area{
+    margin: 20px 0;
+}
+#dg-designer .image-clipart{
+    height: 250px;
+}
+#dg-designer .image-clipart img{
+    height: 100%;
+}
 .margin-top-20{
     margin-top: 20px;
 
+}
+#dg-designer .toolbar-action-edit{
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin:0
+}
+#dg-designer .toolbar-action-edit *{
+    vertical-align: middle;
+}
+#dg-designer .toolbar-action-edit #clipart-colors{
+}
+#dg-designer .toolbar-action-edit .print-color-added{
+    margin-left: 10px;
+}
+#dg-designer .toolbar-action-edit .print-color-edit{
+    margin-right: 10px;
+    font-weight: bold;
 }
 .full-width{
     width: 100%;

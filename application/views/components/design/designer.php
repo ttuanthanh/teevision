@@ -65,22 +65,21 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </a>
                         </li>
                         <li role="presentation">
-                            <a href="#options-add_item_text" aria-controls="#options-add_item_text" role="tab"
+                            <a href="#tab-add_item_text" aria-controls="#tab-add_item_text" role="tab"
                                data-toggle="tab">
                                 <i class="glyphicons text_bigger"></i><span><span> <?php echo $lang['designer_menu_add_text']; ?></span>
                             </a>
                         </li>
 
                         <li role="presentation">
-                            <a href="#options-add_item_team" class="add_item_team" role="tab"
+                            <a href="#tab-add_item_team" role="tab"  aria-controls="#tab-add_item_team"
                                data-toggle="tab">
                                 <i class="glyphicons soccer_ball"></i>
                                 <span> <?php echo $lang['designer_menu_name_number']; ?></span>
                             </a>
                         </li>
                         <li role="presentation">
-                            <a href="javascript:void(0)" class="add_item_clipart" title="" data-toggle="modal"
-                               data-target="#dg-cliparts">
+                            <a href="#tab-add_item_clipart" class="cliparts" aria-controls="#tab-add_item_clipart" title="" data-toggle="tab">
                                 <i class="glyphicons picture"></i><span> <span> <?php echo $lang['designer_menu_add_art']; ?></span>
                             </a>
                         </li>
@@ -292,7 +291,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                         </div>
                         <!-- BEGIN Text edit options -->
-                        <div id="options-add_item_text" class="dg-options tab-pane tab-padding" role="tabpanel">
+                        <div id="tab-add_item_text" class="dg-options tab-pane tab-padding" role="tabpanel">
                             <div class="row">
                                 <div class="col-md-12 nav-info left text_edit_header">
                                     <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
@@ -504,7 +503,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <!-- END Text edit options -->
                         <!-- Begin team edit options-->
-                        <div id="options-add_item_team" class="dg-options tab-pane tab-padding" role="tabpanel">
+                        <div id="tab-add_item_team" class="dg-options tab-pane tab-padding" role="tabpanel">
                             <div class="dg-options-toolbar">
                                 <div aria-label="First group" role="group" class="btn-group btn-group-lg">
                                     <button class="btn btn-default" type="button" data-type="name-number">
@@ -601,52 +600,55 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="row toolbar-action-teams">
                                     <div class="col-md-12 name-number-data">
                                         <span>
-                                            <strong class="text"><?php echo $lang['designer_clipart_edit_enter_your_full_list']; ?></strong>
+                                            <strong
+                                                class="text"><?php echo $lang['designer_clipart_edit_enter_your_full_list']; ?></strong>
                                         </span>
                                     </div>
 
 
-
                                     <div class="col-md-12 div-box-team-list">
-<!--                                        <table id="item_team_list" class="table table-bordered">-->
-<!--                                            <thead>-->
-<!--                                            <tr>-->
-<!--                                                <td width="70%" class="inp-team-name">-->
-<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_name']; ?><!--</strong>-->
-<!--                                                </td>-->
-<!--                                                <td width="10%" class="inp-team-num">-->
-<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_number']; ?><!--</strong>-->
-<!--                                                </td>-->
-<!--                                                <td width="20%">-->
-<!--                                                    <strong>--><?php //echo $lang['designer_clipart_edit_size']; ?><!--</strong>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                            </thead>-->
-<!--                                            <tbody>-->
-<!--                                            <tr>-->
-<!--                                                <td align="left" class="inp-team-name"></td>-->
-<!--                                                <td align="center" class="inp-team-num"></td>-->
-<!--                                                <td align="center"></td>-->
-<!--                                            </tr>-->
-<!--                                            </tbody>-->
-<!--                                        </table>-->
+                                        <!--                                        <table id="item_team_list" class="table table-bordered">-->
+                                        <!--                                            <thead>-->
+                                        <!--                                            <tr>-->
+                                        <!--                                                <td width="70%" class="inp-team-name">-->
+                                        <!--                                                    <strong>-->
+                                        <?php //echo $lang['designer_clipart_edit_name']; ?><!--</strong>-->
+                                        <!--                                                </td>-->
+                                        <!--                                                <td width="10%" class="inp-team-num">-->
+                                        <!--                                                    <strong>-->
+                                        <?php //echo $lang['designer_clipart_edit_number']; ?><!--</strong>-->
+                                        <!--                                                </td>-->
+                                        <!--                                                <td width="20%">-->
+                                        <!--                                                    <strong>-->
+                                        <?php //echo $lang['designer_clipart_edit_size']; ?><!--</strong>-->
+                                        <!--                                                </td>-->
+                                        <!--                                            </tr>-->
+                                        <!--                                            </thead>-->
+                                        <!--                                            <tbody>-->
+                                        <!--                                            <tr>-->
+                                        <!--                                                <td align="left" class="inp-team-name"></td>-->
+                                        <!--                                                <td align="center" class="inp-team-num"></td>-->
+                                        <!--                                                <td align="center"></td>-->
+                                        <!--                                            </tr>-->
+                                        <!--                                            </tbody>-->
+                                        <!--                                        </table>-->
                                         <!--name-->
-                                            <div class="col-md-12">
-                                                <table class="table" id="table-team-list">
-                                                    <thead>
-                                                    <tr>
-                                                        <th width="5%"><?php echo $lang['designer_team_order']; ?></th>
-                                                        <th width="40%"
-                                                            class="inp-team-name"><?php echo $lang['designer_team_name']; ?></th>
-                                                        <th width="25%"
-                                                            class="inp-team-num"><?php echo $lang['designer_team_number']; ?></th>
-                                                        <th width="20%"><?php echo $lang['designer_team_size']; ?></th>
-                                                        <th width="10%"><?php echo $lang['designer_team_remove']; ?></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody></tbody>
-                                                </table>
-                                            </div>
+                                        <div class="col-md-12">
+                                            <table class="table" id="table-team-list">
+                                                <thead>
+                                                <tr>
+                                                    <th width="5%"><?php echo $lang['designer_team_order']; ?></th>
+                                                    <th width="40%"
+                                                        class="inp-team-name"><?php echo $lang['designer_team_name']; ?></th>
+                                                    <th width="25%"
+                                                        class="inp-team-num"><?php echo $lang['designer_team_number']; ?></th>
+                                                    <th width="20%"><?php echo $lang['designer_team_size']; ?></th>
+                                                    <th width="10%"><?php echo $lang['designer_team_remove']; ?></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
                                         <!--end table-->
                                     </div>
                                 </div>
@@ -655,183 +657,358 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="row toolbar-action-add-list">
                                     <div class="col-md-12">
                                         <center>
-<!--                                            <button class="btn btn-primary input-sm" data-target="#dg-item_team_list"-->
-<!--                                                    data-toggle="modal" type="button"-->
-<!--                                                    onclick="design.team.checkSelect()">--><?php //echo $lang['designer_clipart_edit_add_list_name']; ?><!--</button>-->
-                                                    <div class="alert alert-danger fade in col-md-8 full-width" id="team_msg_error"
-                                                         style="display: none;"></div>
-                                                    <button class="btn btn-primary input-sm pull-right full-width" style="height: 50px;" onclick="design.team.addMember()"
-                                                            type="button"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button>
-                                            </center>
+                                            <!--                                            <button class="btn btn-primary input-sm" data-target="#dg-item_team_list"-->
+                                            <!--                                                    data-toggle="modal" type="button"-->
+                                            <!--                                                    onclick="design.team.checkSelect()">-->
+                                            <?php //echo $lang['designer_clipart_edit_add_list_name']; ?><!--</button>-->
+                                            <div class="alert alert-danger fade in col-md-8 full-width"
+                                                 id="team_msg_error"
+                                                 style="display: none;"></div>
+                                            <button class="btn btn-primary input-sm pull-right full-width"
+                                                    style="height: 50px;" onclick="design.team.addMember()"
+                                                    type="button"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- END team edit options -->
-                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                        <div class="dg-options tab-pane tab-padding" role="tabpanel" id="tab-add_item_clipart">
+                            <div class="cliparts-1 row">
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="input-group search-area full-width">
+                                        <input type="text" id="art-keyword" autocomplete="off"
+                                               class="form-control input-sm form-search"
+                                               placeholder="Search for...">
+                                        <span class="input-group-btn form-search" style="width: 80px;">
+							                <button class="btn btn-info btn-sm btn-search"
+                                                    onclick="design.designer.art.arts(0)"
+                                                    type="button">Search</button>
+						                </span>
+                                    </div>
+                                    <div class="clear-line"></div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <h5><strong>CLIPART CATEGORIES</strong></h5>
+                                </div>
+                                <div id="dag-art-categories" class="col-xs-12 col-md-12"></div>
+                            </div>
+                            <div class="cliparts-2 row" style="display: none;">
+                                <div class="row nav-product">
+                                    <div class="col-md-4 text-left backButton">
+                                        <a href="javascript:void(0)" class="back-cliparts btn-link">
+                                            <span class="glyphicon glyphicon-arrow-left"></span>
+                                            Back
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 center nav-info">
+                                    <span class="cliparts-title">
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div id="dag-list-arts"></div>
+                                </div>
+                            </div>
+                            <div class="cliparts-3 row " style="display: none;">
+                                <div class="row nav-product">
+                                    <div class="col-md-4 text-left backButton">
+
+                                    </div>
+                                    <div class="col-md-4 center nav-info">
+                                    <span class="detail-title">
+                                    <?php echo $lang['designer_clipart_edit_size_position']; ?>
+                                    </span>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a type="button" class="btn-link btn-close-clipart" href="javascript:void(0)" id="designThis" style="color:red">
+                                            X Close
+
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="image-clipart col-md-12"><div id="dag-list-arts"></div></div>
+                                <div class="popover-content">
+
+                                    <!-- BEGIN clipart edit options -->
+                                    <div id="options-add_item_clipart">
+                                        <div class="dg-options-toolbar">
+                                            <div aria-label="First group" role="group" class="btn-group btn-group-lg">
+                                                <button class="btn btn-default btn-action-edit" type="button"
+                                                        data-type="edit">
+                                                    <i class="glyphicon glyphicon-tint"></i>
+                                                    <small class="clearfix">Edit</small>
+                                                </button>
+                                                <button class="btn btn-default btn-action-colors" type="button"
+                                                        data-type="colors">
+                                                    <i class="glyphicon glyphicon-tint"></i>
+                                                    <small class="clearfix">Colors</small>
+                                                </button>
+                                                <button class="btn btn-default" type="button" data-type="size">
+                                                    <i class="fa fa-text-height"></i>
+                                                    <small class="clearfix">Size</small>
+                                                </button>
+                                                <button class="btn btn-default" type="button" data-type="rotate">
+                                                    <i class="fa fa-rotate-right"></i>
+                                                    <small class="clearfix">Rotate</small>
+                                                </button>
+                                                <button class="btn btn-default" type="button" data-type="functions">
+                                                    <i class="fa fa-cogs"></i>
+                                                    <small class="clearfix">Functions</small>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="dg-options-content">
+                                            <div class="row toolbar-action-edit">
+                                                <div id="item-print-colors" class="col-xs-6 col-md-6" style="display:none">
+                                                </div>
+                                                <div id="clipart-colors" class="col-xs-6 col-md-6">
+                                                    <div class="form-group col-lg-12 text-left position-static">
+                                                        <strong><?php echo $lang['designer_clipart_edit_choose_your_color']; ?></strong>
+                                                        <br/>
+                                                        <div id="list-clipart-colors" class="list-colors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-6">
+                                                    <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
+                                                    <div><span class="rotate-values"><input type="text" value="0"
+                                                                                            class="input-small rotate-value"
+                                                                                            id="clipart-rotate-value"/>&deg;</span>
+                                                        <span class="rotate-refresh glyphicons refresh"></span></div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row toolbar-action-size">
+                                                <div class="col-xs-6 col-lg-6 align-left">
+                                                    <div class="form-group">
+                                                        <strong><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></strong>
+                                                        <br/>
+                                                        <input type="checkbox" class="ui-lock" id="clipart-lock"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-3 col-lg-3 align-center">
+                                                    <div class="form-group">
+                                                        <strong><?php echo $lang['designer_clipart_edit_width']; ?></strong>
+                                                        <br/>
+                                                        <input type="text" size="2" id="clipart-width" readonly
+                                                               disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-3 col-lg-3 align-center">
+                                                    <div class="form-group">
+                                                        <strong><?php echo $lang['designer_clipart_edit_height']; ?></strong>
+                                                        <br/>
+                                                        <input type="text" size="2" id="clipart-height" readonly
+                                                               disabled>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+<!--                                            <div class="row toolbar-action-rotate">-->
+<!--                                                <div class="form-group col-lg-12">-->
+<!--                                                    <div class="row">-->
+<!---->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+                                            <div class="row toolbar-action-functions margin-top-20">
+                                                <div class="col-xs-6">
+                                            <span class="text_align">
+                                                <strong>
+                                                    <?php echo $lang['designer_clipart_edit_transform']; ?>
+                                                </strong>
+                                            </span>
+                                                    <span class="btn btn-default btn-xs" onclick="design.item.flip('x')">
+								<i class="glyphicons transfer glyphicons-12"></i>
+                                                        <?php echo $lang['designer_clipart_edit_flip']; ?>
+							</span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                             <span class="text_align">
+                                            <strong><?php echo $lang['designer_clipart_edit_align_with_shirft']; ?></strong>
+                                                 </span>
+                                                    <span class="btn btn-default btn-xs" onclick="design.item.center()">
+								<i class="glyphicons align_center glyphicons-12"></i>
+                                                        <?php echo $lang['designer_clipart_edit_center']; ?>
+							</span>
+                                                </div>
+                                            </div>
+                                            <div class="row toolbar-action-functions">
+                                                <div class="col-lg-12 form-group">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-xs-12 col-md-12 col-center align-center">
-        <!-- Begin sidebar -->
-        <div id="dg-sidebar">
-            <ul class="dg-tools">
-                <li>
-                    <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
-                        <i class="glyphicons circle_question_mark"></i>
-                        <span><?php echo $lang['designer_top_help']; ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="preview" class="dg-tool">
-                        <i class="glyphicons eye_open"></i>
-                        <span><?php echo $lang['designer_top_preview']; ?></span>
-                    </a>
-                </li>
-                <!--
-                <li>
-                    <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                        <i class="glyphicons undo"></i>
-                        <span>undo</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                        <i class="glyphicons redo"></i>
-                        <span>redo</span>
-                    </a>
-                </li>
-                -->
-                <li>
-                    <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
-                        <i class="glyphicons search"></i>
-                        <span><?php echo $lang['designer_top_zoom']; ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                        <i class="glyphicons bin"></i>
-                        <span><?php echo $lang['designer_top_reset']; ?></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- Begin sidebar -->
-
-        <!-- design area -->
-        <div id="design-area" class="div-design-area">
-            <div id="app-wrap" class="div-design-area">
-                <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
-                    <div id="view-front" class="labView active">
-                        <div class="product-design">
-                            <strong><?php echo $lang['designer_product_data_found']; ?></strong>
-                        </div>
-                    </div>
-                <?php } else { ?>
-
-                    <!-- begin front design -->
-                    <div id="view-front" class="labView active">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end front design -->
-
-                    <!-- begin back design -->
-                    <div id="view-back" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end back design -->
-
-                    <!-- begin left design -->
-                    <div id="view-left" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end left design -->
-
-                    <!-- begin right design -->
-                    <div id="view-right" class="labView">
-                        <div class="product-design"></div>
-                        <div class="design-area">
-                            <div class="content-inner"></div>
-                        </div>
-                    </div>
-                    <!-- end right design -->
-
-                <?php } ?>
+        <div class="col-xs-12 col-md-12 col-center align-center">
+            <!-- Begin sidebar -->
+            <div id="dg-sidebar">
+                <ul class="dg-tools">
+                    <li>
+                        <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                            <i class="glyphicons circle_question_mark"></i>
+                            <span><?php echo $lang['designer_top_help']; ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="preview" class="dg-tool">
+                            <i class="glyphicons eye_open"></i>
+                            <span><?php echo $lang['designer_top_preview']; ?></span>
+                        </a>
+                    </li>
+                    <!--
+                    <li>
+                        <a href="javascript:void(0)" data-type="undo" class="dg-tool">
+                            <i class="glyphicons undo"></i>
+                            <span>undo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="redo" class="dg-tool">
+                            <i class="glyphicons redo"></i>
+                            <span>redo</span>
+                        </a>
+                    </li>
+                    -->
+                    <li>
+                        <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
+                            <i class="glyphicons search"></i>
+                            <span><?php echo $lang['designer_top_zoom']; ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
+                            <i class="glyphicons bin"></i>
+                            <span><?php echo $lang['designer_top_reset']; ?></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <!-- Begin sidebar -->
+
+            <!-- design area -->
+            <div id="design-area" class="div-design-area">
+                <div id="app-wrap" class="div-design-area">
+                    <?php if ($product == false || (isset($product->design) && $product->design == false)) { ?>
+                        <div id="view-front" class="labView active">
+                            <div class="product-design">
+                                <strong><?php echo $lang['designer_product_data_found']; ?></strong>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+
+                        <!-- begin front design -->
+                        <div id="view-front" class="labView active">
+                            <div class="product-design"></div>
+                            <div class="design-area">
+                                <div class="content-inner"></div>
+                            </div>
+                        </div>
+                        <!-- end front design -->
+
+                        <!-- begin back design -->
+                        <div id="view-back" class="labView">
+                            <div class="product-design"></div>
+                            <div class="design-area">
+                                <div class="content-inner"></div>
+                            </div>
+                        </div>
+                        <!-- end back design -->
+
+                        <!-- begin left design -->
+                        <div id="view-left" class="labView">
+                            <div class="product-design"></div>
+                            <div class="design-area">
+                                <div class="content-inner"></div>
+                            </div>
+                        </div>
+                        <!-- end left design -->
+
+                        <!-- begin right design -->
+                        <div id="view-right" class="labView">
+                            <div class="product-design"></div>
+                            <div class="design-area">
+                                <div class="content-inner"></div>
+                            </div>
+                        </div>
+                        <!-- end right design -->
+
+                    <?php } ?>
+                </div>
+            </div>
+
+            <div class="" id="product-thumbs"></div>
         </div>
 
-        <div class="" id="product-thumbs"></div>
-    </div>
-
-    <div class="col-right">
-        <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
-        <div id="dg-right">
-            <!-- share -->
-            <div class="dg-share">
-                <div class="row align-center">
-                    <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
-                                alt="Save and share this design"/></label>
+        <div class="col-right">
+            <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
+            <div id="dg-right">
+                <!-- share -->
+                <div class="dg-share">
+                    <div class="row align-center">
+                        <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
+                                    alt="Save and share this design"/></label>
+                    </div>
+                    <div class="row align-center">
+                        <div class="dg-box">
+                            <a href="javascript:void(0)" onclick="design.save()"
+                               class="btn btn-sm btn-warning btn-margin pull-left"
+                               title="save"><?php echo $lang['designer_save_btn']; ?></a>
+                            <ul class="list-share pull-right">
+                                <li>
+                                    <span class="icon-25 share-email" data-type="email"></span>
+                                    <span class="icon-25 share-facebook" data-type="facebook"></span>
+                                    <span class="icon-25 share-twitter" data-type="twitter"></span>
+                                    <span class="icon-25 share-pinterest" data-type="pinterest"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="row align-center">
+
+                <!-- product -->
+                <div class="align-center" id="right-options">
                     <div class="dg-box">
-                        <a href="javascript:void(0)" onclick="design.save()"
-                           class="btn btn-sm btn-warning btn-margin pull-left"
-                           title="save"><?php echo $lang['designer_save_btn']; ?></a>
-                        <ul class="list-share pull-right">
-                            <li>
-                                <span class="icon-25 share-email" data-type="email"></span>
-                                <span class="icon-25 share-facebook" data-type="facebook"></span>
-                                <span class="icon-25 share-twitter" data-type="twitter"></span>
-                                <span class="icon-25 share-pinterest" data-type="pinterest"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- product -->
-            <div class="align-center" id="right-options">
-                <div class="dg-box">
-
-                    <div class="product-prices">
-                        <div id="product-price">
-                            <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
-                            <div class="product-price-list">
+                        <div class="product-prices">
+                            <div id="product-price">
+                                <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
+                                <div class="product-price-list">
                                 <span
                                     id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
                                     <span class="price-old-number">123</span></span>
-                                <span
-                                    id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
-                                    <span class="price-sale-number">100</span></span>
+                                    <span
+                                        id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
+                                        <span class="price-sale-number">100</span></span>
+                                </div>
+                                <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i
+                                        class="glyphicons restart"></i></span>
                             </div>
-                            <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i
-                                    class="glyphicons restart"></i></span>
+                            <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
+                            <button type="button" class="btn btn-warning btn-addcart"
+                                    onclick="return design.team.resetTeam()"><i
+                                    class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?>
+                            </button>
                         </div>
-                        <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                        <button type="button" class="btn btn-warning btn-addcart"
-                                onclick="return design.team.resetTeam()"><i
-                                class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?>
-                        </button>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
-<!-- End main -->
+    <!-- End main -->
 </div>
 
 <div id="screen_colors_body" style="display:none;">
@@ -1075,71 +1252,71 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
     <!-- Begin clipart -->
-    <div class="modal fade" id="dg-cliparts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="overflow: hidden;">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <div class="col-xs-4 col-md-3">
-                        <h4 class="modal-title"><?php echo lang('design_art_select'); ?></h4>
-                    </div>
-                    <div class="col-xs-7 col-md-4">
-                        <div class="input-group">
-                            <input type="text" id="art-keyword" autocomplete="off" class="form-control input-sm"
-                                   placeholder="Search for...">
-                            <span class="input-group-btn">
-							<button class="btn btn-default btn-sm" onclick="design.designer.art.arts(0)" type="button">Search</button>
-						  </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="row align-center">
-                        <div id="dag-art-panel">
-                            <a href="javascript:void(0)" title="Click to show categories">
-                                <?php echo $lang['designer_clipart_shop_library']; ?> <span class="caret"></span>
-                            </a>
-                            <a href="javascript:void(0)" title="Click to show categories">
-                                <?php echo $lang['designer_clipart_store_design']; ?> <span class="caret"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div id="dag-art-categories" class="row col-xs-4 col-md-3"></div>
-                        <div class="col-xs-8 col-md-9">
-                            <div id="dag-list-arts"></div>
-                            <div id="dag-art-detail">
-                                <button type="button"
-                                        class="btn btn-danger btn-xs"><?php echo $lang['designer_close_btn']; ?></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="align-right" id="arts-pagination" style="display:none">
-                        <ul class="pagination">
-                            <li><a href="javascript:void(0)">&laquo;</a></li>
-                            <li class="active"><a href="javascript:void(0)">1</a></li>
-                            <li><a href="javascript:void(0)">2</a></li>
-                            <li><a href="javascript:void(0)">3</a></li>
-                            <li><a href="javascript:void(0)">4</a></li>
-                            <li><a href="javascript:void(0)">5</a></li>
-                            <li><a href="javascript:void(0)">&raquo;</a></li>
-                        </ul>
-                        <input type="hidden" value="0" autocomplete="off" id="art-number-page">
-                    </div>
-                    <div class="align-right" id="arts-add" style="display:none">
-                        <div class="art-detail-price"></div>
-                        <button type="button"
-                                class="btn btn-primary"><?php echo $lang['designer_add_design_btn']; ?></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="modal fade" id="dg-cliparts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog modal-lg">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header" style="overflow: hidden;">-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--                    <div class="col-xs-4 col-md-3">-->
+<!--                        <h4 class="modal-title">--><?php //echo lang('design_art_select'); ?><!--</h4>-->
+<!--                    </div>-->
+<!--                    <div class="col-xs-7 col-md-4">-->
+<!--                        <div class="input-group">-->
+<!--                            <input type="text" id="art-keyword" autocomplete="off" class="form-control input-sm"-->
+<!--                                   placeholder="Search for...">-->
+<!--                            <span class="input-group-btn">-->
+<!--							<button class="btn btn-default btn-sm" onclick="design.designer.art.arts(0)" type="button">Search</button>-->
+<!--						  </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div class="row align-center">-->
+<!--                        <div id="dag-art-panel">-->
+<!--                            <a href="javascript:void(0)" title="Click to show categories">-->
+<!--                                --><?php //echo $lang['designer_clipart_shop_library']; ?><!-- <span class="caret"></span>-->
+<!--                            </a>-->
+<!--                            <a href="javascript:void(0)" title="Click to show categories">-->
+<!--                                --><?php //echo $lang['designer_clipart_store_design']; ?><!-- <span class="caret"></span>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="row">-->
+<!--                        <div id="dag-art-categories" class="row col-xs-4 col-md-3"></div>-->
+<!--                        <div class="col-xs-8 col-md-9">-->
+<!--                            <div id="dag-list-arts"></div>-->
+<!--                            <div id="dag-art-detail">-->
+<!--                                <button type="button"-->
+<!--                                        class="btn btn-danger btn-xs">--><?php //echo $lang['designer_close_btn']; ?><!--</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="modal-footer">-->
+<!--                    <div class="align-right" id="arts-pagination" style="display:none">-->
+<!--                        <ul class="pagination">-->
+<!--                            <li><a href="javascript:void(0)">&laquo;</a></li>-->
+<!--                            <li class="active"><a href="javascript:void(0)">1</a></li>-->
+<!--                            <li><a href="javascript:void(0)">2</a></li>-->
+<!--                            <li><a href="javascript:void(0)">3</a></li>-->
+<!--                            <li><a href="javascript:void(0)">4</a></li>-->
+<!--                            <li><a href="javascript:void(0)">5</a></li>-->
+<!--                            <li><a href="javascript:void(0)">&raquo;</a></li>-->
+<!--                        </ul>-->
+<!--                        <input type="hidden" value="0" autocomplete="off" id="art-number-page">-->
+<!--                    </div>-->
+<!--                    <div class="align-right" id="arts-add" style="display:none">-->
+<!--                        <div class="art-detail-price"></div>-->
+<!--                        <button type="button"-->
+<!--                                class="btn btn-primary">--><?php //echo $lang['designer_add_design_btn']; ?><!--</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <!-- End clipart -->
 
 
@@ -1352,112 +1529,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
     <!-- End Share -->
-</div>
-
-<div class="popover right" id="dg-popover">
-    <div class="arrow"></div>
-    <h3 class="popover-title"><span><?php echo $lang['designer_clipart_edit_size_position']; ?></span> <a
-            href="javascript:void(0)" class="popover-close"><i class="glyphicons remove_2 glyphicons-12 pull-right"></i></a>
-    </h3>
-    <div class="popover-content">
-
-        <!-- BEGIN clipart edit options -->
-        <div id="options-add_item_clipart" class="dg-options">
-            <div class="dg-options-toolbar">
-                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                    <button class="btn btn-default btn-action-edit" type="button" data-type="edit">
-                        <i class="glyphicon glyphicon-tint"></i>
-                        <small class="clearfix">Edit</small>
-                    </button>
-                    <button class="btn btn-default btn-action-colors" type="button" data-type="colors">
-                        <i class="glyphicon glyphicon-tint"></i>
-                        <small class="clearfix">Colors</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="size">
-                        <i class="fa fa-text-height"></i>
-                        <small class="clearfix">Size</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="rotate">
-                        <i class="fa fa-rotate-right"></i>
-                        <small class="clearfix">Rotate</small>
-                    </button>
-                    <button class="btn btn-default" type="button" data-type="functions">
-                        <i class="fa fa-cogs"></i>
-                        <small class="clearfix">Functions</small>
-                    </button>
-                </div>
-            </div>
-
-            <div class="dg-options-content">
-                <div class="row toolbar-action-edit">
-                    <div id="item-print-colors">
-                    </div>
-                </div>
-                <div class="row toolbar-action-size">
-                    <div class="col-xs-3 col-lg-3 align-center">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_width']; ?></small>
-                            <input type="text" size="2" id="clipart-width" readonly disabled>
-                        </div>
-                    </div>
-                    <div class="col-xs-3 col-lg-3 align-center">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_height']; ?></small>
-                            <input type="text" size="2" id="clipart-height" readonly disabled>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-6 align-left">
-                        <div class="form-group">
-                            <small><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></small>
-                            <br/>
-                            <input type="checkbox" class="ui-lock" id="clipart-lock"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-rotate">
-                    <div class="form-group col-lg-12">
-                        <div class="row">
-                            <div class="col-xs-6 col-lg-6">
-                                <small><?php echo $lang['designer_clipart_edit_rotate']; ?></small>
-                            </div>
-                            <div class="col-xs-6 col-lg-6 align-right">
-                                <span class="rotate-values"><input type="text" value="0"
-                                                                   class="input-small rotate-value"
-                                                                   id="clipart-rotate-value"/>&deg;</span>
-                                <span class="rotate-refresh glyphicons refresh"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-colors">
-                    <div id="clipart-colors">
-                        <div class="form-group col-lg-12 text-left position-static">
-                            <small><?php echo $lang['designer_clipart_edit_choose_your_color']; ?></small>
-                            <div id="list-clipart-colors" class="list-colors"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row toolbar-action-functions">
-                    <div class="col-lg-12 form-group">
-							<span class="btn btn-default btn-xs" onclick="design.item.flip('x')">
-								<i class="glyphicons transfer glyphicons-12"></i>
-                                <?php echo $lang['designer_clipart_edit_flip']; ?>
-							</span>
-                        <span class="btn btn-default btn-xs" onclick="design.item.center()">
-								<i class="glyphicons align_center glyphicons-12"></i>
-                            <?php echo $lang['designer_clipart_edit_center']; ?>
-							</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END clipart edit options -->
-
-
-    </div>
 </div>
 
 <!-- BEGIN colors system -->
