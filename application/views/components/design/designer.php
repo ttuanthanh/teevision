@@ -723,7 +723,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <div class="col-md-4 text-right">
                                         <a type="button" class="btn-link btn-close-clipart" href="javascript:void(0)" id="designThis" style="color:red">
                                             X Close
-
                                         </a>
                                     </div>
                                 </div>
@@ -853,49 +852,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
 
         <div class="col-xs-12 col-md-12 col-center align-center">
-            <!-- Begin sidebar -->
-            <div id="dg-sidebar">
-                <ul class="dg-tools">
-                    <li>
-                        <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
-                            <i class="glyphicons circle_question_mark"></i>
-                            <span><?php echo $lang['designer_top_help']; ?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" data-type="preview" class="dg-tool">
-                            <i class="glyphicons eye_open"></i>
-                            <span><?php echo $lang['designer_top_preview']; ?></span>
-                        </a>
-                    </li>
-                    <!--
-                    <li>
-                        <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                            <i class="glyphicons undo"></i>
-                            <span>undo</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                            <i class="glyphicons redo"></i>
-                            <span>redo</span>
-                        </a>
-                    </li>
-                    -->
-                    <li>
-                        <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
-                            <i class="glyphicons search"></i>
-                            <span><?php echo $lang['designer_top_zoom']; ?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                            <i class="glyphicons bin"></i>
-                            <span><?php echo $lang['designer_top_reset']; ?></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
             <!-- Begin sidebar -->
 
             <!-- design area -->
@@ -953,57 +910,79 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
 
         <div class="col-right">
-            <span class="arrow-mobile" data="right"><i class="glyphicons chevron-left"></i></span>
-            <div id="dg-right">
-                <!-- share -->
-                <div class="dg-share">
-                    <div class="row align-center">
-                        <label><img src="<?php echo base_url('assets/images/label-share.png'); ?>"
-                                    alt="Save and share this design"/></label>
-                    </div>
-                    <div class="row align-center">
-                        <div class="dg-box">
-                            <a href="javascript:void(0)" onclick="design.save()"
-                               class="btn btn-sm btn-warning btn-margin pull-left"
-                               title="save"><?php echo $lang['designer_save_btn']; ?></a>
-                            <ul class="list-share pull-right">
+
+                        <div class="tools area">
+                            <ul class="dg-tools">
                                 <li>
-                                    <span class="icon-25 share-email" data-type="email"></span>
-                                    <span class="icon-25 share-facebook" data-type="facebook"></span>
-                                    <span class="icon-25 share-twitter" data-type="twitter"></span>
-                                    <span class="icon-25 share-pinterest" data-type="pinterest"></span>
+                                    <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                                        <i class="glyphicons circle_question_mark"></i>
+                                        <span><?php echo $lang['designer_top_help']; ?></span>
+                                    </a>
                                 </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
+                                        <i class="fa fa-search-plus"></i>
+                                        <span>Zoom</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
+                                        <i class="fa fa-times-circle"></i>
+                                        <span>Clear</span>
+                                    </a>
+                                </li>
+                                <!--
+                                <li>
+                                    <a href="javascript:void(0)" data-type="preview" class="dg-tool">
+                                        <i class="glyphicons eye_open"></i>
+                                        <span><?php echo $lang['designer_top_preview']; ?></span>
+                                    </a>
+                                </li>
+                                -->
+                                <!--
+                                <li>
+                                    <a href="javascript:void(0)" data-type="undo" class="dg-tool">
+                                        <i class="glyphicons undo"></i>
+                                        <span>undo</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-type="redo" class="dg-tool">
+                                        <i class="glyphicons redo"></i>
+                                        <span>redo</span>
+                                    </a>
+                                </li>
+                                -->
+
+
                             </ul>
                         </div>
-                    </div>
-                </div>
-
                 <!-- product -->
-                <div class="align-center" id="right-options">
-                    <div class="dg-box">
+<!--                <div class="align-center" id="right-options">-->
+<!--                    <div class="dg-box">-->
 
                         <div class="product-prices">
-                            <div id="product-price">
-                                <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
-                                <div class="product-price-list">
-                                <span
-                                    id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
-                                    <span class="price-old-number">123</span></span>
-                                    <span
-                                        id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?>
-                                        <span class="price-sale-number">100</span></span>
-                                </div>
-                                <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i
-                                        class="glyphicons restart"></i></span>
-                            </div>
+<!--                            <div id="product-price">-->
+<!--                                <span class="product-price-title">--><?php //echo $lang['designer_right_total']; ?><!--</span>-->
+<!--                                <div class="product-price-list">-->
+<!--                                <span-->
+<!--                                    id="product-price-old">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
+<!--                                    <span class="price-old-number">123</span></span>-->
+<!--                                    <span-->
+<!--                                        id="product-price-sale">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
+<!--                                        <span class="price-sale-number">100</span></span>-->
+<!--                                </div>-->
+<!--                                <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i-->
+<!--                                        class="glyphicons restart"></i></span>-->
+<!--                            </div>-->
                             <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                            <button type="button" class="btn btn-warning btn-addcart"
+                            <button type="button" class="btn btn-warning btn-quote"
                                     onclick="return design.team.resetTeam()"><i
-                                    class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?>
+                                    class="fa fa-usd"></i> SAVE, QUOTE & BUY
                             </button>
                         </div>
-                    </div>
-                </div>
+<!--                    </div>-->
+<!--                </div>-->
 
             </div>
         </div>

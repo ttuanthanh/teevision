@@ -565,32 +565,42 @@ body {
 
 /* ----------------------------- Begin center ------------------------*/
 .dg-tools {
-    background-color: #E8E7E6;
     border-radius: 4px;
     display: inline-block;
     list-style: none outside none;
     padding: 0;
+    text-align: center;
+    float: right;
+    width: 100px;
+    font-size: 20px;
 }
 
 .dg-tools > li {
-    border-left: 2px solid #F0EFEE;
     cursor: pointer;
-    float: left;
-    padding: 4px 0;
+    float: right;
+    padding: 15px;
+    width: 100px;
+    font-size: 16px;
 }
+.dg-tools > li i:before{
+    font-size: 30px;
 
-.dg-tools > li:first-child {
-    border: 0 none;
-    border-radius: 4px 0 0 4px;
 }
+/*.dg-tools > li:first-child {*/
+    /*border: 0 none;*/
+    /*border-radius: 4px 0 0 4px;*/
+/*}*/
 
 .dg-tools > li:hover, .dg-tools > li.active {
     background-color: #007F7B;
 }
-
-.dg-tools > li:hover span, .dg-tools > li.active span {
+.dg-tools > li a{
+    color:#555555
+}
+.dg-tools > li:hover *, .dg-tools > li.active *{
     color: #FFFFFF;
     text-shadow: 1px 1px #666;
+    text-decoration: none;
 }
 
 .dg-tools > li:hover .glyphicons:before, .dg-tools > li.active .glyphicons:before {
@@ -602,15 +612,14 @@ body {
     color: #555555;
     display: block;
     font-family: arial, serif;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 6px 14px 0;
+    font-size: 16px;
+    /*font-weight: bold;*/
+    padding-top: 15px;
     text-shadow: 1px 1px #FFFFFF;
     text-transform: capitalize;
 }
 
 #app-wrap {
-    margin-left: 15%;
     width: 100%;
 }
 
@@ -619,6 +628,7 @@ body {
     height: 500px;
     position: relative;
     width: 500px;
+    margin-left: 25%;
 }
 
 #app-wrap .labView.active {
@@ -764,7 +774,7 @@ body {
     right: 0px;
     width: 220px;
     z-index: 10000;
-    top: 0px;
+    top: 80px;
 }
 
 .sb_toggle {
@@ -1938,7 +1948,18 @@ input.input-small {
 .product-prices {
     padding: 10px 0;
 }
-
+button.btn-quote{
+    background-color: #39b3d7;
+    border-color: #39b3d7;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 100%;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 0px;
+    height: 45px;
+    margin-top: 30px;
+}
 .product-prices button.btn-addcart, .modal-footer button.btn-addcart {
     background-color: #f65e13;
     font-size: 14px;
