@@ -851,7 +851,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
 
-        <div class="col-xs-12 col-md-12 col-center align-center">
+        <div class="col-xs-12 col-md-12 col-center align-center" style="height: 635px">
 
             <!-- Begin sidebar -->
 
