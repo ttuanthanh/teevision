@@ -710,7 +710,7 @@ class Orders extends Admin_Controller
 		$this->data['setting'] 	= $setting;	
                 
 		$this->session->set_userdata('option_order', '');
-		if ($this->input->post('search'))
+		if ($this->input->post('option_s'))
 		{		
 			$this->session->set_userdata('search_order', $this->input->post('search'));
 			$this->session->set_userdata('option_order', $this->input->post('option_s'));
@@ -721,9 +721,9 @@ class Orders extends Admin_Controller
 		$config['base_url'] 		= site_url('admin/orders/schedules');
 		$config['total_rows']		= $this->order_m->getOrdersSched(true, 5, 1, $this->session->userdata('search_order'), $this->session->userdata('option_order'));
 		
-		if ($this->input->post('option'))
+		if ($this->input->post('option_s'))
 		{
-			if ($this->input->post('option') == '')
+			if ($this->input->post('option_s') == '')
 				$this->session->set_userdata('per_page', $config['total_rows']);
 			else
 				$this->session->set_userdata('per_page', $this->input->post('per_page'));
