@@ -170,7 +170,7 @@ class Order_m extends MY_Model
 		}
 		elseif( $option == 'customer' && $search != '')
 		{			
-			$this->db->like('users.username', $search);
+			$this->db->like('users.name', $search);
 		}
 		elseif($option == 'date' && $search != '')
 		{

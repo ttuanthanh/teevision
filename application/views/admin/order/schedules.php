@@ -48,7 +48,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 	<?php
 	$attribute = array('class' => 'form-orders', 'id' => 'form-orders');		
-	echo form_open(site_url('admin/orders'), $attribute);
+	echo form_open(site_url('admin/orders/schedules'), $attribute);
 	?>
 	<div class="panel-body" id="panelbody">
 		<div class="row">
@@ -63,7 +63,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							$search = array('name' => 'search', 'id' => 'search', 'class' => 'form-control datepicker', 'placeholder' => lang('orders_admin_search_place'), 'autocomplete'=>'off', 'value'=>$search);
 							echo form_input($search);
 						?>
-					</div>					
+					</div>
+					<div class="col-md-4">
+						<?php 
+							if(isset($myorders))
+								$option_s = array('order_number' => lang('orders_admin_search_order_number'), 'date' => lang('orders_admin_search_date'));
+							else
+								$option_s = array('order_number' => lang('orders_admin_search_order_number'), 'customer' => lang('orders_admin_search_customer'), 'date' => lang('orders_admin_search_date'));
+							echo form_dropdown('option_s', $option_s, $option, 'class="form-control" id="option_s"'); 
+						?>
+					</div>				
 					<div class="col-md-2">
 						<button type="submit" class="btn btn-primary"><?php echo lang('search');?></button>
 					</div>

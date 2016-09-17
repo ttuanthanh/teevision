@@ -708,17 +708,18 @@ class Orders extends Admin_Controller
 		$setting = json_decode($row->settings);
 		
 		$this->data['setting'] 	= $setting;	
-
-		if ($this->input->post('option'))
+                
+		$this->session->set_userdata('option_order', '');
+		if ($this->input->post('search'))
 		{		
 			$this->session->set_userdata('search_order', $this->input->post('search'));
-			$this->session->set_userdata('option_order', $this->input->post('option_order'));
+			$this->session->set_userdata('option_order', $this->input->post('option_s'));
 		}
 		
 		// pagination
 		$this->load->library('pagination');
-		$config['base_url'] 		= site_url('admin/orders/schedules/index');
-		$config['total_rows']		= $this->order_m->getOrders(true, 5, 1, $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		$config['base_url'] 		= site_url('admin/orders/schedules');
+		$config['total_rows']		= $this->order_m->getOrdersSched(true, 5, 1, $this->session->userdata('search_order'), $this->session->userdata('option_order'));
 		
 		if ($this->input->post('option'))
 		{
@@ -742,11 +743,11 @@ class Orders extends Admin_Controller
 		$this->pagination->initialize($config); 
 		$this->data['per_page'] = $config['per_page'];
 		$this->data['links'] 	= $this->pagination->create_links();
-		$this->data['per_page'] 	= $config['per_page'];
+		$this->data['per_page'] = $config['per_page'];
 		$this->data['search'] = $this->session->userdata('search_order');
 		$this->data['option'] = $this->session->userdata('option_order');
 		
-		$orders = $this->order_m->getOrdersSched(false, $config['per_page'], $this->uri->segment(5), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
+		$orders = $this->order_m->getOrdersSched(false, $config['per_page'], $this->uri->segment(4), $this->session->userdata('search_order'), $this->session->userdata('option_order'));
 		$this->data['orders'] = $orders; 
 		
                 // Load view
