@@ -103,6 +103,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <th class="center">Proof</th>
                                         <th class="center">Tracking Number</th>
                                         <th class="center">Print Ready</th>
+                                        <th class="center">Paid</th>
                                         <th class="center">Delete</th>
 				</tr>
 			</thead>
@@ -204,6 +205,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>
                                         
                                     </td>
+                                    <td class="center"> 
+                                        <?php 
+                                            if ($order->balance == 1)                                            
+                                                 echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                                            ?>
+                                        
+                                    </td>
                                     <td class="center">
                                         <a class="remove btn btn-bricky tooltips" onclick="return confirm('<?php echo lang('orders_admin_confirm_delete');?>');" href="<?php echo site_url('admin/orders/delete/'.$order->id); ?>" data-original-title="<?php echo lang('remove');?>" data-placement="top">
 							<i class="fa fa-trash-o"></i>
@@ -218,7 +226,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 	</div>
 	<?php echo form_close(); ?>        
-</div>   
+</div>  
 
 <script type="text/javascript">
 	jQuery('.pagination').css('margin', '0px');

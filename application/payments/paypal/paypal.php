@@ -120,7 +120,7 @@ class Paypal
 					
 				if(isset($order->total) && $money == $order->total)
 				{
-					$update['status'] = 'completed';
+					$update['balance'] = '1';
 					$updatehis['order_id'] = $order->id;
 					$updatehis['label'] = 'order_status';
 					$updatehis['content'] = json_encode(array($order->order_number=>'completed'));

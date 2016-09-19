@@ -81,8 +81,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <th class="center">Due Date</th>
                                             <th class="center">Artwork</th>
                                             <th class="center">Proof</th>
-                                            <th class="center">Tracking Number</th>
+                                            <th class="center">Tracking Number</th>                                            
                                             <th class="center">Print Ready</th>
+                                            <th class="center">Paid</th>
                                     </tr>
                             </thead>
                             <tbody>
@@ -162,6 +163,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 
                                         
                                     </td>
+                                    
                                     <td class="center">    
                                         <?php 
                                             if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
@@ -169,6 +171,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             else
                                                 echo '<a href="javascript:void(0)" class="btn btn-danger btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
                                         ?>
+                                    </td>
+                                    <td class="center"> 
+                                        <?php 
+                                            if ($order->balance == 1)                                            
+                                                 echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                                            ?>
+                                        
                                     </td>
                                     </tr>
                             </tbody>
