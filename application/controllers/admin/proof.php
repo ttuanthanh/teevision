@@ -30,6 +30,7 @@ class Proof extends Admin_Controller {
                 $pr['order_id']     = $data['order_id'];
                 $pr['item_id']      = $data['item_id'];
                 $pr['proof_file']   = $data['proof_file']; //
+                $pr['order_des']    = $data['order_des'];
                 $pr['proof_update'] = date("Y-m-d H:i:sa");
                 if ($proof_id == '')
                 {    

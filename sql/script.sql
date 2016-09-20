@@ -96,3 +96,11 @@ CREATE TABLE `dg_order_shipdate` (
 PRIMARY KEY (`id`)
 )
 ;
+
+
+#--- 20/09/16
+ALTER TABLE `dg_order_artwork`
+ADD COLUMN `order_des`  text NULL AFTER `back_file`;
+
+ALTER TABLE `dg_order_proof`
+ADD COLUMN `order_des`  text NULL AFTER `proof_update`;

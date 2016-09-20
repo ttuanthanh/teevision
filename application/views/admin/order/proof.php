@@ -196,7 +196,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         </tr>
 
                                     </table>
-                                    <input type="hidden" id="design-image-front<?php echo $product->id; ?>" name="proof_file" value="<?php echo isset($artwork->front_file) ? $artwork->front_file : '' ?>">
+                                    <input type="hidden" id="design-image-front<?php echo $product->id; ?>" name="proof_file" value="<?php echo isset($proof->proof_file) ? $proof->proof_file : '' ?>">
                                     <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
                                     <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
                                     <input type="hidden" id="proof_id" name="proof_id" value="<?php echo isset($proof->id) ? $proof->id : ''; ?>">
@@ -214,6 +214,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <h4 class="text-center">Time: <?php echo $newDate->format('H:i'); ?></h4>
                                         <?php } ?>
                                 </div>
+                                <p><b>Order description</b></p>
+                                <textarea name="order_des" rows="3" style="width:100%; margin-bottom: 10px" placeholder="Enter order description"><?php 
+                                    if(isset($proof->order_des)) echo $proof->order_des;
+                                ?></textarea>
+                                <br />
                                 <div class="clearfix text-right" style="margin-right: 20px">                        
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>

@@ -21,9 +21,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		for($i=0; $i<count($images); $i++)
 		{
 			if(isset($captions[$i]))
-				echo '<li><img src="'.base_url($images[$i]).'" alt="image"/><div class="bx-caption">'.$captions[$i].'</div></li>';
+				echo '<li><a href="/design"><img src="'.base_url($images[$i]).'" alt="image"/><div class="bx-caption">'.$captions[$i].'</div></a></li>';
 			else
-				echo '<li><img src="'.base_url($images[$i]).'" alt="image"/></li>';
+				echo '<li><a href="/design"><img src="'.base_url($images[$i]).'" alt="image"/></a></li>';
 		}
 	?>
 </ul>

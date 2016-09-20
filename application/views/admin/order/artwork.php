@@ -226,6 +226,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
                         <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
                     </div>
+                    <div class="row-content clearfix">
+                        <div class="col-md-8">
+                            <p><b>Order description</b></p>
+                            <textarea name="order_des" rows="3" cols="100%" placeholder="Enter order description"><?php 
+                                    if(isset($artwork->order_des)) echo $artwork->order_des;
+                                ?></textarea>
+                        </div>
+                        
+                    </div>
                     <div class="row-content clearfix text-right" style="margin-right: 20px">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
