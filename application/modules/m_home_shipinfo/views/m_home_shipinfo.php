@@ -34,12 +34,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">FREE SHIPPING</p>
             <h2>2-Week Delivery</h2>
-            <p>Guaranteed by <?php echo date("D, M j", strtotime("+2 week +1 day")); ?></p>
+            <p>Guaranteed by <?php echo date("D, M j", strtotime("+2 week")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">UPGRADE TO RUSH</p>
             <h2>7 Days Delivery</h2>
-            <p>Guaranteed by <?php echo date("D, M j", strtotime("+1 week +1 day")); ?></p>
+            <p>Guaranteed by <?php echo date("D, M j", strtotime("+1 week")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">SUPER RUSH </p>
