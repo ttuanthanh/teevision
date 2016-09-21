@@ -50,7 +50,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <p class="ship-name">SAVE OPTION</p>
 <!--            <h2>2-Week Delivery</h2>-->
             <p class="not-hunry">Not in a hurry? Option to save if you don’t require the shirts within 2 weeks</p>
-            <a>Lean more</a>
+            <a href="/page/25-shipping-date">Lean more</a>
         </div>
     </div>
 </div>
