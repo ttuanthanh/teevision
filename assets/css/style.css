@@ -2742,6 +2742,7 @@ ul.choose_payment .description {
 
 #table-team-list td:last-child {
     line-height: 30px;
+    text-align: center;
 }
 
 .div-box-team-list {

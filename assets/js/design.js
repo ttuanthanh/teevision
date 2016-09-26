@@ -1503,6 +1503,7 @@ var design = {
                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val()) - 1);
                 this.hideTableTeam();
             }
+            this.checkSelect();
 
 
         },
@@ -1531,6 +1532,7 @@ var design = {
                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val()) - 1);
                 this.hideTableTeam();
             }
+            this.checkSelect();
 
         },
         addMember: function (team) {
@@ -1552,8 +1554,8 @@ var design = {
             });
             if (typeof team == 'undefined') {
                 team = {};
-                team.name = '';
-                team.number = '';
+                team.name = 'Name';
+                team.number = '00';
                 team.size = '';
             }
             var sizes = this.sizes(team.size);
@@ -1566,7 +1568,7 @@ var design = {
                 + '<input type="text" class="form-control input-sm" value="' + team.number + '" placeholder="Enter Number">'
                 + '</td>'
                 + '<td>' + sizes + '</td>'
-                + '<td>'
+                + '<td style="center">'
                 + '<a href="javascript:void(0)" onclick="design.team.removeMember(this)" title="remove" class="btn-remove">x</a>'
                 + '</td>'
                 + '</tr>';
@@ -1575,6 +1577,7 @@ var design = {
             else jQuery('.inp-team-name').show();
             if (!cnum) jQuery('.inp-team-num').hide();
             else jQuery('.inp-team-num').show();
+            design.ajax.getPrice();
 
         },
         removeMember: function (e) {
@@ -1612,6 +1615,8 @@ var design = {
         resetTeam: function () {
             var cname = document.getElementById('team_add_name').checked,
                 cnum = document.getElementById('team_add_number').checked;
+            //refresh team item
+            this.save();
             var check = true;
             if (!cname)
                 delete design.teams.name;

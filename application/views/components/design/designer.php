@@ -665,7 +665,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                  id="team_msg_error"
                                                  style="display: none;"></div>
                                             <button class="btn btn-primary input-sm pull-right full-width"
-                                                    style="height: 50px;" onclick="design.team.addMember()"
+                                                    style="height: 50px;" onclick="design.team.addMember();"
                                                     type="button"><?php echo $lang['designer_clipart_edit_add_list_name']; ?></button>
                                         </center>
                                     </div>
