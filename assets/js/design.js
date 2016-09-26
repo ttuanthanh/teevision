@@ -1159,7 +1159,7 @@ var design = {
             document.getElementById('quantity').value = sizes;
             design.ajax.checkGetPrice(sizes);
         },
-        changeView: function (e, postion) {
+        changeView: function (e, postion, refresh) {
             design.item.unselect();
             jQuery('#product-thumbs a').removeClass('active');
             jQuery(e).addClass('active');
@@ -1167,7 +1167,9 @@ var design = {
             jQuery('#app-wrap .labView').removeClass('active');
             jQuery('#view-' + postion).addClass('active');
             design.layers.setup();
-            design.team.changeView();
+            if(typeof refresh == 'undefined' || refresh == true){
+                design.team.changeView();
+            }
         },
         changeColor: function (e, n) {
             if (jQuery('.labView.active .design-area').hasClass('zoom'))
@@ -1479,7 +1481,12 @@ var design = {
         create: function () {
         },
         addName: function (e) {
+            var a = document.getElementById('product-thumbs').getElementsByTagName('a');
+            if(!a[1].classList.contains('active')){
+                design.products.changeView(a[1], 'back', false);
+            }
             if (jQuery(e).is(':checked') == true) {
+
                 $jd('.ui-lock').attr('checked', false);
                 var txt = {};
                 txt.text = 'NAME';
@@ -1508,7 +1515,12 @@ var design = {
 
         },
         addNumber: function (e) {
+            var a = document.getElementById('product-thumbs').getElementsByTagName('a');
+            if(!a[1].classList.contains('active')){
+                design.products.changeView(a[1], 'back', false);
+            }
             if (jQuery(e).is(':checked') == true) {
+
                 $jd('.ui-lock').attr('checked', false);
                 var txt = {};
                 txt.text = '00';
@@ -1517,6 +1529,7 @@ var design = {
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
+                txt.top = true;
                 design.text.add(txt, 'team', 'number');
                 var o = design.item.get();
                 o.addClass('drag-item-number');
@@ -1940,7 +1953,8 @@ var design = {
             }
             if (typeof o.fontWeight != 'undefined')
                 text.setAttributeNS(null, 'font-weight', o.fontWeight);
-
+            if (typeof o.top != 'undefined')
+                item.top = true;
             if (typeof o.strokeWidth != 'undefined' && o.strokeWidth != 0) {
                 text.setAttributeNS(null, 'stroke', o.stroke);
                 text.setAttributeNS(null, 'stroke-width', o.strokeWidth);
@@ -2396,7 +2410,7 @@ var design = {
 
                         var a = document.createElement('a');
                         jQuery(a).bind('click', function () {
-                            design.products.changeView(this, view)
+                            design.products.changeView(this, view, false)
                         });
 
                         a.setAttribute('class', 'box-thumb');
@@ -2442,6 +2456,9 @@ var design = {
                 design.item.select(this, true)
             });
             var center = this.align.center(item);
+            if(item.top){
+                center = this.align.top(item);
+            }
             span.style.left = center.left + 'px';
             span.style.top = center.top + 'px';
             span.style.width = item.width + 'px';
@@ -2660,7 +2677,14 @@ var design = {
             },
             right: function () {
             },
-            top: function () {
+            top: function (item) {
+                var align = {},
+                    area = jQuery('.labView.active .content-inner');
+                align.left = (jQuery(area).width() - item.width) / 2;
+                align.left = parseInt(align.left);
+                align.top = (jQuery(area).height() - item.height) / 2;
+                align.top = parseInt(align.top - 50);
+                return align;
             },
             bottom: function () {
             },
