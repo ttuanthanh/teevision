@@ -1204,7 +1204,7 @@ var design = {
         },
         changeDesign: function (e) {
             var a = document.getElementById('product-thumbs').getElementsByTagName('a');
-            this.changeView(a[0], 'front');
+            this.changeView(a[0], 'front', false);
             jQuery('#app-wrap .product-design').html('');
 
             // var ids = jQuery('.product-detail.active').attr('id');
@@ -1612,6 +1612,7 @@ var design = {
                 td[0].innerHTML = i;
                 i++;
             });
+            this.save();
         },
         checkSelect: function () {
             var cname = document.getElementById('team_add_name').checked,
@@ -2697,8 +2698,8 @@ var design = {
                     area = jQuery('.labView.active .content-inner');
                 align.left = (jQuery(area).width() - item.width) / 2;
                 align.left = parseInt(align.left);
-                align.top = (jQuery(area).height() - item.height) / 3;
-                align.top = parseInt(align.top);
+                align.top = (jQuery(area).height() - item.height)/2;
+                align.top = parseInt(align.top -50);
                 return align;
             },
             bottom: function () {

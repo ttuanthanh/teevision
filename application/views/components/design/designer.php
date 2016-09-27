@@ -1404,6 +1404,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!-- End design ideas -->
 
     <!-- Begin team -->
+    <!--
     <div class="modal fade" id="dg-item_team_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -1447,6 +1448,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
     </div>
+    -->
     <!-- End design ideas -->
 
     <!-- Begin fonts -->
