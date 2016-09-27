@@ -933,21 +933,26 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </li>
 
                                 <li>
-                                    <a href="javascript:void(0)" data-type="share" class="dg-tool">
+                                    <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share">
                                         <i class="fa fa-weixin"></i>
                                         <span>Share</span>
                                     </a>
                                 </li>
-<!--                                <div class="dg-share">-->
-<!--                                    <ul class="list-share pull-right">-->
-<!---->
-<!--                                        <li class="icon-25 share-email" data-type="email"></li>-->
-<!--                                        <li class="icon-25 share-facebook" data-type="facebook"></li>-->
-<!--                                        <li class="icon-25 share-twitter" data-type="twitter"></li>-->
-<!--                                        <li class="icon-25 share-pinterest" data-type="pinterest"></li>-->
-<!---->
-<!--                                    </ul>-->
-<!--                                </div>-->
+                                <li style="display: none">
+                                    <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share active" >
+                                        <i class="fa fa-weixin"></i>
+                                        <span>Share</span>
+                                    </a>
+                                </li>
+                                <div class="dg-share" style="display:none">
+                                    <ul class="list-share pull-right">
+                                        <li class="icon-40 share-email" data-type="email"></li>
+                                        <li class="icon-40 share-facebook" data-type="facebook"></li>
+                                        <li class="icon-40 share-twitter" data-type="twitter"></li>
+                                        <li class="icon-40 share-pinterest" data-type="pinterest"></li>
+
+                                    </ul>
+                                </div>
 
                                 <!--
                                 <li>

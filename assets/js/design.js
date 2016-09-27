@@ -24,10 +24,20 @@ var design = {
         //jQuery('#product-details').perfectScrollbar({useBothWheelAxes: true});
         jQuery('.dropdown').click(function(){
             jQuery('.dropdown').removeClass('active');
-        })
+        });
         jQuery('#options-add_item_team .dropdown').click(function(){
             jQuery(this).addClass('active');
-        })
+        });
+        jQuery(".tools-share").not(".active").bind("click", function() {
+            jQuery(".dg-share").show('slow');
+            jQuery(this).parent().hide();
+            jQuery(".tools-share.active").parent().show();
+        });
+        jQuery(".tools-share.active").bind("click", function() {
+            jQuery(".dg-share").hide('slow');
+            jQuery(this).parent().hide();
+            jQuery(".tools-share").not(".active").parent().show();
+        });
 
         design.item.move();
         $jd("#dg-outline-width").slider({
@@ -1495,6 +1505,7 @@ var design = {
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
+                txt.top = true;
                 design.text.add(txt, 'team', 'text');
                 var o = design.item.get();
                 o.addClass('drag-item-name');
@@ -1525,11 +1536,11 @@ var design = {
                 var txt = {};
                 txt.text = '00';
                 txt.color = '#000000';
-                txt.fontSize = '24px';
+                txt.fontSize = '80px';
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                txt.top = true;
+                txt.dy =true;
                 design.text.add(txt, 'team', 'number');
                 var o = design.item.get();
                 o.addClass('drag-item-number');
@@ -1936,7 +1947,11 @@ var design = {
                 content = document.createTextNode(o.text);
 
             tspan.setAttributeNS(null, 'x', '50%');
-            tspan.setAttributeNS(null, 'dy', 0);
+            if(o.dy) {
+                tspan.setAttributeNS(null, 'dy', '50%');
+            }else{
+                tspan.setAttributeNS(null, 'dy', 0);
+            }
 
             text.setAttributeNS(null, 'fill', o.color);
             text.setAttributeNS(null, 'stroke', o.stroke);
@@ -2682,8 +2697,8 @@ var design = {
                     area = jQuery('.labView.active .content-inner');
                 align.left = (jQuery(area).width() - item.width) / 2;
                 align.left = parseInt(align.left);
-                align.top = (jQuery(area).height() - item.height) / 2;
-                align.top = parseInt(align.top - 50);
+                align.top = (jQuery(area).height() - item.height) / 3;
+                align.top = parseInt(align.top);
                 return align;
             },
             bottom: function () {

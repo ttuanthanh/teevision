@@ -188,6 +188,12 @@ body {
     width: 25px;
     height: 25px;
 }
+.icon-40 {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
 
 .glyphicons.glyphicons-small:before {
     font-size: 13px;
@@ -352,18 +358,22 @@ body {
 /* ----------------------------- Begin right ------------------------*/
 .share-email {
     background: url(../images/email.png) no-repeat top left;
+    background-size: cover;
 }
 
 .share-facebook {
     background: url(../images/facebook.png) no-repeat top left;
+    background-size: cover
 }
 
 .share-twitter {
     background: url(../images/twitter.png) no-repeat top left;
+    background-size: cover
 }
 
 .share-pinterest {
     background: url(../images/pinterest.png) no-repeat top left;
+    background-size: cover
 }
 
 .dg-box {
@@ -375,20 +385,22 @@ body {
     margin-bottom: 12px;
 }
 .dg-share{
-    left: 0px;
-    bottom: 165px;
+    left: 85px;
+    bottom: 85px;
     position: absolute;
-    width: 200px;
+    width: 215px;
 }
 
 .list-share {
-    border-left: 1px solid #CCCCCC;
+    /*border-left: 1px solid #CCCCCC;*/
     float: right;
     list-style: none outside none;
     margin: 0;
     padding: 8px 4px 1px;
     text-align: center;
     width: inherit;
+    background: #CCCCCC;
+
 }
 
 .list-share li {
@@ -1966,7 +1978,7 @@ button.btn-quote{
     width: 100%;
     border-radius: 0px;
     height: 45px;
-    margin-top: 30px;
+    margin-top: 46px;
 }
 .modal-footer button.btn-save{
     color: #FFFFFF;
