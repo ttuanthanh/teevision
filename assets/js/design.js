@@ -73,7 +73,7 @@ var design = {
         });
         $jd('.add_item_text').on('click', self.text.create.bind(self.text));
         /* share */
-        jQuery('.list-share span').click(function () {
+        jQuery('.list-share li').click(function () {
             design.share.ini(jQuery(this).data('type'));
         });
         /* tools */
@@ -1590,7 +1590,7 @@ var design = {
             else jQuery('.inp-team-name').show();
             if (!cnum) jQuery('.inp-team-num').hide();
             else jQuery('.inp-team-num').show();
-            design.ajax.getPrice();
+            this.save();
 
         },
         removeMember: function (e) {

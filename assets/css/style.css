@@ -374,6 +374,12 @@ body {
     display: inline-block;
     margin-bottom: 12px;
 }
+.dg-share{
+    left: 0px;
+    bottom: 165px;
+    position: absolute;
+    width: 200px;
+}
 
 .list-share {
     border-left: 1px solid #CCCCCC;
@@ -382,9 +388,10 @@ body {
     margin: 0;
     padding: 8px 4px 1px;
     text-align: center;
+    width: inherit;
 }
 
-.list-share span {
+.list-share li {
     cursor: pointer;
     margin: 0 2px;
 }
@@ -1961,6 +1968,16 @@ button.btn-quote{
     height: 45px;
     margin-top: 30px;
 }
+.modal-footer button.btn-save{
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 100%;
+    width: 100%;
+    border-radius: 0px;
+    height: 45px;
+    margin: 5px;
+}
 .product-prices button.btn-addcart, .modal-footer button.btn-addcart {
     background-color: #f65e13;
     font-size: 14px;
@@ -2621,8 +2638,10 @@ button.btn-quote{
 
 .product-price-title {
     display: inline-block;
-    float: left;
     text-indent: 12px;
+    font-weight: bold;
+    color: #08C;
+    font-size: 30px;
 }
 
 .product-price-list {
@@ -2630,15 +2649,19 @@ button.btn-quote{
     float: left;
     margin-top: -2px;
     padding-left: 5px;
+    width: 100%;
+    text-align: right;
 }
 
 #product-price-sale {
-    font-size: 18px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #08C;
 }
 
 #product-price-old {
     color: #ff0000;
-    font-size: 12px;
+    font-size: 28px;
     padding: 0 2px;
     text-decoration: line-through;
 }

@@ -236,7 +236,8 @@ class helperProduct
                                 $html .= '<hr>'
                                         . '<div id="dg-total-mess"></div>';
                                 $html .=     '</div>
-                                                <div class="modal-footer">                                                        
+                                                <div class="modal-footer">                                                
+                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" title="save">Save</button>
                                                         <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
                                                 </div>
                                             </div>
