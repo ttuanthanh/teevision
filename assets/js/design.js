@@ -1756,6 +1756,7 @@ var design = {
             }
             if (checked == false) {
                 jQuery('#team_msg_error').html('Please add name & number.').css('display', 'block');
+                design.teams = [];
             }
             else {
                 jQuery('#team_msg_error').css('display', 'none');
