@@ -208,7 +208,7 @@ body {
 #dg-designer {
     position: relative;
     z-index: 1;
-    min-width: 1200px;
+    min-width: 1425px;
 }
 
 #dg-wapper {
@@ -314,8 +314,8 @@ body {
     display: inline-block;
     margin: 0 auto;
     overflow: hidden;
-    width: auto;
-    margin-left: 27%;
+    width: 100%;
+    margin-top: 46px;
 }
 
 #product-thumbs .box-thumb {
@@ -386,7 +386,7 @@ body {
 }
 .dg-share{
     left: 85px;
-    bottom: 85px;
+    bottom: 144px;
     position: absolute;
     width: 215px;
 }
@@ -615,7 +615,10 @@ body {
     background-color: #007F7B;
 }
 .dg-tools > li a{
-    color:#555555
+    width: 100%;
+    color: #555555;
+    height: 100%;
+    display: inline-block;
 }
 .dg-tools > li:hover *, .dg-tools > li.active *{
     color: #FFFFFF;
@@ -642,15 +645,41 @@ body {
 #app-wrap {
     width: 100%;
 }
-
-#app-wrap .labView {
-    display: none;
-    height: 500px;
-    position: relative;
-    width: 500px;
-    margin-left: 25%;
+@media screen and (max-width: 1650px) {
+    #app-wrap .labView {
+        display: none;
+        height: 600px;
+        position: relative;
+        width: 600px;
+        left: 500px;
+        float: left;
+    }
+    .detail-info{
+        position: relative;
+        width: 600px;
+        left: 500px;
+        text-indent: 12px;
+        font-weight: bold;
+        color: #b1b1b1;
+        font-size: 25px;
+    }
 }
-
+@media screen and (min-width: 1650px) {
+    #app-wrap .labView {
+        display: none;
+        height: 600px;
+        position: relative;
+        width: 600px;
+    }
+    .detail-info{
+        position: relative;
+        width: 600px;
+        text-indent: 12px;
+        font-weight: bold;
+        color: #b1b1b1;
+        font-size: 25px;
+    }
+}
 #app-wrap .labView.active {
     display: inline-block;
 }
@@ -794,7 +823,7 @@ body {
     right: 0px;
     width: 220px;
     z-index: 10000;
-    top: 80px;
+    top: 70px;
 }
 
 .sb_toggle {
@@ -1978,7 +2007,6 @@ button.btn-quote{
     width: 100%;
     border-radius: 0px;
     height: 45px;
-    margin-top: 46px;
 }
 .modal-footer button.btn-save{
     color: #FFFFFF;

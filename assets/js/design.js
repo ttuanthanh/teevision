@@ -22,18 +22,18 @@ var design = {
             jQuery(".popover").hide('show');
         });
         //jQuery('#product-details').perfectScrollbar({useBothWheelAxes: true});
-        jQuery('.dropdown').click(function(){
+        jQuery('.dropdown').click(function () {
             jQuery('.dropdown').removeClass('active');
         });
-        jQuery('#options-add_item_team .dropdown').click(function(){
+        jQuery('#options-add_item_team .dropdown').click(function () {
             jQuery(this).addClass('active');
         });
-        jQuery(".tools-share").not(".active").bind("click", function() {
+        jQuery(".tools-share").not(".active").bind("click", function () {
             jQuery(".dg-share").show('slow');
             jQuery(this).parent().hide();
             jQuery(".tools-share.active").parent().show();
         });
-        jQuery(".tools-share.active").bind("click", function() {
+        jQuery(".tools-share.active").bind("click", function () {
             jQuery(".dg-share").hide('slow');
             jQuery(this).parent().hide();
             jQuery(".tools-share").not(".active").parent().show();
@@ -107,7 +107,7 @@ var design = {
                     break;
             }
         });
-        jQuery('.btn-close-clipart').click(function(){
+        jQuery('.btn-close-clipart').click(function () {
 
             jQuery(".cliparts-2").hide();
             jQuery(".cliparts-3").hide();
@@ -194,7 +194,7 @@ var design = {
         $jd('.text-update').each(function () {
             var e = $jd(this);
             e.bind(e.data('event'), function () {
-                if (e.data('value') != 'undefined')
+                if (typeof e.data('value') != 'undefined')
                     design.text.update(e.data('label'), e.data('value'));
                 else
                     design.text.update(e.data('label'));
@@ -281,6 +281,8 @@ var design = {
             var lable = jQuery('#product-price .product-price-title');
             var div = jQuery('#product-price .product-price-list');
             var title = lable.html();
+            var detailInfo = "Front: " + design.print.colors('front').length + " color / Back: " + design.print.colors('back').length + " color";
+            jQuery(".detail-info").html(detailInfo);
             div.css('opacity', 0.1);
             lable.html('Updating...');
             jQuery.ajax({
@@ -772,13 +774,13 @@ var design = {
                 jQuery('.cliparts-2').show();
                 jQuery('#arts-add').hide();
                 jQuery('#dag-list-arts').addClass('loading');
-                jQuery('.back-cliparts').bind('click', function(){
+                jQuery('.back-cliparts').bind('click', function () {
                     jQuery('#dag-art-detail').hide();
                     jQuery('.cliparts-2').hide();
                     jQuery('#arts-add').hide();
                     jQuery('.cliparts-1').show();
                 });
-                if(cate_title){
+                if (cate_title) {
                     jQuery('.cliparts-title').html(cate_title);
                 }
                 var page = jQuery('#art-number-page').val();
@@ -1067,12 +1069,13 @@ var design = {
             var teamSelected = jQuery('.dg-options-content .dropdown.active');
             var dragNumber = jQuery('.drag-item-name text');
             var dragText = jQuery('.drag-item-number text');
-            if ((dragText.length==0 && dragNumber.length ==0)||
-                (dragText.length==0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
-                (dragNumber.length==0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
+            if ((dragText.length == 0 && dragNumber.length == 0) ||
+                (dragText.length == 0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
+                (dragNumber.length == 0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
                 jQuery('#dg-fonts').modal('hide');
                 return false;
-            }if(selected.length == 0 && teamSelected.length == 0){
+            }
+            if (selected.length == 0 && teamSelected.length == 0) {
                 jQuery('#dg-fonts').modal('hide');
                 return false;
             }
@@ -1084,22 +1087,53 @@ var design = {
                 var title = jQuery(e).data('title');
                 jQuery('#txt-fontfamily').html(title);
                 if (typeof design.designer.fontActive[id] != 'undefined' || jQuery(e).data('type') == 'google') {
-                    if(typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-number-fontfamly').length >0){
+                    if (typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-number-fontfamly').length > 0) {
                         design.text.update('fontfamily', title, 'number');
-                    }else if(typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-name-fontfamly').length >0){
+                    } else if (typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-name-fontfamly').length > 0) {
                         design.text.update('fontfamily', title, 'text');
-                    }else if(selected.length != 0){
+                    } else if (selected.length != 0) {
                         design.text.update('fontfamily', title, selected.data('const'));
                     }
                 }
 
+                jQuery('.labView.active .content-inner').removeClass('loading');
+                setTimeout(function () {
+                    var e = design.item.get();
+                    var txt = e.find('text');
+                    var size1 = txt[0].getBoundingClientRect();
+                    var size2 = e[0].getBoundingClientRect();
+
+                    var $w = parseInt(size1.width);
+                    var $h = parseInt(size1.height);
+
+                    design.item.updateSize($w, $h);
+
+                    var svg = e.find('svg'),
+                        view = svg[0].getAttributeNS(null, 'viewBox');
+                    var arr = view.split(' ');
+                    var y = txt[0].getAttributeNS(null, 'y');
+                    y = Math.round(y) + Math.round(size2.top) - Math.round(size1.top) - ( (Math.round(size2.top) - Math.round(size1.top)) * (($w - arr[2]) / $w) );
+                    txt[0].setAttributeNS(null, 'y', y);
+                }, 200);
+            }
+            else {
+                var filename = jQuery(e).data('filename');
+                var url = jQuery(e).data('url');
+                if (filename != '') {
+                    var item = eval("(" + filename + ")");
+                    design.designer.fontActive[id] = title;
+                    var css = "<style type='text/css'>@font-face{font-family:'" + title + "';font-style: normal; font-weight: 400;src: local('" + title + "'), local('" + title + "'), url(" + url + item.woff + ") format('woff');}</style>";
+                    design.fonts = design.fonts + ' ' + css;
+                    jQuery('head').append(css);
+
+                    var e = design.item.get();
+                    var svg = e.find('svg');
+                    design.text.update('fontfamily', title);
                     jQuery('.labView.active .content-inner').removeClass('loading');
                     setTimeout(function () {
-                        var e = design.item.get();
                         var txt = e.find('text');
                         var size1 = txt[0].getBoundingClientRect();
                         var size2 = e[0].getBoundingClientRect();
-
                         var $w = parseInt(size1.width);
                         var $h = parseInt(size1.height);
 
@@ -1113,38 +1147,7 @@ var design = {
                         txt[0].setAttributeNS(null, 'y', y);
                     }, 200);
                 }
-                else {
-                    var filename = jQuery(e).data('filename');
-                    var url = jQuery(e).data('url');
-                    if (filename != '') {
-                        var item = eval("(" + filename + ")");
-                        design.designer.fontActive[id] = title;
-                        var css = "<style type='text/css'>@font-face{font-family:'" + title + "';font-style: normal; font-weight: 400;src: local('" + title + "'), local('" + title + "'), url(" + url + item.woff + ") format('woff');}</style>";
-                        design.fonts = design.fonts + ' ' + css;
-                        jQuery('head').append(css);
-
-                        var e = design.item.get();
-                        var svg = e.find('svg');
-                        design.text.update('fontfamily', title);
-                        jQuery('.labView.active .content-inner').removeClass('loading');
-                        setTimeout(function () {
-                            var txt = e.find('text');
-                            var size1 = txt[0].getBoundingClientRect();
-                            var size2 = e[0].getBoundingClientRect();
-                            var $w = parseInt(size1.width);
-                            var $h = parseInt(size1.height);
-
-                            design.item.updateSize($w, $h);
-
-                            var svg = e.find('svg'),
-                                view = svg[0].getAttributeNS(null, 'viewBox');
-                            var arr = view.split(' ');
-                            var y = txt[0].getAttributeNS(null, 'y');
-                            y = Math.round(y) + Math.round(size2.top) - Math.round(size1.top) - ( (Math.round(size2.top) - Math.round(size1.top)) * (($w - arr[2]) / $w) );
-                            txt[0].setAttributeNS(null, 'y', y);
-                        }, 200);
-                    }
-                }
+            }
             jQuery('#dg-fonts').modal('hide');
         }
     },
@@ -1177,7 +1180,7 @@ var design = {
             jQuery('#app-wrap .labView').removeClass('active');
             jQuery('#view-' + postion).addClass('active');
             design.layers.setup();
-            if(typeof refresh == 'undefined' || refresh == true){
+            if (typeof refresh == 'undefined' || refresh == true) {
                 design.team.changeView();
             }
         },
@@ -1454,10 +1457,10 @@ var design = {
     },
     team: {
         updateBack: function (e) {
-            if(jQuery(e).is('.drag-item-name')){
-            jQuery('#txt-team-name-fontfamly').html(e.item.fontfamly);
-            jQuery('#team-name--color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
-            }else if(jQuery(e).is('.drag-item-number')){
+            if (jQuery(e).is('.drag-item-name')) {
+                jQuery('#txt-team-name-fontfamly').html(e.item.fontfamly);
+                jQuery('#team-name--color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+            } else if (jQuery(e).is('.drag-item-number')) {
                 jQuery('#txt-team-number-fontfamly').html(e.item.fontfamly);
                 jQuery('#team-number-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
 
@@ -1492,11 +1495,10 @@ var design = {
         },
         addName: function (e) {
             var a = document.getElementById('product-thumbs').getElementsByTagName('a');
-            if(!a[1].classList.contains('active')){
+            if (!a[1].classList.contains('active')) {
                 design.products.changeView(a[1], 'back', false);
             }
             if (jQuery(e).is(':checked') == true) {
-
                 $jd('.ui-lock').attr('checked', false);
                 var txt = {};
                 txt.text = 'NAME';
@@ -1505,13 +1507,12 @@ var design = {
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                txt.top = true;
+                txt.top = 0;
                 design.text.add(txt, 'team', 'text');
                 var o = design.item.get();
                 o.addClass('drag-item-name');
                 design.popover('add_item_team');
                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val()) + 1);
-                design.ajax.getPrice();
             }
             else {
                 var id = jQuery('.labView.active .drag-item-name').attr('id');
@@ -1521,13 +1522,14 @@ var design = {
                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val()) - 1);
                 this.hideTableTeam();
             }
+            design.ajax.getPrice();
             this.checkSelect();
 
 
         },
         addNumber: function (e) {
             var a = document.getElementById('product-thumbs').getElementsByTagName('a');
-            if(!a[1].classList.contains('active')){
+            if (!a[1].classList.contains('active')) {
                 design.products.changeView(a[1], 'back', false);
             }
             if (jQuery(e).is(':checked') == true) {
@@ -1536,17 +1538,17 @@ var design = {
                 var txt = {};
                 txt.text = '00';
                 txt.color = '#000000';
-                txt.fontSize = '80px';
+                txt.fontSize = '100px';
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                txt.dy =true;
+                txt.dy = '65';
+                txt.top = 30;
                 design.text.add(txt, 'team', 'number');
                 var o = design.item.get();
                 o.addClass('drag-item-number');
                 design.popover('add_item_team');
                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val()) + 1);
-                design.ajax.getPrice();
             }
             else {
                 var id = jQuery('.labView.active .drag-item-number').attr('id');
@@ -1556,6 +1558,7 @@ var design = {
                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val()) - 1);
                 this.hideTableTeam();
             }
+            design.ajax.getPrice();
             this.checkSelect();
 
         },
@@ -1567,7 +1570,7 @@ var design = {
             if (!cname && !cnum) {
                 jQuery('#team_msg_error').html('Please select add name or number first.').css('display', 'block');
                 return;
-            }else{
+            } else {
                 jQuery('#team_msg_error').css('display', 'none');
             }
 
@@ -1847,8 +1850,10 @@ var design = {
             jQuery('.edit_text_info').show();
             design.ajax.getPrice();
         },
-        setValue: function (o) {
-            $jd('#enter-text').val(o.text);
+        setValue: function (o, type) {
+            if (type == 'text' || o.type == 'text') {
+                $jd('#enter-text').val(o.text);
+            }
             $jd('#txt-fontfamily').html(o.fontFamily);
             var color = $jd('#txt-color');
             color.data('color', o.color);
@@ -1918,7 +1923,7 @@ var design = {
                 item.remove = false;
                 item.edit = false;
             }
-            if(constraint){
+            if (constraint) {
                 item.constraint = constraint;
             }
             item.text = o.text;
@@ -1927,7 +1932,7 @@ var design = {
             item.stroke = 'none';
             item.strokew = '0';
             if (o) {
-                this.setValue(o);
+                this.setValue(o, type);
             } else {
                 var o = this.getValue();
             }
@@ -1949,9 +1954,9 @@ var design = {
                 content = document.createTextNode(o.text);
 
             tspan.setAttributeNS(null, 'x', '50%');
-            if(o.dy) {
-                tspan.setAttributeNS(null, 'dy', '50%');
-            }else{
+            if (o.dy) {
+                tspan.setAttributeNS(null, 'dy', o.dy);
+            } else {
                 tspan.setAttributeNS(null, 'dy', 0);
             }
 
@@ -1965,13 +1970,13 @@ var design = {
             text.setAttributeNS(null, 'text-anchor', 'middle');
             text.setAttributeNS(null, 'font-size', o.fontSize);
             text.setAttributeNS(null, 'font-family', o.fontFamily);
-            if(constraint){
+            if (constraint) {
                 text.setAttributeNS(null, 'constraint', constraint);
             }
             if (typeof o.fontWeight != 'undefined')
                 text.setAttributeNS(null, 'font-weight', o.fontWeight);
             if (typeof o.top != 'undefined')
-                item.top = true;
+                item.top = o.top;
             if (typeof o.strokeWidth != 'undefined' && o.strokeWidth != 0) {
                 text.setAttributeNS(null, 'stroke', o.stroke);
                 text.setAttributeNS(null, 'stroke-width', o.strokeWidth);
@@ -2012,7 +2017,7 @@ var design = {
                 var obj = document.getElementById(e.attr('id'));
                 switch (lable) {
                     case 'fontfamily':
-                        if(detail) {
+                        if (detail) {
                             if (detail == 'text') {
                                 var text = jQuery('.drag-item-name text');
                                 text[0].setAttributeNS(null, 'font-family', value);
@@ -2027,11 +2032,11 @@ var design = {
                                 object[0].item.fontFamily = value;
                                 jQuery('#txt-team-number-fontfamly').html(value);
                             }
-                        }else{
-                        txt[0].setAttributeNS(null, 'font-family', value);
-                        obj.item.fontFamily = value;
-                        if (obj.item.type == 'text')
-                            jQuery('#txt-fontfamly').html(value);
+                        } else {
+                            txt[0].setAttributeNS(null, 'font-family', value);
+                            obj.item.fontFamily = value;
+                            if (obj.item.type == 'text')
+                                jQuery('#txt-fontfamly').html(value);
                         }
                         break;
                     case 'color':
@@ -2042,8 +2047,8 @@ var design = {
                         obj.item.color = hex;
                         break;
                     case 'colorT':
-                        if(detail){
-                            if(detail =='text'){
+                        if (detail) {
+                            if (detail == 'text') {
                                 var color = $jd('#team-name-color').data('value');
                                 if (color == 'none') var hex = color;
                                 else var hex = '#' + color;
@@ -2051,7 +2056,7 @@ var design = {
                                 var text = jQuery('.drag-item-name text');
                                 text[0].setAttributeNS(null, 'fill', hex);
                                 object[0].item.color = hex;
-                            }else if(detail =='number'){
+                            } else if (detail == 'number') {
                                 var color = $jd('#team-number-color').data('value');
                                 if (color == 'none') var hex = color;
                                 else var hex = '#' + color;
@@ -2060,37 +2065,39 @@ var design = {
                                 text[0].setAttributeNS(null, 'fill', hex);
                                 object[0].item.color = hex;
                             }
-                        }else{
-                        var color = $jd('#team-name-color').data('value');
-                        if (color == 'none') var hex = color;
-                        else var hex = '#' + color;
-                        txt[0].setAttributeNS(null, 'fill', hex);
-                        obj.item.color = hex;
+                        } else {
+                            var color = $jd('#team-name-color').data('value');
+                            if (color == 'none') var hex = color;
+                            else var hex = '#' + color;
+                            txt[0].setAttributeNS(null, 'fill', hex);
+                            obj.item.color = hex;
                         }
 
                         break;
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        if (obj) {
+                        if (typeof value != "undefined" && obj.item.type =="text") {
                             obj.item.text = text;
+
+                            var texts = text.split('\n');
+                            var svgNS = "http://www.w3.org/2000/svg";
+
+                            txt[0].textContent = '';
+
+                            var fontSize = txt[0].getAttribute('font-size').split('px');
+                            for (var i = 0; i < texts.length; i++) {
+                                var tspan = document.createElementNS(svgNS, 'tspan');
+                                var dy = 0;
+                                if (i > 0) dy = fontSize[0];
+                                tspan.setAttributeNS(null, 'dy', dy);
+                                tspan.setAttributeNS(null, 'x', '50%');
+                                var content = document.createTextNode(texts[i]);
+                                tspan.appendChild(content);
+                                txt[0].appendChild(tspan);
+                            }
+                            this.setSize(e);
                         }
-                        var texts = text.split('\n');
-                        var svgNS = "http://www.w3.org/2000/svg";
-                        
-                        txt[0].textContent = '';
-                        var fontSize = txt[0].getAttribute('font-size').split('px');
-                        for (var i = 0; i < texts.length; i++) {
-                            var tspan = document.createElementNS(svgNS, 'tspan');
-                            var dy = 0;
-                            if (i > 0) dy = fontSize[0];
-                            tspan.setAttributeNS(null, 'dy', dy);
-                            tspan.setAttributeNS(null, 'x', '50%');
-                            var content = document.createTextNode(texts[i]);
-                            tspan.appendChild(content);
-                            txt[0].appendChild(tspan);
-                        }
-                        this.setSize(e);
                         break;
                     case 'alignL':
                         obj.item.align = 'left';
@@ -2473,7 +2480,7 @@ var design = {
                 design.item.select(this, true)
             });
             var center = this.align.center(item);
-            if(item.top){
+            if (typeof item.top != 'undefined') {
                 center = this.align.top(item);
             }
             span.style.left = center.left + 'px';
@@ -2539,7 +2546,7 @@ var design = {
         },
         setupColorprint: function (o) {
             var item = o.item;
-             jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
+            jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
             if (item.colors != 'undefined') {
                 jQuery('#screen_colors_list span').each(function () {
                     var color = jQuery(this).data('color');
@@ -2699,8 +2706,8 @@ var design = {
                     area = jQuery('.labView.active .content-inner');
                 align.left = (jQuery(area).width() - item.width) / 2;
                 align.left = parseInt(align.left);
-                align.top = (jQuery(area).height() - item.height)/2;
-                align.top = parseInt(align.top -50);
+                align.top = 0;
+                align.top = parseInt(align.top + item.top);
                 return align;
             },
             bottom: function () {
@@ -2895,7 +2902,7 @@ var design = {
 
                 /* color of clipart */
                 var e = this.get();
-                jQuery('.image-clipart').html('<image class="image-result full-width" src="'+item.thumb +'"/>');
+                jQuery('.image-clipart').html('<image class="image-result full-width" src="' + item.thumb + '"/>');
                 if (item.change_color == 1) {
                     var colors = design.svg.getColors(e.children('svg'));
                 }
@@ -3024,16 +3031,16 @@ var design = {
                 design.text.update(a.data('label'), color);
             }
             else if (o.data('type') == 'team') {
-                if(o.data('const')){
+                if (o.data('const')) {
                     design.text.update(a.data('label'), '#' + color, o.data('const'));
-                }else {
+                } else {
                     design.text.update(a.data('label'), '#' + color);
                 }
             }
             //no select
-            if(a.attr('id') == 'team-name-color' ){
+            if (a.attr('id') == 'team-name-color') {
                 design.text.update(a.data('label'), '#' + color, 'text');
-            }else if(a.attr('id') == 'team-number-color'){
+            } else if (a.attr('id') == 'team-number-color') {
                 design.text.update(a.data('label'), '#' + color, 'number');
             }
             // var chooseTeam = e.
@@ -3827,7 +3834,6 @@ $jd(document).ready(function () {
             });
         }
     });
-
     $jd('.drag-item').click(function () {
         alert(23);
     });

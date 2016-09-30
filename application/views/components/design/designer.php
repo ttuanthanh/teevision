@@ -903,10 +903,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!-- end right design -->
 
                     <?php } ?>
+                    <div class="detail-info"></div>
                 </div>
             </div>
 
-            <div class="" id="product-thumbs"></div>
+
         </div>
 
         <div class="col-right">
@@ -991,9 +992,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <!--                                        class="glyphicons restart"></i></span>-->
 <!--                            </div>-->
                             <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
+                            <div class="" id="product-thumbs"></div>
                             <button type="button" class="btn btn-warning btn-quote"
                                     onclick="return design.team.resetTeam()"><i
-                                    class="fa fa-usd"></i> SAVE, QUOTE & BUY
+                                    class="fa fa-usd"></i> SAVE, QUOTE
                             </button>
                             <div class="product-price-list">
                                 <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
