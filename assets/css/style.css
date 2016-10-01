@@ -208,7 +208,7 @@ body {
 #dg-designer {
     position: relative;
     z-index: 1;
-    min-width: 1425px;
+    /*min-width: 1425px;*/
 }
 
 #dg-wapper {
@@ -385,8 +385,8 @@ body {
     margin-bottom: 12px;
 }
 .dg-share{
-    left: 85px;
-    bottom: 144px;
+    right: 0px;
+    bottom: 132px;
     position: absolute;
     width: 215px;
 }
@@ -650,13 +650,13 @@ body {
         display: none;
         height: 600px;
         position: relative;
-        width: 600px;
+        width: 500px;
         left: 500px;
         float: left;
     }
     .detail-info{
         position: relative;
-        width: 600px;
+        width: 500px;
         left: 500px;
         text-indent: 12px;
         font-weight: bold;
@@ -669,11 +669,11 @@ body {
         display: none;
         height: 600px;
         position: relative;
-        width: 600px;
+        width: 500px;
     }
     .detail-info{
         position: relative;
-        width: 600px;
+        width: 500px;
         text-indent: 12px;
         font-weight: bold;
         color: #b1b1b1;
@@ -2681,7 +2681,7 @@ button.btn-quote{
     text-indent: 12px;
     font-weight: bold;
     color: #08C;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .product-price-list {
@@ -2694,14 +2694,14 @@ button.btn-quote{
 }
 
 #product-price-sale {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     color: #08C;
 }
 
 #product-price-old {
     color: #ff0000;
-    font-size: 28px;
+    font-size: 18px;
     padding: 0 2px;
     text-decoration: line-through;
 }
