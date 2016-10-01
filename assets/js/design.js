@@ -10,7 +10,7 @@ var design = {
     fonts: '',
     ini: function () {
         var self = this;
-
+        jQuery('.row-elment').addClass("fixed-width-1300");
         jQuery(".accordion").accordion({heightStyle: "content", collapsible: true});
         jQuery('.dg-tooltip').tooltip();
         jQuery("#layers").sortable({
