@@ -224,7 +224,7 @@ class helperProduct
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>						
                                                                     <h4 class="modal-title" id="myModalLabel">'.$attrs->name[$i].'</h4>
                                                             </div>
-                                                            <div class="modal-body" id="design-quality">';
+                                                            <div class="modal-body" id="design-quality" style="padding-bottom: 0px;">';
 				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
 				
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
@@ -234,11 +234,12 @@ class helperProduct
                                 
                                 $html .= '<div id="dg-messq" style="display:none; color:red"></div>';
                                 $html .= '<hr>'
-                                        . '<div id="dg-total-mess"></div>';
+                                        . '<div id="dg-total-mess"></div>'
+                                        . '<div class="ship-fo">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></div>';
                                 $html .=     '</div>
-                                                <div class="modal-footer">                                                
-                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" title="save">Save</button>
-                                                        <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
+                                                <div class="modal-footer" style=" text-align: center; margin-top: 1px;">                                                
+                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
+                                                        <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
                                                 </div>
                                             </div>
                                           </div>

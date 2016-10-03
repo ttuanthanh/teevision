@@ -997,7 +997,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     onclick="return design.team.resetTeam()"><i
                                     class="fa fa-usd"></i> SAVE, QUOTE
                             </button>
-                            <div class="product-price-list">
+                            <div class="product-price-list hidden">
                                 <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
                                 <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span class="price-old-number">123</span></span>
                                 <span id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span class="price-sale-number">100</span></span>

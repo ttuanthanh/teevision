@@ -295,7 +295,7 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        jQuery('#dg-total-mess').html('Total: $' + data.sale);
+                        jQuery('#dg-total-mess').html('<h2>$' + (data.sale / datas.quantity).toFixed(2)  + ' each </h2> $'+data.sale + ' (' + datas.quantity+' Pieces) ');
                         jQuery('.price-old-number').html(data.old);
 
                         //if (data.sale == data.old)
