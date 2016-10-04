@@ -674,6 +674,7 @@ body {
         height: 600px;
         position: relative;
         width: 500px;
+        margin: auto;
     }
     .detail-info{
         position: relative;
@@ -682,6 +683,7 @@ body {
         font-weight: bold;
         color: #b1b1b1;
         font-size: 25px;
+        margin: auto;
     }
 }
 #app-wrap .labView.active {
