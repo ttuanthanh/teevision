@@ -51,7 +51,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<?php if(isset($value['text'])){ ?>
 											<p class="text"><?php echo $value['text']; ?></p>
 										<?php }elseif(isset($value['thumb'])){ ?>
-											<img class="clipart_thumb" src="<?php echo $value['thumb'];?>" alt=""/>
+                                                                                        <img class="clipart_thumb" src="<?php echo $value['thumb'];?>" alt=""/>
+                                                                                        <p><b>
+                                                                                            <a target="_blank" href="<?php echo $value['url'];?>" title="Click to download this artwork" >Download</a>
+                                                                                        </b></p>
+                                                                                        
 										<?php } ?>
 											<ul>
 												<?php foreach($value as $k=>$v){ ?>

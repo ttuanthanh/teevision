@@ -277,7 +277,7 @@ class Ajax extends Frontend_Controller {
                         $config['library_path'] = '/usr/bin';
                         //$config['new_image'] = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. 'test1111.jpg';
                         
-                        if( !in_array($data['file_ext'], array('.svg', '.psd', '.ai', '.pdf')) ) 
+                        if( !in_array($data['file_ext'], array('.svg', '.psd', '.ai', '.pdf', '.eps')) ) 
                         {
                             $config['image_library'] = 'gd2';
                             $this->load->library('image_lib', $config);
