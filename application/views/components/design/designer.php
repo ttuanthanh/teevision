@@ -235,8 +235,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                     </label>
                                                 </p>
                                                 <p><?php echo $lang['designer_upload_accept_the_following']; ?>:
-                                                    <strong>PNG,
-                                                        JPG, GIF</strong></p>
+                                                    <strong>PNG, JPG, GIF, PDF, PSD, AI, EPS, SVG</strong></p>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
