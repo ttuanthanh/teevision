@@ -1503,11 +1503,12 @@ var design = {
                 var txt = {};
                 txt.text = 'NAME';
                 txt.color = '#000000';
-                txt.fontSize = '24px';
+                txt.fontSize = '50px';
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
                 txt.top = 0;
+                txt.dy = '50%';
                 design.text.add(txt, 'team', 'text');
                 var o = design.item.get();
                 o.addClass('drag-item-name');
@@ -1538,12 +1539,12 @@ var design = {
                 var txt = {};
                 txt.text = '00';
                 txt.color = '#000000';
-                txt.fontSize = '100px';
+                txt.fontSize = '150px';
                 txt.fontFamily = 'arial';
                 txt.stroke = 'none';
                 txt.strokew = '0';
-                txt.dy = '65';
-                txt.top = 30;
+                txt.dy = '110';
+                txt.top = 50;
                 design.text.add(txt, 'team', 'number');
                 var o = design.item.get();
                 o.addClass('drag-item-number');
@@ -1566,12 +1567,11 @@ var design = {
             var i = 1,
                 cname = document.getElementById('team_add_name').checked,
                 cnum = document.getElementById('team_add_number').checked;
-
             if (!cname && !cnum) {
                 jQuery('#team_msg_error').html('Please select add name or number first.').css('display', 'block');
                 return;
             } else {
-                jQuery('#team_msg_error').css('display', 'none');
+                jQuery('#team_msg_error').css('displsay', 'none');
             }
 
             jQuery('#table-team-list tbody tr').each(function () {
@@ -2077,7 +2077,7 @@ var design = {
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        if (typeof value != "undefined" && obj.item.type =="text") {
+                        if (typeof value != "undefined" || obj.item.type =="text") {
                             obj.item.text = text;
 
                             var texts = text.split('\n');
