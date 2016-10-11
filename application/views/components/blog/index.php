@@ -11,7 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
 <div class="blog-page">
-	<h3><?php echo lang('page_blog_blog_categories_title');?></h3>
+<!--	<h3><?php echo lang('page_blog_blog_categories_title');?></h3>
 	<div class="row category-sub clearfix">
 		<?php
 			foreach($categories as $category)
@@ -26,7 +26,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<?php
 			} 
 		?>
-	</div>
+	</div>-->
+        
+        <div class="blog-headline">
+            <h3>BLOG</h3>
+            <h4>Let's find the service thats right for you</h4>            
+        </div>
 	
 	<hr>
 	<?php
@@ -34,7 +39,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		{
 	?>
 		<div class="article-post">
-			<div class="row">
+			<div class="row post-raw">
 				<?php
 					if($article->image == '')
 					{
@@ -42,12 +47,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					}else
 					{
 				?>
-					<div class="col-sm-5">
+					<div class="col-sm-4">
 						<div class="post-image">
 							<img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>" />
 						</div>
 					</div>
-					<div class="col-sm-7">
+					<div class="col-sm-8">
 				<?php } ?>
 					<div class="post-content">
 						<h4>
@@ -65,7 +70,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
 			</div>
 			
-			<div class="row">
+<!--			<div class="row">
 				<div class="col-md-12">
 					<div class="post-meta">
 						<span>
@@ -84,7 +89,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<a class="btn btn-xs btn-primary pull-right" href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo lang('page_blog_readmore_title');?> </a>
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	<?php
 		} 

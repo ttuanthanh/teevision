@@ -1256,3 +1256,11 @@ outline-color: #2e2423;
     border-radius: 4px;
 }
 .btn-godesign{ margin: 0;}
+.blog-headline{
+    border-bottom: 6px #27aae0 solid;
+    border-top: 4px #27aae0 solid;
+    text-align: center;
+    color: #27aae0;
+    font-weight: bold;
+    margin: 20px 0;
+}
