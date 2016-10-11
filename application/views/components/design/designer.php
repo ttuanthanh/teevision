@@ -72,14 +72,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </li>
 
                         <li role="presentation">
-                            <a href="#tab-add_item_team" role="tab"  aria-controls="#tab-add_item_team"
+                            <a href="#tab-add_item_team" role="tab" aria-controls="#tab-add_item_team"
                                data-toggle="tab">
                                 <i class="glyphicons soccer_ball"></i>
                                 <span> <?php echo $lang['designer_menu_name_number']; ?></span>
                             </a>
                         </li>
                         <li role="presentation">
-                            <a href="#tab-add_item_clipart" class="cliparts" aria-controls="#tab-add_item_clipart" title="" data-toggle="tab">
+                            <a href="#tab-add_item_clipart" class="cliparts" aria-controls="#tab-add_item_clipart"
+                               title="" data-toggle="tab">
                                 <i class="glyphicons picture"></i><span> <span> <?php echo $lang['designer_menu_add_art']; ?></span>
                             </a>
                         </li>
@@ -194,7 +195,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="tab-pane" id="dg-myclipart" role="tabpanel">
                             <div class="row nav-bar">
                                 <div class="col-md-12 center nav-info">
-                                    <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
+                                    <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
                                     </span>
                                 </div>
                             </div>
@@ -223,8 +224,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                     <span>Drag & Drop files here to upload or</span>
                                                 </p>
                                                 <p>
-                                                    <button class="browse-file">BROWSE FILES</button>
-                                                </p>
+                                                    <image class="selected-image-upload" style="display:none"/>
+                                                    <button class="browse-file">BROWSE FILES</button></p>
+
                                                 <p>
                                                     <label>
                                                         <small>
@@ -234,8 +236,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                         </small>
                                                     </label>
                                                 </p>
-                                                <p><?php echo $lang['designer_upload_accept_the_following']; ?>:
-                                                    <strong>PNG, JPG, GIF, PDF, PSD, AI, EPS, SVG</strong></p>
+                                                <p><?php echo $lang['designer_upload_accept_the_following']; ?>:</p>
+                                                <p><strong>PNG, JPG, GIF, PDF, PSD, AI, EPS, SVG</strong></p>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
@@ -250,39 +252,45 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
 
                                     </div>
-
+                                    <div class="row col-md-12 margin-left-0">
+                                    <button type="button" class="btn btn-primary input-sm pull-right full-width first-upload"
+                                            id="action-upload">Upload</button>
+                                    </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="uploaded-art">
-                                    <div class="row col-md-12 margin-left-0">
-                                <span
-                                    class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
+                                        <div class="row col-md-12 margin-left-0">
+                                    <span
+                                        class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
+                                    </div>
+                                    <div class="row col-md-12 margin-left-0 text-error" id="upload-support">
                                     </div>
                                     <div class="row margin-0" id="dag-files-images">
                                     </div>
 
                                     <div id="drop-area"></div>
 
-                                </div>
-                                <div class="row row-selected">
-                                    <div class="col-md-12">
-                                        <div class="result-area align-center">
-                                            <p><strong><span>SELECTED IMAGE</span></strong></p>
-                                            <p>
-                                                <image class="selected-image"/>
-                                            </p>
-                                        </div>
-                                        <div class="form-group action-area align-left">
-                                            <div class="checkbox">
-                                                <input type="checkbox" autocomplete="off" id="remove-bg"
-                                                       data-toggle="toggle" data-size="small">
-                                                <span
-                                                    class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
-                                            </div>
 
-                                            <button type="button" class="upload-button"
-                                                    id="action-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
-                                            <button type="button" class="upload-button" style="display: none;"
-                                                    id="add-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                    <div class="row row-selected">
+                                        <div class="col-md-12">
+                                            <div class="result-area align-center">
+                                                <p><strong><span>SELECTED IMAGE</span></strong></p>
+                                                <p>
+                                                    <image class="selected-image"/>
+                                                </p>
+                                            </div>
+                                            <div class="form-group action-area align-left">
+                                                <!--                                            <div class="checkbox">-->
+                                                <!--                                                <input type="checkbox" autocomplete="off" id="remove-bg"-->
+                                                <!--                                                       data-toggle="toggle" data-size="small">-->
+                                                <!--                                                <span-->
+                                                <!--                                                    class="help-block">-->
+                                                <?php //echo $lang['designer_upload_remove_white_background']; ?><!--</span>-->
+                                                <!--                                            </div>-->
+
+
+                                                <button type="button" class="upload-button" style="display: none;"
+                                                        id="add-upload"><?php echo $lang['designer_add_design_btn']; ?></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -720,12 +728,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </span>
                                     </div>
                                     <div class="col-md-4 text-right">
-                                        <a type="button" class="btn-link btn-close-clipart" href="javascript:void(0)" id="designThis" style="color:red">
+                                        <a type="button" class="btn-link btn-close-clipart" href="javascript:void(0)"
+                                           id="designThis" style="color:red">
                                             X Close
                                         </a>
                                     </div>
                                 </div>
-                                <div class="image-clipart col-md-12"><div id="dag-list-arts"></div></div>
+                                <div class="image-clipart col-md-12">
+                                    <div id="dag-list-arts"></div>
+                                </div>
                                 <div class="popover-content">
 
                                     <!-- BEGIN clipart edit options -->
@@ -759,7 +770,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                         <div class="dg-options-content">
                                             <div class="row toolbar-action-edit">
-                                                <div id="item-print-colors" class="col-xs-6 col-md-6" style="display:none">
+                                                <div id="item-print-colors" class="col-xs-6 col-md-6"
+                                                     style="display:none">
                                                 </div>
                                                 <div id="clipart-colors" class="col-xs-6 col-md-6">
                                                     <div class="form-group col-lg-12 text-left position-static">
@@ -804,13 +816,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                             </div>
 
-<!--                                            <div class="row toolbar-action-rotate">-->
-<!--                                                <div class="form-group col-lg-12">-->
-<!--                                                    <div class="row">-->
-<!---->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
+                                            <!--                                            <div class="row toolbar-action-rotate">-->
+                                            <!--                                                <div class="form-group col-lg-12">-->
+                                            <!--                                                    <div class="row">-->
+                                            <!---->
+                                            <!--                                                    </div>-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </div>-->
 
                                             <div class="row toolbar-action-functions margin-top-20">
                                                 <div class="col-xs-6">
@@ -819,7 +831,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                     <?php echo $lang['designer_clipart_edit_transform']; ?>
                                                 </strong>
                                             </span>
-                                                    <span class="btn btn-default btn-xs" onclick="design.item.flip('x')">
+                                                    <span class="btn btn-default btn-xs"
+                                                          onclick="design.item.flip('x')">
 								<i class="glyphicons transfer glyphicons-12"></i>
                                                         <?php echo $lang['designer_clipart_edit_flip']; ?>
 							</span>
@@ -911,104 +924,107 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         <div class="col-right">
 
-                        <div class="tools area">
-                            <ul class="dg-tools">
-                                <li>
-                                    <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
-                                        <i class="glyphicons circle_question_mark"></i>
-                                        <span><?php echo $lang['designer_top_help']; ?></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
-                                        <i class="fa fa-search-plus"></i>
-                                        <span>Zoom</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                                        <i class="fa fa-times-circle"></i>
-                                        <span>Clear</span>
-                                    </a>
-                                </li>
+            <div class="tools area">
+                <ul class="dg-tools">
+                    <li>
+                        <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                            <i class="glyphicons circle_question_mark"></i>
+                            <span><?php echo $lang['designer_top_help']; ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="zoom" title="Zoom" class="dg-tool">
+                            <i class="fa fa-search-plus"></i>
+                            <span>Zoom</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
+                            <i class="fa fa-times-circle"></i>
+                            <span>Clear</span>
+                        </a>
+                    </li>
 
-                                <li>
-                                    <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share">
-                                        <i class="fa fa-weixin"></i>
-                                        <span>Share</span>
-                                    </a>
-                                </li>
-                                <li style="display: none">
-                                    <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share active" >
-                                        <i class="fa fa-weixin"></i>
-                                        <span>Share</span>
-                                    </a>
-                                </li>
-                                <div class="dg-share" style="display:none">
-                                    <ul class="list-share pull-right">
-                                        <li class="icon-40 share-email" data-type="email"></li>
-                                        <li class="icon-40 share-facebook" data-type="facebook"></li>
-                                        <li class="icon-40 share-twitter" data-type="twitter"></li>
-                                        <li class="icon-40 share-pinterest" data-type="pinterest"></li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share">
+                            <i class="fa fa-weixin"></i>
+                            <span>Share</span>
+                        </a>
+                    </li>
+                    <li style="display: none">
+                        <a href="javascript:void(0)" data-type="share" class="dg-tool tools-share active">
+                            <i class="fa fa-weixin"></i>
+                            <span>Share</span>
+                        </a>
+                    </li>
+                    <div class="dg-share" style="display:none">
+                        <ul class="list-share pull-right">
+                            <li class="icon-40 share-email" data-type="email"></li>
+                            <li class="icon-40 share-facebook" data-type="facebook"></li>
+                            <li class="icon-40 share-twitter" data-type="twitter"></li>
+                            <li class="icon-40 share-pinterest" data-type="pinterest"></li>
 
-                                    </ul>
-                                </div>
+                        </ul>
+                    </div>
 
-                                <!--
-                                <li>
-                                    <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                                        <i class="glyphicons undo"></i>
-                                        <span>undo</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                                        <i class="glyphicons redo"></i>
-                                        <span>redo</span>
-                                    </a>
-                                </li>
-                                -->
+                    <!--
+                    <li>
+                        <a href="javascript:void(0)" data-type="undo" class="dg-tool">
+                            <i class="glyphicons undo"></i>
+                            <span>undo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="redo" class="dg-tool">
+                            <i class="glyphicons redo"></i>
+                            <span>redo</span>
+                        </a>
+                    </li>
+                    -->
 
 
-                            </ul>
-                        </div>
-                <!-- product -->
-<!--                <div class="align-center" id="right-options">-->
-<!--                    <div class="dg-box">-->
-
-                        <div class="product-prices">
-<!--                            <div id="product-price">-->
-<!--                                <span class="product-price-title">--><?php //echo $lang['designer_right_total']; ?><!--</span>-->
-<!--                                <div class="product-price-list">-->
-<!--                                <span-->
-<!--                                    id="product-price-old">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
-<!--                                    <span class="price-old-number">123</span></span>-->
-<!--                                    <span-->
-<!--                                        id="product-price-sale">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
-<!--                                        <span class="price-sale-number">100</span></span>-->
-<!--                                </div>-->
-<!--                                <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i-->
-<!--                                        class="glyphicons restart"></i></span>-->
-<!--                            </div>-->
-                            <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                            <div class="" id="product-thumbs"></div>
-                            <button type="button" class="btn btn-warning btn-quote"
-                                    onclick="return design.team.resetTeam()"><i
-                                    class="fa fa-usd"></i> SAVE, QUOTE
-                            </button>
-                            <div class="product-price-list hidden">
-                                <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
-                                <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span class="price-old-number">123</span></span>
-                                <span id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span class="price-sale-number">100</span></span>
-                            </div>
-                        </div>
-<!--                    </div>-->
-<!--                </div>-->
-
+                </ul>
             </div>
+            <!-- product -->
+            <!--                <div class="align-center" id="right-options">-->
+            <!--                    <div class="dg-box">-->
+
+            <div class="product-prices">
+                <!--                            <div id="product-price">-->
+                <!--                                <span class="product-price-title">-->
+                <?php //echo $lang['designer_right_total']; ?><!--</span>-->
+                <!--                                <div class="product-price-list">-->
+                <!--                                <span-->
+                <!--                                    id="product-price-old">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
+                <!--                                    <span class="price-old-number">123</span></span>-->
+                <!--                                    <span-->
+                <!--                                        id="product-price-sale">--><?php //echo settingValue($setting, 'currency_symbol', '$'); ?>
+                <!--                                        <span class="price-sale-number">100</span></span>-->
+                <!--                                </div>-->
+                <!--                                <span class="price-restart" title="Click to get price" onclick="design.ajax.getPrice()"><i-->
+                <!--                                        class="glyphicons restart"></i></span>-->
+                <!--                            </div>-->
+                <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
+                <div class="" id="product-thumbs"></div>
+                <button type="button" class="btn btn-warning btn-quote"
+                        onclick="return design.team.resetTeam()"><i
+                        class="fa fa-usd"></i> SAVE, QUOTE
+                </button>
+                <div class="product-price-list hidden">
+                    <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
+                    <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
+                            class="price-old-number">123</span></span>
+                    <span id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
+                            class="price-sale-number">100</span></span>
+                </div>
+            </div>
+            <!--                    </div>-->
+            <!--                </div>-->
+
         </div>
     </div>
-    <!-- End main -->
+</div>
+<!-- End main -->
 </div>
 
 <div id="screen_colors_body" style="display:none;">
@@ -1252,71 +1268,75 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
     <!-- Begin clipart -->
-<!--    <div class="modal fade" id="dg-cliparts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
-<!--         aria-hidden="true">-->
-<!--        <div class="modal-dialog modal-lg">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header" style="overflow: hidden;">-->
-<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
-<!--                    <div class="col-xs-4 col-md-3">-->
-<!--                        <h4 class="modal-title">--><?php //echo lang('design_art_select'); ?><!--</h4>-->
-<!--                    </div>-->
-<!--                    <div class="col-xs-7 col-md-4">-->
-<!--                        <div class="input-group">-->
-<!--                            <input type="text" id="art-keyword" autocomplete="off" class="form-control input-sm"-->
-<!--                                   placeholder="Search for...">-->
-<!--                            <span class="input-group-btn">-->
-<!--							<button class="btn btn-default btn-sm" onclick="design.designer.art.arts(0)" type="button">Search</button>-->
-<!--						  </span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal-body">-->
-<!--                    <div class="row align-center">-->
-<!--                        <div id="dag-art-panel">-->
-<!--                            <a href="javascript:void(0)" title="Click to show categories">-->
-<!--                                --><?php //echo $lang['designer_clipart_shop_library']; ?><!-- <span class="caret"></span>-->
-<!--                            </a>-->
-<!--                            <a href="javascript:void(0)" title="Click to show categories">-->
-<!--                                --><?php //echo $lang['designer_clipart_store_design']; ?><!-- <span class="caret"></span>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="row">-->
-<!--                        <div id="dag-art-categories" class="row col-xs-4 col-md-3"></div>-->
-<!--                        <div class="col-xs-8 col-md-9">-->
-<!--                            <div id="dag-list-arts"></div>-->
-<!--                            <div id="dag-art-detail">-->
-<!--                                <button type="button"-->
-<!--                                        class="btn btn-danger btn-xs">--><?php //echo $lang['designer_close_btn']; ?><!--</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="modal-footer">-->
-<!--                    <div class="align-right" id="arts-pagination" style="display:none">-->
-<!--                        <ul class="pagination">-->
-<!--                            <li><a href="javascript:void(0)">&laquo;</a></li>-->
-<!--                            <li class="active"><a href="javascript:void(0)">1</a></li>-->
-<!--                            <li><a href="javascript:void(0)">2</a></li>-->
-<!--                            <li><a href="javascript:void(0)">3</a></li>-->
-<!--                            <li><a href="javascript:void(0)">4</a></li>-->
-<!--                            <li><a href="javascript:void(0)">5</a></li>-->
-<!--                            <li><a href="javascript:void(0)">&raquo;</a></li>-->
-<!--                        </ul>-->
-<!--                        <input type="hidden" value="0" autocomplete="off" id="art-number-page">-->
-<!--                    </div>-->
-<!--                    <div class="align-right" id="arts-add" style="display:none">-->
-<!--                        <div class="art-detail-price"></div>-->
-<!--                        <button type="button"-->
-<!--                                class="btn btn-primary">--><?php //echo $lang['designer_add_design_btn']; ?><!--</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    <div class="modal fade" id="dg-cliparts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+    <!--         aria-hidden="true">-->
+    <!--        <div class="modal-dialog modal-lg">-->
+    <!--            <div class="modal-content">-->
+    <!--                <div class="modal-header" style="overflow: hidden;">-->
+    <!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+    <!--                    <div class="col-xs-4 col-md-3">-->
+    <!--                        <h4 class="modal-title">--><?php //echo lang('design_art_select'); ?><!--</h4>-->
+    <!--                    </div>-->
+    <!--                    <div class="col-xs-7 col-md-4">-->
+    <!--                        <div class="input-group">-->
+    <!--                            <input type="text" id="art-keyword" autocomplete="off" class="form-control input-sm"-->
+    <!--                                   placeholder="Search for...">-->
+    <!--                            <span class="input-group-btn">-->
+    <!--							<button class="btn btn-default btn-sm" onclick="design.designer.art.arts(0)" type="button">Search</button>-->
+    <!--						  </span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="modal-body">-->
+    <!--                    <div class="row align-center">-->
+    <!--                        <div id="dag-art-panel">-->
+    <!--                            <a href="javascript:void(0)" title="Click to show categories">-->
+    <!--                                -->
+    <?php //echo $lang['designer_clipart_shop_library']; ?><!-- <span class="caret"></span>-->
+    <!--                            </a>-->
+    <!--                            <a href="javascript:void(0)" title="Click to show categories">-->
+    <!--                                -->
+    <?php //echo $lang['designer_clipart_store_design']; ?><!-- <span class="caret"></span>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!---->
+    <!--                    <div class="row">-->
+    <!--                        <div id="dag-art-categories" class="row col-xs-4 col-md-3"></div>-->
+    <!--                        <div class="col-xs-8 col-md-9">-->
+    <!--                            <div id="dag-list-arts"></div>-->
+    <!--                            <div id="dag-art-detail">-->
+    <!--                                <button type="button"-->
+    <!--                                        class="btn btn-danger btn-xs">-->
+    <?php //echo $lang['designer_close_btn']; ?><!--</button>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!---->
+    <!--                <div class="modal-footer">-->
+    <!--                    <div class="align-right" id="arts-pagination" style="display:none">-->
+    <!--                        <ul class="pagination">-->
+    <!--                            <li><a href="javascript:void(0)">&laquo;</a></li>-->
+    <!--                            <li class="active"><a href="javascript:void(0)">1</a></li>-->
+    <!--                            <li><a href="javascript:void(0)">2</a></li>-->
+    <!--                            <li><a href="javascript:void(0)">3</a></li>-->
+    <!--                            <li><a href="javascript:void(0)">4</a></li>-->
+    <!--                            <li><a href="javascript:void(0)">5</a></li>-->
+    <!--                            <li><a href="javascript:void(0)">&raquo;</a></li>-->
+    <!--                        </ul>-->
+    <!--                        <input type="hidden" value="0" autocomplete="off" id="art-number-page">-->
+    <!--                    </div>-->
+    <!--                    <div class="align-right" id="arts-add" style="display:none">-->
+    <!--                        <div class="art-detail-price"></div>-->
+    <!--                        <button type="button"-->
+    <!--                                class="btn btn-primary">-->
+    <?php //echo $lang['designer_add_design_btn']; ?><!--</button>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
     <!-- End clipart -->
 
 

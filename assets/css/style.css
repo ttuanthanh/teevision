@@ -3026,7 +3026,6 @@ ul.choose_payment .description {
 }
 #dg-designer .upload-area{
     position: relative;
-    height: 170px;
     outline: 1px dotted #bbbbbb;
     text-align: center;
     padding: 10px;
@@ -3054,10 +3053,13 @@ ul.choose_payment .description {
     z-index:2;
     width: 160px;
     position: relative;
-
 }
 #dg-designer .upload-button{
     margin: 10px 0;
+}
+#dg-designer .first-upload{
+    margin-top: 20px;
+    height:50px;
 }
 #dg-designer .upload-area p{
     margin-bottom: 5px;
@@ -3074,12 +3076,13 @@ ul.choose_payment .description {
 }
 
 
-#dg-designer .selected-image{
-    width: 120px;
+#dg-designer .selected-image,#dg-designer .selected-image-upload{
+    width: 150px;
     height: 150px;
     border: 1px dotted #428bca;
     border-radius: 10px;
 }
+
 #dg-designer .action-area .toggle{
     float: left;
 }

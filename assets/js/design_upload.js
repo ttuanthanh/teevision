@@ -65,6 +65,7 @@ jQuery(function () {
 								});
 								jQuery(progressBarContainer).addClass('uploaded');
 								jQuery(progressBar).html('Uploaded').css('width', '100%');
+								jQuery(".selected-image").attr("src", media.msg.thumb);
 							}
 							else
 							{
@@ -73,6 +74,9 @@ jQuery(function () {
 							jQuery('#upload-copyright').attr('checked', false);
 							jQuery('#remove-bg').attr('checked', false);
 							jQuery('#files-upload').val('');
+							jQuery('.selected-image-upload').hide();
+							jQuery('.browse-file').show();
+							jQuery('.selected-image-upload').attr("src", "");
 						});
 					}
 				};
@@ -131,11 +135,18 @@ jQuery(function () {
 						jQuery("#action-upload").hide();
 						jQuery("#add-upload").show();
 						span.className += " selected";
+						jQuery(".selected-image").attr("src", media.msg.thumb);
 					}
 				}
 				jQuery('#upload-copyright').attr('checked', false);
 				jQuery('#remove-bg').attr('checked', false);
 				jQuery('#files-upload').val('');
+				jQuery('.selected-image-upload').hide();
+				jQuery('.browse-file').show();
+				jQuery('.selected-image-upload').attr("src", "");
+
+
+
 			};
 			
 			var formData = new FormData();  
@@ -152,7 +163,7 @@ jQuery(function () {
 			}
 		}
 		else {
-			fileList.innerHTML = "No support for the File API in this web browser";
+			jQuery("#upload-support").html("No support for the File API in this web browser");
 		}	
 	}
 	
@@ -204,7 +215,9 @@ jQuery(function () {
 
 		var r = new FileReader();
 		r.onload = function (e) {
-			jQuery('.selected-image').attr("src", e.target.result);
+			jQuery('.selected-image-upload').attr("src", e.target.result);
+			jQuery('.browse-file').hide();
+			jQuery('.selected-image-upload').show();
 		};
 		r.readAsDataURL(f);
 	});
