@@ -895,7 +895,7 @@ outline-color: #2e2423;
 
 /*page article*/
 .blog-page .article-post{
-	border-bottom: 1px solid #dddddd;
+/*	border-bottom: 1px solid #dddddd;*/
     margin-bottom: 50px;
     padding-bottom: 10px;
 }
@@ -1263,4 +1263,11 @@ outline-color: #2e2423;
     color: #27aae0;
     font-weight: bold;
     margin: 20px 0;
+}
+a.post-raw {
+    color: black;
+    display: block;
+}
+a.post-raw:hover{
+    border: #27aae0 2px solid;
 }

@@ -33,13 +33,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <h4>Let's find the service thats right for you</h4>            
         </div>
 	
-	<hr>
+	
 	<?php
 		foreach($articles as $article)
 		{
 	?>
-		<div class="article-post">
-			<div class="row post-raw">
+		<div class="article-post clearfix">
+                    
+			<a class="post-raw " href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>">
+                            
 				<?php
 					if($article->image == '')
 					{
@@ -56,7 +58,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<?php } ?>
 					<div class="post-content">
 						<h4>
-							<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>" ><?php echo $article->title; ?></a>
+							<?php echo $article->title; ?>
 						</h4>
 						<p>
 							<?php 
@@ -68,29 +70,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						</p>
 					</div>
 				</div>
-			</div>
-			
-<!--			<div class="row">
-				<div class="col-md-12">
-					<div class="post-meta">
-						<span>
-							<i class="fa fa-calendar"></i>
-							<?php 
-								$date = date_create($article->date);
-								echo date_format($date, 'F d,Y');
-							?>
-						</span>
-						
-						<span>
-						<i class="fa fa-user"></i>
-							<?php echo lang('page_blog_by_title');?>
-							<a href="#"> <?php echo $article->created; ?> </a>
-						</span>
-						<a class="btn btn-xs btn-primary pull-right" href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo lang('page_blog_readmore_title');?> </a>
-					</div>
-				</div>
-			</div>-->
-		</div>
+                            <br clear="all"/>
+			</a><!--class="row post-raw"-->
+
+
+		</div><!--class="article-post"-->
 	<?php
 		} 
 	?>
