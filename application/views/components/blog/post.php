@@ -11,17 +11,83 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
 <div class="blog-page post-page">
+    
+    <div>
+        <h3>
+        
+		<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
+	
+        </h3>
+        <div class="col-sm-3">
+            <img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>"/>
+        </div>
+        <div class="col-sm-9">
+            <h4>Create Custom Unique T-Shirts</h4>
+            <ul class="blog-ds-top">
+                <li> Low Prices with Free Shipping</li>
+                <li> Guaranteed Store Quality Prints</li>
+            </ul>
+            <a href="/design" class="btn btn-primary" style="margin-right: 40px">Design now!</a>
+            <a href="/product/1-Ultra-Cotton-610z" class="btn btn-primary" >Get a Quote</a>
+        </div>
+    </div>
+    <br clear="all" />
+    <br />
+    <div>
+        <h4><a>Choose from a variety of shirt styles</a></h4>
+        <div class="col-sm-3 blog-cat_image">
+            <a href="http://teevisionprinting.com/categories/63-Ladies">
+                <img src="/media/assets/ladies2.png" alt=""><br><br>
+            </a>
+            <strong>LADIES</strong><br>
+            <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
+            <a href="http://teevisionprinting.com/product/30-bellacanvas-ladies-the-favorite-tee-6004">BELLA+CANVAS Ladies</a><br>
+            <a href="http://teevisionprinting.com/product/34-gildan-softstyle-ladies-v-neck-t-shirt-64v00l">Gildan® Softstyle®</a><br>
+            <a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>
+            
+        </div>
+        <div class="col-sm-3 blog-cat_image">
+            <a href="http://teevisionprinting.com/categories/66-ladies-tshirts">
+            <img src="/media/assets/sweat.png" alt=""><br><br></a>
+            <strong>SWEATSHIRTS</strong><br>
+            <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
+            <a href="http://teevisionprinting.com/product/30-bellacanvas-ladies-the-favorite-tee-6004">BELLA+CANVAS Ladies</a><br>
+            <a href="http://teevisionprinting.com/product/34-gildan-softstyle-ladies-v-neck-t-shirt-64v00l">Gildan® Softstyle®</a><br>
+            <a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>
+            
+        </div>
+        <div class="col-sm-3 blog-cat_image">
+            <a href="http://teevisionprinting.com/categories/89-T-Shirts">
+            <img src="http://teevisionprinting.com/media/assets/g2000/Antique_Royal_front.jpg" alt=""><br><br></a>
+            <strong>T-SHIRTS</strong><br>
+            <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
+            <a href="http://teevisionprinting.com/product/30-bellacanvas-ladies-the-favorite-tee-6004">BELLA+CANVAS Ladies</a><br>
+            <a href="http://teevisionprinting.com/product/34-gildan-softstyle-ladies-v-neck-t-shirt-64v00l">Gildan® Softstyle®</a><br>
+            <a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>
+            
+        </div>
+        <div class="col-sm-3 blog-cat_image">
+            <a href="http://teevisionprinting.com/categories/90-Tank-Tops">
+            <img src="http://teevisionprinting.com/media/assets/G520 TANKS/gildan_5200.jpg" alt=""><br><br></a>
+            <strong>TANK TOPS</strong><br>
+            <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
+            <a href="http://teevisionprinting.com/product/30-bellacanvas-ladies-the-favorite-tee-6004">BELLA+CANVAS Ladies</a><br>
+            <a href="http://teevisionprinting.com/product/34-gildan-softstyle-ladies-v-neck-t-shirt-64v00l">Gildan® Softstyle®</a><br>
+            <a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>
+            
+        </div>
+    </div>
+    <br clear="all" />
+    
 	<?php
 		if($article->image != '')
 		{
 	?>
-		<!-- <div class="post-image">
+<!--		 <div class="post-image">
 			<img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>"/>
 		</div> -->
 	<?php } ?>
-	<h4>
-		<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
-	</h4>
+	
 	
 	<div class="post-meta">
 		<span>

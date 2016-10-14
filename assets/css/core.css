@@ -1268,6 +1268,28 @@ a.post-raw {
     color: black;
     display: block;
 }
-a.post-raw:hover{
+.article-post{
+    border: white 2px solid;
+}
+.article-post:hover{
     border: #27aae0 2px solid;
+}
+.blog-cat_image{
+    display: block;
+    height: auto;
+    padding: 4px;
+    line-height: 25px;    
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.blog-cat_image img{
+    max-width: 100%;
+    height: 160px;
+}
+.blog-ds-top li{
+    height: 25px;    
+}
+.blog-ds-top {
+    list-style-type: lower-greek;  
 }
