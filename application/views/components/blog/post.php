@@ -27,8 +27,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <li> Low Prices with Free Shipping</li>
                 <li> Guaranteed Store Quality Prints</li>
             </ul>
-            <a href="/design" class="btn btn-primary" style="margin-right: 40px">Design now!</a>
-            <a href="/product/1-Ultra-Cotton-610z" class="btn btn-primary" >Get a Quote</a>
+            <a href="/design" class="btn btn-primary" style="width: 200px">Design now!</a>
         </div>
     </div>
     <br clear="all" />
