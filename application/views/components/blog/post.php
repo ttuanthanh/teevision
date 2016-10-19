@@ -49,10 +49,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <a href="http://teevisionprinting.com/categories/66-ladies-tshirts">
             <img src="/media/assets/sweat.png" alt=""><br><br></a>
             <strong>SWEATSHIRTS</strong><br>
-            <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
-            <a href="http://teevisionprinting.com/product/30-bellacanvas-ladies-the-favorite-tee-6004">BELLA+CANVAS Ladies</a><br>
-            <a href="http://teevisionprinting.com/product/34-gildan-softstyle-ladies-v-neck-t-shirt-64v00l">Gildan® Softstyle®</a><br>
-            <a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>
+            <a href="http://teevisionprinting.com/product/21-G18500/gildan/zipup">Gildan Heavy Blend</a><br>
+            <a href="http://teevisionprinting.com/product/37-gildan-heavy-blend-adult-full-zip-hooded-sweatshirt-18600">Gildan® Heavy Blend™</a><br>
+            <a href="http://teevisionprinting.com/product/38-gildan-crew-neck-sweatshirt-18000">Gildan Crew Neck</a><br>
+            <!--<a href="http://teevisionprinting.com/product/36-american-apparel-ladies-fine-jersey-short-sleeve-t-shirt-2102">American Apparel</a>-->
             
         </div>
         <div class="col-sm-3 blog-cat_image">
