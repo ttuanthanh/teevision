@@ -72,9 +72,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</div>
                             <br clear="all"/>
 			</a><!--class="row post-raw"-->
-
-
 		</div><!--class="article-post"-->
+                <br clear="all"/>
 	<?php
 		} 
 	?>

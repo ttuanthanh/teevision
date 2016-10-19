@@ -896,8 +896,8 @@ outline-color: #2e2423;
 /*page article*/
 .blog-page .article-post{
 /*	border-bottom: 1px solid #dddddd;*/
-    margin-bottom: 50px;
-    padding-bottom: 10px;
+    /*margin-bottom: 50px;*/
+    padding: 10px 0;
 }
 .blog-page .article-post:last-child{
 	border-bottom: none;
@@ -906,7 +906,7 @@ outline-color: #2e2423;
 	margin-bottom: 7px;
 }
 .blog-page .post-image{
-	margin-bottom: 15px;
+	/*margin-bottom: 15px;*/
 }
 .blog-page .post-meta span,
 .post-page .post-meta span{
@@ -1291,5 +1291,14 @@ a.post-raw {
     height: 25px;    
 }
 .blog-ds-top {
+    font-size: 16px;
     list-style-type: circle;  
+}
+.cus-blog-de{
+    font-weight: bold;
+}
+.btn-gode{
+    width: 200px;
+    color: white;
+    font-weight: bold;
 }
