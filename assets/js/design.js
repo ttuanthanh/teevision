@@ -19,6 +19,7 @@ var design = {
             }
         });
         //action click
+
         jQuery('.popover-close').click(function () {
             jQuery(".popover").hide('show');
         });
@@ -39,7 +40,9 @@ var design = {
             jQuery(this).parent().hide();
             jQuery(".tools-share").not(".active").parent().show();
         });
-
+        jQuery(".drop-font").bind("click", function(){
+            jQuery(this).addClass("active");
+        });
         design.item.move();
         $jd("#dg-outline-width").slider({
             animate: true,
@@ -1067,19 +1070,21 @@ var design = {
         },
         changeFont: function (e) {
             var selected = design.item.get();
-            var teamSelected = jQuery('.dg-options-content .dropdown.active');
+            var teamSelected = jQuery('.drop-font.active');
             var dragText = jQuery('.drag-item-name text');
             var dragNumber = jQuery('.drag-item-number text');
-            if(selected.data("type") =="team") {
+            if(teamSelected.prop('id') =='txt-team-name-fontfamly' || teamSelected.prop('id') =='txt-team-number-fontfamly') {
                 if ((dragText.length == 0 && dragNumber.length == 0) ||
-                    (dragText.length == 0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
-                    (dragNumber.length == 0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
+                    (dragText.length == 0 && teamSelected.prop('id') =='txt-team-name-fontfamly') ||
+                    (dragNumber.length == 0 && teamSelected.prop('id') =='txt-team-number-fontfamly')) {
                     jQuery('#dg-fonts').modal('hide');
+                    jQuery(".drop-font").removeClass("active");
                     return false;
                 }
             }
             if (selected.length == 0 && teamSelected.length == 0) {
                 jQuery('#dg-fonts').modal('hide');
+                jQuery(".drop-font").removeClass("active");
                 return false;
             }
             jQuery('.list-fonts a').removeClass('active');
@@ -1090,9 +1095,9 @@ var design = {
                 var title = jQuery(e).data('title');
                 jQuery('#txt-fontfamily').html(title);
                 if (typeof design.designer.fontActive[id] != 'undefined' || jQuery(e).data('type') == 'google') {
-                    if (typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-number-fontfamly').length > 0) {
+                    if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') =='txt-team-number-fontfamly') {
                         design.text.update('fontfamily', title, 'number');
-                    } else if (typeof  teamSelected != 'undefined' && teamSelected.find('#txt-team-name-fontfamly').length > 0) {
+                    } else if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') =='txt-team-name-fontfamly') {
                         design.text.update('fontfamily', title, 'text');
                     } else if (selected.length != 0) {
                         design.text.update('fontfamily', title, selected.data('const'));
@@ -1152,6 +1157,7 @@ var design = {
                 }
             }
             jQuery('#dg-fonts').modal('hide');
+            jQuery(".drop-font").removeClass("active");
         }
     },
     products: {
