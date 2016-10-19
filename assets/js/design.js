@@ -10,7 +10,7 @@ var design = {
     fonts: '',
     ini: function () {
         var self = this;
-        jQuery('.row-elment').addClass("fixed-width-1300");
+        jQuery('body').addClass("fixed-width-1280");
         jQuery(".accordion").accordion({heightStyle: "content", collapsible: true});
         jQuery('.dg-tooltip').tooltip();
         jQuery("#layers").sortable({
@@ -18,6 +18,7 @@ var design = {
                 self.layers.sort();
             }
         });
+        //action click
         jQuery('.popover-close').click(function () {
             jQuery(".popover").hide('show');
         });
@@ -1067,13 +1068,15 @@ var design = {
         changeFont: function (e) {
             var selected = design.item.get();
             var teamSelected = jQuery('.dg-options-content .dropdown.active');
-            var dragNumber = jQuery('.drag-item-name text');
-            var dragText = jQuery('.drag-item-number text');
-            if ((dragText.length == 0 && dragNumber.length == 0) ||
-                (dragText.length == 0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
-                (dragNumber.length == 0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
-                jQuery('#dg-fonts').modal('hide');
-                return false;
+            var dragText = jQuery('.drag-item-name text');
+            var dragNumber = jQuery('.drag-item-number text');
+            if(selected.data("type") =="team") {
+                if ((dragText.length == 0 && dragNumber.length == 0) ||
+                    (dragText.length == 0 && teamSelected.find('#txt-team-name-fontfamly').length == 0) ||
+                    (dragNumber.length == 0 && teamSelected.find('#txt-team-number-fontfamly').length == 0)) {
+                    jQuery('#dg-fonts').modal('hide');
+                    return false;
+                }
             }
             if (selected.length == 0 && teamSelected.length == 0) {
                 jQuery('#dg-fonts').modal('hide');
@@ -2077,9 +2080,8 @@ var design = {
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        if (typeof value != "undefined" || obj.item.type =="text") {
+                        if (typeof value != "undefined" || (obj && obj.item.type =="text")) {
                             obj.item.text = text;
-
                             var texts = text.split('\n');
                             var svgNS = "http://www.w3.org/2000/svg";
 
