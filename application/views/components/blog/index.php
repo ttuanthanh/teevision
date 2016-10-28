@@ -29,7 +29,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>-->
         
         <div class="blog-headline">
-            <h3>BLOG</h3>
+            <h3>SERVICES</h3>
             <h4>Let's find the service thats right for you</h4>            
         </div>
 	
