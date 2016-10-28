@@ -43,14 +43,18 @@ else
 	$route['default_controller'] = "home";
 	
 $route['404_override'] 			= 'error404';
-$route['categories/(:any)'] 	= 'categories/index/$1';
-$route['product/after-quote/(:any)'] 		= 'product/quote/$1';
+$route['categories/(:any)']             = 'categories/index/$1';
+$route['product/after-quote/(:any)'] 	= 'product/quote/$1';
+
 $route['product/(:any)'] 		= 'product/index/$1';
-$route['page/index/(:any)'] 	= 'page/index/$1';
+$route['page/index/(:any)']             = 'page/index/$1';
 $route['page/(:any)'] 			= 'page/index/$1';
-$route['idea'] 					= 'idea/index';
-$route['idea/index/(:any)'] 	= 'idea/index/$1';
+$route['idea'] 				= 'idea/index';
+$route['idea/index/(:any)']             = 'idea/index/$1';
 $route['idea/(:any)'] 			= 'idea/index/$1';
 $route['search/(:any)'] 		= 'search/index/$1';
 
-$route['admin/users/(:num)'] 	= 'admin/users/index/$2';
+$route['admin/users/(:num)']            = 'admin/users/index/$2';
+
+$route['services/(:any)']                = 'blog/post/$1';
+$route['services']                      = 'blog';

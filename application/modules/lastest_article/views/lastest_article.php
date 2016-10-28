@@ -37,9 +37,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				// show title.
 				if(strlen($article->description) <= 25)
-					echo '<h5><a href="'.site_url().'blog/post/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.$article->title.'</a></h5>';
+					echo '<h5><a href="'.site_url().'services/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.$article->title.'</a></h5>';
 				else
-					echo '<h5><a href="'.site_url().'blog/post/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.substr($article->title, 0, 25).' ...</a></h5>';
+					echo '<h5><a href="'.site_url().'services/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.substr($article->title, 0, 25).' ...</a></h5>';
 				
 				// show date.
 				if(isset($options->show_date) && $options->show_date == 'yes')
@@ -63,9 +63,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				// show title.
 				if(strlen($article->description) <= 40)
-					echo '<h5><a href="'.site_url().'blog/post/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.$article->title.'</a></h5>';
+					echo '<h5><a href="'.site_url().'services/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.$article->title.'</a></h5>';
 				else
-					echo '<h5><a href="'.site_url().'blog/post/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.substr($article->title, 0, 40).' ...</a></h5>';
+					echo '<h5><a href="'.site_url().'services/'.$article->id.'-'.$article->slug.'" title="'.$article->title.'">'.substr($article->title, 0, 40).' ...</a></h5>';
 				
 				// show date.
 				if(isset($options->show_date) && $options->show_date == 'yes')

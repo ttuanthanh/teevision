@@ -93,7 +93,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<?php } ?>
 					<div class="post-content">
 						<h4>
-							<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>" ><?php echo $article->title; ?></a>
+							<a href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>" ><?php echo $article->title; ?></a>
 						</h4>
 						<p>
 							<?php 
@@ -123,7 +123,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<?php echo lang('page_blog_by_title');?>
 							<a href="#"> <?php echo $article->created; ?> </a>
 						</span>
-						<a class="btn btn-xs btn-primary pull-right" href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo lang('page_blog_readmore_title');?> </a>
+						<a class="btn btn-xs btn-primary pull-right" href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo lang('page_blog_readmore_title');?> </a>
 					</div>
 				</div>
 			</div>

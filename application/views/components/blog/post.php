@@ -15,7 +15,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div>
         <h3>
         
-		<a href="<?php echo site_url().'blog/post/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
+		<a href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
 	
         </h3>
         <div class="col-sm-3">
@@ -129,7 +129,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						echo '</div>';
 						echo '<div class="col-xs-8 col-sm-10">';
 					}
-					echo '<h5><a href="'.site_url().'blog/post/'.$list->id.'-'.$list->slug.'" title="'.$list->title.'">'.$list->title.'</a></h5>';
+					echo '<h5><a href="'.site_url().'services/'.$list->id.'-'.$list->slug.'" title="'.$list->title.'">'.$list->title.'</a></h5>';
 					
 					//intro text.
 					if(strlen(strip_tags($list->description)) <= 100)
@@ -138,7 +138,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						echo '<p>'.substr(strip_tags($list->description), 0, 100).' [...]</p>';
 						
 					//read more.
-					echo '<a class="btn btn-xs btn-primary pull-right" href="'.site_url().'blog/post/'.$list->id.'-'.$list->slug.'" title="'.$list->title.'"> '.lang('page_blog_readmore_title').'</a>';
+					echo '<a class="btn btn-xs btn-primary pull-right" href="'.site_url().'services/'.$list->id.'-'.$list->slug.'" title="'.$list->title.'"> '.lang('page_blog_readmore_title').'</a>';
 					
 					echo '</div>';
 					echo '</div>';

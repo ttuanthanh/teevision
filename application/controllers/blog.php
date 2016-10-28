@@ -89,7 +89,7 @@ class Blog extends Frontend_Controller {
 	{
 		$id = (int)$id;
 		if($id == 0)
-			redirect(site_url().'blog');
+                    redirect(site_url().'services');//redirect(site_url().'blog');
 		$this->load->model('blog_m');
 		
 		$article = $this->blog_m->getArticle($id, true);
