@@ -44,17 +44,18 @@ $colors 	= count($design->color_hex);
                     <li><?php echo strtoupper($product->title); ?></li>
                 </ol>
                 <div class="page-header pro-detail-title no-border font-bold">
-                        <h2>
+                        <h2 class="tshirt-name">
                                 <?php echo $product->title; ?>
 
                                 <?php if (isset($color_active)) { ?>
                                 <small><?php echo $color_active; ?></small>
                                 <?php } ?>
                         </h2>
-                    <h4 class="tit-pri-sta">Stating at $xxx.x | <?php echo $colors ?> color</h4>
+                        <h3 class="tit-short-des"><?php echo $product->short_description ?></h3>
+                        <h4 class="tit-pri-sta">Stating at <?php echo $currency->currency_symbol .''. $product->price; ?> | <?php echo $colors ?> color</h4>
                 </div>
 		<!-- product image -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div id="product-image-area">
                             <?php
                             if ($color_load === true)
@@ -75,7 +76,7 @@ $colors 	= count($design->color_hex);
                 </div>
 		
 		<!-- product info -->
-		<div class="col-md-6">
+		<div class="col-md-7">
 						
 			<!-- rating -->
                         
@@ -172,16 +173,16 @@ $colors 	= count($design->color_hex);
 			
 		</div>
                 <br clear="all">
-                <div class="col-md-12">
+                <div class="col-md-7">
                     <!-- product short description -->
-                    <br>
-                    <p class="font-bold">Key features</p>
+                   
+                    <p class="font-bold under_s">Product detail</p>
                     <div class="form-group">
                             <?php echo $product->description;                             ?>
                     </div>
 
                     <!-- product price -->
-                    <div class="form-group">
+<!--                    <div class="form-group">
                             <p class="price">
                                     <?php echo lang('price'); ?>: 
                                     <?php if($price != $product->price) { ?>
@@ -194,13 +195,17 @@ $colors 	= count($design->color_hex);
                                             <strong><?php echo $currency->currency_symbol .''. $price; ?></strong>
                                     </span>
                             </p>
-                    </div>
+                    </div>-->
+                </div>
+                <div class="col-md-5">
+                    <p class="font-bold under_s">Size chart</p>
+                    <?php echo $product->size;  ?>
                 </div>
 	</div>
 	
 	<!-- RELATED PRODUCTS -->
 	<div class="row">
-		<?php $this->load->view('components/product/related', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
+		<?php //$this->load->view('components/product/related', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
 	</div>
 	
 <script type="text/javascript">

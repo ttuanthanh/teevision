@@ -67,7 +67,9 @@ class Product extends Frontend_Controller
 			{
 				$product->design		= $help_product->getDesign($design);
 			}
-			
+			//product price
+                        $product->startPrice  = $this->product_m->getProductPrice($id);
+                    
 			// product color
 			$this->data['color_load']	= false;
 			$this->data['index']		= '';

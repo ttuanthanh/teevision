@@ -27,6 +27,7 @@ $lang["product_data"] = "Product Data";
 $lang["product_general"] = "General";
 $lang["product_sku"] = "SKU";
 $lang["product_regular_price"] = "Regular Price";
+$lang["product_start_price"] = "Starting Price";
 $lang["product_sale_price"] = "Sale Price";
 $lang["product_sale_price_des"] = "You can use this to temporarily discount a product";
 $lang["product_quantity_price"] = "Price Quantity";

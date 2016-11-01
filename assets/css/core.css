@@ -1169,9 +1169,7 @@ outline-color: #2e2423;
     width: 150px;
 }
 
-.btn-godesign{
-    width: 100%;
-}
+
 .width100o{ width: 100%;}
 .tee-title{
     font-family: Lobster!important;
@@ -1255,7 +1253,12 @@ outline-color: #2e2423;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.btn-godesign{ margin: 0;}
+
+.btn-godesign{
+    background: #ff9900;
+    width: 100%;
+    margin: 0;
+}
 .blog-headline{
     border-bottom: 6px #27aae0 solid;
     border-top: 4px #27aae0 solid;
@@ -1302,6 +1305,16 @@ a.post-raw {
     color: white;
     font-weight: bold;
 }
+.tshirt-name{
+    color: #0066ff;
+}
 .tit-pri-sta{
     color:#cccccc;
+}
+.tit-short-des{
+    color: #999999;
+}
+.under_s{
+    padding-left: 10px;
+    border-bottom: 2px solid #cccccc; 
 }

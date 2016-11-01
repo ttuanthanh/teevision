@@ -202,10 +202,10 @@ tinymce.init({
 										<div class="clear-line"></div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">
-												<?php echo lang('product_regular_price'); ?>
+												<?php echo lang('product_start_price'); ?>
 											</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control input-sm" name="product[data][price]" value="<?php echo $product->price; ?>" placeholder="<?php echo lang('product_regular_price'); ?>">
+												<input type="text" class="form-control input-sm" name="product[data][price]" value="<?php echo $product->price; ?>" placeholder="<?php echo lang('product_start_price'); ?>">
 											</div>
 											<div class="col-sm-5">
 												<div class="row">
