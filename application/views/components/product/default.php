@@ -25,7 +25,8 @@ else
 $currency	= $product_m->getCurrency($product->currency_id);
 $link 		= site_url('product/'.$product->id .'-'. $product->slug);
 $cateee = $product_m->getProductCateOrderParent($product->id);
-
+$design		= $product->design;
+$colors 	= count($design->color_hex);
 ?>
 
 <?php if (count($product)) { ?>	
@@ -50,6 +51,7 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
                                 <small><?php echo $color_active; ?></small>
                                 <?php } ?>
                         </h2>
+                    <h4 class="tit-pri-sta">Stating at $xxx.x | <?php echo $colors ?> color</h4>
                 </div>
 		<!-- product image -->
                 <div class="col-md-6">
