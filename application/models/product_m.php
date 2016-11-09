@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Product_m extends MY_Model
 {
 	public $_table_name 	= 'products';
-	public $_order_by 		= 'created desc';
+	public $_order_by 	= 'created desc';
 	public $_primary_key 	= 'id';
 	public $_timestamps 	= TRUE;
 	public $validate = array(
@@ -40,6 +40,27 @@ class Product_m extends MY_Model
 		
 		$this->db->order_by('default', 'DESC');
 		$this->db->limit(1, 0);
+		
+		$product = parent::get();
+		
+		//$this->db->cache_off();
+		
+		if ( count($product) )
+			return $product;
+		else
+			return false;
+	}
+        
+        /*
+	 * get product with where field
+	 *	fields = array("field_name"=>"value");
+	*/
+	public function getProductsLite()
+	{
+		//$this->db->cache_on();
+		$this->db->select('id,title,image');		
+		
+		$this->db->order_by('default', 'DESC');
 		
 		$product = parent::get();
 		

@@ -117,6 +117,11 @@ tinymce.init({
 							<label ><?php echo lang('product_site_info'); ?></label>
 							<textarea name="product[data][size]" class="text-edittor" style="width:100%"><?php echo $product->size; ?></textarea>
 						</div>
+                                            
+                                                <div class="form-group">
+							<label >Page description</label>
+							<textarea name="product[data][page_description]" class="text-edittor" style="width:100%"><?php echo $product->page_description; ?></textarea>
+						</div>
 						
 						<div class="panel panel-default">
 							<div class="panel-heading">

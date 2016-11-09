@@ -28,21 +28,21 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 $design		= $product->design;
 $colors 	= count($design->color_hex);
 ?>
-
+<link type="text/css" href="http://tshirt.local/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="all">
+<link type="text/css" href="http://tshirt.local/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" media="all">
+<link type="text/css" href="http://tshirt.local/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link type="text/css" href="http://tshirt.local/assets/css/core.css" rel="stylesheet" media="all">
+<script type="text/javascript" src="http://tshirt.local/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://tshirt.local/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://tshirt.local/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://tshirt.local/assets/js/core.js"></script>
+<link rel="shortcut icon" href="http://tshirt.local/media/assets/icon.png">
+<link href="http://fonts.googleapis.com/css?family=Oswald%7CPT+Sans%7COpen+Sans" rel="stylesheet" type="text/css">
+<link type="text/css" href="http://tshirt.local/application/views/themes/default/css/template.css" rel="stylesheet" media="all">
 <?php if (count($product)) { ?>	
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
-	<div class="row">
-                <!-- breadcrumb -->
-                <ol class="breadcrumb e-beadcrum">
-                    <li><a href="<?php echo site_url('/'); ?>">HOME TEEVISON</a></li>
-                <?php 
-                    foreach ($cateee as $cat){
-                        $cat_q = $categories_m->getCategory('product', $cat->cate_id);
-                        echo '<li><a href="'.site_url('categories/'.$cat_q->id.'-'.$cat_q->slug).'">'.strtoupper($cat_q->title).'</a></li>';
-                    }
-                ?>
-                    <li><?php echo strtoupper($product->title); ?></li>
-                </ol>
+	<div class="col-sm-12">
+                
                 <div class="page-header pro-detail-title no-border font-bold">
                         <h2 class="tshirt-name">
                                 <?php echo $product->title; ?>
@@ -51,37 +51,17 @@ $colors 	= count($design->color_hex);
                                 <small><?php echo $color_active; ?></small>
                                 <?php } ?>
                         </h2>
-                        <h3 class="tit-short-des"><?php echo $product->short_description ?></h3>
-                        <h4 class="tit-pri-sta">Stating at <?php echo $currency->currency_symbol .''. $product->price; ?> | <?php echo $colors ?> color</h4>
                 </div>
 		<!-- product image -->
-                <div class="col-md-5">
-                    <div id="product-image-area">
-                            <?php
-                            if ($color_load === true)
-                            {
-                                    $this->load->view('components/product/image_design', array('index'=>$index, 'product'=>$product));
-                            }
-                            else
-                            {
-                                    $this->load->view('components/product/image', array('product'=>$product));
-                            }
-                            ?>			
-                    </div>
-
-                    <!-- SKU -->
-    <!--			<p><?php echo lang('sku'); ?>: <strong><?php echo $product->sku; ?></strong></p>-->
-
-                    
-                </div>
+                
 		
 		<!-- product info -->
-		<div class="col-md-7">
+		<div class="">
 						
 			<!-- rating -->
                         
-            <p class="font-bold">Available color</p>
-             <!-- product design -->
+                        <p class="font-bold">Available color</p>
+                         <!-- product design -->
 			<?php if (isset($product->design)) { ?>
 			<div class="form-group">
 				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
@@ -131,11 +111,8 @@ $colors 	= count($design->color_hex);
                         <!-- Price detail -->
                         <div class="form-group price-calc hidden-box clearfix" id="price-detail">
                             <hr>
-                            <div class="col-md-7 text-center">
-                                <p class="ship-free margin-0"><span class="cl-blue">Free Shipping </span>by (10 days) Guaranteed </p>
-                                <p class="ship-rush"><span class="cl-pink">Rush Shipping </span> available at checkout! </p>
-                            </div>
-                            <div class="col-md-5 text-right">
+                            
+                            <div class="text-center">
                                 <p class="price-unit  margin-0">Unit price: <span id="unit-price-value" class="cl-pink"></span></p>
                                 <p class="price-total cl-blue">Total price: <span id="total-price-value"></span></p>
                             </div>
@@ -159,13 +136,6 @@ $colors 	= count($design->color_hex);
 			<!-- share -->
 			<!-- <hr class="clearfix">-->
 			
-			<div class="form-group clearfix text-right">
-                                <p class="font-bold">Share This product:</p>
-				<a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
-				<a  target="_blank" href="https://twitter.com/home?status=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-twitter" title="twitter"><i class="fa fa-twitter"></i></a>
-				<a  target="_blank" href="https://plus.google.com/share?url=<?php echo $link; ?>" class="btn btn-primary btn-circle btn-google" title="google"><i class="fa fa-google-plus"></i></a>
-				<a  target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo $link; ?>&amp;media=<?php echo $product->image; ?>&amp;description=<?php echo $product->short_description; ?>" class="btn btn-primary btn-circle btn-pinterest" title="pinterest"><i class="fa fa-pinterest"></i></a>
-			</div>
                         
                         <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
                             <input type="hidden" name="f-price" id="f-price">                            
@@ -173,47 +143,10 @@ $colors 	= count($design->color_hex);
 			
 		</div>
                 <br clear="all">
-                <div class="col-md-10 col-md-offset-1">
-                    <p class="font-bold under_s">Page description</p>
-                    <div class="form-group">
-                            <?php echo $product->page_description;                             ?>
-                    </div>
-                </div>
-                <br clear="all">
-                <div class="col-md-6 col-md-offset-1">
-                    <!-- product short description -->
-                   
-                    <p class="font-bold under_s">Product detail</p>
-                    <div class="form-group">
-                            <?php echo $product->description;                             ?>
-                    </div>
-
-                    <!-- product price -->
-<!--                    <div class="form-group">
-                            <p class="price">
-                                    <?php echo lang('price'); ?>: 
-                                    <?php if($price != $product->price) { ?>
-                                    <span class="price-old text-muted">
-                                            <del><small><?php echo $currency->currency_symbol .''. $product->price; ?></small></del>
-                                    </span>
-                                    <?php } ?>
-
-                                    <span class="price-new text-danger">
-                                            <strong><?php echo $currency->currency_symbol .''. $price; ?></strong>
-                                    </span>
-                            </p>
-                    </div>-->
-                </div>
-                <div class="col-md-4">
-                    <p class="font-bold under_s">Size chart</p>
-                    <?php echo $product->size;  ?>
-                </div>
+                
 	</div>
 	
-	<!-- RELATED PRODUCTS -->
-	<div class="row">
-		<?php //$this->load->view('components/product/related', array('index'=>$index, 'products'=>$products, 'product_m'=>$product_m)); ?>
-	</div>
+	
 	
 <script type="text/javascript">
 jQuery(function() {

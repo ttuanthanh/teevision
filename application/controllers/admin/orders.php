@@ -1255,4 +1255,96 @@ class Orders extends Admin_Controller
   
                 redirect($_SERVER['HTTP_REFERER']);
 	}
+        
+        function listproduct()
+	{
+		$this->load->model('product_m');
+		$row 	= $this->product_m->getProductsLite();
+		$this->data['products'] = $row;		
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/list_products', $this->data);
+	}
+        
+        function addorder($id="")
+	{
+		//$id 	= (int) $string;
+		
+		// page not found
+		$found 	= true;
+		if ($id == 0)
+		{
+			$found 	= false;
+		}
+		else
+		{
+			// load product info
+			$this->load->model('product_m');
+                        $this->load->model('categories_m');
+			$row	= $this->product_m->getProduct( array( 'id'=> $id, 'published' => 1 ) );
+			if (empty($row[0]) || count($row[0]) == 0)
+			{
+				$found = false;
+			}
+		}
+		
+		$data 		= array();
+		if ($found === false)
+		{
+			// load 404
+			$data['subview'] = $this->load->view('layouts/404/404', array(), true);
+		}
+		else
+		{
+			$this->data			= array();
+			$product 			= $row[0];
+			
+			// get attributes
+			$attribute 			= $this->product_m->getAttribute($id);
+			if (count($attribute)) 
+			{
+				$this->load->helper('product');
+				$help_product 		= new helperProduct();
+				
+				$product->attributes	= $help_product->displayAttributes($attribute);
+			}
+			//set href URL
+			$product->href = 'product';
+			// get product design
+			$design 	= $this->product_m->getProductDesign($id);
+			if (count($design))
+			{
+				$product->design		= $help_product->getDesign($design);
+			}
+			//product price
+                        $product->startPrice  = $this->product_m->getProductPrice($id);
+                    
+			// product color
+			$this->data['color_load']	= false;
+			$this->data['index']		= '';
+			
+			
+			$this->data['product_m']	= $this->product_m;
+                        $this->data['categories_m']	= $this->categories_m;
+			$this->data['product']		= $product;
+			
+			// load Related
+			$product_cate = $this->product_m->getProductCate($id);
+			$cate_id = array();
+			foreach($product_cate as $cate)
+			{
+				$cate_id[] = $cate->cate_id;
+			}
+			$this->data['products'] = $this->product_m->getRelated($cate_id, $id);
+			
+			
+		}
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/add_order2', $this->data);
+	}
 }
