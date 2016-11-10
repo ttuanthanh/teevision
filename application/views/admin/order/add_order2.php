@@ -54,7 +54,7 @@ $colors 	= count($design->color_hex);
                 </div>
 		<!-- product image -->
                 
-		
+		<form id="submit-quote" action="<?php echo site_url('cart/addToCart'); ?>" method="post">
 		<!-- product info -->
 		<div class="">
 						
@@ -67,11 +67,8 @@ $colors 	= count($design->color_hex);
 				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
 			</div>
 			<?php } ?>
-                        <?php if (isset($product->design) && $product->design->front != '') { ?>
-                            <a class="btn btn-primary btn-product btn-godesign" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
-                        <?php } ?>
-                        
-                        <br><br>
+                                               
+                        <br>
 			<!-- product attribute -->
 			<?php if (isset($product->attributes)) { ?>
 			<div class="form-group">
@@ -84,7 +81,7 @@ $colors 	= count($design->color_hex);
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <label class="font-nor" for="">Select Number of Front Colors: </label>
-                                <select class="form-control text-center width-200" id="print-front-num" onchange="getQuote()">
+                                <select class="form-control text-center width-200" name="print-front" id="print-front-num" onchange="getQuote()">
                                     <option value="0" >==Select==</option>
                                     <option value="1" >1 color</option>
                                     <option value="2" >2 colors</option>
@@ -96,7 +93,7 @@ $colors 	= count($design->color_hex);
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <label class="font-nor" for="">Select Number of Back Colors: </label>
-                                <select class="form-control text-center width-200" id="print-back-num" onchange="getQuote()">
+                                <select class="form-control text-center width-200" name="print-back" id="print-back-num" onchange="getQuote()">
                                     <option value="0" >==Select==</option>
                                     <option value="1" >1 color</option>
                                     <option value="2" >2 colors</option>
@@ -121,27 +118,28 @@ $colors 	= count($design->color_hex);
                         </div>
 			<!-- form -->
 			<div class="form-group clearfix row">
-				<form name="addtocart" class="addtocart" action="" method="post">
-                                        <input type="hidden" value="<?php echo $product->id; ?>" id="product_id">
+				<!--<form name="addtocart" class="addtocart" action="" method="post">-->
+                                        <input type="hidden" value="<?php echo $product->id; ?>" id="product_id" name="product_id">
 					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
 					
                                         
 					
                                         <!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
                                         <div class="col-md-6 text-left"><p class="btn btn-primary btn-quote btn-product width100o" id="btn-getquote" title="Click to get quote"> GET QUOTE</p></div>
-                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product hidden-box width100o" title="Click to get quote" >START ORDER</p></div>
-				</form>
+                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product width100o" title="Click to get quote" >START ORDER</p></div>
+				<!--</form>-->
 			</div>
 			
 			<!-- share -->
 			<!-- <hr class="clearfix">-->
 			
                         
-                        <form id="submit-quote" action="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>" method="post">
+                            <input type="hidden" id="quantity" name="quantity" value="">
                             <input type="hidden" name="f-price" id="f-price">                            
-                        </form>
+                        
 			
 		</div>
+                </form>
                 <br clear="all">
                 
 	</div>

@@ -144,6 +144,13 @@ jQuery(function() {
             var color       = jQuery('#colors').val(),
                 attr_size   = getAttributeArray(jQuery('#attr-key').val());
                 
+            var attr_key    = jQuery('#attr-key').val(),                
+            i = 0;
+            size_flag = 0;
+            $('input[name^="'+attr_key+'"]').each(function() {
+                size_flag += Number($(this).val());            
+            });
+            $("#quantity").val(size_flag);
             //Add color to submit
             var input = $("<input>").attr({"type":"hidden", "name": "color"}).val(color);
             $('#submit-quote').append($(input));
