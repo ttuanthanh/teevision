@@ -54,7 +54,7 @@ $colors 	= count($design->color_hex);
                 </div>
 		<!-- product image -->
                 
-		<form id="submit-quote" action="<?php echo site_url('cart/addToCart'); ?>" method="post">
+		<form id="submit-quote" action="<?php echo site_url('admin/orders/addordermanual'); ?>" method="post">
 		<!-- product info -->
 		<div class="">
 						
@@ -64,7 +64,7 @@ $colors 	= count($design->color_hex);
                          <!-- product design -->
 			<?php if (isset($product->design)) { ?>
 			<div class="form-group">
-				<?php $this->load->view('components/product/design', array('index'=>$index, 'product'=>$product)); ?>
+				<?php $this->load->view('components/product/designForM', array('index'=>$index, 'product'=>$product)); ?>
 			</div>
 			<?php } ?>
                                                
@@ -133,7 +133,8 @@ $colors 	= count($design->color_hex);
 			<!-- share -->
 			<!-- <hr class="clearfix">-->
 			
-                        
+                            <input type="hidden" id="mcolor-name" name="mcolor-name" value="">
+                            <input type="hidden" id="mcolor-hex" name="mcolor-hex" value="">
                             <input type="hidden" id="quantity" name="quantity" value="">
                             <input type="hidden" name="f-price" id="f-price">                            
                         

@@ -1350,54 +1350,27 @@ class Orders extends Admin_Controller
         
         function addordermanual()
 	{
-		
+                var_dump($this->input->post('attribute'));
+                //exit();
 		$this->user 	= $this->session->userdata('user');
-		$this->items 	= $this->cart->contents();
+		//TTT edit disable
+                /*
+                $this->items 	= $this->cart->contents();
 		
 		if (count($this->items) == 0 || count($this->user) == 0)
 			redirect('cart');
-			
-		if($this->input->post('payment'))
+		
+                 * 
+                 */	
+		if($this->input->post('product_id'))
 		{
 			$data = $this->input->post();			
 			
-			// add payment to session
-			if ($this->session->userdata('cart'))
-			{
-				$cart = $this->session->userdata('cart');
-			}
-			else
-			{
-				$cart = new stdClass();
-			}
-			$cart->payment = $data['payment'];				
-			
-			// update user profile
-			$fields = $data['fields'];
-			if (count($fields) == 0)
-				redirect('cart/checkout');
-							
-			$user_profile	= array();
-			foreach($fields as $key => $value)
-			{
-				$id 	= key($value);
-				$user_profile[] = array(
-					'field_id'=>$id,
-					'form_field'=>'checkout',
-					'value'=>$value[$id],
-					'object'=>$this->user['id'],
-				);				
-			}
-			$this->load->model('fields_m');
-			if ( count($user_profile) > 0 )
-			{
-				$this->fields_m->add($user_profile);
-			}			
 			
 			// get design option
-			$this->load->driver('cache', array('adapter'=>'file')); 
+			//$this->load->driver('cache', array('adapter'=>'file')); 
 			$session_id 	= $this->session->userdata('order_session_id');
-			$designs 		= $this->cache->get('orders_designs'.$session_id);
+			//$designs 		= $this->cache->get('orders_designs'.$session_id);
 			
 			$is_teams = 0;
 			$items	= array();
@@ -1405,26 +1378,29 @@ class Orders extends Admin_Controller
 			$total 		= 0;
 			$subtotal 	= 0;	
                         $design_save    = array();
-			foreach($this->items as $key => $item)
-			{                            
-				$subtotal  = $subtotal + $item['subtotal'] + $item['customPrice'];
-				$items['design'][$i] = $designs[$key];
-				$items['cart'][$i]	= $item;
-                                if(is_array($items['cart'][$i]['teams']) && count($items['cart'][$i]['teams']))
-                                    $is_teams = 1;
-				$items['cart'][$i]['teams']	= json_encode($items['cart'][$i]['teams']);
-				$items['cart'][$i]['options']	= json_encode($items['cart'][$i]['options']);
-                                
-                                
-				$i++;
-									
-			}
-			$items['user'] 				= $this->user;
-			$items['metod'] 			= $cart;				
-			$items['metod']->subtotal 	= $subtotal;
+//			foreach($this->items as $key => $item)
+//			{                            
+//				$subtotal  = $subtotal + $item['subtotal'] + $item['customPrice'];
+//				$items['design'][$i] = $designs[$key];
+//				$items['cart'][$i]	= $item;
+//                                if(is_array($items['cart'][$i]['teams']) && count($items['cart'][$i]['teams']))
+//                                    $is_teams = 1;
+//				$items['cart'][$i]['teams']	= json_encode($items['cart'][$i]['teams']);
+//				$items['cart'][$i]['options']	= json_encode($items['cart'][$i]['options']);
+//                                
+//                                
+//				$i++;
+//									
+//			}
+//			$items['user'] 				= $this->user;
+//			$items['metod'] 			= $cart;				
+//			$items['metod']->subtotal 	= $subtotal;
 			
 		
 			// save design
+                        /*
+                         * disable save design
+                         *
 			$this->load->model('order_m');
 			$design_ids = array();
 			if (count($items['design']))
@@ -1454,16 +1430,19 @@ class Orders extends Admin_Controller
 					$this->design_m->save($insert, null);					
 				}
 			}
-			
+			*/
 			
 			// save order
-			$order 					= $this->order_m->addNew('order');
+			$order 			= $this->order_m->addNew('order');
 			$order['order_number']	= $this->order_m->creteOrderNumberNew();
 			$order['order_pass']	= $this->order_m->creteOrderNumber();
-			$order['user_id']		= $this->user['id'];			
-			$order['payment_id']	= $items['metod']->payment;
-			$order['shipping_id']	= $items['metod']->shipping->id;
+			$order['user_id']	= $this->user['id'];			
+			$order['payment_id']	= 1 ;//TTT edit paymentid //$items['metod']->payment;
+			$order['shipping_id']	= 1;// TTT edit $items['metod']->shipping->id;
 			
+                        
+                        // TTT edit remove discount
+                        /*
 			if ( isset($items['metod']->discount) && isset($items['metod']->discount->id) )
 			{
 				// get discount
@@ -1494,19 +1473,24 @@ class Orders extends Admin_Controller
 				}
 				$this->coupon_m->save($coupon, $items['metod']->discount->id);
 			}
-                        $totalq = 0;
-                        foreach($items['cart'] as $item)
-                            $totalq += $item['qty'];
+                         * */
+                         
+                        //TTT edit add total product
+                        $priceM = explode(',', $data['f-price']);
                         
+                        $totalq = $data['quantity'];
+//                        foreach($items['cart'] as $item)
+//                            $totalq += $item['qty'];
+//                        
                         
-			$order['shipping_id']	= $items['metod']->shipping->id;
-			$order['shipping_price']= $items['metod']->shipping->price;
-			$order['sub_total']		= $items['metod']->subtotal;
-			$order['total']			= $order['sub_total'] + $order['shipping_price'] - $order['discount'];			
+			$order['shipping_id']           = 1;
+			$order['shipping_price']        = 0;
+			$order['sub_total']		= $priceM[1];// TTT edit $items['metod']->subtotal;
+			$order['total']			= $order['sub_total'];// TTT edit + $order['shipping_price'] - $order['discount'];			
 			$order['status']		= 'pending';
                         $order['total_qty']		= $totalq;
                         $order['custom_file']		= $is_teams;
-			$order_id 				= $this->order_m->save($order, null);
+			$order_id 			= $this->order_m->save($order, null);
 			
 			
 			// save order items
@@ -1520,303 +1504,119 @@ class Orders extends Admin_Controller
 			
 			// get shipping method
 			$this->load->model('shipping_m');
-			$shipping	= $this->shipping_m->get($items['metod']->shipping->id, true);
+			$shipping	= $this->shipping_m->get(1, true);
 			
 			// get payment method
 			$this->load->model('payment_m');
-			$payment	= $this->payment_m->get($items['metod']->payment, true);
+			$payment	= $this->payment_m->get(1, true);
 			
 			// get discount
-			if (isset($items['metod']->discount->id))
-			{
-				$this->load->model('coupon_m');
-				$discount	= $this->coupon_m->get($items['metod']->discount->id, true);
-			}
-			else
-			{
+//			if (isset($items['metod']->discount->id))
+//			{
+//				$this->load->model('coupon_m');
+//				$discount	= $this->coupon_m->get($items['metod']->discount->id, true);
+//			}
+//			else
+//			{
 				$discount	= array();
-			}
-			$this->data['discount'] = $discount;
+//			}
+			//$this->data['discount'] = $discount;
 			// html email.
 			$total = 0;
 			$count = 1;
-			$shipping_price = $items['metod']->shipping->price;
+			$shipping_price = 0;
 			$payment_price = 0.0;
-			
-			$this->load->language('order');
-			$html = '<table style="border-collapse:collapse; width:100%">';
-			$html .= '<tr>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("name").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("sku").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_price_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_qty_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("orders_admin_product_option_title").'</td>';
-			$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.lang("total").'</td>';
-			$html .= '</tr>';
-			
-			foreach($items['cart'] as $i=>$item)
-			{
-				$price_clipart					= 0;
-				$cliparts						= json_decode($item['cliparts']);
-				if (count($cliparts))
-				{	
-					// save order cliparts
-					$arts 	= array();
-					$ij = 0;
-					foreach($cliparts as $view=>$art)
-					{
-						if (count($art))
-						{
-							foreach($art as $art_id=>$price)
-							{
-								if ($art_id > 0)
-								{
-									$price_clipart 	= $price_clipart + $price;
-									$arts[$ij]		= array(										
-										'clipart_id'=> $art_id,
-										'order_id'	=> $order_id,
-										'status'	=> 'pending',
-										'created'	=> date("Y-m-d H:i:s")
-									);
-									$ij++;
-								}
-							}
-						}
-					}
-					if (count($arts))
-						$this->db->insert_batch('order_cliparts', $arts);
-				}				
-				$design_color_s = array('color_hex' => $design_save['color'], 'color_name' => $design_save['color_title']);
-				$prices					= json_decode($item['prices']);
-				$order_item['design_id'] 		= $design_ids[$i];
-				$order_item['product_id'] 		= $item['product_id'];				
-				$order_item['product_name']             = $item['name'];				
-				$order_item['product_sku'] 		= $item['id'];				
-				$order_item['product_price']            = $item['price'];//$prices->sale;				
-				$order_item['price_print'] 		= $prices->prints;				
-				$order_item['price_clipart']            = $price_clipart;				
-				$order_item['price_attributes']         = $item['customPrice'];				
-				$order_item['quantity'] 		= $item['qty'];			
-				$order_item['poduct_status']            = 'pending';				
-				$order_item['attributes'] 		= json_encode($item['options']);				
-				//$order_item['design_area'] 		= json_encode($item['design_area']);
-                                //$order_item['design_images'] 		= json_encode($item['design_images']);
-                                //$order_item['print_number'] 		= json_encode($item['print_number']);
-                                $order_item['design_option'] 		= json_encode(array('design_area'   =>$item['design_area'], 
-                                                                                            'design_images' => $item['design_images'],
-                                                                                            'print_number'  => $item['print_number'],
-                                                                                            'colors'        => $design_color_s));
-                                
-				$this->order_m->save($order_item, null);
+                        $price_clipart	= 0;
+
+                        /*
+                         * TTT edit disable cliparts
+
+
+                        $cliparts	= json_decode($item['cliparts']);
+                        if (count($cliparts))
+                        {	
+                                // save order cliparts
+                                $arts 	= array();
+                                $ij = 0;
+                                foreach($cliparts as $view=>$art)
+                                {
+                                        if (count($art))
+                                        {
+                                                foreach($art as $art_id=>$price)
+                                                {
+                                                        if ($art_id > 0)
+                                                        {
+                                                                $price_clipart 	= $price_clipart + $price;
+                                                                $arts[$ij]		= array(										
+                                                                        'clipart_id'=> $art_id,
+                                                                        'order_id'	=> $order_id,
+                                                                        'status'	=> 'pending',
+                                                                        'created'	=> date("Y-m-d H:i:s")
+                                                                );
+                                                                $ij++;
+                                                        }
+                                                }
+                                        }
+                                }
+                                if (count($arts))
+                                        $this->db->insert_batch('order_cliparts', $arts);
+                        }
+                         * 
+                         */
+
+                        $this->load->model('product_m');
+ 
+                        $proinfo 	= $this->product_m->getProduct(array('id'=>$data['product_id']));
+                        
+                        var_dump($proinfo);
+                        
+                        $this->load->helper('cart');
+                        $cart 		= new dgCart();
+
+                        $attributes	= $this->product_m->getAttribute($data['product_id']);                                
+
+                        $customField 			= $cart->getPriceAttributesForManual($attributes, $data['attribute'][$attributes->id], $data['colors']);
+                        //var_dump($customField);
+                        $optionm 		= $customField->fields;
+
+
+
+
+                        $design_color_s = array('color_hex' => $data['mcolor-hex'], 'color_name' => $data['mcolor-name']);
+                        //$prices					= json_decode($item['prices']);
+                        $order_item['design_id'] 		= '';
+                        $order_item['product_id'] 		= $data['product_id'];				
+                        $order_item['product_name']             = $proinfo[0]->title;				
+                        $order_item['product_sku'] 		= $proinfo[0]->sku;				
+                        $order_item['product_price']            = $priceM[2];//$prices->sale;				
+                        $order_item['price_print'] 		= 0;				
+                        $order_item['price_clipart']            = 0;				
+                        $order_item['price_attributes']         = 0;				
+                        $order_item['quantity'] 		= $totalq;			
+                        $order_item['poduct_status']            = 'pending';				
+                        $order_item['attributes'] 		= json_encode(json_encode($optionm));				
+                        //$order_item['design_area'] 		= json_encode($item['design_area']);
+                        //$order_item['design_images'] 		= json_encode($item['design_images']);
+                        //$order_item['print_number'] 		= json_encode($item['print_number']);
+                        $order_item['design_option'] 		= json_encode(array('design_area'   =>"", 
+                                                                                    'design_images' => '',
+                                                                                    'print_number'  => '',
+                                                                                    'colors'        => $design_color_s));
+
+                        $this->order_m->save($order_item, null);
 				
 				// html email.
-				$html .= '<tr>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['name'].'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['id'].'</td>';				
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$setting->currency_symbol.number_format($item['price'], 2).'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">'.$item['qty'].'</td>';
-				$html .= '<td style="border: 1px solid #ccc; padding: 5px;">';
-                                $html .= '<p>'
-                                               .'<strong>Color: </strong> '.$design_save['color_title'].'<br>'
-                                               .'<span class="bg-colors" style="width:20px;height:20px;display:inline-block;border:1px solid #ccc;outline: 1px solid #337AB7;background-color:#'.$design_save['color'].'"></span>'
-                                          .'</p>'
-                                          .'<p>'
-                                                .'<strong>Print </strong>Front: '.$item['print_number']['front'].' colors, Back: '.$item['print_number']['back'].' colors'
-                                          .'</p>' ;
-                                        
-                                        if(isset($item['design_images']['front']))
-                                            $imf = '<a href="'.site_url() .$item['design_images']['front'].'" target="_blank">View image</a>';
-                                        else $imf =  'none';
-                                        
-                                        if(isset($item['design_images']['back']))
-                                            $imb = '<a href="'.site_url() .$item['design_images']['back'].'" target="_blank">View image</a>';
-                                        else $imb =  'none';
-                                        
-                                $html .=    '<p>                                                                    
-                                                <strong>Design upload: </strong><br>
-                                                <strong> - Front</strong>: '.$imf.'<br>
-                                                <strong> - Back</strong>: '.$imb.' 
-                                            </p>
-                                            <p>
-                                                <strong>Design describe: </strong><br>
-                                                <strong> - Front</strong>: '.$item['design_area']['front'].'<br>
-                                                <strong> - Back</strong>: '.$item['design_area']['back'].'
-                                            </p>';        
-                                
-					if($item['options'] != '')
-					{
-						$size = json_decode($item['options'], true);										
-						if (count($size) > 0)
-						{
-							foreach($size as $option) {
-								$html .= '<div>
-									<strong>'.$option['name'].': </strong><br>'; 
-										if (is_string($option['value'])) 
-										{
-											$html .= $option['value'];
-										}elseif (is_array($option['value']) && count($option['value']))
-										{
-											foreach($option['value'] as $v=>$value)
-											{
-												if ($option['type'] == 'textlist')
-													$html .= $v .' - '.$value.'; ';
-												else
-													$html .= $value.'; ';
-											}
-										}
-								$html .= '</div>';
-							}
-						}
-					}
-				$html .= '</td>';
-				$total_row = $item['qty']*($item['price']+$prices->prints+$price_clipart)+$item['customPrice'];
-				$html .= '<td style="border: 1px solid #ccc; text-align: right;">'.$setting->currency_symbol.number_format($total_row, 2).'</td>
-				</tr>';
-			}
-			
-			// html email.
-			$html .= '<tr>
-				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="5">
-					'.lang("orders_admin_shipment_fee_title");
-					if (count($shipping)) {							
-						$html .= '<br><small>'.lang("orders_admin_shipping_method").': <a href="'.site_url().'"><strong>'.$shipping->title.'</strong></a></small>
-						<br><small>'.$shipping->description.'</small>';
-					}
-					
-				$html .= '</td>
-				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;">'.$setting->currency_symbol.number_format($shipping_price, 2).'</td>
-			</tr>
-			<tr>
-				<td  style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="5">
-					'.lang("orders_admin_payment_fee_title");
-					if (count($payment)) {							
-						$html .= '<br><small>'.lang("orders_admin_payment_method").': <a href="'.site_url().'"><strong>'.$payment->title.'</strong></a></small>
-						<br><small>'.$payment->description.'</small>';
-					}
-				$html .= '</td>
-				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;">'.$setting->currency_symbol.number_format($payment_price, 2).'</td>
-			</tr>
-			<tr>
-				<td colspan="5" style="border: 1px solid #ccc; text-align: right; padding: 5px;">
-					'.lang("orders_admin_discount");
-					if (count($discount)) {							
-						$html .= '<br><small>'.$discount->name.': <a href="'.site_url().'"><strong>'.$discount->code.'</strong></a></small>';							
-					}
-				$html .= '</td>
-				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;">'.$setting->currency_symbol.number_format($order['discount'], 2).'</td>
-			</tr>
-			<tr>';
-			$total = $order['total'];
-			$html .= '<td colspan="5" style="border: 1px solid #ccc; text-align: right;">'.lang("orders_admin_total_title").'</td>
-				<td style="border: 1px solid #ccc; text-align: right; padding: 5px;" colspan="7"><strong>'.$setting->currency_symbol.number_format($total, 2).'<strong></td>
-			</tr></table>';
-			
-			// send email.
-			$params = array(
-				'username'=>$this->user['username'],
-				'date'=>date('Y-m-d H:i:s'),
-				'total'=>$setting->currency_symbol.number_format($total, 2),
-				'order_number'=>$order['order_number'],
-				'table'=>$html,
-			);
-			
-			//config email.
-			$config = array(
-				'protocol' => 'smtp',
-                                'smtp_host' => 'screenprintingphilad.ipage.com',
-                                'smtp_port' => 587,
-                                'smtp_user' => 'thanh@teevisionprinting.com',
-                                'smtp_pass' => 'thanhA123',
-                                'mailtype'  => 'html',
-                                'charset'   => 'iso-8859-1'
-			);
-			$subject = configEmail('sub_order_detai', $params);
-			$message = configEmail('order_detai', $params);
-			
-			$this->load->library('email', $config);
-			$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
-			$this->email->to($this->user['email']);    
-			$this->email->subject ( $subject);
-			$this->email->message ($message);   
-			$this->email->send();
-			
-			$this->email->clear();
-			$this->email->from($this->user['email'], $this->user['username']);
-			$this->email->to(getEmail(config_item('admin_email')));    
-			$this->email->subject ($subject);
-			$this->email->message ($message);   
-			$this->email->send();
+				
 			
 			
 			// save user address shipping
 			$order_info				= $this->order_m->addNew('info');
 			$order_info['order_id'] = $order_id;
-			$order_info['user_id'] 	= $this->user['id'];
-			$profiles				= array();
-			foreach($fields as $key => $value)
-			{
-				$id 	= key($value);
-				$field	= $this->fields_m->getField($id);
-				
-				if ($field != '')
-				{
-					if ($field->type == 'country')
-					{
-						$profiles[$field->title]	= $this->fields_m->getCountry($value[$id]);
-					}
-					elseif ($field->type == 'state')
-					{
-						$profiles[$field->title]	= $this->fields_m->getState($value[$id]);
-					}
-					else
-					{
-						$profiles[$field->title]	= $value[$id];
-					}
-				}
-			}
-			$order_info['address'] 	= json_encode($profiles);
+			$order_info['user_id'] 	= $this->user['id'];			
+			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"CONPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
 			$this->order_m->save($order_info, null);
 			
-			// Payment
-			$this->load->model('payment_m');
-			$row	= $this->payment_m->get($cart->payment, true);
-			if (count($row) == 0)
-			{
-				redirect('cart/checkout');
-			}
-			$payment_method	= $row->type;
-			$file = ROOTPATH .DS. 'application' .DS. 'payments' .DS. $payment_method .DS. $payment_method.'.php';
-						
-			// get currency
-			$this->load->model('settings_m');
-			$currency	= $this->settings_m->getCurrency();
-			$product = array(
-				'item_name'=> $order['order_number'],
-				'item_number'=> $order['order_number'],
-				'amount'=> ($subtotal - $order['discount']),
-				'shipping'=> $items['metod']->shipping->price,
-				'qty'=> 1,
-				'currency_code'=> $currency->currency_code
-			);
-			
-			//remove all session, cache			
-			$this->session->unset_userdata('cart');
-			$this->session->unset_userdata('order_session_id');
-			$this->cart->destroy();
-			$this->cache->delete('orders_designs'.$session_id);			
-			
-			if(file_exists($file))
-			{
-				include_once($file);
-				$options	= json_decode($row->configs, true);				
-				$pay = new $payment_method( $options );
-				$pay->action($product, $data, $row->id);
-			}
-			else
-			{
-				redirect('cart/checkout');
-			}
-		}
+					}
 		else
 		{
 			redirect('index.php');
@@ -1824,7 +1624,7 @@ class Orders extends Admin_Controller
                 
                 //$order = $this->order_m->getItems($id);
                 //$this->data['order'] = $order;
-                
-		$this->load->view('admin/order/list_products', $this->data);
+                echo "Add order finished";
+		//$this->load->view('admin/order/list_products', $this->data);
 	}
 }

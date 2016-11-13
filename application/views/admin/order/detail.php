@@ -215,10 +215,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             {
                                     //$design_option   = json_decode($order->design_option);
                                     $design_images  = isset($design_option->design_images) ? $design_option->design_images : '';
-                                    var_dump($design_images);
-                                    echo '<div class="col-md-6">'
+                                    //var_dump($design_images);
+                                    if($design_images != ''){
+                                          echo '<div class="col-md-6">'
                                         .   '<img src="'.$design_images->front .'" width="200">'
                                         .'</div>';
+                                    }
+                                  
                                 }
                         ?>
                         

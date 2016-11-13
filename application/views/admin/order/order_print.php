@@ -243,7 +243,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <div>
                                 <?php
                                 $designs =  $this->order_m->getDesign($product->id);
-                                $design = json_decode(json_decode($designs->teams));
+                                $design = @json_decode(json_decode($designs->teams));
                                 if(is_object($design)){
                                     //var_dump($design);
                                     $num = $design->number; 

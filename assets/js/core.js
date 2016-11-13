@@ -102,6 +102,8 @@ jQuery(function() {
             var url = jQuery(this).attr('data-url-image'), element_load = jQuery(this).attr('data-element-load'), index = jQuery(this).attr('data-index');
             jQuery(".product_color_active").val(jQuery(this).attr('data-index'));
             jQuery("#is-color").val(jQuery(this).attr('data-iscolor'));
+            jQuery("#mcolor-hex").val(jQuery(this).attr('data-color-hex'));
+            jQuery("#mcolor-name").val(jQuery(this).attr('data-color-name'));
             jQuery("#product-colors a").removeClass('active');
             jQuery(this).addClass('active');
             

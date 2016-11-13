@@ -359,5 +359,69 @@ class DgCart{
 		
 		return $data;
 	}
+        
+        function getPriceAttributesForManual($attributes, $fields, $color)
+	{
+		$total 			= 0;
+		$data 			= new stdClass();
+		$data->prices 	= 0;
+		$data->fields 	= array();
+		
+		$prices 	= json_decode($attributes->prices);
+                $prices_color 	= json_decode($attributes->prices_color);
+		$types	 	= json_decode($attributes->type);
+		$names	 	= json_decode($attributes->name);
+		$titles	 	= json_decode($attributes->titles);
+		
+		if (count($prices) == 0)
+		{
+			return $data;
+		}
+		else
+		{
+			foreach($types as $i=>$type)
+			{
+				if ( isset($fields[$i]) )
+				{
+					$data->fields[$i] = array();
+					$data->fields[$i]['name'] = $names[$i];
+					$data->fields[$i]['type'] = $types[$i];
+					$data->fields[$i]['value'] = array();
+					
+					if ($type == 'selectbox' || $type == 'radio')
+					{
+						//$total = $total + $prices[$i][$fields[$i]];
+						
+						$data->fields[$i]['value'] = $titles[$i][$fields[$i]];
+					}
+					elseif ($type == 'textlist') // product size
+					{						
+						foreach($fields[$i] as $j=>$value)
+						{
+//                                                        if('FFFFFF' == strtoupper($color[key($color)]))
+//                                                            $total = $total + ($prices[$i][$j] * $value);
+//                                                        else
+//                                                            $total = $total + ($prices_color[$i][$j] * $value);
+							if ($value == '' || $value == 0) continue;
+							$data->fields[$i]['value'][$titles[$i][$j]] = $value;
+						}
+					}
+					elseif ($type == 'checkbox')
+					{
+						foreach($fields[$i] as $j=>$value)
+						{
+//							$total = $total + $prices[$i][$value];
+							
+							$data->fields[$i]['value'][$j] = $titles[$i][$j];
+						}
+					}
+				}
+			}
+		}
+		
+		//$data->prices = $total;
+		
+		return $data;
+	}
 }
 ?>

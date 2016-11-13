@@ -12,6 +12,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //echo '<pre>'; print_r($design); exit;
 $design		= $product->design;
 $colors 	= count($design->color_hex);
+//var_dump($design);
 ?>
 
 <div class="color-swatches" id="product-colors">
@@ -26,7 +27,8 @@ $colors 	= count($design->color_hex);
 	 	data-toggle="tooltip" data-placement="top" style="background-color:#<?php echo $design->color_hex[$i]; ?>" 
 	 	title="<?php echo $design->color_title[$i]; ?>"
 	 	data-index="<?=$i?>"
-                data-color-hex="<?php $design->color_hex[$i]; ?>"
+                data-color-hex="<?php echo $design->color_hex[$i]; ?>"
+                data-color-name="<?php echo $design->color_title[$i]; ?>"
                 data-iscolor="<?php echo ($design->color_hex[$i] == 'ffffff' || $design->color_hex[$i] == 'FFFFFF') ? 0 : 1 ?>"
 		data-url-image="/api/imagechangecolor/<?=$product->id?>/front/<?=$i?>"
 		data-element-load="#product-image-area"></a>
