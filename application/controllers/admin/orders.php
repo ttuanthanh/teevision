@@ -1469,9 +1469,13 @@ class Orders extends Admin_Controller
 		}
 		else
 		{
-                    
+                        
 			$data = $this->input->post();			
-			
+			//$this->load->model('order_m');
+                        //$order_info = $this->order_m->getOrder($data['orderid']);
+                        
+                        //var_dump($order_info);
+                        //exit();
 			
 			// get design option
 			//$this->load->driver('cache', array('adapter'=>'file')); 
@@ -1517,7 +1521,10 @@ class Orders extends Admin_Controller
                         //var_dump($customField);
                         $optionm 		= $customField->fields;
 
-
+                        //TTT edit add total product
+                        $priceM = explode(',', $data['f-price']);
+                        
+                        $totalq = $data['quantity'];
 
 
                         $design_color_s = array('color_hex' => $data['mcolor-hex'], 'color_name' => $data['mcolor-name']);
@@ -1540,7 +1547,30 @@ class Orders extends Admin_Controller
 
                         $this->order_m->save($order_item, null);
 			
-		
+                        // save order
+			//$order 			= $this->order_m->addNew('order');
+			//$order['order_number']	= $this->order_m->creteOrderNumberNew();
+			//$order['order_pass']	= $this->order_m->creteOrderNumber();
+			///$order['user_id']	= $this->user['id'];			
+			//$order['payment_id']	= 1 ;//TTT edit paymentid //$items['metod']->payment;
+			//$order['shipping_id']	= 1;// TTT edit $items['metod']->shipping->id;
+			
+                        
+                        $order_info = $this->order_m->getOrder($data['orderid']);
+                        
+                        
+                         
+                        
+                        
+			//$order['shipping_id']           = 1;
+			//$order['shipping_price']        = 0;
+			$order['sub_total']		= $priceM[1] + $order_info->sub_total;// TTT edit $items['metod']->subtotal;
+			$order['total']			= $priceM[1] + $order_info->total;// TTT edit + $order['shipping_price'] - $order['discount'];			
+			
+                        $order['total_qty']		= $totalq + $order_info->total_qty;
+//			$this->order_m->update($order, $data['orderid']);
+                        $this->order_m->_table_name = 'orders';
+                        $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
 		}		
                 
                 
