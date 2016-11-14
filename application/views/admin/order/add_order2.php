@@ -41,6 +41,11 @@ $colors 	= count($design->color_hex);
 <link type="text/css" href="http://tshirt.local/application/views/themes/default/css/template.css" rel="stylesheet" media="all">
 <?php if (count($product)) { ?>	
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
+    <div class="modal-header">
+	<h4 class="modal-title">Product detail</h4>
+	<span class="help-block"></span>
+    </div>
+        <div class="modal-body">
 	<div class="col-sm-12">
                 
                 <div class="page-header pro-detail-title no-border font-bold">
@@ -121,18 +126,18 @@ $colors 	= count($design->color_hex);
 				<!--<form name="addtocart" class="addtocart" action="" method="post">-->
                                         <input type="hidden" value="<?php echo $product->id; ?>" id="product_id" name="product_id">
 					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
-					
-                                        
-					
-                                        <!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
-                                        <div class="col-md-6 text-left"><p class="btn btn-primary btn-quote btn-product width100o" id="btn-getquote" title="Click to get quote"> GET QUOTE</p></div>
-                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product width100o" title="Click to get quote" >START ORDER</p></div>
+					<!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
+                                        <!--<div class="col-md-6 text-left"><p class="btn btn-primary btn-quote btn-product width100o" id="btn-getquote" title="Click to get quote"> GET QUOTE</p></div>-->
+                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product width100o" title="Click to get quote" >ADD THIS</p></div>
 				<!--</form>-->
 			</div>
 			
 			<!-- share -->
 			<!-- <hr class="clearfix">-->
-			
+                            <?php
+                            if ($orderid != '') 
+                                echo '<input type="hidden" id="orderid" name="orderid" value="'.$orderid.'">'
+                            ?>
                             <input type="hidden" id="mcolor-name" name="mcolor-name" value="">
                             <input type="hidden" id="mcolor-hex" name="mcolor-hex" value="">
                             <input type="hidden" id="quantity" name="quantity" value="">
@@ -144,7 +149,7 @@ $colors 	= count($design->color_hex);
                 <br clear="all">
                 
 	</div>
-	
+	</div>
 	
 	
 <script type="text/javascript">
@@ -171,3 +176,6 @@ jQuery(function() {
 	<p><?php echo lang('categories_default_product_not_found_desc'); ?></p>
 </div>
 <?php } ?>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
+</div>

@@ -1256,11 +1256,12 @@ class Orders extends Admin_Controller
                 redirect($_SERVER['HTTP_REFERER']);
 	}
         
-        function listproduct()
+        function listproduct($orderid='')
 	{
 		$this->load->model('product_m');
 		$row 	= $this->product_m->getProductsLite();
 		$this->data['products'] = $row;		
+                $this->data['orderid'] = $orderid;
                 
                 //$order = $this->order_m->getItems($id);
                 //$this->data['order'] = $order;
@@ -1268,9 +1269,8 @@ class Orders extends Admin_Controller
 		$this->load->view('admin/order/list_products', $this->data);
 	}
         
-        function addorder($id="")
+        function addorder($id="",$orderid='')
 	{
-		//$id 	= (int) $string;
 		
 		// page not found
 		$found 	= true;
@@ -1329,6 +1329,7 @@ class Orders extends Admin_Controller
 			$this->data['product_m']	= $this->product_m;
                         $this->data['categories_m']	= $this->categories_m;
 			$this->data['product']		= $product;
+                        $this->data['orderid']		= $orderid;
 			
 			// load Related
 			$product_cate = $this->product_m->getProductCate($id);
@@ -1350,19 +1351,10 @@ class Orders extends Admin_Controller
         
         function addordermanual()
 	{
-                var_dump($this->input->post('attribute'));
-                //exit();
+                
 		$this->user 	= $this->session->userdata('user');
-		//TTT edit disable
-                /*
-                $this->items 	= $this->cart->contents();
-		
-		if (count($this->items) == 0 || count($this->user) == 0)
-			redirect('cart');
-		
-                 * 
-                 */	
-		if($this->input->post('product_id'))
+			
+		if(!$this->input->post('orderid'))
 		{
 			$data = $this->input->post();			
 			
@@ -1378,59 +1370,6 @@ class Orders extends Admin_Controller
 			$total 		= 0;
 			$subtotal 	= 0;	
                         $design_save    = array();
-//			foreach($this->items as $key => $item)
-//			{                            
-//				$subtotal  = $subtotal + $item['subtotal'] + $item['customPrice'];
-//				$items['design'][$i] = $designs[$key];
-//				$items['cart'][$i]	= $item;
-//                                if(is_array($items['cart'][$i]['teams']) && count($items['cart'][$i]['teams']))
-//                                    $is_teams = 1;
-//				$items['cart'][$i]['teams']	= json_encode($items['cart'][$i]['teams']);
-//				$items['cart'][$i]['options']	= json_encode($items['cart'][$i]['options']);
-//                                
-//                                
-//				$i++;
-//									
-//			}
-//			$items['user'] 				= $this->user;
-//			$items['metod'] 			= $cart;				
-//			$items['metod']->subtotal 	= $subtotal;
-			
-		
-			// save design
-                        /*
-                         * disable save design
-                         *
-			$this->load->model('order_m');
-			$design_ids = array();
-			if (count($items['design']))
-			{
-				$this->load->model('design_m');
-				foreach($items['design'] as $i=>$design)
-				{
-                                        $design_save = $design;
-					$design_id 		= $this->order_m->creteOrderNumber(15);
-					$design_ids[$i]         = $design_id;
-					$insert = array(
-						'title'		=> '', 
-						'description'   => '',
-						'design_id'	=> $design_id,						
-						'modified'	=> '',
-						'fonts'		=> $design['fonts'],
-						'system_id'	=> 0,
-						'user_id'	=> $this->user['id'], 
-						'product_id'    => $items['cart'][$i]['product_id'], 
-						'product_options' => $design['color'], 
-						'vectors'	=> $design['vector'], 
-						'teams'		=> json_encode($items['cart'][$i]['teams']), 
-						'image'         => $design['images']['front'],						
-						'created' 	=> date("Y-m-d H:i:s")
-					);
-					
-					$this->design_m->save($insert, null);					
-				}
-			}
-			*/
 			
 			// save order
 			$order 			= $this->order_m->addNew('order');
@@ -1441,47 +1380,11 @@ class Orders extends Admin_Controller
 			$order['shipping_id']	= 1;// TTT edit $items['metod']->shipping->id;
 			
                         
-                        // TTT edit remove discount
-                        /*
-			if ( isset($items['metod']->discount) && isset($items['metod']->discount->id) )
-			{
-				// get discount
-				$order['discount_id']	= $items['metod']->discount->id;
-				if ( $items['metod']->discount->discount_type == 't' )
-				{
-					$order['discount']	=  $items['metod']->discount->value;
-				}
-				else
-				{
-					$order['discount']	=  ($subtotal * $items['metod']->discount->value)/100;
-				}
-				
-				// update coupon
-				$this->load->model('coupon_m');
-				if ( $items['metod']->discount->type == 'g' )
-				{
-					$coupon 	= array(
-						'count'	=> 1
-					);
-				}
-				else
-				{
-					$row 		= $this->coupon_m->get($items['metod']->discount->id, true);
-					$coupon 	= array(
-						'count'	=> $row->count + 1
-					);
-				}
-				$this->coupon_m->save($coupon, $items['metod']->discount->id);
-			}
-                         * */
                          
                         //TTT edit add total product
                         $priceM = explode(',', $data['f-price']);
                         
                         $totalq = $data['quantity'];
-//                        foreach($items['cart'] as $item)
-//                            $totalq += $item['qty'];
-//                        
                         
 			$order['shipping_id']           = 1;
 			$order['shipping_price']        = 0;
@@ -1510,17 +1413,8 @@ class Orders extends Admin_Controller
 			$this->load->model('payment_m');
 			$payment	= $this->payment_m->get(1, true);
 			
-			// get discount
-//			if (isset($items['metod']->discount->id))
-//			{
-//				$this->load->model('coupon_m');
-//				$discount	= $this->coupon_m->get($items['metod']->discount->id, true);
-//			}
-//			else
-//			{
-				$discount	= array();
-//			}
-			//$this->data['discount'] = $discount;
+			$discount	= array();
+
 			// html email.
 			$total = 0;
 			$count = 1;
@@ -1528,48 +1422,11 @@ class Orders extends Admin_Controller
 			$payment_price = 0.0;
                         $price_clipart	= 0;
 
-                        /*
-                         * TTT edit disable cliparts
-
-
-                        $cliparts	= json_decode($item['cliparts']);
-                        if (count($cliparts))
-                        {	
-                                // save order cliparts
-                                $arts 	= array();
-                                $ij = 0;
-                                foreach($cliparts as $view=>$art)
-                                {
-                                        if (count($art))
-                                        {
-                                                foreach($art as $art_id=>$price)
-                                                {
-                                                        if ($art_id > 0)
-                                                        {
-                                                                $price_clipart 	= $price_clipart + $price;
-                                                                $arts[$ij]		= array(										
-                                                                        'clipart_id'=> $art_id,
-                                                                        'order_id'	=> $order_id,
-                                                                        'status'	=> 'pending',
-                                                                        'created'	=> date("Y-m-d H:i:s")
-                                                                );
-                                                                $ij++;
-                                                        }
-                                                }
-                                        }
-                                }
-                                if (count($arts))
-                                        $this->db->insert_batch('order_cliparts', $arts);
-                        }
-                         * 
-                         */
 
                         $this->load->model('product_m');
  
                         $proinfo 	= $this->product_m->getProduct(array('id'=>$data['product_id']));
-                        
-                        var_dump($proinfo);
-                        
+                                                
                         $this->load->helper('cart');
                         $cart 		= new dgCart();
 
@@ -1594,20 +1451,13 @@ class Orders extends Admin_Controller
                         $order_item['price_attributes']         = 0;				
                         $order_item['quantity'] 		= $totalq;			
                         $order_item['poduct_status']            = 'pending';				
-                        $order_item['attributes'] 		= json_encode(json_encode($optionm));				
-                        //$order_item['design_area'] 		= json_encode($item['design_area']);
-                        //$order_item['design_images'] 		= json_encode($item['design_images']);
-                        //$order_item['print_number'] 		= json_encode($item['print_number']);
+                        $order_item['attributes'] 		= json_encode(json_encode($optionm));	
                         $order_item['design_option'] 		= json_encode(array('design_area'   =>"", 
                                                                                     'design_images' => '',
                                                                                     'print_number'  => '',
                                                                                     'colors'        => $design_color_s));
 
                         $this->order_m->save($order_item, null);
-				
-				// html email.
-				
-			
 			
 			// save user address shipping
 			$order_info				= $this->order_m->addNew('info');
@@ -1616,15 +1466,84 @@ class Orders extends Admin_Controller
 			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"CONPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
 			$this->order_m->save($order_info, null);
 			
-					}
+		}
 		else
 		{
-			redirect('index.php');
+                    
+			$data = $this->input->post();			
+			
+			
+			// get design option
+			//$this->load->driver('cache', array('adapter'=>'file')); 
+			$session_id 	= $this->session->userdata('order_session_id');
+			//$designs 		= $this->cache->get('orders_designs'.$session_id);
+			
+			$is_teams = 0;
+			$items	= array();
+			$i 		= 0;
+			$total 		= 0;
+			$subtotal 	= 0;	
+                        $design_save    = array();
+			
+						
+			// save order items
+			$order_item             = $this->order_m->addNew('item');
+			$order_item['order_id'] = $data['orderid'];
+			
+			// get setting
+			$this->load->model('settings_m');
+			$row 	= $this->settings_m->getSetting();
+			$setting = json_decode($row->settings);
+			
+			
+			// html email.
+			$total = 0;
+			$count = 1;
+			$shipping_price = 0;
+			$payment_price = 0.0;
+                        $price_clipart	= 0;
+
+
+                        $this->load->model('product_m');
+ 
+                        $proinfo 	= $this->product_m->getProduct(array('id'=>$data['product_id']));
+                                                
+                        $this->load->helper('cart');
+                        $cart 		= new dgCart();
+
+                        $attributes	= $this->product_m->getAttribute($data['product_id']);                                
+
+                        $customField 			= $cart->getPriceAttributesForManual($attributes, $data['attribute'][$attributes->id], $data['colors']);
+                        //var_dump($customField);
+                        $optionm 		= $customField->fields;
+
+
+
+
+                        $design_color_s = array('color_hex' => $data['mcolor-hex'], 'color_name' => $data['mcolor-name']);
+                        //$prices					= json_decode($item['prices']);
+                        $order_item['design_id'] 		= '';
+                        $order_item['product_id'] 		= $data['product_id'];				
+                        $order_item['product_name']             = $proinfo[0]->title;				
+                        $order_item['product_sku'] 		= $proinfo[0]->sku;				
+                        $order_item['product_price']            = $priceM[2];//$prices->sale;				
+                        $order_item['price_print'] 		= 0;				
+                        $order_item['price_clipart']            = 0;				
+                        $order_item['price_attributes']         = 0;				
+                        $order_item['quantity'] 		= $totalq;			
+                        $order_item['poduct_status']            = 'pending';				
+                        $order_item['attributes'] 		= json_encode(json_encode($optionm));	
+                        $order_item['design_option'] 		= json_encode(array('design_area'   =>"", 
+                                                                                    'design_images' => '',
+                                                                                    'print_number'  => '',
+                                                                                    'colors'        => $design_color_s));
+
+                        $this->order_m->save($order_item, null);
+			
+		
 		}		
                 
-                //$order = $this->order_m->getItems($id);
-                //$this->data['order'] = $order;
-                echo "Add order finished";
-		//$this->load->view('admin/order/list_products', $this->data);
+                
+		$this->load->view('admin/order/addorder_success');
 	}
 }

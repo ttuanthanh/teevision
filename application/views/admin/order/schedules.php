@@ -10,6 +10,9 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.css'; ?>" media="screen" />
+<script type="text/javascript" src="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.js'; ?>"></script>
+
 <script type="text/javascript">
     jQuery(document).on('click change', 'input[name="check_all"]', function() {
         var checkboxes = $(this).closest('table').find(':checkbox').not($(this));
@@ -18,7 +21,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         } else {
             checkboxes.prop('checked', false);
         }
+        
+        
     });
+    jQuery('document').ready(function(){
+        jQuery('.add-new-order').fancybox({ 
+            afterClose: function() {
+                    location.reload();
+                }
+        });
+    });
+    function reload() 
+    {
+    jQuery('#order_detail_body').block({
+        overlayCSS: {
+            backgroundColor: '#fff'
+        },
+        message: '<img src="<?php echo base_url('assets/images/loading.gif');?>" /> <?php echo lang('load_text'); ?>',
+        css: {
+            border: 'none',
+            color: '#333',
+            background: 'none'
+        }
+    });
+    }
 </script>
 
 <div class="row">
@@ -81,8 +107,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			
 			<div class="col-md-6">
 				<p style="text-align:right;">
-					<a id="btn-delete" class="btn btn-bricky tooltips" title="<?php echo lang('delete'); ?>" href="javascript:void(0);" > 
-						<i class="fa fa-trash-o"></i>
+					<a id="add-new-order" class="btn btn-success tooltips add-new-order fancybox fancybox.iframe" title="Add new order" href="/admin/orders/listproduct" > 
+						<i class="fa fa-shopping-cart"></i> Add order
 					</a>
 				</p>
 			</div>

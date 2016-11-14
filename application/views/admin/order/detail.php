@@ -517,10 +517,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         height: 400
                 });
 	});
-        function reload(){
+        function load(){
             alert('Test');
         }
-	function load() 
+	function reload() 
 	{
         jQuery('#order_detail_body').block({
             overlayCSS: {
