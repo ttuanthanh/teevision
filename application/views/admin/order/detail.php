@@ -33,6 +33,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         outline: 1px solid #337AB7;
     }
     .top-align td{ vertical-align: top!important; }
+    .float-right{
+        float: right;
+    }
 </style>
 <div class="row">
 <?php if($this->session->flashdata('msg') != ''){?> 
@@ -350,7 +353,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
         </div>
     <?php } ?>
-    <div class="panel panel-default col-md-6 no-padding">
+    <div class="panel panel-default col-md-5 no-padding">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
 		Shipping Information
@@ -376,9 +379,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <div class="col-md-6 no-padding-right">  
+    
+    <div class="col-md-7 no-padding-right">  
         <div class="row">
             <div class="col-md-12">
+                <a href="/admin/orders/listproduct/<?php echo $product->id; ?>" onclick="" type="button" class="btn btn-success float-right add-items fancybox.iframe"><i class="fa fa-plus" aria-hidden="true"></i>Add</a>
                     <table id="table_order_detail" class="table table-bordered table-hover">
                             <thead>
                                     <tr>
@@ -387,6 +392,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_price_title'); ?></th>
                                             <th class="center" style="width: 7%;"><?php echo lang('orders_admin_product_qty_title'); ?></th>
                                             <th class="center"  style="width: 10%;"><?php echo lang('total'); ?></th>
+                                            <th class="center"  style="width: 5%;"></th>
                                     </tr>
                             </thead>
                             <tbody>					
@@ -408,6 +414,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                     <td class="right"><?php echo $product->quantity;?></td>
                                                     <?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
                                                     <td class="right"><?php echo $setting->currency_symbol.number_format($total_row, 2);?></td>
+                                                    <td class="right"><a class="" href="/admin/orders/deleteitem/<?php echo $order->id.'/'.$product->id ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                             </tr>
                                             <?php 
                                                     $total = $total+$total_row;
@@ -416,7 +423,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <?php } ?>
                                     <!-- shipping -->
                                     <tr>
-                                            <td colspan="4" class="right">
+                                            <td colspan="5" class="right">
                                                     <?php echo lang('orders_admin_shipment_fee_title');?>
 
                                                     <?php if (count($shipping)) { ?>								
@@ -430,7 +437,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
                                     <!-- payment -->
                                     <tr>
-                                            <td colspan="4" class="right">
+                                            <td colspan="5" class="right">
                                                     <?php echo lang('orders_admin_payment_fee_title');?>
 
                                                     <?php if (count($payment)) { ?>								
@@ -443,7 +450,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
                                     <!-- discount -->
                                     <tr>
-                                            <td colspan="4" class="right">
+                                            <td colspan="5" class="right">
                                                     <?php echo lang('orders_admin_discount');?>
 
                                                     <?php if (count($discount)) { ?>								
@@ -456,7 +463,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <!-- total -->
                                     <tr>
                                             <?php $total = $total + $shipping_price - $order->discount; ?>
-                                            <td colspan="4" class="right"><?php echo lang('orders_admin_total_title');?></td>
+                                            <td colspan="5" class="right"><?php echo lang('orders_admin_total_title');?></td>
                                             <td class="right" colspan="4"><strong><?php echo $setting->currency_symbol.number_format($total, 2);?><strong></td>
                                     </tr>
                             </tbody>
@@ -509,6 +516,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         jQuery('document').ready(function(){
 		jQuery('.tooltips').tooltip();
 		jQuery('.fancybox').fancybox();
+                jQuery('.add-items').fancybox({
+                    afterClose: function() {
+                        location.reload();
+                    }
+                });
                 jQuery('.ship-info').fancybox({ 
                     afterClose: function() {
                             location.reload();

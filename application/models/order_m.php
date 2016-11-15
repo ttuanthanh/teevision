@@ -370,6 +370,16 @@ class Order_m extends MY_Model
 		else
 			return false;
 	}
+        
+                
+        function deleteOrderIteam($id)
+	{
+		$this->db->where('id',$id);
+		if($this->db->delete('order_items'))
+			return true;
+		else
+			return false;
+	}
 	
 	function listHistory($id)
 	{

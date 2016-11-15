@@ -1547,28 +1547,12 @@ class Orders extends Admin_Controller
 
                         $this->order_m->save($order_item, null);
 			
-                        // save order
-			//$order 			= $this->order_m->addNew('order');
-			//$order['order_number']	= $this->order_m->creteOrderNumberNew();
-			//$order['order_pass']	= $this->order_m->creteOrderNumber();
-			///$order['user_id']	= $this->user['id'];			
-			//$order['payment_id']	= 1 ;//TTT edit paymentid //$items['metod']->payment;
-			//$order['shipping_id']	= 1;// TTT edit $items['metod']->shipping->id;
-			
-                        
                         $order_info = $this->order_m->getOrder($data['orderid']);
-                        
-                        
-                         
-                        
-                        
-			//$order['shipping_id']           = 1;
-			//$order['shipping_price']        = 0;
-			$order['sub_total']		= $priceM[1] + $order_info->sub_total;// TTT edit $items['metod']->subtotal;
+                        $order['sub_total']		= $priceM[1] + $order_info->sub_total;// TTT edit $items['metod']->subtotal;
 			$order['total']			= $priceM[1] + $order_info->total;// TTT edit + $order['shipping_price'] - $order['discount'];			
 			
                         $order['total_qty']		= $totalq + $order_info->total_qty;
-//			$this->order_m->update($order, $data['orderid']);
+
                         $this->order_m->_table_name = 'orders';
                         $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
 		}		
@@ -1576,4 +1560,22 @@ class Orders extends Admin_Controller
                 
 		$this->load->view('admin/order/addorder_success');
 	}
+        
+        function deleteitem($orderid='', $itemid='')
+        {
+            $item = $this->order_m->getItem($itemid);
+            $ord = $this->order_m->getOrder($orderid);
+            
+            $order['sub_total']		= $ord->sub_total - $item->product_price*$item->quantity;// TTT edit $items['metod']->subtotal;
+            $order['total']		= $ord->total - $item->product_price*$item->quantity;// TTT edit + $order['shipping_price'] - $order['discount'];			
+
+            $order['total_qty']		= $ord->total_qty - $item->quantity;
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$orderid), $order);
+            $this->order_m->deleteOrderIteam($itemid);
+            
+            redirect('/admin/orders/detail/'.$orderid);
+        }
+        
 }
