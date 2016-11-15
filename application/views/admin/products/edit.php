@@ -74,6 +74,10 @@ tinymce.init({
     toolbar: "code | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | dgmedia"
 });
 </script>
+<?php 
+    $helperProduct = new helperProduct();
+    
+?>
 <div class="row">
 	<?php echo validation_errors('<p class="alert alert-danger">'); ?>
 	<form id="fr-product" accept-charset="utf-8" method="post" action="<?php echo site_url(). 'admin/products/save'; ?>">
@@ -586,25 +590,25 @@ tinymce.init({
 											
 											<td class="center">
 												<input type="hidden" id="front-products-design-<?php echo $i; ?>" value="<?php  echo $design->options[$i]['front']; ?>" name="product[design][front][]">
-												<img width="50" id="front-products-img-<?php echo $i; ?>" src="<?php echo helperProduct::getImgage($design->options[$i]['front']); ?>" alt=""> <br>
+												<img width="50" id="front-products-img-<?php echo $i; ?>" src="<?php echo $helperProduct->getImgage($design->options[$i]['front']); ?>" alt=""> <br>
 												<a onclick="dgUI.product.design(this, 'front')" href="javascript:void(0)"><?php echo lang('configure');?></a>
 											</td>
 											
 											<td class="center">
 												<input type="hidden" id="back-products-design-<?php echo $i; ?>" value="<?php  echo $design->options[$i]['back']; ?>" name="product[design][back][]">
-												<img width="50" id="back-products-img-<?php echo $i; ?>" src="<?php echo helperProduct::getImgage($design->options[$i]['back']); ?>" alt=""> <br>
+												<img width="50" id="back-products-img-<?php echo $i; ?>" src="<?php echo $helperProduct->getImgage($design->options[$i]['back']); ?>" alt=""> <br>
 												<a onclick="dgUI.product.design(this, 'back')" href="javascript:void(0)"><?php echo lang('configure');?></a>
 											</td>
 											
 											<td class="center">
 												<input type="hidden" id="left-products-design-<?php echo $i; ?>" value="<?php  echo $design->options[$i]['left']; ?>" name="product[design][left][]">
-												<img width="50" id="left-products-img-<?php echo $i; ?>" src="<?php echo helperProduct::getImgage($design->options[$i]['left']); ?>" alt=""> <br>
+												<img width="50" id="left-products-img-<?php echo $i; ?>" src="<?php echo $helperProduct->getImgage($design->options[$i]['left']); ?>" alt=""> <br>
 												<a onclick="dgUI.product.design(this, 'left')" href="javascript:void(0)"><?php echo lang('configure');?></a>
 											</td>
 											
 											<td class="center">
 												<input type="hidden" id="right-products-design-<?php echo $i; ?>" value="<?php echo $design->options[$i]['right']; ?>" name="product[design][right][]">
-												<img width="50" id="right-products-img-<?php echo $i; ?>" src="<?php echo helperProduct::getImgage($design->options[$i]['right']); ?>" alt=""> <br>
+												<img width="50" id="right-products-img-<?php echo $i; ?>" src="<?php echo $helperProduct->getImgage($design->options[$i]['right']); ?>" alt=""> <br>
 												<a onclick="dgUI.product.design(this, 'right')" href="javascript:void(0)"><?php echo lang('configure');?></a>
 											</td>
 											

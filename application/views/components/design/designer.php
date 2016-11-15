@@ -180,7 +180,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <?php } ?>
 
                                 </ul>
-                                <div class="modal-body">
+                                <div class="modal-body padding-top-0">
                                     <div class="row" style="height: 450px; overflow: auto">
                                         <!-- list product category -->
                                         <div class="product-list col-sm-12">
