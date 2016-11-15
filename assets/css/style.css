@@ -390,7 +390,7 @@ body {
 }
 .dg-share{
     right: 0px;
-    bottom: 132px;
+    bottom: 115px;
     position: absolute;
     width: 215px;
 }
@@ -2989,8 +2989,16 @@ ul.choose_payment .description {
     outline: none;
     background: none;
 }
-#dg-designer .nav-category li.active {
-    border-bottom: 3px solid #007AFF;
+#dg-designer .nav-category li.active:after {
+    content: " ";
+    outline: 2px solid #007AFF;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+
+}
+#dg-designer .nav-category li.active{
     color: #007AFF;
 }
 

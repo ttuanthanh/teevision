@@ -181,7 +181,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                 </ul>
                                 <div class="modal-body">
-                                    <div class="row" style="height: 450px; overflow: auto">
+                                    <div class="row" style="height: 450px; overflow: auto; padding-top:0">
                                         <!-- list product category -->
                                         <div class="product-list col-sm-12">
                                         </div>
