@@ -414,7 +414,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                     <td class="right"><?php echo $product->quantity;?></td>
                                                     <?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
                                                     <td class="right"><?php echo $setting->currency_symbol.number_format($total_row, 2);?></td>
-                                                    <td class="right"><a class="" href="/admin/orders/deleteitem/<?php echo $order->id.'/'.$product->id ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                    <td class="right"><a class="" onclick='return confirm("Are you sure delete this item!")' href="/admin/orders/deleteitem/<?php echo $order->id.'/'.$product->id ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                             </tr>
                                             <?php 
                                                     $total = $total+$total_row;
