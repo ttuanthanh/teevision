@@ -15,13 +15,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
 <div class="modal-header">
-	<h4 class="modal-title">Add order finished</h4>
+	<h4 class="modal-title">Finished</h4>
 	<span class="help-block"></span>
 </div>
 
 	<div class="modal-body">
             <div class="row">
-                <h1>Order added successful</h1>                
+                <h1>Order edit successful</h1>                
             </div>
 	</div>
 <div class="modal-footer">

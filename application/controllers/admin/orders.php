@@ -1578,4 +1578,26 @@ class Orders extends Admin_Controller
             redirect('/admin/orders/detail/'.$orderid);
         }
         
+        
+        function listPayment($orderid){
+            $this->load->model('payment_m');
+            $row 	= $this->payment_m->getData();
+            $this->data['payments'] = $row;		
+            $this->data['orderid'] = $orderid;
+
+            //$order = $this->order_m->getItems($id);
+            //$this->data['order'] = $order;
+
+            $this->load->view('admin/order/list_payment', $this->data);
+        }
+        function changepayment(){
+            $data = $this->input->post();
+            $order_info = $this->order_m->getOrder($data['orderid']);
+            
+            $order['payment_id']		= $data['payment_id'];
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            $this->load->view('admin/order/addorder_success', $this->data);
+        }
 }
