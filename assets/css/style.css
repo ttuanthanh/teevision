@@ -3199,12 +3199,32 @@ ul.choose_payment .description {
     margin-right: 10px;
     font-weight: bold;
 }
+#dg-designer .productsContain{
+    height:510px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* align items in Main Axis */
+    align-items: stretch; /* align items in Cross Axis */
+    align-content: stretch; /* Extra space in Cross Axis */
+}
+#dg-designer .productsNav{
+    flex: 1;
+}
+#dg-designer .fill-area{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
 .full-width{
     width: 100%;
 }
 .align-top{
     vertical-align: top;
 }
+
 /*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/
     /*border-radius: 10px;*/
 /*}*/
