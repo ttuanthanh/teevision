@@ -1862,6 +1862,7 @@ var design = {
         setValue: function (o, type) {
             if (type == 'text' || o.type == 'text') {
                 $jd('#enter-text').val(o.text);
+                $jd('.edit_text_info').show();
             }
             $jd('#txt-fontfamily').html(o.fontFamily);
             var color = $jd('#txt-color');
@@ -2897,8 +2898,6 @@ var design = {
             jQuery('#dg-popover .dg-options-toolbar button').removeClass('active');
             jQuery('#dg-popover .dg-options-content').removeClass('active');
             jQuery('#dg-popover .dg-options-content').children('.row').removeClass('active');
-            design.text.resetText();
-
         },
         remove: function (e) {
             e.parentNode.parentNode.removeChild(e.parentNode);
@@ -3842,6 +3841,8 @@ $jd(document).ready(function () {
             || mouseDownAt.parentNode.className == 'labView active'
             || mouseDownAt.parentNode.className == 'content-inner') {
             design.item.unselect();
+            //clear text Item
+            design.text.resetText();
             e.preventDefault();
             $jd('.drag-item').click(function () {
                 design.item.select(this)
