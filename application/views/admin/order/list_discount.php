@@ -15,34 +15,36 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
 <div class="modal-header">
-	<h4 class="modal-title">Select payment method</h4>
+	<h4 class="modal-title">Select discount method</h4>
 	<span class="help-block"></span>
 </div>
 
 	<div class="modal-body">
             <div class="row">
-                <form action="/admin/orders/changepayment" method="post">
+                <form action="/admin/orders/changediscount" method="post">
                 <table id="sample-table-1" class="table table-bordered">
-                <?php
-//                var_dump($payments);
-                $i = 0;
-                foreach ($payments as $payment){?>
+                
                    
                     <tr>
                         <td>
-                            <strong><?php echo  $payment->title?></strong><br/>
-                            <small><?php echo $payment->description ?></small>
+                            <strong>Total or Percent</strong>
                         </td>
-                        <td style="text-align: center">
-                            <input type="radio" name="payment_id" <?php if ($i++ == 0) echo 'checked'; ?> value="<?php echo $payment->id; ?>" >
+                        <td>
+                            <input type="radio" name="discount_type" checked value="t" > Total
+                            <input type="radio" name="discount_type" value="p" > Percent
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Discount Value</strong>
+                        </td>
+                        <td>
+                            <input type="text" name="discount_value" >
                         </td>
                     </tr>
                 <!--<a href="/admin/orders/addorder/<?php echo $product->id ?>/<?php echo $orderid ?>"><?php echo $product->title ?></a>-->
-                <br />
-                <?php
-                }
-//                var_dump($products)
-                ?>
+
+
                 </table>
                 <div class="text-right">
                     <input type="hidden" name="orderid" value="<?php echo $orderid; ?>" >

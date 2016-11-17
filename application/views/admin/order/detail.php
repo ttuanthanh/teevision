@@ -439,6 +439,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                     <?php if (count($shipping)) { ?>								
                                                             <br><small><?php echo lang('orders_admin_shipping_method'); ?>: <a href="<?php echo site_url('admin/settings/shipping'); ?>"><strong><?php echo $shipping->title; ?></strong></a>
                                                                 </small>
+                                                            &nbsp;&nbsp;<a href="/admin/orders/listShipping/<?php echo $order->id; ?>" onclick="" class="float-right edit-payment fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                                             <br><small><?php echo $shipping->description; ?></small>
                                                             
                                                     <?php } ?>
@@ -468,7 +469,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
                                                     <?php if (count($discount)) { ?>								
                                                             <br><small><?php echo $discount->name; ?>: <a href="<?php echo site_url('admin/coupon/edit/'.$discount->id); ?>"><strong><?php echo $discount->code; ?></strong></a></small>								
-                                                    <?php } ?>
+                                                    <?php } 
+                                                          if (!count($discount) && $order->discount != 0) {?>
+                                                            <br><small>Discount add by Admin</small>								
+                                                    <?php }?>
+                                                            &nbsp;&nbsp;<a href="/admin/orders/listDiscount/<?php echo $order->id; ?>" onclick="" class="float-right edit-payment fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                             </td>
                                             <td class="right"><?php echo $setting->currency_symbol.number_format($order->discount, 2) ;?></td>
                                     </tr>
@@ -476,7 +481,24 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <!-- total -->
                                     <tr>
                                             <?php $total = $total + $shipping_price - $order->discount; ?>
-                                            <td colspan="4" class="right"><?php echo lang('orders_admin_total_title');?></td>
+                                        <td colspan="4" class="right"><strong><?php echo lang('orders_admin_total_title');?></strong></td>
+                                            <td class="right" colspan="4"><strong><?php echo $setting->currency_symbol.number_format($total, 2);?><strong></td>
+                                    </tr>
+                                    
+                                    <!-- deposit -->
+                                    <tr>
+                                            <td colspan="4" class="right">
+                                                    Deposit
+                                                    &nbsp;&nbsp;<a href="/admin/orders/listDeposit/<?php echo $order->id; ?>" onclick="" class="float-right edit-payment fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                            
+                                            </td>
+                                            <td class="right"><?php echo $setting->currency_symbol.number_format($order->deposit, 2) ;?></td>
+                                    </tr>
+                                    
+                                    <!-- Balance -->
+                                    <tr>
+                                            <?php $total = $total - $order->deposit; ?>
+                                        <td colspan="4" class="right"><strong>BALANCE</strong></td>
                                             <td class="right" colspan="4"><strong><?php echo $setting->currency_symbol.number_format($total, 2);?><strong></td>
                                     </tr>
                             </tbody>

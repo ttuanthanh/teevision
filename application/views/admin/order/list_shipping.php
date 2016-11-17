@@ -15,18 +15,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
 <div class="modal-header">
-	<h4 class="modal-title">Select payment method</h4>
+	<h4 class="modal-title">Select shipping method</h4>
 	<span class="help-block"></span>
 </div>
 
 	<div class="modal-body">
             <div class="row">
-                <form action="/admin/orders/changepayment" method="post">
+                <form action="/admin/orders/changeshipping" method="post">
                 <table id="sample-table-1" class="table table-bordered">
                 <?php
-//                var_dump($payments);
                 $i = 0;
-                foreach ($payments as $payment){?>
+                foreach ($shippings as $payment){?>
                    
                     <tr>
                         <td>
@@ -34,7 +33,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <small><?php echo $payment->description ?></small>
                         </td>
                         <td style="text-align: center">
-                            <input type="radio" name="payment_id" <?php if ($i++ == 0) echo 'checked'; ?> value="<?php echo $payment->id; ?>" >
+                            <input type="radio" name="shipping_id" <?php if ($i++ == 0) echo 'checked'; ?> value="<?php echo $payment->id.','.$payment->price; ?>" >
                         </td>
                     </tr>
                 <!--<a href="/admin/orders/addorder/<?php echo $product->id ?>/<?php echo $orderid ?>"><?php echo $product->title ?></a>-->

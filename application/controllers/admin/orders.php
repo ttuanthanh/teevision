@@ -1600,4 +1600,68 @@ class Orders extends Admin_Controller
             $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
             $this->load->view('admin/order/addorder_success', $this->data);
         }
+        
+        function listShipping($orderid){
+            $this->load->model('shipping_m');
+            $row 	= $this->shipping_m->getData();
+            $this->data['shippings'] = $row;		
+            $this->data['orderid'] = $orderid;
+
+            //$order = $this->order_m->getItems($id);
+            //$this->data['order'] = $order;
+
+            $this->load->view('admin/order/list_shipping', $this->data);
+        }
+        function changeshipping(){
+            $data = $this->input->post();
+//            
+            $order_info = $this->order_m->getOrder($data['orderid']);
+            
+            $ship = explode(',', $data['shipping_id']);
+//            
+            $order['shipping_id']		= $ship[0];
+            $order['shipping_price']		= number_format((($ship[1] * $order_info->sub_total )/ 100),2);
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            $this->load->view('admin/order/addorder_success', $this->data);
+        }
+        
+        function listDiscount($orderid){
+            		
+            $this->data['orderid'] = $orderid;
+            $this->load->view('admin/order/list_discount', $this->data);
+        }
+        function changediscount(){
+            $data = $this->input->post();
+            $order_info = $this->order_m->getOrder($data['orderid']);
+//            
+            $order['discount_id'] = 0;
+            if ($data['discount_type'] == 't')
+                $order['discount']		= $data['discount_value'];
+            else{
+                $order['discount']		= number_format($data['discount_value'] * $order_info->sub_total / 100,2);
+            }
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            $this->load->view('admin/order/addorder_success', $this->data);
+        }
+        
+        
+        function listDeposit($orderid){
+            		
+            $this->data['orderid'] = $orderid;
+            $this->load->view('admin/order/list_deposit', $this->data);
+        }
+        function changedeposit(){
+            $data = $this->input->post();
+            //$order_info = $this->order_m->getOrder($data['orderid']);
+//            
+            $order['deposit'] = $data['deposit'];
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            $this->load->view('admin/order/addorder_success', $this->data);
+        }
 }
