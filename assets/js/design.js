@@ -2186,6 +2186,10 @@ var design = {
             $jd('#dg-font-style span').removeClass();
             $jd("#dg-change-outline-value").slider();
         },
+        resetText: function () {
+            $jd('.edit_text_info').hide();
+            $jd('.text-update').val('');
+        },
         setSize: function (e) {
             var txt = e.find('text');
             var $w = parseInt(txt[0].getBoundingClientRect().width);
@@ -2893,6 +2897,8 @@ var design = {
             jQuery('#dg-popover .dg-options-toolbar button').removeClass('active');
             jQuery('#dg-popover .dg-options-content').removeClass('active');
             jQuery('#dg-popover .dg-options-content').children('.row').removeClass('active');
+            design.text.resetText();
+
         },
         remove: function (e) {
             e.parentNode.parentNode.removeChild(e.parentNode);
