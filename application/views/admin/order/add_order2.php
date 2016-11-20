@@ -128,7 +128,7 @@ $colors 	= count($design->color_hex);
 					<!--<button type="button" class="btn btn-primary pull-left"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
 					<!--<p class="btn btn-primary pull-left btn-order margin-right20 hidden-box" title="Click to get quote" href="<?php echo site_url('product/after-quote/'.$product->id.'-'.$product->slug); ?>">START ORDER</p>-->
                                         <!--<div class="col-md-6 text-left"><p class="btn btn-primary btn-quote btn-product width100o" id="btn-getquote" title="Click to get quote"> GET QUOTE</p></div>-->
-                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product width100o" title="Click to get quote" >ADD THIS</p></div>
+                                        <div class="col-md-6 text-right"><p class="btn btn-primary btn-order btn-product width100o" title="Click to get quote" >ADD TO ORDER</p></div>
 				<!--</form>-->
 			</div>
 			
