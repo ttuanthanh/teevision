@@ -45,6 +45,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>-->
     <!-- Begin main -->
     <div id="dg-designer">
+
         <div class="col-left">
             <div id="dg-left" class="width-100">
                 <div class="width-100 tab-left">
@@ -225,7 +226,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 </p>
                                                 <p>
                                                     <image class="selected-image-upload" style="display:none"/>
-                                                    <button class="browse-file">BROWSE FILES</button></p>
+                                                    <button class="browse-file">BROWSE FILES</button>
+                                                </p>
 
                                                 <p>
                                                     <label>
@@ -253,12 +255,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                     </div>
                                     <div class="row col-md-12 margin-left-0">
-                                    <button type="button" class="btn btn-primary input-sm pull-right full-width first-upload"
-                                            id="action-upload">Upload</button>
+                                        <button type="button"
+                                                class="btn btn-primary input-sm pull-right full-width first-upload"
+                                                id="action-upload">Upload
+                                        </button>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="uploaded-art">
-                                        <div class="row col-md-12 margin-left-0">
+                                    <div class="row col-md-12 margin-left-0">
                                     <span
                                         class="help-block"><?php echo $lang['designer_upload_click_image_to_add_design']; ?></span>
                                     </div>
@@ -924,7 +928,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         <div class="col-right">
 
-            <div class="tools area">
+
+            <div class="tools-area">
                 <ul class="dg-tools">
                     <li>
                         <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
@@ -966,30 +971,29 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                         </ul>
                     </div>
-
-                    <!--
-                    <li>
-                        <a href="javascript:void(0)" data-type="undo" class="dg-tool">
-                            <i class="glyphicons undo"></i>
-                            <span>undo</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" data-type="redo" class="dg-tool">
-                            <i class="glyphicons redo"></i>
-                            <span>redo</span>
-                        </a>
-                    </li>
-                    -->
-
-
                 </ul>
             </div>
-            <!-- product -->
-            <!--                <div class="align-center" id="right-options">-->
-            <!--                    <div class="dg-box">-->
 
             <div class="product-prices">
+                <div class="dg-box width-100 div-layers no-active">
+                    <div class="layers-toolbar">
+                        <button type="button" class="btn btn-default">
+                            <i class="fa fa-long-arrow-down"></i>
+                            <i class="fa fa-long-arrow-up"></i>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm">
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="accordion">
+                        <h3><?php echo $lang['designer_menu_login_layers']; ?></h3>
+                        <div id="dg-layers">
+                            <ul id="layers">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <!--                            <div id="product-price">-->
                 <!--                                <span class="product-price-title">-->
                 <?php //echo $lang['designer_right_total']; ?><!--</span>-->
@@ -1005,21 +1009,22 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 <!--                                        class="glyphicons restart"></i></span>-->
                 <!--                            </div>-->
                 <!--							<button type="button" class="btn btn-warning btn-addcart" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i><?php echo $lang['designer_right_buy_now']; ?></button>								-->
-                <div class="" id="product-thumbs"></div>
-                <button type="button" class="btn btn-warning btn-quote"
-                        onclick="return design.team.resetTeam()"><i
-                        class="fa fa-usd"></i> SAVE, QUOTE
-                </button>
-                <div class="product-price-list hidden">
-                    <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
-                    <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
-                            class="price-old-number">123</span></span>
-                    <span id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
-                            class="price-sale-number">100</span></span>
-                </div>
+
             </div>
-            <!--                    </div>-->
-            <!--                </div>-->
+<!--            <div class="align-center" id="right-options">-->
+            <div class="" id="product-thumbs"></div>
+            <button type="button" class="btn btn-warning btn-quote"
+                    onclick="return design.team.resetTeam()"><i
+                    class="fa fa-usd"></i> SAVE, QUOTE
+            </button>
+            <div class="product-price-list hidden">
+                <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
+                <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
+                        class="price-old-number">123</span></span>
+                <span id="product-price-sale"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span
+                        class="price-sale-number">100</span></span>
+            </div>
+<!--            </div>-->
 
         </div>
     </div>

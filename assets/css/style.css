@@ -311,7 +311,7 @@ body {
 #dg-layers {
     border: 0 none;
     border-radius: 0 0 4px 4px;
-    max-height: 180px;
+    max-height: 420px;
 }
 
 #product-thumbs {
@@ -319,7 +319,6 @@ body {
     margin: 0 auto;
     overflow: hidden;
     width: 100%;
-    margin-top: 46px;
 }
 
 #product-thumbs .box-thumb {
@@ -389,21 +388,22 @@ body {
     margin-bottom: 12px;
 }
 .dg-share{
-    right: 0px;
-    bottom: 115px;
+    right: 5px;
+    top: 50px;
     position: absolute;
-    width: 215px;
+    width: 240px;
+    border-radius: 4px 4px 0 0;
 }
 
 .list-share {
-    /*border-left: 1px solid #CCCCCC;*/
     float: right;
     list-style: none outside none;
     margin: 0;
     padding: 8px 4px 1px;
     text-align: center;
     width: inherit;
-    background: #CCCCCC;
+    border: 1px solid #CCCCCC;
+    border-radius: 0px 0px 4px 4px;
 
 }
 
@@ -589,59 +589,46 @@ body {
 
 /* ----------------------------- Begin center ------------------------*/
 .dg-tools {
+    background-color: #E8E7E6;
     border-radius: 4px;
     display: inline-block;
     list-style: none outside none;
     padding: 0;
-    text-align: center;
-    float: right;
-    width: 100px;
-    font-size: 20px;
 }
-
 .dg-tools > li {
+    border-left: 2px solid #F0EFEE;
     cursor: pointer;
-    float: right;
-    padding: 15px;
-    width: 100px;
-    font-size: 16px;
+    float: left;
+    padding: 4px 0;
 }
-.dg-tools > li i:before{
-    font-size: 30px;
-
+.dg-tools > li > a{
+    display: inline-block;
 }
-/*.dg-tools > li:first-child {*/
-    /*border: 0 none;*/
-    /*border-radius: 4px 0 0 4px;*/
-/*}*/
-
+.dg-tools > li > a > i{
+    color: #333;
+}
+.dg-tools > li:first-child, .dg-share > li:first-child {
+    border: 0 none;
+    border-radius: 4px 0 0 4px;
+}
 .dg-tools > li:hover, .dg-tools > li.active {
     background-color: #007F7B;
 }
-.dg-tools > li a{
-    width: 100%;
-    color: #555555;
-    height: 100%;
-    display: inline-block;
-}
-.dg-tools > li:hover *, .dg-tools > li.active *{
+.dg-tools > li:hover span, .dg-tools > li.active span {
     color: #FFFFFF;
     text-shadow: 1px 1px #666;
-    text-decoration: none;
 }
-
-.dg-tools > li:hover .glyphicons:before, .dg-tools > li.active .glyphicons:before {
-    color: #fff;
+.dg-tools > li:hover i:before, .dg-tools > li.active .i:before{
+    color:#fff;
 }
-
 .dg-tools li span {
     clear: both;
     color: #555555;
     display: block;
-    font-family: arial, serif;
-    font-size: 16px;
-    /*font-weight: bold;*/
-    padding-top: 15px;
+    font-family: arial,serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 14px 0;
     text-shadow: 1px 1px #FFFFFF;
     text-transform: capitalize;
 }
@@ -693,7 +680,6 @@ body {
 #dg-sidebar {
     position: relative;
     top: 0px;
-    left: 13%;
 }
 
 #app-wrap .product-design {
@@ -829,7 +815,8 @@ body {
     right: 0px;
     width: 220px;
     z-index: 10000;
-    top: 70px;
+    top: 0;
+    text-align: center;
 }
 
 .sb_toggle {
@@ -2002,6 +1989,8 @@ input.input-small {
 
 .product-prices {
     padding: 10px 0;
+    height: 480px;
+    margin-top: 35px;
 }
 button.btn-quote{
     background-color: #39b3d7;
