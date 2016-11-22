@@ -263,6 +263,7 @@ class Product_m extends MY_Model
 				$data->slug 		= '';
 				$data->page 		= '';
 				$data->description 	= '';
+                                $data->page_description	= '';
 				$data->size 		= '';
 				$data->short_description 	= '';
 				$data->sku 			= '';

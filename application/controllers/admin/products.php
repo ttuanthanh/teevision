@@ -279,6 +279,7 @@ class Products extends Admin_Controller
 	function edit($id = null)
 	{
 		$this->load->model('product_m');
+                $this->load->helper('product');
 		$this->lang->load('products');
 			
 		$this->data['breadcrumb'] 	= lang('products_breadcrumb');
@@ -360,7 +361,7 @@ class Products extends Admin_Controller
 		
 		if( isset($design) && count($design) )
 		{
-			$this->load->helper('product');
+			
 			$design = helperProduct::json($design);
 			$design->options = helperProduct::sortDesign($design);		
 		}
