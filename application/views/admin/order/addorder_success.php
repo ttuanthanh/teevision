@@ -21,7 +21,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	<div class="modal-body">
             <div class="row">
-                <h1>Order edit successful</h1>                
+                <h1>Order edit successful</h1>       
+                <p>Close this screen to refresh page</p>
             </div>
 	</div>
 <div class="modal-footer">
