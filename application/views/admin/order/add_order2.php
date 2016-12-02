@@ -28,17 +28,17 @@ $cateee = $product_m->getProductCateOrderParent($product->id);
 $design		= $product->design;
 $colors 	= count($design->color_hex);
 ?>
-<link type="text/css" href="http://tshirt.local/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="all">
-<link type="text/css" href="http://tshirt.local/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" media="all">
-<link type="text/css" href="http://tshirt.local/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="all">
-<link type="text/css" href="http://tshirt.local/assets/css/core.css" rel="stylesheet" media="all">
-<script type="text/javascript" src="http://tshirt.local/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://tshirt.local/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://tshirt.local/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://tshirt.local/assets/js/core.js"></script>
-<link rel="shortcut icon" href="http://tshirt.local/media/assets/icon.png">
+<link type="text/css" href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" media="all">
+<link type="text/css" href="<?php echo base_url('assets/plugins/jquery-ui/jquery-ui.min.css'); ?>" rel="stylesheet" media="all">
+<link type="text/css" href="<?php echo base_url('assets/plugins/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet" media="all">
+<link type="text/css" href="<?php echo base_url('assets/css/core.css');?>" rel="stylesheet" media="all">
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-ui/jquery-ui.min.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/core.js');?>"></script>
+<link rel="shortcut icon" href="<?php echo base_url('media/assets/icon.png');?>">
 <link href="http://fonts.googleapis.com/css?family=Oswald%7CPT+Sans%7COpen+Sans" rel="stylesheet" type="text/css">
-<link type="text/css" href="http://tshirt.local/application/views/themes/default/css/template.css" rel="stylesheet" media="all">
+<link type="text/css" href="<?php echo base_url('application/views/themes/default/css/template.css');?>" rel="stylesheet" media="all">
 <?php if (count($product)) { ?>	
 	<script src="<?php echo base_url('assets/plugins/easyzoom/js/jquery.elevatezoom.js'); ?>"></script>
     <div class="modal-header">
