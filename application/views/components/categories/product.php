@@ -38,7 +38,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$price 	= $product->price;
 		}
 ?>
-		<div class="col-xs-6 col-sm-4 col-md-3 text-center form-group">
+		<div class="col-xs-6 col-sm-4 col-md-3 text-center form-group gf-height">
 			<div class="thumbnail layout-product">
 				
 				<!-- product sale -->
@@ -72,9 +72,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						</span>
 						<?php } ?>
 						
-						<span class="price-new text-danger">
-							<strong><?php echo $product->currency->currency_symbol .''. $price; ?></strong>
-						</span>
+						
 					</p>
 				</div>
 			</div>

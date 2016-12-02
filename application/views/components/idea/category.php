@@ -75,7 +75,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
 		<div class="row list-idea">
 			<?php foreach ( $category->items as $design) { ?>
-			<div class="col-xs-6 col-sm-4 col-md-3 text-center form-group">
+			<div class="col-xs-6 col-sm-4 col-md-3 text-center form-group gf-height">
 				<div class="thumbnail layout-product">
 				<?php
 					$images = explode(';', $design->image);
