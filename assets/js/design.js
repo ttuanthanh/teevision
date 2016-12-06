@@ -1959,15 +1959,22 @@ var design = {
                 $height = cacheText.offsetHeight;
 
             var svgNS = "http://www.w3.org/2000/svg",
-                tspan = document.createElementNS(svgNS, 'tspan'),
-                text = document.createElementNS(svgNS, 'text'),
-                content = document.createTextNode(o.text);
+                //tspan = document.createElementNS(svgNS, 'tspan'),
+                text = document.createElementNS(svgNS, 'text');
+                //content = document.createTextNode(o.text);
 
-            tspan.setAttributeNS(null, 'x', '50%');
-            if (o.dy) {
-                tspan.setAttributeNS(null, 'dy', o.dy);
-            } else {
-                tspan.setAttributeNS(null, 'dy', 0);
+
+            var texts = o.text.split('\n');
+            var fontSize = o.fontSize.split('px');
+            for (var i = 0; i < texts.length; i++) {
+                var tspan = document.createElementNS(svgNS, 'tspan');
+                var dy = 0;
+                if (i > 0) dy = fontSize[0];
+                tspan.setAttributeNS(null, 'dy', dy);
+                tspan.setAttributeNS(null, 'x', '50%');
+                var content = document.createTextNode(texts[i]);
+                tspan.appendChild(content);
+                text.appendChild(tspan);
             }
 
             text.setAttributeNS(null, 'fill', o.color);
@@ -1997,8 +2004,9 @@ var design = {
             if (typeof o.style != 'undefined') {
                 text.setAttributeNS(null, 'style', o.style);
             }
-            tspan.appendChild(content);
-            text.appendChild(tspan);
+
+            // tspan.appendChild(content);
+            // text.appendChild(tspan);
 
             var g = document.createElementNS(svgNS, 'g');
             g.id = Math.random();
@@ -2010,6 +2018,7 @@ var design = {
             svg.setAttributeNS(null, 'viewBox', '0 0 ' + $width + ' ' + $height);
             svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
             svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+            //this.setSize(g);
             svg.appendChild(g);
 
             item.width = $width;
