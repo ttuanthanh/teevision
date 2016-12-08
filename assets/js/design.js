@@ -86,6 +86,14 @@ var design = {
             $jd(this).addClass('active');
         });
         $jd('.add_item_text').on('click', self.text.create.bind(self.text));
+        $jd('.update_item_text').on('click', function(){
+                var e = $jd('#enter-text');
+                    if (typeof e.data('value') != 'undefined')
+                        design.text.update(e.data('label'), e.data('value'));
+                    else
+                        design.text.update(e.data('label'));
+            });
+
         /* share */
         jQuery('.list-share li').click(function () {
             design.share.ini(jQuery(this).data('type'));
@@ -1844,7 +1852,7 @@ var design = {
         create: function () {
             $jd('.ui-lock').attr('checked', false);
             var txt = {};
-            var text_input = jQuery('.text-update').val();
+            var text_input = jQuery('#enter-text').val();
             if (text_input === '') {
                 txt.text = 'Hello';
             } else {
@@ -2018,7 +2026,7 @@ var design = {
             svg.setAttributeNS(null, 'viewBox', '0 0 ' + $width + ' ' + $height);
             svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
             svg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-            //this.setSize(g);
+
             svg.appendChild(g);
 
             item.width = $width;
@@ -2028,6 +2036,10 @@ var design = {
             item.svg = svg;
 
             design.item.create(item);
+            this.setSize(design.item.get());
+            jQuery('#add_text').hide();
+            jQuery('#update_text').show();
+
         },
         update: function (lable, value, detail) {
             var e = design.item.get();
@@ -2198,7 +2210,10 @@ var design = {
         },
         resetText: function () {
             $jd('.edit_text_info').hide();
-            $jd('.text-update').val('');
+            $jd('#enter-text').val('');
+            $jd('#update_text').hide();
+            $jd('#add_text').show();
+
         },
         setSize: function (e) {
             var txt = e.find('text');
@@ -2880,6 +2895,11 @@ var design = {
             $jd(e).css('border', '1px dashed #444444');
             $jd(e).resizable({disabled: false, handles: 'e'});
             $jd(e).draggable({disabled: false});
+            if($jd(e).data('type') == 'text'){
+                    $jd('#add_text').hide();
+                    $jd('#update_text').show();
+
+            }
             if (focus) {
                 design.popover('add_item_' + jQuery(e).data('type'));
             }

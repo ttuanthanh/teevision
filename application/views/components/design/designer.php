@@ -347,11 +347,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="row toolbar-action-text">
                                     <h5 class="col-md-12" style="color: grey">Enter text below</h5>
                                     <div class="col-md-9">
-                                    <textarea class="form-control text-update" data-event="keyup" data-label="text"
+                                    <textarea class="form-control" data-event="keyup" data-label="text"
                                               id="enter-text"></textarea>
                                     </div>
                                     <div class="col-md-3" style="padding-left: 0">
-                                        <button class="add_item_text btn btn-info" role="button">Add Text</button>
+                                        <button id="add_text" class="add_item_text btn btn-info" role="button">Add Text</button>
+                                        <button id="update_text" class="update_item_text btn btn-info" style="display:none" role="button">Update Text</button>
                                     </div>
                                 </div>
                                 <div class="edit_text_info margin-top-20" style="display: none;">
