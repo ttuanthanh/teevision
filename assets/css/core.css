@@ -1321,3 +1321,6 @@ a.post-raw {
 .gf-height{
    height: 320px; 
 }
+.ship-info div h2{
+    font-size: 20px;
+}

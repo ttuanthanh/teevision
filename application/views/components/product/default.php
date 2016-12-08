@@ -131,11 +131,11 @@ $colors 	= count($design->color_hex);
                         <!-- Price detail -->
                         <div class="form-group price-calc hidden-box clearfix" id="price-detail">
                             <hr>
-                            <div class="col-md-7 text-center">
-                                <p class="ship-free margin-0"><span class="cl-blue">Free Shipping </span>by (10 days) Guaranteed </p>
-                                <p class="ship-rush"><span class="cl-pink">Rush Shipping </span> available at checkout! </p>
+                            <div class="col-md-8 text-center">
+                                <p class="ship-free margin-0"><span class="cl-blue">Free Shipping </span>by <?php echo date("D, M j", strtotime("10 weekdays")); ?> Guaranteed </p>
+                                <p class="ship-rush"><span class="cl-pink">Need it sooner?  </span> Upgrade to rush shipping at Check out </p>
                             </div>
-                            <div class="col-md-5 text-right">
+                            <div class="col-md-4 text-right">
                                 <p class="price-unit  margin-0">Unit price: <span id="unit-price-value" class="cl-pink"></span></p>
                                 <p class="price-total cl-blue">Total price: <span id="total-price-value"></span></p>
                             </div>

@@ -317,6 +317,7 @@
 	/***
 	 Dropdown and dropdown elements.
 	 ***/
+        
 	.nav > li.current-user > .dropdown-menu:after, .nav > li.current-user > .dropdown-menu:before {
 		margin-right: 0px;
 	}

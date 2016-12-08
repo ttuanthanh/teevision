@@ -27,24 +27,32 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     .not-hunry{
         margin-top: 5px;
     }
+    @media (max-width: 480px) {
+	/***
+	 Dropdown and dropdown elements.
+	 ***/
+        .ship-info{
+            display: none;
+        }
+    }
 </style>
 <div class="module-highlight">
     
     <div class="ship-info">
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">FREE SHIPPING</p>
-            <h2>2-Week Delivery</h2>
-            <p>Guaranteed by <?php echo date("D, M j", strtotime("+2 week")); ?></p>
+            <h2>Guaranteed Delivery by: 10 day businesss from Todays</h2>            
+            <p>Guaranteed by <?php echo date("D, M j", strtotime("10 weekdays")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">UPGRADE TO RUSH</p>
-            <h2>7 Days Delivery</h2>
-            <p>Guaranteed by <?php echo date("D, M j", strtotime("+1 week")); ?></p>
+            <h2>Guaranteed Delivery by: 7 day businesss from Todays</h2>            
+            <p>Guaranteed by <?php echo date("D, M j", strtotime("7 weekdays")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">SUPER RUSH </p>
-            <h2>3-5 Business Days</h2>
-            <p>Delivered in 3-5 business days</p>
+            <h2>upgrade to super rush…. </h2>
+            <p>More shipping option at check out</p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
             <p class="ship-name">SAVE OPTION</p>
