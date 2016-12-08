@@ -40,7 +40,7 @@ var design = {
             jQuery(this).parent().hide();
             jQuery(".tools-share").not(".active").parent().show();
         });
-        jQuery(".drop-font").bind("click", function(){
+        jQuery(".drop-font").bind("click", function () {
             jQuery(this).addClass("active");
         });
         design.item.move();
@@ -86,13 +86,13 @@ var design = {
             $jd(this).addClass('active');
         });
         $jd('.add_item_text').on('click', self.text.create.bind(self.text));
-        $jd('.update_item_text').on('click', function(){
-                var e = $jd('#enter-text');
-                    if (typeof e.data('value') != 'undefined')
-                        design.text.update(e.data('label'), e.data('value'));
-                    else
-                        design.text.update(e.data('label'));
-            });
+        $jd('.update_item_text').on('click', function () {
+            var e = $jd('#enter-text');
+            if (typeof e.data('value') != 'undefined')
+                design.text.update(e.data('label'), e.data('value'));
+            else
+                design.text.update(e.data('label'));
+        });
 
         /* share */
         jQuery('.list-share li').click(function () {
@@ -307,7 +307,7 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        jQuery('#dg-total-mess').html('<h2>$' + (data.sale / datas.quantity).toFixed(2)  + ' each </h2> $'+data.sale + ' (' + datas.quantity+' Pieces) ');
+                        jQuery('#dg-total-mess').html('<h2>$' + (data.sale / datas.quantity).toFixed(2) + ' each </h2> $' + data.sale + ' (' + datas.quantity + ' Pieces) ');
                         jQuery('.price-old-number').html(data.old);
 
                         //if (data.sale == data.old)
@@ -1081,10 +1081,10 @@ var design = {
             var teamSelected = jQuery('.drop-font.active');
             var dragText = jQuery('.drag-item-name text');
             var dragNumber = jQuery('.drag-item-number text');
-            if(teamSelected.prop('id') =='txt-team-name-fontfamly' || teamSelected.prop('id') =='txt-team-number-fontfamly') {
+            if (teamSelected.prop('id') == 'txt-team-name-fontfamly' || teamSelected.prop('id') == 'txt-team-number-fontfamly') {
                 if ((dragText.length == 0 && dragNumber.length == 0) ||
-                    (dragText.length == 0 && teamSelected.prop('id') =='txt-team-name-fontfamly') ||
-                    (dragNumber.length == 0 && teamSelected.prop('id') =='txt-team-number-fontfamly')) {
+                    (dragText.length == 0 && teamSelected.prop('id') == 'txt-team-name-fontfamly') ||
+                    (dragNumber.length == 0 && teamSelected.prop('id') == 'txt-team-number-fontfamly')) {
                     jQuery('#dg-fonts').modal('hide');
                     jQuery(".drop-font").removeClass("active");
                     return false;
@@ -1103,9 +1103,9 @@ var design = {
                 var title = jQuery(e).data('title');
                 jQuery('#txt-fontfamily').html(title);
                 if (typeof design.designer.fontActive[id] != 'undefined' || jQuery(e).data('type') == 'google') {
-                    if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') =='txt-team-number-fontfamly') {
+                    if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') == 'txt-team-number-fontfamly') {
                         design.text.update('fontfamily', title, 'number');
-                    } else if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') =='txt-team-name-fontfamly') {
+                    } else if (typeof  teamSelected != 'undefined' && teamSelected.prop('id') == 'txt-team-name-fontfamly') {
                         design.text.update('fontfamily', title, 'text');
                     } else if (selected.length != 0) {
                         design.text.update('fontfamily', title, selected.data('const'));
@@ -1965,26 +1965,40 @@ var design = {
             cacheText.appendChild(div);
             var $width = cacheText.offsetWidth,
                 $height = cacheText.offsetHeight;
+            if(item.type!="text"){
+                var svgNS = "http://www.w3.org/2000/svg",
+                    tspan = document.createElementNS(svgNS, 'tspan'),
+                    text = document.createElementNS(svgNS, 'text'),
+                    content = document.createTextNode(o.text);
 
-            var svgNS = "http://www.w3.org/2000/svg",
-                //tspan = document.createElementNS(svgNS, 'tspan'),
-                text = document.createElementNS(svgNS, 'text');
+                tspan.setAttributeNS(null, 'x', '50%');
+                if (o.dy) {
+                    tspan.setAttributeNS(null, 'dy', o.dy);
+                } else {
+                    tspan.setAttributeNS(null, 'dy', 0);
+                }
+               tspan.appendChild(content);
+               text.appendChild(tspan);
+            }else {
+                var svgNS = "http://www.w3.org/2000/svg",
+                    //tspan = document.createElementNS(svgNS, 'tspan'),
+                    text = document.createElementNS(svgNS, 'text');
                 //content = document.createTextNode(o.text);
 
 
-            var texts = o.text.split('\n');
-            var fontSize = o.fontSize.split('px');
-            for (var i = 0; i < texts.length; i++) {
-                var tspan = document.createElementNS(svgNS, 'tspan');
-                var dy = 0;
-                if (i > 0) dy = fontSize[0];
-                tspan.setAttributeNS(null, 'dy', dy);
-                tspan.setAttributeNS(null, 'x', '50%');
-                var content = document.createTextNode(texts[i]);
-                tspan.appendChild(content);
-                text.appendChild(tspan);
+                var texts = o.text.split('\n');
+                var fontSize = o.fontSize.split('px');
+                for (var i = 0; i < texts.length; i++) {
+                    var tspan = document.createElementNS(svgNS, 'tspan');
+                    var dy = 0;
+                    if (i > 0) dy = fontSize[0];
+                    tspan.setAttributeNS(null, 'dy', dy);
+                    tspan.setAttributeNS(null, 'x', '50%');
+                    var content = document.createTextNode(texts[i]);
+                    tspan.appendChild(content);
+                    text.appendChild(tspan);
+                }
             }
-
             text.setAttributeNS(null, 'fill', o.color);
             text.setAttributeNS(null, 'stroke', o.stroke);
             text.setAttributeNS(null, 'stroke-width', o.strokew);
@@ -2013,8 +2027,7 @@ var design = {
                 text.setAttributeNS(null, 'style', o.style);
             }
 
-            // tspan.appendChild(content);
-            // text.appendChild(tspan);
+
 
             var g = document.createElementNS(svgNS, 'g');
             g.id = Math.random();
@@ -2036,9 +2049,11 @@ var design = {
             item.svg = svg;
 
             design.item.create(item);
-            this.setSize(design.item.get());
-            jQuery('#add_text').hide();
-            jQuery('#update_text').show();
+            if (item.type == "text") {
+                this.setSize(design.item.get());
+                jQuery('#add_text').hide();
+                jQuery('#update_text').show();
+            }
 
         },
         update: function (lable, value, detail) {
@@ -2108,7 +2123,7 @@ var design = {
                     case 'text':
                         var text = $jd('#enter-text').val();
                         jQuery('.layer.active span').html(text.substring(0, 20));
-                        if (typeof value != "undefined" || (obj && obj.item.type =="text")) {
+                        if (typeof value != "undefined" || (obj && obj.item.type == "text")) {
                             obj.item.text = text;
                             var texts = text.split('\n');
                             var svgNS = "http://www.w3.org/2000/svg";
@@ -2895,9 +2910,9 @@ var design = {
             $jd(e).css('border', '1px dashed #444444');
             $jd(e).resizable({disabled: false, handles: 'e'});
             $jd(e).draggable({disabled: false});
-            if($jd(e).data('type') == 'text'){
-                    $jd('#add_text').hide();
-                    $jd('#update_text').show();
+            if ($jd(e).data('type') == 'text') {
+                $jd('#add_text').hide();
+                $jd('#update_text').show();
 
             }
             if (focus) {
