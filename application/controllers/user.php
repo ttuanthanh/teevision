@@ -137,14 +137,14 @@ class User extends Frontend_Controller {
 		// check user login
 		$user = $this->session->userdata('user');
 		
-		if ( empty($user['id']) )
-		{
-			$results['error'] = 1;
-			$results['login'] = 1;
-			$results['msg']	= lang('design_msg_save_login');
-			echo json_encode($results);
-			exit;
-		}		
+//		if ( empty($user['id']) )
+//		{
+//			$results['error'] = 1;
+//			$results['login'] = 1;
+//			$results['msg']	= lang('design_msg_save_login');
+//			echo json_encode($results);
+//			exit;
+//		}		
 		
 		$data = json_decode(file_get_contents('php://input'), true);
 		
@@ -157,7 +157,7 @@ class User extends Frontend_Controller {
 		
 		$design 					= array();
 		
-		$design['user_id']			= $user['id'];
+		$design['user_id']			= $user['id'] == 0 ? -1 : $user['id'];
 		$design['vectors']			= $data['vectors'];		
 		$design['teams']			= $data['teams'];	
 		$design['fonts']			= $data['fonts'];
@@ -251,7 +251,7 @@ class User extends Frontend_Controller {
 				$this->email->to($user['email']);    
 				$this->email->subject ( $subject);
 				$this->email->message ($message);   
-				$this->email->send();
+				//$this->email->send();
 			}
 			else
 			{

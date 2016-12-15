@@ -3591,7 +3591,6 @@ var design = {
         var data = {
             "image": image,
             'vectors': vectors,
-            'vectors': vectors,
             'teams': teams,
             'fonts': design.fonts,
             'product_id': product_id,
@@ -3629,12 +3628,80 @@ var design = {
             jQuery('#dg-designer').css('opacity', '1');
         });
     },
+    designsaveBox: function(){
+        if (design.designer_id == 0) { 
+            jQuery('#dg-savedesign').modal();
+        }else{
+            design.save();
+        }
+        
+    },
     save: function () {
-        if (user_id == 0) {
-            jQuery('#f-login').modal();
+        
+        
+        
+        if (design.designer_id == 0) {            
+            if (jQuery('#dg-email').val() == '' || jQuery('#dg-name').val() == '' ){
+                alert('Please enter your mail and design name');
+                return false;
+            }
+            jQuery('#dg-mask').css('display', 'block');
+            jQuery('#dg-designer').css('opacity', '0.3');
+            design.svg.items('front', design.saveDesign);
+        }
+        else {            
+            //if (design.designer_id != 0) {
+                jQuery("#save-confirm").dialog({
+                    resizable: false,
+                    height: 200,
+                    width: 350,
+                    closeText: 'X',
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "Save New",
+                            icons: {
+                                primary: "ui-icon-heart"
+                            },
+                            click: function () {
+                                jQuery(this).dialog("close");
+                                jQuery('#dg-mask').css('display', 'block');
+                                jQuery('#dg-designer').css('opacity', '0.3');
+
+                                design.design_id = 0;
+                                design.design_key = '';
+                                design.design_file = '';
+                                design.svg.items('front', design.saveDesign);
+                            }
+                        },
+                        {
+                            text: "Update",
+                            icons: {
+                                primary: "ui-icon-heart"
+                            },
+                            click: function () {
+                                jQuery(this).dialog("close");
+                                jQuery('#dg-mask').css('display', 'block');
+                                jQuery('#dg-designer').css('opacity', '0.3');
+                                design.svg.items('front', design.saveDesign);
+                            }
+                        }
+                    ]
+                });
+            //}
+//            else {
+//                jQuery('#dg-mask').css('display', 'block');
+//                jQuery('#dg-designer').css('opacity', '0.3');
+//                design.svg.items('front', design.saveDesign);
+//            }
+        }
+        /*
+        if (0) {
+            
         }
         else {
-            if (user_id == design.designer_id) {
+            jQuery('#dg-savedesign').modal();
+            if (design.designer_id != 0) {
                 jQuery("#save-confirm").dialog({
                     resizable: false,
                     height: 200,
@@ -3679,6 +3746,7 @@ var design = {
                 design.svg.items('front', design.saveDesign);
             }
         }
+        */
     },
     mask: function (load) {
         if (load == true) {

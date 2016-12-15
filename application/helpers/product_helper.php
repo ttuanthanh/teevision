@@ -238,7 +238,7 @@ class helperProduct
                                         . '<div class="ship-fo">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></div>';
                                 $html .=     '</div>
                                                 <div class="modal-footer" style=" text-align: center; margin-top: 1px;">                                                
-                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
+                                                        <button type="button" data-dismiss="modal" onclick="design.designsaveBox()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
                                                         <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.ajax.addJs(this)"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
                                                 </div>
                                             </div>
