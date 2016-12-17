@@ -77,7 +77,7 @@ class Categories extends Frontend_Controller
 				
 			$pagination 			= $this->categories_m->getPagination('categories/'.$id.'-'.$category->slug.'/', $total, $suffix);
 						
-			$this->data['page'] = $page.'/';
+			$this->data['page'] = '0/';
 			
 			$this->data['pagination'] = $pagination;
 			
@@ -85,7 +85,7 @@ class Categories extends Frontend_Controller
 				'orderby' => $orderby,
 				'order' => $order,
 				'limit' => $limit,
-				'offset' => $page * $limit,
+				'offset' => $page//($page -1) * $limit,
 			);
 			$category->products		= $this->categories_m->getProducts($id, 1, false, $options);
 			
