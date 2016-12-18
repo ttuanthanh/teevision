@@ -85,7 +85,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						</label>
 					</th>
 					<th class="center" style="width: 10%;"><?php echo lang('designer_design_key_title'); ?></th>
-					<th class="center"><?php echo lang('username'); ?></th>
+<!--					<th class="center"><?php echo lang('username'); ?></th>-->
 					<th class="center"><?php echo lang('designer_product_name_title'); ?></th>
 					<th class="center" style="width: 6%;"><?php echo lang('color'); ?></th>
 					<th class="center" style="width: 20%;"><?php echo lang('teams'); ?></th>
@@ -104,10 +104,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							</td>
 						   
 						   <td class="center">
-								<a target="blank" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_id;?></a>
-							</td>
+                                                       Design name: <a target="blank" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_name;?></a><br/>
+                                                       <?php
+                                                        if($design->user_id != -1) {
+                                                       ?>
+                                                        User: <a href="<?php echo site_url().'admin/users/edit/'.$design->user_id; ?>"><?php echo $design->name;?></a><br/>
+                                                        <?php }
+                                                        else
+                                                            echo 'Email: '.$design->design_email;?>
+                                                    </td>
 						   
-						   <td><a href="<?php echo site_url().'admin/users/edit/'.$design->user_id; ?>"><?php echo $design->name;?></a></td>
+						   
 						   
 						   <td><?php echo $design->title;?></td>
 						   

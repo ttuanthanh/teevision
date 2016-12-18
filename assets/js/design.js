@@ -3,7 +3,9 @@ var design = {
     design_id: null,
     design_file: '',
     designer_id: 0,
+    designer_name: '',
     design_key: 0,
+    design_email: '',
     output: {},
     colors: [],
     teams: {},
@@ -3598,6 +3600,8 @@ var design = {
             'design_file': design.design_file,
             'designer_id': design.designer_id,
             'design_key': design.design_key,
+            'design_email': design.design_email,
+            'design_name': design.design_name,
             'product_color': productColor
         };
 
@@ -3639,12 +3643,14 @@ var design = {
     save: function () {
         
         
-        
+        jQuery('#dg-savedesign').modal('hide');
         if (design.designer_id == 0) {            
-            if (jQuery('#dg-email').val() == '' || jQuery('#dg-name').val() == '' ){
+            if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '' ){
                 alert('Please enter your mail and design name');
                 return false;
             }
+            this.design_email = jQuery('#dg-email').val();
+            this.design_name = jQuery('#dg-name').val();
             jQuery('#dg-mask').css('display', 'block');
             jQuery('#dg-designer').css('opacity', '0.3');
             design.svg.items('front', design.saveDesign);

@@ -43,6 +43,10 @@ class Design extends Admin_Controller
 			$this->session->set_userdata('search_design', $this->input->post('search'));
 			$this->session->set_userdata('option_design', $this->input->post('option'));
 		}
+                else{
+                        $this->session->set_userdata('search_design', $this->input->get('search'));
+			$this->session->set_userdata('option_design', $this->input->get('option'));
+                }
 			
         $config['total_rows'] = $this->design_m->getDesigns(true, 0, 0, $this->session->userdata('search_design'), $this->session->userdata('option_design'));
 		
