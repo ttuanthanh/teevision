@@ -3640,9 +3640,15 @@ var design = {
         }
         
     },
-    save: function () {
+    designsaveBox4buy: function(){
+        if (design.designer_id == 0) { 
+            jQuery('#dg-savedesign4buy').modal();
+        }else{
+            design.save4buy();
+        }
         
-        
+    },
+    save: function (buy) {
         jQuery('#dg-savedesign').modal('hide');
         if (design.designer_id == 0) {            
             if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '' ){
@@ -3753,6 +3759,64 @@ var design = {
             }
         }
         */
+       
+    },
+    save4buy: function () {        
+        jQuery('#dg-savedesign4buy').modal('hide');
+        if (design.designer_id == 0) {            
+            if (jQuery('#dg-emailb').val() == '' & jQuery('#dg-nameb').val() == '' ){
+                alert('Please enter your mail and design name');
+                return false;
+            }
+            this.design_email = jQuery('#dg-emailb').val();
+            this.design_name = jQuery('#dg-nameb').val();
+            jQuery('#dg-mask').css('display', 'block');
+            jQuery('#dg-designer').css('opacity', '0.3');
+            design.svg.items('front', design.saveDesign);
+        }
+        else {            
+            //if (design.designer_id != 0) {
+                jQuery("#save-confirm").dialog({
+                    resizable: false,
+                    height: 200,
+                    width: 350,
+                    closeText: 'X',
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "Save New",
+                            icons: {
+                                primary: "ui-icon-heart"
+                            },
+                            click: function () {
+                                jQuery(this).dialog("close");
+                                jQuery('#dg-mask').css('display', 'block');
+                                jQuery('#dg-designer').css('opacity', '0.3');
+
+                                design.design_id = 0;
+                                design.design_key = '';
+                                design.design_file = '';
+                                design.svg.items('front', design.saveDesign);
+                            }
+                        },
+                        {
+                            text: "Update",
+                            icons: {
+                                primary: "ui-icon-heart"
+                            },
+                            click: function () {
+                                jQuery(this).dialog("close");
+                                jQuery('#dg-mask').css('display', 'block');
+                                jQuery('#dg-designer').css('opacity', '0.3');
+                                design.svg.items('front', design.saveDesign);
+                            }
+                        }
+                    ]
+                });
+        }
+        
+        design.ajax.addJs(this);
+       
     },
     mask: function (load) {
         if (load == true) {

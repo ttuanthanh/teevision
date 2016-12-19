@@ -1389,6 +1389,50 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
     <!-- End Note -->
+    <!-- Begin save design -->
+    <div class="modal fade" id="dg-savedesign4buy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Enter your design information</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- login form -->
+                        <div class="col-md-12">                            
+                            <form id="fr-savedesign" role="form" style="margin-bottom: 5px;">
+                                <div class="form-group">
+                                    <label>Name your design:</label>
+                                    <input type="text" name="dg[name]" id="dg-nameb"
+                                           class="form-control input-sm validate required"
+                                           data-msg="Min length 6, max length 32"
+                                           data-maxlength="32" data-minlength="6"
+                                           placeholder="Enter your design name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Your email:</label>
+                                    <input type="email" name="dg[email]" id="dg-emailb"
+                                           class="form-control input-sm validate required"
+                                           data-msg="<?php echo $lang['designer_user_email_validate_msg']; ?>"
+                                           data-type="email"
+                                           placeholder="<?php echo $lang['designer_user_your_email']; ?>">
+                                </div>
+                                
+                                <p style="color: #ff0000">Save your design before checkout</p>
+                                <button type="button" onclick="design.save4buy()" autocomplete="off"
+                                        class="btn btn-default btn-warning"
+                                        data-loading-text="Loading">Save and checkout</button>
+                                <?php echo $this->auth->getToken(); ?>
+                                <input type="hidden" name="ajax" value="1">
+                            </form>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Note -->
 
     <!-- Begin Note -->
     <div class="modal fade" id="dg-note" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
