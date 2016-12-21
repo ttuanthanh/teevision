@@ -3,7 +3,7 @@ var design = {
     design_id: null,
     design_file: '',
     designer_id: 0,
-    designer_name: '',
+    design_name: '',
     design_key: 0,
     design_email: '',
     output: {},
@@ -404,6 +404,10 @@ var design = {
             var datas = design.ajax.form();
             datas.design = options;
             datas.teams = design.teams;
+            datas.design_id = design.design_id;
+            datas.design_key = design.design_key;
+            datas.design_name = design.design_name;
+            datas.design_email = design.design_email;
             datas.teamcheck = {};
             datas.teamcheck.name = jQuery('#sel-name').val() > 0;
             datas.teamcheck.number = jQuery('#sel-num').val() > 0;
@@ -3596,10 +3600,10 @@ var design = {
             'teams': teams,
             'fonts': design.fonts,
             'product_id': product_id,
-            'design_id': design.design_id,
-            'design_file': design.design_file,
-            'designer_id': design.designer_id,
-            'design_key': design.design_key,
+            'design_id':    design.design_id,
+            'design_file':  design.design_file,
+            'designer_id':  design.designer_id,
+            'design_key':   design.design_key,
             'design_email': design.design_email,
             'design_name': design.design_name,
             'product_color': productColor
@@ -3610,6 +3614,7 @@ var design = {
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify(data),
+            async:false,
         }).done(function (msg) {
             var results = eval("(" + msg + ")");
 
@@ -3770,52 +3775,18 @@ var design = {
             }
             this.design_email = jQuery('#dg-emailb').val();
             this.design_name = jQuery('#dg-nameb').val();
-            jQuery('#dg-mask').css('display', 'block');
-            jQuery('#dg-designer').css('opacity', '0.3');
-            design.svg.items('front', design.saveDesign);
-        }
-        else {            
-            //if (design.designer_id != 0) {
-                jQuery("#save-confirm").dialog({
-                    resizable: false,
-                    height: 200,
-                    width: 350,
-                    closeText: 'X',
-                    modal: true,
-                    buttons: [
-                        {
-                            text: "Save New",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
-
-                                design.design_id = 0;
-                                design.design_key = '';
-                                design.design_file = '';
-                                design.svg.items('front', design.saveDesign);
-                            }
-                        },
-                        {
-                            text: "Update",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
-                                design.svg.items('front', design.saveDesign);
-                            }
-                        }
-                    ]
-                });
+            
         }
         
-        design.ajax.addJs(this);
+        //jQuery(this).dialog("close");
+        jQuery('#dg-mask').css('display', 'block');
+        jQuery('#dg-designer').css('opacity', '0.3');
+        //design.svg.items('front', design.saveDesign);
+        //setTimeout(function(){ }, 3000);       
+        jQuery.when( design.svg.items('front', design.saveDesign) ).done(function() {
+                design.ajax.addJs(this);
+         });
+        //design.ajax.addJs(this);
        
     },
     mask: function (load) {
