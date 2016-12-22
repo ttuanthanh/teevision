@@ -1323,10 +1323,10 @@ var design = {
                 // html = html + 		'<div class="col-sm-4">';
                 // html = html + 			'<img alt="'+product.title+'" class="img-responsive img-thumbnail" src="'+baseURL+product.image+'">';
                 // html = html + 		'</div>';
-                html = html + '<div class="col-sm-8">';
-                html = html + '<h4>' + product.title + '</h4>';
+                html = html + '<div class="col-xs-8 col-sm-8">';
+                html = html + '<h4 style="font-weight: bolder">' + product.title + '</h4>';
                 html = html + '</div>';
-                html = html + '<div class="col-sm-4">';
+                html = html + '<div class="col-xs-4 col-sm-4">';
                 html = html + '<h4><a href="javascript:void(0)" class="changeProduct close-product-detail2" >Change Product ></a></h4>'
                 html = html + '</div>';
                 //html = html + 			'<p>ID: '+product.id+'</p>';
@@ -2480,7 +2480,9 @@ var design = {
                                 img.className = 'modelImage';
                                 img.id = view + '-img-' + e.id;
                                 img.setAttribute('src', baseURL + e.img);
-
+                                if(view=='front'){
+                                    jQuery(".show-mobile.product-design").html("<img src='"+baseURL + e.img+"'>");
+                                }
                                 img.style.width = e.width;
                                 img.style.height = e.height;
                                 img.style.top = e.top;

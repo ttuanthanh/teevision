@@ -11,6 +11,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
 <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/reposive.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap-toggle.min.css'); ?>" rel="stylesheet">
 
 <script src="<?php echo base_url('assets/js/add-ons.js'); ?>"></script>
@@ -46,7 +47,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!-- Begin main -->
     <div id="dg-designer">
 
-        <div class="col-left">
+        <div id="left-area" class="col-left row">
             <div id="dg-left" class="width-100">
                 <div class="width-100 tab-left">
                     <ul class="menu-left" role="tablist">
@@ -110,19 +111,19 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     <!-- Tab panes -->
                     <div class="main-tab tab-content">
                         <!-- Begin products -->
-                        <div id="dg-products" role="tabpanel" class="tab-pane active">
-                            <div class="row nav-product">
-                                <div class="col-md-4 text-left backButton">
+                        <div id="dg-products" role="tabpanel" class="tab-pane active col-md-12">
+                                <div class="row nav-product">
+                                <div class="col-xs-4 col-md-4 text-left backButton">
                                     <a href="javascript:void(0)" class="btn-link" style="color: gray;cursor: default;">
                                         <span class="glyphicon glyphicon-arrow-left"></span>
                                         Back
                                     </a>
                                 </div>
-                                <div class="col-md-4 center nav-info">
+                                <div class="col-xs-4 col-md-4 center nav-info">
                                     <span class="changeInfo"><?php echo $lang['designer_product_change_product']; ?>
                                     </span>
                                 </div>
-                                <div class="col-md-4 text-right">
+                                <div class="col-xs-4 col-md-4 text-right">
                                     <a type="button" class="btn-link" href="javascript:void(0)" id="designThis">
                                         Design this
                                         <i class="glyphicon glyphicon-arrow-right"></i>
@@ -134,8 +135,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <span
                                         class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
                                 </div>
+                                <div class="show-mobile product-design"></div>
                             </div>
-                            <div class="products-detail col-sm-12">
+
+                            <div class="products-detail">
                                 <div class="product-options contentHolder">
                                     <?php if ($product != false) { ?>
                                         <div class="content-y">
@@ -164,7 +167,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <div class="product-desc"></div>
                             </div>
-                            <div class="productsContain">
+                            <div class="productsContain row">
                                 <ul class="nav nav-tabs nav-category" role="tablist">
                                     <?php
                                     foreach ($product->categories as $category) {
@@ -706,7 +709,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <div id="dag-art-categories" class="col-xs-12 col-md-12"></div>
                             </div>
                             <div class="cliparts-2 row" style="display: none;">
-                                <div class="row nav-product">
+                                <div class="row nav-clipart">
                                     <div class="col-md-4 text-left backButton">
                                         <a href="javascript:void(0)" class="back-cliparts btn-link">
                                             <span class="glyphicon glyphicon-arrow-left"></span>
@@ -723,7 +726,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="cliparts-3 row " style="display: none;">
-                                <div class="row nav-product">
+                                <div class="row nav-clipart">
                                     <div class="col-md-4 text-left backButton">
 
                                     </div>
@@ -868,7 +871,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
 
-        <div class="col-xs-12 col-md-12 col-center align-center" style="height: 635px">
+        <div id="center-area" class="col-xs-12 col-md-12 col-center align-center" style="height: 635px">
 
             <!-- Begin sidebar -->
 
@@ -927,7 +930,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         </div>
 
-        <div class="col-right">
+        <div id="right-area" class="col-right">
 
 
             <div class="tools-area">
