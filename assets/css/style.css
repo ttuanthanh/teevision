@@ -180,7 +180,6 @@ small {
 body {
     background: #F8F7F7;
     outline: 0;
-    min-width: 530px;
 }
 
 .icon-25 {
@@ -200,11 +199,7 @@ body {
     margin-right: 2px;
     margin-top: -3px;
 }
-.fixed-width-1280{
-    min-width: 1280px !important;
-    max-width: inherit;
 
-}
 .width-100 {
     width: 100%;
 }
@@ -213,10 +208,6 @@ body {
     position: relative;
     z-index: 1;
     /*min-width: 1425px;*/
-}
-
-#dg-wapper {
-    min-width: 500px;
 }
 
 .list-colors .arrow {
@@ -232,7 +223,7 @@ body {
     list-style: none outside none;
     margin: 0;
     padding: 0;
-    display: inline-flex;
+   overflow: hidden;
 }
 
 .menu-left > li {
@@ -275,7 +266,9 @@ body {
     color: #fff !important;
     text-shadow: 1px 1px 1px #666;
 }
-
+.menu-left li a:hover span{
+    color: #FFFFFF!important;
+}
 .menu-left li a:hover i:before{
     color: #fff !important;
 }
@@ -636,43 +629,7 @@ body {
 #app-wrap {
     width: 100%;
 }
-@media screen and (max-width: 1650px) {
-    #app-wrap .labView {
-        display: none;
-        height: 600px;
-        position: relative;
-        width: 500px;
-        left: 500px;
-        float: left;
-    }
-    .detail-info{
-        position: relative;
-        width: 500px;
-        left: 500px;
-        text-indent: 12px;
-        font-weight: bold;
-        color: #b1b1b1;
-        font-size: 25px;
-    }
-}
-@media screen and (min-width: 1650px) {
-    #app-wrap .labView {
-        display: none;
-        height: 600px;
-        position: relative;
-        width: 500px;
-        margin: auto;
-    }
-    .detail-info{
-        position: relative;
-        width: 500px;
-        text-indent: 12px;
-        font-weight: bold;
-        color: #b1b1b1;
-        font-size: 25px;
-        margin: auto;
-    }
-}
+
 #app-wrap .labView.active {
     display: inline-block;
 }
@@ -1829,9 +1786,7 @@ input.input-small {
     border-radius: 0 0 3px 3px;
     bottom: 0;
     margin-bottom: 1px;
-    margin-left: 1px;
-    position: absolute;
-    width: 83.6%;
+    width: 100%;
 }
 
 #help-tabs {
@@ -2920,7 +2875,6 @@ ul.choose_payment .description {
 
 #dg-designer .menu-left li a {
     font-size: 11px;
-
 }
 
 #dg-designer .menu-left a i.glyphicons:before {
@@ -2935,9 +2889,17 @@ ul.choose_payment .description {
     height:575px;
 
 }
-#dg-designer .tab-content .nav-product, #dg-designer .tab-content .nav-select, #dg-designer .tab-content .nav-bar{
+#dg-designer .tab-content .nav-select, #dg-designer .tab-content .nav-bar{
     padding: 20px 15px;
 }
+#dg-designer .tab-content .nav-clipart{
+    padding: 20px;
+}
+#dg-designer .tab-content .nav-product{
+    padding: 20px 0px;
+}
+
+#dg-designer .tab-content .nav-clipart .btn-link,
 #dg-designer .tab-content .nav-product .btn-link{
     text-align: center;
     font-size: 16px;
@@ -2980,7 +2942,7 @@ ul.choose_payment .description {
 }
 #dg-designer .nav-category li.active:after {
     content: " ";
-    outline: 2px solid #007AFF;
+    outline: 1px solid #007AFF;
     position: absolute;
     width: 100%;
     left: 0;
@@ -3003,14 +2965,19 @@ ul.choose_payment .description {
     padding: 2px;
     vertical-align: top;
 }
+#dg-designer .product-box .thumbnail{
+    width:100%;
+}
 #dg-designer .product-box.sltProduct .thumbnail{
     border: 1px solid #007AFF;
+
 }
 #dg-designer .product-list{
     padding: 0px;
 }
 #dg-designer .product-desc{
     margin: 10px 0;
+    overflow: hidden;
 }
 #dg-designer .product-desc .changeProduct{
     text-decoration: underline!important;
@@ -3096,10 +3063,14 @@ ul.choose_payment .description {
 }
 #dg-designer #dag-files-images .selected img{
     border: 1px solid #007AFF;
+    border-radius: 3px 3px 0px 0px;
 }
 #dg-designer #dag-files-images .img-thumbnail{
     height: 100px;
     width: 100%;
+}
+#dg-designer .product-options{
+    overflow: hidden;
 }
 #dg-designer #uploaded-art{
     overflow: auto;
