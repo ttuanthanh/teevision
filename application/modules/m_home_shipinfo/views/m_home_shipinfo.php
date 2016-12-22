@@ -15,17 +15,27 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/unslider/css/unslider.css'); ?>"/>
 <script src="<?php echo base_url('media/modules/unslider/js/unslider-min.js'); ?>"></script>
 <style>
+    .ship-info div{
+        text-align: center;
+    }
+    .ship-info img{
+        width: 60px;
+        margin-bottom: 5px;
+    }
     .ship-info div .ship-name{
         margin-bottom: 0px;
         color: #f37321;
         font-weight: bold;
+        font-size: 20px
     }
     .ship-info div h2{
         margin: 10px 0;
         color: #54301a;
+        font-style: italic;
     }
     .not-hunry{
         margin-top: 5px;
+        margin-bottom: 0px;
     }
     @media (max-width: 480px) {
 	/***
@@ -40,25 +50,29 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
     <div class="ship-info">
         <div class="col-md-3 col-ms-4 col-xs-6">
+            <img src="/assets/images/ship_1.png">
             <p class="ship-name">FREE SHIPPING</p>
-            <h2>Guaranteed Delivery by: 10 day businesss from Todays</h2>            
+            <h2>10 Business Days</h2>            
             <p>Guaranteed by <?php echo date("D, M j", strtotime("10 weekdays")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
+            <img src="/assets/images/ship_2.png">
             <p class="ship-name">UPGRADE TO RUSH</p>
-            <h2>Guaranteed Delivery by: 7 day businesss from Todays</h2>            
+            <h2>1 Week turnaround</h2>            
             <p>Guaranteed by <?php echo date("D, M j", strtotime("7 weekdays")); ?></p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
-            <p class="ship-name">SUPER RUSH </p>
-            <h2>upgrade to super rush…. </h2>
+            <img src="/assets/images/ship_3.png">
+            <p class="ship-name">NEED IT SOONER ?</p>
+            <h2>Have it shipped 3-5 biz days </h2>
             <p>More shipping option at check out</p>
         </div>
         <div class="col-md-3 col-ms-4 col-xs-6">
+            <img src="/assets/images/ship_4.png">
             <p class="ship-name">SAVE OPTION</p>
 <!--            <h2>2-Week Delivery</h2>-->
             <p class="not-hunry">Not in a hurry? Option to save if you don’t require the shirts within 2 weeks</p>
-            <a href="/page/25-shipping-date">Lean more</a>
+            <a href="/page/25-shipping-date" style="color: #ffa500">Lean more</a>
         </div>
     </div>
 </div>
