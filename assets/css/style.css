@@ -2977,6 +2977,7 @@ ul.choose_payment .description {
 }
 #dg-designer .product-desc{
     margin: 10px 0;
+    overflow: hidden;
 }
 #dg-designer .product-desc .changeProduct{
     text-decoration: underline!important;

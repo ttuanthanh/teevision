@@ -165,7 +165,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
                                     <?php } ?>
                                 </div>
-                                <div class="product-desc"></div>
+                                <div class="row product-desc"></div>
                             </div>
                             <div class="productsContain row">
                                 <ul class="nav nav-tabs nav-category" role="tablist">
