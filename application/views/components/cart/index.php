@@ -104,6 +104,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 											</div>
 										</div>
 										
+                                                                                <!-- design name -->
+										<div class="row">
+											<div class="col-sm-12 text-left">
+												<div class="form-group">
+                                                                                                    <strong>Design name: </strong> 
+                                                                                                    <a href="/design/index/<?php echo $item['product_id'] ?>/<?php echo $designs[$key]['color'] ?>/<?php echo $designs[$key]['design_key'] ?>" ><?php echo $designs[$key]['design_name'] ?></a>
+                                                                                                </div>
+												<div class="form-group">
+													
+												</div>
+											</div>
+										</div>
+                                                                                
 										<!-- product options -->
 										<div class="row">
 										<?php if ($item['options']) { ?>
