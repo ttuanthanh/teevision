@@ -36,7 +36,8 @@ class Cart extends Frontend_Controller {
 		$this->data['designs'] 	= $this->cache->get('orders_designs'.$this->session_id);
 		$this->data['items'] 	= $this->cart->contents();
 		$this->data['user'] 	= $this->session->userdata('user');
-		//var_dump($this->data['designs']);
+//		var_dump($this->data['items']);
+//                var_dump($this->data['designs']);
 		$content				= $this->load->view('components/cart/index', $this->data, true);
 		
 		$data = array();		
@@ -267,6 +268,7 @@ class Cart extends Frontend_Controller {
 				'color'         => $data['colors'][key($data['colors'])],
                                 'color_title'   => $data['color_title'],
                                 'design_id'   => $data['design_id'],
+                                'design_key'   => $data['design_key'],
                                 'design_name'   => $data['design_name'],
                                 'design_email'  => $data['design_email'],
 				'images'        => $design['images'],
