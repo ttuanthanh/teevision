@@ -21,7 +21,6 @@ var design = {
             }
         });
         //action click
-
         jQuery('.popover-close').click(function () {
             jQuery(".popover").hide('show');
         });
@@ -59,6 +58,16 @@ var design = {
         $jd('.dg-color-picker-active').click(function () {
             $jd(this).parent().find('ul').show('slow');
         });
+        $jd('.change-view-mobile').click(function(){
+            $jd('.tab-content').addClass("mobileHide");
+            $jd('#center-area').removeClass("mobileHide");
+            $jd('#right-area').removeClass("mobileHide");
+        });
+        $jd('.menu-left li').click(function(){
+            $jd('.tab-content').removeClass("mobileHide");
+            $jd('#center-area').addClass("mobileHide");
+            $jd('#right-area').addClass("mobileHide");
+        })
 
         /* rotate */
         $jd('.rotate-refresh').click(function () {
@@ -2483,10 +2492,17 @@ var design = {
                                 if(view=='front'){
                                     jQuery(".show-mobile.product-design").html("<img src='"+baseURL + e.img+"'>");
                                 }
+                                if(document.documentElement.clientWidth < 767){
+                                    img.style.width = parseFloat(e.width)*2/3 + 'px';
+                                    img.style.height = parseFloat(e.height)*2/3 + 'px';
+                                    img.style.top = parseFloat(e.top)*2/3 + 'px';
+                                    img.style.left = parseFloat(e.left)*2/3+ 'px';
+                                }else{
                                 img.style.width = e.width;
                                 img.style.height = e.height;
                                 img.style.top = e.top;
                                 img.style.left = e.left;
+                                }
                                 img.style.zIndex = e.zIndex;
                                 jQuery(images).append(img);
                             }
@@ -2507,14 +2523,25 @@ var design = {
                         var area = items['area'][view];
                         if (area != '' && area.length > 0) {
                             var vector = eval("(" + area + ")");
-                            jQuery(window).css({
-                                "height": vector.height,
-                                "width": vector.width,
-                                "left": vector.left,
-                                "top": vector.top,
-                                "border-radius": vector.radius,
-                                "z-index": vector.zIndex
-                            });
+                            if(document.documentElement.clientWidth < 767){
+                                jQuery(window).css({
+                                    "height": parseFloat(vector.height)*2/3 + 'px',
+                                    "width": parseFloat(vector.width)*2/3 + 'px',
+                                    "left":  parseFloat(vector.left)*2/3 + 'px',
+                                    "top": parseFloat(vector.top)*2/3 + 'px',
+                                    "border-radius": vector.radius,
+                                    "z-index": vector.zIndex
+                                });
+                            }else {
+                                jQuery(window).css({
+                                    "height": vector.height,
+                                    "width": vector.width,
+                                    "left": vector.left,
+                                    "top": vector.top,
+                                    "border-radius": vector.radius,
+                                    "z-index": vector.zIndex
+                                });
+                            }
                         }
                     }
                 });

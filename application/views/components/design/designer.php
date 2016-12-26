@@ -46,7 +46,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>-->
     <!-- Begin main -->
     <div id="dg-designer">
-
         <div id="left-area" class="col-left row">
             <div id="dg-left" class="width-100">
                 <div class="width-100 tab-left">
@@ -131,9 +130,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="row nav-select" style="display:none;">
-                                <div class="col-md-12 center nav-info">
+
+                                <div class="col-xs-8 col-md-12 center nav-info">
                                     <span
                                         class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
+                                </div>
+                                <div class="col-xs-4 col-md-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
+                                    </span>
                                 </div>
                                 <div class="show-mobile product-design"></div>
                             </div>
@@ -198,8 +203,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!--Start Add image-->
                         <div class="tab-pane" id="dg-myclipart" role="tabpanel">
                             <div class="row nav-bar">
-                                <div class="col-md-12 center nav-info">
+                                <div class="col-md-12 col-xs-8 center nav-info">
                                     <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
+                                    </span>
+                                </div>
+                                <div class="col-xs-4 nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
                                     </span>
                                 </div>
                             </div>
@@ -306,44 +316,50 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <!-- BEGIN Text edit options -->
                         <div id="tab-add_item_text" class="dg-options tab-pane tab-padding" role="tabpanel">
-                            <div class="row">
-                                <div class="col-md-12 nav-info left text_edit_header">
+                            <div class="row text_edit_header">
+                                <div class="col-md-12 col-xs-8 nav-info left ">
                                     <span class="changeInfo"><?php echo $lang['designer_product_add_new_text']; ?>
                                     </span>
                                 </div>
-                            </div>
-                            <div class="dg-options-toolbar">
-                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                                    <button class="btn btn-default" type="button" data-type="text">
-                                        <i class="fa fa-pencil"></i>
-                                        <small class="clearfix">Text</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="fonts">
-                                        <i class="fa fa-font"></i>
-                                        <small class="clearfix">Fonts</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="style">
-                                        <i class="fa fa-align-justify"></i>
-                                        <small class="clearfix">Style</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="outline">
-                                        <i class="fa fa-crop"></i>
-                                        <small class="clearfix">Outline</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="size">
-                                        <i class="fa fa-text-height"></i>
-                                        <small class="clearfix">Size</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="rotate">
-                                        <i class="fa fa-rotate-right"></i>
-                                        <small class="clearfix">Rotate</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="functions">
-                                        <i class="fa fa-cogs"></i>
-                                        <small class="clearfix">Functions</small>
-                                    </button>
+                                <div class="col-xs-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
+                                    </span>
                                 </div>
                             </div>
+
+<!--                            <div class="dg-options-toolbar">-->
+<!--                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">-->
+<!--                                    <button class="btn btn-default" type="button" data-type="text">-->
+<!--                                        <i class="fa fa-pencil"></i>-->
+<!--                                        <small class="clearfix">Text</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="fonts">-->
+<!--                                        <i class="fa fa-font"></i>-->
+<!--                                        <small class="clearfix">Fonts</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="style">-->
+<!--                                        <i class="fa fa-align-justify"></i>-->
+<!--                                        <small class="clearfix">Style</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="outline">-->
+<!--                                        <i class="fa fa-crop"></i>-->
+<!--                                        <small class="clearfix">Outline</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="size">-->
+<!--                                        <i class="fa fa-text-height"></i>-->
+<!--                                        <small class="clearfix">Size</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="rotate">-->
+<!--                                        <i class="fa fa-rotate-right"></i>-->
+<!--                                        <small class="clearfix">Rotate</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="functions">-->
+<!--                                        <i class="fa fa-cogs"></i>-->
+<!--                                        <small class="clearfix">Functions</small>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <div class="dg-options-content">
                                 <!-- edit text -->
@@ -519,22 +535,22 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!-- END Text edit options -->
                         <!-- Begin team edit options-->
                         <div id="tab-add_item_team" class="dg-options tab-pane tab-padding" role="tabpanel">
-                            <div class="dg-options-toolbar">
-                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                                    <button class="btn btn-default" type="button" data-type="name-number">
-                                        <i class="glyphicons soccer_ball glyphicons-small"></i>
-                                        <small class="clearfix">Add Name</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="teams">
-                                        <i class="fa fa-users"></i>
-                                        <small class="clearfix">Teams</small>
-                                    </button>
-                                    <button class="btn btn-default" type="button" data-type="add-list">
-                                        <i class="fa fa-user"></i>
-                                        <small class="clearfix">Add Team</small>
-                                    </button>
-                                </div>
-                            </div>
+<!--                            <div class="dg-options-toolbar">-->
+<!--                                <div aria-label="First group" role="group" class="btn-group btn-group-lg">-->
+<!--                                    <button class="btn btn-default" type="button" data-type="name-number">-->
+<!--                                        <i class="glyphicons soccer_ball glyphicons-small"></i>-->
+<!--                                        <small class="clearfix">Add Name</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="teams">-->
+<!--                                        <i class="fa fa-users"></i>-->
+<!--                                        <small class="clearfix">Teams</small>-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-default" type="button" data-type="add-list">-->
+<!--                                        <i class="fa fa-user"></i>-->
+<!--                                        <small class="clearfix">Add Team</small>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <div class="dg-options-content">
                                 <input type="hidden" id="team-height" value="">
@@ -749,32 +765,32 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
                                     <!-- BEGIN clipart edit options -->
                                     <div id="options-add_item_clipart">
-                                        <div class="dg-options-toolbar">
-                                            <div aria-label="First group" role="group" class="btn-group btn-group-lg">
-                                                <button class="btn btn-default btn-action-edit" type="button"
-                                                        data-type="edit">
-                                                    <i class="glyphicon glyphicon-tint"></i>
-                                                    <small class="clearfix">Edit</small>
-                                                </button>
-                                                <button class="btn btn-default btn-action-colors" type="button"
-                                                        data-type="colors">
-                                                    <i class="glyphicon glyphicon-tint"></i>
-                                                    <small class="clearfix">Colors</small>
-                                                </button>
-                                                <button class="btn btn-default" type="button" data-type="size">
-                                                    <i class="fa fa-text-height"></i>
-                                                    <small class="clearfix">Size</small>
-                                                </button>
-                                                <button class="btn btn-default" type="button" data-type="rotate">
-                                                    <i class="fa fa-rotate-right"></i>
-                                                    <small class="clearfix">Rotate</small>
-                                                </button>
-                                                <button class="btn btn-default" type="button" data-type="functions">
-                                                    <i class="fa fa-cogs"></i>
-                                                    <small class="clearfix">Functions</small>
-                                                </button>
-                                            </div>
-                                        </div>
+<!--                                        <div class="dg-options-toolbar">-->
+<!--                                            <div aria-label="First group" role="group" class="btn-group btn-group-lg">-->
+<!--                                                <button class="btn btn-default btn-action-edit" type="button"-->
+<!--                                                        data-type="edit">-->
+<!--                                                    <i class="glyphicon glyphicon-tint"></i>-->
+<!--                                                    <small class="clearfix">Edit</small>-->
+<!--                                                </button>-->
+<!--                                                <button class="btn btn-default btn-action-colors" type="button"-->
+<!--                                                        data-type="colors">-->
+<!--                                                    <i class="glyphicon glyphicon-tint"></i>-->
+<!--                                                    <small class="clearfix">Colors</small>-->
+<!--                                                </button>-->
+<!--                                                <button class="btn btn-default" type="button" data-type="size">-->
+<!--                                                    <i class="fa fa-text-height"></i>-->
+<!--                                                    <small class="clearfix">Size</small>-->
+<!--                                                </button>-->
+<!--                                                <button class="btn btn-default" type="button" data-type="rotate">-->
+<!--                                                    <i class="fa fa-rotate-right"></i>-->
+<!--                                                    <small class="clearfix">Rotate</small>-->
+<!--                                                </button>-->
+<!--                                                <button class="btn btn-default" type="button" data-type="functions">-->
+<!--                                                    <i class="fa fa-cogs"></i>-->
+<!--                                                    <small class="clearfix">Functions</small>-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
                                         <div class="dg-options-content">
                                             <div class="row toolbar-action-edit">
@@ -871,7 +887,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
 
-        <div id="center-area" class="col-xs-12 col-md-12 col-center align-center" style="height: 635px">
+        <div id="center-area" class="col-center align-center mobileHide">
 
             <!-- Begin sidebar -->
 
@@ -930,7 +946,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         </div>
 
-        <div id="right-area" class="col-right">
+        <div id="right-area" class="col-right mobileHide">
 
 
             <div class="tools-area">
@@ -977,6 +993,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     </div>
                 </ul>
             </div>
+            <button type="button" class="btn btn-warning btn-quote mobile btnSave"
+                    onclick="return design.team.resetTeam()"><i
+                    class="fa fa-usd"></i> SAVE
+            </button>
 
             <div class="product-prices">
                 <div class="dg-box width-100 div-layers no-active">
@@ -1017,10 +1037,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
 <!--            <div class="align-center" id="right-options">-->
             <div class="" id="product-thumbs"></div>
-            <button type="button" class="btn btn-warning btn-quote"
+            <button type="button" class="btn btn-warning btn-quote web"
                     onclick="return design.team.resetTeam()"><i
                     class="fa fa-usd"></i> SAVE, QUOTE
             </button>
+
             <div class="product-price-list hidden">
                 <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
                 <span id="product-price-old"><?php echo settingValue($setting, 'currency_symbol', '$'); ?><span

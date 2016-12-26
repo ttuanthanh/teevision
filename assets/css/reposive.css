@@ -36,6 +36,9 @@
             margin: auto;
         }
     }
+    #center-area{
+        height:635px;
+    }
     .fixed-width-1280{
         min-width: 1280px;
         max-width: inherit;
@@ -46,18 +49,20 @@
     #dg-wapper {
         min-width: 500px;
     }
-    .show-mobile.product-design{
+    .show-mobile.product-design, .mobile{
         display: none;
     }
+    .closeBtn{
+        display: none;
+    }
+
 }
 @media screen and (max-width: 767px) {
     #dg-designer{
         width: 100vw;
         left: -10px;
     }
-    #center-area, #right-area{
-        display: none;
-    }
+
     #dg-designer .col-left {
         top: 0px;
         left:0px;
@@ -67,10 +72,16 @@
         width: 100%;
         margin: 0;
     }
+    #dg-designer .col-right {
+        position: relative;
+        min-width: 360px;
+        width:100%;
+    }
     #dg-designer .menu-left li a{
         padding: 8px 0px;
         font-size: 9px;
     }
+
     #dg-designer .tab-content .nav-product .btn-link {
         font-size: 14px;
     }
@@ -93,7 +104,55 @@
         text-align: center;
         margin-top: 20px;
     }
-
-
+    #app-wrap .labView {
+        display: none;
+        position: relative;
+        width: 360px;
+        height:360px;
+    }
+    .closeBtn {
+        display: block;
+        color: #ff0000;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    .tools-area{
+        float:left;
+        height:85px;
+    }
+    .tools-area ul li{
+         border: none;
+    }
+    .tools-area ul{
+        background-color: white;
+    }
+    .product-prices, .web{
+        display: none;
+    }
+    button.btn-quote.btnSave{
+        width: 100px;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+    #product-thumbs{
+        position: absolute;
+        right: 0px;
+        width: auto;
+        top: -70px;
+    }
+    .box-thumb.active{
+        display: none;
+    }
+    .dg-share{
+        left:0px;
+        right:auto;
+    }
+    .modal-footer button.btn-save{
+        margin: auto;
+    }
+    .mobileHide{
+        display:none;
+    }
 }
 
