@@ -1037,10 +1037,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
 <!--            <div class="align-center" id="right-options">-->
             <div class="" id="product-thumbs"></div>
-            <button type="button" class="btn btn-warning btn-quote web"
-                    onclick="return design.team.resetTeam()"><i
-                    class="fa fa-usd"></i> SAVE, QUOTE
-            </button>
+            <p><button type="button" class="btn btn-warning btn-quote web "
+                       onclick="return design.team.resetTeam()">
+                    <span ">GET PRICE</span>
+                    <span>-or-</span>
+                    <span>save design</span>
+                </button>
+            </p>
+
 
             <div class="product-price-list hidden">
                 <span class="product-price-title"><?php echo $lang['designer_right_total']; ?></span>
