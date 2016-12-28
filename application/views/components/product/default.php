@@ -174,7 +174,7 @@ $colors 	= count($design->color_hex);
 		</div>
                 <br clear="all">
                 <div class="col-md-10 col-md-offset-1">
-                    <p class="font-bold under_s">Page description</p>
+<!--                    <p class="font-bold under_s">Page description</p>-->
                     <div class="form-group">
                             <?php echo $product->page_description;                             ?>
                     </div>

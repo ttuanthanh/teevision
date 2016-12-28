@@ -23,7 +23,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		</div>
 	</div>
 	
-	<hr />
 	
 	<?php if (count($items) == 0) { ?>
 	<!-- data not found -->
@@ -48,6 +47,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 									<th class="col-sm-4 center"><?php echo lang('preview');?></th>
 									<th class="col-sm-4 center"><?php echo lang('description');?></th>
 									<th class="col-sm-2 center"><?php echo lang('quantity');?></th>
+                                                                        <th class="col-sm-2 center">Unit price</th>
 									<th class="col-sm-1 center"><?php echo lang('total');?></th>
 								</tr>
 							</thead>
@@ -125,11 +125,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 												<div class="col-sm-12 text-left">
 													<strong>
                                                                                                         <?php 
-                                                                                                            if ($option['type'] != 'textlist') 
-                                                                                                                echo $option['name'].' : '; 
+                                                                                                                 
+//                                                                                                            if ($option['type'] != 'textlist') 
+//                                                                                                                echo $option['name'].' : '; 
                                                                                                                 
                                                                                                         ?> 
-                                                                                                        
+                                                                                                        Size:
                                                                                                         
                                                                                                         </strong>
 													<?php 
@@ -182,6 +183,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 												
 										</div>
 										<!-- end team -->
+                                                                                
+                                                                                <!-- comment/description -->
+<!--										<div class="row">
+                                                                                    <br/>
+											<div class="col-sm-12 text-left">
+                                                                                            <div class="form-group">
+                                                                                                <strong>Note, instruction: </strong>                                                                                                    
+                                                                                            </div>
+                                                                                            <textarea class="form-group width100o" id="com-des" name="com-des" rows="4"></textarea>
+											</div>
+										</div>-->
+                                                                                
 									</td>
 									
 									<td class="center padding-top-55">										
@@ -191,6 +204,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										</div>										
 									</td>
 									<!--<td class="center padding-top-55"><?php echo $item['symbol'] . number_format(($item['subtotal'] + $item['customPrice']), 2, '.', ','); ?></td>-->
+                                                                        <td class="center padding-top-55"><strong><?php echo number_format(($item['price']), 2, '.', ','); ?><strong></td>
 									<td class="center padding-top-55"><strong><?php echo $item['symbol'] . number_format(($item['subtotal'] + $item['customPrice']), 2, '.', ','); ?><strong></td>
 								</tr>
 								<?php 
@@ -199,7 +213,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								} 
 								?>
 								<tr>
-									<td class="text-right" colspan="3"><strong><?php echo lang('total');?></strong></td>
+									<td class="text-right" colspan="4"><strong><?php echo lang('total');?></strong></td>
 									<td><strong><?php echo $symbol . number_format($total, 2, '.', ','); ?></strong></td>
 								</tr>
 							</tbody>
@@ -240,7 +254,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<input type="hidden" name="return" value="cart/checkout">
 							<div class="col-sm-2">															
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary btn-sm"><?php echo lang('login');?></button>
+                                                                    <button onclick="return beforesave('fr-cart-login')" type="submit" class="btn btn-primary btn-sm"><?php echo lang('login');?></button>
 								</div>
 							</div>
 						</form>
@@ -276,7 +290,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							</div>
 							<div class="col-sm-2">								
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary" id="register-buttoncart"><?php echo lang('register');?></button>
+									<button onclick="return beforesave('fr-cart-login')" type="submit" class="btn btn-primary" id="register-buttoncart"><?php echo lang('register');?></button>
 								</div>								
 							</div>
 							<?php echo $this->auth->getToken(); ?>
@@ -319,6 +333,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				jQuery('#cart #fr-cart-register').show();
 			}
 		});
+                
+                beforesave(form){
+                    $('<input>').attr({
+                        type: 'hidden',
+                        id: 'note-design',
+                        name: 'note-design'
+                    }).appendTo(form);    
+                    return true;
+                }
 	</script>
 	<?php } ?>
 </div>

@@ -16,13 +16,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <?php }  ?>
 <form id="fr-register" class="form-horizontal" method="POST" action="<?php echo site_url().'users/register';?>">
 	<h2><?php echo lang('user_register_user_registrations');?></h2>
-	<div class="form-group">
+<!--	<div class="form-group">
 		<label class="col-md-2"><?php echo lang('username');?></label>
 		<div class="col-md-6">
 			<?php $data_fields = $this->session->flashdata('data_fields'); ?>
 			<input class="form-control validate required" type="text" data-msg="<?php echo lang('user_edit_msg_validate_username');?>" data-maxlength="200" data-minlength="2" placeholder="<?php echo lang('username');?>" name="data[username]" value="<?php if(isset($data_fields['username'])) echo $data_fields['username'];?>"/>
 		</div>
-	</div>
+	</div>-->
 	
 	<div class="form-group">
 		<label class="col-md-2"><?php echo lang('email');?></label>

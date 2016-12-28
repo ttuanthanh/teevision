@@ -53,7 +53,7 @@ class User extends Frontend_Controller {
 		
 		$data['forms'] = $this->users_m->getFormField('register');
 		
-		$content				= $this->load->view('components/users/register', $data, true);
+		$content = $this->load->view('components/users/register', $data, true);
 		
 		$this->data['content']	= $content;	
 		$this->data['subview'] 	= $this->load->view('layouts/user/register', array(), true);
