@@ -237,7 +237,7 @@ class User extends Frontend_Controller {
 				
 				//params shortcode email.
 				$params = array(
-					'username'=>$user['username'],
+					'username'=>($user['username'] != '') ?$user['username'] : 'user' ,
 					'url_design'=>site_url('design/index/'.$data['product_id'].'/'.$data['product_color'].'/'.$key),
 				);
 				
@@ -250,10 +250,10 @@ class User extends Frontend_Controller {
 				
 				$this->load->library('email', $config);
 				$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
-				$this->email->to($user['email']);    
+				$this->email->to($user['email'], $data['design_email']);                                  
 				$this->email->subject ( $subject);
 				$this->email->message ($message);   
-				//$this->email->send();
+				@$this->email->send();
 			}
 			else
 			{

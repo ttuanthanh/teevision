@@ -61,7 +61,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					</div>
 					<div class="col-md-4">
 						<?php 
-							$option_s = array('design' => lang('designer_search_design_id_title'), 'user' => lang('designer_search_username_title'), 'product' => lang('designer_search_product_title'));
+							$option_s = array('design' => 'Design name', 'user' => 'User name', 'email' => 'User email', 'product' => lang('designer_search_product_title'));
 							echo form_dropdown('option', $option_s, $option, 'class="form-control" id="option_s"'); 
 						?>
 					</div>
@@ -84,7 +84,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<input id="select_all" type="checkbox" name='check_all'>
 						</label>
 					</th>
-					<th class="center" style="width: 10%;"><?php echo lang('designer_design_key_title'); ?></th>
+					<th class="center" style="width: 10%;">Design name</th>
 <!--					<th class="center"><?php echo lang('username'); ?></th>-->
 					<th class="center"><?php echo lang('designer_product_name_title'); ?></th>
 					<th class="center" style="width: 6%;"><?php echo lang('color'); ?></th>
@@ -104,7 +104,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							</td>
 						   
 						   <td class="center">
-                                                       Design name: <a target="blank" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_name;?></a><br/>
+                                                       <a target="blank" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_name;?></a><br/>
                                                        <?php
                                                         if($design->user_id != -1) {
                                                        ?>

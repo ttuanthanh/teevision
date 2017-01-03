@@ -61,7 +61,7 @@ class Design extends Admin_Controller
 		if($this->session->userdata('per_page') != '')
 			$config['per_page'] = $this->session->userdata('per_page');
 		else
-			$config['per_page'] 	= 10;
+			$config['per_page'] 	= 50;
 			
         $config['uri_segment'] = 4; 
         $config['next_link'] = lang('next'); 

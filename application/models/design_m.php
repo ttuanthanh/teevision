@@ -24,18 +24,24 @@ class Design_M extends MY_Model
 	// get all design
 	public function getDesigns($count = false, $number, $segment, $search='', $o_search='')
 	{
-		$this->db->select('users_designs.id, users_designs.design_email, users_designs.design_name, users_designs.design_id, users_designs.user_id, users.name, products.title, users_designs.product_id, users_designs.product_options, users_designs.teams, users_designs.image, users_designs.created');
+		$this->db->select('users_designs.id, users_designs.design_email, users_designs.design_name, users_designs.design_id, users_designs.user_id, users.name, users.email, products.title, users_designs.product_id, users_designs.product_options, users_designs.teams, users_designs.image, users_designs.created');
 		$this->db->join('users', 'users.id = users_designs.user_id','left');		
 		$this->db->join('products', 'products.id = users_designs.product_id');
 		
 		if($o_search == 'design' && $search != '')
 		{
-			$this->db->like('users_designs.design_id', $search);
+			$this->db->like('users_designs.design_name', $search);
 		}
 		elseif($o_search == 'user' && $search != '')
 		{			
-			$this->db->like('users.username', $search);
+			$this->db->like('users.name', $search);
+                }
+                elseif($o_search == 'email' && $search != '')
+		{			
+			$this->db->like('users_designs.design_email', $search);
+                        $this->db->or_like('users.email', $search);
 		}
+                
 		elseif($o_search == 'product' && $search != '')
 		{
 			$this->db->like('products.title', $search);
