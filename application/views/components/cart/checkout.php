@@ -116,13 +116,14 @@ else
 									?>
 										<div class="form-group">
 											<div class="checkbox">
+                                                                                            <?php //var_dump($ship); ?>
 												<label>
 													<input class="choose-shipping" type="radio" name="shipping" onclick="apps.shipping(<?php echo $ship->id;?>)" value="<?php echo $ship->id;?>" <?php echo $checked;?> id="ship_<?php echo $ship->id;?>"/>
-													 <strong><?php echo $ship->title;?> <span class="text-success"> (<?php echo ($ship->price != 0) ? '+'.$ship->price.'%' : 'Free!';?>)</span></strong>
+													 <strong><?php echo $ship->title;?> <span class="text-success"> <?php //echo ($ship->price != 0) ? '+'.$ship->price.'%' : 'Free!';?></span></strong>
 												</label>
 												
 												<?php if ($ship->description != ''){?>
-												<p class="help-block"><?php echo $ship->description;?></p>
+												<p class="help-block">Guaranteed by <?php echo date("D, M j", strtotime("$ship->ship_day weekdays")); ?></p>
 												<?php } ?>
 											</div>
 										</div>

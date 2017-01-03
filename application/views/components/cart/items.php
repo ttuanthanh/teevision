@@ -22,11 +22,11 @@ else
 	<tbody>
 	<?php foreach($items as $key=>$item){?>
 	<tr>
-		<td class="left" width="40%">
+		<td class="left" width="50%">
 			<img src="<?php echo base_url($designs[$key]['images']['front']);?>" alt="<?php echo $item['name']; ?>" class="img-thumbnail img-responsive" />
 		</td>
 		
-		<td class="left" width="60%">
+		<td class="left" width="50%">
 			<h5><a href="" title=""><?php echo $item['name']; ?></a></h5>
 			
 			<?php if ($item['options']) { ?>
@@ -77,11 +77,21 @@ else
 	<tr>
 		<td class="text-right border-no"><strong><?php echo lang('cart_shipping');?></strong></td>
 		<td class="text-right border-no">							
+			<span class="pull-right">Free</span>							
+		</td>						
+	</tr>
+        <?php if ($shipping_active != 0) {?>
+        <tr class="red">
+		<td class="text-right border-no"><strong>Rush shipping</strong></td>
+		<td class="text-right border-no">							
 			<span class="pull-right">
-			<?php if ($shipping_active == 0) echo 'Free Shipping'; else echo $symbol . number_format($shipping_active, 2, '.', ','); ?>
+			<?php echo $symbol . number_format($shipping_active, 2, '.', ','); ?>
 			</span>							
 		</td>						
 	</tr>
+            
+        <?php } ?>
+        
 	
 	<?php
 		// check discount
