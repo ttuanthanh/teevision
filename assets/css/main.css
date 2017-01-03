@@ -1121,7 +1121,7 @@ ul.edit_language li:hover{background: #F7F7F9;}
 }
 .comment-content{
     max-height: 150px;
-    min-height: 50px;
+    min-height: 150px;
     padding: 5px 0;
     overflow: auto;
 }

@@ -93,7 +93,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						</div>
 					</th>
 			<th class="center"><?php echo lang('user_name'); ?></th>
-			<th class="center"><?php echo lang('user_user_name'); ?></th>
+			<th class="center">Design</th>
 			<th class="center"><?php echo lang('user_email'); ?></th>
 			<th class="center"><?php echo lang('user_group'); ?></th>
 			<th class="center"><?php echo lang('user_block'); ?></th>
@@ -112,7 +112,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								</div>
 							</td>
 							<td><a href="<?php echo site_url(); ?>admin/users/edit/<?php echo $user->id; ?>"><?php echo $user->name; ?></a></td>
-							<td><?php echo $user->username; ?></td>
+                                                        <td><a href="<?php site_url()?>/admin/design/index?search=<?php echo $user->name?>&option=user">Design</a></td>
 							<td><?php echo $user->email; ?></td>
 							<td class="center">
 								<?php 
