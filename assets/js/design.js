@@ -21,6 +21,7 @@ var design = {
             }
         });
         //action click
+
         jQuery('.popover-close').click(function () {
             jQuery(".popover").hide('show');
         });
@@ -236,7 +237,7 @@ var design = {
         jQuery('.view_change_products').bind('click', function () {
             design.products.productCate(0)
         });
-        design.ajax.getPrice();
+        //design.ajax.getPrice();
     },
     ajax: {
         form: function () {
@@ -304,8 +305,7 @@ var design = {
             var lable = jQuery('#product-price .product-price-title');
             var div = jQuery('#product-price .product-price-list');
             var title = lable.html();
-            var detailInfo = "Front: " + design.print.colors('front').length + " color / Back: " + design.print.colors('back').length + " color";
-            jQuery(".detail-info").html(detailInfo);
+
             div.css('opacity', 0.1);
             lable.html('Updating...');
             jQuery.ajax({
@@ -318,9 +318,11 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        jQuery('#dg-total-mess').html('<h2>$' + (data.sale / datas.quantity).toFixed(2) + ' each </h2> $' + data.sale + ' (' + datas.quantity + ' Pieces) ');
-                        jQuery('.price-old-number').html(data.old);
-
+                        var html = '<p class="each">$'+(data.sale / datas.quantity).toFixed(2)+' ea</p>'
+                        html+= '<p class="total">total: <span>$'+ data.sale+'</span></p>'
+                        jQuery('#dg-total-mess').html(html);
+                        //jQuery('.price-old-number').html(data.old);
+                        jQuery('.total-qty .info-2 span').html(datas.quantity);
                         //if (data.sale == data.old)
                         jQuery('#product-price-old').css('display', 'none');
                         //else
@@ -343,7 +345,7 @@ var design = {
                 jQuery('#dg-messq').hide();
                 jQuery('#dg-total-mess').show();
                 jQuery('#change-product-quanlity').show();
-                design.ajax.getPrice()
+                //design.ajax.getPrice()
             }
         },
         addJs: function (e) {
@@ -666,18 +668,25 @@ var design = {
                 else
                     view = '';
                 design.colors = [];
+                var countFont = 0;
+                var countBack = 0;
                 jQuery('#app-wrap' + view).find('svg').each(function () {
                     var o = document.getElementById(jQuery(this).parent().attr('id'));
+                    var select = jQuery(this);
                     if (o.item.confirmColor == true && typeof o.item.colors != 'undefined') {
                         if (o.item.type != "team") {
                             var colors = o.item.colors;
                             jQuery.each(colors, function (i, hex) {
                                 if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none') {
                                     design.colors.push('#' + hex);
+                                    if(select.closest("#view-front").length>0){
+                                        countFont++;
+                                    }else if(select.closest("#view-back").length>0){
+                                        countBack++;
+                                    }
                                 }
                             });
                         }
-
                     }
                     else {
                         if (o.item.type != "team") {
@@ -685,6 +694,11 @@ var design = {
                             jQuery.each(colors, function (hex, i) {
                                 if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none') {
                                     design.colors.push(hex);
+                                    if(select.closest("#view-front").length>0){
+                                        countFont++;
+                                    }else if(select.closest("#view-back").length>0){
+                                        countBack++;
+                                    }
                                 }
                             });
                         }
@@ -695,6 +709,12 @@ var design = {
                 jQuery.each(design.colors, function (i, hex) {
                     div.append('<span style="background-color:' + hex + '" class="bg-colors"></span>');
                 });
+                var detailInfo = "Front: " + countFont + " color / Back: " + countBack + " color";
+                jQuery(".detail-info").html(detailInfo);
+                jQuery(".modal .info-print span").html(detailInfo);
+                jQuery(".modal .info-print").show();
+                jQuery(".modal .info-product").show();
+                jQuery(".modal .info-product").html(jQuery(".product-title").text());
                 return design.colors;
             } else {
                 jQuery('.color-used').html('<div id="colors-used" class="list-colors"></div>');
@@ -1224,7 +1244,7 @@ var design = {
             design.item.designini(items, n);
             var a = jQuery('#product-thumbs a');
             design.products.changeView(a[0], 'front');
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
         },
         selectProduct: function (e, product) {
             var self = this;
@@ -1310,7 +1330,7 @@ var design = {
                     jQuery('#modal-product-info .product-detail-sku').html(data.product.sku);
                     jQuery('#modal-product-info .product-detail-short_description').html(data.product.short_description);
                     jQuery('.product-detail-size').html(data.product.size);
-                    design.ajax.getPrice();
+                    //design.ajax.getPrice();
                 }
                 else {
                     alert(data.error);
@@ -1333,7 +1353,7 @@ var design = {
                 // html = html + 			'<img alt="'+product.title+'" class="img-responsive img-thumbnail" src="'+baseURL+product.image+'">';
                 // html = html + 		'</div>';
                 html = html + '<div class="col-xs-8 col-sm-8">';
-                html = html + '<h4 style="font-weight: bolder">' + product.title + '</h4>';
+                html = html + '<h4 style="font-weight: bolder" class="product-title">' + product.title + '</h4>';
                 html = html + '</div>';
                 html = html + '<div class="col-xs-4 col-sm-4">';
                 html = html + '<h4><a href="javascript:void(0)" class="changeProduct close-product-detail2" >Change Product ></a></h4>'
@@ -1351,7 +1371,6 @@ var design = {
 
                 div.innerHTML = html;
                 jQuery('#dg-products .products-detail .product-desc').html(html);
-
             }
             jQuery('#product-detail-' + id).addClass('active');
             jQuery('#dg-products .productsContain').hide();
@@ -1555,7 +1574,7 @@ var design = {
                 jQuery('#sel-name').val(parseInt(jQuery('#sel-name').val()) - 1);
                 this.hideTableTeam();
             }
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
             this.checkSelect();
 
 
@@ -1591,7 +1610,7 @@ var design = {
                 jQuery('#sel-num').val(parseInt(jQuery('#sel-num').val()) - 1);
                 this.hideTableTeam();
             }
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
             this.checkSelect();
 
         },
@@ -1800,7 +1819,7 @@ var design = {
                 this.checkSelect();
                 design.teams = teams;
             }
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
 
         },
         tableView: function (teams) {
@@ -1880,7 +1899,7 @@ var design = {
             txt.strokew = '0';
             this.add(txt);
             jQuery('.edit_text_info').show();
-            design.ajax.getPrice();
+            // design.ajax.getPrice();
         },
         setValue: function (o, type) {
             if (type == 'text' || o.type == 'text') {
@@ -2424,7 +2443,7 @@ var design = {
                         var html = jQuery(svg[0]).html();
                         jQuery(svg[0]).html('<g>' + html + '</g>');
                         $jd('.modal').modal('hide');
-                        design.ajax.getPrice();
+                        //design.ajax.getPrice();
                     },
                     failure: function (errMsg) {
                         alert(errMsg + '. Please try again');
@@ -2474,6 +2493,9 @@ var design = {
 
                 var postions = ['front', 'back', 'left', 'right'];
                 var value = items.design[color];
+                jQuery(".modal .info-color span").html(value.title);
+                jQuery(".modal .info-color").show();
+                jQuery(".modal .info-color i").css('background-color', '#' + value.color);
                 jQuery.each(postions, function (i, view) {
                     if (value[view] != '' && value[view].length > 0) {
                         var item = eval("(" + value[view] + ")");
@@ -2545,6 +2567,7 @@ var design = {
                         }
                     }
                 });
+
             }
         },
         create: function (item) {
@@ -2669,7 +2692,7 @@ var design = {
                 jQuery('#screen_colors_body').hide();
             }
             design.print.colors();
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
         },
         printColor: function (o) {
             var box = jQuery('#item-print-colors');
@@ -2985,7 +3008,7 @@ var design = {
             jQuery("#dg-popover").hide('slow');
             design.print.colors();
             design.print.size();
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
             return;
         },
         setup: function (item) {
@@ -3138,7 +3161,7 @@ var design = {
             // var chooseTeam = e.
             jQuery('.dropdown-color').popover('hide');
             design.print.colors();
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
         },
         update: function (e) {
             var o = $jd(e),
@@ -3241,7 +3264,7 @@ var design = {
             $jd('#layer-' + id).remove();
             if (typeof e[0] != 'undefined')
                 design.item.remove(e[0]);
-            design.ajax.getPrice();
+            //design.ajax.getPrice();
         },
         sort: function () {
             var zIndex = $jd('#layers .layer').length;
@@ -3681,6 +3704,10 @@ var design = {
             design.save4buy();
         }
         
+    },calculate:function(){
+            jQuery(".detail").show();
+            design.ajax.getPrice();
+            jQuery(".calculate").hide();
     },
     save: function (buy) {
         jQuery('#dg-savedesign').modal('hide');

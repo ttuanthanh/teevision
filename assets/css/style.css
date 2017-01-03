@@ -549,6 +549,7 @@ body {
     padding: 0 5px;
     text-align: center;
     width: 33px;
+    margin: auto;
 }
 
 .product-fields {
@@ -3191,8 +3192,79 @@ ul.choose_payment .description {
 .align-top{
     vertical-align: top;
 }
-
-/*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/
+/** modal quote **/
+.modal-content .detail{
+    display: none;
+}
+.modal-content .info-product, .modal-content .info-color{
+    font-weight: bold;
+}
+.info-color i{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-block;
+}
+.modal-content .info-print{
+    font-size: 12px;
+    display:none;
+}
+.total-qty button{
+    padding:0;
+}
+.total-qty .info-1{
+    font-size: 20px;
+    margin:0;
+}
+.total-qty .info-2{
+    font-size: 18px;
+}
+.tip-box{
+    margin: 2px;
+    color: #ff0000;
+}
+.info-inclusive-price .info-1{
+    font-size: 20px;
+    font-weight: bold;
+}
+.info-inclusive-price .info-2 .free{
+    font-size: 16px;
+    color: #f65e13;
+    font-weight: bolder;
+}
+.info-inclusive-price .info-2 .sdif{
+    color: #f65e13;
+    font-weight: bold;
+}
+#dg-total-mess .each{
+    font-size: 35px;
+    text-align: right;
+}
+#dg-total-mess .total{
+    text-align: right;
+    color:#000000;
+}
+.modal .tip span{
+    color: #ff0000;
+}
+.modal .ship-note .ship-quest{
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
+.modal .ship-note .sdif{
+    color:red;
+}
+.modal .note{
+    font-size: 12px;
+    text-align: left;
+    margin-left: 5px;
+}
+.modal{
+    overflow: auto;
+}
+    /*#dg-designer .toggle, #dg-designer .toggle-handle, #dg-designer .toggle-on, #dg-designer .toggle-off{*/
     /*border-radius: 10px;*/
 /*}*/
 .ship-fo

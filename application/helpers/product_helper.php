@@ -222,24 +222,55 @@ class helperProduct
                                                     <div class="modal-content">
                                                             <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>						
-                                                                    <h4 class="modal-title" id="myModalLabel">'.$attrs->name[$i].'</h4>
+                                                                    <p class="info-product">Custom Product: <span></span></p>
+                                                                    <p class="info-print">Screen printing: <span></span></p>
+                                                                    <p class="info-color">Color: <span></span><i></i></p>
+                                                                    <h4 class="modal-title" id="myModalLabel">Enter Sizes to calculate your price</h4>
                                                             </div>
                                                             <div class="modal-body" id="design-quality" style="padding-bottom: 0px;">';
-				$html 	.= '<div class="form-group product-fields '.$attrs->type[$i].'">';
-				
+				$html 	.= '<div class="row form-group product-fields '.$attrs->type[$i].'"><div class="col-md-8">';
+
 				$id 	 = 'attribute['.$attribute->id.']['.$i.']';
 				$html 	.= 		$this->fieldDesign($attrs->name[$i], $attrs->titles[$i], $attrs->prices[$i], $attrs->type[$i], $id);
 				
 				$html 	.= '</div>';
-                                
-                                $html .= '<div id="dg-messq" style="display:none; color:red"></div>';
-                                $html .= '<hr>'
-                                        . '<div id="dg-total-mess"></div>'
-                                        . '<div class="ship-fo">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></div>';
+                                $html .= '<div class="total-qty detail col-md-4"><p class="info-1">Total Qty: </p><p class="info-2"><span></span>pcs (<button type="button" class="btn btn-link btn-change-price" onclick="design.ajax.getPrice();">Change</button>)</p></div></div>';
+                                $html .= '<div id="dg-messq" style="display:none; color:red"></div>'
+                                        . '<div class="ship-fo calculate">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span><span class="note-apply">*apply at checkout</span></div>';
                                 $html .=     '</div>
-                                                <div class="modal-footer" style=" text-align: center; margin-top: 1px;">                                                
+                                                <div class="modal-footer calculate" style=" text-align: center; margin-top: 1px;">
+                                                <button type="button" class="btn btn-warning btn-calculate" style="width:50%" onclick="design.calculate()">CALCULATE</button>
+                                                <p class="tip-box">Tip:(Save more by increasing qty or reduce number of colors on design)</p>
+                                                </div>
+                                                <div class="modal-footer detail" style=" text-align: center; margin-top: 1px;">
+                                                <div class="info-inclusive-price">
+                                                    <p class="info-1">All-inclusive Prices:</p>
+                                                    <p class="info-2">
+                                                        <span class="free">Free Shipping</span>
+                                                        <span>deliveried by:</span> 
+                                                        <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span>
+                                                    </p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                    <div class="col-md-6 align-left">
+                                                    <div class="tip">
+                                                    <p><span>Tip:</span> Save more by increasing</p>
+                                                    <p>Order 24 pcs and pay $x.xx</p>
+                                                    </div>
+                                                    <div class="ship-note">
+                                                        <p class="ship-quest">Need rush shipping?</p>
+                                                        <p>Upgrade shipping at check out</p>
+                                                        <p>to receieve it by:<span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></p>
+                                                    </div>
+                                                    </div>
+                                                    <div id="dg-total-mess" class="align-right col-md-6">
+                                                    </div>
+                                                    </div>
+                                                    <hr>
                                                         <button type="button" data-dismiss="modal" onclick="design.designsaveBox()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
                                                         <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.designsaveBox4buy()"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
+                                                        <div class="note">* Save your design to edit, send, and share</div>
                                                 </div>
                                             </div>
                                           </div>

@@ -194,7 +194,7 @@ function getQuote(){
             i = 0;
             size_flag = 0;
 		jQuery('input[name^="'+attr_key+'"]').each(function() {
-                size_flag += Number($(this).val());
+                size_flag += Number(jQuery(this).val());
                 attribute[i++] =$(this).val(); 
                 
             });

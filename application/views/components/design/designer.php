@@ -939,7 +939,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!-- end right design -->
 
                     <?php } ?>
-                    <div class="detail-info"></div>
+                    <div class="detail-info">Front: 0 color / Back: 0 color</div>
                 </div>
             </div>
 
@@ -1375,16 +1375,21 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
     <!-- Begin save design -->
     <div class="modal fade" id="dg-savedesign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Enter your design information</h4>
+                    <h4 class="modal-title" id="myModalLabel">Save your design</h4>
+                    <h6>* Save your design to edit, send, and share</h6>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <!-- login form -->
-                        <div class="col-md-12">                            
+                        <div class="col-md-12">
+                            <div class="align-right">Already have an acccount? <span>Sign in</span></div>
+                        </div>
+                        <div class="col-md-6">
+                            <hr  class="margin-top">
                             <form id="fr-savedesign" role="form" style="margin-bottom: 5px;">
                                 <div class="form-group">
                                     <label>Name your design:</label>
@@ -1402,14 +1407,58 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                            data-type="email"
                                            placeholder="<?php echo $lang['designer_user_your_email']; ?>">
                                 </div>
-                                
-                                
+
+
                                 <button type="button" onclick="design.save()" autocomplete="off"
-                                        class="btn btn-default btn-warning"
+                                        class="btn btn-default btn-primary"
                                         data-loading-text="Loading">Save design</button>
                                 <?php echo $this->auth->getToken(); ?>
                                 <input type="hidden" name="ajax" value="1">
-                            </form>      
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <hr  class="margin-top">
+                            <form id="fr-login" method="POST" action="<?php echo site_url().'users/login';?>" class="horizontal row">
+                                <?php if($this->session->flashdata('msg') != ''){  ?>
+                                    <div class="alert alert-success"><?php echo $this->session->flashdata('msg'); ?></div>
+                                <?php }  ?>
+
+                                <?php if($this->session->flashdata('error') != ''){  ?>
+                                    <div class="alert alert-danger"><?php echo $this->session->flashdata('error'); ?></div>
+                                <?php }  ?>
+                                <div class="form-group col-md-12">
+                                    <label><?php echo lang('user_email_label');?></label>
+                                    <?php $data_fields = $this->session->flashdata('data_fields'); ?>
+                                    <input class="form-control validate required" type="text" data-msg="<?php echo lang('user_validate_email');?>" data-type="email" placeholder="<?php echo lang('user_email_place');?>" name="data[email]" value="<?php if(isset($data_fields['email'])) echo $data_fields['email'];?>"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Name your design:</label>
+                                    <input type="text" name="dg[name]" id="dg-name"
+                                           class="form-control input-sm validate required"
+                                           data-msg="Min length 6, max length 32"
+                                           data-maxlength="32" data-minlength="6"
+                                           placeholder="Enter your design name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label><?php echo lang('user_password_label');?></label>
+                                    <input class="form-control validate required" type="password" data-msg="<?php echo lang('user_validate_password');?>" data-maxlength="128" data-minlength="6" placeholder="<?php echo lang('user_password_place');?>" name="data[password]" />
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <a class="btn btn-facebook" title="<?php echo lang('login_with_facebook'); ?>" onclick="login_facebook();" href="javascript:void(0);">
+                                        <i class="fa fa-facebook"></i>
+                                        | <?php echo lang('login_with_facebook'); ?>
+                                    </a>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <button class="btn btn-warning" type="submit"><?php echo lang('login'); ?></button>
+                                </div>
+                                <div class="form-groupcol-md-12">
+                                    <a href="<?php echo site_url('user/forgotpassword'); ?>" class="float-right btn btn-link">Forget Password</a></div>
+                                <?php echo $this->auth->getToken(); ?>
+
+
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1428,7 +1477,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="modal-body">
                     <div class="row">
                         <!-- login form -->
-                        <div class="col-md-12">                            
+                        <div class="col-md-12">
                             <form id="fr-savedesign" role="form" style="margin-bottom: 5px;">
                                 <div class="form-group">
                                     <label>Name your design:</label>
@@ -1446,14 +1495,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                            data-type="email"
                                            placeholder="<?php echo $lang['designer_user_your_email']; ?>">
                                 </div>
-                                
+
                                 <p style="color: #ff0000">Save your design before checkout</p>
                                 <button type="button" onclick="design.save4buy()" autocomplete="off"
                                         class="btn btn-default btn-warning"
                                         data-loading-text="Loading">Save and checkout</button>
                                 <?php echo $this->auth->getToken(); ?>
                                 <input type="hidden" name="ajax" value="1">
-                            </form>      
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1493,7 +1542,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <li><?php echo $lang['designer_help_create']; ?></li>
                         <li><?php echo $lang['designer_help_mix_design']; ?></li>
                     </ul>
-
                     <div id="help-tabs">
                         <ul>
                             <li><a href="help/product.html"><?php echo $lang['designer_help_product_design']; ?></a>
@@ -1822,6 +1870,41 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <?php if($this->session->flashdata('msg') != ''){?>
     alert('<?php echo $this->session->flashdata('msg');?>');
     <?php } ?>
-        
+
     jQuery('#fr-savedesign').validate();
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript">
+    <?php $settings = getSettings(); ?>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '<?php if(isset($settings->app_id))echo $settings->app_id;?>', // App ID
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+        });
+    }
+
+    function login_facebook()
+    {
+        FB.login(function(response) {
+            if (response.authResponse)
+            {
+                FB.api('/me', function(response) {
+                    var email = response.email;
+                    if(email != '')
+                    {
+                        window.location.replace('<?php echo site_url('users/login'); ?>');
+                    }
+                });
+            } else
+            {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        },{scope: 'email,user_photos'});
+    }
+
+    jQuery('#fr-login').validate();
+</script>
+
 </script>
