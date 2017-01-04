@@ -334,14 +334,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			}
 		});
                 
-                beforesave(form){
-                    $('<input>').attr({
-                        type: 'hidden',
-                        id: 'note-design',
-                        name: 'note-design'
-                    }).appendTo(form);    
-                    return true;
-                }
+//                beforesave(form){
+//                    $('<input>').attr({
+//                        type: 'hidden',
+//                        id: 'note-design',
+//                        name: 'note-design'
+//                    }).appendTo(form);    
+//                    return true;
+//                }
 	</script>
 	<?php } ?>
 </div>
