@@ -1388,7 +1388,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <form id="fr-savedesign" role="form" style="margin-bottom: 5px;">
                                 <div class="form-group">
                                     <label>Name your design:</label>
-                                    <input type="text" name="dg[name]" id="dg-nameb"
+                                    <input type="text" name="dg[name]" id="dg-name"
                                            class="form-control input-sm validate required"
                                            data-msg="Min length 6, max length 32"
                                            data-maxlength="32" data-minlength="6"
@@ -1396,17 +1396,17 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <div class="form-group">
                                     <label>Your email:</label>
-                                    <input type="email" name="dg[email]" id="dg-emailb"
+                                    <input type="email" name="dg[email]" id="dg-email"
                                            class="form-control input-sm validate required"
                                            data-msg="<?php echo $lang['designer_user_email_validate_msg']; ?>"
                                            data-type="email"
                                            placeholder="<?php echo $lang['designer_user_your_email']; ?>">
                                 </div>
 
-                                <p style="color: #ff0000">Save your design before checkout</p>
-                                <button type="button" onclick="design.save4buy()" autocomplete="off"
+
+                                <button type="button" onclick="design.save()" autocomplete="off"
                                         class="btn btn-default btn-warning"
-                                        data-loading-text="Loading">Save and checkout</button>
+                                        data-loading-text="Loading">Save design</button>
                                 <?php echo $this->auth->getToken(); ?>
                                 <input type="hidden" name="ajax" value="1">
                             </form>
@@ -1823,39 +1823,4 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <?php } ?>
 
     jQuery('#fr-savedesign').validate();
-
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
-<script type="text/javascript">
-    <?php $settings = getSettings(); ?>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '<?php if(isset($settings->app_id))echo $settings->app_id;?>', // App ID
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-        });
-    }
-
-    function login_facebook()
-    {
-        FB.login(function(response) {
-            if (response.authResponse)
-            {
-                FB.api('/me', function(response) {
-                    var email = response.email;
-                    if(email != '')
-                    {
-                        window.location.replace('<?php echo site_url('users/login'); ?>');
-                    }
-                });
-            } else
-            {
-                console.log('User cancelled login or did not fully authorize.');
-            }
-        },{scope: 'email,user_photos'});
-    }
-
-    jQuery('#fr-login').validate();
-</script>
-
 </script>
