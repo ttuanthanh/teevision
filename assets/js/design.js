@@ -318,7 +318,7 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        var html = '<p class="each">$'+(data.sale / datas.quantity).toFixed(2)+' ea</p>'
+                        var html = '<p class="each">$'+(data.sale / datas.quantity).toFixed(2)+' each</p>'
                         html+= '<p class="total">total: <span>$'+ data.sale+'</span></p>'
                         jQuery('#dg-total-mess').html(html);
                         //jQuery('.price-old-number').html(data.old);
@@ -1692,6 +1692,9 @@ var design = {
             }
         },
         resetTeam: function () {
+            //refesh popup
+            jQuery('.detail').hide();
+            jQuery('.calculate').show();
             var cname = document.getElementById('team_add_name').checked,
                 cnum = document.getElementById('team_add_number').checked;
             //refresh team item
