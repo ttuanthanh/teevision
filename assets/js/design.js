@@ -318,7 +318,8 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        var html = '<p class="each">$'+(data.sale / datas.quantity).toFixed(2)+' each</p>'
+                        var each = (Number(data.sale.replace(/[^0-9\.]+/g,""))/ datas.quantity).toFixed(2);
+                        var html = '<p class="each">$'+each+' each</p>'
                         html+= '<p class="total">total: <span>$'+ data.sale+'</span></p>'
                         jQuery('#dg-total-mess').html(html);
                         //jQuery('.price-old-number').html(data.old);
