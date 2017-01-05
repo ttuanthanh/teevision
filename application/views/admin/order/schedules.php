@@ -159,7 +159,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('m-d-Y (H:i)'); ?>
+                                      <?php echo $credate->format('D, M j Y H:i:s'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>

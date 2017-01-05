@@ -105,7 +105,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('m-d-Y (H:i)'); ?>
+                                      <?php echo $credate->format('D, M j Y H:i:s'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>
@@ -406,12 +406,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             $shipping_price = $order->shipping_price;
                                             $payment_price = 0.0;
                                     ?>
-                                    <?php foreach($items as $product){?>
+                                    <?php foreach($items as $product){
+                                            //var_dump($product);
+                                        ?>
                                             <tr class="top-align">
                                                     <td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>
                                                     <td>
                                                             <a href="<?php echo site_url('admin/products/edit/'.$product->product_id); ?>" title="<?php echo $product->product_name; ?>">
-                                                                    <strong><?php echo $product->product_name; ?></strong>
+                                                                <strong><?php echo $product->product_name; ?></strong><br/>
+                                                                <small style="color:black">
+                                                                    (<?php                                                                     
+                                                                    echo date('D, M j Y H:i:s', strtotime($product->created_on));
+                                                                    ?>)</small>
                                                             </a>
                                                     </td>
                                                     <td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?></td>
