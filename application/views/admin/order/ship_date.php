@@ -116,21 +116,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">      
                                         <?php 
-                                        if(isset($order->shipdate))                                        
-                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);                                        
+                                        if(isset($order->shipdate))   
+                                        {
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   
+                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                        } 
                                         else
-                                            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                            $ddtext = date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         if( $order->ship_approved != 1) {?>
-                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>
+                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>
                                         <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $newDate->format('m').'-'.$newDate->format('d') ?></a>   
+                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>   
                                         <?php } ?>
                                     </td>
                                     <td class="center">
                                         <?php 
-                                        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         ?>
                                     </td>
                                     <td class="center">     
@@ -202,21 +206,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
     <div class="col-md-8 no-padding-right">  
+        
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-external-link-square icon-external-link-sign"></i>
                 Change Ship date
             </div>
             <div class="panel-body" id="panelbody">
-                <div class="ship-date clearfix">
-                    <div class="col-md-5 text-center">Original date<br> <?php echo $newDate->format('m').'-'.$newDate->format('d'); ?></div>
+<!--                <div class="ship-date clearfix">
+                    <div class="col-md-5 text-center">Original date<br> <?php echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on))) ?></div>
                     <div class="col-md-2 text-center"><i class="fa fa-arrow-right"></i></div>
                     <div class="col-md-5 text-center">Changed to<br> 
                         <?php 
+                                                                    
                         if( isset($shipdate->ship_date) ) 
                         {
                             $newDate = DateTime::createFromFormat('Y-m-d', $shipdate->ship_date);
                             echo $newDate->format('m').'-'.$newDate->format('d');
+                            //echo date("m-d", strtotime("$shipdate->ship_day weekdays", strtotime($order->created_on)));
                         }
                         ?>
                     </div>
@@ -234,6 +242,24 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <button type="submit" class="btn btn-default">Save</button>
                         <input class="form-control" type="hidden" name="order_id" value="<?php echo $order->id; ?>">
                     </div>
+                    <?php echo form_close();?>
+                </div>-->
+                <div class="col-md-6 ship-date">
+                    <p>Order date: <?php echo $credate->format('D, M j Y H:i:s');?></p>
+                    <p>Shipping: <?php echo $shipping->title; ?></p>
+                    <p>Date require: <?php echo $shipping->ship_day; ?> business days</p>
+                </div>
+                <div class="col-md-6 ship-date">
+                    <?php 
+                        $attribute = array('class' => 'form-horizontal', 'id' => 'form-shipdate');	
+                        $ship_id = isset($shipdate->id) ? $shipdate->id : '';
+                        echo form_open(site_url('admin/shipdate/save/'.$ship_id), $attribute);
+                    ?>
+                    Change to<br/>
+                    <input class="" width="200" type="date" name="ship_date">                    
+                    <button type="submit" class="btn btn-default">Save</button>
+                    <input class="form-control" type="hidden" name="order_id" value="<?php echo $order->id; ?>">
+                    
                     <?php echo form_close();?>
                 </div>
                 
