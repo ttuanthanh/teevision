@@ -88,13 +88,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <!--					<th class="center"><?php echo lang('username'); ?></th>-->
 					<th class="center"><?php echo lang('designer_product_name_title'); ?></th>
 					<th class="center" style="width: 6%;"><?php echo lang('color'); ?></th>
-					<th class="center" style="width: 20%;"><?php echo lang('teams'); ?></th>
+					<th class="center" style="width: 20%;">Size/Price</th>
 					<th class="center"><?php echo lang('image'); ?></th>
 					<th class="center"><?php echo lang('date'); ?></th>
 					<th class="center"><?php echo lang('delete'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
+                            <?php //var_dump($designs); ?>
 				<?php if (count($designs) != '') foreach ($designs as $design) { ?>
 						<tr>
 							<td class="center" style="width: 5%;">
@@ -121,6 +122,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						   <td class="center"><span class="box-color" style="background: #<?php echo $design->product_options;?>;"></span></td>
 						   
 						   <td>
+                                                       <strong>Size:</strong><br/>
+                                                       <?php echo $design->design_size ?><br/>
+                                                        <strong>Price: </strong><?php echo '$'.$design->design_price ?>
+                                                        <br/>
+                                                        
 								<?php 
 									$teams = json_decode($design->teams);
 									if(is_string($teams))
@@ -167,6 +173,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										echo "</table>";
 									}
 								?>
+                                                       <br/>
+                                                       
 							</td>
 							
 							<td>

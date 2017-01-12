@@ -3650,6 +3650,20 @@ var design = {
         var image = design.output.front.toDataURL();
         var teams = JSON.stringify(design.teams);
         var productColor = design.exports.productColor();
+        var attributes = jQuery('#tool_cart').serialize();
+        if (attributes != '') {
+            var obj = JSON.parse('{"' + decodeURI(attributes).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+            //datas = jQuery.extend(datas, obj);
+
+        }
+        var phrase = '';
+        jQuery('.dg-poduct-fields').each(function(){            
+            jQuery(this).find('li').each(function(){
+                var current = jQuery(this);
+                if(current.find('lable')) {phrase+=current.find('label').text()}
+                phrase += ':'+current.find('input').val()+", ";
+            });
+        });
         var data = {
             "image": image,
             'vectors': vectors,
@@ -3662,8 +3676,12 @@ var design = {
             'design_key':   design.design_key,
             'design_email': design.design_email,
             'design_name': design.design_name,
-            'product_color': productColor
+            'product_color': productColor,
+            'price':jQuery('.price-sale-number').html(),
+            'sizehtml':phrase
         };
+        
+        
 
         jQuery.ajax({
             url: baseURL + "user/saveDesign",

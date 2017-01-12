@@ -212,10 +212,13 @@ class User extends Frontend_Controller {
 			$design['product_options']  = $data['product_color'];
                         $design['design_email']     = $data['design_email'];
                         $design['design_name']      = $data['design_name'];
-			
+			$design['design_size']      = $data['sizehtml'];
+                        $design['design_price']     = $data['price'];
+                        $design['system_id']  		= '';
 			$design['title']  			= '';
 			$design['description']  	= '';
-			$design['system_id']  		= '';		
+			$design['system_id']  		= '';
+                        
 			
 			$this->load->model('design_m');
 						
