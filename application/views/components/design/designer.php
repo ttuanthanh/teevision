@@ -373,7 +373,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         <button id="update_text" class="update_item_text btn-text btn btn-info" style="display:none" role="button">Update Text</button>
                                     </div>
                                     <div class="col-xs-3 mobile" style="padding-left: 0">
-                                        <button id="update_text" class="update_item_text btn btn-info" role="button">Update</button>
+                                        <button id="update_text" class="update_item_text btn-text btn btn-info" role="button">Update</button>
                                     </div>
                                 </div>
                                 <div class="edit_text_info margin-top-20" style="display: none;">
@@ -495,7 +495,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
 
                                     <div class="row toolbar-action-size margin-top-20">
-                                        <div class="col-xs-4 col-lg-4 align-left">
+                                        <div class="col-xs-4 col-lg-4 align-left padding-right: 0;">
                                             <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></strong>
                                                 <br/>
@@ -518,9 +518,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             </div>
                                         </div>
                                         <div class="toolbar-action-rotate col-xs-4 col-lg-4 align-center">
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
-                                                <div class="col-xs-12 col-lg-12 align-right">
+                                                <div class="col-lg-12 align-center">
                                                     <span class="rotate-values"><input type="text" value="0"
                                                                                        class="input-small rotate-value"
                                                                                        id="text-rotate-value"/>&deg;</span>
@@ -563,6 +563,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 <input type="hidden" id="sel-num" value="0">
                                 <input type="hidden" id="team-width" value="">
                                 <input type="hidden" id="team-rotate-value" value="0">
+                                <div class="row text_edit_header mobile">
+                                    <div class="col-md-12 col-xs-8 nav-info left ">
+                                    </div>
+                                    <div class="col-xs-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
+                                    </span>
+                                    </div>
+                                </div>
                                 <div class="row toolbar-action-name-number">
                                     <div class="col-md-12 position-static">
                                         <div class="col-xs-6 team-add-check-area">
@@ -710,6 +719,17 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         <!-- END team edit options -->
                         <div class="dg-options tab-pane tab-padding" role="tabpanel" id="tab-add_item_clipart">
+                            <div class="row nav-clipart mobile">
+
+                                <div class="col-xs-8 center nav-info">
+
+                                </div>
+                                <div class="col-xs-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
+                                    </span>
+                                </div>
+                            </div>
                             <div class="cliparts-1 row">
                                 <div class="col-xs-12 col-md-12">
                                     <div class="input-group search-area full-width">
@@ -731,14 +751,19 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="cliparts-2 row" style="display: none;">
                                 <div class="row nav-clipart">
-                                    <div class="col-md-4 text-left backButton">
+                                    <div class="col-md-4 col-xs-4 text-left backButton">
                                         <a href="javascript:void(0)" class="back-cliparts btn-link">
                                             <span class="glyphicon glyphicon-arrow-left"></span>
                                             Back
                                         </a>
                                     </div>
-                                    <div class="col-md-4 center nav-info">
+                                    <div class="col-md-4 col-xs-4 center nav-info">
                                     <span class="cliparts-title">
+                                    </span>
+                                    </div>
+                                    <div class="col-xs-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
                                     </span>
                                     </div>
                                 </div>
@@ -748,21 +773,24 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             <div class="cliparts-3 row " style="display: none;">
                                 <div class="row nav-clipart">
-                                    <div class="col-md-4 text-left backButton">
-
+                                    <div class="col-md-4 col-xs-4 text-left btn-close-clipart">
+                                        <a href="javascript:void(0)" class="back-cliparts btn-link">
+                                            <span class="glyphicon glyphicon-arrow-left"></span>
+                                            Back
+                                        </a>
                                     </div>
-                                    <div class="col-md-4 center nav-info">
+                                    <div class="col-md-4 col-xs-4 center nav-info">
                                     <span class="detail-title">
                                     <?php echo $lang['designer_clipart_edit_size_position']; ?>
                                     </span>
                                     </div>
-                                    <div class="col-md-4 text-right">
-                                        <a type="button" class="btn-link btn-close-clipart" href="javascript:void(0)"
-                                           id="designThis" style="color:red">
-                                            X Close
-                                        </a>
+                                    <div class="col-xs-4 center nav-info change-view-mobile">
+                                    <span class="closeBtn">
+                                           X Close
+                                    </span>
                                     </div>
                                 </div>
+
                                 <div class="image-clipart col-md-12">
                                     <div id="dag-list-arts"></div>
                                 </div>
