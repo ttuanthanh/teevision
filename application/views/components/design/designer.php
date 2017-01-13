@@ -112,11 +112,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!-- Begin products -->
                         <div id="dg-products" role="tabpanel" class="tab-pane active col-md-12">
                                 <div class="row nav-product">
-                                <div class="col-xs-4 col-md-4 text-left backButton">
-                                    <a href="javascript:void(0)" class="btn-link" style="color: gray;cursor: default;">
-                                        <span class="glyphicon glyphicon-arrow-left"></span>
-                                        Back
-                                    </a>
+                                <div class="col-xs-4 col-md-4 text-left change-view-mobile">
+                                  <span class="closeBtn mobile  ">
+                                           X Close
+                                    </span>
                                 </div>
                                 <div class="col-xs-4 col-md-4 center nav-info">
                                     <span class="changeInfo"><?php echo $lang['designer_product_change_product']; ?>
