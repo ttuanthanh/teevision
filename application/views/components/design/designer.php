@@ -130,12 +130,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="row nav-select" style="display:none;">
-
-                                <div class="col-xs-8 col-md-12 center nav-info">
-                                    <span
-                                        class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
+                                <div class="col-md-12 col-xs-8 nav-info left ">
+                                   <span
+                                       class="selectInfo"><?php echo $lang['designer_product_select_product']; ?></span>
                                 </div>
-                                <div class="col-xs-4 col-md-4 center nav-info change-view-mobile">
+                                <div class="col-xs-4 center nav-info change-view-mobile">
                                     <span class="closeBtn">
                                            X Close
                                     </span>
@@ -203,11 +202,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         <!--Start Add image-->
                         <div class="tab-pane" id="dg-myclipart" role="tabpanel">
                             <div class="row nav-bar">
-                                <div class="col-md-12 col-xs-8 center nav-info">
-                                    <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
+                                <div class="col-md-12 col-xs-8 nav-info left ">
+                                   <span class="changeInfo"><?php echo $lang['designer_product_add_image']; ?>
                                     </span>
                                 </div>
-                                <div class="col-xs-4 nav-info change-view-mobile">
+                                <div class="col-xs-4 center nav-info change-view-mobile">
                                     <span class="closeBtn">
                                            X Close
                                     </span>
@@ -364,14 +363,17 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="dg-options-content">
                                 <!-- edit text -->
                                 <div class="row toolbar-action-text">
-                                    <h5 class="col-md-12" style="color: grey">Enter text below</h5>
-                                    <div class="col-md-9">
+                                    <h5 class="col-md-12 col-xs-9" style="color: grey">Enter text below</h5>
+                                    <div class="col-md-9 col-xs-9">
                                     <textarea class="form-control" data-event="keyup" data-label="text"
                                               id="enter-text"></textarea>
                                     </div>
-                                    <div class="col-md-3" style="padding-left: 0">
-                                        <button id="add_text" class="add_item_text btn btn-info" role="button">Add Text</button>
-                                        <button id="update_text" class="update_item_text btn btn-info" style="display:none" role="button">Update Text</button>
+                                    <div class="col-md-3 web" style="padding-left: 0">
+                                        <button id="add_text" class="add_item_text btn-text btn btn-info" role="button">Add Text</button>
+                                        <button id="update_text" class="update_item_text btn-text btn btn-info" style="display:none" role="button">Update Text</button>
+                                    </div>
+                                    <div class="col-xs-3 mobile" style="padding-left: 0">
+                                        <button id="update_text" class="update_item_text btn btn-info" role="button">Update</button>
                                     </div>
                                 </div>
                                 <div class="edit_text_info margin-top-20" style="display: none;">
@@ -529,6 +531,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
 
 
+                                </div>
+                                <div class="margin-top-20 col-xs-12 mobile">
+                                    <button id="add_text" class="add_item_text btn-primary full-width btn btn-info" role="button">Add Text</button>
                                 </div>
                             </div>
                         </div>
