@@ -154,7 +154,7 @@ class Order_m extends MY_Model
 	// get all orders
 	public function getOrdersSched($count = false, $number = 5, $offset = 1, $search='', $option='')
 	{
-		$this->db->select('orders.*, name, shippings.ship_day, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.ship_date shipdate');
+		$this->db->select('orders.*, name, shippings.ship_day, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.due_date duedate, order_shipdate.ship_date shipdate');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
                 
@@ -210,7 +210,7 @@ class Order_m extends MY_Model
         // get order detail
 	function getOrderSchedule($id)
 	{
-                $this->db->select('orders.*, shippings.ship_day, name, username, email, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.ship_date shipdate');
+                $this->db->select('orders.*, shippings.ship_day, name, username, email, (dg_orders.created_on + INTERVAL ship_day DAY ) ship_date, design_option, order_shipdate.due_date duedate, order_shipdate.ship_date shipdate');
 				
 		$this->db->join('users', 'orders.user_id = users.id');
                 

@@ -771,7 +771,7 @@ class Orders extends Admin_Controller
 			$this->session->set_flashdata('error', lang('orders_admin_item_id_not_found_msg'.$id));
 			redirect('admin/orders');			
 		}		
-		var_dump($order);
+		//var_dump($order);
 		// get items
 		$this->data['order'] = $order;
 		$items = $this->order_m->getItems($id);

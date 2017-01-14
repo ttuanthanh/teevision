@@ -159,7 +159,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('D, M j Y H:i:s'); ?>
+                                      <?php echo $credate->format('D, M j H:i:s'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>
@@ -201,7 +201,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php 
                                         //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                        if(isset($order->duedate))   
+                                        {
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
+                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                            echo $ddtext;
+                                        } 
+                                        else
+                                            echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         ?>
                                     </td>
                                     <td class="center">     

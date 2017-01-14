@@ -29,7 +29,10 @@ class Shipdate extends Admin_Controller {
                 if ($id == '')
                 {    
                     $pr['order_id']      = $data['order_id'];
-                    $pr['ship_date']     = $data['ship_date'];
+                    if(isset($data['ship_date']))
+                        $pr['ship_date']     = $data['ship_date'];
+                    if(isset($data['due_date']))
+                        $pr['due_date']      = $data['due_date'];
                     $this->shipdate_m->save($pr);
                     $mess = 'Changed ship date to '.$pr['ship_date'];
                 }
@@ -55,6 +58,28 @@ class Shipdate extends Admin_Controller {
 //                $order = new order_m();
 //                $order->update(array('artwork'=>'1'), $data['order_id']);
                 
+                redirect($_SERVER['HTTP_REFERER']);
+        }
+        
+        public function saveDueDate($id = ''){
+            
+                $data = $this->input->post();
+                $ship = $this->shipdate_m->getByOrder($id);
+                if (!isset($ship->id))
+                {    
+                    $pr['order_id']      = $id;
+                    $pr['due_date']      = $data['due_date'];
+                    $this->shipdate_m->save($pr);
+                }
+                else
+                {
+                    
+                    $pr['due_date']     = $data['due_date'];
+                    $gar_id =  $this->shipdate_m->update($pr, $ship->id);
+                    //var_dump($gar_id);
+                }         
+                //echo $id;
+                //var_dump($pr); 
                 redirect($_SERVER['HTTP_REFERER']);
         }
         

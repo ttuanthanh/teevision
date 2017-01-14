@@ -23,6 +23,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     .no-padding-right{
         padding-right: 0px;
     }
+    .due_show{
+        display: none;
+    }
 </style>
 <style>
     .bg-colors {
@@ -95,7 +98,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('D, M j Y H:i:s'); ?>
+                                      <?php echo $credate->format('D, M j H:i:s'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>
@@ -134,8 +137,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php 
                                         //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                        if(isset($order->duedate))   
+                                        {
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
+                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                            echo $ddtext;
+                                        } 
+                                        else
+                                            echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         ?>
+                                        <i class="fa fa-edit toggle-due"></i>
+                                        <form id="due-form" action="/admin/shipdate/saveDueDate/<?php echo $order->id; ?>" method="post" class="due_show">
+                                            <input type="date" id="due_date" name="due_date">
+                                            <input type="submit" value="save">
+                                        </form>  
                                     </td>
                                     <td class="center">     
                                         <?php if( $order->artwork != '') {?>
@@ -348,6 +363,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         var track = jQuery('#tracking-num').val();    
         window.location.replace("<?php echo site_url('admin/orders/changeStatusOrder/'.$order->id.'/completed'); ?>/"+track);
     }
-	
+    $(".toggle-due").click(function() {
+        $( "#due-form" ).toggleClass( "due_show" );
+     });
 </script>
 <script type="text/javascript" src="<?php echo site_url().'assets/admin/js/comment.js'; ?>"></script>
