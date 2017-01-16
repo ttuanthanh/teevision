@@ -420,6 +420,7 @@ var design = {
             datas.design_key = design.design_key;
             datas.design_name = design.design_name;
             datas.design_email = design.design_email;
+            datas.design_note = jQuery('#design_note').val();
             datas.teamcheck = {};
             datas.teamcheck.name = jQuery('#sel-name').val() > 0;
             datas.teamcheck.number = jQuery('#sel-num').val() > 0;
@@ -3676,6 +3677,7 @@ var design = {
             'design_key':   design.design_key,
             'design_email': design.design_email,
             'design_name': design.design_name,
+            'design_note': jQuery('#design_note').val(),
             'product_color': productColor,
             'price':jQuery('.price-sale-number').html(),
             'sizehtml':phrase

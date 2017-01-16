@@ -118,6 +118,7 @@ class Payment extends Frontend_Controller
                                                 'design_name'      => $design['design_name'],
                                                 'design_size'      => $design['sizehtml'],
                                                 'design_price'     => $design['price'],
+                                                'design_note'     => $design['design_note'],
 						'vectors'	=> $design['vector'], 
 						'teams'		=> json_encode($items['cart'][$i]['teams']), 
 						'image'         => $design['images']['front'],						

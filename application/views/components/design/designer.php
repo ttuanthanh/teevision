@@ -996,9 +996,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" data-type="reset" title="Reset Design" class="dg-tool">
-                            <i class="fa fa-times-circle"></i>
-                            <span>Clear</span>
+                       <a data-target="#dg-comment" id="tools-comment" data-toggle="modal" href="javascript:void(0)">
+                            <i class="glyphicons circle_question_mark"></i>
+                            <span>comment</span>
                         </a>
                     </li>
 
@@ -1537,6 +1537,26 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <li><a href="help/tool.html"><?php echo $lang['designer_help_tools']; ?></a></li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Help -->
+    
+    <!-- Begin comment -->
+    <div class="modal fade" id="dg-comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Enter your notes/instructions/comments</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea rows="5" id="design_note" name="design_note" style="width: 100%"></textarea>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>

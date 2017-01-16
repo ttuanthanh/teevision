@@ -185,15 +185,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<!-- end team -->
                                                                                 
                                                                                 <!-- comment/description -->
-<!--										<div class="row">
+										<div class="row">
                                                                                     <br/>
 											<div class="col-sm-12 text-left">
                                                                                             <div class="form-group">
-                                                                                                <strong>Note, instruction: </strong>                                                                                                    
+                                                                                                <strong>Note, instruction: </strong>    
+                                                                                                <p><?php echo $designs[$key]['design_note']; ?></p>
                                                                                             </div>
-                                                                                            <textarea class="form-group width100o" id="com-des" name="com-des" rows="4"></textarea>
+                                                                                            
 											</div>
-										</div>-->
+										</div>
                                                                                 
 									</td>
 									

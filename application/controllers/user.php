@@ -214,6 +214,7 @@ class User extends Frontend_Controller {
                         $design['design_name']      = $data['design_name'];
 			$design['design_size']      = $data['sizehtml'];
                         $design['design_price']     = $data['price'];
+                        $design['design_note']      = $data['design_note'];
                         $design['system_id']  		= '';
 			$design['title']  			= '';
 			$design['description']  	= '';

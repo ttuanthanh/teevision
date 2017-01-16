@@ -273,6 +273,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             if($product->attributes != '' && $product->attributes != '"[]"')
                             {
                                     $size = json_decode(json_decode($product->attributes), true);
+                                    var_dump($size);
                                     $sizename = '';
                                     $sizenum = '';
                                     if (count($size) > 0)
@@ -468,7 +469,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                             <br><small><?php echo lang('orders_admin_shipping_method'); ?>: <a href="<?php echo site_url('admin/settings/shipping'); ?>"><strong><?php echo $shipping->title; ?></strong></a>
                                                                 </small>
                                                             &nbsp;&nbsp;<a href="/admin/orders/listShipping/<?php echo $order->id; ?>" onclick="" class="float-right edit-payment fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                                            <br><small><?php echo $shipping->description; ?></small>
+                                                            <br><small><?php echo date("D, M j", strtotime("$shipping->ship_day weekdays", strtotime($order->created_on))); ?></small>
                                                             
                                                     <?php } ?>
 
