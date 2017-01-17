@@ -273,7 +273,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             if($product->attributes != '' && $product->attributes != '"[]"')
                             {
                                     $size = json_decode(json_decode($product->attributes), true);
-                                    var_dump($size);
+                                    //var_dump($size);
                                     $sizename = '';
                                     $sizenum = '';
                                     if (count($size) > 0)

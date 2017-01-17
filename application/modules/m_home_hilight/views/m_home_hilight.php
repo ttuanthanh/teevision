@@ -15,14 +15,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/unslider/css/unslider.css'); ?>"/>
 <script src="<?php echo base_url('media/modules/unslider/js/unslider-min.js'); ?>"></script>
 <div class="module-highlight">
-    <div>
-        <div class="col-md-2 col-ms-1 "></div>
-        <div class="col-md-8 col-ms-10 col-xs-12 text-center">
-            <h2 class="tee-title">Need custom T-shirts?</h2>
-            <p>Tee Vision is a Philadelphia Screen Printing company. We are committed to providing the highest quality for an affordable price. We use professional screen printers to ensure that your custom T-shirts do not crack, wash off, or fade.</p>
-        </div>
-        <div class="col-md-2 col-ms-1 "></div>
-    </div>
+    
     <div class="text-center ">
         <div class="col-md-3 col-ms-4 col-xs-6">
             <img src="assets/images/no.png" height="75"/>
@@ -49,9 +42,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div class="col-xs-12 text-center ">
         <a href="product/12-mens-polo" type="button" class="btn btn-primary">REQUEST QUOTE HERE</a>        
     </div>
+    <br/><br/>
+    <div>
+        <div class="col-md-8 text-center">
+            <h2 class="tee-title">Need custom T-shirts?</h2>
+            <p>Tee Vision is a Philadelphia Screen Printing company. We are committed to providing the highest quality for an affordable price. We use professional screen printers to ensure that your custom T-shirts do not crack, wash off, or fade.</p>
+        </div>
+        <div class="col-md-4 ">
+            <iframe width="90%" src="https://www.youtube.com/embed/KsB1BgUL7IY?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
     <br class="clear"/>
 </div>
-
+<!--
 <div class="my-slider">
     <h2 class="tee-title">Testimonials?</h2>
 	<ul>
@@ -72,7 +75,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 
             </li>
 	</ul>
-</div>
+</div>-->
 <script>
         jQuery(document).ready(function($) {
                 $('.my-slider').unslider();
