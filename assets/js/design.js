@@ -779,6 +779,13 @@ var design = {
             else {
                 jQuery(e).addClass('active');
             }
+            var html = "";
+            jQuery('#screen_colors_list .bg-colors').each(function () {
+                if (jQuery(this).hasClass('active') == true) {
+                    html += '<br/><span class="bg-colors margin-left-50" style="background-color:#'+jQuery(this).data('color')+'"title="Texas Orange"></span>'+ jQuery(this).attr('title');
+                }
+            });
+            jQuery("#seced_color").html(html);
         }
     },
     designer: {

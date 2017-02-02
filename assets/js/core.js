@@ -106,6 +106,7 @@ jQuery(function() {
             jQuery("#mcolor-name").val(jQuery(this).attr('data-color-name'));
             jQuery("#product-colors a").removeClass('active');
             jQuery(this).addClass('active');
+            jQuery('#color_sel_name').html(jQuery(this).attr('data-original-title'));
             
             if(_element.old == null) {
             	jQuery(element_load).css({'min-height': jQuery(element_load).outerHeight()});

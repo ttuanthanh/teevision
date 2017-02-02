@@ -80,7 +80,7 @@ $colors 	= count($design->color_hex);
 						
 			<!-- rating -->
                         
-            <p class="font-bold">Available color</p>
+            <p class="font-bold">Preview available colors: <span id="color_sel_name"></span></p>
              <!-- product design -->
 			<?php if (isset($product->design)) { ?>
 			<div class="form-group">

@@ -1105,6 +1105,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 <p><strong> <?php echo $lang['designer_color_note']; ?></strong></p>
                 <span id="screen_colors_error"></span>
                 <div id="screen_colors_list" class="list-colors"></div>
+                <p>Selected: <span id="seced_color"></span></p>
+                
             </div>
         </div>
         <div class="screen_colors_botton">
