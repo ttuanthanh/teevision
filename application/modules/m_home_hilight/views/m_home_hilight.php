@@ -45,7 +45,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <br/><br/>
     <div>
         <div class="col-md-8 text-center">
-            <h2 class="tee-title">Need custom T-shirts?</h2>
+            <h1 class="tee-title">Need custom T-shirts?</h1>
             <p>Tee Vision is a Philadelphia Screen Printing company. We are committed to providing the highest quality for an affordable price. We use professional screen printers to ensure that your custom T-shirts do not crack, wash off, or fade.</p>
         </div>
         <div class="col-md-4 ">
