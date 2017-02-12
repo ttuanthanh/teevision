@@ -1,6 +1,8 @@
 var lang = {
 	upload:{
 		fileType: 'Accepted File Types (Max file size: 10MB)\nImage .jpg, .jpeg, .png, .gif, .pdf, .ai, .psd, .eps, .svg',
+                fileType1: 'Accepted File Types (Max file size: ',
+                fileType2: 'MB)\nImage .jpg, .jpeg, .png, .gif, .pdf, .ai, .psd, .eps, .svg',
 		minSize: 'Too small file (min filesize exceeded ',
 		maxSize: 'Too big file (max filesize exceeded ',
 		terms: 'Please read my terms after tick the checkbox to accepted terms.',
