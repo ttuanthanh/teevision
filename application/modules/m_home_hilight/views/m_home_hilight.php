@@ -46,9 +46,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div>
         <div class="col-md-8 text-center">
             <h2 class="tee-title">Need custom T-shirts?</h2>
-            <p>Tee Vision is a Philadelphia Screen Printing company. We are committed to providing the highest quality for an affordable price. We use professional screen printers to ensure that your custom T-shirts do not crack, wash off, or fade.</p>
+            <p>Welcome to Tee Vision Printing, a trusted source of custom T-shirts in Philadelphia and beyond.</p> 
+
+            <p>Everyone loves wearing tees, as they fit snugly and are extremely comfortable to wear. But, most tees we find in shops are either too plain or have generic designs. At Tee Vision Printing, we provide high-quality screen printing at an affordable price. Using our Design Studio, you can create your own designs on a range of shirt styles, sizes, and colors. </p>
+
+            <p>We customize T-shirts for any purpose, whether you’re reproducing shirts for an event, starting your own merchandise, or personalizing your wardrobe. With our modern screen printers and vibrant, durable inks, your shirts will come out just as you’ve envisioned. </p>
+
+            <p>With our high-quality, cotton garments and long-lasting inks, you tees will look brand new for many years. The unwavering quality and vibrancy of screen-printed shirts are the reasons most people and businesses are not switching to digital alternatives.</p>
+
+            <p>Using our Design Studio, you can either integrate your own design to your choice of shirt styles or customize from scratch from our pre-made designs and exclusive font styles. Pick a shirt and start personalizing!</p>
+            <!--<p>Tee Vision is a Philadelphia Screen Printing company. We are committed to providing the highest quality for an affordable price. We use professional screen printers to ensure that your custom T-shirts do not crack, wash off, or fade.</p>-->
+            <br/>
         </div>
-        <div class="col-md-4 ">
+        <div class="col-md-4 " style="padding-top: 100px">
             <iframe width="90%" src="https://www.youtube.com/embed/KsB1BgUL7IY?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>

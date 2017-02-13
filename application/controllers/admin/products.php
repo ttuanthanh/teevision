@@ -361,9 +361,9 @@ class Products extends Admin_Controller
 		
 		if( isset($design) && count($design) )
 		{
-			
-			$design = helperProduct::json($design);
-			$design->options = helperProduct::sortDesign($design);		
+			$help_product 		= new helperProduct();
+			$design = $help_product->json($design);
+			$design->options = $help_product->sortDesign($design);		
 		}
 		else
 		{
