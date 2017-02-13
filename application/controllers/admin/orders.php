@@ -1664,4 +1664,23 @@ class Orders extends Admin_Controller
             $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
             $this->load->view('admin/order/addorder_success', $this->data);
         }
+        
+        function listprice($price, $qty, $orderid, $itemid){
+            		
+            $this->data['price'] = $price;
+            $this->data['qty'] = $qty;
+            $this->data['orderid'] = $orderid;
+            $this->data['itemid'] = $itemid;
+            $this->load->view('admin/order/pp/edit_price', $this->data);
+        }
+        function changeprice(){
+            $data = $this->input->post();
+            //$order_info = $this->order_m->getOrder($data['orderid']);
+//            
+            $order['product_price'] = $data['price'];
+            $order['quantity'] = $data['qty'];
+            $this->order_m->_table_name = 'order_items';
+            $this->order_m->updateOrder(array('id'=>$data['itemid']), $order);
+            $this->load->view('admin/order/addorder_success', $this->data);
+        }
 }

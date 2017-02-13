@@ -443,8 +443,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                                     ?>)</small>
                                                             </a>
                                                     </td>
-                                                    <td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?></td>
-                                                    <td class="right"><?php echo $product->quantity;?></td>
+                                                    <td class="right"><?php echo $setting->currency_symbol.number_format($product->product_price, 2);?><a href="/admin/orders/listprice/<?php echo number_format($product->product_price, 2).'/'.$product->quantity.'/'.$order->id.'/'.$product->id; ?>" onclick="" class="float-right edit-price fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+                                                    <td class="right"><?php echo $product->quantity;?><a href="/admin/orders/listprice/<?php echo number_format($product->product_price, 2).'/'.$product->quantity.'/'.$order->id.'/'.$product->id; ?>" onclick="" class="float-right edit-price fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                                                     <?php $total_row = $product->quantity*($product->product_price+$product->price_print+$product->price_clipart)+$product->price_attributes;?>
                                                     <td class="right">
                                                         <?php echo $setting->currency_symbol.number_format($total_row, 2);
@@ -585,7 +585,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         location.reload();
                     }
                 });
-                jQuery('.ship-info').fancybox({ 
+                jQuery('.ship-info, .edit-price').fancybox({ 
                     afterClose: function() {
                             location.reload();
                         },
