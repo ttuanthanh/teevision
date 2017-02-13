@@ -10,7 +10,7 @@ jQuery(function () {
 		var check = fileType.indexOf(ext);//alert(file.type);		
 		if(check == -1)
 		{
-			alert(lang.upload.fileType);
+			alert(lang.upload.fileType1 +maxsize+lang.upload.fileType2);
 			return false;
 		}
 		if(file.size > 1048576 * maxsize){	//1048576 = 1MB

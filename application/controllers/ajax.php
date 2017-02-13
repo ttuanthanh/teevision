@@ -243,9 +243,14 @@ class Ajax extends Frontend_Controller {
 		if (!file_exists($root))
 			mkdir($root, 0755, true);
 		
+                $this->load->model('settings_m');
+		$setting_data		= $this->settings_m->getSetting();
+                $setting		= json_decode($setting_data->settings);
+                $max_size = settingValue($setting, 'site_upload_max', '10');
+                
 		$config['upload_path']		= $root;
 		$config['allowed_types'] 	= 'gif|jpg|png|jpeg|psd|pdf|eps|ai|svg';
-		$config['max_size'] 		= 1024 * 10;		
+		$config['max_size'] 		= 1024 * $max_size;		
  
 		$this->load->library('upload', $config);
  

@@ -13,11 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <div class="blog-page post-page">
     
     <div>
-        <h3>
         
-		<a href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
-	
-        </h3>
         <div class="col-sm-3">
             <img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>"/>
         </div>
@@ -36,7 +32,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <h4><a>Choose from a variety of shirt styles</a></h4>
         <div class="col-sm-3 blog-cat_image">
             <a href="http://teevisionprinting.com/categories/63-Ladies">
-                <img src="/media/assets/ladies2.png" alt=""><br><br>
+                <img src="/media/assets/BELLA%206005/bella_6005.jpg" alt=""><br><br>
             </a>
             <strong>LADIES</strong><br>
             <a href="http://teevisionprinting.com/product/29-gildan-ultra-cotton-ladies-t-shirt-2000l">Gildan Ultra Cotton</a><br>
@@ -88,7 +84,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<?php } ?>
 	
 	
-	<div class="post-meta">
+<!--	<div class="post-meta">
 		<span>
 			<i class="fa fa-calendar"></i>
 			<?php 
@@ -102,7 +98,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<?php echo lang('page_blog_by_title');?>
 			<a href="#"> <?php echo $article->created; ?> </a>
 		</span>
-	</div>
+	</div>-->
+        <h3 class="text-center">
+        
+		<a href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
+	
+        </h3>
 	
 	<div class="post-content">
 		<?php 
@@ -110,7 +111,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		?>
 	</div>
 	
-	<div class="post-connect">
+	<div class="post-connect hidden">
 		<?php 
 			if(count($list_article))
 			{	

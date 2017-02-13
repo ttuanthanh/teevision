@@ -103,8 +103,11 @@ class Design extends Frontend_Controller {
 		$designer 		= $this->load->view('components/design/designer', $data, true);
 		
 		$this->data['meta']	= '<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=0.5, maximum-scale=1.0"/>';		
-		
-		$this->data['content']	= $designer;		
+		$this->data['meta']	.= '<meta content="Don’t have a design for your T-shirt yet? Try Tee Vision’s Design Studio, online, for free! Explore varied styles & fonts with our custom T-shirt design maker." name="description" />';
+                $this->data['meta']	.= '<meta content="Design your own t-shirts, custom t-shirt design." name="keywords" />';
+                $this->data['title']	= "Design Your Own T-shirts | Tee Vision Printing";
+		$this->data['content']	= $designer;	
+                
 		$this->data['subview']	= $this->load->view('layouts/design/default', array(), true);
 		
 		$this->theme($this->data, 'design');
