@@ -31,3 +31,4 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script type="text/javascript">
 
 </script>
+<!--<a href="http://www.domain.com/page/" target="_parent"> Close and go to page</a>-->

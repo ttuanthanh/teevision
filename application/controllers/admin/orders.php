@@ -846,7 +846,7 @@ class Orders extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
         
-        function garment($id = '')
+        function garment($id = '', $gra_id='')
 	{		
                 if ($id == '')
                     redirect('admin/orders/schedules');
@@ -861,8 +861,8 @@ class Orders extends Admin_Controller
                 {
                     $order = $this->order_m->getOrder($id); 
                     $this->data['order'] = $order;
-                    if ($order->apparel)
-                        $this->data['garment'] = $this->garment_m->getData($order->apparel);
+                    if ($gra_id != '')
+                        $this->data['garment'] = $this->garment_m->getData($gra_id);
                 }
                 
 		//
