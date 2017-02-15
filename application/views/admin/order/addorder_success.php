@@ -23,10 +23,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <div class="row">
                 <h1>Order edit successful</h1>       
                 <p>Close this screen to refresh page</p>
+                
             </div>
 	</div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
+        <?php
+        if(isset($status) && $status == "new"){
+        ?>
+        <a href="/admin/orders/detail/<?php echo $orderid ?>" target="_parent" class="btn btn-default">To order detail</a>
+        <?php
+        }
+        ?>
 </div>
 <script type="text/javascript">
 

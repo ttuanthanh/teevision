@@ -951,6 +951,9 @@ class Orders extends Admin_Controller
 				$this->session->set_flashdata('error', lang('orders_admin_cannot_change_status_msg'));
 				redirect(site_url('admin/orders'));
 			}
+                        
+                        if($type == "completed")
+                            $data['completed_on'] = date('Y-m-d H-i-s');
 				
 			$where = array(
 				'id'=>$id,

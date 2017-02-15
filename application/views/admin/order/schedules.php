@@ -138,17 +138,32 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <?php foreach($orders as $order) { ?>
                             <?php $desi = $this->order_m->getDesign($order->id); ?>
                                 <?php
-                                    $newda = new DateTime($order->ship_date);
+                                    
                                     $credate = new DateTime($order->created_on);
-                                    $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
+                                    $tomorrow = date("Y-m-d",strtotime('tomorrow'));
+                                    $yesterday = date("Y-m-d",strtotime('yesterday'));
+                                    
+                                    $completed_ond = new DateTime($order->completed_on);
+                                    $completed_on = $completed_ond->format('Y-m-d');
+                                    
                                     if(isset($order->duedate)){
                                         $duedated = new DateTime($order->duedate);
                                         $duedate = $duedated->format('Y-m-d');
                                     } 
                                     else
                                         $duedate = date("Y-m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
-                                    //var_dump($shipDate);
+                                    
+                                    if(isset($order->shipdate))   
+                                    {
+                                        $shipDated = new DateTime($order->shipdate); //DateTime::createFromFormat('Y-m-d', $order->shipdate);   
+                                        $shipDate = $shipDated->format('Y-m-d');
+                                    } 
+                                    else
+                                        $shipDate = date("Y-m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                        
+                                        
+                                    //var_dump($order);
                                     //var_dump($today);
                                     //var_dump($duedate);
                                 ?>
@@ -158,11 +173,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>">
                                     <td class="center">    
                                         <?php
-                                           echo $shipDate.'--'.$today.'---'.$duedate;
+                                           //echo $shipDate.'--'.$today.'---'.$duedate;
                                             if ($shipDate == $today)
                                                 echo '<img src="/assets/images//icon/mark-red.png" width="20" height="20"/>';
-                                            if ( $duedate == $today )
+                                            if ( $duedate == $tomorrow )
                                                 echo '<img src="/assets/images//icon/mark-yellow.png" width="20" height="20"/>';
+                                            if ( $yesterday == $completed_on )
+                                                echo '<img src="/assets/images//icon/mark-green.png" width="20" height="20"/>';
                                         ?>
                                         
                                     </td>
