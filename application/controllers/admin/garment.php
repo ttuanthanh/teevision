@@ -35,17 +35,19 @@ class Garment extends Admin_Controller {
         public function save(){
                 $data = $this->input->post('gar');
                 
-                $garment = $this->garment_m->getByOrder($data['order_id']);
+                //$garment = $this->garment_m->getByOrder($data['order_id']);
                 $gar_id = '';
                 
                 //var_dump($garment);
-                //if(!$garment)
+                if(!$data['garment_id'])
                     $gar_id = $this->garment_m->save($data);
-                //else
-//                {
-//                    $this->garment_m->update($data, $garment->id);
-//                    $gar_id = $garment->id;                        
-//                }
+                else
+                {
+                    $gar_id = $data['garment_id'];
+                    unset($data['garment_id']);
+                    $this->garment_m->update($data, $gar_id);
+                                            
+                }
                 
                 
                 $this->load->model('order_m');
@@ -54,7 +56,8 @@ class Garment extends Admin_Controller {
                 $or['apparel'] = $gar_id;
                 $order->update($or, $data['order_id']);
                 
-                redirect($_SERVER['HTTP_REFERER']);
+                redirect('/admin/orders/garment/'.$data['order_id']);
+                //redirect($_SERVER['HTTP_REFERER']);
         }
         
         

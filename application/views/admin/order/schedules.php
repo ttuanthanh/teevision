@@ -142,7 +142,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     $credate = new DateTime($order->created_on);
                                     $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
                                     $today = date("Y-m-d");
-                                    
+                                    if(isset($order->duedate)){
+                                        $duedated = new DateTime($order->duedate);
+                                        $duedate = $duedated->format('Y-m-d');
+                                    } 
+                                    else
+                                        $duedate = date("Y-m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                    //var_dump($shipDate);
+                                    //var_dump($today);
+                                    //var_dump($duedate);
                                 ?>
                             <tr class="<?php 
                                         if ($order->status == 'completed') echo 'o-complete';
@@ -150,8 +158,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>">
                                     <td class="center">    
                                         <?php
-                                            if ($shipDate <= $today && $order->status != 'completed')
-                                                echo '<img src="http://www.clker.com/cliparts/E/C/p/S/0/F/exclamation-mark-red-md.png" width="20" height="20"/>';
+                                           echo $shipDate.'--'.$today.'---'.$duedate;
+                                            if ($shipDate == $today)
+                                                echo '<img src="/assets/images//icon/mark-red.png" width="20" height="20"/>';
+                                            if ( $duedate == $today )
+                                                echo '<img src="/assets/images//icon/mark-yellow.png" width="20" height="20"/>';
                                         ?>
                                         
                                     </td>
