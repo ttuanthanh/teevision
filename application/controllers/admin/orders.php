@@ -1465,6 +1465,8 @@ class Orders extends Admin_Controller
 			$order_info['user_id'] 	= $this->user['id'];			
 			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"COMPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
 			$this->order_m->save($order_info, null);
+                        $this->data['status'] = 'new';
+                        $this->data['orderid'] = $order_id;
 			
 		}
 		else
@@ -1555,10 +1557,12 @@ class Orders extends Admin_Controller
 
                         $this->order_m->_table_name = 'orders';
                         $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+                        $this->data['status'] = 'edit';
+                        $this->data['orderid'] = $order_item['order_id'];
 		}		
                 
                 
-		$this->load->view('admin/order/addorder_success');
+		$this->load->view('admin/order/addorder_success',$this->data);
 	}
         
         function deleteitem($orderid='', $itemid='')
