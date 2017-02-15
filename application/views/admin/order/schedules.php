@@ -180,8 +180,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 echo '<img src="/assets/images//icon/mark-yellow.png" width="20" height="20"/>';
                                             if ( $yesterday == $completed_on )
                                                 echo '<img src="/assets/images//icon/mark-green.png" width="20" height="20"/>';
-                                            if ( $yesterday == $shipDate && $order->completed_on == '' )
+                                            if ( $yesterday >= $shipDate && $order->completed_on == null )
                                                 echo '<img src="/assets/images//icon/x-red.png" width="20" height="20"/>';
+                                            
                                         ?>
                                         
                                     </td>
