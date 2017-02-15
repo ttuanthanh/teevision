@@ -1108,9 +1108,9 @@ ul.edit_language li:hover{background: #F7F7F9;}
     font-weight: bold;
     color: #cc0000;
 }
-.o-complete{
-    background-color: #ccff99;
-    color:#00cc33;
+tr.o-complete td{
+    background-color: #ccff99!important;
+    color:#00cc33!important;
 }
 .art-ordernum{
     text-align: center;

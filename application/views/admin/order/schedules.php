@@ -113,7 +113,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</p>
 			</div>
 		</div>
-		<table id="sample-table-1" class="table table-bordered">
+		<table id="sample-table-1" class="table table-bordered table-striped">
 			<thead>
 				<tr>
                                         <th class="center"></th>
@@ -169,7 +169,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 ?>
                             <tr class="<?php 
                                         if ($order->status == 'completed') echo 'o-complete';
-                                        else if ($shipDate <= $today) echo 'duedate';                                         
+//                                        else if ($shipDate <= $today) echo 'duedate';                                         
                                         ?>">
                                     <td class="center">    
                                         <?php
@@ -180,6 +180,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 echo '<img src="/assets/images//icon/mark-yellow.png" width="20" height="20"/>';
                                             if ( $yesterday == $completed_on )
                                                 echo '<img src="/assets/images//icon/mark-green.png" width="20" height="20"/>';
+                                            if ( $yesterday == $shipDate && $order->completed_on == '' )
+                                                echo '<img src="/assets/images//icon/x-red.png" width="20" height="20"/>';
                                         ?>
                                         
                                     </td>
