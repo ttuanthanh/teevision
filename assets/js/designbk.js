@@ -1313,8 +1313,9 @@ var design={
 				var div = document.createElement('div');
 					div.setAttribute('data-id', product.id);
 					div.className = 'product-box col-xs-6 col-sm-4 col-md-3';
-				jQuery(div).click(function(){ seft.changeProduct(this, product); } );			
-				
+				// jQuery(div).click(function(){ seft.changeProduct(this, product); } );
+				jQuery(div).click(function(){ seft.changeProduct(this, product); } );
+
 				html = '<div class="thumbnail"><img src="'+baseURL+product.image+'" alt="'+product.title+'" class="img-responsive"> <div class="caption">' + product.title +'</div></div>';
 					div.innerHTML = html;
 				
@@ -2946,7 +2947,7 @@ var design={
 		jQuery('.add_item_' + type ).addClass('active');
 	},
 	popover: function(e){
-		jQuery('.dg-options').css('display', 'none');
+		jQuery('.dg-options').not(".tab-pane").css('display', 'none');
 		jQuery('#options-'+e).css('display', 'block');
 		jQuery('.popover').css({'top': '40px', 'display':'block'});	
 		
@@ -3339,7 +3340,6 @@ var design={
 		var productColor = design.exports.productColor();
 		var data = {
 			"image":image, 
-			'vectors':vectors, 
 			'vectors':vectors, 
 			'teams':teams,
 			'fonts': design.fonts,

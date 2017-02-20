@@ -230,6 +230,23 @@ var design = {
 
         design.item.designini(items);
         design.designer.loadColors();
+        var initLayout = function() {
+            jQuery('.colorSelector.bg-colors.bg-custom').ColorPicker({
+                color: '#0000ff',
+                onShow: function (colpkr) {
+                    jQuery(colpkr).fadeIn(500);
+                    return false;
+                },
+                onHide: function (colpkr) {
+                    jQuery(colpkr).fadeOut(500);
+                    return false;
+                },
+                onChange: function (hsb, hex, rgb) {
+                    jQuery('.colorSelector').css('backgroundColor', '#' + hex);
+                    jQuery('.colorSelector').data('color', hex);
+                }
+            })};
+        EYE.register(initLayout, 'init');
         design.designer.loadFonts();
         design.designer.fonts = {};
         design.designer.fontActive = {};
@@ -659,6 +676,9 @@ var design = {
         }
     },
     print: {
+        colorPicker:function(view){
+            jQuery(view).ColorPickerShow();
+        },
         colors: function (view) {
             if (jQuery('#view-' + view + ' .product-design').html() == '') {
                 return [];// design.colors;
@@ -709,7 +729,7 @@ var design = {
                 jQuery('.color-used').html('<div id="colors-used" class="list-colors"></div>');
                 var div = jQuery('#colors-used');
                 jQuery.each(design.colors, function (i, hex) {
-                    div.append('<span style="background-color:' + hex + '" class="bg-colors"></span>');
+                    div.append('<span style="background-color:' + hex + '" class="bg-colors">asdfas</span>');
                 });
                 var detailInfo = "Front: " + countFont + " color / Back: " + countBack + " color";
                 jQuery(".detail-info").html(detailInfo);
@@ -1012,6 +1032,7 @@ var design = {
                 var span = document.createElement('span');
                 span.className = 'bg-colors';
                 span.setAttribute('data-color', color.hex);
+                span.setAttribute('data-test', color.hex);
                 span.setAttribute('title', color.title);
                 span.setAttribute('onclick', 'design.item.changeColor(this)');
                 span.style.backgroundColor = '#' + color.hex;
@@ -1019,6 +1040,8 @@ var design = {
 
                 screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
+            jQuery(div).append('<span class="colorSelector bg-colors bg-custom" onmouseenter="design.print.colorPicker(this)" onclick="design.item.changeColor(this)"data-color="00b3ff" style="background-color: #00b3ff" data-placement="top"data-original-title="custom">');
+
         },
         loadFonts: function () {
             var self = this;
