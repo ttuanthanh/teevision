@@ -10,8 +10,87 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
-<div class="blog-page post-page">
+<style>
+    .ship-info div{
+        text-align: center;
+    }
+    .ship-info img{
+        width: 60px;
+        margin-bottom: 5px;
+    }
+    .ship-info div .ship-name{
+        margin-bottom: 0px;
+        color: #f37321;
+        font-weight: bold;
+        font-size: 20px
+    }
+    .ship-info div h2{
+        margin: 10px 0;
+        color: #54301a;
+        font-style: italic;
+    }
+    .not-hunry{
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+    @media (max-width: 480px) {
+	/***
+	 Dropdown and dropdown elements.
+	 ***/
+        .ship-info{
+            display: none;
+        }
+    }
     
+    .img-100{
+        width: 100%;
+    }
+</style>
+<div class="blog-page post-page">
+        
+    <?php
+    if($article->cate_id == 268){
+    ?>
+    <h3 class="">
+       	<a href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo $article->title; ?> </a>
+    </h3>
+    <div class="row">
+        <img class="img-100" src="<?php echo base_url($article->image); ?>">
+    </div>
+    <br clear="all"/>
+    <div class="module-highlight">    
+        <div class="ship-info">
+            <div class="col-md-3 col-ms-4 col-xs-6">
+                <img src="/assets/images/ship_1.png">
+                <p class="ship-name">FREE SHIPPING</p>
+                <h2>10 Business Days</h2>            
+                <p>Guaranteed by <?php echo date("D, M j", strtotime("10 weekdays")); ?></p>
+            </div>
+            <div class="col-md-3 col-ms-4 col-xs-6">
+                <img src="/assets/images/ship_2.png">
+                <p class="ship-name">UPGRADE TO RUSH</p>
+                <h2>1 Week turnaround</h2>            
+                <p>Guaranteed by <?php echo date("D, M j", strtotime("7 weekdays")); ?></p>
+            </div>
+            <div class="col-md-3 col-ms-4 col-xs-6">
+                <img src="/assets/images/ship_3.png">
+                <p class="ship-name">NEED IT SOONER ?</p>
+                <h2>Have it shipped 3-5 biz days </h2>
+                <p>More shipping option at check out</p>
+            </div>
+            <div class="col-md-3 col-ms-4 col-xs-6">
+                <img src="/assets/images/ship_4.png">
+                <p class="ship-name">SAVE OPTION</p>
+    <!--            <h2>2-Week Delivery</h2>-->
+                <p class="not-hunry">Not in a hurry? Option to save if you don’t require the shirts within 2 weeks</p>
+                <a href="/page/25-shipping-date" style="color: #ffa500">Lean more</a>
+            </div>
+        </div>
+    </div>
+    <?php
+    }
+    else{
+    ?>
     <div>
         
         <div class="col-sm-3">
@@ -26,6 +105,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <a href="/design" class="btn btn-product btn-gode">Design now!</a>
         </div>
     </div>
+    <?php    
+    }
+
+    ?>
+    
+    
+    
     <br clear="all" />
     <br />
     <div>
