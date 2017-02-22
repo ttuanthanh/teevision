@@ -21,11 +21,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			
 			<?php if ($category->image != '' || $category->description != '') { ?>
 			<div class="media">
-				<?php if ($category->image != '') { ?>
-				<a class="pull-left col-xs-4 col-sm-3 col-md-3 thumbnail" href="<?php echo site_url().'blog/category/'.$category->id.'-'.$category->slug; ?>">
-					<img src="<?php echo base_url($category->image); ?>" alt="<?php echo $category->title; ?>" class="img-responsive media-object">
-				</a>
-				<?php } ?>
+				
 				
 				<?php if ($category->description != '') { ?>
 				<div class="media-body col-xs-7 col-sm-8 col-md-8">
@@ -70,7 +66,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		{
 	?>
 	<hr>
-	<h3><?php echo lang('articles_list_article'); ?></h3>
+	<h3><?php //echo lang('articles_list_article'); ?></h3>
 	<?php
 		foreach($articles as $article)
 		{
@@ -110,7 +106,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-md-12">
 					<div class="post-meta">
-						<span>
+<!--						<span>
 							<i class="fa fa-calendar"></i>
 							<?php 
 								$date = date_create($article->date);
@@ -122,7 +118,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<i class="fa fa-user"></i>
 							<?php echo lang('page_blog_by_title');?>
 							<a href="#"> <?php echo $article->created; ?> </a>
-						</span>
+						</span>-->
 						<a class="btn btn-xs btn-primary pull-right" href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>"> <?php echo lang('page_blog_readmore_title');?> </a>
 					</div>
 				</div>
@@ -133,4 +129,5 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	}
 		echo $links; 
 	?>
+        <br /><br />
 </div>
