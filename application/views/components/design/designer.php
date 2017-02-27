@@ -386,10 +386,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="edit_text_info margin-top-20" style="display: none;">
-                                       <span class="colorSelector bg-colors dg-tooltip" onclick="design.products.changeColor(this)"
-                                             data-color="rgb(206, 206, 224);" style="background-color: rgb(206, 206, 224);" data-placement="top"
-                                             data-original-title="custom">
-                                                            </span>
                                     <div class="row toolbar-action-fonts">
                                         <div class="col-xs-6">
                                             <div class="form-group">
