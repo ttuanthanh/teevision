@@ -10,13 +10,20 @@
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
+<link href="<?php echo base_url('assets/css/colorpicker.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+
 <link href="<?php echo base_url('assets/css/reposive.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap-toggle.min.css'); ?>" rel="stylesheet">
 
 <script src="<?php echo base_url('assets/js/add-ons.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.ui.rotatable.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/language.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/colorpicker/colorpicker.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/colorpicker/eye.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/colorpicker/utils.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/colorpicker/layout.js'); ?>"></script>
+
 <script src="<?php echo base_url('assets/js/design.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
@@ -45,6 +52,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <img src="<?php echo base_url('assets/images/coming-soon-dots.png'); ?>" class="img-responsive">
         </div>-->
     <!-- Begin main -->
+
     <div id="dg-designer">
         <div id="left-area" class="col-left row">
             <div id="dg-left" class="width-100">
@@ -52,6 +60,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     <ul class="menu-left" role="tablist">
                         <!-- product-->
                         <li role="presentation" class="active">
+
                             <a href="#dg-products" aria-controls="#dg-products" role="tab" data-toggle="tab"
                                class="view_change_products">
                                 <i class="glyphicons t-shirt"></i>
@@ -160,6 +169,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                                     data-placement="top"
                                                                     data-original-title="<?php echo $product->design->color_title[$i]; ?>"></span>
                                                             <?php } ?>
+
                                                         </div>
                                                     </div>
                                                 </div>

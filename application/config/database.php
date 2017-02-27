@@ -13,7 +13,7 @@ $db['default']['database'] = 'u842852254_tee';
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'teevision';
+$db['default']['database'] = 'tshirt';
 
 
 

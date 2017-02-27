@@ -59,12 +59,12 @@ var design = {
         $jd('.dg-color-picker-active').click(function () {
             $jd(this).parent().find('ul').show('slow');
         });
-        $jd('.change-view-mobile').click(function(){
+        $jd('.change-view-mobile').click(function () {
             $jd('.tab-content').addClass("mobileHide");
             $jd('#center-area').removeClass("mobileHide");
             $jd('#right-area').removeClass("mobileHide");
         });
-        $jd('.menu-left li').click(function(){
+        $jd('.menu-left li').click(function () {
             $jd('.tab-content').removeClass("mobileHide");
             $jd('#center-area').addClass("mobileHide");
             $jd('#right-area').addClass("mobileHide");
@@ -318,9 +318,9 @@ var design = {
                 if (data != '') {
                     if (typeof data.sale != 'undefined') {
                         jQuery('.price-sale-number').html(data.sale);
-                        var each = (Number(data.sale.replace(/[^0-9\.]+/g,""))/ datas.quantity).toFixed(2);
-                        var html = '<p class="each">$'+each+' each</p>'
-                        html+= '<p class="total">total: <span>$'+ data.sale+'</span></p>'
+                        var each = (Number(data.sale.replace(/[^0-9\.]+/g, "")) / datas.quantity).toFixed(2);
+                        var html = '<p class="each">$' + each + ' each</p>'
+                        html += '<p class="total">total: <span>$' + data.sale + '</span></p>'
                         jQuery('#dg-total-mess').html(html);
                         //jQuery('.price-old-number').html(data.old);
                         jQuery('.total-qty .info-2 span').html(datas.quantity);
@@ -659,6 +659,46 @@ var design = {
         }
     },
     print: {
+        colorPicker: function (view) {
+            if (!jQuery(view).data("init")) {
+                var initLayout = function () {
+                    jQuery(view).ColorPicker({
+                        color: '#0000ff',
+                        onShow: function (colpkr) {
+                                jQuery(colpkr).fadeIn(500);
+                                jQuery(view).data("show", true);
+                                console.log(1);
+                                return false;
+                        },
+                        onHide: function (colpkr) {
+                            jQuery(colpkr).fadeOut(500);
+                            jQuery(view).data("show", false);
+                            return false;
+                        },
+                        onChange: function (hsb, hex, rgb) {
+                            jQuery(view).css('backgroundColor', '#' + hex);
+                            jQuery(view).data('color', hex);
+                        },
+                        onSubmit: function (hsb, hex, rgb, el) {
+                            jQuery(el).val(hex);
+                            jQuery(el).ColorPickerHide();
+                            jQuery(view).data("show", false);
+                        },
+                        eventName: 'none'
+                    });
+                };
+                initLayout();
+                EYE.register(initLayout, 'init');
+                jQuery(view).data("init", true);
+
+            }
+            if (jQuery(view).data("show") == false || jQuery(view).data("show") == undefined) {
+                jQuery(view).ColorPickerShow();
+            }
+        },colorPickerHide: function(view){
+            jQuery(view).ColorPickerHide();
+            jQuery(view).data("show", false);
+        },
         colors: function (view) {
             if (jQuery('#view-' + view + ' .product-design').html() == '') {
                 return [];// design.colors;
@@ -681,9 +721,9 @@ var design = {
                             jQuery.each(colors, function (i, hex) {
                                 if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none') {
                                     design.colors.push('#' + hex);
-                                    if(select.closest("#view-front").length>0){
+                                    if (select.closest("#view-front").length > 0) {
                                         countFont++;
-                                    }else if(select.closest("#view-back").length>0){
+                                    } else if (select.closest("#view-back").length > 0) {
                                         countBack++;
                                     }
                                 }
@@ -696,9 +736,9 @@ var design = {
                             jQuery.each(colors, function (hex, i) {
                                 if (jQuery.inArray(hex, design.colors) == -1 && hex != 'none') {
                                     design.colors.push(hex);
-                                    if(select.closest("#view-front").length>0){
+                                    if (select.closest("#view-front").length > 0) {
                                         countFont++;
-                                    }else if(select.closest("#view-back").length>0){
+                                    } else if (select.closest("#view-back").length > 0) {
                                         countBack++;
                                     }
                                 }
@@ -709,7 +749,7 @@ var design = {
                 jQuery('.color-used').html('<div id="colors-used" class="list-colors"></div>');
                 var div = jQuery('#colors-used');
                 jQuery.each(design.colors, function (i, hex) {
-                    div.append('<span style="background-color:' + hex + '" class="bg-colors"></span>');
+                    div.append('<span style="background-color:' + hex + '" class="bg-colors">asdfas</span>');
                 });
                 var detailInfo = "Front: " + countFont + " color / Back: " + countBack + " color";
                 jQuery(".detail-info").html(detailInfo);
@@ -782,7 +822,7 @@ var design = {
             var html = "";
             jQuery('#screen_colors_list .bg-colors').each(function () {
                 if (jQuery(this).hasClass('active') == true) {
-                    html += '<br/><span class="bg-colors margin-left-50" style="background-color:#'+jQuery(this).data('color')+'"title="Texas Orange"></span>'+ jQuery(this).attr('title');
+                    html += '<br/><span class="bg-colors margin-left-50" style="background-color:#' + jQuery(this).data('color') + '"title="Texas Orange"></span>' + jQuery(this).attr('title');
                 }
             });
             jQuery("#seced_color").html(html);
@@ -1012,6 +1052,7 @@ var design = {
                 var span = document.createElement('span');
                 span.className = 'bg-colors';
                 span.setAttribute('data-color', color.hex);
+                span.setAttribute('data-test', color.hex);
                 span.setAttribute('title', color.title);
                 span.setAttribute('onclick', 'design.item.changeColor(this)');
                 span.style.backgroundColor = '#' + color.hex;
@@ -1019,6 +1060,10 @@ var design = {
 
                 screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
+            jQuery(div).append('<span class="colorSelector bg-colors bg-custom" onmouseover="design.print.colorPicker(this)" ' +
+                'onclick="design.item.changeColor(this);"data-color="00b3ff" data-init="false"' +
+                'style="background-color: #00b3ff" data-placement="top" data-original-title="custom">');
+
         },
         loadFonts: function () {
             var self = this;
@@ -2011,7 +2056,7 @@ var design = {
             cacheText.appendChild(div);
             var $width = cacheText.offsetWidth,
                 $height = cacheText.offsetHeight;
-            if(item.type!="text"){
+            if (item.type != "text") {
                 var svgNS = "http://www.w3.org/2000/svg",
                     tspan = document.createElementNS(svgNS, 'tspan'),
                     text = document.createElementNS(svgNS, 'text'),
@@ -2023,9 +2068,9 @@ var design = {
                 } else {
                     tspan.setAttributeNS(null, 'dy', 0);
                 }
-               tspan.appendChild(content);
-               text.appendChild(tspan);
-            }else {
+                tspan.appendChild(content);
+                text.appendChild(tspan);
+            } else {
                 var svgNS = "http://www.w3.org/2000/svg",
                     //tspan = document.createElementNS(svgNS, 'tspan'),
                     text = document.createElementNS(svgNS, 'text');
@@ -2072,7 +2117,6 @@ var design = {
             if (typeof o.style != 'undefined') {
                 text.setAttributeNS(null, 'style', o.style);
             }
-
 
 
             var g = document.createElementNS(svgNS, 'g');
@@ -2523,19 +2567,19 @@ var design = {
                                 img.className = 'modelImage';
                                 img.id = view + '-img-' + e.id;
                                 img.setAttribute('src', baseURL + e.img);
-                                if(view=='front'){
-                                    jQuery(".show-mobile.product-design").html("<img src='"+baseURL + e.img+"'>");
+                                if (view == 'front') {
+                                    jQuery(".show-mobile.product-design").html("<img src='" + baseURL + e.img + "'>");
                                 }
-                                if(document.documentElement.clientWidth < 767){
-                                    img.style.width = parseFloat(e.width)*2/3 + 'px';
-                                    img.style.height = parseFloat(e.height)*2/3 + 'px';
-                                    img.style.top = parseFloat(e.top)*2/3 + 'px';
-                                    img.style.left = parseFloat(e.left)*2/3+ 'px';
-                                }else{
-                                img.style.width = e.width;
-                                img.style.height = e.height;
-                                img.style.top = e.top;
-                                img.style.left = e.left;
+                                if (document.documentElement.clientWidth < 767) {
+                                    img.style.width = parseFloat(e.width) * 2 / 3 + 'px';
+                                    img.style.height = parseFloat(e.height) * 2 / 3 + 'px';
+                                    img.style.top = parseFloat(e.top) * 2 / 3 + 'px';
+                                    img.style.left = parseFloat(e.left) * 2 / 3 + 'px';
+                                } else {
+                                    img.style.width = e.width;
+                                    img.style.height = e.height;
+                                    img.style.top = e.top;
+                                    img.style.left = e.left;
                                 }
                                 img.style.zIndex = e.zIndex;
                                 jQuery(images).append(img);
@@ -2557,16 +2601,16 @@ var design = {
                         var area = items['area'][view];
                         if (area != '' && area.length > 0) {
                             var vector = eval("(" + area + ")");
-                            if(document.documentElement.clientWidth < 767){
+                            if (document.documentElement.clientWidth < 767) {
                                 jQuery(window).css({
-                                    "height": parseFloat(vector.height)*2/3 + 'px',
-                                    "width": parseFloat(vector.width)*2/3 + 'px',
-                                    "left":  parseFloat(vector.left)*2/3 + 'px',
-                                    "top": parseFloat(vector.top)*2/3 + 'px',
+                                    "height": parseFloat(vector.height) * 2 / 3 + 'px',
+                                    "width": parseFloat(vector.width) * 2 / 3 + 'px',
+                                    "left": parseFloat(vector.left) * 2 / 3 + 'px',
+                                    "top": parseFloat(vector.top) * 2 / 3 + 'px',
                                     "border-radius": vector.radius,
                                     "z-index": vector.zIndex
                                 });
-                            }else {
+                            } else {
                                 jQuery(window).css({
                                     "height": vector.height,
                                     "width": vector.width,
@@ -3092,7 +3136,9 @@ var design = {
                 e.stopPropagation();
             });
             jQuery(document).click(function (e) {
-                jQuery('.dropdown-color').popover('hide');
+                if (!jQuery(e.target).parents(".colorpicker").length) {
+                    jQuery('.dropdown-color').popover('hide');
+                }
             });
             jQuery('.dg-tooltip').tooltip();
             // design.popover('add_item_' + item.type);
@@ -3665,11 +3711,13 @@ var design = {
 
         }
         var phrase = '';
-        jQuery('.dg-poduct-fields').each(function(){            
-            jQuery(this).find('li').each(function(){
+        jQuery('.dg-poduct-fields').each(function () {
+            jQuery(this).find('li').each(function () {
                 var current = jQuery(this);
-                if(current.find('lable')) {phrase+=current.find('label').text()}
-                phrase += ':'+current.find('input').val()+", ";
+                if (current.find('lable')) {
+                    phrase += current.find('label').text()
+                }
+                phrase += ':' + current.find('input').val() + ", ";
             });
         });
         var data = {
@@ -3678,26 +3726,25 @@ var design = {
             'teams': teams,
             'fonts': design.fonts,
             'product_id': product_id,
-            'design_id':    design.design_id,
-            'design_file':  design.design_file,
-            'designer_id':  design.designer_id,
-            'design_key':   design.design_key,
+            'design_id': design.design_id,
+            'design_file': design.design_file,
+            'designer_id': design.designer_id,
+            'design_key': design.design_key,
             'design_email': design.design_email,
             'design_name': design.design_name,
             'design_note': jQuery('#design_note').val(),
             'product_color': productColor,
-            'price':jQuery('.price-sale-number').html(),
-            'sizehtml':phrase
+            'price': jQuery('.price-sale-number').html(),
+            'sizehtml': phrase
         };
-        
-        
+
 
         jQuery.ajax({
             url: baseURL + "user/saveDesign",
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify(data),
-            async:false,
+            async: false,
         }).done(function (msg) {
             var results = eval("(" + msg + ")");
 
@@ -3720,30 +3767,30 @@ var design = {
             jQuery('#dg-designer').css('opacity', '1');
         });
     },
-    designsaveBox: function(){
-        if (design.designer_id == 0) { 
+    designsaveBox: function () {
+        if (design.designer_id == 0) {
             jQuery('#dg-savedesign').modal();
-        }else{
+        } else {
             design.save();
         }
-        
+
     },
-    designsaveBox4buy: function(){
-        if (design.designer_id == 0) { 
+    designsaveBox4buy: function () {
+        if (design.designer_id == 0) {
             jQuery('#dg-savedesign4buy').modal();
-        }else{
+        } else {
             design.save4buy();
         }
-        
-    },calculate:function(){
-            jQuery(".detail").show();
-            design.ajax.getPrice();
-            jQuery(".calculate").hide();
+
+    }, calculate: function () {
+        jQuery(".detail").show();
+        design.ajax.getPrice();
+        jQuery(".calculate").hide();
     },
     save: function (buy) {
         jQuery('#dg-savedesign').modal('hide');
-        if (design.designer_id == 0) {            
-            if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '' ){
+        if (design.designer_id == 0) {
+            if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
             }
@@ -3753,45 +3800,45 @@ var design = {
             jQuery('#dg-designer').css('opacity', '0.3');
             design.svg.items('front', design.saveDesign);
         }
-        else {            
+        else {
             //if (design.designer_id != 0) {
-                jQuery("#save-confirm").dialog({
-                    resizable: false,
-                    height: 200,
-                    width: 350,
-                    closeText: 'X',
-                    modal: true,
-                    buttons: [
-                        {
-                            text: "Save New",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
-
-                                design.design_id = 0;
-                                design.design_key = '';
-                                design.design_file = '';
-                                design.svg.items('front', design.saveDesign);
-                            }
+            jQuery("#save-confirm").dialog({
+                resizable: false,
+                height: 200,
+                width: 350,
+                closeText: 'X',
+                modal: true,
+                buttons: [
+                    {
+                        text: "Save New",
+                        icons: {
+                            primary: "ui-icon-heart"
                         },
-                        {
-                            text: "Update",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
-                                design.svg.items('front', design.saveDesign);
-                            }
+                        click: function () {
+                            jQuery(this).dialog("close");
+                            jQuery('#dg-mask').css('display', 'block');
+                            jQuery('#dg-designer').css('opacity', '0.3');
+
+                            design.design_id = 0;
+                            design.design_key = '';
+                            design.design_file = '';
+                            design.svg.items('front', design.saveDesign);
                         }
-                    ]
-                });
+                    },
+                    {
+                        text: "Update",
+                        icons: {
+                            primary: "ui-icon-heart"
+                        },
+                        click: function () {
+                            jQuery(this).dialog("close");
+                            jQuery('#dg-mask').css('display', 'block');
+                            jQuery('#dg-designer').css('opacity', '0.3');
+                            design.svg.items('front', design.saveDesign);
+                        }
+                    }
+                ]
+            });
             //}
 //            else {
 //                jQuery('#dg-mask').css('display', 'block');
@@ -3800,81 +3847,81 @@ var design = {
 //            }
         }
         /*
-        if (0) {
-            
-        }
-        else {
-            jQuery('#dg-savedesign').modal();
-            if (design.designer_id != 0) {
-                jQuery("#save-confirm").dialog({
-                    resizable: false,
-                    height: 200,
-                    width: 350,
-                    closeText: 'X',
-                    modal: true,
-                    buttons: [
-                        {
-                            text: "Save New",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
+         if (0) {
 
-                                design.design_id = 0;
-                                design.design_key = '';
-                                design.design_file = '';
-                                design.svg.items('front', design.saveDesign);
-                            }
-                        },
-                        {
-                            text: "Update",
-                            icons: {
-                                primary: "ui-icon-heart"
-                            },
-                            click: function () {
-                                jQuery(this).dialog("close");
-                                jQuery('#dg-mask').css('display', 'block');
-                                jQuery('#dg-designer').css('opacity', '0.3');
-                                design.svg.items('front', design.saveDesign);
-                            }
-                        }
-                    ]
-                });
-            }
-            else {
-                jQuery('#dg-mask').css('display', 'block');
-                jQuery('#dg-designer').css('opacity', '0.3');
-                design.svg.items('front', design.saveDesign);
-            }
-        }
-        */
-       
+         }
+         else {
+         jQuery('#dg-savedesign').modal();
+         if (design.designer_id != 0) {
+         jQuery("#save-confirm").dialog({
+         resizable: false,
+         height: 200,
+         width: 350,
+         closeText: 'X',
+         modal: true,
+         buttons: [
+         {
+         text: "Save New",
+         icons: {
+         primary: "ui-icon-heart"
+         },
+         click: function () {
+         jQuery(this).dialog("close");
+         jQuery('#dg-mask').css('display', 'block');
+         jQuery('#dg-designer').css('opacity', '0.3');
+
+         design.design_id = 0;
+         design.design_key = '';
+         design.design_file = '';
+         design.svg.items('front', design.saveDesign);
+         }
+         },
+         {
+         text: "Update",
+         icons: {
+         primary: "ui-icon-heart"
+         },
+         click: function () {
+         jQuery(this).dialog("close");
+         jQuery('#dg-mask').css('display', 'block');
+         jQuery('#dg-designer').css('opacity', '0.3');
+         design.svg.items('front', design.saveDesign);
+         }
+         }
+         ]
+         });
+         }
+         else {
+         jQuery('#dg-mask').css('display', 'block');
+         jQuery('#dg-designer').css('opacity', '0.3');
+         design.svg.items('front', design.saveDesign);
+         }
+         }
+         */
+
     },
-    save4buy: function () {        
+    save4buy: function () {
         jQuery('#dg-savedesign4buy').modal('hide');
-        if (design.designer_id == 0) {            
-            if (jQuery('#dg-emailb').val() == '' & jQuery('#dg-nameb').val() == '' ){
+        if (design.designer_id == 0) {
+            if (jQuery('#dg-emailb').val() == '' & jQuery('#dg-nameb').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
             }
             this.design_email = jQuery('#dg-emailb').val();
             this.design_name = jQuery('#dg-nameb').val();
-            
+
         }
-        
+
         //jQuery(this).dialog("close");
         jQuery('#dg-mask').css('display', 'block');
         jQuery('#dg-designer').css('opacity', '0.3');
         //design.svg.items('front', design.saveDesign);
         //setTimeout(function(){ }, 3000);       
-        jQuery.when( design.svg.items('front', design.saveDesign) ).done(function() {
-                design.ajax.addJs(this);
-         });
+        jQuery.when(design.svg.items('front', design.saveDesign)).done(function () {
+            design.ajax.addJs(this);
+        });
         //design.ajax.addJs(this);
-       
+
     },
     mask: function (load) {
         if (load == true) {
