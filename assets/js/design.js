@@ -2157,6 +2157,7 @@ var design = {
                 jQuery('#add_text').hide();
                 jQuery('#update_text').show();
             }
+            jQuery("#enter-text").val(o.text);
 
         },
         update: function (lable, value, detail) {
@@ -2721,7 +2722,7 @@ var design = {
             design.print.size();
             var slt= $jd('#app-wrap .drag-item-selected')
             slt.resizable('destroy');
-            design.item.resize(slt, 'n, e, s, w, se')
+            design.item.resize(slt, 'n, e, s, w, se');
         },
         setupColorprint: function (o) {
             var item = o.item;
@@ -3047,6 +3048,7 @@ var design = {
             design.layers.select(jQuery(e).attr('id').replace('item-', ''));
         },
         unselect: function (e) {
+            design.text.resetText();
             $jd('#app-wrap .drag-item-selected').each(function () {
                 $jd(this).removeClass('drag-item-selected');
                 $jd(this).css('border', 0);
@@ -3064,6 +3066,7 @@ var design = {
             jQuery('#dg-popover .dg-options-toolbar button').removeClass('active');
             jQuery('#dg-popover .dg-options-content').removeClass('active');
             jQuery('#dg-popover .dg-options-content').children('.row').removeClass('active');
+
         },
         remove: function (e) {
             e.parentNode.parentNode.removeChild(e.parentNode);
@@ -4146,7 +4149,7 @@ $jd(document).ready(function () {
             || mouseDownAt.parentNode.className == 'content-inner') {
             design.item.unselect();
             //clear text Item
-            design.text.resetText();
+
             e.preventDefault();
             $jd('.drag-item').click(function () {
                 design.item.select(this, true)
