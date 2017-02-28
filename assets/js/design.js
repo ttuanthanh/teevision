@@ -1953,7 +1953,7 @@ var design = {
             return o;
         },
         create: function () {
-            $jd('.ui-lock').attr('checked', false);
+            $jd('.ui-lock').attr('checked', true);
             var txt = {};
             var text_input = jQuery('#enter-text').val();
             if (text_input === '') {
@@ -1971,6 +1971,8 @@ var design = {
             // design.ajax.getPrice();
         },
         setValue: function (o, type) {
+            $jd('#add_text').hide();
+            $jd('#update_text').show();
             if (type == 'text' || o.type == 'text') {
                 $jd('#enter-text').val(o.text);
                 $jd('.edit_text_info').show();
@@ -2402,7 +2404,7 @@ var design = {
         create: function (e) {
 
             var item = e.item;
-            $jd('.ui-lock').attr('checked', false);
+            $jd('.ui-lock').attr('checked', true);
             var o = {};
             o.type = 'clipart';
             o.upload = 1;
@@ -2448,7 +2450,7 @@ var design = {
         create: function (e) {
             jQuery('#arts-add button').button('loading');
             var item = e.item;
-            $jd('.ui-lock').attr('checked', false);
+            $jd('.ui-lock').attr('checked', true);
             var img = $jd(e).children('img');
             var o = {};
             o.type = 'clipart';
@@ -2717,6 +2719,9 @@ var design = {
             }
             design.print.colors();
             design.print.size();
+            var slt= $jd('#app-wrap .drag-item-selected')
+            slt.resizable('destroy');
+            design.item.resize(slt, 'n, e, s, w, se')
         },
         setupColorprint: function (o) {
             var item = o.item;
@@ -3032,11 +3037,6 @@ var design = {
             $jd(e).css('border', '1px dashed #444444');
             $jd(e).resizable({disabled: false, handles: 'e'});
             $jd(e).draggable({disabled: false});
-            if ($jd(e).data('type') == 'text') {
-                $jd('#add_text').hide();
-                $jd('#update_text').show();
-
-            }
             if (focus) {
                 design.popover('add_item_' + jQuery(e).data('type'));
             }
@@ -3144,6 +3144,9 @@ var design = {
             });
             jQuery('.dropdown-color').click(function (e) {
                 e.stopPropagation();
+            });
+            $jd('.drag-item').click(function () {
+                design.item.select(this, true)
             });
             jQuery(document).click(function (e) {
                 if (!jQuery(e.target).parents(".colorpicker").length) {

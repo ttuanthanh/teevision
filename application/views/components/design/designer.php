@@ -506,11 +506,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
 
                                     <div class="row toolbar-action-size margin-top-20">
-                                        <div class="col-xs-4 col-lg-4 align-left padding-right: 0;">
+                                        <div class="col-xs-4 col-lg-4 align-left padding-right-0">
                                             <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_unlock_proportion']; ?></strong>
                                                 <br/>
-                                                <input type="checkbox" class="ui-lock" id="text-lock"/>
+                                                <input type="checkbox" class="ui-lock" id="text-lock" />
                                                 <span>Free Transform"</span>
                                             </div>
                                         </div>
