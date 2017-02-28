@@ -387,7 +387,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <div class="edit_text_info margin-top-20" style="display: none;">
                                     <div class="row toolbar-action-fonts">
-                                        <div class="col-xs-6">
+                                        <div class="col-xs-4">
                                             <div class="form-group">
                                                 <strong><?php echo $lang['designer_clipart_edit_choose_a_font']; ?></strong>
                                                 <div class="dropdown" data-target="#dg-fonts" data-toggle="modal">
@@ -400,9 +400,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-2">
+                                        <div class="col-xs-3 row padding-right-0">
                                             <div class="form-group">
-                                                <small><?php echo $lang['designer_clipart_edit_text_color']; ?></small>
+                                                <strong class="full-width" style="display:inline-block"><?php echo $lang['designer_clipart_edit_text_color']; ?></strong>
                                                 <div class="list-colors">
                                                     <a class="dropdown-color" id="txt-color"
                                                        title="Click to change color"
@@ -411,10 +411,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
                                                     </a>
+                                                <span class="text-color"></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-5">
                                             <strong><?php echo $lang['designer_clipart_edit_out_line']; ?></strong>
                                             <div class="option-outline">
                                                 <div class="list-colors">
@@ -426,6 +427,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
                                                     </a>
+                                                    <span class="text-color"></span>
                                                 </div>
                                                 <div class="dropdown-outline">
                                                     <a data-toggle="dropdown" class="dg-outline-value"
@@ -613,6 +615,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                         <span
                                                             class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-name"></span>
                                                     </a>
+                                                    <span class="text-color"></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-8">
@@ -636,6 +639,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                         <span
                                                             class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-number"></span>
                                                     </a>
+                                                    <span class="text-color"></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-8">
@@ -839,14 +843,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <div id="item-print-colors" class="col-xs-6 col-md-6"
                                                      style="display:none">
                                                 </div>
-                                                <div id="clipart-colors" class="col-xs-6 col-md-6">
-                                                    <div class="form-group col-lg-12 text-left position-static">
+                                                <div id="clipart-colors" class="col-xs-8 col-md-8 padding-0">
+                                                    <div class="form-group col-lg-12 text-left position-static padding-0">
                                                         <strong><?php echo $lang['designer_clipart_edit_choose_your_color']; ?></strong>
                                                         <br/>
                                                         <div id="list-clipart-colors" class="list-colors"></div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-6 col-lg-6">
+                                                <div class="col-xs-4 col-lg-4">
                                                     <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
                                                     <div><span class="rotate-values"><input type="text" value="0"
                                                                                             class="input-small rotate-value"

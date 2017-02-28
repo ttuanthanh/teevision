@@ -133,6 +133,9 @@
 .padding-0 {
     padding: 0 !important;
 }
+.padding-right-0{
+    padding-right: 0!important;
+}
 .margin-left-0{
     margin-left: 0 !important;
 }
@@ -330,6 +333,7 @@ body {
 }
 
 .list-colors {
+    vertical-align: top;
     display: inline-block;
 }
 
@@ -1449,7 +1453,20 @@ body {
     text-align: center;
     width: 22px;
 }
-
+.text-color{
+    line-height: 28px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    min-width: 10px;
+    max-width: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    overflow: hidden;
+    float: left;
+}
 #art-rotate {
     float: left;
     padding-top: 4px;

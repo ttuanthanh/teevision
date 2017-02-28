@@ -678,10 +678,11 @@ var design = {
                         onChange: function (hsb, hex, rgb) {
                             jQuery(view).css('backgroundColor', '#' + hex);
                             jQuery(view).data('color', hex);
+                            jQuery(view).attr("title", '#' + hex);
                         },
                         onSubmit: function (hsb, hex, rgb, el) {
                             jQuery(el).val(hex);
-                            jQuery(el).ColorPickerHide();
+                            jQuery(el).ColorPickerHide();yey
                             jQuery(view).data("show", false);
                         },
                         eventName: 'none'
@@ -1062,7 +1063,7 @@ var design = {
             });
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom" onmouseover="design.print.colorPicker(this)" ' +
                 'onclick="design.item.changeColor(this);"data-color="00b3ff" data-init="false"' +
-                'style="background-color: #00b3ff" data-placement="top" data-original-title="custom">');
+                'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
 
         },
         loadFonts: function () {
@@ -3094,6 +3095,8 @@ var design = {
                         jQuery.data(a, 'colors', colors[color]);
                         a.innerHTML = '<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>';
                         div.append(a);
+                        var b = "<span class='text-color'></span>"
+                        div.append(b);
                     }
                 }
                 else {
@@ -3186,7 +3189,10 @@ var design = {
 
             var o = this.get(),
                 color = jQuery(e).data('color'),
-                a = jQuery('.dropdown-color.active');
+                a = jQuery('.dropdown-color.active'),
+                listColor = a.parent(),
+                title = jQuery(e).attr("title"),
+                index = listColor.find(".dropdown-color").index(a);
             if (color == 'none') {
                 jQuery(a).addClass('bg-none');
             }
@@ -3195,7 +3201,8 @@ var design = {
                 jQuery(a).css('background-color', '#' + color);
             }
             jQuery(a).data('value', color);
-
+            //show text
+            listColor.find(".text-color").get(index).innerHTML  = title;
             if (o.data('type') == 'clipart') {
                 var a = jQuery('#list-clipart-colors .dropdown-color.active');
                 design.art.changeColor(a, color);
