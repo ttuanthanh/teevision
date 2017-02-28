@@ -1033,6 +1033,7 @@ var design = {
         },
         fonts: {},
         fontActive: {},
+        colors: {},
         loadColors: function () {
             var self = this;
             jQuery.ajax({
@@ -1041,14 +1042,24 @@ var design = {
             }).done(function (data) {
                 if (data.status == 1) {
                     self.addColor(data.colors);
+                    self.colors = data.colors;
                 }
             }).always(function () {
             });
+        },getColorTitle: function(colorSlt){
+            var colorResult = colorSlt;
+            jQuery.each(this.colors, function(i, color){
+                if(colorSlt == '#'+ color.hex) {
+                    colorResult = color.title;
+                    return false;
+                }
+            })
+            return colorResult;
         },
         addColor: function (colors) {
             var screen_colors = jQuery('#screen_colors_list');
             var div = jQuery('.other-colors');
-            jQuery(div).html('<span class="bg-colors bg-none" data-color="none" title="Normal" onclick="design.item.changeColor(this)"></span>');
+            jQuery(div).html('<span class="bg-colors bg-none" data-color="none" title="none" onclick="design.item.changeColor(this)"></span>');
             jQuery.each(colors, function (i, color) {
                 var span = document.createElement('span');
                 span.className = 'bg-colors';
@@ -1058,7 +1069,6 @@ var design = {
                 span.setAttribute('onclick', 'design.item.changeColor(this)');
                 span.style.backgroundColor = '#' + color.hex;
                 jQuery(div).append(span);
-
                 screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom" onmouseover="design.print.colorPicker(this)" ' +
@@ -1565,11 +1575,12 @@ var design = {
         updateBack: function (e) {
             if (jQuery(e).is('.drag-item-name')) {
                 jQuery('#txt-team-name-fontfamly').html(e.item.fontfamly);
-                jQuery('#team-name--color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+                jQuery('#team-name-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
+                jQuery('#team-name-color-text').html(design.designer.getColorTitle(e.item.color));
             } else if (jQuery(e).is('.drag-item-number')) {
                 jQuery('#txt-team-number-fontfamly').html(e.item.fontfamly);
                 jQuery('#team-number-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
-
+                jQuery('#team-number-color-text').html(design.designer.getColorTitle(e.item.color));
             }
         },
         load: function (teams) {
@@ -1965,9 +1976,7 @@ var design = {
                 $jd('.edit_text_info').show();
             }
             $jd('#txt-fontfamily').html(o.fontFamily);
-            var color = $jd('#txt-color');
-            color.data('color', o.color);
-            color.css('background-color', o.color);
+
 
             // text-align
             if (typeof o.align == 'undefined')
@@ -2000,12 +2009,13 @@ var design = {
                 obj.data('color', o.color);
                 obj.data('value', o.color);
                 obj.css('background-color', '#' + o.color);
+                $jd('#txt-color-text').html(design.designer.getColorTitle(o.color));
             }
 
             if (typeof o.outlineC == 'undefined') {
                 o.outlineC = 'none';
             }
-            var obj = jQuery('.option-outline .dropdown-color');
+            var obj = jQuery('#txt-outline-color');
             if (o.outlineC == 'none')
                 obj.addClass('bg-none');
             else
@@ -2014,7 +2024,7 @@ var design = {
             obj.data('color', o.outlineC);
             obj.data('value', o.outlineC);
             obj.css('background-color', '#' + o.outlineC);
-
+            $jd('#txt-outline-color-text').html(design.designer.getColorTitle(o.outlineC));
             if (typeof o.outlineW == 'undefined') {
                 o.outlineW = 0;
             }
@@ -2643,9 +2653,6 @@ var design = {
             span.id = 'item-' + n;
             span.item = item;
             item.id = n;
-            jQuery(span).bind('click', function () {
-                design.item.select(this, true)
-            });
             var center = this.align.center(item);
             if (typeof item.top != 'undefined') {
                 center = this.align.top(item);
@@ -3095,7 +3102,7 @@ var design = {
                         jQuery.data(a, 'colors', colors[color]);
                         a.innerHTML = '<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>';
                         div.append(a);
-                        var b = "<span class='text-color'></span>"
+                        var b = "<span class='text-color'>"+ design.designer.getColorTitle(color)+"</span>"
                         div.append(b);
                     }
                 }
@@ -4139,7 +4146,7 @@ $jd(document).ready(function () {
             design.text.resetText();
             e.preventDefault();
             $jd('.drag-item').click(function () {
-                design.item.select(this)
+                design.item.select(this, true)
             });
         }
     });

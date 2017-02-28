@@ -411,7 +411,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
                                                     </a>
-                                                <span class="text-color"></span>
+                                                <span id="txt-color-text" class="text-color"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -419,7 +419,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <strong><?php echo $lang['designer_clipart_edit_out_line']; ?></strong>
                                             <div class="option-outline">
                                                 <div class="list-colors">
-                                                    <a class="dropdown-color bg-none" data-label="outline"
+                                                    <a class="dropdown-color bg-none" id="txt-outline-color" data-label="outline"
                                                        data-placement="top"
                                                        data-original-title="Click to change color"
                                                        href="javascript:void(0)"
@@ -427,7 +427,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
                                                     </a>
-                                                    <span class="text-color"></span>
+                                                    <span class="text-color" id="txt-outline-color-text"></span>
                                                 </div>
                                                 <div class="dropdown-outline">
                                                     <a data-toggle="dropdown" class="dg-outline-value"
@@ -615,7 +615,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                         <span
                                                             class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-name"></span>
                                                     </a>
-                                                    <span class="text-color"></span>
+                                                    <span class="text-color" id="team-name-color-text">Black</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-8">
@@ -639,7 +639,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                         <span
                                                             class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s team-number"></span>
                                                     </a>
-                                                    <span class="text-color"></span>
+                                                    <span class="text-color" id="team-number-color-text">Black</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-8">
@@ -843,14 +843,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <div id="item-print-colors" class="col-xs-6 col-md-6"
                                                      style="display:none">
                                                 </div>
-                                                <div id="clipart-colors" class="col-xs-8 col-md-8 padding-0">
+                                                <div id="clipart-colors" class="col-xs-9 col-md-9 padding-0">
                                                     <div class="form-group col-lg-12 text-left position-static padding-0">
                                                         <strong><?php echo $lang['designer_clipart_edit_choose_your_color']; ?></strong>
                                                         <br/>
                                                         <div id="list-clipart-colors" class="list-colors"></div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-4 col-lg-4">
+                                                <div class="col-xs-3 col-lg-3">
                                                     <strong><?php echo $lang['designer_clipart_edit_rotate']; ?></strong>
                                                     <div><span class="rotate-values"><input type="text" value="0"
                                                                                             class="input-small rotate-value"

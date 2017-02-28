@@ -1375,13 +1375,16 @@ body {
     position: absolute;
     padding: 1px;
     opacity: 1;
-    filter: Alpha(Opacity=100)
+    filter: Alpha(Opacity=100);
 }
 
 .design-area .drag-item-selected {
     border: 1px dashed #444444;
     cursor: move;
     padding: 0px;
+}
+.design-area .drag-item tspan{
+    pointer-events: none;
 }
 
 .popover {
