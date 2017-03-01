@@ -152,13 +152,23 @@ ul.p-color-sizes li input {
         font-size: 20px;
         background-color: #feb71d;
     }
-    .contain-btn-inform{
-        margin-top: 50px;
-    }
     .inform-btn-mobile:first-child{
         padding-right: 2px;
     }
     .inform-btn-mobile:last-child{
         padding-left: 2px;
     }
+    .ship-info>DIV{
+        display: none;
+    }
+    .ship-info .free-ship{
+        display: block;
+        float:left;
+    }
+    .ship-info .free-ship .img-free{
+        position: absolute;
+        right: -60px;
+        top: 10px;
+    }
+
 }
