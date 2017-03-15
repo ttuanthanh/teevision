@@ -21,6 +21,14 @@ $im->destroy();
 
 
 ?>
-<h2>File name: <?php echo $target; ?></h2>
-<img src="<?php echo $target?>">
+<div style="float: left; width: 50%">
+    <h2>INPUT: <?php echo $strInputFile; ?></h2>
+    <img src="<?php echo $strInputFile?>">
+</div>
+
+<div style="float: left; width: 49%">
+    <h2>OUTPUT: <?php echo $target; ?></h2>
+    <img src="<?php echo $target?>">
+</div>
+
 
