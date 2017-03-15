@@ -8,9 +8,12 @@
 
 $strInputFile = $_GET['file'];
 $tranname= explode('.', $strInputFile);
-$target = $tranname[0].'transparent.png';
+$target = $tranname[0].'_transparent.png';
+
+$fuzz = isset($_GET['fuzz']) ? $_GET['fuzz'] : 10000;
+
 $im = new Imagick($strInputFile);
-$im->paintTransparentImage($im->getImageBackgroundColor(), 0, 100);
+$im->paintTransparentImage($im->getImageBackgroundColor(), 0, $fuzz);
 $im->setImageFormat('png');
 $im->writeImage($target);
 $im->destroy();
@@ -18,6 +21,6 @@ $im->destroy();
 
 
 ?>
-
+<h2>File name: <?php echo $target; ?></h2>
 <img src="<?php echo $target?>">
 
