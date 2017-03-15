@@ -7,12 +7,17 @@
  */
 
 $strInputFile = $_GET['file'];
-$target = 'car_transparent.png';
+$tranname= explode('.', $strInputFile);
+$target = $tranname[0].'transparent.png';
 $im = new Imagick($strInputFile);
-$im->paintTransparentImage($im->getImageBackgroundColor(), 0, 10000);
+$im->paintTransparentImage($im->getImageBackgroundColor(), 0, 100);
 $im->setImageFormat('png');
 $im->writeImage($target);
 $im->destroy();
 
+
+
 ?>
+
+<img src="<?php echo $target?>">
 
