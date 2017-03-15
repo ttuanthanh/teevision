@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/banner/jquery.bxslider.css'); ?>"/>
 <script src="<?php echo base_url('media/modules/banner/jquery.bxslider.js'); ?>"></script>
 <?php echo $css; ?>
-<ul class="bxslider">
+<ul class="bxslider top-banner">
 	<?php 
 		$images = json_decode($banner->images);
 		$captions = json_decode($banner->captions);
@@ -27,6 +27,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		}
 	?>
 </ul>
+<div class="start-design-mobile mobile"><a href="/design" class="btn btn-warning start-link"><span>Start Design</span></a></div>
 <script type="text/javascript">
 	jQuery('.bxslider').bxSlider({
 		<?php 

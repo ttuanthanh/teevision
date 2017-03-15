@@ -133,6 +133,9 @@
 .padding-0 {
     padding: 0 !important;
 }
+.padding-right-0{
+    padding-right: 0!important;
+}
 .margin-left-0{
     margin-left: 0 !important;
 }
@@ -330,6 +333,7 @@ body {
 }
 
 .list-colors {
+    vertical-align: top;
     display: inline-block;
 }
 
@@ -1371,13 +1375,16 @@ body {
     position: absolute;
     padding: 1px;
     opacity: 1;
-    filter: Alpha(Opacity=100)
+    filter: Alpha(Opacity=100);
 }
 
 .design-area .drag-item-selected {
     border: 1px dashed #444444;
     cursor: move;
     padding: 0px;
+}
+.design-area .drag-item tspan{
+    pointer-events: none;
 }
 
 .popover {
@@ -1449,7 +1456,20 @@ body {
     text-align: center;
     width: 22px;
 }
-
+.text-color{
+    line-height: 28px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    min-width: 10px;
+    max-width: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    overflow: hidden;
+    float: left;
+}
 #art-rotate {
     float: left;
     padding-top: 4px;
@@ -3186,6 +3206,90 @@ ul.choose_payment .description {
     align-items: stretch;
     align-content: stretch;
 }
+
+.colorSelector {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: url(../images/colorpicker/select.png);
+    background-size: cover;
+}
+.colorSelector div {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    background: url(../images/colorpicker/select.png) center;
+}
+#colorSelector2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: url(../images/colorpicker/select2.png);
+}
+#colorSelector2 div {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    background: url(../images/colorpicker/select2.png) center;
+}
+#colorpickerHolder2 {
+    top: 32px;
+    left: 0;
+    width: 356px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+}
+#colorpickerHolder2 .colorpicker {
+    background-image: url(../images/colorpicker/custom_background.png);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#colorpickerHolder2 .colorpicker_hue div {
+    background-image: url(../images/colorpicker/custom_indic.gif);
+}
+#colorpickerHolder2 .colorpicker_hex {
+    background-image: url(../images/colorpicker/custom_hex.png);
+}
+#colorpickerHolder2 .colorpicker_rgb_r {
+    background-image: url(../images/colorpicker/custom_rgb_r.png);
+}
+#colorpickerHolder2 .colorpicker_rgb_g {
+    background-image: url(../images/colorpicker/custom_rgb_g.png);
+}
+#colorpickerHolder2 .colorpicker_rgb_b {
+    background-image: url(../images/colorpicker/custom_rgb_b.png);
+}
+#colorpickerHolder2 .colorpicker_hsb_s {
+    background-image: url(../images/colorpicker/custom_hsb_s.png);
+    display: none;
+}
+#colorpickerHolder2 .colorpicker_hsb_h {
+    background-image: url(../images/colorpicker/custom_hsb_h.png);
+    display: none;
+}
+#colorpickerHolder2 .colorpicker_hsb_b {
+    background-image: url(../images/colorpicker/custom_hsb_b.png);
+    display: none;
+}
+#colorpickerHolder2 .colorpicker_submit {
+    background-image: url(../images/colorpicker/custom_submit.png);
+}
+#colorpickerHolder2 .colorpicker input {
+    color: #778398;
+}
+#customWidget {
+    position: relative;
+    height: 36px;
+}
+
 .full-width{
     width: 100%;
 }

@@ -132,3 +132,43 @@ ul.p-color-sizes li input {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+@media screen and (min-width: 768px) {
+    .mobile{
+        display: none;
+    }
+}
+@media screen and (max-width: 767px) {
+    .mobile{
+        display: inherit;
+    }
+    .top-banner button{
+        display:none;
+    }
+    .start-design-mobile{
+        position: absolute;
+        bottom: 5px;
+    }
+    .start-design-mobile a.start-link, .inform-link{
+        font-size: 20px;
+        background-color: #feb71d;
+    }
+    .inform-btn-mobile:first-child{
+        padding-right: 2px;
+    }
+    .inform-btn-mobile:last-child{
+        padding-left: 2px;
+    }
+    .ship-info>DIV{
+        display: none;
+    }
+    .ship-info .free-ship{
+        display: block;
+        float:left;
+    }
+    .ship-info .free-ship .img-free{
+        position: absolute;
+        right: -60px;
+        top: 10px;
+    }
+
+}

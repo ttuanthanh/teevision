@@ -37,37 +37,37 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         margin-top: 5px;
         margin-bottom: 0px;
     }
-    @media (max-width: 480px) {
-	/***
-	 Dropdown and dropdown elements.
-	 ***/
-        .ship-info{
-            display: none;
-        }
-    }
+    /*@media (max-width: 480px) {*/
+	/*!****/
+	 /*Dropdown and dropdown elements.*/
+	 /****!*/
+        /*.ship-info{*/
+            /*display: none;*/
+        /*}*/
+    /*}*/
 </style>
 <div class="module-highlight">
     
-    <div class="ship-info">
-        <div class="col-md-3 col-ms-4 col-xs-6">
-            <img src="/assets/images/ship_1.png">
+    <div class="ship-info row">
+        <div class="col-md-3 col-ms-3 col-xs-8 free-ship">
+            <img class="img-free" src="http://teevisionprinting.com/assets/images/ship_1.png">
             <p class="ship-name">FREE SHIPPING</p>
             <h2>10 Business Days</h2>            
             <p>Guaranteed by <?php echo date("D, M j", strtotime("10 weekdays")); ?></p>
         </div>
-        <div class="col-md-3 col-ms-4 col-xs-6">
+        <div class="col-md-3 col-sm-3">
             <img src="/assets/images/ship_2.png">
             <p class="ship-name">UPGRADE TO RUSH</p>
             <h2>1 Week turnaround</h2>            
             <p>Guaranteed by <?php echo date("D, M j", strtotime("7 weekdays")); ?></p>
         </div>
-        <div class="col-md-3 col-ms-4 col-xs-6">
+        <div class="col-md-3 col-sm-3">
             <img src="/assets/images/ship_3.png">
             <p class="ship-name">NEED IT SOONER ?</p>
             <h2>Have it shipped 3-5 biz days </h2>
             <p>More shipping option at check out</p>
         </div>
-        <div class="col-md-3 col-ms-4 col-xs-6">
+        <div class="col-md-3 col-sm-3">
             <img src="/assets/images/ship_4.png">
             <p class="ship-name">SAVE OPTION</p>
 <!--            <h2>2-Week Delivery</h2>-->
