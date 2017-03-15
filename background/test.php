@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-$strInputFile = 'sr.jpg';
+$strInputFile = $_GET['file'];
 $target = 'car_transparent.png';
 $im = new Imagick($strInputFile);
 $im->paintTransparentImage($im->getImageBackgroundColor(), 0, 10000);
