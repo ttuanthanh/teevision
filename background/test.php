@@ -82,7 +82,7 @@ if(isset($_POST["submit"])) {
     Fuzz:
     <input type="text" name="fuzz" id="fuzz" value="10000">
     <br /><br/>
-    <input type="submit" value="Upload and remove background" name="submit" style="height: 30px; background: #CEF3C5">
+    <input type="submit" value="Upload and remove background" name="submit" style="height: 30px; background: #CEF3C5;color: maroon; font-weight: bold">
 </form>
 <?php 
 if (isset($target)){
