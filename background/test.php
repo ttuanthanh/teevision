@@ -84,14 +84,14 @@ if(isset($_POST["submit"])) {
 <div style="background: #007F7B">
     <div style="float: left; width: 50%">
         <h2>INPUT: <?php echo $strInputFile; ?></h2>
-        <img src="<?php echo $strInputFile?>">
+        <img src="<?php echo $strInputFile?>" width="100%">
     </div>
 <?php 
 if (isset($target)){
     ?>
     <div style="float: left; width: 49%">
         <h2>OUTPUT: <?php echo $target; ?></h2>
-        <img src="<?php echo $target?>">
+        <img src="<?php echo $target?>"  width="100%">
     </div>
     <?php
     }
