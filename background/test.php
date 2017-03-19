@@ -50,7 +50,7 @@ if(isset($_POST["submit"])) {
             $tranname= explode('.', $strInputFile);
             $target = $tranname[0].'_transparent.png';
 
-            $fuzz = isset($_GET['fuzz']) ? $_GET['fuzz'] : 10000;
+            $fuzz = isset($_POST['fuzz']) ? $_POST['fuzz'] : 10000;
 
             $im = new Imagick($strInputFile);
             $im->paintTransparentImage($im->getImageBackgroundColor(), 0, $fuzz);
@@ -75,10 +75,14 @@ if(isset($_POST["submit"])) {
     }
 </style>
 
-<form  method="post" enctype="multipart/form-data">
+<form  method="post" enctype="multipart/form-data" style="font-size: 14px">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload and remove background" name="submit">
+    <br/><br/>
+    Fuzz:
+    <input type="text" name="fuzz" id="fuzz" value="10000">
+    <br /><br/>
+    <input type="submit" value="Upload and remove background" name="submit" style="height: 30px; background: #CEF3C5">
 </form>
 <?php 
 if (isset($target)){
