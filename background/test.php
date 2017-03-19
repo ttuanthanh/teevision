@@ -89,7 +89,7 @@ if (isset($target)){
     ?>
 <div style="background: #007F7B">
     <div style="float: left; width: 50%">
-        <h2>INPUT: <?php echo $strInputFile; ?></h2>
+        <h2>INPUT: <?php echo $strInputFile.' ---fuzz: '.$fuzz; ?></h2>
         <img src="<?php echo $strInputFile?>" width="80%">
     </div>
 
