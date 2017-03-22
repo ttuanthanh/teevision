@@ -289,8 +289,17 @@ class Ajax extends Frontend_Controller {
                             $this->image_lib->resize();
                             $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
                             //$thumb = 'thanhtest.jpg';
-                            $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
-			
+                            //$image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+                            $strInputFile = $image->thumb;
+                            $tranname= explode('.', $strInputFile);
+                            $target = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png';
+
+                            $im = new Imagick($strInputFile);
+                            $im->transparentPaintImage($im->getImageBackgroundColor(), 0, 10000,FALSE);
+                            $im->setImageFormat('png');
+                            $im->writeImage($target);
+                            $im->destroy();
+                            $image->thumb =$target;
                         }
                         else
                         {
