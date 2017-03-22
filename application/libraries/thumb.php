@@ -66,8 +66,9 @@ class thumb{
 	*/
 	public function createThumb($file, $ext, $size = array('width'=>100, 'height'=>100),  $type = 'png', $fixed = false)
 	{
+                $type = 'png';
 		$image 	= new Imagick($this->file);
-		
+		$image->paintTransparentImage($image->getImageBackgroundColor(), 0, 10000);
 		$image->setBackgroundColor(new ImagickPixel('transparent'));
 		$image->setImageFormat($type);
 		
