@@ -72,7 +72,7 @@ jQuery(function () {
 								alert(media.msg);
 							}
 							jQuery('#upload-copyright').attr('checked', false);
-							jQuery('#remove-bg').attr('checked', false);
+							//jQuery('#remove-bg').attr('checked', false);
 							jQuery('#files-upload').val('');
 							jQuery('.selected-image-upload').hide();
 							jQuery('.browse-file').show();
@@ -139,7 +139,7 @@ jQuery(function () {
 					}
 				}
 				jQuery('#upload-copyright').attr('checked', false);
-				jQuery('#remove-bg').attr('checked', false);
+				//jQuery('#remove-bg').attr('checked', false);
 				jQuery('#files-upload').val('');
 				jQuery('.selected-image-upload').hide();
 				jQuery('.browse-file').show();
