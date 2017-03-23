@@ -60,3 +60,4 @@ $route['services/(:any)']                = 'blog/post/$1';
 $route['organizations/(:any)']           = 'blog/post/$1';
 $route['services']                       = 'blog';
 $route['organizations']                  = 'blog/category/268';
+$route['organizations/page']                  = 'blog/category/268';
