@@ -58,7 +58,7 @@ class Blog extends Frontend_Controller {
 		}else
 		{
 			$config['total_rows'] = $this->blog_m->getArticles(true, $id);
-			$config['per_page'] = 3;
+			$config['per_page'] = 20;
 				
 			$config['uri_segment'] = 4; 
 			$config['next_link'] = lang('next'); 
