@@ -3401,7 +3401,7 @@ var design = {
     upload: {
         computer: function () {
             if (jQuery('#upload-copyright').is(':checked') == false) {
-                alert('Please tick the checkbox');
+                alert('Please click copyright box to upload image.');
                 return false;
             }
             if (jQuery('#files-upload').val() == '') {

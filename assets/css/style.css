@@ -3050,7 +3050,7 @@ ul.choose_payment .description {
     margin: 10px 0;
 }
 #dg-designer .first-upload{
-    margin-top: 20px;
+/*    margin-top: 20px;*/
     height:50px;
 }
 #dg-designer .upload-area p{
@@ -3080,7 +3080,10 @@ ul.choose_payment .description {
 }
 #dg-designer #upload-conputer .checkbox{
     padding-left: 30px;
-    text-align: left;
+    text-align: center;
+}
+.rm_bg_bt{
+    margin-top: 0!important;
 }
 #dg-designer .action-area .help-block{
     float: left;

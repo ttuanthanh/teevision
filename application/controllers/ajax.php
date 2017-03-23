@@ -225,7 +225,7 @@ class Ajax extends Frontend_Controller {
 		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
 	
-	public function upload()
+	public function upload($remove = 0)
 	{
 		$status = "";
 		$msg = "";
@@ -316,7 +316,7 @@ class Ajax extends Frontend_Controller {
                         $this->thumb->file	= $data['full_path'];				
 
                         $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';	
-                        $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300));
+                        $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300), $remove);
                         $image->thumb  = $thumbs .DS. $data['file_name'].'_thumb.png';
 			
 			$msg 				= $image;

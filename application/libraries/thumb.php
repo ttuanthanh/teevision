@@ -64,7 +64,7 @@ class thumb{
 	 * create thumb
 	 * $file: path of file save
 	*/
-	public function createThumb($file, $ext, $size = array('width'=>100, 'height'=>100),  $type = 'png', $fixed = false)
+	public function createThumb($file, $ext, $size = array('width'=>100, 'height'=>100), $removebg, $type = 'png', $fixed = false)
 	{
                 $type = 'png';
 		$image 	= new Imagick($this->file);		
@@ -91,7 +91,8 @@ class thumb{
 		}
 		
 		$image->resizeImage($newWidth, $newHeight, imagick::FILTER_LANCZOS, 1); 
-                $image->transparentPaintImage($image->getImageBackgroundColor(), 0, 10000,FALSE);
+                if($removebg == 1)
+                    $image->transparentPaintImage($image->getImageBackgroundColor(), 0, 10000,FALSE);
 		$image->writeImage($file.'_thumb.'.$type);	
 		$image->clear();
 		$image->destroy();
