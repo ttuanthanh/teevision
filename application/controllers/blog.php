@@ -41,7 +41,7 @@ class Blog extends Frontend_Controller {
 		$this->load->library('pagination'); 
 		$this->load->helper('url');
                 if ($id == 268)
-                    $config['base_url'] = base_url('organizations');
+                    $config['base_url'] = base_url('organizations/page/');
                 else
                     $config['base_url'] = base_url('blog/category/'.$id);
 		
