@@ -262,6 +262,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 <p><?php echo $lang['designer_upload_accept_the_following']; ?>:</p>
                                                 <p><strong>PNG, JPG, GIF, PDF, PSD, AI, EPS, SVG</strong></p>
                                             </div>
+                                            
+                                            
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" autocomplete="off"
@@ -275,7 +277,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                         </div>
 
                                     </div>
-                                    <div class="row col-md-12 margin-left-0">
+                                    <hr/>
+                                    <div class="row col-md-6 checkbox text-center rm_bg_bt">
+                                        <input type="checkbox" autocomplete="off" id="remove-bg" data-toggle="toggle" data-size="small">
+                                        <span class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
+                                    </div>
+                                    <div class="row col-md-6 margin-left-0">
                                         <button type="button"
                                                 class="btn btn-primary input-sm pull-right full-width first-upload"
                                                 id="action-upload">Upload
@@ -304,13 +311,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 </p>
                                             </div>
                                             <div class="form-group action-area align-left">
-                                                <!--                                            <div class="checkbox">-->
-                                                <!--                                                <input type="checkbox" autocomplete="off" id="remove-bg"-->
-                                                <!--                                                       data-toggle="toggle" data-size="small">-->
-                                                <!--                                                <span-->
-                                                <!--                                                    class="help-block">-->
-                                                <?php //echo $lang['designer_upload_remove_white_background']; ?><!--</span>-->
-                                                <!--                                            </div>-->
+                                                                                            
 
 
                                                 <button type="button" class="upload-button" style="display: none;"

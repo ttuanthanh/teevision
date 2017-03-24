@@ -225,7 +225,7 @@ class Ajax extends Frontend_Controller {
 		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
 	
-	public function upload()
+	public function upload($remove = 0)
 	{
 		$status = "";
 		$msg = "";
@@ -282,27 +282,43 @@ class Ajax extends Frontend_Controller {
                         $config['library_path'] = '/usr/bin';
                         //$config['new_image'] = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. 'test1111.jpg';
                         
-                        if( !in_array($data['file_ext'], array('.svg', '.psd', '.ai', '.pdf', '.eps')) ) 
-                        {
-                            $config['image_library'] = 'gd2';
-                            $this->load->library('image_lib', $config);
-                            $this->image_lib->resize();
-                            $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
-                            //$thumb = 'thanhtest.jpg';
-                            $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
-			
-                        }
-                        else
-                        {
-                            $this->load->library('thumb');
-                            $this->thumb->file	= $data['full_path'];				
+//                        if( !in_array($data['file_ext'], array('.svg', '.psd', '.ai', '.pdf', '.eps')) ) 
+//                        {
+//                            $config['image_library'] = 'gd2';
+//                            $this->load->library('image_lib', $config);
+//                            $this->image_lib->resize();
+//                            $thumb 				= str_replace($this->image_lib->dest_folder, '', $this->image_lib->full_dst_path);
+//                            //$thumb = 'thanhtest.jpg';
+//                            $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+//                            $strInputFile = '/media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+//                            $tranname= explode('.', $thumb);
+//                            $target = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png';
+//
+//                            $im = new Imagick($strInputFile);
+//                            $im->transparentPaintImage($im->getImageBackgroundColor(), 0, 10000,FALSE);
+//                            $im->setImageFormat('png');
+//                            $im->writeImage($target);
+//                            $im->destroy();
+//                            $image->thumb =$target;
+//                        }
+//                        else
+//                        {
+//                            $this->load->library('thumb');
+//                            $this->thumb->file	= $data['full_path'];				
+//
+//                            $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';				
+//                            //if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
+//                            $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300));
+//                            $image->thumb  = $thumbs .DS. $data['file_name'].'_thumb.png';
+//                        }
+                            
+                        $this->load->library('thumb');
+                        $this->thumb->file	= $data['full_path'];				
 
-                            $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';				
-                            //if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
-                            $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300));
-                            $image->thumb  = $thumbs .DS. $data['file_name'].'_thumb.png';
-                        }
-			//$image->thumb  = $config['new_image'];
+                        $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';	
+                        $this->thumb->createThumb($data['full_path'], $data['file_ext'], array('width'=>300, 'height'=>300), $remove);
+                        $image->thumb  = $thumbs .DS. $data['file_name'].'_thumb.png';
+			
 			$msg 				= $image;
 		}			
 		echo json_encode(array('status' => $status, 'msg' => $msg));
