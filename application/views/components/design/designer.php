@@ -1009,7 +1009,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <span>Zoom</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="default">
                        <a data-target="#dg-comment" id="tools-comment" data-toggle="modal" href="javascript:void(0)">
                             <i class="glyphicons circle_question_mark"></i>
                             <span>comment</span>
