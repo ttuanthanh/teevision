@@ -59,7 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <br/>
         </div>
         <div class="col-md-4 " style="padding-top: 100px">
-            <iframe width="90%" src="https://www.youtube.com/embed/KsB1BgUL7IY?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <iframe width="90%" src="https://www.youtube.com/embed/_9d0zA3sh-s?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <br class="clear"/>

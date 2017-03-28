@@ -659,6 +659,9 @@ var design = {
         }
     },
     print: {
+        colorPickerClick: function(view){
+            jQuery(view).parent().find(".button_click").click();
+        },
         colorPicker: function (view) {
             if (!jQuery(view).data("init")) {
                 var initLayout = function () {
@@ -667,7 +670,6 @@ var design = {
                         onShow: function (colpkr) {
                                 jQuery(colpkr).fadeIn(500);
                                 jQuery(view).data("show", true);
-                                console.log(1);
                                 return false;
                         },
                         onHide: function (colpkr) {
@@ -682,7 +684,8 @@ var design = {
                         },
                         onSubmit: function (hsb, hex, rgb, el) {
                             jQuery(el).val(hex);
-                            jQuery(el).ColorPickerHide();yey
+                            jQuery(el).ColorPickerHide();
+                            design.item.changeColor(view);
                             jQuery(view).data("show", false);
                         },
                         eventName: 'none'
@@ -1071,8 +1074,11 @@ var design = {
                 jQuery(div).append(span);
                 screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
-            jQuery(div).append('<span class="colorSelector bg-colors bg-custom" onmouseover="design.print.colorPicker(this)" ' +
-                'onclick="design.item.changeColor(this);"data-color="00b3ff" data-init="false"' +
+            jQuery(div).append('<span class="colorSelector bg-colors bg-custom button_click"' +
+                'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
+                'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
+            jQuery(div).append('<span class="colorSelector bg-colors bg-custom marker"' +
+                'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
 
         },
