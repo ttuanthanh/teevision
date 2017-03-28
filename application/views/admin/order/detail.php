@@ -108,7 +108,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('D, M j H:i:s'); ?>
+                                      <?php echo $credate->format('D, M j H:i A'); ?>
                                     </td>
                                     <td class="center">   
                                         <?php echo $order->name; ?>
@@ -132,10 +132,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         if(isset($order->shipdate))   
                                         {
                                             $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                            $ddtext = $newDate->format('M').' '.$newDate->format('j');
                                         } 
                                         else
-                                            $ddtext = date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                            $ddtext = date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         if( $order->ship_approved != 1) {?>
                                             <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>
@@ -151,11 +151,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         if(isset($order->duedate))   
                                         {
                                             $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                            $ddtext = $newDate->format('M').' '.$newDate->format('j');
                                             echo $ddtext;
                                         } 
                                         else
-                                            echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                            echo date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         ?>
                                         <i class="fa fa-edit toggle-due"></i>
                                         <form id="due-form" action="/admin/shipdate/saveDueDate/<?php echo $order->id; ?>" method="post" class="due_show">
@@ -210,19 +210,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     </table>
             
     </div> 
-    <?php foreach($items as $product){?>
+    <br />
+    <div class="col-md-7">
+        <?php foreach($items as $product){?>
         <div class="panel panel-default">
             <div class="panel-heading">
                     <i class="fa fa-external-link-square icon-external-link-sign"></i>
                     Art Information
             </div>
             <?php
+                                                            
                     $design_option   = json_decode($product->design_option);
                     $colors = $design_option->colors;
             ?>
             <div class="panel-body" id="panelbody">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <?php
                             $desi = $this->order_m->getDesign($product->id);
                             if(isset($desi->vectors)){ 
@@ -259,11 +262,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     }
                                   
                             }
+                            
+                            if ($product->proof_file != '')
+                                echo '<img width="100%" src="/'.$product->proof_file.'" />';
                         ?>
-                        
+                                
                         
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
                         <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
                         <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
@@ -327,7 +333,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 </tbody>
                             </table>
                         </div>
-                        <div>       
+                        <div style="display: none;">       
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
                                 <div class="col-md-6 button-preview">
@@ -380,6 +386,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
         </div>
     <?php } ?>
+    </div>
+    <div class="col-md-5">
+         <?php
+            echo $comment;
+        ?>
+    </div>
+    <br clear="all"/>
     <div class="panel panel-default col-md-5 no-padding">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
@@ -414,8 +427,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <table id="table_order_detail" class="table table-bordered table-hover">
                             <thead>
                                     <tr>
-                                            <th class="center" ><?php echo lang('orders_admin_view_design_title'); ?></th>
-                                            <th class="center" ><?php echo lang('name'); ?></th>					
+                                            <!--<th class="center" ><?php echo lang('orders_admin_view_design_title'); ?></th>-->
+                                        <th class="center" colspan="2" ><?php echo lang('name'); ?></th>					
                                             <th class="center" ><?php echo lang('orders_admin_product_price_title'); ?></th>
                                             <th class="center" ><?php echo lang('orders_admin_product_qty_title'); ?></th>
                                             <th class="center" ><?php echo lang('total'); ?></th>
@@ -433,13 +446,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             //var_dump($product);
                                         ?>
                                             <tr class="top-align">
-                                                    <td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>
-                                                    <td>
+                                                    <!--<td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>-->
+                                                <td colspan="2">
                                                             <a href="<?php echo site_url('admin/products/edit/'.$product->product_id); ?>" title="<?php echo $product->product_name; ?>">
                                                                 <strong><?php echo $product->product_name; ?></strong><br/>
                                                                 <small style="color:black">
                                                                     (<?php                                                                     
-                                                                    echo date('D, M j Y H:i:s', strtotime($product->created_on));
+                                                                    echo date('D, M j H:i A', strtotime($product->created_on));
                                                                     ?>)</small>
                                                             </a>
                                                     </td>
@@ -569,9 +582,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>    
     <div class="col-md-6 no-padding-right">
-        <?php
-            echo $comment;
-        ?>
+       
     </div>
     <br clear="all">
 </div>

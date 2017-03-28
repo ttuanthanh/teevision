@@ -67,7 +67,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 <?php }?>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-default schedule-box">
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
 		<?php echo lang('orders_admin_orders_title'); ?>           
@@ -113,9 +113,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</p>
 			</div>
 		</div>
-		<table id="sample-table-1" class="table table-bordered table-striped">
+		<table id="sample-table-1" class="table sch-tb">
 			<thead>
-				<tr>
+                            <tr class="hd-tb-border">
                                         <th class="center"></th>
 					<th class="center">Order</th>
 					<th class="center">Order Date</th>
@@ -123,13 +123,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<th class="center">#</th>
 					<th class="center">C?</th>
 					<th class="center">Apparel Order</th>
-					<th class="center">Ship Date</th>
-                                        <th class="center">Due Date</th>
+					<th class="center">Ship Date</th>                                        
                                         <th class="center">Artwork</th>
-                                        <th class="center">Proof</th>
-                                        <th class="center">Tracking Number</th>
+                                        <th class="center">Proof</th>                                        
                                         <th class="center">Print Ready</th>
                                         <th class="center">Paid</th>
+                                        <th class="center">Tracking Number</th>
+                                        <th class="center">Due Date</th>
                                         <th class="center">Delete</th>
 				</tr>
 			</thead>
@@ -168,7 +168,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     //var_dump($duedate);
                                 ?>
                             <tr class="<?php 
-                                        if ($order->status == 'completed') echo 'o-complete';
+                                        if ($order->status == 'completed' && $completed_on < $today) echo 'y-complete';
+                                        if ($order->status == 'completed' && $completed_on == $today) echo 'g-complete';
+                                        if ($order->status != 'completed' && $duedate < $today) echo 'o-complete';
 //                                        else if ($shipDate <= $today) echo 'duedate';                                         
                                         ?>">
                                     <td class="center">    
@@ -190,10 +192,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
                                     </td>
                                     <td class="center"> 
-                                      <?php echo $credate->format('D, M j H:i:s'); ?>
+                                      <?php echo $credate->format('D, M j').'<br/>'.$credate->format('H:i A'); ?>
                                     </td>
                                     <td class="center">   
-                                        <?php echo $order->name; ?>
+                                        <?php 
+                                        $address	= json_decode($order->address);
+                                        echo $address->{'First Name'}.' '.$address->{'Last Name'};
+                                        ?>
                                     </td>
                                     <td class="center">
                                        <?php echo $order->total_qty; ?>
@@ -217,10 +222,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         if(isset($order->shipdate))   
                                         {
                                             $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
+                                            $ddtext = $newDate->format('M').' '.$newDate->format('j');
                                         } 
                                         else
-                                            $ddtext = date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                            $ddtext = date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
                                         //echo $newDate->format('m').'-'.$newDate->format('d'); 
                                         if( $order->ship_approved != 1) {?>
                                             <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>
@@ -228,20 +233,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>   
                                         <?php } ?>
                                     </td>
-                                    <td class="center">
-                                        <?php 
-                                        //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        if(isset($order->duedate))   
-                                        {
-                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
-                                            echo $ddtext;
-                                        } 
-                                        else
-                                            echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
-                                        ?>
-                                    </td>
+                                    
                                     <td class="center">     
                                         
                                         <?php if( $order->artwork != '') {?>
@@ -257,13 +249,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
                                         <?php } ?>
                                     </td>
-                                    <td class="center">  
-                                        <b>
-                                            <?php
-                                                echo isset($order->tracking_num) ? '#'.$order->tracking_num : '';
-                                            ?>                                            
-                                        </b>
-                                    </td>
+                                    
                                     <td class="center"> 
                                         <?php 
                                             if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
@@ -279,6 +265,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                  echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
                                             ?>
                                         
+                                    </td>
+                                    <td class="center">  
+                                        <b>
+                                            <?php
+                                                echo isset($order->tracking_num) ? '#'.$order->tracking_num : '';
+                                            ?>                                            
+                                        </b>
+                                    </td>
+                                    <td class="center">
+                                        <?php 
+                                        //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
+                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                        if(isset($order->duedate))   
+                                        {
+                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
+                                            $ddtext2 = $newDate->format('M').' '.$newDate->format('j');
+                                            echo $ddtext2;
+                                        } 
+                                        else{                                            
+                                            echo date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                        }
+                                            
+                                        
+                                        ?>
                                     </td>
                                     <td class="center">
                                         <a class="remove btn btn-bricky tooltips" onclick="return confirm('<?php echo lang('orders_admin_confirm_delete');?>');" href="<?php echo site_url('admin/orders/delete/'.$order->id); ?>" data-original-title="<?php echo lang('remove');?>" data-placement="top">

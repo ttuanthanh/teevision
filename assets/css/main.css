@@ -1108,9 +1108,17 @@ ul.edit_language li:hover{background: #F7F7F9;}
     font-weight: bold;
     color: #cc0000;
 }
+tr.y-complete td{
+    background-color: #ffff00!important;
+    
+}
+tr.g-complete td{
+    background-color: #8bdc65!important;
+    
+}
 tr.o-complete td{
-    background-color: #ccff99!important;
-    color:#00cc33!important;
+    background-color: #ff9012!important;
+    
 }
 .art-ordernum{
     text-align: center;
@@ -1164,4 +1172,22 @@ tr.o-complete td{
 .ship-date{
     font-weight: bold;
     font-size: 15px;
+}
+.sch-tb{
+    background: #d8e4ea!important;
+    border-collapse: collapse;
+}
+.sch-tb th, .sch-tb td{
+    border: 1px solid black;
+}
+.hd-tb-border{
+    border: 1px solid black;
+    border-bottom: 3px solid black;
+    color: black!important;
+}
+.order_detail_body{
+    max-width: 1280px;
+}
+.schedule-box{
+    max-width: 1280px;
 }

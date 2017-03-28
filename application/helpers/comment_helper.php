@@ -16,7 +16,7 @@ function comment_box($comments, $order_id)
     
     foreach ($comments as $row){
         $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);        
-        $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('m-d H:i').')</small>: <i><b>'.$row->text.'</b></i></p>';
+        $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('M j H:i A').')</small>: <i><b>'.$row->text.'</b></i></p>';
     }
     
     $return =   '<div class="panel panel-default">
