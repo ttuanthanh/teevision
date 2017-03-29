@@ -443,7 +443,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             $payment_price = 0.0;
                                     ?>
                                     <?php foreach($items as $product){
-                                            //var_dump($product);
+//                                            var_dump($product);
                                         ?>
                                             <tr class="top-align">
                                                     <!--<td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>-->

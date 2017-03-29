@@ -232,6 +232,7 @@ class Order_m extends MY_Model
 	// get all items of order
 	function getItems($order_id)
 	{
+            $this->db->select('order_items.*,order_proof.proof_file');
 		$this->db->where('order_items.order_id', $order_id);
                 $this->db->join('order_proof', 'order_items.id = order_proof.order_id', 'left');
 		$query = $this->db->get('order_items');
