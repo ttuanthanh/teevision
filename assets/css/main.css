@@ -1185,7 +1185,8 @@ tr.o-complete td{
     border-bottom: 3px solid black;
     color: black!important;
 }
-.order_detail_body{
+#order_detail_body{
+	margin: 0 auto;
     max-width: 1280px;
 }
 .schedule-box{
