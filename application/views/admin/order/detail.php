@@ -262,7 +262,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     }
                                   
                             }
-                            
+                            //var_dump($product);
                             if ($product->proof_file != '')
                                 echo '<img width="100%" src="/'.$product->proof_file.'" />';
                         ?>

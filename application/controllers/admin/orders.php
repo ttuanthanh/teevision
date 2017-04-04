@@ -1038,7 +1038,7 @@ class Orders extends Admin_Controller
                 
 		$this->data['items'] = $items;
                 
-                $order = $this->order_m->getOrder($id); 
+                $order = $this->order_m->getOrderSchedule($id); 
                 $this->data['order'] = $order;
                 
                 $this->load->model('comment_m');
