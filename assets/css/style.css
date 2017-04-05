@@ -3168,6 +3168,9 @@ ul.choose_payment .description {
 }
 #dg-designer .image-clipart img{
     height: 100%;
+    position: relative;
+    margin: auto;
+    display: inherit;
 }
 .margin-top-20{
     margin-top: 20px;
