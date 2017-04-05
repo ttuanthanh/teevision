@@ -2440,8 +2440,8 @@ var design = {
                     }
                     o.change_color = 0;
 
-                    var content = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink">'
-                        + '<g><image x="0" y="0" width="' + o.width + '" height="' + o.height + '" xlink:href="' + item.thumb + '" /></g>'
+                    var content = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + o.width + ' ' + o.height  + '">'
+                        + '<g><image x="0" y="0" width="99%" height="99%" xlink:href="' + item.thumb + '" /></g>'
                         + '</svg>';
                     o.svg = jQuery.parseHTML(content);
                     design.item.create(o);
@@ -3006,8 +3006,8 @@ var design = {
                         var file = e.data('file');
                         if (file.type == 'image') {
                             var img = e.find('image');
-                            img[0].setAttributeNS(null, 'width', $width);
-                            img[0].setAttributeNS(null, 'height', $height);
+                            // img[0].setAttributeNS(null, 'width', $width);
+                            // img[0].setAttributeNS(null, 'height', $height);
                         }
                     }
 
