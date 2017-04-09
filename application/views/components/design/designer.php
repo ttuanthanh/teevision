@@ -998,10 +998,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             <div class="tools-area">
                 <ul class="dg-tools">
-                    <li>
-                        <a data-target="#dg-help" id="tools-help" data-toggle="modal" href="javascript:void(0)">
+                    <li class="default">
+                        <a data-target="#dg-rq-artist" id="tools-help" data-toggle="modal" href="javascript:void(0)">
                             <i class="glyphicons circle_question_mark"></i>
-                            <span><?php echo $lang['designer_top_help']; ?></span>
+                            <span><?php echo $lang['designer_request_artist']; ?></span>
                         </a>
                     </li>
                     <li>
@@ -1578,6 +1578,34 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </div>
         </div>
     </div>
+    
+    <!-- Begin request artist -->
+    <div class="modal fade" id="dg-rq-artist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Please leave your information so we can connect you with a graphic designer!</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="rq-name">Your name</label>
+                    <input class="form-control" id="rq_name" value="" placeholder=""><br/>
+                    <label for="rq-phone">Phone</label>
+                    <input class="form-control" id="rq_phone" value="" placeholder=""><br/>
+                    <label for="rq-email">Email</label>
+                    <input class="form-control" id="rq_email" value="" placeholder=""><br/>
+                    <label for="rq-des">Description</label>
+                    <textarea rows="5" id="rq_des" name="rq-des" style="width: 100%"></textarea>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                             onclick="rqArtist()">Submit</button>
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- End Help -->
 
     <!-- Begin My design -->
@@ -1892,4 +1920,19 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <?php } ?>
 
     jQuery('#fr-savedesign').validate();
+    function rqArtist(){
+        jQuery.post(baseURL + "ajax/rqArtist",
+        {
+            rq_name: jQuery('#rq_name').val(),
+            rq_email: jQuery('#rq_email').val(),
+            rq_phone: jQuery('#rq_phone').val(),
+            rq_des: jQuery('#rq_des').val()
+        },
+        function(data, status){
+            if(status=='success'){
+                alert("Your request was sent successful")
+            }
+        });
+        
+    }
 </script>

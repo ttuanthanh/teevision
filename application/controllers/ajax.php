@@ -557,6 +557,41 @@ class Ajax extends Frontend_Controller {
             $result = $this->email->send();
             echo $result;
         }
+        
+        function rqArtist()
+        {
+            $data = $this->input->post();
+//            $uname      = $data['rq_name'];
+//            $uemail     = $data['rq_email'];
+//            $uphone     = $data['rq_phone'];
+//            $udes       = $data['rq_des'];
+        //var_dump($data);
+            $str = '<style>
+                        table tr td, tr th{border: 1px solid #ccc; padding: 5px;}
+                        p{margin:10px}
+                    </style>';
+                    
+            $str .= '<div>
+                        <strong>Full name: </strong>'.$data['rq_name'].'<br>
+                        <strong>Email: </strong>'.$data['rq_email'].'<br>                        
+                        <strong>Phone: </strong>'.$data['rq_phone'].'<br>
+                        <strong>Company: </strong>'.$data['rq_des'].'<br>
+                    </div>';
+            
+            $str .= '<div style="margin-top: 20px;">http://teevisionprinting.com</div>';
+            //echo json_encode($data);
+            $this->load->library('email');
+            $config = array(
+                    'mailtype'  => 'html'
+            );
+            $this->load->library('email', $config);
+            $this->email->from($data['rq_email'], $data['rq_email']);
+            $this->email->to(getEmail(config_item('admin_email')));    
+            $this->email->subject ( 'Request An Artist');
+            $this->email->message ($str);   
+            $result = $this->email->send();
+            echo $result;
+        }
              
 }
 
