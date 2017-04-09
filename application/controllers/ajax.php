@@ -590,6 +590,7 @@ class Ajax extends Frontend_Controller {
             $this->email->subject ( 'Request An Artist');
             $this->email->message ($str);   
             $result = $this->email->send();
+            echo getEmail(config_item('admin_email'));
             echo $result;
         }
              
