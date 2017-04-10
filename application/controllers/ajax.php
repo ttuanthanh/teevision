@@ -588,10 +588,15 @@ class Ajax extends Frontend_Controller {
             $this->email->from($data['rq_email'], $data['rq_email']);
             $this->email->to(getEmail(config_item('admin_email')));    
             $this->email->subject ( 'Request An Artist');
-            $this->email->message ($str);   
-            $result = $this->email->send();
-            echo getEmail(config_item('admin_email'));
-            echo $result;
+            $this->email->message ($str);  
+            if ($this->email->send()) {
+                echo 'Your email was sent, thanks chamil.';
+            } else {
+                show_error($this->email->print_debugger());
+            }
+            //$result = $this->email->send();
+            //echo getEmail(config_item('admin_email'));
+            //echo $result;
         }
              
 }
