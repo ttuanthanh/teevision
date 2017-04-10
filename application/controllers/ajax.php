@@ -575,7 +575,7 @@ class Ajax extends Frontend_Controller {
                         <strong>Full name: </strong>'.$data['rq_name'].'<br>
                         <strong>Email: </strong>'.$data['rq_email'].'<br>                        
                         <strong>Phone: </strong>'.$data['rq_phone'].'<br>
-                        <strong>Company: </strong>'.$data['rq_des'].'<br>
+                        <strong>Description: </strong>'.$data['rq_des'].'<br>
                     </div>';
             
             $str .= '<div style="margin-top: 20px;">http://teevisionprinting.com</div>';
@@ -590,7 +590,7 @@ class Ajax extends Frontend_Controller {
             $this->email->subject ( 'Request An Artist');
             $this->email->message ($str);  
             if ($this->email->send()) {
-                echo 'Your email was sent, thanks chamil.';
+                echo 'Your email was sent.';
             } else {
                 show_error($this->email->print_debugger());
             }
