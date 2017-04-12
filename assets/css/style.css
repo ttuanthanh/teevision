@@ -1350,9 +1350,10 @@ body {
 .clipart-sub-list .clipart-sub>ul {
     overflow: auto;
     height: 484px;
+    padding-top: 10px;
 }
 .clipart-sub-list .clipart-sub li{
-    line-height: 50px;
+    line-height: 30px;
     text-align: left;
 }
 .clipart-sub-list .clipart-sub li a{
