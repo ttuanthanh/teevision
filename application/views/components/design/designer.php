@@ -785,7 +785,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             Back
                                         </a>
                                     </div>
-                                    <div class="col-md-4 col-xs-4 center nav-info">
+                                    <div class="col-md-8 col-xs-8 left nav-info">
                                     <span class="cliparts-title">
                                     </span>
                                     </div>
