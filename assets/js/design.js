@@ -864,6 +864,13 @@ var design = {
                         jQuery('#dag-art-categories').removeClass('loading');
                     });
                 }
+                jQuery('.back-cliparts').bind('click', function () {
+                    jQuery('#dag-art-detail').hide();
+                    jQuery('.cliparts-2').hide();
+                    jQuery('.cliparts-1-sub').hide();
+                    // jQuery('#arts-add').hide();
+                    jQuery('.cliparts-1').show();
+                });
             },
             arts: function (cate_id, cate_title) {
                 var self = this;
@@ -871,15 +878,10 @@ var design = {
                 parent.innerHTML = '';
                 jQuery('#dag-art-detail').hide();
                 jQuery('.cliparts-1').hide();
+                jQuery('.cliparts-1-sub').hide();
                 jQuery('.cliparts-2').show();
-                jQuery('#arts-add').hide();
                 jQuery('#dag-list-arts').addClass('loading');
-                jQuery('.back-cliparts').bind('click', function () {
-                    jQuery('#dag-art-detail').hide();
-                    jQuery('.cliparts-2').hide();
-                    jQuery('#arts-add').hide();
-                    jQuery('.cliparts-1').show();
-                });
+                // jQuery('#arts-add').hide();
                 if (cate_title) {
                     jQuery('.cliparts-title').html(cate_title);
                 }
@@ -991,6 +993,11 @@ var design = {
                     design.art.create(e);
                 });
                 jQuery('#arts-add button').button('reset');
+            }, artTree: function(cateId){
+                jQuery('.cliparts-1').hide();
+                jQuery('.clipart-sub').hide();
+                jQuery('.clipart-sub-cate-' + cateId).show();
+                jQuery('.cliparts-1-sub').show();
             },
             treeCategories: function (categories, e, system) {
                 self = this;
@@ -1001,48 +1008,55 @@ var design = {
                     var li = document.createElement('li'),
                         a = document.createElement('a');
                     if (jQuery.isEmptyObject(cate.children) == false) {
-                        var span = document.createElement('span');
-                        if(system) {
-                            span.innerHTML = '<i class="glyphicons plus"></i>';
-                        }
-                        jQuery(span).click(function () {
-                            var parent = this;
-                            jQuery(this).parent().children('ul').toggle('slow', function () {
-                                var display = jQuery(parent).parent().children('ul').css('display');
-                                if (display == 'none')
-                                    jQuery(parent).children('i').attr('class', 'glyphicons plus');
-                                else
-                                    jQuery(parent).children('i').attr('class', 'glyphicons minus');
-                            });
-                        });
-                        if(system){
+                        if(typeof system !== "undefined"){
                             var div = document.createElement("div");
-                            div.addClass("clipart-sub");
-                            div.data('sub', cate.id);
-                            var title = document.createElement("h4");
+                            div.className += "clipart-sub";
+                            div.className += " clipart-sub-cate-" + cate.id;
+                            div.setAttribute("data-sub",cate.id);
+                            var title = document.createElement("h3");
                             title.innerHTML = cate.title;
                             div.append(title);
-                            div.append(span);
                             jQuery(".clipart-sub-list").append(div);
+                            if (jQuery.isEmptyObject(cate.children) == false)
+                                design.designer.art.treeCategories(cate.children, div);
                         }else{
+                            var span = document.createElement('span');
+                            span.innerHTML = '<i class="glyphicons plus"></i>';
+                            jQuery(span).click(function () {
+                                var parent = this;
+                                jQuery(this).parent().children('ul').toggle('slow', function () {
+                                    var display = jQuery(parent).parent().children('ul').css('display');
+                                    if (display == 'none')
+                                        jQuery(parent).children('i').attr('class', 'glyphicons plus');
+                                    else
+                                        jQuery(parent).children('i').attr('class', 'glyphicons minus');
+                                });
+                            });
                             li.appendChild(span);
                         }
                     }
                     a.setAttribute('href', 'javascript:void(0)');
                     a.setAttribute('title', cate.title);
                     jQuery(a).data('id', cate.id);
-                    jQuery(a).click(function () {
-                        jQuery('#dag-art-categories a').removeClass('active');
-                        jQuery(a).addClass('active');
-                        jQuery('#art-number-page').val(0);
-                        jQuery('#arts-pagination .pagination').html('');
-                        self.arts(cate.id, cate.title);
-                    });
+                    if (jQuery.isEmptyObject(cate.children) == false && typeof system !== "undefined") {
+                        jQuery(a).click(function () {
+                            self.artTree(cate.id);
+                        });
+                    }else{
+                        jQuery(a).click(function () {
+                            jQuery('#dag-art-categories a').removeClass('active');
+                            jQuery(a).addClass('active');
+                            jQuery('#art-number-page').val(0);
+                            jQuery('#arts-pagination .pagination').html('');
+                            self.arts(cate.id, cate.title);
+                        });
+                    }
+
+
                     a.innerHTML = cate.title;
                     li.appendChild(a);
                     ul.appendChild(li);
-                    if (jQuery.isEmptyObject(cate.children) == false)
-                        design.designer.art.treeCategories(cate.children, li);
+
                 });
                 e.appendChild(ul);
             },subArts: function(){
