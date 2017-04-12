@@ -763,6 +763,20 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
                                 <div id="dag-art-categories" class="col-xs-12 col-md-12"></div>
                             </div>
+                            <div class="cliparts-1-sub row" style="display: none;">
+                                <div class="row nav-clipart">
+                                    <div class="col-md-4 col-xs-4 text-left backButton">
+                                        <a href="javascript:void(0)" class="back-cliparts btn-link">
+                                            <span class="glyphicon glyphicon-arrow-left"></span>
+                                            Back
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+
+                                    <div class="clipart-sub-list"></div>
+                                </div>
+                            </div>
                             <div class="cliparts-2 row" style="display: none;">
                                 <div class="row nav-clipart">
                                     <div class="col-md-4 col-xs-4 text-left backButton">

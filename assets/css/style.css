@@ -1319,7 +1319,7 @@ body {
 #dag-art-categories span {
     cursor: pointer;
     float: left;
-    line-height: 16px;
+    line-height: 47px;
     text-align: left;
     width: 16px;
 }
@@ -1333,7 +1333,33 @@ body {
     padding-left: 5px;
     padding-right: 5px
 }
+.clipart-sub-list .clipart-sub{
+    display: none;
+}
+.clipart-sub-list .clipart-sub h3{
+    color: #007AFF;
+    margin: 0;
+}
+.clipart-sub-list .clipart-sub ul{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    width: 100%;
 
+}
+.clipart-sub-list .clipart-sub>ul {
+    overflow: auto;
+    height: 484px;
+}
+.clipart-sub-list .clipart-sub li{
+    line-height: 50px;
+    text-align: left;
+}
+.clipart-sub-list .clipart-sub li a{
+    font-size: 12px;
+    outline: medium none;
+    text-align: left;
+}
 #dag-art-detail {
     display: none;
     float: left;
