@@ -780,7 +780,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="cliparts-2 row" style="display: none;">
                                 <div class="row nav-clipart">
                                     <div class="col-md-4 col-xs-4 text-left backButton">
-                                        <a href="javascript:void(0)" class="back-cliparts btn-link">
+                                        <a href="javascript:void(0)" class="back-cliparts btn-link list-image">
                                             <span class="glyphicon glyphicon-arrow-left"></span>
                                             Back
                                         </a>

@@ -865,12 +865,16 @@ var design = {
                     });
                 }
                 jQuery('.back-cliparts').bind('click', function () {
-                    jQuery('#dag-art-detail').hide();
-                    jQuery('.cliparts-2').hide();
-                    jQuery('.cliparts-1-sub').hide();
-                    // jQuery('#arts-add').hide();
-                    jQuery('.cliparts-1').show();
+                    self.backActionNormal();
                 });
+            }, backActionNormal: function(){
+                jQuery('#dag-art-detail').hide();
+                jQuery('.cliparts-2').hide();
+                jQuery('.cliparts-1-sub').hide();
+                jQuery('.clipart-sub').removeClass("active");
+                // jQuery('#arts-add').hide();
+                jQuery('.cliparts-1').show();
+
             },
             arts: function (cate_id, cate_title) {
                 var self = this;
@@ -880,6 +884,18 @@ var design = {
                 jQuery('.cliparts-1').hide();
                 jQuery('.cliparts-1-sub').hide();
                 jQuery('.cliparts-2').show();
+                var subActive = jQuery('.clipart-sub.active');
+                if(subActive.size()>0){
+                    jQuery('.back-cliparts.list-image').bind('click', function () {
+                        var idCate = subActive.data("sub");
+                        self.artTree(idCate);
+                    });
+                }else{
+                    jQuery('.back-cliparts.list-image').bind('click', function () {
+                        self.backActionNormal();
+                    });
+                }
+
                 jQuery('#dag-list-arts').addClass('loading');
                 // jQuery('#arts-add').hide();
                 if (cate_title) {
@@ -996,6 +1012,7 @@ var design = {
             }, artTree: function(cateId){
                 jQuery('.cliparts-1').hide();
                 jQuery('.clipart-sub').hide();
+                jQuery('.clipart-sub-cate-' + cateId).addClass("active");
                 jQuery('.clipart-sub-cate-' + cateId).show();
                 jQuery('.cliparts-1-sub').show();
             },
@@ -1051,16 +1068,12 @@ var design = {
                             self.arts(cate.id, cate.title);
                         });
                     }
-
-
                     a.innerHTML = cate.title;
                     li.appendChild(a);
                     ul.appendChild(li);
 
                 });
                 e.appendChild(ul);
-            },subArts: function(){
-
             }
         },
         fonts: {},
