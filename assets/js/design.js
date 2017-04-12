@@ -1002,7 +1002,9 @@ var design = {
                         a = document.createElement('a');
                     if (jQuery.isEmptyObject(cate.children) == false) {
                         var span = document.createElement('span');
-                        span.innerHTML = '<i class="glyphicons plus"></i>';
+                        if(system) {
+                            span.innerHTML = '<i class="glyphicons plus"></i>';
+                        }
                         jQuery(span).click(function () {
                             var parent = this;
                             jQuery(this).parent().children('ul').toggle('slow', function () {
@@ -1013,7 +1015,18 @@ var design = {
                                     jQuery(parent).children('i').attr('class', 'glyphicons minus');
                             });
                         });
-                        li.appendChild(span);
+                        if(system){
+                            var div = document.createElement("div");
+                            div.addClass("clipart-sub");
+                            div.data('sub', cate.id);
+                            var title = document.createElement("h4");
+                            title.innerHTML = cate.title;
+                            div.append(title);
+                            div.append(span);
+                            jQuery(".clipart-sub-list").append(div);
+                        }else{
+                            li.appendChild(span);
+                        }
                     }
                     a.setAttribute('href', 'javascript:void(0)');
                     a.setAttribute('title', cate.title);
@@ -1032,6 +1045,8 @@ var design = {
                         design.designer.art.treeCategories(cate.children, li);
                 });
                 e.appendChild(ul);
+            },subArts: function(){
+
             }
         },
         fonts: {},

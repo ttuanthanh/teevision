@@ -1319,7 +1319,7 @@ body {
 #dag-art-categories span {
     cursor: pointer;
     float: left;
-    line-height: 16px;
+    line-height: 47px;
     text-align: left;
     width: 16px;
 }
@@ -2836,6 +2836,9 @@ ul.choose_payment .description {
 
 #list-clipart-colors .dropdown-color.active {
     outline: 2px solid #3580AC;
+}
+.clipart-sub-list .clipart-sub{
+    display: none;
 }
 
 .list-colors .popover-content {
