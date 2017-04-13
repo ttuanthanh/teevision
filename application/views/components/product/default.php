@@ -52,7 +52,7 @@ $colors 	= count($design->color_hex);
                                 <?php } ?>
                         </h2>
                         <h3 class="tit-short-des"><?php echo $product->short_description ?></h3>
-                        <h4 class="tit-pri-sta">Stating at <?php echo $currency->currency_symbol .''. $product->price; ?> | <?php echo $colors ?> color</h4>
+                        <h4 class="tit-pri-sta">Starting at <?php echo $currency->currency_symbol .''. $product->price; ?> | <?php echo $colors ?> color</h4>
                 </div>
 		<!-- product image -->
                 <div class="col-md-5">
@@ -88,7 +88,7 @@ $colors 	= count($design->color_hex);
 			</div>
 			<?php } ?>
                         <?php if (isset($product->design) && $product->design->front != '') { ?>
-                            <a class="btn btn-primary btn-product btn-godesign" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN</a>
+                            <a class="btn btn-primary btn-product btn-godesign" title="Click to custom this product" href="<?php echo site_url('design/index/'.$product->id.'-'.$product->slug); ?>"> START DESIGN HERE</a>
                         <?php } ?>
                         
                         <br><br>

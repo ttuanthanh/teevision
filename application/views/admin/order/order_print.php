@@ -45,130 +45,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                
                 
             </div>
-                <table id="sample-table-1" class="table table-bordered table-hover">
-                            <thead>
-                                    <tr>
-                                            <th class="center">Order</th>
-                                            <th class="center">Order Date</th>
-                                            <th class="center">Name</th>
-                                            <th class="center">#</th>
-                                            <th class="center">C?</th>
-                                            <th class="center">Apparel Order</th>
-                                            <th class="center">Ship Date</th>
-                                            <th class="center">Due Date</th>
-                                            <th class="center">Artwork</th>
-                                            <th class="center">Proof</th>
-                                            <th class="center">Tracking Number</th>
-                                            <th class="center">Print Ready</th>
-                                            <th class="center">Paid</th>
-                                    </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $newda = new DateTime($order->ship_date);
-                                    $credate = new DateTime($order->created_on);
-                                    $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
-                                    $today = date("Y-m-d");
-                                ?>
-                                    <tr class="<?php 
-                                        if ($order->status == 'completed') echo 'o-complete';
-                                        else if ($shipDate <= $today) echo 'duedate';
-                                        ?>">
-                                        <td class="center">    
-                                        <a href="<?php echo site_url('admin/orders/detail/'.$order->id); ?>"><?php echo $order->order_number; ?></a>
-                                    </td>
-                                    <td class="center"> 
-                                     <?php echo $credate->format('D, M j H:i:s'); ?>
-                                    </td>
-                                    <td class="center">   
-                                        <?php echo $order->name; ?>
-                                    </td>
-                                    <td class="center">
-                                       <?php echo $order->total_qty; ?>
-                                    </td>
-                                    <td class="center"> 
-                                        <?php if( $order->custom_file==1)
-                                                echo '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; ?>
-                                    </td>
-                                    <td class="center"> 
-                                        <?php if( $order->apparel != '') {?>
-                                        <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
-                                        <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/garment/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
-                                        <?php } ?>
-                                    </td>
-                                    <td class="center">      
-                                        <?php 
-                                        if(isset($order->shipdate))   
-                                        {
-                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
-                                        } 
-                                        else
-                                            $ddtext = date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
-                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        if( $order->ship_approved != 1) {?>
-                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>
-                                        <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/shipdate/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" ><?php echo $ddtext ?></a>   
-                                        <?php } ?>
-                                    </td>
-                                    <td class="center">
-                                        <?php 
-                                        //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $order->ship_date);
-                                        //echo $newDate->format('m').'-'.$newDate->format('d'); 
-                                        if(isset($order->duedate))   
-                                        {
-                                            $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
-                                            $ddtext = $newDate->format('m').'-'.$newDate->format('d');
-                                            echo $ddtext;
-                                        } 
-                                        else
-                                            echo date("m-d", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
-                                        ?>
-                                    </td>
-                                    <td class="center">     
-                                        <?php if( $order->artwork != '') {?>
-                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
-                                        <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
-                                        <?php } ?>
-                                    </td>
-                                    <td class="center">     
-                                        <?php if( $order->proof_approved != 0) {?>
-                                            <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
-                                        <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
-                                        <?php } ?>
-                                    </td>
-                                    <td class="center">  
-                                        <?php
-                                            if ($order->tracking_num == '')
-                                                echo '<input id="tracking-num" type="text" style="width: 110px">';
-                                            else
-                                                echo '#'.$order->tracking_num;
-                                        ?>
-                                                
-                                        
-                                    </td>
-                                    <td class="center">    
-                                        <?php 
-                                            if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
-                                                echo '<a href="'.site_url('admin/orders/orderPrint/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
-                                            else
-                                                echo '<a href="javascript:void(0)" class="btn btn-danger btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
-                                        ?>
-                                    </td>
-                                    <td class="center"> 
-                                        <?php 
-                                            if ($order->balance == 1)                                            
-                                                 echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
-                                            ?>
-                                        
-                                    </td>
-                                    </tr>
-                            </tbody>
-                    </table>
+                 <?php
+                        $this->load->helper('product');
+                        $help = new helperProduct();
+                        echo $help->product_detail_helper($order);
+                    ?>
         <div class="text-center">
             <a target="_blank" href="<?php echo site_url('admin/orders/printorder/'.$order->id) ?>" class="btn btn-success" style="width: 200px">PRINT ORDER</a>
         </div>
@@ -322,7 +203,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     $( "#show-teams" ).click(function() {
         $( '#tb-teams' ).toggleClass( "hide" );
       });    
-        
+    $(".toggle-due").click(function() {
+        $( "#due-form" ).toggleClass( "due_show" );
+     });    
         
         
         

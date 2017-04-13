@@ -254,14 +254,11 @@ class helperProduct
                                                     <hr>
                                                     <div class="row">
                                                     <div class="col-md-6 align-left">
-                                                    <div class="tip">
-                                                    <p><span>Tip:</span> Save more by increasing</p>
-                                                    <p>Order 24 pcs and pay $x.xx</p>
-                                                    </div>
+                                                    
                                                     <div class="ship-note">
                                                         <p class="ship-quest">Need rush shipping?</p>
                                                         <p>Upgrade shipping at check out</p>
-                                                        <p>to receieve it by:<span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></p>
+                                                        <p>to receive it by: <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span></p>
                                                     </div>
                                                     </div>
                                                     <div id="dg-total-mess" class="align-right col-md-6">
@@ -463,5 +460,148 @@ class helperProduct
 		
 		return $html;
 	}
+        
+        public function product_detail_helper($order)
+        {
+            $rt = '<table id="sample-table-1" class="table table-bordered table-hover">
+                    <thead>
+                            <tr>
+
+
+                                    <th class="center">Order</th>
+                                    <th class="center">Order Date</th>
+                                    <th class="center">Name</th>
+                                    <th class="center">#</th>
+                                    <th class="center">C?</th>
+                                    <th class="center">Apparel Order</th>
+                                    <th class="center">Ship Date</th>                                        
+                                    <th class="center">Artwork</th>
+                                    <th class="center">Proof</th>                                        
+                                    <th class="center">Print Ready</th>
+                                    <th class="center">Paid</th>
+                                    <th class="center">Tracking Number</th>
+                                    <th class="center">Due Date</th>
+                            </tr>
+                    </thead>
+                    <tbody>';
+            
+                        
+                            $newda = new DateTime($order->ship_date);
+                            $credate = new DateTime($order->created_on);
+                            $shipDate = $newda->format('Y-m-d');//DateTime::createFromFormat('Y-m-d', $order->ship_date);
+                            $today = date("Y-m-d");
+                $rt .= '<tr class="' ;       
+                            
+                                if ($order->status == 'completed') $rt .= 'o-complete';
+                                else if ($shipDate <= $today) $rt .= 'duedate';
+                $rt .='         ">' ;  
+                $rt .= '    <td class="center">    
+                                <a href="'.site_url('admin/orders/detail/'.$order->id).'">'.$order->order_number.'</a>
+                            </td>';
+                $rt .=  '   <td class="center"> 
+                              '.$credate->format('D, M j H:i A').'
+                            </td>'        ;        
+                $rt .=  '   <td class="center"> '  ;                                
+                                $address	= json_decode($order->address);
+                                $rt .= $address->{'First Name'}.' '.$address->{'Last Name'};
+                $rt .= '    </td>'    ;            
+                $rt .=  '   <td class="center">
+                               '.$order->total_qty.'
+                            </td>'           ; 
+                $rt .=  '   <td class="center"> ';
+                                 if( $order->custom_file==1)
+                                        $rt .= '<a><i class="fa fa-check-square-o" style="font-size: 20px;"></i></a>'; 
+                $rt .=  '   </td>'     ;       
+                $rt .=  '   <td class="center">';            
+                             
+                                 if( $order->apparel != '') {
+                                $rt .= '<a href="'.site_url('admin/orders/garment/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>';
+                                } else {
+                                $rt .= '<a href="'. site_url('admin/orders/garment/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                }
+                $rt .=  '            </td>';
+                $rt .=  '   <td class="center">      ';
+                                 
+                                if(isset($order->shipdate))   
+                                {
+                                    $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   
+                                    $ddtext = $newDate->format('M').' '.$newDate->format('j');
+                                } 
+                                else
+                                    $ddtext = date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                                //echo $newDate->format('m').'-'.$newDate->format('d'); 
+                                if( $order->ship_approved != 1)
+                                    $rt .= '<a href="'.site_url('admin/orders/shipdate/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >'.$ddtext .'</a>';
+                                else 
+                                    $rt .= '<a href="'.site_url('admin/orders/shipdate/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'. $ddtext .'</a>  '; 
+                                
+                $rt .=  '            </td>';
+                $rt .=  '
+                            <td class="center">  ';   
+                                if( $order->artwork != '') 
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>';
+                                else
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                
+                $rt .=  '            </td>';
+
+                $rt .=  '
+                            <td class="center">   ';  
+                                if( $order->proof_approved != 0) 
+                                    $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>';
+                                else
+                                    $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>';
+                $rt .=  '                
+                            </td>
+                            <td class="center">' ;   
+                                
+                                    if ($order->apparel > 0 && ($order->ship_approved+$order->artwork+$order->proof_approved) == 3)                                            
+                                        $rt .= '<a href="'.site_url('admin/orders/orderPrint/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
+                                    else
+                                        $rt .= '<a href="javascript:void(0)" class="btn btn-danger btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" rel="unpublish">Print</a>';
+                $rt .=  '                
+                            </td>                                                                       
+
+                            <td class="center"> ';
+                                
+                                    if ($order->balance == 1)                                            
+                                         $rt .=  '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                $rt .=  '                    
+                            </td>
+                            <td class="center">  ';
+                                
+                                    if ($order->tracking_num == '')
+                                        $rt .= '<input id="tracking-num" type="text" style="width: 110px">';
+                                    else
+                                        $rt .= '#'.$order->tracking_num;
+                $rt .=  '     
+                            </td>
+                            <td class="center">';
+                                
+                                if(isset($order->duedate))   
+                                {
+                                    $newDate = DateTime::createFromFormat('Y-m-d', $order->duedate);   
+                                    $ddtext = $newDate->format('M').' '.$newDate->format('j');
+                                    $rt .= $ddtext;
+                                } 
+                                else
+                                    $rt .= date("M j", strtotime("$order->ship_day weekdays", strtotime($order->created_on)));
+                $rt .=  '                
+                                <i class="fa fa-edit toggle-due"></i>
+                                <form id="due-form" action="/admin/shipdate/saveDueDate/'.$order->id.'" method="post" class="due_show">
+                                    <input type="date" id="due_date" name="due_date">
+                                    <input type="submit" value="save">
+                                </form>                                        
+
+
+                            </td>
+                            </tr>
+                    </tbody>
+            </table>';
+            $rt .= '<style>    .due_show{        display: none;    }</style>'    ;
+            return $rt;
+            
+        }
 }
 ?>
+
