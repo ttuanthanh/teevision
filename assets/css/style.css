@@ -1350,9 +1350,10 @@ body {
 .clipart-sub-list .clipart-sub>ul {
     overflow: auto;
     height: 484px;
+    padding-top: 10px;
 }
 .clipart-sub-list .clipart-sub li{
-    line-height: 50px;
+    line-height: 30px;
     text-align: left;
     width: 32%;
     float: left;
@@ -3199,6 +3200,7 @@ ul.choose_payment .description {
     position: relative;
     margin: auto;
     display: inherit;
+    max-width: 100%;
 }
 .margin-top-20{
     margin-top: 20px;

@@ -865,12 +865,16 @@ var design = {
                     });
                 }
                 jQuery('.back-cliparts').bind('click', function () {
-                    jQuery('#dag-art-detail').hide();
-                    jQuery('.cliparts-2').hide();
-                    jQuery('.cliparts-1-sub').hide();
-                    // jQuery('#arts-add').hide();
-                    jQuery('.cliparts-1').show();
+                    self.backActionNormal();
                 });
+            }, backActionNormal: function(){
+                jQuery('#dag-art-detail').hide();
+                jQuery('.cliparts-2').hide();
+                jQuery('.cliparts-1-sub').hide();
+                jQuery('.clipart-sub').removeClass("active");
+                // jQuery('#arts-add').hide();
+                jQuery('.cliparts-1').show();
+
             },
             arts: function (cate_id, cate_title) {
                 var self = this;
@@ -880,24 +884,42 @@ var design = {
                 jQuery('.cliparts-1').hide();
                 jQuery('.cliparts-1-sub').hide();
                 jQuery('.cliparts-2').show();
+                var subActive = jQuery('.clipart-sub.active');
+                if(subActive.size()>0){
+                    jQuery('.back-cliparts.list-image').bind('click', function () {
+                        var idCate = subActive.data("sub");
+                        self.artTree(idCate);
+                    });
+                }else{
+                    jQuery('.back-cliparts.list-image').bind('click', function () {
+                        self.backActionNormal();
+                    });
+                }
+
                 jQuery('#dag-list-arts').addClass('loading');
                 // jQuery('#arts-add').hide();
-                if (cate_title) {
+
+                var page = jQuery(parent).data("page");
+                if(typeof page != 'undefined'){
+                    page = 0;
+                }
+                var keyword = jQuery('#art-keyword').val();
+                if (cate_title && keyword.length==0) {
                     jQuery('.cliparts-title').html(cate_title);
                 }
-                var page = jQuery('#art-number-page').val();
-                var keyword = jQuery('#art-keyword').val();
                 jQuery.ajax({
                     type: "POST",
                     data: {page: page, keyword: keyword},
                     dataType: "json",
                     url: baseURL + "art/arts/" + cate_id
                 }).done(function (data) {
+                    jQuery(parent).data("page", 1);
                     if (data == null) {
                         jQuery('#dag-list-arts').removeClass('loading');
                         parent.innerHTML = 'Data not found!';
                         var ul = jQuery('#arts-pagination .pagination').html('');
-                        jQuery('#art-number-page').val(0);
+                        // jQuery('#art-number-page').val(0);
+
                         return false;
                     }
                     if (data.arts.length > 0) {
@@ -922,30 +944,83 @@ var design = {
                             parent.appendChild(div);
                         });
                         if (data.count > 1) {
-                            jQuery('#arts-pagination').css('display', 'block');
-                            var ul = jQuery('#arts-pagination .pagination');
-                            ul.html('');
-                            for (var i = 1; i <= data.count; i++) {
-                                var li = document.createElement('li');
-                                jQuery(li).data('id', i - 1);
-                                if ((i - 1) == page) {
-                                    li.className = 'active';
-                                    li.innerHTML = '<a href="javascript:void(0)">' + i + '</a>';
-                                } else {
-                                    li.innerHTML = '<a href="javascript:void(0)">' + i + '</a>';
+                            jQuery(parent).data("maxpage", data.count);
+                            jQuery(parent).scroll(function()
+                            {
+                                var div = jQuery(this);
+                                if (div[0].scrollHeight - div.scrollTop()-50 <= div.height() && jQuery(parent).data("page")<data.count)
+                                {
+                                    self.loadMoreArts(parent, cate_id);
                                 }
-                                ul.append(li);
-                                jQuery(li).click(function () {
-                                    if (jQuery(this).hasClass('active') == false) {
-                                        jQuery('#art-number-page').val(jQuery(this).data('id'));
-                                        self.arts(cate_id);
-                                    }
-                                });
-                            }
+
+                            });
+                            // jQuery('#arts-pagination').css('display', 'block');
+                            // var ul = jQuery('#arts-pagination .pagination');
+                            // ul.html('');
+                            // for (var i = 1; i <= data.count; i++) {
+                            //     var li = document.createElement('li');
+                            //     jQuery(li).data('id', i - 1);
+                            //     if ((i - 1) == page) {
+                            //         li.className = 'active';
+                            //         li.innerHTML = '<a href="javascript:void(0)">' + i + '</a>';
+                            //     } else {
+                            //         li.innerHTML = '<a href="javascript:void(0)">' + i + '</a>';
+                            //     }
+                            //     ul.append(li);
+                            //     jQuery(li).click(function () {
+                            //         if (jQuery(this).hasClass('active') == false) {
+                            //             jQuery('#art-number-page').val(jQuery(this).data('id'));
+                            //             self.arts(cate_id);
+                            //         }
+                            //     });
+                            // }
                         }
                     }
                     jQuery('#dag-list-arts').removeClass('loading');
                 });
+            }, loadFlag: false, loadMoreArts: function (block, cate_id) {
+                var self = this;
+                if (!self.loadFlag) {
+                    var page = jQuery(block).data("page");
+                    var keyword = jQuery('#art-keyword').val();
+                    self.loadFlag = true;
+                    jQuery.ajax({
+                        type: "POST",
+                        data: {page: page, keyword: keyword},
+                        dataType: "json",
+                        url: baseURL + "art/arts/" + cate_id
+                    }).done(function (data) {
+                        if (data == null) {
+                            return false;
+                        }
+                        if (data.arts.length > 0) {
+                            jQuery.each(data.arts, function (i, art) {
+                                var url = art.path;
+                                var div = document.createElement('div');
+                                div.className = 'col-xs-4 col-md-4 box-art';
+                                var a = document.createElement('a');
+                                a.setAttribute('title', art.title);
+                                a.setAttribute('class', 'thumbnail');
+                                a.setAttribute('href', 'javascript:void(0)');
+                                a.setAttribute('onclick', 'design.art.create(this);');
+                                jQuery(a).data('id', art.clipart_id);
+                                jQuery(a).data('clipart_id', art.clipart_id);
+                                jQuery(a).data('medium', url + art.medium);
+                                art.imgThumb = url + art.thumb;
+                                art.imgMedium = url + art.medium;
+                                a.item = art;
+                                var img = '<img alt="" src="' + url + art.thumb + '">';
+                                a.innerHTML = img;
+                                div.appendChild(a);
+                                block.appendChild(div);
+                            });
+                            if (page < data.count) {
+                                jQuery(block).data("page", page +1);
+                            }
+                        }
+                        self.loadFlag = false;
+                    });
+                }
             },
             artDetail: function (e) {
                 var id = jQuery(e).data('id');
@@ -996,6 +1071,7 @@ var design = {
             }, artTree: function(cateId){
                 jQuery('.cliparts-1').hide();
                 jQuery('.clipart-sub').hide();
+                jQuery('.clipart-sub-cate-' + cateId).addClass("active");
                 jQuery('.clipart-sub-cate-' + cateId).show();
                 jQuery('.cliparts-1-sub').show();
             },
@@ -1051,16 +1127,12 @@ var design = {
                             self.arts(cate.id, cate.title);
                         });
                     }
-
-
                     a.innerHTML = cate.title;
                     li.appendChild(a);
                     ul.appendChild(li);
 
                 });
                 e.appendChild(ul);
-            },subArts: function(){
-
             }
         },
         fonts: {},
