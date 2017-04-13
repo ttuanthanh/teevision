@@ -627,10 +627,10 @@ var design = {
                     itemsCss.left = (css.left + 0) / zoomIn;
                     itemsCss.width = css.width / zoomIn;
                     itemsCss.height = css.height / zoomIn;
-                    if (typeof img[0] != 'undefined') {
-                        var imgW = img[0].getAttributeNS(null, 'width') / zoomIn;
-                        var imgH = img[0].getAttributeNS(null, 'height') / zoomIn;
-                    }
+                    // if (typeof img[0] != 'undefined') {
+                    //     var imgW = img[0].getAttributeNS(null, 'width') / zoomIn;
+                    //     var imgH = img[0].getAttributeNS(null, 'height') / zoomIn;
+                    // }
                 }
                 jQuery(this).css({
                     "width": itemsCss.width,
@@ -641,8 +641,8 @@ var design = {
                 svg[0].setAttributeNS(null, 'width', itemsCss.width);
                 svg[0].setAttributeNS(null, 'height', itemsCss.height);
                 if (typeof img[0] != 'undefined') {
-                    img[0].setAttributeNS(null, 'width', imgW);
-                    img[0].setAttributeNS(null, 'height', imgH);
+                    img[0].setAttributeNS(null, 'width', '100%');
+                    img[0].setAttributeNS(null, 'height', '100%');
                 }
             });
         },

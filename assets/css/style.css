@@ -1354,6 +1354,8 @@ body {
 .clipart-sub-list .clipart-sub li{
     line-height: 50px;
     text-align: left;
+    width: 32%;
+    float: left;
 }
 .clipart-sub-list .clipart-sub li a{
     font-size: 12px;
