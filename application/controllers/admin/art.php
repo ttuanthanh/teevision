@@ -111,14 +111,11 @@ class Art extends Admin_Controller
 		// save data
 		if(count($art) > 3)
 		{
-			$upload = false;
 			
-			// upload file
-			if (isset($_FILES["file"]["name"]) && $_FILES["file"]["name"] != '')
+                        if (isset($_FILES["file"]["name"][0]) && $_FILES["file"]["name"][0]!="")
 			{
-				$upload 		= true;
-				
-				// check folder and create
+                            
+                                // check folder and create
 				$this->root		= ROOTPATH .DS. 'media' .DS. 'cliparts' .DS. $art['cate_id'];
 				if (!file_exists($this->root))
 				{
@@ -135,74 +132,121 @@ class Art extends Admin_Controller
 				$config['max_size']			= '5120'; // 5MB		
 
 				$this->load->library('upload', $config);
-				if(!$this->upload->do_upload('file'))
-				{
-					$this->session->set_flashdata('error', $this->upload->display_errors());
-					redirect('admin/art');
-				}
+				$files = $_FILES["file"];
+                                foreach ($files["name"] as $key => $image)
+                                {
+                                    $_FILES['file[]']['name']= $files['name'][$key];
+                                    $_FILES['file[]']['type']= $files['type'][$key];
+                                    $_FILES['file[]']['tmp_name']= $files['tmp_name'][$key];
+                                    $_FILES['file[]']['error']= $files['error'][$key];
+                                    $_FILES['file[]']['size']= $files['size'][$key];
+
+                                    $fileName = $image;
+
+                                    //$images[] = $fileName;
+
+                                    $config['file_name'] = $fileName;
+
+                                    $this->upload->initialize($config);
+                                    if(!$this->upload->do_upload('file[]'))
+                                    {
+                                            $this->session->set_flashdata('error', $this->upload->display_errors());
+                                            redirect('admin/art');
+                                    }
+                                    
+                                    $file = $this->upload->data();
 				
-				$file = $this->upload->data();
+                                    $art['fle_url'] 	= $art['cate_id'].'/'.$file['file_name'];
+                                    $art['file_name'] 	= $file['file_name'];
+                                    $art['file_type'] 	= str_replace('.', '', $file['file_ext']);
+
+                                    // get color of image
+                                    $art['colors'] 		= '0';
+                                    if($art['file_type'] == 'svg')
+                                    {
+                                            $this->load->library('svg');
+                                            $colors 		= $this->svg->getColors($file['full_path']);
+                                            if(count($colors))
+                                                    $art['colors'] = json_encode($colors);
+                                    }
+                                    
+                                    if (!isset ($art['change_color']) ) $art['change_color'] = '0';
+			
+                                    if ($art['slug'] == '')
+                                    {
+                                            $art['slug'] = $art['title'];
+                                    }
+                                    $art['slug']	= url_title($art['slug']);
+
+                                    if($art['fle_url'] != '' && $art['file_name'] != '' && $art['file_type'] != '')
+                                    {
+                                            $clipart_id 	= $this->input->post('clipart_id');
+                                            if($clipart_id > 0)
+                                            {
+                                                    $clipart_id 	= $this->art_m->save($art, $clipart_id);
+
+                                            }
+                                            else
+                                            {								
+                                                    $clipart_id 		= $this->art_m->save($art, NULL);
+                                            }
+                                    }
+
+                                    if($clipart_id > 0)
+                                    {				
+                                            // create thumb
+                                            
+                                            $this->load->library('thumb');
+                                            $this->thumb->file	= $file['full_path'];				
+
+                                            $thumbs	= $this->root .DS. 'thumbs';				
+                                            if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
+                                            $this->thumb->resize($thumbs .DS. md5($clipart_id), array('width'=>100, 'height'=>100));
+
+
+                                            $medium	= $this->root .DS. 'medium';
+                                            if(!is_dir($medium)) mkdir($medium, 0755, TRUE);
+                                            $this->thumb->resize($medium .DS. md5($clipart_id.'medium'), array('width'=>300, 'height'=>300));
+
+                                            $large	= $this->root .DS. 'large';
+                                            if(!is_dir($large)) mkdir($large, 0755, TRUE);
+                                            $this->thumb->resize($large .DS. md5($clipart_id.'large'), array('width'=>800, 'height'=>800));									
+                                            
+                                    }
+                                    
+                                }//end foreach				
 				
-				$art['fle_url'] 	= $art['cate_id'].'/'.$file['file_name'];
-				$art['file_name'] 	= $file['file_name'];
-				$art['file_type'] 	= str_replace('.', '', $file['file_ext']);
-				
-				// get color of image
-				$art['colors'] 		= '0';
-				if($art['file_type'] == 'svg')
-				{
-					$this->load->library('svg');
-					$colors 		= $this->svg->getColors($file['full_path']);
-					if(count($colors))
-						$art['colors'] = json_encode($colors);
-				}
-			}
+                        }
+                        else
+                        {
+                           if (!isset ($art['change_color']) ) $art['change_color'] = '0';
+			
+                            if ($art['slug'] == '')
+                            {
+                                    $art['slug'] = $art['title'];
+                            }
+                            $art['slug']	= url_title($art['slug']);
+
+                            if($art['fle_url'] != '' && $art['file_name'] != '' && $art['file_type'] != '')
+                            {
+                                    $clipart_id 	= $this->input->post('clipart_id');
+                                    if($clipart_id > 0)
+                                    {
+                                            $clipart_id 	= $this->art_m->save($art, $clipart_id);
+
+                                    }
+                                    else
+                                    {								
+                                            $clipart_id 		= $this->art_m->save($art, NULL);
+                                    }
+                            } 
+                        }
+                        
+			
 			//echo '<pre>';print_r($art); echo '</pre>'; exit;
 		
-			if (!isset ($art['change_color']) ) $art['change_color'] = '0';
 			
-			if ($art['slug'] == '')
-			{
-				$art['slug'] = $art['title'];
-			}
-			$art['slug']	= url_title($art['slug']);
 			
-			if($art['fle_url'] != '' && $art['file_name'] != '' && $art['file_type'] != '')
-			{
-				$clipart_id 	= $this->input->post('clipart_id');
-				if($clipart_id > 0)
-				{
-					$clipart_id 	= $this->art_m->save($art, $clipart_id);
-					
-				}
-				else
-				{								
-					$clipart_id 		= $this->art_m->save($art, NULL);
-				}
-			}
-			
-			if($clipart_id > 0)
-			{				
-				// create thumb
-				if($upload == true)
-				{
-					$this->load->library('thumb');
-					$this->thumb->file	= $file['full_path'];				
-					
-					$thumbs	= $this->root .DS. 'thumbs';				
-					if(!is_dir($thumbs)) mkdir($thumbs, 0755, TRUE);				
-					$this->thumb->resize($thumbs .DS. md5($clipart_id), array('width'=>100, 'height'=>100));
-					
-					
-					$medium	= $this->root .DS. 'medium';
-					if(!is_dir($medium)) mkdir($medium, 0755, TRUE);
-					$this->thumb->resize($medium .DS. md5($clipart_id.'medium'), array('width'=>300, 'height'=>300));
-					
-					$large	= $this->root .DS. 'large';
-					if(!is_dir($large)) mkdir($large, 0755, TRUE);
-					$this->thumb->resize($large .DS. md5($clipart_id.'large'), array('width'=>800, 'height'=>800));									
-				}
-			}
 			redirect('admin/art');
 		}
 		else

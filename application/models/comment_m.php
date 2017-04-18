@@ -26,7 +26,7 @@ class Comment_m extends MY_Model
 		else
 		{
 			$this->db->where('order_id ', $id);
-                        $this->db->order_by('id ', 'DESC');
+//                        $this->db->order_by('id ', 'DESC');
 			$query = $this->db->get('comment');
 			return $query->result();
 		}

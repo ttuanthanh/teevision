@@ -16,9 +16,10 @@
                 beforeSend: function( xhr ) {
                     //jQuery(element_load).html('<img src="/assets/images/ajax-loader.gif"/>');
                 }}).done(function(data){ 
-                   jQuery('#comment-container').prepend(data);
+                   jQuery('#comment-container').append(data);
                    jQuery('#comment-text').val('');
                    //jQuery("#comment-container").scrollTop($("#comment-container")[0].scrollHeight);
-                   jQuery("#comment-content").animate({ scrollTop: $('#comment-content').prop("scrollHeight")}, 1000);
+                   jQuery(".comment-content").animate({ scrollTop: $('.comment-content').prop("scrollHeight")}, 1000);
+                   //jQuery("#comment-content").animate({ scrollTop: $('#comment-content').prop("scrollHeight")}, 1000);
                 });
     }

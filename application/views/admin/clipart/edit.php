@@ -36,7 +36,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<?php echo lang('art_upload_file'); ?>				
 			</label>
 			<div class="col-sm-8" style="overflow: hidden;">
-				<?php echo form_upload('file', '', 'id="dg-file"'); ?>
+				<?php echo form_upload('file[]', '', 'id="dg-file" multiple'); ?>
 				<div id="image-list">
 					<?php if (isset($images->fle_url) && $images->fle_url != '') { ?>
 						<?php $images = imageArt($art); ?>

@@ -65,7 +65,8 @@ class Comment extends Admin_Controller {
                     $gar_id = $this->comment_m->save($comment);
                 }
                 //$newDate = date("Y-m-d H:i:sa"); 
-                echo '<p class="cm-bg-0"><b>'.$user['name'].'</b> <small>('.date('m-d H:i').')</small>: <i><b>'.$text.'</b></i></p>';
+                //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);   
+                echo '<p class="cm-bg-0"><b>'.$user['name'].'</b> <small>('.date('M j H:i A').')</small>: <i><b>'.$text.'</b></i></p>';
                                
         }
         
