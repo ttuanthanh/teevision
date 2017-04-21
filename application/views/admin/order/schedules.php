@@ -12,7 +12,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.css'; ?>" media="screen" />
 <script type="text/javascript" src="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.js'; ?>"></script>
-
+<script type="text/javascript" src="<?php echo site_url().'assets/js/sort_tb/jquery.tablesorter.js'; ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/js/sort_tb/style.css'; ?>" media="screen" />
 <script type="text/javascript">
     jQuery(document).on('click change', 'input[name="check_all"]', function() {
         var checkboxes = $(this).closest('table').find(':checkbox').not($(this));
@@ -30,6 +31,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     location.reload();
                 }
         });
+        jQuery(".tablesorter").tablesorter(); 
     });
     function reload() 
     {
@@ -113,7 +115,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				</p>
 			</div>
 		</div>
-		<table id="sample-table-1" class="table sch-tb">
+		<table id="sample-table-1" class="table sch-tb tablesorter">
 			<thead>
                             <tr class="hd-tb-border">
                                         <th class="center"></th>

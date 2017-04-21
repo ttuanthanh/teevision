@@ -1672,12 +1672,12 @@ class Orders extends Admin_Controller
             $this->load->view('admin/order/addorder_success', $this->data);
         }
         
-        function listprice($price, $qty, $orderid, $itemid){
+        function listprice($itemid){
             		
-            $this->data['price'] = $price;
-            $this->data['qty'] = $qty;
-            $this->data['orderid'] = $orderid;
+            $this->data['order_item'] = $this->order_m->getItem($itemid);
+            
             $this->data['itemid'] = $itemid;
+            
             $this->load->view('admin/order/pp/edit_price', $this->data);
         }
         function changeprice(){
@@ -1686,6 +1686,9 @@ class Orders extends Admin_Controller
 //            
             $order['product_price'] = $data['price'];
             $order['quantity'] = $data['qty'];
+            $order['product_name'] = $data['product_name'];
+            $order['price_attributes'] = 0;
+            $order['admin_edit'] = 1;
             $this->order_m->_table_name = 'order_items';
             $this->order_m->updateOrder(array('id'=>$data['itemid']), $order);
             $this->load->view('admin/order/addorder_success', $this->data);

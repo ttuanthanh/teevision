@@ -24,13 +24,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <form action="/admin/orders/changeprice" method="post">
                 <table id="sample-table-1" class="table table-bordered">
                 
-                   
+                   <tr>
+                       <td><?php //var_dump($order_item); ?>
+                            <strong>Product name</strong> 
+                        </td>
+                        <td>
+                            <textarea type="text" name="product_name" value=""><?php echo $order_item->product_name; ?></textarea>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <strong>Product price</strong> ($)
                         </td>
                         <td>
-                            <input type="text" name="price" value="<?php echo $price; ?>">
+                            <input type="text" name="price" value="<?php echo $order_item->product_price; ?>">
                         </td>
                     </tr>
                     <tr>
@@ -38,13 +45,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <strong>Quantity</strong>
                         </td>
                         <td>
-                            <input type="text" name="qty" value="<?php echo $qty; ?>">
+                            <input type="text" name="qty" value="<?php echo $order_item->quantity; ?>">
                         </td>
                     </tr>
                   
                 </table>
                 <div class="text-right">
-                    <input type="hidden" name="orderid" value="<?php echo $orderid; ?>" >
+                    <input type="hidden" name="orderid" value="<?php echo $order_item->order_id; ?>" >
                     <input type="hidden" name="itemid" value="<?php echo $itemid; ?>" >
                     <input class="btn btn-success float-right" type="submit" value="Submit" >
                 </div>
