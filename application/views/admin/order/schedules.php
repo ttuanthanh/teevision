@@ -19,7 +19,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	width:100%;
 
-	border:1px solid black;
+        border:1px solid #ccccff;
 
 	background:white;
 
@@ -134,7 +134,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$attribute = array('class' => 'form-orders', 'id' => 'form-orders');		
 	echo form_open(site_url('admin/orders/schedules'), $attribute);
 	?>
-    <div class="color_code_box rounded">
+    <div class="color_code_box row">
                 <h6>Color<br>Code:</h6>
                 <span class="cl6">Past completed Order</span>
                 <span class="cl2">Normal</span>
@@ -147,7 +147,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <span class="cl7-2">Due Date <br>is Tomorrow</span>
 <!--                <span class="c22">Due Date <br>is Today</span>-->
                 <span class="cl7">Ship Date <br>is Today</span>
-                <br clear="all"/>
+               
         </div>
     <br clear="all"/>
 	<div class="panel-body" id="panelbody">
