@@ -14,6 +14,61 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script type="text/javascript" src="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo site_url().'assets/js/sort_tb/jquery.tablesorter.js'; ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/js/sort_tb/style.css'; ?>" media="screen" />
+<style>
+    .color_code_box {
+
+	width:100%;
+
+	border:1px solid black;
+
+	background:white;
+
+	padding:5px 0px;
+
+	margin:15px 0px;
+
+}
+
+.color_code_box h6 {
+
+	font-size:18px;
+
+	float:left;
+
+	width:80px;
+
+	padding:29px 15px 0px 22px;
+
+	font-weight:normal;
+
+}
+.color_code_box span { font-size:14px; width: 130px; height: 90px}
+
+.cl1 { background:white; border:1px solid black; padding:28px 0px; text-align:center; width:100px; float:left;}
+
+.cl2 { background:#D8E4EA; margin:0 7px;padding:37px 0px; text-align:center; width:80px; float:left;}
+
+.cl3-4 { display:block; float:left; width:120px; height:100px; font-size:12px;}
+
+.cl3 { display:block; float:left; width:100px; height: 42px!important; background:#E53225; width:100%; text-align:center; margin-bottom: 5px;}
+
+.cl4 { display:block; float:left; width:100px; background:#062F47; padding:5px 0px; color:white; width:100%; text-align:center; margin:2px 0px;} 
+
+.cl5 { background:#FF9012; padding:30px 0px; text-align:center; width:90px; float:left; margin:0px 4px;}
+
+.cl6 { background:#FEE300; padding:30px 0px; text-align:center; width:105px; float:left;}
+
+.cl7 { background:white  url(/assets/images//icon/mark-red.png) 10px 26px no-repeat; background-size: 40px 40px; padding:28px 10px 0px 60px; text-align:center; width:150px!important; height:40px; float:left;}
+
+.c22 { background:white  url(/assets/images//icon/mark-red.png) 10px 26px no-repeat; background-size: 40px 40px; padding:28px 10px 0px 60px; text-align:center; width:150px!important; height:40px; float:left;}
+
+.cl7-2 { background:white  url(/assets/images//icon/mark-yellow.png) 10px 26px no-repeat; background-size: 40px 40px; padding:28px 4px 0px 60px; text-align:center; width:150px!important; height:40px; float:left;}
+
+.cl8 { background:#8BDC65; padding:10px 0px;; text-align:center; width:115px; height: 42px!important; float:left;}
+
+.cl9{ position:absolute;}
+
+</style>
 <script type="text/javascript">
     jQuery(document).on('click change', 'input[name="check_all"]', function() {
         var checkboxes = $(this).closest('table').find(':checkbox').not($(this));
@@ -70,6 +125,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <?php }?>
 </div>
 <div class="panel panel-default schedule-box">
+        
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
 		<?php echo lang('orders_admin_orders_title'); ?>           
@@ -78,6 +134,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	$attribute = array('class' => 'form-orders', 'id' => 'form-orders');		
 	echo form_open(site_url('admin/orders/schedules'), $attribute);
 	?>
+    <div class="color_code_box rounded">
+                <h6>Color<br>Code:</h6>
+                <span class="cl6">Past completed Order</span>
+                <span class="cl2">Normal</span>
+                <span class="cl3-4">
+                    <span class="cl3">Problem<br>Reported</span>
+                    <span class="cl8">Shipped</span>
+                </span>
+                <span class="cl5">Past Due</span>
+                
+                <span class="cl7-2">Due Date <br>is Tomorrow</span>
+<!--                <span class="c22">Due Date <br>is Today</span>-->
+                <span class="cl7">Ship Date <br>is Today</span>
+                <br clear="all"/>
+        </div>
+    <br clear="all"/>
 	<div class="panel-body" id="panelbody">
 		<div class="row">
 			<div class="col-md-6">

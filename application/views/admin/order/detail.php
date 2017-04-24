@@ -361,7 +361,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                     <!--<td class="center"><a class="fancybox fancybox.iframe" href="<?php echo site_url().'admin/orders/view/'.$product->id;?>" ><?php echo lang('view');?></a></td>-->
                                                 <td colspan="2">
                                                             
-                                                                <strong><?php echo $product->product_name; ?></strong><br/>
+                                                                <strong><?php echo $product->product_name; ?></strong>
+                                                                <a href="/admin/orders/listprice/<?php echo $product->id; ?>" onclick="" class="float-right edit-price fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                                <br/>
                                                                 <small style="color:black">
                                                                     (<?php                                                                     
                                                                     echo date('D, M j H:i A', strtotime($product->created_on));
