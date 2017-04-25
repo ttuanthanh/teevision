@@ -50,6 +50,59 @@ class Artwork extends Admin_Controller {
                     //var_dump($gar_id);
                 }
                 
+                // check folder and create
+                $date 	= new DateTime();
+		$year	= $date->format('Y');
+                $root           = ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'uploaded' .DS. $year;
+                if (!file_exists($root))
+			mkdir($root, 0755, true);
+		
+		$month 	= $date->format('m');
+		$root 	= $root .DS. $month .DS;
+		if (!file_exists($root))
+			mkdir($root, 0755, true);                
+                
+                $config['upload_path'] = $root;
+                
+                $config['allowed_types'] 	= 'gif|png|jpg|jpge|svg';	
+                $config['max_size']			= '5120'; // 5MB		
+
+                $this->load->library('upload', $config);
+                $files = $_FILES["file"];
+                foreach ($files["name"] as $key => $image)
+                {
+                    $_FILES['file[]']['name']= $files['name'][$key];
+                    $_FILES['file[]']['type']= $files['type'][$key];
+                    $_FILES['file[]']['tmp_name']= $files['tmp_name'][$key];
+                    $_FILES['file[]']['error']= $files['error'][$key];
+                    $_FILES['file[]']['size']= $files['size'][$key];
+
+                    $fileName = $image;
+
+                    //$images[] = $fileName;
+
+                    $config['file_name'] = $fileName;
+
+                    $this->upload->initialize($config);
+                    if(!$this->upload->do_upload('file[]'))
+                    {
+                            $this->session->set_flashdata('error', $this->upload->display_errors());
+                            redirect('admin/orders/artwork/'.$art_id);
+                    }
+
+                    $file = $this->upload->data();
+
+                    $art['url'] 	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$file['file_name'];
+                    $art['artid'] 	= $art_id;
+                    //$art['file_name'] 	= $file['file_name'];
+                    //$art['file_type'] 	= str_replace('.', '', $file['file_ext']);
+                    $this->load->model('artwork_detail_m');
+                    $this->artwork_detail_m->save($art);
+                    
+                }
+                
+                
+                
                 $this->load->model('comment_m');
                 $comm = new comment_m();
                 $user = $this->user;

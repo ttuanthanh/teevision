@@ -30,8 +30,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     .no-padding-right{
         padding-right: 0px;
     }
-</style>
-<style>
     .bg-colors {
         width: 20px;
         height: 20px;
@@ -42,6 +40,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     .top-align td{ vertical-align: top!important; }
     .comment-content{ max-height: 200px; height: 200px}
     .artwork_ct{ max-width: 1280px; margin: 0 auto;}
+    
 </style>
 
 
@@ -61,7 +60,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     $colors = $design_option->colors;
                     $artwork = $product->artwork;
                     //var_dump($artwork);
-                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id);		
+                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id, 'enctype'=>'multipart/form-data');		
                     echo form_open(site_url('admin/artwork/save'), $attribute);
             ?>
             <div class="panel-body" id="panelbody">
@@ -70,109 +69,26 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <div class="row-content">    
                         <div class="col-md-7">
                             
-                            <div class="slider">
+                            <div class="slider col-md-8">
                                 <ul class="bxslider">
                                     <li><img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->front_file.'"' : '' ?> /></li>
                                     <li><img <?php echo isset($artwork->back_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> /></li>
                                     
                                 </ul>
                             </div>
-                            <div class="row-content clearfix">
-                         
-                                <div class="col-md-6 pruduct-quote-front">
-                                    <h5><b>Front</b></h5>
-                                    <div class="container-fluid clearfix">
-                                        <div class="col-md-5">
-                                            <div class="form-group product-fields selectbox" style="margin-left: 0;">
-                                                <div class="dg-poduct-fields ">
-                                                    <select class="form-control text-center" id="print-front-num" name="front_color">
-                                                        <?php
-                                                            for ($i = 0; $i < 7; $i ++){
-                                                                if ($artwork->front_color == $i) $sel = 'selected'; else $sel = '';
-                                                                echo '<option value="'.$i.'" '.$sel.'>'.$i.' colors</option>';
-                                                            }
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid clearfix">
-                                        <div class="">
-                                            <?php //var_dump($artwork->front_file) ?>
-                                            <div class="fileinput <?php echo (isset($artwork->front_file) && $artwork->front_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
-                                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                                    <?php 
-                                                     $ext = @pathinfo(site_url($artwork->front_file), PATHINFO_EXTENSION);
-                                                     $isimage = true;
-                                                     if (in_array($ext, array('psd','pdf','ai')));
-                                                        $isimage = FALSE;
-                                                    ?>
-                                                    <img <?php echo isset($artwork->front_file) ? 'src="/'.$artwork->front_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=<?php echo (isset($artwork->front_file) && !$isimage) ?  'Uploaded file not image. Please download to view!' : 'You have not selected any artwork for the front.' ?>" alt="front_image" class="img-responsive">
-                                                </div>
-                                                <div>
-                                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                                        <input class="upload-act" type="file" id="files-upload-front<?php echo $product->id ?>" placeholder="Choose banner image" onchange="upload_f('front<?php echo $product->id ?>')"/>
-                                                    </span> 
-                                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="remove_f('front<?php echo $product->id ?>')">Remove</a> 
-                                                    <a href="<?php echo isset($artwork->front_file) ? site_url().$artwork->front_file : '' ?>" target="_blank" class="btn btn-default fileinput-exists"  >Download</a> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <br class="clear"> 
-                                </div>
-                                <div class="col-md-6 pruduct-quote-back">
-                                    <h5><b>Back</b></h5>
-                                    <div class="container-fluid clearfix">
-                                        <div class="col-md-5">
-                                            <div class="form-group product-fields selectbox" style="margin-left: 0;">
-                                                <div class="dg-poduct-fields ">
-                                                    <select class="form-control text-center" id="print-back-num" name="back_color">
-                                                        <?php
-                                                            for ($i = 0; $i < 7; $i ++){
-                                                                if ($artwork->back_color == $i) $sel = 'selected'; else $sel = '';
-                                                                echo '<option value="'.$i.'" '.$sel.'>'.$i.' colors</option>';
-                                                            }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid clearfix">
-                                        <div class="">
-                                            <div class="fileinput <?php echo (isset($artwork->back_file) && $artwork->back_file != '') ? 'fileinput-exists' : 'fileinput-new' ?> " data-provides="fileinput">
-                                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 172px; height: 90px;">
-                                                    <?php 
-                                                     $ext = @pathinfo(site_url($artwork->back_file), PATHINFO_EXTENSION);
-                                                     $isimage = true;
-                                                     if (in_array($ext, array('psd','pdf','ai')));
-                                                        $isimage = FALSE;
-                                                    ?>
-                                                    <img <?php echo isset($artwork->back_file) ? 'src="/'.$artwork->back_file.'"' : '' ?> data-src="holder.js/172x90?auto=yes&text=<?php echo (isset($artwork->back_file) && !$isimage) ? 'Uploaded file not image. Please download to view!' : 'You have not selected any artwork for the front.'  ?>" alt="back_image" class="img-responsive">
-                                                </div>
-                                                <div>
-                                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image front</span> <span class="fileinput-exists">Change</span> 
-                                                        <input class="upload-act" type="file" id="files-upload-back<?php echo $product->id ?>" placeholder="Choose banner image" onchange="upload_f('back<?php echo $product->id ?>')"/>
-                                                    </span> 
-                                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" onclick="remove_f('back<?php echo $product->id ?>')">Remove</a> 
-                                                    <a href="<?php echo isset($artwork->back_file) ? site_url().$artwork->back_file : '' ?>" target="_blank" class="btn btn-default fileinput-exists"  >Download</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <br class="clear"> 
-                                </div>
+                            <div class="row-content clearfix col-md-4">
+                                <label class="btn btn-primary">
+                                    <input class="upload-act btn btn-primary" type="file" id="file" name="file[]" placeholder="Choose banner image" multiple />
+                                    Custom Upload
+                                </label>                                
+                                <button class="btn btn-primary" id="file" name="" value="download" />Download</button>
+                                <button class="btn btn-dark-grey" id="file" name="" value="download" />Remove</button>
                                 <input type="hidden" id="design-image-front<?php echo $product->id ?>" name="front_file" value="<?php echo isset($artwork->front_file) ? $artwork->front_file : '' ?>">
                                 <input type="hidden" id="design-image-back<?php echo $product->id ?>" name="back_file" value="<?php echo isset($artwork->back_file) ? $artwork->back_file : '' ?>">
                                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
                                 <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
                                 <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
+                                <br clear="all"/>
                             </div>
                             <div class="row-content clearfix">
                                 <div class="col-md-11">
