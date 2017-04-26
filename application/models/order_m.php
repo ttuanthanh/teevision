@@ -409,6 +409,14 @@ class Order_m extends MY_Model
 		
 	}
         
+        function getArtworkImageByItem($id = '')
+	{	
+		$this->db->where('artid ', $id);
+                $query = $this->db->get('order_artwork_detail');
+                return $query->result();
+		
+	}
+        
         function getProofByItem($id = '')
 	{	
 		$this->db->where('item_id ', $id);

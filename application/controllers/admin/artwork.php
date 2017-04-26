@@ -141,6 +141,22 @@ class Artwork extends Admin_Controller {
                 
                 redirect($_SERVER['HTTP_REFERER']);
         }
+        
+        public function deleteImage($id = '')
+        {        
+                //var_dump($garment);
+                if($id == ''){
+                    redirect($_SERVER['HTTP_REFERER']);
+                    exit();
+                }      
+                else
+                {
+                    $this->db->where('id ',$id);
+                    if($this->db->delete('order_artwork_detail'))   ;                 
+                }
+                
+                redirect($_SERVER['HTTP_REFERER']);
+        }
 
         
 	

@@ -1034,6 +1034,8 @@ class Orders extends Admin_Controller
                 $items = $this->order_m->getItems($id);
                 foreach ($items as $key=>$item){
                     $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                    if(isset($items[$key]->artwork->id))
+                        $items[$key]->artworkImage = $this->order_m->getArtworkImageByItem($items[$key]->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items[$key]->artwork->id) : '';
                 }
                 
 		$this->data['items'] = $items;
