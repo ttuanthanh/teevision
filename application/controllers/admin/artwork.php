@@ -86,8 +86,9 @@ class Artwork extends Admin_Controller {
                     $this->upload->initialize($config);
                     if(!$this->upload->do_upload('file[]'))
                     {
-                            $this->session->set_flashdata('error', $this->upload->display_errors());
-                            redirect('admin/orders/artwork/'.$art_id);
+                        break;
+                        $this->session->set_flashdata('error', $this->upload->display_errors());
+                        redirect('admin/orders/artwork/'.$art_id);
                     }
 
                     $file = $this->upload->data();
