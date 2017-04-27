@@ -1261,17 +1261,30 @@ class Orders extends Admin_Controller
                 redirect($_SERVER['HTTP_REFERER']);
 	}
         
-        function listproduct($orderid='')
+        function editSize($id='')
 	{
-		$this->load->model('product_m');
-		$row 	= $this->product_m->getProductsLite();
-		$this->data['products'] = $row;		
-                $this->data['orderid'] = $orderid;
-                
+		$this->load->model('order_m');
+		$row 	= $this->order_m->getItem($id);
+		$this->data['size'] = json_decode($row->size);		
+                $this->data['order_id'] = $row->order_id;
+                $this->data['item_id'] = $id;
                 //$order = $this->order_m->getItems($id);
                 //$this->data['order'] = $order;
                 
-		$this->load->view('admin/order/list_products', $this->data);
+		$this->load->view('admin/order/pp/edit_size', $this->data);
+	}
+        
+        function changeSize()
+	{
+		$size = $this->input->post('size');
+                $id = $this->input->post('item_id');
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+                $this->db->where('id', $id);
+                $this->db->update('order_items' , array('size'=>  json_encode($size)));
+                
+		$this->load->view('admin/order/addorder_success');
 	}
         
         function addorder($id="",$orderid='')
