@@ -115,7 +115,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <div class="col-md-11 art_detail<?php echo $product->id; ?>">
                                 <?php
                                 $current = 0;
-                                if ($artwork->order_des != ''){                                    
+                                if (isset($artwork->order_des) && $artwork->order_des != ''){                                    
                                     $details = json_decode($artwork->order_des);
                                     foreach($details as $key=>$value){
                                         //var_dump($value);
