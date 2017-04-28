@@ -18,8 +18,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/jssor.slider-23.0.0.mini.js');?>"></script>
 <link href="<?php echo base_url('assets/plugins/bxSlider/jquery.bxslider.css');?>" rel="stylesheet" />
 <script src="<?php echo base_url('assets/plugins/bxSlider/jquery.bxslider.js');?>"></script>
-<link rel="stylesheet" type="text/css" href="/assets/plugins/CustomFileInputs/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="/assets/plugins/CustomFileInputs/css/demo.css" />
+<!--<link rel="stylesheet" type="text/css" href="/assets/plugins/CustomFileInputs/css/normalize.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="/assets/plugins/CustomFileInputs/css/demo.css" />-->
 <link rel="stylesheet" type="text/css" href="/assets/plugins/CustomFileInputs/css/component.css" />
 
 <style>
@@ -100,7 +100,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     <span>Upload&hellip;</span>
                                 </label>
                                 <div style="font-size: 10px; font-style: italic; font-weight: bold">*Can upload multi image</div>
-				                            
+				<div class="row-content clearfix text-right" style="margin: 30 auto;">
+                                    <br/><br/>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Save</button>
+                                </div>                            
                                 <input type="hidden" id="design-image-front<?php echo $product->id ?>" name="front_file" value="<?php echo isset($artwork->front_file) ? $artwork->front_file : '' ?>">
                                 <input type="hidden" id="design-image-back<?php echo $product->id ?>" name="back_file" value="<?php echo isset($artwork->back_file) ? $artwork->back_file : '' ?>">
                                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
@@ -109,36 +112,69 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <br clear="all"/>
                             </div>
                             <div class="row-content clearfix">
-                                <div class="col-md-11">
-                                    <table class="">
+                                <div class="col-md-11 art_detail<?php echo $product->id; ?>">
+                                <?php
+                                $current = 0;
+                                if ($artwork->order_des != ''){                                    
+                                    $details = json_decode($artwork->order_des);
+                                    foreach($details as $key=>$value){
+                                        //var_dump($value);
+                                    ?>
+                                        <table class="tbde<?php echo $key?>">
+                                            <tr>
+                                                <td class="text-right">Location: </td>
+                                                <td style="width: 400px"><input class="form-control" id="artw_location" name="d[<?php echo $key ?>][artw_location]" value="<?php  echo $value->artw_location ?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right">Color: </td>
+                                                <td><input class="form-control" id="artw_color" name="d[<?php echo $key ?>][artw_color]" value="<?php echo $value->artw_color ?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right">Measurement: </td>
+                                                <td><input class="form-control" name="d[<?php echo $key ?>][artw_measurement]" value="<?php echo $value->artw_measurement; ?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right">Comment: </td>
+                                                <td>
+                                                    <textarea class="form-control" name="d[<?php echo $key ?>][order_description]" rows="3" cols="" placeholder="Enter order description"><?php echo $value->order_description; ?></textarea>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    <?php 
+                                    $current = $key;
+                                    }
+                                }else{
+                                    ?>
+                                    <table class="tbde0">
                                         <tr>
                                             <td class="text-right">Location: </td>
-                                            <td style="width: 400px"><input class="form-control" id="artw_location" name="artw_location" value="<?php if(isset($artwork->artw_location)) echo $artwork->artw_location; ?>"></td>
+                                            <td style="width: 400px"><input class="form-control" id="artw_location" name="d[0][artw_location]" value=""></td>
                                         </tr>
                                         <tr>
                                             <td class="text-right">Color: </td>
-                                            <td><input class="form-control" id="artw_color" name="artw_color" value="<?php if(isset($artwork->artw_color)) echo $artwork->artw_color; ?>"></td>
+                                            <td><input class="form-control" id="artw_color" name="d[0][artw_color]" value=""></td>
                                         </tr>
                                         <tr>
                                             <td class="text-right">Measurement: </td>
-                                            <td><input class="form-control" name="artw_measurement" id="artw_measurement" value="<?php if(isset($artwork->artw_measurement)) echo $artwork->artw_measurement; ?>"></td>
+                                            <td><input class="form-control" name="d[0][artw_measurement]" value=""></td>
                                         </tr>
                                         <tr>
                                             <td class="text-right">Comment: </td>
                                             <td>
-                                                <textarea class="form-control" name="order_des" rows="3" cols="" placeholder="Enter order description"><?php 
-                                                    if(isset($artwork->order_des)) echo $artwork->order_des;
-                                                ?></textarea>
+                                                <textarea class="form-control" name="d[0][order_description]" rows="3" cols="" placeholder="Enter order description"></textarea>
                                             </td>
                                         </tr>
                                     </table>
-                                    
+                                <?php }?>
                                 </div>
 
                             </div>
                             <div class="row-content clearfix text-right" style="margin-right: 20px">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                
+                                <button type="button" onclick="removedt(<?php echo $product->id; ?>)" class="btn btn-primary remove-detail<?php echo $product->id;?>" style="<?php if($current == 0 ) echo 'display: none'?>">remove</button>
+                                <button type="button" onclick="addmore(<?php echo $product->id; ?>)" class="btn btn-primary">add more</button>
                             </div>
+                            
 
                         </div>
                         <div class="col-md-5">
@@ -248,11 +284,58 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         uploadSize['max']  = '10';
         uploadSize['min']  = '0';
         //if(typeof Holder !== 'undefined') Holder.run();
-        var baseURL	= '<?php echo base_url(); ?>';
+    var baseURL	= '<?php echo base_url(); ?>';
+    current = <?php echo $current; ?>;
+    
     $(document).ready(function(){
         $('.bxslider').bxSlider();
-    });    
         
+    });    
+      
+    
+    function addmore(container){
+        current = $('.art_detail'+container+' table').length;
+        //current++;
+        tr = '<tr>'+
+                '<td class="text-right">Location: </td>'+
+                '<td style="width: 400px"><input class="form-control" name="d['+current+'][artw_location]" value=""></td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td class="text-right">Color: </td>'+
+                '<td><input class="form-control"  name="d['+current+'][artw_color]" value=""></td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td class="text-right">Measurement: </td>'+
+                '<td><input class="form-control" name="d['+current+'][artw_measurement]"  value=""></td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td class="text-right">Comment: </td>'+
+                '<td>'+
+                    '<textarea class="form-control" name="d['+current+'][order_description]" rows="3" cols="" placeholder="Enter order description"></textarea>'+
+                '</td>'+
+            '</tr>';
+        html = '<br /><table class="tbde'+current+'">'+tr+'</table>';
+        html +='';        
+        $('.art_detail'+container).append(html);
+        if(current > 0){
+            $('.remove-detail'+container).show();
+        }
+    }
+    
+//    $(document).on("click", ".remove-detail",function(e){
+//        $('.tbde'+current).remove();
+//        current--;      
+//        if(current == 0){
+//            $('.remove-detail').hide();
+//        }
+//    });
+    function removedt(container){
+        current = $('.art_detail'+container+' table').length -1;        
+        $('.art_detail'+container).find('.tbde'+(current--)).remove();              
+        if(current == 0){
+            $('.remove-detail'+container).hide();
+        }
+    }
         
         
         

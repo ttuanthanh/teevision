@@ -37,7 +37,10 @@ class Artwork extends Admin_Controller {
             
                 $data = $this->input->post();
                 $art_id = $data['artwork_id'];
+                $detail = $data['d'];
+                $data['order_des'] = json_encode($detail);
                 unset($data['artwork_id']);
+                unset($data['d']);
                 if ($art_id == '')
                 {                    
                     $data['createdt'] = date("Y-m-d H:i:sa");
