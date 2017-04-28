@@ -1261,6 +1261,19 @@ class Orders extends Admin_Controller
                 redirect($_SERVER['HTTP_REFERER']);
 	}
         
+        function listproduct($orderid='')
+	{
+		$this->load->model('product_m');
+		$row 	= $this->product_m->getProductsLite();
+		$this->data['products'] = $row;		
+                $this->data['orderid'] = $orderid;
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/list_products', $this->data);
+	}
+        
         function editSize($id='')
 	{
 		$this->load->model('order_m');

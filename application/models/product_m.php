@@ -59,7 +59,7 @@ class Product_m extends MY_Model
 	{
 		//$this->db->cache_on();
 		$this->db->select('id,title,image');		
-		
+		$this->db->where('published', 1);
 		$this->db->order_by('default', 'DESC');
 		
 		$product = parent::get();
