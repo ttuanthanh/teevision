@@ -334,11 +334,12 @@ body {
 
 .list-colors {
     vertical-align: top;
-    display: inline-block;
+    display: block;
 }
 
 .dropdown-outline {
     display: inline-block;
+    margin-left: 10px;
 }
 
 .dropdown-outline .dropdown-menu {
@@ -1415,7 +1416,6 @@ body {
 .design-area .drag-item tspan{
     pointer-events: none;
 }
-
 .popover {
     left: 34px;
 }
@@ -1491,13 +1491,13 @@ body {
     display: inline-block;
     margin-left: 5px;
     margin-right: 5px;
-    min-width: 10px;
-    max-width: 60px;
-    text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
-    overflow: hidden;
     float: left;
+    width: 100%;
+}
+#list-clipart-colors .text-color{
+    width:inherit;
 }
 #art-rotate {
     float: left;
@@ -3429,4 +3429,13 @@ ul.choose_payment .description {
 }
 .margin-left-50{
     margin-left: 50px;
+}
+.line-break{
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+.link-break-no-border{
+    display: inline-block;
+    width: 100%;
 }

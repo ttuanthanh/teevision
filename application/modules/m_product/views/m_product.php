@@ -15,7 +15,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		$options = json_decode($m_product->options);
 		//echo '<pre>';
 		//print_r($products);
-		echo'<div class="contain-btn-inform row mobile"><div class="col-xs-6 inform-btn-mobile mobile"><a href="/design" class="col-xs-12 btn btn-warning inform-link"><span>Get Start</span></a></div>';
+		echo'<div class="contain-btn-inform row mobile"><div class="col-xs-6 inform-btn-mobile mobile"><a href="/design" class="col-xs-12 btn btn-warning inform-link"><span>Start Design</span></a></div>';
 		echo'<div class="col-xs-6 inform-btn-mobile mobile"><a href="/page/21-contact-us" class="col-xs-12 btn btn-warning inform-link"><span>Contact Us</span></a></div></div>';
 		if(isset($options->show_title) && $options->show_title == 'yes')
 			echo '<h2 class="text-center tee-title">'.$m_product->title.'</h2>';

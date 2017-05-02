@@ -27,7 +27,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		}
 	?>
 </ul>
-<div class="start-design-mobile mobile"><a href="/design" class="btn btn-warning start-link"><span>Start Design</span></a></div>
+<!--<div class="start-design-mobile mobile"><a href="/design" class="btn btn-warning start-link"><span>Start Design</span></a></div>-->
 <script type="text/javascript">
 	jQuery('.bxslider').bxSlider({
 		<?php 

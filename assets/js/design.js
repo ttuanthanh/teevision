@@ -687,8 +687,8 @@ var design = {
                             jQuery(el).ColorPickerHide();
                             design.item.changeColor(view);
                             jQuery(view).data("show", false);
-                        },
-                        eventName: 'none'
+                        }
+
                     });
                 };
                 initLayout();
@@ -704,7 +704,8 @@ var design = {
             jQuery(view).data("show", false);
         },
         colors: function (view) {
-            if (jQuery('#view-' + view + ' .product-design').html() == '') {
+            var b = jQuery('#view-' + view + ' .product-design').html() == '';
+            if (b) {
                 return [];// design.colors;
             }
 
@@ -1178,7 +1179,7 @@ var design = {
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom button_click"' +
                 'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
-            jQuery(div).append('<span class="colorSelector bg-colors bg-custom marker"' +
+            jQuery(div).append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
 
@@ -3200,7 +3201,9 @@ var design = {
                     jQuery('.btn-action-colors').css('display', 'block');
                     var div = jQuery('#list-clipart-colors');
                     div.html('');
+                    var count = 0;
                     for (var color in colors) {
+                        count++;
                         if (color == 'none') continue;
                         var a = document.createElement('a');
                         a.setAttribute('class', 'dropdown-color');
@@ -3212,8 +3215,11 @@ var design = {
                         jQuery.data(a, 'colors', colors[color]);
                         a.innerHTML = '<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>';
                         div.append(a);
-                        var b = "<span class='text-color'>"+ design.designer.getColorTitle(color)+"</span>"
+                        var b = "<span class='text-color'>"+ design.designer.getColorTitle(color)+"</span>";
                         div.append(b);
+                        if(count%3 ==0){
+                            div.append('<span class="link-break-no-border"></span>');
+                        }
                     }
                 }
                 else {
