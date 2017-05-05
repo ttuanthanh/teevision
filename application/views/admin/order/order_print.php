@@ -86,12 +86,26 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
                             </p>
                             <div>
+                            
                                 <?php
-                                if($product->attributes != '' && $product->attributes != '"[]"')
+                                $sizename = '';
+                                $sizenum = '';
+                                if($product->size != ''){
+                                    $psize = json_decode($product->size);
+                                    $value = $psize->value;
+                                    foreach($psize->name as $key=>$name){
+                                        $sizename .= '<td>'.$name.'</td>';
+                                        $sizenum .= '<td>'.$value[$key].'</td>';
+                                    }
+                                    ?>
+
+                                <?php
+                                }
+                                else if($product->attributes != '' && $product->attributes != '"[]"')
                                 {
                                         $size = json_decode(json_decode($product->attributes), true);
-                                        $sizename = '';
-                                        $sizenum = '';
+                                        //var_dump($size);
+
                                         if (count($size) > 0)
                                         {
                                                 foreach($size as $option) { ?>
@@ -114,23 +128,24 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                                 ?>
                                                         </p>
                                                 <?php } ?>
-                                        <table id="sample-table-1" class="table table-bordered table-hover">
-                                            <thead>
-                                                    <tr>
-                                                        <?php echo $sizename ?>
-                                                    </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                        <?php echo $sizenum ?>
-                                                    </tr>
-                                            </tbody>
-                                        </table>            
+
                                 <?php                
                                         }
                                 } 
                                 ?>
-
+                                <table id="sample-table-1" class="table table-bordered table-hover">
+                                        <thead>
+                                                <tr>
+                                                    <?php echo $sizename ?>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    <?php echo $sizenum ?>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                <a href="/admin/orders/editSize/<?php echo $product->id; ?>" class="btn btn-success  fancybox.iframe size-info">Edit size</a>
                             </div>
                             <div>
                                 <?php

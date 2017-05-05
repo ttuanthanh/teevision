@@ -33,6 +33,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             </div>
 	</div>
 <div class="modal-footer">
+        <a href="/admin/orders/addorderdefault/<?php echo $orderid ?>" class="btn btn-default">Add custom product</a>
 	<button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
 </div>
 <script type="text/javascript">

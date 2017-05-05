@@ -45,7 +45,7 @@ class Artwork extends Admin_Controller {
                 {                    
                     $data['createdt'] = date("Y-m-d H:i:sa");
                     $data['modidt'] = date("Y-m-d H:i:sa");
-                    $gar_id = $this->artwork_m->save($data);
+                    $art_id = $this->artwork_m->save($data);
                 }
                 else
                 {
