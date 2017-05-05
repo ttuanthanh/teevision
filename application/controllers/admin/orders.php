@@ -1596,6 +1596,222 @@ class Orders extends Admin_Controller
 		$this->load->view('admin/order/addorder_success',$this->data);
 	}
         
+        function addorderdefault($order_id = '')
+	{
+                
+		$this->user 	= $this->session->userdata('user');
+			
+		if($order_id == '')
+		{
+			$data = $this->input->post();			
+			
+			
+			// get design option
+			//$this->load->driver('cache', array('adapter'=>'file')); 
+			$session_id 	= $this->session->userdata('order_session_id');
+			//$designs 		= $this->cache->get('orders_designs'.$session_id);
+			
+			$is_teams = 0;
+			$items	= array();
+			$i 		= 0;
+			$total 		= 0;
+			$subtotal 	= 0;	
+                        $design_save    = array();
+			
+			// save order
+			$order 			= $this->order_m->addNew('order');
+			$order['order_number']	= $this->order_m->creteOrderNumberNew();
+			$order['order_pass']	= $this->order_m->creteOrderNumber();
+			$order['user_id']	= $this->user['id'];			
+			$order['payment_id']	= 1 ;//TTT edit paymentid //$items['metod']->payment;
+			$order['shipping_id']	= 1;// TTT edit $items['metod']->shipping->id;
+			
+                        
+                         
+                        //TTT edit add total product
+                        //$priceM = explode(',', $data['f-price']);
+                        
+                        //$totalq = $data['quantity'];
+                        
+			$order['shipping_id']           = 1;
+			$order['shipping_price']        = 0;
+			$order['sub_total']		= 0;// TTT edit $items['metod']->subtotal;
+			$order['total']			= 0;// TTT edit + $order['shipping_price'] - $order['discount'];			
+			$order['status']		= 'pending';
+                        $order['total_qty']		= 0;
+                        $order['custom_file']		= $is_teams;
+			$order_id 			= $this->order_m->save($order, null);
+			
+			
+			// save order items
+			$order_item				= $this->order_m->addNew('item');
+			$order_item['order_id'] = $order_id;
+			
+			// get setting
+			$this->load->model('settings_m');
+			$row 	= $this->settings_m->getSetting();
+			$setting = json_decode($row->settings);
+			
+			// get shipping method
+			$this->load->model('shipping_m');
+			$shipping	= $this->shipping_m->get(1, true);
+			
+			// get payment method
+			$this->load->model('payment_m');
+			$payment	= $this->payment_m->get(1, true);
+			
+			$discount	= array();
+
+			// html email.
+			$total = 0;
+			$count = 1;
+			$shipping_price = 0;
+			$payment_price = 0.0;
+                        $price_clipart	= 0;
+
+
+//                        $this->load->model('product_m');
+// 
+//                        $proinfo 	= $this->product_m->getProduct(array('id'=>$data['product_id']));
+//                                                
+//                        $this->load->helper('cart');
+//                        $cart 		= new dgCart();
+//
+//                        $attributes	= $this->product_m->getAttribute($data['product_id']);                                
+//
+//                        $customField 			= $cart->getPriceAttributesForManual($attributes, $data['attribute'][$attributes->id], $data['colors']);
+//                        //var_dump($customField);
+//                        $optionm 		= $customField->fields;
+
+
+
+
+                        $design_color_s = array('color_hex' => '000000', 'color_name' => 'black');
+                        //$prices					= json_decode($item['prices']);
+                        $order_item['design_id'] 		= '';
+                        $order_item['product_id'] 		= 0;				
+                        $order_item['product_name']             = 'Custom product';				
+                        $order_item['product_sku'] 		= 'custom';				
+                        $order_item['product_price']            = 1;//$prices->sale;				
+                        $order_item['price_print'] 		= 0;				
+                        $order_item['price_clipart']            = 0;				
+                        $order_item['price_attributes']         = 0;				
+                        $order_item['quantity'] 		= 0;			
+                        $order_item['poduct_status']            = 'pending';				
+                        $order_item['attributes'] 		= json_encode(json_encode(array()));	
+                        $order_item['design_option'] 		= json_encode(array('design_area'   =>"", 
+                                                                                    'design_images' => '',
+                                                                                    'print_number'  => '',
+                                                                                    'colors'        => $design_color_s));
+
+                        $this->order_m->save($order_item, null);
+			
+			// save user address shipping
+			$order_info				= $this->order_m->addNew('info');
+			$order_info['order_id'] = $order_id;
+			$order_info['user_id'] 	= $this->user['id'];			
+			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"COMPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
+			$this->order_m->save($order_info, null);
+                        $this->data['status'] = 'new';
+                        $this->data['orderid'] = $order_id;
+			
+		}
+		else
+		{
+                        
+			//$data = $this->input->post();			
+			//$this->load->model('order_m');
+                        //$order_info = $this->order_m->getOrder($data['orderid']);
+                        
+                        //var_dump($order_info);
+                        //exit();
+			
+			// get design option
+			//$this->load->driver('cache', array('adapter'=>'file')); 
+			$session_id 	= $this->session->userdata('order_session_id');
+			//$designs 		= $this->cache->get('orders_designs'.$session_id);
+			
+			$is_teams = 0;
+			$items	= array();
+			$i 		= 0;
+			$total 		= 0;
+			$subtotal 	= 0;	
+                        $design_save    = array();
+			
+						
+			// save order items
+			$order_item             = $this->order_m->addNew('item');
+			$order_item['order_id'] = $order_id;
+			
+			// get setting
+			//$this->load->model('settings_m');
+			//$row 	= $this->settings_m->getSetting();
+			//$setting = json_decode($row->settings);
+			
+			
+			// html email.
+			$total = 0;
+			$count = 1;
+			$shipping_price = 0;
+			$payment_price = 0.0;
+                        $price_clipart	= 0;
+
+
+                       // $this->load->model('product_m');
+ 
+                       // $proinfo 	= $this->product_m->getProduct(array('id'=>$data['product_id']));
+                                                
+                       // $this->load->helper('cart');
+                       // $cart 		= new dgCart();
+
+                        //$attributes	= $this->product_m->getAttribute($data['product_id']);                                
+
+                        //$customField 			= $cart->getPriceAttributesForManual($attributes, $data['attribute'][$attributes->id], $data['colors']);
+                        //var_dump($customField);
+                        //$optionm 		= $customField->fields;
+
+                        //TTT edit add total product
+                        //$priceM = explode(',', $data['f-price']);
+                        
+                        //$totalq = $data['quantity'];
+
+
+                        $design_color_s = array('color_hex' => '000000', 'color_name' => 'black');
+                        //$prices					= json_decode($item['prices']);
+                        $order_item['design_id'] 		= '';
+                        $order_item['product_id'] 		= 0;				
+                        $order_item['product_name']             = 'Custom product';				
+                        $order_item['product_sku'] 		= 'custom';				
+                        $order_item['product_price']            = 1;//$prices->sale;				
+                        $order_item['price_print'] 		= 0;				
+                        $order_item['price_clipart']            = 0;				
+                        $order_item['price_attributes']         = 0;				
+                        $order_item['quantity'] 		= 0;			
+                        $order_item['poduct_status']            = 'pending';				
+                        $order_item['attributes'] 		= json_encode(json_encode(array()));	
+                        $order_item['design_option'] 		= json_encode(array('design_area'   =>"", 
+                                                                                    'design_images' => '',
+                                                                                    'print_number'  => '',
+                                                                                    'colors'        => $design_color_s));
+
+                        $this->order_m->save($order_item, null);
+			
+//                        $order_info = $this->order_m->getOrder($data['orderid']);
+//                        $order['sub_total']		= 0 + $order_info->sub_total;// TTT edit $items['metod']->subtotal;
+//			$order['total']			= 0 + $order_info->total;// TTT edit + $order['shipping_price'] - $order['discount'];			
+//			
+//                        $order['total_qty']		= $totalq + $order_info->total_qty;
+//
+//                        $this->order_m->_table_name = 'orders';
+//                        $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+                        $this->data['status'] = 'edit';
+                        $this->data['orderid'] = $order_item['order_id'];
+		}		
+                
+                
+		$this->load->view('admin/order/addorder_success',$this->data);
+	}
+        
         function deleteitem($orderid='', $itemid='')
         {
             $item = $this->order_m->getItem($itemid);

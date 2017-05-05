@@ -236,8 +236,11 @@ class Order_m extends MY_Model
 	{
             $this->db->select('order_items.*,order_proof.proof_file');
 		$this->db->where('order_items.order_id', $order_id);
-                $this->db->join('order_proof', 'order_items.order_id = order_proof.order_id', 'left');
+                $this->db->join('order_proof', 'order_items.order_id = order_proof.order_id and dg_order_items.id = dg_order_proof.item_id', 'left');
+                
 		$query = $this->db->get('order_items');
+//                var_dump($query);
+                //echo $this->db->last_query();
 		return $query->result();
 	}
 	
