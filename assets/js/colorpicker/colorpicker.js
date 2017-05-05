@@ -154,6 +154,7 @@
 				return false;
 			},
 			upHue = function (ev) {
+                moveHue(ev);
 				fillRGBFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
 				fillHexFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
 				jQuery(document).unbind('mouseup', upHue);
