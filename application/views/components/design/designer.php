@@ -130,12 +130,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     <span class="changeInfo"><?php echo $lang['designer_product_change_product']; ?>
                                     </span>
                                 </div>
-                                <div class="col-xs-4 col-md-4 text-right">
-                                    <a type="button" class="btn-link" href="javascript:void(0)" id="designThis">
-                                        Design this
-                                        <i class="glyphicon glyphicon-arrow-right"></i>
-                                    </a>
-                                </div>
+<!--                                <div class="col-xs-4 col-md-4 text-right">-->
+<!--                                    <a type="button" class="btn-link" href="javascript:void(0)" id="designThis">-->
+<!--                                        Design this-->
+<!--                                        <i class="glyphicon glyphicon-arrow-right"></i>-->
+<!--                                    </a>-->
+<!--                                </div>-->
                             </div>
                             <div class="row nav-select" style="display:none;">
                                 <div class="col-md-12 col-xs-8 nav-info left ">

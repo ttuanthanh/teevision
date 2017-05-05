@@ -1421,13 +1421,14 @@ var design = {
         },
         selectProduct: function (e, product) {
             var self = this;
-            jQuery(e).parent().find(".product-box").removeClass("sltProduct")
-            e.className += " sltProduct";
-            jQuery("#designThis").unbind("click");
-            jQuery("#designThis").bind("click", function () {
+            // jQuery(e).parent().find(".product-box").removeClass("sltProduct")
+            // e.className += " sltProduct";
+            // jQuery("#designThis").unbind("click");
+            // jQuery("#designThis").bind("click", function () {
                 self.changeProduct(e, product);
                 self.changeDesign(e);
-            });
+            // }
+            // );
 
         },
         changeDesign: function (e) {
@@ -2260,11 +2261,11 @@ var design = {
             item.svg = svg;
 
             design.item.create(item);
-            if (item.type == "text") {
-                this.setSize(design.item.get());
-                jQuery('#add_text').hide();
-                jQuery('#update_text').show();
-            }
+            // if (item.type == "text") {
+            //     this.setSize(design.item.get());
+            //     jQuery('#add_text').hide();
+            //     jQuery('#update_text').show();
+            // }
             jQuery("#enter-text").val(o.text);
 
         },
