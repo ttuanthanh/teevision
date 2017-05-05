@@ -147,12 +147,12 @@
 	height: 25px;
 	bottom: 8px;
 	right: 5px;
-	/*position: absolute;*/
-	/*width: 22px;*/
-	/*height: 22px;*/
-	/*background: url(../images/colorpicker/colorpicker_submit.png) top;*/
-	overflow: hidden;
 	cursor: pointer;
+	line-height: 25px;
+	text-align: center;
+	color: white;
+	border: 1px solid #7b7b7b;
+	text-shadow: #000 0px 0px 1px;
 }
 .colorpicker_focus {
 	background-position: center;
