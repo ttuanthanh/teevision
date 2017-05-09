@@ -235,13 +235,16 @@ class Ajax extends Frontend_Controller {
 		$year	= $date->format('Y');
 		$root 	= ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'uploaded' .DS. $year;
 		
-		if (!file_exists($root))
+		if (!file_exists($root)){
 			mkdir($root, 0755, true);
-		
+                        chmod($root, 0755);
+                }
 		$month 	= $date->format('m');
 		$root 	= $root .DS. $month .DS;
-		if (!file_exists($root))
+		if (!file_exists($root)){
 			mkdir($root, 0755, true);
+                        chmod($root, 0755);
+                }
 		
                 $this->load->model('settings_m');
 		$setting_data		= $this->settings_m->getSetting();
