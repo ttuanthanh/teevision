@@ -294,7 +294,7 @@ class Ajax extends Frontend_Controller {
                             //$thumb = 'thanhtest.jpg';
                             $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
                             if ($remove == 1){
-                                $strInputFile = '/media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+                                $strInputFile = site_url() .'/media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
                                 $tranname= explode('.', $thumb);
                                 $target = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png';
 
