@@ -301,7 +301,7 @@ class Ajax extends Frontend_Controller {
                                 $im = new Imagick($strInputFile);
                                 $im->transparentPaintImage($im->getImageBackgroundColor(), 0, 10000,FALSE);
                                 $im->setImageFormat('png');
-                                $im->writeImage($target);
+                                $im->writeImage('media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png');
                                 $im->destroy();
                                 $image->thumb =$target;
                             }
