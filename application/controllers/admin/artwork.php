@@ -95,6 +95,18 @@ class Artwork extends Admin_Controller {
                     }
 
                     $file = $this->upload->data();
+                    
+                    if( in_array($file['file_ext'], array('.svg', '.psd', '.ai', '.pdf', '.eps')) ) 
+                    {
+                        $this->load->library('thumb');
+                        $this->thumb->file	= $file['full_path'];				
+
+                        $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';	
+                        $this->thumb->createThumb($file['full_path'], $file['file_ext'], array('width'=>500, 'height'=>500), $remove, 'jpg');
+                        $file['file_name'] = $file['file_name'].'_thumb.jpg';
+
+                    }
+                   
 
                     $art['url'] 	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$file['file_name'];
                     $art['artid'] 	= $art_id;
