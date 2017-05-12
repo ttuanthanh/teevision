@@ -67,7 +67,7 @@ class Artwork extends Admin_Controller {
                 
                 $config['upload_path'] = $root;
                 
-                $config['allowed_types'] 	= 'gif|png|jpg|jpge|svg';	
+                $config['allowed_types'] 	= 'gif|png|jpg|jpge|svg|psd|ai|pdf|eps';	
                 $config['max_size']			= '5120'; // 5MB		
 
                 $this->load->library('upload', $config);
