@@ -66,7 +66,7 @@ class thumb{
 	*/
 	public function createThumb($file, $ext, $size = array('width'=>100, 'height'=>100), $removebg, $type = 'png', $fixed = false)
 	{
-                $type = 'png';
+                //$type = 'png';
 		$image 	= new Imagick($this->file);		
 		$image->setBackgroundColor(new ImagickPixel('transparent'));
 		$image->setImageFormat($type);
