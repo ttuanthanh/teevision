@@ -254,7 +254,10 @@ class User extends Frontend_Controller {
 				
 				$this->load->library('email', $config);
 				$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
-				$this->email->to($user['email'], $data['design_email']);                                  
+				if($user['email'] != '')
+                                    $this->email->to($user['email'], $data['design_email']);    
+                                else
+                                    $this->email->to($data['design_email']);  
 				$this->email->subject ( $subject);
 				$this->email->message ($message);   
 				@$this->email->send();
