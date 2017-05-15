@@ -271,8 +271,38 @@ class User extends Frontend_Controller {
 		
 		echo json_encode($results);
 	}
-	
-	public function userDesign()
+        
+        public function sendMailDesign()
+        {
+            // check user login
+            $user = $this->session->userdata('user');
+            $data = $this->input->post();
+            //params shortcode email.
+            $params = array(
+                    'username'=>($user['username'] != '') ?$user['username'] : 'user' ,
+                    'url_design'=>$data['design_url']
+            );
+
+            //config email.
+            $config = array(
+                    'mailtype' => 'html',
+            );
+            $subject = configEmail('sub_save_design', $params);
+            $message = configEmail('save_design', $params);
+
+            $this->load->library('email', $config);
+            $this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
+            if($user['email'] != '')
+                $this->email->to($user['email'], $data['email']);    
+            else
+                $this->email->to($data['email']);  
+            $this->email->subject ( $subject);
+            $this->email->message ($message);   
+            $result = @$this->email->send();
+            echo $result;
+        }
+
+        public function userDesign()
 	{		
 		if ( empty($this->user['id']) )
 		{			
