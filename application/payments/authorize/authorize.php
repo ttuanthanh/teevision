@@ -72,13 +72,13 @@ class Authorize
 						);
 						
 						//config email.
-						$config = array(
-							'mailtype' => 'html',
-						);
+//						$config = array(
+//							'mailtype' => 'html',
+//						);
 						$subject = configEmail('sub_order_status', $params);
 						$message = configEmail('order_status', $params);
 						
-						$ci->load->library('email', $config);
+						$ci->load->library('email');
 						$ci->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 						$ci->email->to($user['email']);    
 						$ci->email->subject ( $subject);

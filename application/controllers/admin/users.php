@@ -388,10 +388,10 @@ class Users extends Admin_Controller
 				if ($this->users_m->addUserTemp($user))
 				{
 					// send email
-					$config = array(
-						'mailtype' => 'html',
-					);
-					$this->load->library('email', $config);
+//					$config = array(
+//						'mailtype' => 'html',
+//					);
+					$this->load->library('email');
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($info->email);    
 					$this->email->subject ( lang('user_email_forgot_password') );

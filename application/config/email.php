@@ -8,7 +8,7 @@
     $config['smtp_host'] = 'ssl://smtp.googlemail.com'; //change this
     $config['smtp_port'] = 465;
     $config['smtp_user'] = 'info@teevisionprinting.com'; //change this
-    $config['smtp_pass'] = 'Tvision123'; //change this
+    $config['smtp_pass'] = 'Saechoi22!'; //change this
     $config['mailtype'] = 'html';
     $config['charset'] = 'iso-8859-1';
     $config['wordwrap'] = TRUE;

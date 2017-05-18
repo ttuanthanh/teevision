@@ -346,18 +346,18 @@ class Orders extends Admin_Controller
 					
 				if(count($customer) > 0)
 				{
-					$this->load->library('email');
+					//$this->load->library('email');
 					//config email.
-					$config = array(
-						'mailtype' => 'html',
-						'charset'  => 'utf-8',
-						'priority' => '1'
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//						'charset'  => 'utf-8',
+//						'priority' => '1'
+//					);
 					$subject = 'Changed item order status';
 					$message = '<p>Hello '.$customer->username.'</p><p>The status of product <a target="_blank" href="'.site_url('product/'.$id).'">'.$item_name.'</a> in your order number '.$customer->order_number.' is changed to completed.</p><p>Regards,</p><p><a href="'.site_url().'">'.site_url().'</a></p>';
 					
 					$this->load->library('email');
-					$this->email->initialize($config);
+					//$this->email->initialize($config);
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($customer->email);    
 					$this->email->subject ( $subject);
@@ -431,7 +431,7 @@ class Orders extends Admin_Controller
 				{
 					$customer = $this->order_m->getUser($id);
 					
-					$this->load->library('email');
+					//$this->load->library('email');
 					
 					//params shortcode
 					$params = array(
@@ -445,16 +445,16 @@ class Orders extends Admin_Controller
 					
 					//config email.
 					// send email to customer 
-					$config = array(
-						'mailtype' => 'html',
-						'charset'  => 'utf-8',
-						'priority' => '1'
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//						'charset'  => 'utf-8',
+//						'priority' => '1'
+//					);
 					$subject = configEmail('sub_order_status', $params);
 					$message = configEmail('order_status', $params);
 					
 					$this->load->library('email');
-					$this->email->initialize($config);
+					//$this->email->initialize($config);
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($customer->email);    
 					$this->email->subject ( $subject);
@@ -977,7 +977,7 @@ class Orders extends Admin_Controller
 				{
 					$customer = $this->order_m->getUser($id);
 					
-					$this->load->library('email');
+					//$this->load->library('email');
 					
 					//params shortcode
 					$params = array(
@@ -991,16 +991,16 @@ class Orders extends Admin_Controller
 					
 					//config email.
 					// send email to customer 
-					$config = array(
-						'mailtype' => 'html',
-						'charset'  => 'utf-8',
-						'priority' => '1'
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//						'charset'  => 'utf-8',
+//						'priority' => '1'
+//					);
 					$subject = configEmail('sub_order_status', $params);
 					$message = configEmail('order_status', $params);
 					
 					$this->load->library('email');
-					$this->email->initialize($config);
+//					$this->email->initialize($config);
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($customer->email);    
 					$this->email->subject ( $subject);

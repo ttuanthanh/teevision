@@ -246,13 +246,13 @@ class User extends Frontend_Controller {
 				);
 				
 				//config email.
-				$config = array(
-					'mailtype' => 'html',
-				);
+//				$config = array(
+//					'mailtype' => 'html',
+//				);
 				$subject = configEmail('sub_save_design', $params);
 				$message = configEmail('save_design', $params);
 				
-				$this->load->library('email', $config);
+				$this->load->library('email');
 				$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 				if($user['email'] != '')
                                     $this->email->to($user['email'], $data['design_email'], getEmail(config_item('admin_email')));    
@@ -283,23 +283,23 @@ class User extends Frontend_Controller {
                     'url_design'=>$data['design_url']
             );
 
-            //config email.
-            $config = array(
-                    'mailtype' => 'html',
-            );
+
             $subject = configEmail('sub_save_design', $params);
             $message = configEmail('save_design', $params);
 
-            $this->load->library('email', $config);
+            
+            $this->load->library('email');
+//            $this->email->set_newline("\r\n");
             $this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
             if($user['email'] != '')
-                $this->email->to($user['email'], $data['email']);    
+                $this->email->to($user['email'], $data['email'], getEmail(config_item('admin_email')));    
             else
-                $this->email->to($data['email']);  
+                $this->email->to($data['email'], getEmail(config_item('admin_email')));  
             $this->email->subject ( $subject);
             $this->email->message ($message);   
-            $result = @$this->email->send();
+            $result = $this->email->send();
             echo $result;
+//            echo $this->email->print_debugger();
         }
 
         public function userDesign()

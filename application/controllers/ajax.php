@@ -548,11 +548,11 @@ class Ajax extends Frontend_Controller {
                     </table>';
             $str .= '<div style="margin-top: 20px;">http://teevisionprinting.com</div>';
             //echo json_encode($data);
+//            $this->load->library('email');
+//            $config = array(
+//                    'mailtype'  => 'html'
+//            );
             $this->load->library('email');
-            $config = array(
-                    'mailtype'  => 'html'
-            );
-            $this->load->library('email', $config);
             $this->email->from($data['u-email'], $data['u-name']);
             $this->email->to(getEmail(config_item('admin_email')));    
             $this->email->subject ( 'Request An Artist');
@@ -584,10 +584,10 @@ class Ajax extends Frontend_Controller {
             $str .= '<div style="margin-top: 20px;">http://teevisionprinting.com</div>';
             //echo json_encode($data);
             $this->load->library('email');
-            $config = array(
-                    'mailtype'  => 'html'
-            );
-            $this->load->library('email', $config);
+//            $config = array(
+//                    'mailtype'  => 'html'
+//            );
+//            $this->load->library('email', $config);
             $this->email->from($data['rq_email'], $data['rq_email']);
             $this->email->to(getEmail(config_item('admin_email')));    
             $this->email->subject ( 'Request An Artist');

@@ -236,13 +236,13 @@ class Users extends Frontend_Controller
 					if(isset($sUser['username']) && $sUser['username'] != '')
 					{
 						//config email.
-						$config = array(
-							'mailtype' => 'html',
-						);
+//						$config = array(
+//							'mailtype' => 'html',
+//						);
 						$subject = 'Registered site '.getSiteName(config_item('site_name'));
 						$message = '<p>Hi, '.$username.' </p><p> Thank you for registering on our website.</p><p>You can login here: <a target="_blank" href="'.site_url('user/login').'" title="'.getSiteName(config_item('site_name')).'">'.getSiteName(config_item('site_name')).'</a> with email: '.$facebook['email'].' </p><p> Password: '.$pass.'</p>';
 						
-						$this->load->library('email', $config);
+						$this->load->library('email');
 						$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 						$this->email->to($data['email']);    
 						$this->email->subject ( $subject);
@@ -464,13 +464,13 @@ class Users extends Frontend_Controller
 						$this->session->set_userdata($user);
 						
 						//config email.
-						$config = array(
-							'mailtype' => 'html',
-						);
+//						$config = array(
+//							'mailtype' => 'html',
+//						);
 						$subject = 'Registered site '.config_item('site_name');
 						$message = '<p>Hi, '.$data['username'].' <br/> Thank you for registering on our website.<br/> You can login here: <a target="_blank" href="'.site_url().'user/login" title="'.config_item('site_name').'">'.config_item('site_name').'</a> with username: '.$data['username'].'</p>';
 						
-						$this->load->library('email', $config);
+						$this->load->library('email');
 						$this->email->from(config_item('admin_email'), config_item('site_name'));
 						$this->email->to($data['email']);    
 						$this->email->subject ( $subject);
@@ -535,13 +535,13 @@ class Users extends Frontend_Controller
 						'confirm_url'=>site_url('users/confirm/' .$key),
 					);
 					//config email.
-					$config = array(
-						'mailtype' => 'html',
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//					);
 					$subject = configEmail('sub_register', $params);
 					$message = configEmail('register', $params);
 					
-					$this->load->library('email', $config);
+					$this->load->library('email');
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($data['email']);    
 					$this->email->subject ( $subject);
@@ -660,13 +660,13 @@ class Users extends Frontend_Controller
 						'confirm_url'=>site_url('user/changepass/' .$key),
 					);
 					//config email.
-					$config = array(
-						'mailtype' => 'html',
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//					);
 					$subject = configEmail('sub_forget_pass', $params);
 					$message = configEmail('forget_pass', $params);
 					
-					$this->load->library('email', $config);
+					$this->load->library('email');
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($data['email']);    
 					$this->email->subject ( $subject);
@@ -760,13 +760,13 @@ class Users extends Frontend_Controller
 							);
 							
 							//config email.
-							$config = array(
-								'mailtype' => 'html',
-							);
+//							$config = array(
+//								'mailtype' => 'html',
+//							);
 							$subject = configEmail('sub_change_pass', $params);
 							$message = configEmail('change_pass', $params);
 							
-							$this->load->library('email', $config);
+							$this->load->library('email');
 							$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 							$this->email->to($this->user['email']);    
 							$this->email->subject ( $subject);
@@ -810,13 +810,13 @@ class Users extends Frontend_Controller
 					);
 					
 					//config email.
-					$config = array(
-						'mailtype' => 'html',
-					);
+//					$config = array(
+//						'mailtype' => 'html',
+//					);
 					$subject = configEmail('sub_change_pass', $params);
 					$message = configEmail('change_pass', $params);
 					
-					$this->load->library('email', $config);
+					$this->load->library('email');
 					$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 					$this->email->to($this->user['email']);    
 					$this->email->subject ( $subject);

@@ -395,19 +395,13 @@ class Payment extends Frontend_Controller
 			);
 			
 			//config email.
-			$config = array(
-				'protocol' => 'smtp',
-                                'smtp_host' => 'screenprintingphilad.ipage.com',
-                                'smtp_port' => 587,
-                                'smtp_user' => 'thanh@teevisionprinting.com',
-                                'smtp_pass' => 'thanhA123',
-                                'mailtype'  => 'html',
-                                'charset'   => 'iso-8859-1'
-			);
+//			$config = array(
+//                                'mailtype'  => 'html'
+//			);
 			$subject = configEmail('sub_order_detai', $params);
 			$message = configEmail('order_detai', $params);
 			
-			$this->load->library('email', $config);
+			$this->load->library('email');
 			$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 			$this->email->to($this->user['email']);    
 			$this->email->subject ( $subject);

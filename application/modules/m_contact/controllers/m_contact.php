@@ -40,10 +40,10 @@ class M_Contact extends MY_Controller{
 					$message = $this->input->post('message');
 					
 					// send email
-					$config = array(
-						'mailtype' => 'html',
-					);
-					$this->load->library('email', $config);
+//					$config = array(
+//						'mailtype' => 'html',
+//					);
+					$this->load->library('email');
 					$this->email->from($email, getSiteName(config_item('site_name')));
 					$this->email->to($contact->email);  
 					if($contact->copy == 1)
