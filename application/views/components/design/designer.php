@@ -1099,7 +1099,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <!--            <div class="align-center" id="right-options">-->
             <div class="" id="product-thumbs"></div>
             <p><button type="button" class="btn btn-warning btn-quote web "
-                       onclick="return design.team.resetTeam()">
+                       onclick="design.designsaveBoxAll()">
                     <span ">GET PRICE</span>
                     <span>-or-</span>
                     <span>save design</span>
@@ -1435,7 +1435,51 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
     <!--        </div>-->
     <!--    </div>-->
     <!-- End clipart -->
+    <!-- Begin save design All -->
+    <div class="modal fade" id="dg-savedesignAll" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Enter your design information</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- login form -->
+                        <div class="col-md-12">
+                            <form id="fr-savedesign" role="form" style="margin-bottom: 5px;">
+                                <div class="form-group">
+                                    <label>Name your design:</label>
+                                    <input type="text" name="dg[name]" id="dg-name"
+                                           class="form-control input-sm validate required"
+                                           data-msg="Min length 6, max length 32"
+                                           data-maxlength="32" data-minlength="6"
+                                           placeholder="Enter your design name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Your email:</label>
+                                    <input type="email" name="dg[email]" id="dg-email"
+                                           class="form-control input-sm validate required"
+                                           data-msg="<?php echo $lang['designer_user_email_validate_msg']; ?>"
+                                           data-type="email"
+                                           placeholder="<?php echo $lang['designer_user_your_email']; ?>">
+                                </div>
 
+
+                                <button type="button" onclick="design.team.resetTeam();" autocomplete="off"
+                                        class="btn btn-default btn-warning"
+                                        data-loading-text="Loading">Save design</button>
+                                <?php echo $this->auth->getToken(); ?>
+                                <input type="hidden" name="ajax" value="1">
+                                <input type="hidden" class="typeSave"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Note -->
     <!-- Begin save design -->
     <div class="modal fade" id="dg-savedesign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -1754,12 +1798,18 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1"><?php echo $lang['designer_share_your_design_link']; ?>:</label>
-                        <input type="text" class="form-control" id="link-design-saved" value="" readonly>
+<!--                        <label for="exampleInputEmail1">--><?php //echo $lang['designer_share_your_design_link']; ?><!--:</label>-->
+<!--                        <input type="text" class="form-control" id="link-design-saved" value="" readonly>-->
+                        <button type="button" class="btn btn-warning resent-mail" onclick="design.resentMail()">
+                            <span>Send Mail</span>
+                        </button>
+                        <input type="hidden" class="link-send-mail"/>
+                        <input type="hidden" class="email"/>
+
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-1" style="line-height: 24px;"><?php echo $lang['designer_share']; ?>
+                        <label class="col-md-2" style="line-height: 24px;"><?php echo $lang['designer_share']; ?>
                             : </label>
                         <div class="col-md-1">
                             <a href="javascript:void(0)" onclick="design.share.email()" class="icon-25 share-email"

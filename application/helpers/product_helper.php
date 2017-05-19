@@ -265,8 +265,8 @@ class helperProduct
                                                     </div>
                                                     </div>
                                                     <hr>
-                                                        <button type="button" data-dismiss="modal" onclick="design.designsaveBox()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
-                                                        <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.designsaveBox4buy()"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
+                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
+                                                        <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.save4buy()"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
                                                         <div class="note">* Save your design to edit, send, and share</div>
                                                 </div>
                                             </div>

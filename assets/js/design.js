@@ -1868,6 +1868,7 @@ var design = {
         },
         resetTeam: function () {
             //refesh popup
+            jQuery('#dg-savedesignAll').modal('hide');
             jQuery('.detail').hide();
             jQuery('.calculate').show();
             var cname = document.getElementById('team_add_name').checked,
@@ -3877,15 +3878,17 @@ var design = {
             url: baseURL + "user/saveDesign",
             type: "POST",
             contentType: 'application/json',
-            data: JSON.stringify(data),
-            async: false,
+            data: JSON.stringify(data)
+
         }).done(function (msg) {
             var results = eval("(" + msg + ")");
-
             if (results.error == 1) {
                 alert(results.msg);
             }
             else {
+                var typeSave = jQuery('.typeSave').val();
+
+                if(typeSave!='buy'){
                 design.design_id = results.content.design_id;
                 design.design_file = results.content.design_file;
                 design.designer_id = results.content.designer_id;
@@ -3893,13 +3896,39 @@ var design = {
                 design.productColor = productColor;
                 design.product_id = product_id;
                 var linkEdit = baseURL + 'design/index/' + product_id + '/' + productColor + '/' + results.content.design_key;
-                jQuery('#link-design-saved').val(linkEdit);
+                jQuery('.link-send-mail').val(linkEdit);
+                jQuery('.email').val(design.design_email);
                 jQuery('#dg-share').modal();
+                }
             }
-
             jQuery('#dg-mask').css('display', 'none');
             jQuery('#dg-designer').css('opacity', '1');
         });
+    },
+    resentMail:function(){
+        this.mask(true);
+        var data = {
+            "design_url": jQuery('.link-send-mail').val(),
+            'email': jQuery('.email').val()
+        };
+
+        jQuery.ajax({
+            url: baseURL + "user/sendMailDesign",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            async: false
+        }).done(function (msg) {
+            design.mask(false);
+        });
+
+    },
+    designsaveBoxAll:function(){
+        if (design.designer_id == 0) {
+            jQuery('#dg-savedesignAll').modal();
+        } else {
+            design.team.resetTeam();
+        }
     },
     designsaveBox: function () {
         if (design.designer_id == 0) {
@@ -3921,8 +3950,9 @@ var design = {
         design.ajax.getPrice();
         jQuery(".calculate").hide();
     },
-    save: function (buy) {
-        jQuery('#dg-savedesign').modal('hide');
+    save: function () {
+        jQuery('.typeSave').val("save");
+        jQuery('#dg-savedesignAll').modal('hide');
         if (design.designer_id == 0) {
             if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
@@ -4035,14 +4065,14 @@ var design = {
 
     },
     save4buy: function () {
-        jQuery('#dg-savedesign4buy').modal('hide');
+        jQuery('#dg-savedesignAll').modal('hide');
         if (design.designer_id == 0) {
-            if (jQuery('#dg-emailb').val() == '' & jQuery('#dg-nameb').val() == '') {
+            if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
             }
-            this.design_email = jQuery('#dg-emailb').val();
-            this.design_name = jQuery('#dg-nameb').val();
+            this.design_email = jQuery('#dg-email').val();
+            this.design_name = jQuery('#dg-name').val();
 
         }
 
@@ -4050,7 +4080,8 @@ var design = {
         jQuery('#dg-mask').css('display', 'block');
         jQuery('#dg-designer').css('opacity', '0.3');
         //design.svg.items('front', design.saveDesign);
-        //setTimeout(function(){ }, 3000);       
+        //setTimeout(function(){ }, 3000);
+        jQuery('.typeSave').val("buy");
         jQuery.when(design.svg.items('front', design.saveDesign)).done(function () {
             design.ajax.addJs(this);
         });

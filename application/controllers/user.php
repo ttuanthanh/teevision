@@ -299,7 +299,7 @@ class User extends Frontend_Controller {
             $this->email->message ($message);   
             $result = $this->email->send();
             echo $result;
-//            echo $this->email->print_debugger();
+            echo $this->email->print_debugger();
         }
 
         public function userDesign()
