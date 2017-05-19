@@ -260,7 +260,7 @@ class User extends Frontend_Controller {
                                     $this->email->to($data['design_email'], getEmail(config_item('admin_email')));  
 				$this->email->subject ( $subject);
 				$this->email->message ($message);   
-				@$this->email->send();
+				//@$this->email->send();
 			}
 			else
 			{
@@ -299,7 +299,7 @@ class User extends Frontend_Controller {
             $this->email->message ($message);   
             $result = $this->email->send();
             echo $result;
-            echo $this->email->print_debugger();
+            //echo $this->email->print_debugger();
         }
 
         public function userDesign()
