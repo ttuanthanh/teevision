@@ -732,7 +732,7 @@ class Orders extends Admin_Controller
 		if($this->session->userdata('per_page') != '')
 			$config['per_page'] = $this->session->userdata('per_page');
 		else
-			$config['per_page'] 	= 20;
+			$config['per_page'] 	= 100;
 		
 		$config['uri_segment'] 		= 4;
 		$config['prev_link'] 		= '&larr;';
@@ -859,7 +859,7 @@ class Orders extends Admin_Controller
 		
                 if ($id != '')
                 {
-                    $order = $this->order_m->getOrder($id); 
+                    $order = $this->order_m->getOrderSchedule($id); 
                     $this->data['order'] = $order;
                     if ($gra_id != '')
                         $this->data['garment'] = $this->garment_m->getData($gra_id);
@@ -1073,7 +1073,7 @@ class Orders extends Admin_Controller
                 
 		$this->data['items'] = $items;
                 
-                $order = $this->order_m->getOrder($id); 
+                $order = $this->order_m->getOrderSchedule($id); 
                 $this->data['order'] = $order;
                 
                 $this->load->model('proof_m');
@@ -1935,6 +1935,12 @@ class Orders extends Admin_Controller
             $order['admin_edit'] = 1;
             $this->order_m->_table_name = 'order_items';
             $this->order_m->updateOrder(array('id'=>$data['itemid']), $order);
+            
+            $orderdl = $this->order_m->getOrder($data['orderid']);
+            (int)$qua['total_qty'] = $data['qty'] + $orderdl->total_qty - $data['old_qty'];
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $qua);
+            
             $this->load->view('admin/order/addorder_success', $this->data);
         }
 }

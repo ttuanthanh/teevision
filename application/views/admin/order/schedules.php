@@ -86,7 +86,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     location.reload();
                 }
         });
-        jQuery(".tablesorter").tablesorter(); 
+        jQuery(".tablesorter").tablesorter({sortList: [[7,1]]} ); 
     });
     function reload() 
     {

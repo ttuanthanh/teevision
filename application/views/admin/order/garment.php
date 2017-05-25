@@ -41,7 +41,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>
 <?php }?>
 </div>
+    <div class="info-table">
+        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
+               
+                
+            </div>
+                <?php
+                        $this->load->helper('product');
+                        $help = new helperProduct();
+                        echo $help->product_detail_helper($order);
+                    ?>
+            
+    </div> 
 <div class="panel panel-default">
+    
 	<div class="panel-heading">
 		<i class="fa fa-external-link-square icon-external-link-sign"></i>
 		Garment           

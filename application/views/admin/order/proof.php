@@ -41,6 +41,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <?php //var_dump($items); exit(); ?>
 <div class="">
+    <div class="row info-table">
+        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
+               
+                
+            </div>
+                <?php
+                        $this->load->helper('product');
+                        $help = new helperProduct();
+                        echo $help->product_detail_helper($order);
+                    ?>
+            
+    </div> 
     <?php 
     $i = 0;
     foreach($items as $product){?>

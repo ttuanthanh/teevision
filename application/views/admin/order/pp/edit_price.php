@@ -53,6 +53,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="text-right">
                     <input type="hidden" name="orderid" value="<?php echo $order_item->order_id; ?>" >
                     <input type="hidden" name="itemid" value="<?php echo $itemid; ?>" >
+                    <input type="hidden" name="old_qty" value="<?php echo $order_item->quantity; ?>" >
                     <input class="btn btn-success float-right" type="submit" value="Submit" >
                 </div>
                 </form>
