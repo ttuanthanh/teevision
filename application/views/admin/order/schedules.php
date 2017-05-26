@@ -81,10 +81,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         
     });
     jQuery('document').ready(function(){
+        var url;
         jQuery('.add-new-order').fancybox({ 
+            beforeClose: function() {
+                var $iframe = $('.fancybox-iframe');
+                url = $('input', $iframe.contents()).val();
+                
+            },
             afterClose: function() {
-                    location.reload();
-                }
+                window.top.location.href = url;
+            }
         });
         jQuery(".tablesorter").tablesorter({sortList: [[7,1]]} ); 
     });

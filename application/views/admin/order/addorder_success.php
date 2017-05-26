@@ -32,11 +32,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         if(isset($status) && $status == "new"){
         ?>
         <a href="/admin/orders/detail/<?php echo $orderid ?>" target="_parent" class="btn btn-default">To order detail</a>
+        <input value="<?php echo base_url('/admin/orders/detail/'.$orderid) ?>" id="url" type="hidden">
         <?php
         }
         ?>
 </div>
 <script type="text/javascript">
 
+    jQuery('document').ready(function(){
+        parent.$.fancybox.close();
+        window.top.location.href = "http://google.com";
+    });
 </script>
 <!--<a href="http://www.domain.com/page/" target="_parent"> Close and go to page</a>-->
