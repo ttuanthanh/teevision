@@ -1943,4 +1943,14 @@ class Orders extends Admin_Controller
             
             $this->load->view('admin/order/addorder_success', $this->data);
         }
+        
+        function settracking(){
+            $data = $this->input->post();
+            
+            $order['tracking_num']		= $data['tracknum'];
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
 }

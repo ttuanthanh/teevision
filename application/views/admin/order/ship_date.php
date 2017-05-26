@@ -244,8 +244,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         var track = jQuery('#tracking-num').val();    
         window.location.replace("<?php echo site_url('admin/orders/changeStatusOrder/'.$order->id.'/completed'); ?>/"+track);
     }
-    $(".toggle-due").click(function() {
-        $( "#due-form" ).toggleClass( "due_show" );
-     });
+    
 </script>
 <script type="text/javascript" src="<?php echo site_url().'assets/admin/js/comment.js'; ?>"></script>

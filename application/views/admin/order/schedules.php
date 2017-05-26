@@ -347,11 +347,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         
                                     </td>
                                     <td class="center">  
-                                        <b>
-                                            <?php
-                                                echo isset($order->tracking_num) ? '#'.$order->tracking_num : '';
-                                            ?>                                            
-                                        </b>
+                                        <form action="/admin/orders/settracking" method="post">
+                                            <input type="text" name="tracknum" value="<?php echo $order->tracking_num; ?> " class="i-tracking">
+                                            <input type="hidden" name="orderid" value="<?php echo $order->id; ?>" >
+                                            <button type="submit">save</button>
+                                        </form>
                                     </td>
                                     <td class="center">
                                         <?php 

@@ -599,8 +599,9 @@ class helperProduct
                     </tbody>
             </table>';
             $rt .= '<style>    .due_show{        display: none;    }</style>'    ;
+            $rt .='<script type="text/javascript">	jQuery(".toggle-due").click(function() {jQuery( "#due-form" ).toggleClass( "due_show" );});</script>';
             return $rt;
             
         }
-}
+}   
 ?>

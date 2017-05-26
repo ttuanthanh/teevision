@@ -543,9 +543,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         var track = jQuery('#tracking-num').val();    
         window.location.replace("<?php echo site_url('admin/orders/changeStatusOrder/'.$order->id.'/completed'); ?>/"+track);
     }
-    $(".toggle-due").click(function() {
-        $( "#due-form" ).toggleClass( "due_show" );
-     });
+    
     $( "#show-teams" ).click(function() {
         $( '#tb-teams' ).toggleClass( "hide" );
       }); 
