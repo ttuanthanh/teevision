@@ -41,7 +41,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
     jQuery('document').ready(function(){
         parent.$.fancybox.close();
-        window.top.location.href = "http://google.com";
+        //window.top.location.href = "http://google.com";
     });
 </script>
 <!--<a href="http://www.domain.com/page/" target="_parent"> Close and go to page</a>-->
