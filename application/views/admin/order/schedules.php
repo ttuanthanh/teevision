@@ -86,10 +86,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             beforeClose: function() {
                 var $iframe = $('.fancybox-iframe');
                 url = $('input', $iframe.contents()).val();
-                
+                //alert(url);
             },
             afterClose: function() {
-                window.top.location.href = url;
+                //alert(url);
+                if(url != 0 && typeof url !== "undefined")
+                    window.top.location.href = url;
             }
         });
         jQuery(".tablesorter").tablesorter({sortList: [[7,1]]} ); 
@@ -315,11 +317,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     
                                     <td class="center">     
-                                        
+                                        <?php
+                                            if(isset($order->artwork_date))   
+                                            {
+                                                $awtDate = DateTime::createFromFormat('Y-m-d', $order->artwork_date);   
+                                                $awtD = $awtDate->format('M').' '.$awtDate->format('j');
+                                                
+                                            } 
+                                            else{                                            
+                                                $awtD =  date("M j", strtotime('+3 day', strtotime($order->created_on)));
+                                            }
+                                        ?>
                                         <?php if( $order->artwork != '') {?>
-                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >
+                                            <?php echo $awtD ?>
+                                        </a>
                                         <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >
+                                            <?php echo $awtD ?>
+                                        </a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">     

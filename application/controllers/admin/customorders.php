@@ -56,4 +56,32 @@ class Customorders extends Admin_Controller
             $this->load->view('admin/order/addorder_success');
                     
         }
+        public function changeartworkdate($id = ''){
+            
+                $data = $this->input->post();
+                $mess = '';
+                //$this->load->model('order_m');
+                
+                $pr['artwork_date']     = $data['art_date'];
+                $gar_id =  $this->order_m->update($pr, $id);
+                $mess = 'Changed artwork date to '.$pr['artwork_date'];
+                //var_dump($gar_id);
+                
+                
+                $this->load->model('comment_m');
+                $comm = new comment_m();
+                $user = $this->user;
+                $comment = array();
+                $comment['order_id']    = $data['order_id'];
+                $comment['user_name']   = $user['name'];
+                $comment['text']        = $mess;
+                $comment['createdt']    = date("Y-m-d H:i:sa");;
+                $comm->save($comment);
+                
+//                $this->load->model('order_m');
+//                $order = new order_m();
+//                $order->update(array('artwork'=>'1'), $data['order_id']);
+                
+                redirect($_SERVER['HTTP_REFERER']);
+        }
 }

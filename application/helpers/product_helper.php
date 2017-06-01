@@ -536,15 +536,23 @@ class helperProduct
                                     $rt .= '<a href="'.site_url('admin/orders/shipdate/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'. $ddtext .'</a>  '; 
                                 
                 $rt .=  '            </td>';
+                if(isset($order->artwork_date))   
+                {
+                    $awtDate = DateTime::createFromFormat('Y-m-d', $order->artwork_date);   
+                    $awtD = $awtDate->format('M').' '.$awtDate->format('j');
+                } 
+                else{                                            
+                    $awtD =  date("M j", strtotime('+3 day', strtotime($order->created_on)));
+                }
                 $rt .=  '
                             <td class="center">  ';   
                                 if( $order->artwork != '') 
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>';
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 else
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 
                 $rt .=  '            </td>';
-
+                
                 $rt .=  '
                             <td class="center">   ';  
                                 if( $order->proof_approved != 0) 
