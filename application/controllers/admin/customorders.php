@@ -72,7 +72,7 @@ class Customorders extends Admin_Controller
                 $comm = new comment_m();
                 $user = $this->user;
                 $comment = array();
-                $comment['order_id']    = $data['order_id'];
+                $comment['order_id']    = $id;
                 $comment['user_name']   = $user['name'];
                 $comment['text']        = $mess;
                 $comment['createdt']    = date("Y-m-d H:i:sa");;
