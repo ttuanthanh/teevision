@@ -693,6 +693,23 @@ class Orders extends Admin_Controller
 		$this->load->view('admin/order/view_lightbox', $this->data);
 	}
         
+        // view detail of design
+	function viewdesign($id = '')
+	{
+		$this->load->model('settings_m');
+		$row 	= $this->settings_m->getSetting();
+		$setting = json_decode($row->settings);
+		$this->data['setting'] = $setting;
+		
+		$data = $this->order_m->getDesignDetail($id);
+		$this->data['product'] = $data;		
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/view_lightbox', $this->data);
+	}
+        
         
 	// view detail of design
 	function schedules($id = '', $confirm = '')
