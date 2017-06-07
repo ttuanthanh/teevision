@@ -1466,7 +1466,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
 
 
-                                <button type="button" onclick="design.team.resetTeam();" autocomplete="off"
+                                <button type="button" onclick="design.saveStore();design.team.resetTeam();" autocomplete="off"
                                         class="btn btn-default btn-warning"
                                         data-loading-text="Loading">Save design</button>
                                 <?php echo $this->auth->getToken(); ?>

@@ -3834,7 +3834,6 @@ var design = {
         }
     },
     saveDesign: function () {
-
         var vectors = JSON.stringify(design.exports.vector());
         var image = design.output.front.toDataURL();
         var teams = JSON.stringify(design.teams);
@@ -3872,8 +3871,6 @@ var design = {
             'price': jQuery('.price-sale-number').html(),
             'sizehtml': phrase
         };
-
-
         jQuery.ajax({
             url: baseURL + "user/saveDesign",
             type: "POST",
@@ -3899,6 +3896,73 @@ var design = {
                 jQuery('.link-send-mail').val(linkEdit);
                 jQuery('.email').val(design.design_email);
                 jQuery('#dg-share').modal();
+                }
+            }
+            jQuery('#dg-mask').css('display', 'none');
+            jQuery('#dg-designer').css('opacity', '1');
+        });
+    },
+    saveDesignStore: function () {
+        var vectors = JSON.stringify(design.exports.vector());
+        var image = design.output.front.toDataURL();
+        var teams = JSON.stringify(design.teams);
+        var productColor = design.exports.productColor();
+        var attributes = jQuery('#tool_cart').serialize();
+        if (attributes != '') {
+            var obj = JSON.parse('{"' + decodeURI(attributes).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+            //datas = jQuery.extend(datas, obj);
+
+        }
+        var phrase = '';
+        jQuery('.dg-poduct-fields').each(function () {
+            jQuery(this).find('li').each(function () {
+                var current = jQuery(this);
+                if (current.find('lable')) {
+                    phrase += current.find('label').text()
+                }
+                phrase += ':' + current.find('input').val() + ", ";
+            });
+        });
+        var data = {
+            "image": image,
+            'vectors': vectors,
+            'teams': teams,
+            'fonts': design.fonts,
+            'product_id': product_id,
+            'design_id': design.design_id,
+            'design_file': design.design_file,
+            'designer_id': design.designer_id,
+            'design_key': design.design_key,
+            'design_email': design.design_email,
+            'design_name': design.design_name,
+            'design_note': jQuery('#design_note').val(),
+            'product_color': productColor,
+            'price': "",
+            'sizehtml': phrase
+        };
+
+
+        jQuery.ajax({
+            url: baseURL + "user/saveDesign",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+
+        }).done(function (msg) {
+            var results = eval("(" + msg + ")");
+            if (results.error == 1) {
+                alert(results.msg);
+            }
+            else {
+                var typeSave = jQuery('.typeSave').val();
+
+                if(typeSave!='buy'){
+                    design.design_id = results.content.design_id;
+                    design.design_file = results.content.design_file;
+                    design.designer_id = results.content.designer_id;
+                    design.design_key = results.content.design_key;
+                    design.productColor = productColor;
+                    design.product_id = product_id;
                 }
             }
             jQuery('#dg-mask').css('display', 'none');
@@ -3949,6 +4013,13 @@ var design = {
         jQuery(".detail").show();
         design.ajax.getPrice();
         jQuery(".calculate").hide();
+    },
+    updateAgain:function(){
+        jQuery('.typeSave').val("save");
+        jQuery('#dg-savedesignAll').modal('hide');
+               jQuery('#dg-mask').css('display', 'block');
+        jQuery('#dg-designer').css('opacity', '0.3');
+        design.svg.items('front', design.saveDesign);
     },
     save: function () {
         jQuery('.typeSave').val("save");
@@ -4062,6 +4133,23 @@ var design = {
          }
          }
          */
+
+    },
+    saveStore: function () {
+        jQuery('.typeSave').val("save");
+        jQuery('#dg-savedesignAll').modal('hide');
+        if (design.designer_id == 0) {
+            if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
+                alert('Please enter your mail and design name');
+                return false;
+            }
+            this.design_email = jQuery('#dg-email').val();
+            this.design_name = jQuery('#dg-name').val();
+            jQuery('#dg-mask').css('display', 'block');
+            jQuery('#dg-designer').css('opacity', '0.3');
+            design.svg.items('front', design.saveDesignStore);
+        }
+
 
     },
     save4buy: function () {
