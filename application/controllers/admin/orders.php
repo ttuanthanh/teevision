@@ -1103,7 +1103,10 @@ class Orders extends Admin_Controller
                 $cm_box  = comment_box($comments, $id);
                 $this->data['comment'] = $cm_box;
                 
-                
+                $this->load->model('settings_m');
+		$setting_data		= $this->settings_m->getSetting();
+                $setting		= json_decode($setting_data->settings);
+                $this->data['max_size'] = settingValue($setting, 'site_upload_max', '50');
                 
 		// Load view
 		$this->data['subview'] = 'admin/order/proof';

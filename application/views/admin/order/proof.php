@@ -308,7 +308,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 </div>
 <script type="text/javascript">
     var uploadSize = [];
-        uploadSize['max']  = '10';
+        uploadSize['max']  = <?php echo $max_size; ?>;
         uploadSize['min']  = '0';
         //if(typeof Holder !== 'undefined') Holder.run();
         var baseURL	= '<?php echo base_url(); ?>';
