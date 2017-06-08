@@ -45,6 +45,9 @@ var design = {
         jQuery(".drop-font").bind("click", function () {
             jQuery(this).addClass("active");
         });
+        jQuery(document).on('click', '.drag-item', function () {
+            design.item.select(this, true)
+        });
         design.item.move();
         $jd("#dg-outline-width").slider({
             animate: true,
@@ -2972,6 +2975,7 @@ var design = {
 
             e.append(span);
 
+
             this.move($jd(span));
             this.resize($jd(span));
             if (item.type != 'team')
@@ -2985,6 +2989,7 @@ var design = {
             this.setup(item);
             design.print.colors();
             design.print.size();
+
         },
         align: {
             left: function () {
@@ -3263,9 +3268,10 @@ var design = {
             jQuery('.dropdown-color').click(function (e) {
                 e.stopPropagation();
             });
-            $jd('.drag-item').click(function () {
-                design.item.select(this, true)
-            });
+            // jQuery('.drag-item').unbind("click");
+            // jQuery('.drag-item').click(function () {
+            //     design.item.select(this, true)
+            // });
             jQuery(document).click(function (e) {
                 if (!jQuery(e.target).parents(".colorpicker").length) {
                     jQuery('.dropdown-color').popover('hide');
@@ -4296,9 +4302,9 @@ $jd(document).ready(function () {
             //clear text Item
 
             e.preventDefault();
-            $jd('.drag-item').click(function () {
-                design.item.select(this, true)
-            });
+            // $jd('.drag-item').click(function () {
+            //     design.item.select(this, true)
+            // });
         }
     });
     $jd('.drag-item').click(function () {
