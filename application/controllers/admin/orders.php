@@ -693,6 +693,23 @@ class Orders extends Admin_Controller
 		$this->load->view('admin/order/view_lightbox', $this->data);
 	}
         
+        // view detail of design
+	function viewdesign($id = '')
+	{
+		$this->load->model('settings_m');
+		$row 	= $this->settings_m->getSetting();
+		$setting = json_decode($row->settings);
+		$this->data['setting'] = $setting;
+		
+		$data = $this->order_m->getDesignDetail($id);
+		$this->data['product'] = $data;		
+                
+                //$order = $this->order_m->getItems($id);
+                //$this->data['order'] = $order;
+                
+		$this->load->view('admin/order/view_lightbox', $this->data);
+	}
+        
         
 	// view detail of design
 	function schedules($id = '', $confirm = '')
@@ -732,7 +749,7 @@ class Orders extends Admin_Controller
 		if($this->session->userdata('per_page') != '')
 			$config['per_page'] = $this->session->userdata('per_page');
 		else
-			$config['per_page'] 	= 20;
+			$config['per_page'] 	= 100;
 		
 		$config['uri_segment'] 		= 4;
 		$config['prev_link'] 		= '&larr;';
@@ -859,7 +876,7 @@ class Orders extends Admin_Controller
 		
                 if ($id != '')
                 {
-                    $order = $this->order_m->getOrder($id); 
+                    $order = $this->order_m->getOrderSchedule($id); 
                     $this->data['order'] = $order;
                     if ($gra_id != '')
                         $this->data['garment'] = $this->garment_m->getData($gra_id);
@@ -1073,7 +1090,7 @@ class Orders extends Admin_Controller
                 
 		$this->data['items'] = $items;
                 
-                $order = $this->order_m->getOrder($id); 
+                $order = $this->order_m->getOrderSchedule($id); 
                 $this->data['order'] = $order;
                 
                 $this->load->model('proof_m');
@@ -1086,7 +1103,10 @@ class Orders extends Admin_Controller
                 $cm_box  = comment_box($comments, $id);
                 $this->data['comment'] = $cm_box;
                 
-                
+                $this->load->model('settings_m');
+		$setting_data		= $this->settings_m->getSetting();
+                $setting		= json_decode($setting_data->settings);
+                $this->data['max_size'] = settingValue($setting, 'site_upload_max', '50');
                 
 		// Load view
 		$this->data['subview'] = 'admin/order/proof';
@@ -1935,6 +1955,22 @@ class Orders extends Admin_Controller
             $order['admin_edit'] = 1;
             $this->order_m->_table_name = 'order_items';
             $this->order_m->updateOrder(array('id'=>$data['itemid']), $order);
+            
+            $orderdl = $this->order_m->getOrder($data['orderid']);
+            (int)$qua['total_qty'] = $data['qty'] + $orderdl->total_qty - $data['old_qty'];
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $qua);
+            
             $this->load->view('admin/order/addorder_success', $this->data);
+        }
+        
+        function settracking(){
+            $data = $this->input->post();
+            
+            $order['tracking_num']		= $data['tracknum'];
+
+            $this->order_m->_table_name = 'orders';
+            $this->order_m->updateOrder(array('id'=>$data['orderid']), $order);
+            redirect($_SERVER['HTTP_REFERER']);
         }
 }

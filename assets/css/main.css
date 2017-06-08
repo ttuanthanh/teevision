@@ -1192,3 +1192,9 @@ tr.o-complete td{
 .schedule-box{
     max-width: 1280px;
 }
+.i-tracking{
+    width: 120px;
+    text-align: center;
+    color: black !important;
+    font-weight: bold;
+}

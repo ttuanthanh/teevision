@@ -1466,7 +1466,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
 
 
-                                <button type="button" onclick="design.team.resetTeam();" autocomplete="off"
+                                <button type="button" onclick="design.saveStore();design.team.resetTeam();" autocomplete="off"
                                         class="btn btn-default btn-warning"
                                         data-loading-text="Loading">Save design</button>
                                 <?php echo $this->auth->getToken(); ?>
@@ -1801,7 +1801,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <!--                        <label for="exampleInputEmail1">--><?php //echo $lang['designer_share_your_design_link']; ?><!--:</label>-->
 <!--                        <input type="text" class="form-control" id="link-design-saved" value="" readonly>-->
                         <button type="button" class="btn btn-warning resent-mail" onclick="design.resentMail()">
-                            <span>Send Mail</span>
+                            <span>EMAIL ME my design</span>
                         </button>
                         <input type="hidden" class="link-send-mail"/>
                         <input type="hidden" class="email"/>

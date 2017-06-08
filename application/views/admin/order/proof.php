@@ -41,6 +41,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <?php //var_dump($items); exit(); ?>
 <div class="">
+    <div class="row info-table">
+        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
+               
+                
+            </div>
+                <?php
+                        $this->load->helper('product');
+                        $help = new helperProduct();
+                        echo $help->product_detail_helper($order);
+                    ?>
+            
+    </div> 
     <?php 
     $i = 0;
     foreach($items as $product){?>
@@ -296,7 +308,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 </div>
 <script type="text/javascript">
     var uploadSize = [];
-        uploadSize['max']  = '10';
+        uploadSize['max']  = <?php echo $max_size; ?>;
         uploadSize['min']  = '0';
         //if(typeof Holder !== 'undefined') Holder.run();
         var baseURL	= '<?php echo base_url(); ?>';

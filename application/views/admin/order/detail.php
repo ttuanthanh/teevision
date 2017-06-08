@@ -144,7 +144,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <div class="col-md-8">
                         <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
                         <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
-                        <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
+                        
+                        <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span> 
+                        <a href="/admin/customorders/editcolor/<?php echo $product->id; ?>" onclick="" class="edit-color fancybox.iframe red"><i class="fa fa-edit" aria-hidden="true"></i> change</a>
+                            
                         </p>
                         <div>
                             
@@ -194,7 +197,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     }
                             } 
                             ?>
-                            <table id="sample-table-1" class="table table-bordered table-hover">
+                           <table id="sample-table-1" class="table table-bordered table-hover">
                                     <thead>
                                             <tr>
                                                 <?php echo $sizename ?>
@@ -508,7 +511,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         jQuery('document').ready(function(){
 		jQuery('.tooltips').tooltip();
 		jQuery('.fancybox').fancybox();
-                jQuery('.add-items, .edit-payment').fancybox({
+                jQuery('.add-items, .edit-payment, .edit-color').fancybox({
                     afterClose: function() {
                         location.reload();
                     }
@@ -543,9 +546,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         var track = jQuery('#tracking-num').val();    
         window.location.replace("<?php echo site_url('admin/orders/changeStatusOrder/'.$order->id.'/completed'); ?>/"+track);
     }
-    $(".toggle-due").click(function() {
-        $( "#due-form" ).toggleClass( "due_show" );
-     });
+    
     $( "#show-teams" ).click(function() {
         $( '#tb-teams' ).toggleClass( "hide" );
       }); 

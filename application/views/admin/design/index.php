@@ -87,7 +87,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<th class="center" style="width: 10%;">Design name</th>
 <!--					<th class="center"><?php echo lang('username'); ?></th>-->
 					<th class="center"><?php echo lang('designer_product_name_title'); ?></th>
-					<th class="center" style="width: 6%;"><?php echo lang('color'); ?></th>
+					<th class="center" style="width: 6%;">Detail</th>
 					<th class="center" style="width: 20%;">Size/Price</th>
 					<th class="center"><?php echo lang('image'); ?></th>
 					<th class="center"><?php echo lang('date'); ?></th>
@@ -117,9 +117,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						   
 						   
 						   
-						   <td><?php echo $design->title;?></td>
+						   <td><?php echo $design->title;?> <br />
+                                                   <span class="box-color" style="background: #<?php echo $design->product_options;?>;"></span>
+                                                   </td>
 						   
-						   <td class="center"><span class="box-color" style="background: #<?php echo $design->product_options;?>;"></span></td>
+                                                   <td class="center">
+                                                       <a href="/admin/orders/viewdesign/<?php echo $design->id ?>" target="_blank">View detail</a>
+                                                   </td>
 						   
 						   <td>
                                                        <strong>Size:</strong><br/>

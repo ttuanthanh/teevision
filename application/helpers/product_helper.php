@@ -265,7 +265,7 @@ class helperProduct
                                                     </div>
                                                     </div>
                                                     <hr>
-                                                        <button type="button" data-dismiss="modal" onclick="design.save()" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
+                                                        <button type="button" data-dismiss="modal" onclick="design.updateAgain();" class="btn btn-primary btn-save" style="width:47%" title="save">SAVE</button>
                                                         <button type="button" class="btn btn-warning btn-addcart" data-dismiss="modal" id="change-product-quanlity"  style="width:47%" onclick="design.save4buy()"><i class="glyphicons shopping_cart"></i> BUY NOW</button>
                                                         <div class="note">* Save your design to edit, send, and share</div>
                                                 </div>
@@ -536,15 +536,23 @@ class helperProduct
                                     $rt .= '<a href="'.site_url('admin/orders/shipdate/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'. $ddtext .'</a>  '; 
                                 
                 $rt .=  '            </td>';
+                if(isset($order->artwork_date))   
+                {
+                    $awtDate = DateTime::createFromFormat('Y-m-d', $order->artwork_date);   
+                    $awtD = $awtDate->format('M').' '.$awtDate->format('j');
+                } 
+                else{                                            
+                    $awtD =  date("M j", strtotime('+3 day', strtotime($order->created_on)));
+                }
                 $rt .=  '
                             <td class="center">  ';   
                                 if( $order->artwork != '') 
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>';
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 else
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 
                 $rt .=  '            </td>';
-
+                
                 $rt .=  '
                             <td class="center">   ';  
                                 if( $order->proof_approved != 0) 
@@ -599,8 +607,9 @@ class helperProduct
                     </tbody>
             </table>';
             $rt .= '<style>    .due_show{        display: none;    }</style>'    ;
+            $rt .='<script type="text/javascript">	jQuery(".toggle-due").click(function() {jQuery( "#due-form" ).toggleClass( "due_show" );});</script>';
             return $rt;
             
         }
-}
+}   
 ?>

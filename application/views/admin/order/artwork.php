@@ -49,7 +49,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <?php //var_dump($items); exit(); ?>
 <div class="artwork_ct">
-    
+    <div class="row info-table">
+        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
+               
+                
+            </div>
+                <?php
+                        $this->load->helper('product');
+                        $help = new helperProduct();
+                        echo $help->product_detail_helper($order);
+                    ?>
+            
+    </div> 
     <?php foreach($items as $product){
 //     var_dump($product);
         ?>
@@ -58,18 +69,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <i class="fa fa-external-link-square icon-external-link-sign"></i>
                     Art Information
             </div>
-            <?php
-                    $design_option   = json_decode($product->design_option);
-                    $colors = $design_option->colors;
-                    $artwork = $product->artwork;
-                    //var_dump($artwork);
-                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id, 'enctype'=>'multipart/form-data');		
-                    echo form_open(site_url('admin/artwork/save'), $attribute);
-            ?>
+            
             <div class="panel-body" id="panelbody">
                 
                 <div class="row">
                     <div class="row-content">    
+                    <?php
+                        $design_option   = json_decode($product->design_option);
+                        $colors = $design_option->colors;
+                        $artwork = $product->artwork;
+                        //var_dump($artwork);
+                        $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id, 'enctype'=>'multipart/form-data');		
+                        echo form_open(site_url('admin/artwork/save'), $attribute);
+                    ?>
                         <div class="col-md-7">
                             
                             <div class="slider col-md-9">
@@ -177,13 +189,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             
 
                         </div>
+                        <?php echo form_close(); ?>  
                         <div class="col-md-5">
                             
                             <?php
                                 echo $comment;
                                 $address	= json_decode($order->address);
                             ?>
+                            
                             <div class="panel panel-default">
+                                
+                                <div class="panel-heading">
+                                        <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                                        Edit artwork date
+                                </div>
+                                
+                                <div class="panel-body" id="panelbody">
+                                    <div class="col-md-10 ship-date">
+                                        <form class='form-horizontal' action="/admin/customorders/changeartworkdate/<?php echo $order->id ?>" method="post">
+                                        
+                                            Change to<br/>
+                                            <input class="" width="200" type="date" name="art_date">                    
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                
                                 <div class="panel-heading">
                                         <i class="fa fa-external-link-square icon-external-link-sign"></i>
                                         P.O Number
@@ -270,7 +304,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     
                 </div>	
             </div>
-            <?php echo form_close(); ?>  
+            
         </div>
     <?php } ?>
     

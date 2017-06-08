@@ -81,12 +81,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         
     });
     jQuery('document').ready(function(){
+        var url;
         jQuery('.add-new-order').fancybox({ 
+            beforeClose: function() {
+                var $iframe = $('.fancybox-iframe');
+                url = $('input', $iframe.contents()).val();
+                //alert(url);
+            },
             afterClose: function() {
-                    location.reload();
-                }
+                //alert(url);
+                if(url != 0 && typeof url !== "undefined")
+                    window.top.location.href = url;
+            }
         });
-        jQuery(".tablesorter").tablesorter(); 
+        jQuery(".tablesorter").tablesorter({sortList: [[7,1]]} ); 
     });
     function reload() 
     {
@@ -309,11 +317,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     
                                     <td class="center">     
-                                        
+                                        <?php
+                                            if(isset($order->artwork_date))   
+                                            {
+                                                $awtDate = DateTime::createFromFormat('Y-m-d', $order->artwork_date);   
+                                                $awtD = $awtDate->format('M').' '.$awtDate->format('j');
+                                                
+                                            } 
+                                            else{                                            
+                                                $awtD =  date("M j", strtotime('+3 day', strtotime($order->created_on)));
+                                            }
+                                        ?>
                                         <?php if( $order->artwork != '') {?>
-                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >Yes</a>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >
+                                            <?php echo $awtD ?>
+                                        </a>
                                         <?php } else {?>
-                                            <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >
+                                            <?php echo $awtD ?>
+                                        </a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">     
@@ -341,11 +363,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         
                                     </td>
                                     <td class="center">  
-                                        <b>
-                                            <?php
-                                                echo isset($order->tracking_num) ? '#'.$order->tracking_num : '';
-                                            ?>                                            
-                                        </b>
+                                        <form action="/admin/orders/settracking" method="post">
+                                            <input type="text" name="tracknum" value="<?php echo $order->tracking_num; ?> " class="i-tracking">
+                                            <input type="hidden" name="orderid" value="<?php echo $order->id; ?>" >
+                                            <button type="submit">save</button>
+                                        </form>
                                     </td>
                                     <td class="center">
                                         <?php 
