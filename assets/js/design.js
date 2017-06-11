@@ -42,6 +42,7 @@ var design = {
             jQuery(this).parent().hide();
             jQuery(".tools-share").not(".active").parent().show();
         });
+
         jQuery(".drop-font").bind("click", function () {
             jQuery(this).addClass("active");
         });

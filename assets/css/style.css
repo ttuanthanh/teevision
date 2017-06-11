@@ -301,6 +301,15 @@ body {
     padding: 2px 4px;
     cursor: move;
 }
+#layers li.layer img{
+    float:left;
+}
+#layers li.layer span{
+    display: inline-block;
+    width: 170px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
 #layers li.layer.active {
     background: url("../images/bg-layer.png") repeat-x scroll left top rgba(0, 0, 0, 0);
@@ -334,7 +343,7 @@ body {
 
 .list-colors {
     vertical-align: top;
-    display: block;
+    display: inline-block;
 }
 
 .dropdown-outline {
@@ -1919,6 +1928,7 @@ input.input-small {
     font-size: 12px;
     margin: 0 auto;
     max-width: 700px;
+    padding: 5px;
 }
 
 .screen_colors_top {

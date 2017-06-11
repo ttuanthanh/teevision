@@ -144,10 +144,7 @@ jQuery(function () {
 				jQuery('.selected-image-upload').hide();
 				jQuery('.browse-file').show();
 				jQuery('.selected-image-upload').attr("src", "");
-
 				design.myart.create(jQuery("#dag-files-images .view-thumb.selected")[0]);
-
-
 			};
 			
 			var formData = new FormData();  
