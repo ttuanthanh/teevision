@@ -1060,7 +1060,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             </button>
 
             <div class="product-prices">
-                <div class="dg-box width-100 div-layers no-active">
+                <div class="dg-box div-layers no-active ">
                     <div class="layers-toolbar">
                         <button type="button" class="btn btn-default">
                             <i class="fa fa-long-arrow-down"></i>

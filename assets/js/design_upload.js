@@ -145,6 +145,7 @@ jQuery(function () {
 				jQuery('.browse-file').show();
 				jQuery('.selected-image-upload').attr("src", "");
 
+				design.myart.create(jQuery("#dag-files-images .view-thumb.selected")[0]);
 
 
 			};

@@ -3247,6 +3247,10 @@ ul.choose_payment .description {
     align-items: stretch;
     align-content: stretch;
 }
+#dg-designer .div-layers{
+    float:right;
+    width:80%;
+}
 
 .colorSelector {
     position: relative;
