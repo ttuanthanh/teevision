@@ -703,6 +703,44 @@ var design = {
             if (jQuery(view).data("show") == false || jQuery(view).data("show") == undefined) {
                 jQuery(view).ColorPickerShow();
             }
+        },
+        colorPickerUpload: function (view) {
+            if (!jQuery(view).data("init")) {
+                var initLayout = function () {
+                    jQuery(view).ColorPicker({
+                        color: '#0000ff',
+                        onShow: function (colpkr) {
+                            jQuery(colpkr).fadeIn(500);
+                            jQuery(view).data("show", true);
+                            return false;
+                        },
+                        onHide: function (colpkr) {
+                            jQuery(colpkr).fadeOut(500);
+                            jQuery(view).data("show", false);
+                            return false;
+                        },
+                        onChange: function (hsb, hex, rgb) {
+                            jQuery(view).css('backgroundColor', '#' + hex);
+                            jQuery(view).data('color', hex);
+                            jQuery(view).attr("title", '#' + hex);
+                        },
+                        onSubmit: function (hsb, hex, rgb, el) {
+                            jQuery(el).val(hex);
+                            jQuery(el).ColorPickerHide();
+                            jQuery('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + hex + '" data-color="' + hex + '" title="' + hex + '"></span>').insertBefore("#screen_colors_list .line-break")
+                            jQuery(view).data("show", false);
+                        }
+
+                    });
+                };
+                initLayout();
+                EYE.register(initLayout, 'init');
+                jQuery(view).data("init", true);
+
+            }
+            if (jQuery(view).data("show") == false || jQuery(view).data("show") == undefined) {
+                jQuery(view).ColorPickerShow();
+            }
         },colorPickerHide: function(view){
             jQuery(view).ColorPickerHide();
             jQuery(view).data("show", false);
@@ -1187,7 +1225,7 @@ var design = {
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
             screen_colors.append('<span class="colorSelector bg-colors bg-custom button_click"' +
-                'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
+                'onclick="design.print.colorPickerUpload(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
             screen_colors.append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
