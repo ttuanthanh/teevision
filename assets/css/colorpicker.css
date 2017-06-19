@@ -6,7 +6,7 @@
 	background: url(../images/colorpicker/colorpicker_background.png) no-repeat;
 	font-family: Arial, Helvetica, sans-serif;
 	display: none;
-	z-index: 99;
+    z-index: 999999;
 	background-position: -5px -5px;
 }
 .colorpicker_color {
@@ -153,6 +153,7 @@
 	color: white;
 	border: 1px solid #7b7b7b;
 	text-shadow: #000 0px 0px 1px;
+
 }
 .colorpicker_focus {
 	background-position: center;
