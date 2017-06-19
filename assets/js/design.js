@@ -725,9 +725,20 @@ var design = {
                             jQuery(view).attr("title", '#' + hex);
                         },
                         onSubmit: function (hsb, hex, rgb, el) {
+                            var isAdd=true;
                             jQuery(el).val(hex);
                             jQuery(el).ColorPickerHide();
+                            jQuery('#screen_colors_list span.bg-colors.default').each(function () {
+                                var color = jQuery(this).data("color");
+                                if(hex == color){
+                                    alert("Having this color in list, Please select above colors.");
+                                    isAdd = false;
+                                    return false;
+                                }
+                            });
+                            if(isAdd){
                             jQuery('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + hex + '" data-color="' + hex + '" title="' + hex + '"></span>').insertBefore("#screen_colors_list .line-break")
+                            }
                             jQuery(view).data("show", false);
                         }
 
