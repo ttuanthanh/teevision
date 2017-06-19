@@ -727,7 +727,7 @@ var design = {
                         onSubmit: function (hsb, hex, rgb, el) {
                             jQuery(el).val(hex);
                             jQuery(el).ColorPickerHide();
-                            jQuery('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + hex + '" data-color="' + hex + '" title="' + hex + '"></span>').insertBefore("#screen_colors_list .line-break")
+                            jQuery('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + hex + '" data-color="' + hex + '" title="' + hex + '"></span>').insertBefore("#screen_colors_list .line-break")
                             jQuery(view).data("show", false);
                         }
 
@@ -1216,7 +1216,7 @@ var design = {
                 span.setAttribute('onclick', 'design.item.changeColor(this)');
                 span.style.backgroundColor = '#' + color.hex;
                 jQuery(div).append(span);
-                screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
+                screen_colors.append('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom button_click"' +
                 'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
@@ -2883,21 +2883,32 @@ var design = {
         },
         setupColorprint: function (o) {
             var item = o.item;
+            var colorAdded = [];
             jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
             if (item.colors != 'undefined') {
-                jQuery('#screen_colors_list span').each(function () {
+                jQuery('#screen_colors_list span.bg-colors.default').each(function () {
                     var color = jQuery(this).data('color');
                     if (jQuery.inArray(color, item.colors) == -1)
                         jQuery(this).removeClass('active');
-                    else
+                    else{
                         jQuery(this).addClass('active');
+                        colorAdded.push(color);
+                    }
                 });
+                if(item.colors){
+                jQuery.each(item.colors, function(key, value){
+                    if (jQuery.inArray(value, colorAdded) == -1){
+                        jQuery('<span class="bg-colors default active" onclick="design.print.addColor(this)" style="background-color:#' + value + '" data-color="' + value + '" title="' + value + '"></span>').insertBefore("#screen_colors_list .line-break")
+                    }
+                })
+                }
+
             }
             jQuery('#screen_colors_body').show();
         },
         setColor: function () {
             var colors = [], i = 0;
-            jQuery('#screen_colors_list .bg-colors').each(function () {
+            jQuery('#screen_colors_list .bg-colors.default').each(function () {
                 if (jQuery(this).hasClass('active') == true) {
                     colors.push(jQuery(this).data('color'));
                     i++;
