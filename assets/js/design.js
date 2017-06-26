@@ -703,6 +703,55 @@ var design = {
             if (jQuery(view).data("show") == false || jQuery(view).data("show") == undefined) {
                 jQuery(view).ColorPickerShow();
             }
+        },
+        colorPickerUpload: function (view) {
+            if (!jQuery(view).data("init")) {
+                var initLayout = function () {
+                    jQuery(view).ColorPicker({
+                        color: '#0000ff',
+                        onShow: function (colpkr) {
+                            jQuery(colpkr).fadeIn(500);
+                            jQuery(view).data("show", true);
+                            return false;
+                        },
+                        onHide: function (colpkr) {
+                            jQuery(colpkr).fadeOut(500);
+                            jQuery(view).data("show", false);
+                            return false;
+                        },
+                        onChange: function (hsb, hex, rgb) {
+                            jQuery(view).css('backgroundColor', '#' + hex);
+                            jQuery(view).data('color', hex);
+                            jQuery(view).attr("title", '#' + hex);
+                        },
+                        onSubmit: function (hsb, hex, rgb, el) {
+                            var isAdd=true;
+                            jQuery(el).val(hex);
+                            jQuery(el).ColorPickerHide();
+                            jQuery('#screen_colors_list span.bg-colors.default').each(function () {
+                                var color = jQuery(this).data("color");
+                                if(hex == color){
+                                    alert("Having this color in list, Please select above colors.");
+                                    isAdd = false;
+                                    return false;
+                                }
+                            });
+                            if(isAdd){
+                            jQuery('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + hex + '" data-color="' + hex + '" title="' + hex + '"></span>').insertBefore("#screen_colors_list .line-break")
+                            }
+                            jQuery(view).data("show", false);
+                        }
+
+                    });
+                };
+                initLayout();
+                EYE.register(initLayout, 'init');
+                jQuery(view).data("init", true);
+
+            }
+            if (jQuery(view).data("show") == false || jQuery(view).data("show") == undefined) {
+                jQuery(view).ColorPickerShow();
+            }
         },colorPickerHide: function(view){
             jQuery(view).ColorPickerHide();
             jQuery(view).data("show", false);
@@ -1178,7 +1227,7 @@ var design = {
                 span.setAttribute('onclick', 'design.item.changeColor(this)');
                 span.style.backgroundColor = '#' + color.hex;
                 jQuery(div).append(span);
-                screen_colors.append('<span class="bg-colors" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
+                screen_colors.append('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom button_click"' +
                 'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
@@ -1186,7 +1235,12 @@ var design = {
             jQuery(div).append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
-
+            screen_colors.append('<span class="colorSelector bg-colors bg-custom button_click"' +
+                'onclick="design.print.colorPickerUpload(this)"data-color="00b3ff" data-init="false"' +
+                'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
+            screen_colors.append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
+                'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
+                'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
         },
         loadFonts: function () {
             var self = this;
@@ -2840,21 +2894,32 @@ var design = {
         },
         setupColorprint: function (o) {
             var item = o.item;
+            var colorAdded = [];
             jQuery('#screen_colors_images').html('<img class="img-thumbnail img-responsive" src="' + item.thumb + '">');
             if (item.colors != 'undefined') {
-                jQuery('#screen_colors_list span').each(function () {
+                jQuery('#screen_colors_list span.bg-colors.default').each(function () {
                     var color = jQuery(this).data('color');
                     if (jQuery.inArray(color, item.colors) == -1)
                         jQuery(this).removeClass('active');
-                    else
+                    else{
                         jQuery(this).addClass('active');
+                        colorAdded.push(color);
+                    }
                 });
+                if(item.colors){
+                jQuery.each(item.colors, function(key, value){
+                    if (jQuery.inArray(value, colorAdded) == -1){
+                        jQuery('<span class="bg-colors default active" onclick="design.print.addColor(this)" style="background-color:#' + value + '" data-color="' + value + '" title="' + value + '"></span>').insertBefore("#screen_colors_list .line-break")
+                    }
+                })
+                }
+
             }
             jQuery('#screen_colors_body').show();
         },
         setColor: function () {
             var colors = [], i = 0;
-            jQuery('#screen_colors_list .bg-colors').each(function () {
+            jQuery('#screen_colors_list .bg-colors.default').each(function () {
                 if (jQuery(this).hasClass('active') == true) {
                     colors.push(jQuery(this).data('color'));
                     i++;

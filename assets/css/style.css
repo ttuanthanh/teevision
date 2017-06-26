@@ -3272,9 +3272,15 @@ ul.choose_payment .description {
     background: url(../images/colorpicker/select.png);
     background-size: cover;
 }
-.colorSelector.button_click{
+.other-colors .colorSelector.button_click{
     top:0;
     left:0;
+    position: absolute;
+    visibility: hidden;
+}
+#screen_colors_list .colorSelector.button_click{
+    bottom: 70px;
+    left: 40px;
     position: absolute;
     visibility: hidden;
 }
