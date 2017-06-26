@@ -504,6 +504,15 @@ var Main = function () {
             wheelPropagation: true
         });
     };
+    var adddateforSafari = function ()
+    {
+        console.log("Teset init");
+        
+        if(!Modernizr.inputtypes.date) {
+            console.log("The 'date' input type is not supported, so using JQueryUI datepicker instead.");
+            jQuery('[type="date"]').datepicker({dateFormat: 'yy-mm-dd'});
+        }
+    }
     return {
         //main function to initiate template pages
         init: function () {
@@ -523,6 +532,7 @@ var Main = function () {
             runShowTab();
             runAccordionFeatures();
             runCustomCheck();
+            adddateforSafari();
         }
     };
 }();

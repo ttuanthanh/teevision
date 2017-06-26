@@ -31,6 +31,7 @@
 		<link rel="shortcut icon" href="<?php echo base_url('media/assets/icon.png'); ?>" />
 		
 		<script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+                <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
 		<script src="<?php echo base_url('assets/plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js'); ?>"></script>				
 		<script src="<?php echo base_url('assets/plugins/blockUI/jquery.blockUI.js'); ?>"></script>
@@ -40,6 +41,7 @@
 		<script src="<?php echo base_url('assets/admin/js/main.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/dg-function.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/plugins/validate/validate.js'); ?>"></script>
+                
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();				
