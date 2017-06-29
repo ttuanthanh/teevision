@@ -199,8 +199,8 @@ function getQuote(){
                 attribute[i++] =$(this).val(); 
                 
             });
-            if (size_flag < 12) {
-                alert('Please select size and quantity! Minimum order is 12 pieces');
+            if (size_flag < 6) {
+                alert('Please select size and quantity! Minimum order is 6 pieces');
                 return false;
             }
             print[0]    = jQuery('#print-front-num').val() , 

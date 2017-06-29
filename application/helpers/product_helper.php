@@ -187,7 +187,7 @@ class helperProduct
 				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
 				for ($i=0; $i<count($title); $i++)
 				{
-                                        if ($i == 0) $value = 'value="12"'; else $value = '';
+                                        if ($i == 0) $value = 'value="6"'; else $value = '';
 					$html .= '<li>';
 					$html .= 	'<label>'.$title[$i].'</label>';
 					$html .= 	'<input type="text" class="form-control input-sm size-number" name="'.$id.'['.$i.']" '.$value.'>';					
@@ -319,7 +319,7 @@ class helperProduct
 				$html 		.= '<style>.product-quantity{display:none;}</style><ul class="p-color-sizes list-number col-md-12">';
 				for ($i=0; $i<count($title); $i++)
 				{
-                                        if ($i == 0) $value = 'value="12"'; else $value = '0';
+                                        if ($i == 0) $value = 'value="6"'; else $value = '0';
 					$html .= '<li>';
 					$html .= 	'<label>'.$title[$i].'</label>';
 					$html .= 	'<input type="text" class="form-control input-sm size-number" name="'.$id.'['.$i.']" '.$value.'>';					

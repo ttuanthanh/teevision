@@ -341,8 +341,8 @@ var design = {
             });
         },
         checkGetPrice: function (quantity) {
-            if (quantity < 12) {
-                jQuery('#dg-messq').show().html('*Minimum order is 12 pieces');
+            if (quantity < 6) {
+                jQuery('#dg-messq').show().html('*Minimum order is 6 pieces');
                 jQuery('#dg-total-mess').hide();
                 jQuery('#change-product-quanlity').hide();
             }
@@ -357,7 +357,7 @@ var design = {
             var quantity = document.getElementById('quantity').value;
             quantity = parseInt(quantity);
             if (quantity == NaN) {
-                alert('Please add quantity or size! Minimum order is 12 pieces');
+                alert('Please add quantity or size! Minimum order is 6 pieces');
                 return false;
             }
             if (quantity < min_order) {
@@ -1507,7 +1507,7 @@ var design = {
                 if (data.status == 1) {
                     items['design'] = {};
                     print_type = data.product.print_type;
-                    min_order = 12;//data.product.min_order;
+                    min_order = 6;//data.product.min_order;
                     var list_color = jQuery('#product-list-colors');
                     list_color.html('');
                     jQuery.each(data.product.design.color_hex, function (i, color) {
