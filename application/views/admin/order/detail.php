@@ -516,13 +516,80 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         location.reload();
                     }
                 });
-                jQuery('.ship-info, .edit-price, .size-info').fancybox({ 
+                jQuery('.size-info').fancybox({ 
                     afterClose: function() {
                             location.reload();
                         },
                         width : 400,
                         height: 400
                 });
+                
+                var url;
+                if(getSearchParams('st')=='true'){
+                    jQuery('.ship-info').fancybox({ 
+                        beforeClose: function() {
+                            var $iframe = jQuery('.fancybox-iframe');
+                            url = jQuery('input', $iframe.contents()).val();
+                            
+                        },
+                        afterClose: function() {
+                            //alert(url);
+                            if(typeof url !== "undefined" && url.indexOf('http') >= 0)
+                                window.top.location.href = url;
+                        }, 
+                        width : 400,
+                        height: 400
+                    }).trigger('click');
+                }
+                else{
+                    jQuery('.ship-info').fancybox({ 
+                        beforeClose: function() {
+                            var $iframe = jQuery('.fancybox-iframe');
+                            url = jQuery('input', $iframe.contents()).val();
+                           
+                        },
+                        afterClose: function() {
+                            //alert(url);
+                            if(typeof url !== "undefined" && url.indexOf('http') >= 0)
+                                window.top.location.href = url;
+                        },                        
+                        width : 400,
+                        height: 400
+                    });
+                }
+                
+                if(getSearchParams('ql')=='true'){
+                    jQuery('.edit-price').first().fancybox({ 
+                        beforeClose: function() {
+                            var $iframe = jQuery('.fancybox-iframe');
+                            url = jQuery('input', $iframe.contents()).val();
+                            
+                        },
+                        afterClose: function() {
+                            if(typeof url !== "undefined" && url.indexOf('http') >= 0)
+                                window.top.location.href = url;
+                           
+                        },
+                        width : 400,
+                        height: 400
+                    }).trigger('click');
+                }
+                else{
+                    jQuery('.edit-price').fancybox({ 
+                        beforeClose: function() {
+                            var $iframe = jQuery('.fancybox-iframe');
+                            url = jQuery('input', $iframe.contents()).val();
+                            
+                        },
+                        afterClose: function() {
+                            //alert(url);
+                            if(typeof url !== "undefined" && url.indexOf('http') >= 0 )
+                                window.top.location.href = url;
+                        },
+                        width : 400,
+                        height: 400
+                    });
+                }
 	});
         function load(){
             alert('Test');
@@ -550,6 +617,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     $( "#show-teams" ).click(function() {
         $( '#tb-teams' ).toggleClass( "hide" );
       }); 
-	
+      
+    function getSearchParams(k){
+        var p={};
+        location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+        return k?p[k]:p;
+   }
 </script>
 <script type="text/javascript" src="<?php echo site_url().'assets/admin/js/comment.js'; ?>"></script>

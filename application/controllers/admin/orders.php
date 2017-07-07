@@ -1277,8 +1277,11 @@ class Orders extends Admin_Controller
                 
                 $this->db->where('order_id', $oder_id);
                 $this->db->update('orders_userinfo' , $order_info);
-  
-                redirect($_SERVER['HTTP_REFERER']);
+                
+                $this->data['ql'] = 'true';
+                $this->data['orderid'] = $oder_id;
+                //redirect($_SERVER['HTTP_REFERER'].'?ql=true');
+                $this->load->view('admin/order/addorder_success',$this->data);
 	}
         
         function listproduct($orderid='')
@@ -1960,7 +1963,8 @@ class Orders extends Admin_Controller
             (int)$qua['total_qty'] = $data['qty'] + $orderdl->total_qty - $data['old_qty'];
             $this->order_m->_table_name = 'orders';
             $this->order_m->updateOrder(array('id'=>$data['orderid']), $qua);
-            
+            $this->data['ship'] = 'true';
+            $this->data['orderid'] = $data['orderid'];
             $this->load->view('admin/order/addorder_success', $this->data);
         }
         
