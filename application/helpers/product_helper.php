@@ -236,7 +236,7 @@ class helperProduct
 				$html 	.= '</div>';
                                 $html .= '<div class="total-qty detail col-md-4"><p class="info-1">Total Qty: </p><p class="info-2"><span></span>pcs (<button type="button" class="btn btn-link btn-change-price" onclick="design.ajax.getPrice();">Change</button>)</p></div></div>';
                                 $html .= '<div id="dg-messq" style="display:none; color:red"></div>'
-                                        . '<div class="ship-fo calculate">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span><span class="note-apply">*apply at checkout</span></div>';
+                                        . '<div class="ship-fo calculate">Free delivery by <span class="sdif">'.date("D, M j", strtotime("8 weekdays")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("5 weekdays")).'</span><span class="note-apply">*apply at checkout</span></div>';
                                 $html .=     '</div>
                                                 <div class="modal-footer calculate" style=" text-align: center; margin-top: 1px;">
                                                 <button type="button" class="btn btn-warning btn-calculate" style="width:50%" onclick="design.calculate()">CALCULATE</button>

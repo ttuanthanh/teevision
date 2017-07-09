@@ -14,6 +14,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/admin/css/view_design.css'); ?>"/>
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/canvg.js'); ?>"></script>
+<style>
+    .float-right{
+        float: right;
+    }
+
+</style>
 <div class="modal-header">
 	<h4 class="modal-title">Change color of shirt</h4>
 	<span class="help-block"></span>
@@ -21,7 +27,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	<div class="modal-body">
             <div class="row">
+                <form action="/admin/customorders/orderproductcolor/<?php echo $itemId;?>" method="post">                
+                    <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" >
+                    <label for="hex">Hex (without #)</label>
+                    <input class="form-control" type="text" id="hex" name="hex" value="" >
+                    <label for="name">Color name</label>
+                    <input class="form-control" type="text" id="name" name="name" value="" >
+                    <br />
+                    <input class="btn btn-success float-right" type="submit" value="Submit" onclick="return validate()">
+                </form>
                 <?php
+                /*
                 foreach ($colors as $color){
                 ?>
                     <div class="col-sm-4 " >
@@ -31,22 +47,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         </div>
                         
                     </div>
-                <?php }?>
+                <?php }
+                 */ ?>
+                 
                 
             </div>
 	</div>
-<div class="modal-footer">
-    <form action="/admin/customorders/orderproductcolor/<?php echo $itemId;?>" method="post">
-                
-                
-                    <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" >
-                    <input type="hidden" id="hex" name="hex" value="" >
-                    <input type="hidden" id="name" name="name" value="" >
-                    <input class="btn btn-success float-right" type="submit" value="Submit" onclick="return validate()">
-                
+<div class="modal-footer">               
                 
 	<button type="button" class="btn btn-default" onclick="parent.jQuery.fancybox.close();"><?php echo lang('close');?></button>
-        </form>
+        
 </div>
 <script type="text/javascript">
     $(function () {

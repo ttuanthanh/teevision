@@ -511,12 +511,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         jQuery('document').ready(function(){
 		jQuery('.tooltips').tooltip();
 		jQuery('.fancybox').fancybox();
-                jQuery('.add-items, .edit-payment, .edit-color').fancybox({
+                jQuery('.add-items, .edit-payment').fancybox({
                     afterClose: function() {
                         location.reload();
                     }
                 });
-                jQuery('.size-info').fancybox({ 
+                jQuery('.size-info, .edit-color').fancybox({ 
                     afterClose: function() {
                             location.reload();
                         },
