@@ -217,6 +217,35 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                             </div>
                             
                             <div class="panel panel-default">
+                                <div class="panel-heading">
+                                        <i class="fa fa-external-link-square icon-external-link-sign"></i>
+                                        Approve artwork?
+                                </div>
+                               <div class="panel-body text-center" id="panelbody">
+                                <?php    
+                                if($order->artwork >= 1){ 
+                                    //var_dump($order->artwork);
+                                    $attribute = array('class' => 'form-horizontal', 'id' => 'form-proof-'.$product->id);		
+                                    echo form_open(site_url('admin/artwork/approve'), $attribute);
+                                    $classtxt = 'btn-success';
+                                    $bttxt = 'Approve artwork';
+                                    $statustxt = 'Removed';
+                                    if($order->artwork == 2){
+                                        $classtxt = 'btn-warning';$bttxt = 'Remove artwork approved';$statustxt='Approved';                                        
+                                    }
+                                ?>
+                                <button type="submit" class="btn <?php echo $classtxt; ?> "><?php echo $bttxt; ?></button>
+                                <input type="hidden" value="<?php echo $order->artwork ?>" name="approved">
+                                <input type="hidden" value="<?php echo $order->id; ?>" name="order_id">
+                                
+                                <?php  
+                                echo form_close();
+                                }
+                                ?>
+                               </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
                                 
                                 <div class="panel-heading">
                                         <i class="fa fa-external-link-square icon-external-link-sign"></i>

@@ -60,13 +60,13 @@ class Comment extends Admin_Controller {
                 {                    
                     $comment['order_id'] = $order_id;
                     $comment['user_name']   = $user['name'];
-                    $comment['text']        = $text;
+                    $comment['text']        = '<span style="color:red">'.$text.'</span>';
                     $comment['createdt']    = date("Y-m-d H:i:sa");
                     $gar_id = $this->comment_m->save($comment);
                 }
                 //$newDate = date("Y-m-d H:i:sa"); 
                 //$newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);   
-                echo '<p class="cm-bg-0"><b>'.$user['name'].'</b> <small>('.date('M j H:i A').')</small>: <i><b>'.$text.'</b></i></p>';
+                echo '<p class="cm-bg-0"><b>'.$user['name'].'</b> <small>('.date('M j H:i A').')</small>: <i><b><span style="color:red">'.$text.'</span></b></i></p>';
                                
         }
         

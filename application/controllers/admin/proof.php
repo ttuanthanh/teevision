@@ -52,6 +52,10 @@ class Proof extends Admin_Controller {
                 $comment['createdt']    = date("Y-m-d H:i:sa");;
                 $comm->save($comment);
                 
+                $this->load->model('order_m');
+                $order = new order_m();
+                $order->update(array('artwork'=>'2', 'proof_approved'=>'1'), $data['order_id']);
+                
 //                $this->load->model('order_m');
 //                $order = new order_m();
 //                $order->update(array('artwork'=>'1'), $data['order_id']);
@@ -81,7 +85,7 @@ class Proof extends Admin_Controller {
                 
                 $this->load->model('order_m');
                 $order = new order_m();
-                $order->update(array('proof_approved'=>  $this->checkApprove($comment['order_id'])), $comment['order_id']);
+                $order->update(array('proof_approved'=> $data['is_approved']+1), $comment['order_id']);
                 
             }
             

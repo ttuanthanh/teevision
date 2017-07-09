@@ -478,7 +478,7 @@ class helperProduct
                                     <th class="center">Artwork</th>
                                     <th class="center">Proof</th>                                        
                                     <th class="center">Print Ready</th>
-                                    <th class="center">Paid</th>
+                                    <th class="center">Created</th>
                                     <th class="center">Tracking Number</th>
                                     <th class="center">Due Date</th>
                             </tr>
@@ -546,16 +546,20 @@ class helperProduct
                 }
                 $rt .=  '
                             <td class="center">  ';   
-                                if( $order->artwork != '') 
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
+                                if( $order->artwork == 1)
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
+                                else if( $order->artwork == 2)
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 else
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
-                                
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                                                
                 $rt .=  '            </td>';
                 
                 $rt .=  '
                             <td class="center">   ';  
-                                if( $order->proof_approved != 0) 
+                                if( $order->proof_approved == 1) 
+                                    $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>';
+                                else if( $order->proof_approved == 2)
                                     $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>';
                                 else
                                     $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>';
@@ -571,9 +575,9 @@ class helperProduct
                             </td>                                                                       
 
                             <td class="center"> ';
-                                
-                                    if ($order->balance == 1)                                            
-                                         $rt .=  '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                                    $rt .= $order->name;
+//                                    if ($order->balance == 1)                                            
+//                                         $rt .=  '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
                 $rt .=  '                    
                             </td>
                             <td class="center">  ';
