@@ -52,7 +52,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="col-md-3 col-ms-3 col-xs-8 free-ship">
             <img class="img-free" src="http://teevisionprinting.com/assets/images/ship_1.png">
             <p class="ship-name">FREE SHIPPING</p>
-            <h2>10 Business Days</h2>            
+            <h2>8 Business Days</h2>            
             <p>Guaranteed by <?php echo date("D, M j", strtotime("8 weekdays")); ?></p>
         </div>
         <div class="col-md-3 col-sm-3">
