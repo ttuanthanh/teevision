@@ -71,7 +71,7 @@ jQuery(function () {
 							{
 								alert(media.msg);
 							}
-							jQuery('#upload-copyright').attr('checked', false);
+							// jQuery('#upload-copyright').attr('checked', false);
 							//jQuery('#remove-bg').attr('checked', false);
 							jQuery('#files-upload').val('');
 							jQuery('.selected-image-upload').hide();
@@ -138,7 +138,7 @@ jQuery(function () {
 						jQuery(".selected-image").attr("src", media.msg.thumb);
 					}
 				}
-				jQuery('#upload-copyright').attr('checked', false);
+				// jQuery('#upload-copyright').attr('checked', false);
 				//jQuery('#remove-bg').attr('checked', false);
 				jQuery('#files-upload').val('');
 				jQuery('.selected-image-upload').hide();
@@ -164,11 +164,22 @@ jQuery(function () {
 			jQuery("#upload-support").html("No support for the File API in this web browser");
 		}	
 	}
-	
-	document.getElementById('action-upload').addEventListener("click", function () {
+	jQuery("#action-upload").click(function(){
+		var check = design.upload.computer();
+		if (check == true) jQuery("#dg-removeBackground").modal("show");
+	});
+	jQuery(".removeBG").click(function(){
+		jQuery("#remove-bg").attr('checked', 'checked');
+	});
+	jQuery(".closeCheckBG").click(function(){
+		jQuery("#remove-bg").removeAttr('checked');
+	});
+
+	jQuery('.uploadBtn').on("click", function () {
+		jQuery("#dg-removeBackground").modal("hide");
 		var check = design.upload.computer();
 		if (check == true) traverseFiles(filesUpload.files);
-	}, false);
+	});
 	
         function upload_f(){
                 traverseFiles(filesUpload.files);

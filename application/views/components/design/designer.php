@@ -264,25 +264,26 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             </div>
                                             
                                             
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" autocomplete="off"
-                                                           id="upload-copyright"> <span
-                                                        class="help-block"><?php echo $lang['designer_upload_please_read']; ?>
-                                                        <a
-                                                            href="<?php echo settingValue($setting, 'site_upload_terms', '#'); ?>"
-                                                            target="_blank"><?php echo $lang['designer_upload_copyright_terms']; ?></a>. <?php echo $lang['designer_upload_if_you_do_not_have_the_complete']; ?></span>
-                                                </label>
-                                            </div>
+<!--                                            <div class="checkbox">-->
+<!--                                                <label>-->
+<!--                                                    <input type="checkbox" autocomplete="off"-->
+<!--                                                           id="upload-copyright"> <span-->
+<!--                                                        class="help-block">--><?php //echo $lang['designer_upload_please_read']; ?>
+<!--                                                        <a-->
+<!--                                                            href="--><?php //echo settingValue($setting, 'site_upload_terms', '#'); ?><!--"-->
+<!--                                                            target="_blank">--><?php //echo $lang['designer_upload_copyright_terms']; ?><!--</a>. --><?php //echo $lang['designer_upload_if_you_do_not_have_the_complete']; ?><!--</span>-->
+<!--                                                </label>-->
+<!--                                            </div>-->
                                         </div>
 
                                     </div>
                                     <hr/>
-                                    <div class="row col-md-6 checkbox text-center rm_bg_bt">
-                                        <input type="checkbox" autocomplete="off" id="remove-bg" data-toggle="toggle" data-size="small">
-                                        <span class="help-block"><?php echo $lang['designer_upload_remove_white_background']; ?></span>
-                                    </div>
-                                    <div class="row col-md-6 margin-left-0">
+                                    <input type="checkbox" style="display:none" id="remove-bg" />
+                                    <!--<div class="row col-md-6 checkbox text-center rm_bg_bt">
+
+                                        <span class="help-block"><?php /*echo $lang['designer_upload_remove_white_background']; */?></span>
+                                    </div>-->
+                                    <div class="row col-md-12 margin-left-0">
                                         <button type="button"
                                                 class="btn btn-primary input-sm pull-right full-width first-upload"
                                                 id="action-upload">Upload
@@ -747,7 +748,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="cliparts-1 row">
                                 <div class="col-xs-12 col-md-12">
                                     <div class="input-group search-area full-width">
-                                        <input type="text" id="art-keyword" autocomplete="off"
+                                        <input type="text" id="art-keyword" autocomplete="off" onkeypress="return design.designer.art.keyPress(event)"
                                                class="form-control input-sm form-search"
                                                placeholder="Search for...">
                                         <span class="input-group-btn form-search" style="width: 80px;">
@@ -1466,7 +1467,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                 </div>
 
 
-                                <button type="button" onclick="design.saveStore();design.team.resetTeam();" autocomplete="off"
+                                <button type="button" onclick="design.saveStore();" autocomplete="off"
                                         class="btn btn-default btn-warning"
                                         data-loading-text="Loading">Save design</button>
                                 <?php echo $this->auth->getToken(); ?>
@@ -1787,7 +1788,30 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
     <!-- End preview -->
-
+    <!-- Check information remove background -->
+    <div class="modal fade" id="dg-removeBackground" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Background Color</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- login form -->
+                        <div class="col-md-12">
+                                <h5>Do you want to remove background colors</h5>
+                            <button type="button"
+                                        class="btn btn-default btn-warning removeBG uploadBtn">Remove</button>
+                            <button type="button"
+                                    class="btn btn-default uploadBtn closeCheckBG"  style="float:right">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End check -->
     <!-- Begin Share -->
     <div class="modal fade" id="dg-share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
