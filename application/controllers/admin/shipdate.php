@@ -58,7 +58,9 @@ class Shipdate extends Admin_Controller {
 //                $order = new order_m();
 //                $order->update(array('artwork'=>'1'), $data['order_id']);
                 
-                redirect($_SERVER['HTTP_REFERER']);
+                //redirect($_SERVER['HTTP_REFERER']);
+                
+                redirect("/admin/orders/artwork/".$data['order_id']);
         }
         
         public function saveDueDate($id = ''){

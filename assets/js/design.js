@@ -32,6 +32,7 @@ var design = {
         jQuery('#options-add_item_team .dropdown').click(function () {
             jQuery(this).addClass('active');
         });
+
         jQuery(".tools-share").not(".active").bind("click", function () {
             jQuery(".dg-share").show('slow');
             jQuery(this).parent().hide();
@@ -929,6 +930,12 @@ var design = {
                 // jQuery('#arts-add').hide();
                 jQuery('.cliparts-1').show();
 
+            },
+            keyPress: function(e){
+                if (e.keyCode == 13) {
+                    design.designer.art.arts(0);
+                    return false;
+                }
             },
             arts: function (cate_id, cate_title) {
                 var self = this;
@@ -1926,7 +1933,6 @@ var design = {
         },
         resetTeam: function () {
             //refesh popup
-            jQuery('#dg-savedesignAll').modal('hide');
             jQuery('.detail').hide();
             jQuery('.calculate').show();
             var cname = document.getElementById('team_add_name').checked,
@@ -3587,10 +3593,10 @@ var design = {
     },
     upload: {
         computer: function () {
-            if (jQuery('#upload-copyright').is(':checked') == false) {
+            /*if (jQuery('#upload-copyright').is(':checked') == false) {
                 alert('Please click copyright box to upload image.');
                 return false;
-            }
+            }*/
             if (jQuery('#files-upload').val() == '') {
                 alert('Please choose a file upload.');
                 return false;
@@ -4095,19 +4101,22 @@ var design = {
     },
     save: function () {
         jQuery('.typeSave').val("save");
-        jQuery('#dg-savedesignAll').modal('hide');
+
         if (design.designer_id == 0) {
             if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
+            }else {
+                jQuery('#dg-savedesignAll').modal('hide');
+                this.design_email = jQuery('#dg-email').val();
+                this.design_name = jQuery('#dg-name').val();
+                jQuery('#dg-mask').css('display', 'block');
+                jQuery('#dg-designer').css('opacity', '0.3');
+                design.svg.items('front', design.saveDesign);
             }
-            this.design_email = jQuery('#dg-email').val();
-            this.design_name = jQuery('#dg-name').val();
-            jQuery('#dg-mask').css('display', 'block');
-            jQuery('#dg-designer').css('opacity', '0.3');
-            design.svg.items('front', design.saveDesign);
         }
         else {
+            jQuery('#dg-savedesignAll').modal('hide');
             //if (design.designer_id != 0) {
             jQuery("#save-confirm").dialog({
                 resizable: false,
@@ -4209,12 +4218,14 @@ var design = {
     },
     saveStore: function () {
         jQuery('.typeSave').val("save");
-        jQuery('#dg-savedesignAll').modal('hide');
+
         if (design.designer_id == 0) {
             if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
             }
+            design.team.resetTeam();
+            jQuery('#dg-savedesignAll').modal('hide');
             this.design_email = jQuery('#dg-email').val();
             this.design_name = jQuery('#dg-name').val();
             jQuery('#dg-mask').css('display', 'block');
@@ -4225,17 +4236,18 @@ var design = {
 
     },
     save4buy: function () {
-        jQuery('#dg-savedesignAll').modal('hide');
+
         if (design.designer_id == 0) {
             if (jQuery('#dg-email').val() == '' & jQuery('#dg-name').val() == '') {
                 alert('Please enter your mail and design name');
                 return false;
             }
+
             this.design_email = jQuery('#dg-email').val();
             this.design_name = jQuery('#dg-name').val();
 
         }
-
+        jQuery('#dg-savedesignAll').modal('hide');
         //jQuery(this).dialog("close");
         jQuery('#dg-mask').css('display', 'block');
         jQuery('#dg-designer').css('opacity', '0.3');

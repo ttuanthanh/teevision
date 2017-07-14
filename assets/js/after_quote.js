@@ -157,7 +157,7 @@
                                                     {
                                                             alert(media.msg);
                                                     }
-                                                    jQuery('#upload-copyright').attr('checked', false);
+                                                    // jQuery('#upload-copyright').attr('checked', false);
                                                     jQuery('#remove-bg').attr('checked', false);
                                                     jQuery('#files-upload').val('');
                                             });
@@ -222,7 +222,7 @@
                                             */
                                     }
                             }
-                            jQuery('#upload-copyright').attr('checked', false);
+                            // jQuery('#upload-copyright').attr('checked', false);
                             jQuery('#remove-bg').attr('checked', false);
                             jQuery('#files-upload').val('');
                     };

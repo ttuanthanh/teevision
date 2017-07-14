@@ -236,7 +236,7 @@ class helperProduct
 				$html 	.= '</div>';
                                 $html .= '<div class="total-qty detail col-md-4"><p class="info-1">Total Qty: </p><p class="info-2"><span></span>pcs (<button type="button" class="btn btn-link btn-change-price" onclick="design.ajax.getPrice();">Change</button>)</p></div></div>';
                                 $html .= '<div id="dg-messq" style="display:none; color:red"></div>'
-                                        . '<div class="ship-fo calculate">Free delivery by <span class="sdif">'.date("D, M j", strtotime("+2 week")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("+1 week")).'</span><span class="note-apply">*apply at checkout</span></div>';
+                                        . '<div class="ship-fo calculate">Free delivery by <span class="sdif">'.date("D, M j", strtotime("8 weekdays")).'</span> Or Rush by <span class="sdif">'.date("D, M j", strtotime("5 weekdays")).'</span><span class="note-apply">*apply at checkout</span></div>';
                                 $html .=     '</div>
                                                 <div class="modal-footer calculate" style=" text-align: center; margin-top: 1px;">
                                                 <button type="button" class="btn btn-warning btn-calculate" style="width:50%" onclick="design.calculate()">CALCULATE</button>
@@ -478,7 +478,7 @@ class helperProduct
                                     <th class="center">Artwork</th>
                                     <th class="center">Proof</th>                                        
                                     <th class="center">Print Ready</th>
-                                    <th class="center">Paid</th>
+                                    <th class="center">Created</th>
                                     <th class="center">Tracking Number</th>
                                     <th class="center">Due Date</th>
                             </tr>
@@ -546,16 +546,20 @@ class helperProduct
                 }
                 $rt .=  '
                             <td class="center">  ';   
-                                if( $order->artwork != '') 
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
+                                if( $order->artwork == 1)
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
+                                else if( $order->artwork == 2)
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
                                 else
-                                    $rt .= '<a href="'. site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >'.$awtD.'</a>';
-                                
+                                    $rt .= '<a href="'.site_url('admin/orders/artwork/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >No</a>';
+                                                                
                 $rt .=  '            </td>';
                 
                 $rt .=  '
                             <td class="center">   ';  
-                                if( $order->proof_approved != 0) 
+                                if( $order->proof_approved == 1) 
+                                    $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>';
+                                else if( $order->proof_approved == 2)
                                     $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>';
                                 else
                                     $rt .= '<a href="'.site_url('admin/orders/proof/'.$order->id).'" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>';
@@ -571,9 +575,9 @@ class helperProduct
                             </td>                                                                       
 
                             <td class="center"> ';
-                                
-                                    if ($order->balance == 1)                                            
-                                         $rt .=  '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                                    $rt .= $order->name;
+//                                    if ($order->balance == 1)                                            
+//                                         $rt .=  '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
                 $rt .=  '                    
                             </td>
                             <td class="center">  ';

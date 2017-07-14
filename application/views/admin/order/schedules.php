@@ -209,7 +209,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <th class="center">Artwork</th>
                                         <th class="center">Proof</th>                                        
                                         <th class="center">Print Ready</th>
-                                        <th class="center">Paid</th>
+                                        <th class="center">Created</th>
                                         <th class="center">Tracking Number</th>
                                         <th class="center">Due Date</th>
                                         <th class="center">Delete</th>
@@ -328,18 +328,24 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                                 $awtD =  date("M j", strtotime('+3 day', strtotime($order->created_on)));
                                             }
                                         ?>
-                                        <?php if( $order->artwork != '') {?>
+                                        <?php if( $order->artwork == 1) {?>
+                                        <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >
+                                            <?php echo $awtD ?>
+                                        </a>
+                                        <?php } else if( $order->artwork == 2) {?>
                                         <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to change" data-placement="top" >
                                             <?php echo $awtD ?>
                                         </a>
                                         <?php } else {?>
                                         <a href="<?php echo site_url('admin/orders/artwork/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to change" data-placement="top" >
-                                            <?php echo $awtD ?>
+                                            <?php //echo $awtD ?> No
                                         </a>
                                         <?php } ?>
                                     </td>
                                     <td class="center">     
-                                        <?php if( $order->proof_approved != 0) {?>
+                                        <?php if( $order->proof_approved == 1) {?>
+                                            <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-yellow2 btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
+                                        <?php } else if( $order->proof_approved == 2) {?>
                                             <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-success btn-xs tooltips action" type="button" data-original-title="Click to approve" data-placement="top" rel="unpublish">Yes</a>
                                         <?php } else {?>
                                             <a href="<?php echo site_url('admin/orders/proof/'.$order->id); ?>" class="btn btn-danger btn-xs tooltips action " type="button" data-original-title="Click to approve" data-placement="top" rel="publish">No</a>
@@ -355,11 +361,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         ?>
                                         
                                     </td>
-                                    <td class="center"> 
+                                    <td class="center">                                        
                                         <?php 
-                                            if ($order->balance == 1)                                            
-                                                 echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
-                                            ?>
+                                        echo $order->name;
+//                                        if ($order->balance == 1)                                            
+//                                             echo '<img src="'.site_url('assets/images/paid.png').'" height="25px">';
+                                        ?>
                                         
                                     </td>
                                     <td class="center">  

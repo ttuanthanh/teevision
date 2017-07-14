@@ -36,10 +36,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         
         <?php
         if ($orderid != '')
-            echo '<input value="'.base_url('/admin/orders/detail/'.$orderid).'" id="url" type="hidden">';
+            echo '<input value="'.base_url('/admin/orders/detail/'.$orderid).'?st=true" id="url" type="hidden">';
         else
             echo '<input value="0" id="url" type="hidden">';
         }
+        
+        if(isset($ql) && $ql == 'true')
+            echo '<input value="'.base_url('/admin/orders/detail/'.$orderid).'?ql=true" id="url" type="hidden">';
+        if(isset($ship) && $ship == 'true')
+            echo '<input value="'.base_url('/admin/orders/shipdate/'.$orderid).'" id="url" type="hidden">';
         ?>
 </div>
 <script type="text/javascript">

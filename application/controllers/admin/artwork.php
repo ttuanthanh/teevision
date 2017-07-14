@@ -136,6 +136,29 @@ class Artwork extends Admin_Controller {
                 redirect($_SERVER['HTTP_REFERER']);
         }
         
+        public function approve()
+        {
+                
+            $data['is_approved'] = $this->input->post('approved') == 1 ? 2 : 1;
+
+            $this->load->model('comment_m');
+            $comm = new comment_m();
+            $user = $this->user;
+            $comment = array();
+            $comment['order_id']    = $this->input->post('order_id');
+            $comment['user_name']   = $user['name'];
+            $comment['text']        = 'Approved artwork.';
+            if ($data['is_approved'] === 1)
+                $comment['text']        = 'Remove artwork approved.';
+            $comment['createdt']    = date("Y-m-d H:i:sa");;
+            $comm->save($comment);
+
+            $this->load->model('order_m');
+            $order = new order_m();
+            $order->update(array('artwork'=> $data['is_approved']), $comment['order_id']);                
+            
+            redirect($_SERVER['HTTP_REFERER']);
+        }
         
         public function delete($id = '')
         {        

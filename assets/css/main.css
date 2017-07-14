@@ -1198,3 +1198,9 @@ tr.o-complete td{
     color: black !important;
     font-weight: bold;
 }
+.btn-yellow2{
+    background: #ffcc00;
+    color: black;
+    border-color: #ffcc00;
+}
+
