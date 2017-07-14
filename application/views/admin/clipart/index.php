@@ -45,6 +45,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             placeholder: "<?php echo lang('art_select_a_state_place'); ?>",
             allowClear: true
         });
+		jQuery("#clipart-rows").on("click",".box-image", function() {
+			var checkBoxes = jQuery(this).closest(".box-art").find(".box-publish .checkb");
+			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+		});
 		jQuery('input.tags').tagsInput({width: 'auto'});
 	});
 </script>
