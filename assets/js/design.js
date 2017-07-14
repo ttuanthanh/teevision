@@ -3271,7 +3271,7 @@ var design = {
 
                 /* color of clipart */
                 var e = this.get();
-                jQuery('.image-clipart').html('<image class="image-result" src="' + item.thumb + '"/>');
+                // jQuery('.image-clipart').html('<image class="image-result" src="' + item.thumb + '"/>');
                 if (item.change_color == 1) {
                     var colors = design.svg.getColors(e.children('svg'));
                 }

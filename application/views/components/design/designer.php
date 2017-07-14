@@ -820,9 +820,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
                                 </div>
 
-                                <div class="image-clipart col-md-12">
-                                    <div id="dag-list-arts"></div>
-                                </div>
+<!--                                <div class="image-clipart col-md-12">-->
+<!--                                    <div id="dag-list-arts"></div>-->
+<!--                                </div>-->
                                 <div class="popover-content">
 
                                     <!-- BEGIN clipart edit options -->
