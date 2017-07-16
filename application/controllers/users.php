@@ -417,6 +417,9 @@ class Users extends Frontend_Controller
 		$this->load->library('form_validation');
 		if($data = $this->input->post('data'))
 		{
+                        //Check bot register
+                        if($data['username'] != '')
+                            redirect(site_url());
 			// Set form  
 			//$this->form_validation->set_rules('data[username]', lang('username'), 'trim|required|min_length[2]|max_length[150]|xss_clean|callback_checkUsername'); 
 			$this->form_validation->set_rules('data[email]', lang('email'), 'trim|required|max_length[100]|valid_email|callback_checkEmail'); 
