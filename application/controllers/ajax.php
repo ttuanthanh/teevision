@@ -452,8 +452,7 @@ class Ajax extends Frontend_Controller {
             // Adding Setup charges : num of color * $20
             $price_total += ( $print[0] + $print[1] ) * 20;            
             
-            // Addding 8% tax            
-            $price_total += ($price_total * 8 ) /100;  
+              
             
             //Add ship price - trangttm - 03/22/2016
             $this->load->model('boxes_m');
@@ -473,6 +472,8 @@ class Ajax extends Frontend_Controller {
             $price_boxes = $setting->shippingbox;
             
             $price_total += ($number_boxes * $price_boxes);
+            // Addding 8% tax            
+            $price_total += ($price_total * 8 ) /100;
             
             $data['quantity']           = $quantity;
             $data['total_price']        = number_format(round($price_total,2),2);
