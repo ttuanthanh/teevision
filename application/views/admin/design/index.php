@@ -117,8 +117,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						   
 						   
 						   
-						   <td><?php echo $design->title;?> <br />
-                                                   <span class="box-color" style="background: #<?php echo $design->product_options;?>;"></span>
+						   <td><?php echo $design->title;?> 
+                                                       <hr />Color: <?php echo $design->product_color;?><span class="box-color" style="background: #<?php echo $design->product_options;?>;"></span> 
                                                    </td>
 						   
                                                    <td class="center">

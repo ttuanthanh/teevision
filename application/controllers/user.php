@@ -210,6 +210,7 @@ class User extends Frontend_Controller {
 			$design['image']            = $file;
 			$design['product_id']       = $data['product_id'];
 			$design['product_options']  = $data['product_color'];
+                        $design['product_color']    = $data['product_color_title'];
                         $design['design_email']     = $data['design_email'];
                         $design['design_name']      = $data['design_name'];
 			$design['design_size']      = $data['sizehtml'];

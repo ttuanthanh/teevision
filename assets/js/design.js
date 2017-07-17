@@ -3916,6 +3916,7 @@ var design = {
         var image = design.output.front.toDataURL();
         var teams = JSON.stringify(design.teams);
         var productColor = design.exports.productColor();
+        var productColorTitle = design.exports.productColorTitle();
         var attributes = jQuery('#tool_cart').serialize();
         if (attributes != '') {
             var obj = JSON.parse('{"' + decodeURI(attributes).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
@@ -3946,6 +3947,7 @@ var design = {
             'design_name': design.design_name,
             'design_note': jQuery('#design_note').val(),
             'product_color': productColor,
+            'product_color_title':productColorTitle,
             'price': jQuery('.price-sale-number').html(),
             'sizehtml': phrase
         };

@@ -24,7 +24,7 @@ class Design_M extends MY_Model
 	// get all design
 	public function getDesigns($count = false, $number, $segment, $search='', $o_search='')
 	{
-		$this->db->select('users_designs.id, users_designs.design_email, users_designs.design_size, users_designs.design_price, users_designs.design_name, users_designs.design_id, users_designs.user_id, users.name, users.email, products.title, users_designs.product_id, users_designs.product_options, users_designs.teams, users_designs.image, users_designs.created');
+		$this->db->select('users_designs.id, users_designs.design_email, users_designs.design_size, users_designs.design_price, users_designs.design_name, users_designs.design_id, users_designs.user_id, users.name, users.email, products.title, users_designs.product_id, users_designs.product_options, users_designs.product_color, users_designs.teams, users_designs.image, users_designs.created');
 		$this->db->join('users', 'users.id = users_designs.user_id','left');		
 		$this->db->join('products', 'products.id = users_designs.product_id');
 		
