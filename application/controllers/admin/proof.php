@@ -34,12 +34,77 @@ class Proof extends Admin_Controller {
                 $pr['proof_update'] = date("Y-m-d H:i:sa");
                 if ($proof_id == '')
                 {    
-                    $gar_id = $this->proof_m->save($pr);
+                    $proof_id = $this->proof_m->save($pr);
                 }
                 else
                 {
                     $gar_id =  $this->proof_m->update($pr, $proof_id);
                     //var_dump($gar_id);
+                }
+                
+                
+                // check folder and create
+                $date 	= new DateTime();
+		$year	= $date->format('Y');
+                $root           = ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'uploaded' .DS. $year;
+                if (!file_exists($root))
+			mkdir($root, 0755, true);
+		
+		$month 	= $date->format('m');
+		$root 	= $root .DS. $month .DS;
+		if (!file_exists($root))
+			mkdir($root, 0755, true);                
+                
+                $config['upload_path'] = $root;
+                
+                $config['allowed_types'] 	= 'gif|png|jpg|jpge|svg|psd|ai|pdf|eps';	
+                $config['max_size']			= '5120'; // 5MB		
+
+                $this->load->library('upload', $config);
+                $files = $_FILES["file"];
+                foreach ($files["name"] as $key => $image)
+                {
+                    $_FILES['file[]']['name']= $files['name'][$key];
+                    $_FILES['file[]']['type']= $files['type'][$key];
+                    $_FILES['file[]']['tmp_name']= $files['tmp_name'][$key];
+                    $_FILES['file[]']['error']= $files['error'][$key];
+                    $_FILES['file[]']['size']= $files['size'][$key];
+
+                    $fileName = $image;
+
+                    //$images[] = $fileName;
+
+                    $config['file_name'] = $fileName;
+
+                    $this->upload->initialize($config);
+                    if(!$this->upload->do_upload('file[]'))
+                    {
+                        break;
+                        $this->session->set_flashdata('error', $this->upload->display_errors());
+                        redirect('admin/orders/proof/'.$proof_id);
+                    }
+
+                    $file = $this->upload->data();
+                    
+                    if( in_array($file['file_ext'], array('.svg', '.psd', '.ai', '.pdf', '.eps')) ) 
+                    {
+                        $this->load->library('thumb');
+                        $this->thumb->file	= $file['full_path'];				
+
+                        $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';	
+                        $this->thumb->createThumb($file['full_path'], $file['file_ext'], array('width'=>500, 'height'=>500), $remove, 'jpg');
+                        $file['file_name'] = $file['file_name'].'_thumb.jpg';
+
+                    }
+                   
+
+                    $art['url'] 	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$file['file_name'];
+                    $art['proofid'] 	= $proof_id;
+                    //$art['file_name'] 	= $file['file_name'];
+                    //$art['file_type'] 	= str_replace('.', '', $file['file_ext']);
+                    $this->load->model('proof_detail_m');
+                    $this->proof_detail_m->save($art);
+                    
                 }
                 
                 $this->load->model('comment_m');
@@ -123,6 +188,21 @@ class Proof extends Admin_Controller {
                 redirect($_SERVER['HTTP_REFERER']);
         }
 
+        public function deleteImage($id = '')
+        {        
+                //var_dump($garment);
+                if($id == ''){
+                    redirect($_SERVER['HTTP_REFERER']);
+                    exit();
+                }      
+                else
+                {
+                    $this->db->where('id ',$id);
+                    if($this->db->delete('order_proof_detail'))   ;                 
+                }
+                
+                redirect($_SERVER['HTTP_REFERER']);
+        }
         
 	
 }

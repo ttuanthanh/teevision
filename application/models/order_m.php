@@ -427,6 +427,13 @@ class Order_m extends MY_Model
                 return $query->row();
 		
 	}
+        function getProofImageByItem($id = '')
+	{	
+		$this->db->where('proofid ', $id);
+                $query = $this->db->get('order_proof_detail');
+                return $query->result();
+		
+	}
         
         function getLatestId()
 	{

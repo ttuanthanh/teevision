@@ -1083,9 +1083,15 @@ class Orders extends Admin_Controller
                 $this->data['meta_title'] = 'Proof';
                 $this->data['sub_title'] = '';
 		
+//                $items = $this->order_m->getItems($id);
+//                foreach ($items as $key=>$item){
+//                    $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+//                }
                 $items = $this->order_m->getItems($id);
                 foreach ($items as $key=>$item){
-                    $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                    $items[$key]->artwork = $this->order_m->getProofByItem($item->id) != null ? $this->order_m->getProofByItem($item->id) : '';
+                    if(isset($items[$key]->artwork->id))
+                        $items[$key]->artworkImage = $this->order_m->getProofImageByItem($items[$key]->artwork->id) != null ? $this->order_m->getProofImageByItem($items[$key]->artwork->id) : '';
                 }
                 
 		$this->data['items'] = $items;
