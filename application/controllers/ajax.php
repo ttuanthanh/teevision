@@ -602,6 +602,57 @@ class Ajax extends Frontend_Controller {
             //echo getEmail(config_item('admin_email'));
             //echo $result;
         }
+        
+        public function sendMailDesign()
+        {
+            // check user login
+            $user = $this->session->userdata('user');
+            $data = $this->input->post();
+           
+            //exit();
+            //params shortcode email.
+            $params = array(
+                    'username'=>($user['username'] != '') ?$user['username'] : 'user' ,
+                    'url_design'=>$data['design_url']
+            );
+
+
+            $subject = configEmail('sub_save_design', $params);
+            //$message = configEmail('save_design', $params);
+            $message = file_get_contents('http://tshirt.local/users/designtemplate/'.$data['id']);
+            
+            $this->load->library('email');
+//            $config = array(
+//                    'mailtype'  => 'html'
+//            );
+//            $this->load->library('email', $config);
+            $this->email->from(getEmail(config_item('admin_email')), getEmail(config_item('site_name')));
+            if($user['email'] != '')
+                $this->email->to($user['email']);  
+            else
+                $this->email->to($data['email']);  
+            
+            $this->email->subject ( $subject);
+            $this->email->message ($message);  
+            if ($this->email->send()) {
+                echo 'Your email was sent.';
+            } else {
+                show_error($this->email->print_debugger());
+            }
+//            
+//            $this->load->library('email');
+////            $this->email->set_newline("\r\n");
+//            $this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
+//            if($user['email'] != '')
+//                $this->email->to($user['email'], $data['email'], getEmail(config_item('admin_email')));    
+//            else
+//                $this->email->to($data['email'], getEmail(config_item('admin_email')));  
+//            $this->email->subject ( $subject);
+//            $this->email->message ($message);   
+//            $result = $this->email->send();
+//            echo $result;
+//            echo $this->email->print_debugger();
+        }
              
 }
 

@@ -30,6 +30,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							<legend><?php echo lang('designer_view_lightbox_design_'.$key.'_legend');?></legend>
 							<div class="col-sm-5 view_product">
 								<?php if(isset($product->image)){ ?>
+                                                            
 									<a target="_blank" href="<?php echo site_url('design/index/'.$product->product_id.'/'.$product->product_options.'/'.$product->design_id); ?>" title="Click to edit design">
 									<img id="view_product-<?php echo $key; ?>" src="<?php echo base_url(str_replace('front', $key, $product->image));?>" alt=""/>
 									</a>

@@ -375,10 +375,13 @@ var design = {
                 design.ajax.active = 'left';
                 if (jQuery('#view-back .product-design').html() != '' && jQuery('#view-back .product-design').find('img').length > 0) {
                     design.svg.items('back', design.ajax.save);
+                    console.log('back-create');
                 }
                 else {
+                    
                     delete design.output.back;
                     design.ajax.save();
+                    
                 }
             }
             else if (design.ajax.active == 'left') {
@@ -398,6 +401,41 @@ var design = {
                 else {
                     delete design.output.right;
                     design.ajax.addToCart();
+                }
+            }
+        },
+        
+        saveNoAdd: function () {
+            
+            if (design.ajax.active == 'back') {
+                design.ajax.active = 'left';
+                if (jQuery('#view-back .product-design').html() != '' && jQuery('#view-back .product-design').find('img').length > 0) {
+                    design.svg.items('back', design.ajax.saveNoAdd);
+                    console.log('back-create');
+                }
+                else {
+                    console.log('back-delete');
+                    delete design.output.back;
+                    design.ajax.saveNoAdd();
+                }
+            }
+            else if (design.ajax.active == 'left') {
+                design.ajax.active = 'right';
+                if (jQuery('#view-left .product-design').html() != '' && jQuery('#view-left .product-design').find('img').length > 0) {
+                    design.svg.items('left', design.ajax.saveNoAdd);
+                }
+                else {
+                    delete design.output.left;
+                    design.ajax.saveNoAdd();
+                }
+            }
+            else if (design.ajax.active == 'right') {
+                if (jQuery('#view-right .product-design').html() != '' && jQuery('#view-right .product-design').find('img').length > 0) {
+                    design.svg.items('right');
+                }
+                else {
+                    delete design.output.right;
+                    //design.ajax.saveNoAdd();
                 }
             }
         },
@@ -3914,6 +3952,9 @@ var design = {
     saveDesign: function () {
         var vectors = JSON.stringify(design.exports.vector());
         var image = design.output.front.toDataURL();
+        var imageB = '';
+        if (typeof design.output.back != 'undefined')
+            imageB = design.output.back.toDataURL();
         var teams = JSON.stringify(design.teams);
         var productColor = design.exports.productColor();
         var productColorTitle = design.exports.productColorTitle();
@@ -3935,6 +3976,7 @@ var design = {
         });
         var data = {
             "image": image,
+            "imageB": imageB,
             'vectors': vectors,
             'teams': teams,
             'fonts': design.fonts,
@@ -3985,6 +4027,9 @@ var design = {
     saveDesignStore: function () {
         var vectors = JSON.stringify(design.exports.vector());
         var image = design.output.front.toDataURL();
+        var imageB = '';
+        if (typeof design.output.back != 'undefined')
+            imageB = design.output.back.toDataURL();
         var teams = JSON.stringify(design.teams);
         var productColor = design.exports.productColor();
         var productColorTitle = design.exports.productColorTitle();
@@ -4006,6 +4051,7 @@ var design = {
         });
         var data = {
             "image": image,
+            "imageB": imageB,
             'vectors': vectors,
             'teams': teams,
             'fonts': design.fonts,
@@ -4029,7 +4075,7 @@ var design = {
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify(data)
-
+            
         }).done(function (msg) {
             var results = eval("(" + msg + ")");
             if (results.error == 1) {
@@ -4053,19 +4099,32 @@ var design = {
     },
     resentMail:function(){
         this.mask(true);
-        var data = {
-            "design_url": jQuery('.link-send-mail').val(),
-            'email': jQuery('.email').val()
-        };
-
-        jQuery.ajax({
-            url: baseURL + "user/sendMailDesign",
-            type: "POST",
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            async: false
-        }).done(function (msg) {
-            design.mask(false);
+//        var data = {
+//            'design_url': jQuery('.link-send-mail').val(),
+//            'email': jQuery('.email').val()
+//        };
+//
+//        jQuery.ajax({
+//            url: baseURL + "ajax/sendMailDesign",
+//            type: "POST",
+//            contentType: 'application/json',
+//            data: JSON.stringify(data),
+//            async: false
+//        }).done(function (msg) {
+//            design.mask(false);
+//        });
+        
+        jQuery.post(baseURL + "ajax/sendMailDesign",
+        {
+            design_url: jQuery('.link-send-mail').val(),
+            email: jQuery('.email').val(),
+            id:design.design_id
+        },
+        function(data, status){
+            if(status=='success'){
+                alert("Your request was sent successful");
+                design.mask(false);
+            }
         });
 
     },
@@ -4234,7 +4293,9 @@ var design = {
             this.design_name = jQuery('#dg-name').val();
             jQuery('#dg-mask').css('display', 'block');
             jQuery('#dg-designer').css('opacity', '0.3');
+            design.svg.items('back');
             design.svg.items('front', design.saveDesignStore);
+            
         }
 
 

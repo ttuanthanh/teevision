@@ -879,6 +879,20 @@ class Users extends Frontend_Controller
 		$this->session->unset_userdata('user');
 		redirect(site_url());
 	}
+        
+        function designtemplate($id = 0)
+	{
+                
+                $this->load->model('settings_m');
+                $this->load->model('order_m');
+		$row 	= $this->settings_m->getSetting();
+		$setting = json_decode($row->settings);
+		$this->data['setting'] = $setting;
+		
+		$data = $this->order_m->getDesignDetail($id);
+		$this->data['product'] = $data;		
+		$this->load->view('components/users/save_design', $this->data);
+	}
 }
 
 ?>

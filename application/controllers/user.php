@@ -190,7 +190,7 @@ class User extends Frontend_Controller {
 			$file->create($path .DS. $year .DS. $month, 0755);
 			
 			$key 		= strtotime("now"). rand();
-			$file 		=  $key . '.png';
+			$file 		=  'front_'.$key . '.png';
 			$path_file	= $path .DS. $year .DS. $month .DS. $file;
 			$file		= 'media/assets/system/'.$year .'/'. $month .'/'. $file;
 
@@ -198,8 +198,17 @@ class User extends Frontend_Controller {
 			
 			$design['design_id'] 		= $key;
 		}
-		
-		
+		//Thanh add for back design image
+                if ($data['imageB'] != '')
+                {
+                    $temp2 		= explode(';base64,', $data['imageB']);
+                    $buffer2	= base64_decode($temp2[1]);
+                    $file2 		=  'back_'.$key . '.png';
+                    $path_file2	= $path .DS. $year .DS. $month .DS. $file2;
+                    write_file($path_file2, $buffer2);
+                }
+                // end design back image
+                
 		if ( ! write_file($path_file, $buffer))
 		{
 			$results['error'] = 1;
@@ -253,6 +262,7 @@ class User extends Frontend_Controller {
 				$subject = configEmail('sub_save_design', $params);
 				$message = configEmail('save_design', $params);
 				
+                                
 				$this->load->library('email');
 				$this->email->from(getEmail(config_item('admin_email')), getSiteName(config_item('site_name')));
 				if($user['email'] != '')
@@ -261,7 +271,7 @@ class User extends Frontend_Controller {
                                     $this->email->to($data['design_email'], getEmail(config_item('admin_email')));  
 				$this->email->subject ( $subject);
 				$this->email->message ($message);   
-				//@$this->email->send();
+				//$this->email->send();
 			}
 			else
 			{
@@ -286,8 +296,8 @@ class User extends Frontend_Controller {
 
 
             $subject = configEmail('sub_save_design', $params);
-            $message = configEmail('save_design', $params);
-
+            //$message = configEmail('save_design', $params);
+            $message = file_get_contents('http://tshirt.local/users/designtemplate');
             
             $this->load->library('email');
 //            $this->email->set_newline("\r\n");
@@ -300,7 +310,7 @@ class User extends Frontend_Controller {
             $this->email->message ($message);   
             $result = $this->email->send();
             echo $result;
-            //echo $this->email->print_debugger();
+            echo $this->email->print_debugger();
         }
 
         public function userDesign()
