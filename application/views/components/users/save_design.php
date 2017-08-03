@@ -24,7 +24,7 @@
     <div style="text-align: left">
         <img src="http://teevisionprinting.com/media/assets/tee_logo_new.png" width="400px">
     </div>
-    <?php//var_dump($product); ?>
+    <?php //var_dump($product); ?>
     <div>
         <div style="border: 1px solid #cccccc; height: 100px; text-align: center; width: 500px; margin: 0 auto;">
             <h1 style="font-weight: bold;margin-bottom: 0px">
@@ -40,7 +40,8 @@
             <img id="view_product-back" src="<?php echo base_url(str_replace('front', "back", $product->image));?>" alt="" width="100%"/>
         </div>
         <br clear="all"/>
-        
+        <?php $url = 'http://'.$_SERVER['SERVER_NAME'].'/design/index/'.$product->product_id.'/'.$product->product_options.'/'.$product->design_id ?>
+        <a href="<?php echo $url; ?>" target="_blank" style="text-decoration: none">
         <table width="100%">
             <tr>
                 <td>
@@ -61,6 +62,7 @@
             </tr>
             
         </table>
+        </a>
         <h3 style="text-align: center; color: #00cc66">
             All designs are reviewed to check for quality.<br>
             Final proofs are sent to fix pixelation,background color, positioning
@@ -75,29 +77,37 @@
             </div>
             <br clear="all"/>
             <div>
-                <div style="float: left; width: 49%; text-align: right; border-right: 1px solid #cccccc; padding-right: 10px">
+                <div style="float: left; width: 49%; text-align: center; border-right: 1px solid #cccccc; padding-right: 10px">
                     <h2>RUSH DELIVERY<br/>
                     <span style="color: #00cccc"><?php echo date("D, M j", strtotime("7 weekdays")); ?></span></h2>
                 </div>
                 
-                <div style="float: right; width: 49%; text-align: left">
+                <div style="float: right; width: 49%; text-align: center">
                     <h2>FREE DELIVERY<br/>
                     <span style="color: #00cccc"><?php echo date("D, M j", strtotime("8 weekdays")); ?></span></h2>
-                </div>                
+                </div> 
+                <br clear="all"/>
             </div>
             <div>
                 <div style="float: left; width: 49%; text-align: center;">
-                    <h3>Need a artist to help with your design ?<br/>
-                    <span style="color: #00cccc">Request artist</span></h3>
+                    <div style="width:49%; float: left">
+                        <h3>Need a artist to help with your design ?</h3><br/>
+                    </div>
+                    <div style="width:49%; float: right">
+                        <p style="width: 80%; height: 50px; background-color: #009900; line-height: 50px">
+                            <a style="text-decoration: none; color: #FFF " href="<?php echo $url; ?>">Request artist</a></p>
+                    </div>
+                    <br clear="all"/>
+                    
                 </div>
                 
                 <div style="float: right; width: 49%; text-align: center">
                     <h3 style="color: #ff0033">Need additional help<br/>
                     <span style="color: #00cccc">Call us now (267)5385331</span></h3>
                 </div>   
-                
+                <br clear="all"/>
             </div>
-            <br clear="both"/>
+            <br clear="all"/>
             <div style="width:100%; background: #009999; min-height: 10px"></div>
         </div>
         <br clear="both"/>

@@ -1523,7 +1523,7 @@ class Orders extends Admin_Controller
 			$order_info				= $this->order_m->addNew('info');
 			$order_info['order_id'] = $order_id;
 			$order_info['user_id'] 	= $this->user['id'];			
-			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"COMPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
+			$order_info['address'] 	= '{"First Name":"","Last Name":"","Address":"","Telephone":"","Company":"","Email Address":"","Country":"","State":"","Zip\/Postal Code":"","Invoice":""}';
 			$this->order_m->save($order_info, null);
                         $this->data['status'] = 'new';
                         $this->data['orderid'] = $order_id;
@@ -1739,7 +1739,7 @@ class Orders extends Admin_Controller
 			$order_info				= $this->order_m->addNew('info');
 			$order_info['order_id'] = $order_id;
 			$order_info['user_id'] 	= $this->user['id'];			
-			$order_info['address'] 	= '{"First Name":"FNAME","Last Name":"LNAME","Address":"ADDRESS","Telephone":"0000","Company":"COMPANY","Email Address":"EMAIL","Country":"United States","State":"","Zip\/Postal Code":""}';
+			$order_info['address'] 	= '{"First Name":"","Last Name":"","Address":"","Telephone":"","Company":"","Email Address":"","Country":"","State":"","Zip\/Postal Code":"","Invoice":""}';
 			$this->order_m->save($order_info, null);
                         $this->data['status'] = 'new';
                         $this->data['orderid'] = $order_id;

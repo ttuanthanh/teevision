@@ -440,8 +440,10 @@ class Payment extends Frontend_Controller
 					{
 						$profiles[$field->title]	= $value[$id];
 					}
+                                        
 				}
 			}
+                        $profiles['Invoice'] = '';
 			$order_info['address'] 	= json_encode($profiles);
 			$this->order_m->save($order_info, null);
 			
