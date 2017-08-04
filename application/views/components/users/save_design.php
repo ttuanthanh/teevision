@@ -20,12 +20,13 @@
         width: 90%;
     }
 </style>
-<body style="width: 800px; margin: 0 auto">
+<body style="width: 800px; margin: 0 auto;">
     <div style="text-align: left">
         <img src="http://teevisionprinting.com/media/assets/tee_logo_new.png" width="400px">
     </div>
     <?php //var_dump($product); ?>
-    <div>
+    <div style="background-color: #F9FAFC">
+        <br />
         <div style="border: 1px solid #cccccc; height: 100px; text-align: center; width: 500px; margin: 0 auto;">
             <h1 style="font-weight: bold;margin-bottom: 0px">
                 <span style="color: #ff0033">Buy now</span> or <span style="color: #0066cc">edit</span> your design
@@ -33,6 +34,7 @@
             <h3 style="margin-top: 0">** Tip Increase the quantity to receive a larger Discount</h3>
         </div>
         <br clear="all"/>
+        <div style="height: 15px; width: 100%; background-color: white; margin-bottom: 20px"></div>
         <div style="width: 49%; float: left">
             <img id="view_product-front" src="<?php echo base_url(str_replace('front', "front", $product->image));?>" alt="" width="100%"/>
         </div>
@@ -63,14 +65,14 @@
             
         </table>
         </a>
-        <h3 style="text-align: center; color: #00cc66">
+        <h3 style="text-align: center; color: #00cc66; background-color: white; padding: 15px 0;">
             All designs are reviewed to check for quality.<br>
             Final proofs are sent to fix pixelation,background color, positioning
         </h3>
         <div style="text-align: center; border-bottom: 1px solid #cccccc; border-top: 1px solid #cccccc;">            
             <h3 style="font-weight: bold; font-style: italic">Share or email a friend</h3>
             <div>
-                <div class="bt_share" style="width: 200px; float: left; margin-right: 90px;">Post on facebook</div>
+                <div class="bt_share" style="width: 200px; float: left; margin-right: 90px; margin-left: 10px">Post on facebook</div>
                 <div class="bt_share" style="width: 200px; float: left; margin-right: 90px;">Twitter</div>
                 <div class="bt_share" style="width: 200px; float: left">Email a friend</div>
                 <br clear="all"/>
