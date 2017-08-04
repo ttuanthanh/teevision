@@ -619,7 +619,7 @@ class Ajax extends Frontend_Controller {
 
             $subject = configEmail('sub_save_design', $params);
             //$message = configEmail('save_design', $params);
-            $message = file_get_contents('http://tshirt.local/users/designtemplate/'.$data['id']);
+            $message = file_get_contents('http://'.$_SERVER['SERVER_NAME'].'/users/designtemplate/'.$data['id']);
             
             $this->load->library('email');
 //            $config = array(
