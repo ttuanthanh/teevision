@@ -4037,7 +4037,6 @@ var design = {
         if (attributes != '') {
             var obj = JSON.parse('{"' + decodeURI(attributes).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
             //datas = jQuery.extend(datas, obj);
-
         }
         var phrase = '';
         jQuery('.dg-poduct-fields').each(function () {
