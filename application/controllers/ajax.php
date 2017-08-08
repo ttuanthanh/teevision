@@ -653,6 +653,14 @@ class Ajax extends Frontend_Controller {
 //            echo $result;
 //            echo $this->email->print_debugger();
         }
+        
+        public function pms(){
+            $name = $this->input->post('name');
+            $pms = $this->config->load('pms', true);
+            
+            $index = array_search($name.' C', $pms['pmsName']);            
+            echo $pms['pmsHex'][$index];
+        }
              
 }
 
