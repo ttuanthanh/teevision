@@ -4212,6 +4212,8 @@ var design = {
                             jQuery(this).dialog("close");
                             jQuery('#dg-mask').css('display', 'block');
                             jQuery('#dg-designer').css('opacity', '0.3');
+                            
+                            design.svg.items('back');
                             design.svg.items('front', design.saveDesign);
                         }
                     }
