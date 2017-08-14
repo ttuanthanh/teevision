@@ -53,25 +53,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	});
 </script>
 <!-- show error -->
-<div class="row">
+<div class="row message">
 
 	<?php if ( $this->session->flashdata('error') == true ) { ?>
 	<div class="col-md-12">
-	
 		<div class="alert alert-danger" role="alert">
 		<?php echo $this->session->flashdata('error'); ?>
 		</div>
-		
 	</div>
 	<?php } ?>
 	
 	<?php if ( $this->session->flashdata('success') == true ) { ?>
 	<div class="col-md-12">
-	
 		<div class="alert alert-success" role="alert">
 		<?php echo $this->session->flashdata('success'); ?>
 		</div>
-		
 	</div>
 	<?php } ?>
 	
@@ -212,22 +208,53 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 jQuery('.tooltips').tooltip();
 
-function submit(type){
-	var ids = '';
-	jQuery('.checkb').each(function(){
-		if (jQuery(this).is(':checked'))
-		{
-			if (ids == '') ids = jQuery(this).val();
-			else ids = ids + '-' + jQuery(this).val();
+function submit(typeMethod) {
+	var ids = [];
+	jQuery('.checkb').each(function () {
+		if (jQuery(this).is(':checked')) {
+//			if (ids.length == 0) ids = "[" + jQuery(this).val()+"]";
+//			else ids = ids + ',' + jQuery(this).val();
+			ids.push(jQuery(this).val());
 		}
 	});
-	if (ids == ''){
+	if (ids.length == 0) {
 		alert('Please first make a selection from the list');
 		return;
 	}
-	
-	var url = '<?php echo site_url('admin/art'); ?>/'+type;
-	jQuery('#adminForm').attr('action', url);
-	jQuery('#adminForm').submit();
+	var url ='<?php echo site_url('admin/art'); ?>/' + typeMethod+'ajax';
+//	jQuery('#adminForm').attr('action', url);
+//	jQuery('#adminForm').submit();
+	jQuery.ajax({
+		type: "POST",
+		url:url,
+		data: {"ids": ids},
+		async: false,
+		dataType: 'html',
+		success: function (kg) {
+			if(kg == 1){
+				html(typeMethod+ ' success');
+				reloadItem();
+			}else{
+				html(typeMethod+ ' fail');
+			}
+		},error:function(message){
+			html(typeMethod+ ' error');
+		}
+	});
+	function html(message){
+		jQuery('.row.message').html('<div class="col-md-12"><div class="alert alert-success" role="alert">'+ message+'</div></div>');
+	}
+	function reloadItem(){
+		var cateId = jQuery('.dynatree-node.dynatree-active .dynatree-title').data('id');
+		if(typeof cateId == undefined) cateId=0
+		var page = $('#arts-pagination li.active a').text();
+		var count = '';
+		if(page!='') count = (page-1)*24;
+		jQuery('#tree6 .dynatree-container').addClass('loading');
+		jQuery.ajax({url: base_url + 'admin/art/index/ajax/' + cateId+'/'+count}).done(function( data ) {
+			jQuery('#clipart-rows').html(data);
+			jQuery('#tree6 .dynatree-container').removeClass('loading');
+		});
+	}
 }
 </script>
