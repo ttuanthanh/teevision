@@ -115,8 +115,8 @@ class Art extends Admin_Controller
 			$this->session->set_flashdata('success', 'Remove success');
                         echo 1;	
 		}
-		
-		echo 0;	
+		else
+                    echo 0;	
 	}
 	
 	// add, edit art
