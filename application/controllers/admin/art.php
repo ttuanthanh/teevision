@@ -131,7 +131,7 @@ class Art extends Admin_Controller
 			
                         if (isset($_FILES["file"]["name"][0]) && $_FILES["file"]["name"][0]!="")
 			{
-                            
+
                                 // check folder and create
 				$this->root		= ROOTPATH .DS. 'media' .DS. 'cliparts' .DS. $art['cate_id'];
 				if (!file_exists($this->root))

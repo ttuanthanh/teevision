@@ -181,9 +181,45 @@ var dgUI = {
 				alert(vail.art_msg_info);
 				return false;
 			}
-			jQuery('#add-clipart').submit();
+
+			var id = jQuery("input[name='clipart_id']").val();;
+            var typeAction='Add';
+            if(id!='')typeAction ='Edit';
+			jQuery.ajax({
+				type: jQuery("#add-clipart").attr("method"),
+				url:jQuery('#add-clipart').attr("action").replace("/admin/art/edit", "/admin/art/editajax"),
+				data: jQuery("#add-clipart").serialize(),
+                success: function (kg) {
+                    if(kg == 1){
+                        dgUI.art.loadMessage(typeAction + ' success');
+                        var cateId = jQuery("select[name='art[cate_id]']").val();
+                        dgUI.art.reloadItemArt(cateId);
+                    }else{
+                        dgUI.art.loadMessage(typeAction+ ' fail');
+
+                    }
+                    $('#ajax-modal').modal('hide');
+                },error:function(message){
+                    dgUI.art.loadMessage(typeAction+ ' error:' + message);
+                    $('#ajax-modal').modal('hide');
+                }
+			});
 			return true;
-		}
+		},
+        loadMessage:function(message){
+            jQuery('.row.message').html('<div class="col-md-12"><div class="alert alert-success" role="alert">'+ message+'</div></div>');
+        },reloadItemArt:function(cateId){
+            if(typeof cateId == undefined) cateId=0
+            var page = $('#arts-pagination li.active a').text();
+            var count = '';
+            if(page!='') count = (page-1)*24;
+            jQuery('#tree6 .dynatree-container').addClass('loading');
+            jQuery.ajax({url: base_url + 'admin/art/index/ajax/' + cateId+'/'+count}).done(function( data ) {
+                jQuery('#clipart-rows').html(data);
+                jQuery('#tree6 .dynatree-container').removeClass('loading');
+            });
+        }
+
 	},
 	price:{
 		show: function(e, id){

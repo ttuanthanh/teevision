@@ -204,6 +204,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 </div>
 <div id="ajax-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
+<div id="ajax-sub-tree-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
 <script type="text/javascript">
 
 jQuery('.tooltips').tooltip();
@@ -229,7 +230,6 @@ function submit(typeMethod) {
 		url:url,
 		data: {"ids": ids},
 		async: false,
-		dataType: 'html',
 		success: function (kg) {
 			if(kg == 1){
 				html(typeMethod+ ' success');
