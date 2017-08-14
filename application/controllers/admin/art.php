@@ -112,7 +112,7 @@ class Art extends Admin_Controller
 			{
 				$this->art_m->delete($id);
 			}
-			$this->session->set_flashdata('success', 'Remove success');
+			//$this->session->set_flashdata('success', 'Remove success');
                         echo 1;	
 		}
 		else
@@ -365,8 +365,10 @@ class Art extends Admin_Controller
                                     $this->upload->initialize($config);
                                     if(!$this->upload->do_upload('file[]'))
                                     {
-                                            $this->session->set_flashdata('error', $this->upload->display_errors());
-                                            redirect('admin/art');
+                                            //$this->session->set_flashdata('error', $this->upload->display_errors());
+                                            //redirect('admin/art');
+                                            echo 0;
+                                            exit;
                                     }
                                     
                                     $file = $this->upload->data();
