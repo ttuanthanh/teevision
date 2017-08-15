@@ -182,14 +182,17 @@ var dgUI = {
 				return false;
 			}
 
-			var id = jQuery("input[name='clipart_id']").val();;
+			var id = jQuery("input[name='clipart_id']").val();
             var typeAction='Add';
+			var data = new FormData(jQuery("#add-clipart")[0]);
             if(id!='')typeAction ='Edit';
 			jQuery.ajax({
 				type: jQuery("#add-clipart").attr("method"),
 				url:jQuery('#add-clipart').attr("action").replace("/admin/art/edit", "/admin/art/editajax"),
-				data: jQuery("#add-clipart").serialize(),
-                success: function (kg) {
+				data: data,
+				processData: false,
+				contentType: false,
+				success: function (kg) {
                     if(kg == 1){
                         dgUI.art.loadMessage(typeAction + ' success');
                         var cateId = jQuery("select[name='art[cate_id]']").val();
