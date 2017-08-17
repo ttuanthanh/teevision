@@ -21,7 +21,7 @@ class Blog extends Frontend_Controller {
 		$this->load->model('blog_m');
 		$this->data['categories'] = $this->blog_m->getCategories();
 		
-		$this->data['articles'] = $this->blog_m->getLastestArticle();
+		$this->data['articles'] = $this->blog_m->getLastestArticleBlog();
 		
 		$content				= $this->load->view('components/blog/index', $this->data, true);
 		
