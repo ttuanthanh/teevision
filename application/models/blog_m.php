@@ -34,6 +34,7 @@ class Blog_m extends MY_Model
 		$this->db->select('article.*');
 		$this->db->join('categories', 'categories.id = article.cate_id');
 		$this->db->where('article.cate_id', $cate_id);
+                $this->db->where('article.publish', 1);
 		$this->db->order_by('article.date', 'DESC');
 		if($count == true)
 		{
@@ -50,6 +51,16 @@ class Blog_m extends MY_Model
 	{
 		$this->db->order_by('date', 'DESC');
 		$this->db->where('publish', 1);
+		$this->db->limit(5);
+		$query = $this->db->get('article');
+		return $query->result();
+	}
+        
+        public function getLastestArticleBlog()
+	{
+		$this->db->order_by('date', 'DESC');
+		$this->db->where('publish', 1);
+                $this->db->where('cate_id !=', 268);
 		$this->db->limit(5);
 		$query = $this->db->get('article');
 		return $query->result();
