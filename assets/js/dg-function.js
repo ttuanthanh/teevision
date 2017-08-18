@@ -150,6 +150,9 @@ var dgUI = {
 				onActivate: function (node) {
 					jQuery('.dynatree-active a').attr('data-id', node.data.id);
 				},
+				initAjax: {
+					url: base_url+"admin/ajax/categoriestree?type=clipart"
+				},
 				onLazyRead: function(node){
 					// Mockup a slow reqeuest ...
 					node.appendAjax({
@@ -157,7 +160,6 @@ var dgUI = {
 						debugLazyDelay: 750 // don't do this in production code
 					});
 				},
-
 				dnd: {
 					onDragStart: function(node) {
 						/** This function MUST be defined to enable dragging for the tree.
@@ -216,8 +218,13 @@ var dgUI = {
 					}
 				}
 			});
+		}, loadTreeModal:function(){
+			jQuery("#ajax-sub-tree-modal").modal("show");
 
-
+		}, saveTreeCate: function(){
+			var select = jQuery("#ajax-sub-tree-modal .dynatree-active .dynatree-title");
+			jQuery(".type-cate-name").val(select.text());
+			jQuery(".type-cate-id").val(select.data("id"));
 		}
 	},
 	art:{

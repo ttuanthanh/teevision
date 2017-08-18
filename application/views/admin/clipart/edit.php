@@ -69,11 +69,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<?php echo lang('category_my'); ?>
 				<i title="<?php echo lang('category_my_description'); ?>" class="glyphicon glyphicon-question-sign popover-dismiss tooltips"></i>
 			</label>
-			<div class="col-sm-5">
-				<select name="art[cate_id]" class="form-control form-control input-sm">					
-					<?php echo dispayTree( $categories, 0, array('type'=>'select', 'name'=>''), array($art->cate_id) ); ?>
-				</select>
+			<div class="col-sm-4">
+				<input value="" disabled class="form-control type-cate-name"/>
+				<input name="art[cate_id]" type="hidden" class="form-control type-cate-id"/>
+
+<!--				<select name="art[cate_id]" class="form-control form-control input-sm">-->
+<!--					--><?php //echo dispayTree( $categories, 0, array('type'=>'select', 'name'=>''), array($art->cate_id) ); ?>
+<!--				</select>-->
 			</div>
+			<div class="col-sm-1">
+			<button  type="button" class="btn btn-primary" onclick="dgUI.category.loadTreeModal()">Choose</button>
+				</div>
 		</div>
 		
 		<div class="form-group">
