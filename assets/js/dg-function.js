@@ -275,11 +275,10 @@ var dgUI = {
 				success: function (kg) {
                     if(kg == 1){
                         dgUI.art.loadMessage(typeAction + ' success');
-                        var cateId = jQuery("select[name='art[cate_id]']").val();
+                        var cateId = jQuery("input[name='art[cate_id]']").val();
                         dgUI.art.reloadItemArt(cateId);
                     }else{
                         dgUI.art.loadMessage(typeAction+ ' fail');
-
                     }
                     $('#ajax-modal').modal('hide');
                 },error:function(message){

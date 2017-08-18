@@ -22,6 +22,7 @@ class Art extends Admin_Controller
 		$this->users_m->userPermission('art');
 		
 		$this->load->model('art_m');
+        $this->load->model('categories_m');
 		$this->lang->load('art');
 		$this->lang->load('metadata');
 		

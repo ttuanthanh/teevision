@@ -14,7 +14,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	<h4 class="modal-title"><?php echo $title; ?></h4>
 </div>
-		
+
 <?php if(count($art)) { ?>
 
 	<?php
@@ -70,11 +70,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<i title="<?php echo lang('category_my_description'); ?>" class="glyphicon glyphicon-question-sign popover-dismiss tooltips"></i>
 			</label>
 			<div class="col-sm-4">
-				<input value="" disabled class="form-control type-cate-name"/>
-				<input name="art[cate_id]" type="hidden" class="form-control type-cate-id"/>
+				<?php
+				$cat = $this->categories_m->getCategory('clipart',$art->cate_id);
+				?>
+				<input value="<?php echo isset($cat->title) ? $cat->title : '' ; ?>" disabled class="form-control type-cate-name"/>
+				<input name="art[cate_id]" type="hidden" class="form-control type-cate-id" value="<?php echo $art->cate_id; ?>"/>
 
 <!--				<select name="art[cate_id]" class="form-control form-control input-sm">-->
-<!--					--><?php //echo dispayTree( $categories, 0, array('type'=>'select', 'name'=>''), array($art->cate_id) ); ?>
+<!--					--><?php
+//					getCategory("clipart", $art->cate_id);
+//
+//					echo dispayTree($categories, 0, array('type'=>'select', 'name'=>''), array($art->cate_id) ); ?>
 <!--				</select>-->
 			</div>
 			<div class="col-sm-1">
