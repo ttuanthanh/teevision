@@ -29,6 +29,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	var url_assets = '<?php echo base_url('assets/js/'); ?>';	
 	jQuery(document).ready(function() {				
 		dgUI.category.tree('#tree6', 'clipart');
+		dgUI.category.modalTree('#ajax-sub-tree-modal .modal-body');
 		dgUI.category.lang.msg = '<?php echo lang('category_msg'); ?>';
 		dgUI.category.lang.msga = '<?php echo lang('category_msga'); ?>';
 		dgUI.category.lang.add_info = '<?php echo lang('category_add_info'); ?>';
@@ -41,6 +42,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		dgUI.category.lang.confirm_delete = '<?php echo lang('confirm_delete'); ?>';
 		dgUI.category.ini();
 		dgUI.art.ini();
+
 		jQuery(".search-select").select2({
             placeholder: "<?php echo lang('art_select_a_state_place'); ?>",
             allowClear: true
@@ -204,7 +206,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 </div>
 <div id="ajax-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
-<div id="ajax-sub-tree-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
+<div id="ajax-sub-tree-modal" class="modal fade" tabindex="-1" style="display: none;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<h4 class="modal-title"><?php echo lang('art_change_category'); ?></h4>
+	</div>
+	<div class="modal-body">
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('close'); ?></button>
+		<button type="button" class="btn btn-primary save-cate" onclick="dgUI.category.saveTreeCate()" data-dismiss="modal"><?php echo lang('save'); ?></button>
+	</div>
+</div>
 <script type="text/javascript">
 
 jQuery('.tooltips').tooltip();
