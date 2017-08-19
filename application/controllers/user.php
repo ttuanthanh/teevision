@@ -157,7 +157,7 @@ class User extends Frontend_Controller {
 		
 		$design 					= array();
 		
-		$design['user_id']			= $user['id'] == 0 ? -1 : $user['id'];
+		$design['user_id']			= $user['id'] == 0 ? '-1' : $user['id'];
 		$design['vectors']			= $data['vectors'];		
 		$design['teams']			= $data['teams'];	
 		$design['fonts']			= $data['fonts'];
@@ -201,6 +201,11 @@ class User extends Frontend_Controller {
 		//Thanh add for back design image
                 if ($data['imageB'] != '')
                 {
+                    // create path file
+                    $date 	= new DateTime();
+                    $year	= $date->format('Y');		
+                    $month 	= $date->format('m');
+                        
                     $temp2 		= explode(';base64,', $data['imageB']);
                     $buffer2	= base64_decode($temp2[1]);
                     $file2 		=  'back_'.$key . '.png';
@@ -252,7 +257,7 @@ class User extends Frontend_Controller {
 				//params shortcode email.
 				$params = array(
 					'username'=>($user['username'] != '') ?$user['username'] : 'user' ,
-					'url_design'=>site_url('design/index/'.$data['product_id'].'/'.$data['product_color'].'/'.$key),
+					'url_design'=>site_url('design-online/index/'.$data['product_id'].'/'.$data['product_color'].'/'.$key),
 				);
 				
 				//config email.

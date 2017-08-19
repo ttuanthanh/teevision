@@ -4014,7 +4014,7 @@ var design = {
                 design.design_key = results.content.design_key;
                 design.productColor = productColor;
                 design.product_id = product_id;
-                var linkEdit = baseURL + 'design/index/' + product_id + '/' + productColor + '/' + results.content.design_key;
+                var linkEdit = baseURL + 'design-online/index/' + product_id + '/' + productColor + '/' + results.content.design_key;
                 jQuery('.link-send-mail').val(linkEdit);
                 jQuery('.email').val(design.design_email);
                 jQuery('#dg-share').modal();

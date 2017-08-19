@@ -42,7 +42,7 @@
             <img id="view_product-back" src="<?php echo base_url(str_replace('front', "back", $product->image));?>" alt="" width="100%"/>
         </div>
         <br clear="all"/>
-        <?php $url = 'http://'.$_SERVER['SERVER_NAME'].'/design/index/'.$product->product_id.'/'.$product->product_options.'/'.$product->design_id ?>
+        <?php $url = 'http://'.$_SERVER['SERVER_NAME'].'/design-online/index/'.$product->product_id.'/'.$product->product_options.'/'.$product->design_id ?>
         <a href="<?php echo $url; ?>" target="_blank" style="text-decoration: none">
         <table width="100%">
             <tr>

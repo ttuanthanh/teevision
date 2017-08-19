@@ -105,7 +105,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							</td>
 						   
 						   <td class="center">
-                                                       <a target="blank" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_name;?></a><br/>
+                                                       <a target="blank" href="<?php echo site_url('design-online/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_id); ?>"><?php echo $design->design_name;?></a><br/>
                                                        <?php
                                                         if($design->user_id != -1) {
                                                        ?>

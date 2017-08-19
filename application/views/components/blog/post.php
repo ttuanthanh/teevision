@@ -102,7 +102,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <li> Low Prices with Free Shipping</li>
                 <li> Guaranteed Store Quality Prints</li>
             </ul>
-            <a href="/design" class="btn btn-product btn-gode">Design now!</a>
+            <a href="/design-online" class="btn btn-product btn-gode">Design now!</a>
         </div>
     </div>
     <?php    

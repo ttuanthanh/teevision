@@ -109,7 +109,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 											<div class="col-sm-12 text-left">
 												<div class="form-group">
                                                                                                     <strong>Edit design: </strong> 
-                                                                                                    <a href="/design/index/<?php echo $item['product_id'] ?>/<?php echo $designs[$key]['color'] ?>/<?php echo $designs[$key]['design_key'] ?>" ><?php echo $designs[$key]['design_name'] ?></a>
+                                                                                                    <a href="/design-online/index/<?php echo $item['product_id'] ?>/<?php echo $designs[$key]['color'] ?>/<?php echo $designs[$key]['design_key'] ?>" ><?php echo $designs[$key]['design_name'] ?></a>
                                                                                                 </div>
 												<div class="form-group">
 													

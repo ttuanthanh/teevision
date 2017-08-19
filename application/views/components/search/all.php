@@ -66,7 +66,7 @@ $this->load->helper('text');
 		<div class="col-xs-6 col-sm-4 col-md-2 text-center form-group" style="display:inline-block;float:none;">
 			
 			<div class="thumbnail layout-product">
-				<a title="<?php echo $design->title; ?>" href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_key); ?>">
+				<a title="<?php echo $design->title; ?>" href="<?php echo site_url('design-online/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_key); ?>">
 					<img class="img-responsive" alt="<?php echo $design->title; ?>" src="<?php echo base_url($design->image); ?>">
 					<br />
 					<center><?php echo $design->title; ?></center>

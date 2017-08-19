@@ -84,7 +84,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					}
 				?>
 					<div class="text-center">					
-						<a href="<?php echo site_url('design/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_key); ?>" title="<?php echo $design->title; ?>"><?php echo $design->title; ?></a>					
+						<a href="<?php echo site_url('design-online/index/'.$design->product_id.'/'.$design->product_options.'/'.$design->design_key); ?>" title="<?php echo $design->title; ?>"><?php echo $design->title; ?></a>					
 					</div>
 				</div>
 			</div>

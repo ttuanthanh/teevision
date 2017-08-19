@@ -56,8 +56,12 @@ $route['search/(:any)'] 		= 'search/index/$1';
 
 $route['admin/users/(:num)']            = 'admin/users/index/$2';
 
-$route['services/(:any)']                = 'blog/post/$1';
-$route['organizations/(:any)']           = 'blog/post/$1';
-$route['services']                       = 'blog';
-$route['organizations']                  = 'blog/category/268';
-$route['organizations/page']                  = 'blog/category/268';
+//$route['services']                       = 'services';
+$route['services/(:any)']                = 'services/post/$1';
+
+$route['organizations/(:any)']           = 'services/post/$1';
+$route['organizations']                  = 'services/category/268';
+$route['organizations/page']             = 'services/category/268';
+
+$route['design-online']                  = 'design';
+$route['design-online/index/(:any)']     = 'design/index/$1';
