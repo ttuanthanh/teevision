@@ -9,7 +9,7 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Service extends Frontend_Controller {
+class Services extends Frontend_Controller {
 	
 	public function __construct(){
         parent::__construct();	
