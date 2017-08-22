@@ -658,8 +658,26 @@ class Ajax extends Frontend_Controller {
             $name = $this->input->post('name');
             $pms = $this->config->load('pms', true);
             
-            $index = array_search($name.' C', $pms['pmsName']);            
+            $index = array_search($name, $pms['pmsName']);            
             echo $pms['pmsHex'][$index];
+        }
+        
+        public function getColorPMS()
+        {
+            $hexs = $this->input->post('hex');
+            $pms = $this->config->load('pms', true);
+            $return = '';
+            if (is_array($hexs)){
+                foreach ($hexs as $hex){
+                    $index = array_search($hex, $pms['pmsHex']);
+                    if($index)
+                        $return[$hex] = $pms['pmsName'][$index];
+                    else
+                        $return[$hex] = '';
+                }            
+            }
+            
+            echo json_encode($return);
         }
              
 }
