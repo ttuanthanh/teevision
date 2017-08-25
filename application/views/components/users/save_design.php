@@ -24,7 +24,8 @@
     <div style="text-align: left">
         <img src="http://teevisionprinting.com/media/assets/tee_logo_new.png" width="400px">
     </div>
-    <?php //var_dump($product); ?>
+    <?php 
+    //var_dump($product); ?>
     <div style="background-color: #F9FAFC">
         <br />
         <div style="border: 1px solid #cccccc; height: 100px; text-align: center; width: 500px; margin: 0 auto;">
@@ -36,10 +37,10 @@
         <br clear="all"/>
         <div style="height: 15px; width: 100%; background-color: white; margin-bottom: 20px"></div>
         <div style="width: 49%; float: left">
-            <img id="view_product-front" src="<?php echo base_url(str_replace('front', "front", $product->image));?>" alt="" width="100%"/>
+            <img id="view_product-front" src="<?php echo base_url(str_replace(array('front','.png'), array('front','_w.png'), $product->image));?>" alt="" width="100%"/>
         </div>
         <div style="width: 49%; float: left">
-            <img id="view_product-back" src="<?php echo base_url(str_replace('front', "back", $product->image));?>" alt="" width="100%"/>
+            <img id="view_product-back" src="<?php echo base_url(str_replace(array('front', '.png'), array('back','_w.png'), $product->image));?>" alt="" width="100%"/>
         </div>
         <br clear="all"/>
         <?php $url = 'http://'.$_SERVER['SERVER_NAME'].'/design-online/index/'.$product->product_id.'/'.$product->product_options.'/'.$product->design_id ?>

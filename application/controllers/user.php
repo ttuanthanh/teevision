@@ -149,7 +149,9 @@ class User extends Frontend_Controller {
 		$data = json_decode(file_get_contents('php://input'), true);
 		
 		$this->load->helper('file');
-		
+		$this->load->helper('watermark');
+                $watermark = new Watermark();
+                
 		$path	= ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'system';		
 		
 		$temp 		= explode(';base64,', $data['image']);
@@ -197,8 +199,12 @@ class User extends Frontend_Controller {
 			$id			= null;
 			
 			$design['design_id'] 		= $key;
+                        
+                        
 		}
-		//Thanh add for back design image
+		//Thanh add for back design imagec
+                $path_file2 	=  '';
+                $path_filew2	='';
                 if ($data['imageB'] != '')
                 {
                     // create path file
@@ -211,6 +217,10 @@ class User extends Frontend_Controller {
                     $file2 		=  'back_'.$key . '.png';
                     $path_file2	= $path .DS. $year .DS. $month .DS. $file2;
                     write_file($path_file2, $buffer2);
+                    
+                    $filew2 		=  'back_'.$key . '_w.png';
+                    $path_filew2	= $path .DS. $year .DS. $month .DS. $filew2;
+                    
                 }
                 // end design back image
                 
@@ -221,6 +231,8 @@ class User extends Frontend_Controller {
 		}
 		else
 		{
+                        
+                        
 			$design['image']            = $file;
 			$design['product_id']       = $data['product_id'];
 			$design['product_options']  = $data['product_color'];
@@ -283,6 +295,10 @@ class User extends Frontend_Controller {
 				$results['error'] = 1;
 				$results['msg']	= lang('design_msg_save');
 			}
+                        $filew1 		=  'front_'.$key . '_w.png';
+			$path_filew1	= $path .DS. $year .DS. $month .DS. $filew1;
+                        $watermark->waterImage($path_file, $path_filew1);
+                        $watermark->waterImage($path_file2, $path_filew2);
 		}
 		
 		echo json_encode($results);

@@ -14,24 +14,56 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 Class Watermark
 {
 
-	function waterImage($image)
+	function waterImage($image, $save)
 	{	
-		$stamp = imagecreatefrompng('stamp.png');
-                $im = imagecreatefromjpeg('photo.jpeg');
+		//$image = 'images/create-a-lonely-child-scene-photo-manipulation.jpg';
 
-                // Set the margins for the stamp and get the height/width of the stamp image
-                $marge_right = 10;
-                $marge_bottom = 10;
-                $sx = imagesx($stamp);
-                $sy = imagesy($stamp);
+                //get the size of the image
+                list($width, $height) = getimagesize($image);
 
-                // Copy the stamp image onto our photo using the margin offsets and the photo 
-                // width to calculate positioning of the stamp. 
-                imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+                /*
+                 * set the watermark font size
+                 * possible values 1,2,3,4, and 5
+                 * where 5 is the biggest
+                 */
+                $fontSize = 5;
 
-                // Output and free memory
-                header('Content-type: image/png');
-                imagepng($im);
-                imagedestroy($im);
+                //set the watermark text
+                $text = "teevisionprinting.com";
+
+                /*
+                 * Put the watermark on the
+                 * lower right corner of the image
+                 */
+                //$xPosition = ($width-((imagefontwidth($fontSize)*strlen($text))+10));
+                //$yPosition = ($height-(imagefontheight($fontSize)+10));
+
+                $xPosition = (($width/2)-((imagefontwidth($fontSize)*strlen($text))/2));
+                $yPosition = ($height-(imagefontheight($fontSize)+20));
+
+                //create a new image
+                $newImg = imagecreatefrompng($image);
+
+                imagesavealpha($newImg, true);
+                
+                //set the watermark font color to red
+                $fontColor = imagecolorallocate($newImg, 255, 0, 0);
+
+                //write the watermark on the created image
+                imagestring($newImg, $fontSize, $xPosition, $yPosition, $text, $fontColor);
+
+                //output the new image with a watermark to a file
+                //imagejpeg($newImg,"add-a-text-watermark-to-an-image-with-php_03.jpg",100);
+                /*
+                 * PNG file appeared to have
+                 * a better quality than the JPG
+                 */
+                imagepng($newImg, $save, 0);
+
+                /*
+                 * destroy the image to free
+                 * any memory associated with it
+                 */
+                imagedestroy($newImg);
 	}
 }
