@@ -102,7 +102,16 @@ class Categories extends Frontend_Controller
 			{
 				$layout = $this->load->view('layouts/categories/default', array(), true);
 			}
+			// load Meta
+                        //var_dump($category);
+			if ($category->meta_title != '')
+				$data['title']	= $category->meta_title;
 			
+			if ($category->meta_keyword != '')
+				$data['meta_keywords']	= $category->meta_keyword;
+			
+			if ($category->meta_description != '')
+				$data['meta_description']	= $category->meta_description;
 			$data['subview']	= $layout;
 		}
 		
