@@ -794,6 +794,37 @@ var design = {
         },colorPickerHide: function(view){
             jQuery(view).ColorPickerHide();
             jQuery(view).data("show", false);
+        },clearPMS:function(e){
+            var $inputPMS =jQuery(e);
+            if($inputPMS.hasClass("errorPMS")){
+            $inputPMS.val('');
+            $inputPMS.removeClass("errorPMS");
+            }
+        },
+        colorPMSCheck: function(e){
+            var btn = jQuery(e);
+            var $inputPMS =btn.closest(".formPMS").find(".inputPMS");
+            jQuery('#dag-art-categories').addClass('loading');
+            var lineBreak = btn.closest(".list-colors").find(".line-break");
+            jQuery.ajax({
+                url: baseURL + "ajax/pms",
+                method: "POST",
+                data: {'name': $inputPMS.val()}
+            }).done(function (data) {
+                if (data == '') {
+                    $inputPMS.addClass("errorPMS");
+                    $inputPMS.val("Invalid PMS");
+                }
+                else{
+                    if(!btn.closest("#screen_colors_list").length){
+                    jQuery('<span class="bg-colors" data-color="'+data+'" data-test="'+data+'" title="'+$inputPMS.val()+'"  onclick="design.item.changeColor(this)" style="background-color: #'+data+';"></span>').insertBefore(lineBreak);
+                    }else{
+                        jQuery('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + data + '" data-color="' + data + '" title="' + $inputPMS.val() + '"></span>').insertBefore(lineBreak);
+                    }
+                }
+            }).always(function () {
+                jQuery('#dag-art-categories').removeClass('loading');
+            });
         },
         colors: function (view) {
             var b = jQuery('#view-' + view + ' .product-design').html() == '';
@@ -1249,15 +1280,28 @@ var design = {
                 }
             }).always(function () {
             });
-        },getColorTitle: function(colorSlt){
+        },getColorTitle: function(colorSlt, cb){
             var colorResult = colorSlt;
             jQuery.each(this.colors, function(i, color){
                 if(colorSlt == '#'+ color.hex) {
                     colorResult = color.title;
                     return false;
                 }
-            })
-            return colorResult;
+            });
+            cb(colorResult);
+            // jQuery.ajax({
+            //     url: baseURL + "ajax/getColorPMS",
+            //     method:"POST",
+            //     async: false,
+            //     dataType: 'json',
+            //     data: {hex: [colorSlt]}
+            // }).done(function (data) {
+            //     if(!jQuery.isEmptyObject(data)){
+            //         colorResult =  data[colorSlt];
+            //     }
+            //     cb(colorResult);
+            // });
+
         },
         addColor: function (colors) {
             var screen_colors = jQuery('#screen_colors_list');
@@ -1274,18 +1318,22 @@ var design = {
                 jQuery(div).append(span);
                 screen_colors.append('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + color.hex + '" data-color="' + color.hex + '" title="' + color.title + '"></span>');
             });
+            var pms = '<div class="form-group formPMS col-md-10"><input type="text" ' +
+                'class="form-control inputPMS" placeholder="Custom PMS" onfocus="design.print.clearPMS(this)"><a href="javascript:void(0)" class="btnPMS"  onclick="design.print.colorPMSCheck(this)">Add</a></div>';
             jQuery(div).append('<span class="colorSelector bg-colors bg-custom button_click"' +
                 'onclick="design.print.colorPicker(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
             jQuery(div).append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
+            jQuery(div).append(pms);
             screen_colors.append('<span class="colorSelector bg-colors bg-custom button_click"' +
                 'onclick="design.print.colorPickerUpload(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
             screen_colors.append('<span class="line-break"></span><span class="colorSelector bg-colors bg-custom marker"' +
                 'onclick="design.print.colorPickerClick(this)"data-color="00b3ff" data-init="false"' +
                 'style="background-color: #00b3ff" data-placement="top" title="#00b3ff" data-original-title="custom">');
+            screen_colors.append(pms);
         },
         loadFonts: function () {
             var self = this;
@@ -1788,11 +1836,13 @@ var design = {
             if (jQuery(e).is('.drag-item-name')) {
                 jQuery('#txt-team-name-fontfamly').html(e.item.fontfamly);
                 jQuery('#team-name-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
-                jQuery('#team-name-color-text').html(design.designer.getColorTitle(e.item.color));
+                design.designer.getColorTitle(e.item.color,function(color){
+                    jQuery('#team-name-color-text').html(color);
+                });
             } else if (jQuery(e).is('.drag-item-number')) {
                 jQuery('#txt-team-number-fontfamly').html(e.item.fontfamly);
                 jQuery('#team-number-color').data('color', e.item.color.replace('#', '')).css('background-color', e.item.color);
-                jQuery('#team-number-color-text').html(design.designer.getColorTitle(e.item.color));
+                design.designer.getColorTitle(e.item.color,function(color){jQuery('#team-number-color-text').html(color)});
             }
         },
         load: function (teams) {
@@ -2223,7 +2273,9 @@ var design = {
                 obj.data('color', o.color);
                 obj.data('value', o.color);
                 obj.css('background-color', '#' + o.color);
-                $jd('#txt-color-text').html(design.designer.getColorTitle(o.color));
+                design.designer.getColorTitle(o.color, function(color){
+                    $jd('#txt-color-text').html(color);
+                });
             }
 
             if (typeof o.outlineC == 'undefined') {
@@ -2238,12 +2290,15 @@ var design = {
             obj.data('color', o.outlineC);
             obj.data('value', o.outlineC);
             obj.css('background-color', '#' + o.outlineC);
-            $jd('#txt-outline-color-text').html(design.designer.getColorTitle(o.outlineC));
+           design.designer.getColorTitle(o.outlineC,function(color){
+               $jd('#txt-outline-color-text').html(color);
+           });
             if (typeof o.outlineW == 'undefined') {
                 o.outlineW = 0;
             }
             jQuery('.outline-value.pull-left').html(o.outlineW);
             jQuery('#dg-outline-width a').css('left', o.outlineW + '%');
+
         },
         add: function (o, type, constraint) {
             var item = {};
@@ -3383,7 +3438,7 @@ var design = {
             //     design.item.select(this, true)
             // });
             jQuery(document).click(function (e) {
-                if (!jQuery(e.target).parents(".colorpicker").length) {
+                if (!jQuery(e.target).parents(".list-colors")) {
                     jQuery('.dropdown-color').popover('hide');
                 }
             });
