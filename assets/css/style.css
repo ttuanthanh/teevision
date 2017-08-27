@@ -1522,7 +1522,7 @@ body {
 }
 
 .popover {
-    width: 240px;
+    width: 255px;
 }
 
 .popover .popover-title {
@@ -3271,7 +3271,7 @@ ul.choose_payment .description {
     background: url(../images/colorpicker/select.png);
     background-size: cover;
 }
-.other-colors .colorSelector.button_click{
+.colorSelector.button_click{
     top:0;
     left:0;
     position: absolute;
@@ -3282,6 +3282,7 @@ ul.choose_payment .description {
     left: 40px;
     position: absolute;
     visibility: hidden;
+    top: 250px;
 }
 
 .colorSelector div {
@@ -3358,6 +3359,28 @@ ul.choose_payment .description {
 #customWidget {
     position: relative;
     height: 36px;
+}
+
+.formPMS .inputPMS{
+    width: 110px;
+    float: left;
+    margin-left: 5px;
+}
+.formPMS .btnPMS:hover{
+    text-decoration: none;
+}
+.formPMS .btnPMS{
+    position: absolute;
+    border: 1px solid #CED5D9;
+    border-radius: 0 3px 3px 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    border-left:none;
+    padding: 7px 8px 8px;
+    margin-left: -2px;
+}
+
+.formPMS .inputPMS.errorPMS{
+    color:red;
 }
 
 .full-width{
