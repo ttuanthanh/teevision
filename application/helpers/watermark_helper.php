@@ -37,9 +37,7 @@ Class Watermark
                  */
                 //$xPosition = ($width-((imagefontwidth($fontSize)*strlen($text))+10));
                 //$yPosition = ($height-(imagefontheight($fontSize)+10));
-
-                $xPosition = (($width/2)-((imagefontwidth($fontSize)*strlen($text))/2));
-                $yPosition = ($height-(imagefontheight($fontSize)+20));
+                
 
                 //create a new image
                 $newImg = imagecreatefrompng($image);
@@ -48,9 +46,26 @@ Class Watermark
                 
                 //set the watermark font color to red
                 $fontColor = imagecolorallocate($newImg, 255, 0, 0);
+                
+                
+                
+                $font = './assets/fonts/arial.ttf';
+                $white = imagecolorallocate($newImg, 255, 255, 255);
+                $grey = imagecolorallocate($newImg, 128, 128, 128);
+                $black = imagecolorallocate($newImg, 0, 0, 0);
+                
+                $bbox = imagettfbbox(20, 0, $font, $text);
+                $xPosition = (($width/2)-(($bbox[2] - $bbox[0]) / 2));
+                $yPosition = $height-20;
+                
+                // Add some shadow to the text
+                imagettftext($newImg, 20, 0, ($xPosition + 1), ($yPosition + 1), $grey, $font, $text);
+
+                // Add the text
+                imagettftext($newImg, 20, 0, $xPosition, $yPosition, $white, $font, $text);
 
                 //write the watermark on the created image
-                imagestring($newImg, $fontSize, $xPosition, $yPosition, $text, $fontColor);
+                //imagestring($newImg, $fontSize, $xPosition, $yPosition, $text, $fontColor);
 
                 //output the new image with a watermark to a file
                 //imagejpeg($newImg,"add-a-text-watermark-to-an-image-with-php_03.jpg",100);
