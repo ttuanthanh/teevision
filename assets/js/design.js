@@ -3387,11 +3387,14 @@ var design = {
                         jQuery.data(a, 'colors', colors[color]);
                         a.innerHTML = '<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>';
                         div.append(a);
-                        var b = "<span class='text-color'>"+ design.designer.getColorTitle(color)+"</span>";
-                        div.append(b);
-                        if(count%3 ==0){
-                            div.append('<span class="link-break-no-border"></span>');
-                        }
+                        design.designer.getColorTitle(color, function(colorResult){
+                            var b = "<span class='text-color'>"+ colorResult+"</span>";
+                            div.append(b);
+                            if(count%3 ==0){
+                                div.append('<span class="link-break-no-border"></span>');
+                            }
+                        });
+
                     }
                 }
                 else {
