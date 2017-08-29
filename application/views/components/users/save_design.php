@@ -82,12 +82,12 @@
             <div>
                 <div style="float: left; width: 49%; text-align: center; border-right: 1px solid #cccccc; padding-right: 10px">
                     <h2>RUSH DELIVERY<br/>
-                    <span style="color: #00cccc"><?php echo date("D, M j", strtotime("5 weekdays")); ?></span></h2>
+                    <span style="color: #00cccc"><?php echo date("D, M j", strtotime("5 weekdays"));  ?></span></h2>
                 </div>
                 
                 <div style="float: right; width: 49%; text-align: center">
                     <h2>FREE DELIVERY<br/>
-                    <span style="color: #00cccc"><?php echo date("D, M j", strtotime("10 weekdays")); ?></span></h2>
+                    <span style="color: #00cccc"><?php echo date("D, M j", strtotime("10 weekdays"));  ?></span></h2>
                 </div> 
                 <br clear="all"/>
             </div>
