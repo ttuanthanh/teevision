@@ -806,6 +806,7 @@ var design = {
             var $inputPMS =btn.closest(".formPMS").find(".inputPMS");
             jQuery('#dag-art-categories').addClass('loading');
             var lineBreak = btn.closest(".list-colors").find(".line-break");
+            var otherColorLineBreak = jQuery('.other-colors .line-break');
             jQuery.ajax({
                 url: baseURL + "ajax/pms",
                 method: "POST",
@@ -818,9 +819,11 @@ var design = {
                 else{
                     if(!btn.closest("#screen_colors_list").length){
                     jQuery('<span class="bg-colors" data-color="'+data+'" data-test="'+data+'" title="'+$inputPMS.val()+'"  onclick="design.item.changeColor(this)" style="background-color: #'+data+';"></span>').insertBefore(lineBreak);
+                        jQuery('<span class="bg-colors" data-color="'+data+'" data-test="'+data+'" title="'+$inputPMS.val()+'"  onclick="design.item.changeColor(this)" style="background-color: #'+data+';"></span>').insertBefore(otherColorLineBreak);
                     }else{
                         jQuery('<span class="bg-colors default" onclick="design.print.addColor(this)" style="background-color:#' + data + '" data-color="' + data + '" title="' + $inputPMS.val() + '"></span>').insertBefore(lineBreak);
                     }
+                    design.designer.colors.push({title:$inputPMS.val(), hex:data})
                 }
             }).always(function () {
                 jQuery('#dag-art-categories').removeClass('loading');
@@ -1282,25 +1285,36 @@ var design = {
             });
         },getColorTitle: function(colorSlt, cb){
             var colorResult = colorSlt;
+            var hexResult = colorSlt.replace("#","");
+            var flag= false;
             jQuery.each(this.colors, function(i, color){
                 if(colorSlt == '#'+ color.hex) {
                     colorResult = color.title;
+                    cb(colorResult);
+                    flag = true;
                     return false;
                 }
             });
-            cb(colorResult);
-            // jQuery.ajax({
-            //     url: baseURL + "ajax/getColorPMS",
-            //     method:"POST",
-            //     async: false,
-            //     dataType: 'json',
-            //     data: {hex: [colorSlt]}
-            // }).done(function (data) {
-            //     if(!jQuery.isEmptyObject(data)){
-            //         colorResult =  data[colorSlt];
-            //     }
-            //     cb(colorResult);
-            // });
+            if(flag){
+                return;
+            }
+            jQuery.ajax({
+                url: baseURL + "ajax/getColorPMS",
+                method:"POST",
+                async: false,
+                dataType: 'json',
+                data: {hex: [hexResult]}
+            }).done(function (data) {
+                jQuery.each(data, function(key, colorGet){
+                    if(colorGet.color == hexResult){
+                        if(colorGet.name!=""){
+                            colorResult = colorGet.name;
+                        }
+                        return;
+                    }
+                });
+                cb(colorResult);
+            });
 
         },
         addColor: function (colors) {
@@ -3387,11 +3401,14 @@ var design = {
                         jQuery.data(a, 'colors', colors[color]);
                         a.innerHTML = '<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>';
                         div.append(a);
-                        var b = "<span class='text-color'>"+ design.designer.getColorTitle(color)+"</span>";
-                        div.append(b);
-                        if(count%3 ==0){
-                            div.append('<span class="link-break-no-border"></span>');
-                        }
+                        design.designer.getColorTitle(color, function(colorResult){
+                            var b = "<span class='text-color'>"+ colorResult+"</span>";
+                            div.append(b);
+                            if(count%3 ==0){
+                                div.append('<span class="link-break-no-border"></span>');
+                            }
+                        });
+
                     }
                 }
                 else {
