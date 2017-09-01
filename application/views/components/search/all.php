@@ -41,7 +41,7 @@ $this->load->helper('text');
 		<div class="col-xs-6 col-sm-4 col-md-2 text-center form-group" style="display:inline-block;float:none;">
 			
 			<div class="thumbnail layout-product">
-				<a title="<?php echo $product->title; ?>" href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>">
+				<a title="<?php echo $product->title; ?>" href="<?php echo site_url('product/'.$product->slug); ?>">
 					<img class="img-responsive" alt="<?php echo $product->title; ?>" src="<?php echo base_url($product->image); ?>">
 					<br />
 					<center><?php echo $product->title; ?></center>

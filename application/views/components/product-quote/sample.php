@@ -47,7 +47,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<div class="col-xs-4 col-sm-3 col-md-2 text-center form-group">
 			<div class="thumbnail layout-product">
 				 <!-- product image -->
-				 <a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>">
+				 <a href="<?php echo site_url('product/'.$product->slug); ?>" title="<?php echo $product->title; ?>">
 				<?php if ($product->image == '') { ?>
 					<img src="<?php echo base_url('assets/images/default.png'); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
 				<?php } else { ?>
@@ -57,7 +57,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			</div>
 			<div class="caption text-left">
 				<h5>
-					<a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
+					<a href="<?php echo site_url('product/'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
 				</h5>
 			</div>
 		</div>

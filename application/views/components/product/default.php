@@ -23,7 +23,7 @@ else
 }
 
 $currency	= $product_m->getCurrency($product->currency_id);
-$link 		= site_url('product/'.$product->id .'-'. $product->slug);
+$link 		= site_url('product/'. $product->slug);
 $cateee = $product_m->getProductCateOrderParent($product->id);
 $design		= $product->design;
 $colors 	= count($design->color_hex);
