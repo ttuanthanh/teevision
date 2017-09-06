@@ -320,4 +320,14 @@ class Product_m extends MY_Model
 //                $query = $this->db->get('products');
 //                return $query->result();
 	}
+        
+        public function getProductSlugById($id)
+	{
+		$this->db->select('slug' );              
+                $this->db->where('id', $id);
+                $this->db->limit(1);
+                return parent::get(null, true);
+//                $query = $this->db->get('products');
+//                return $query->result();
+	}
 }

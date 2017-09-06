@@ -11,6 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	echo $css;
 	$content = json_decode($highlight->content);
+       
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/unslider/css/unslider.css'); ?>"/>
 <script src="<?php echo base_url('media/modules/unslider/js/unslider-min.js'); ?>"></script>
@@ -40,7 +41,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
     <br class="clear"/>
     <div class="col-xs-12 text-center ">
-        <a href="product/12-G5000" type="button" class="btn btn-primary">REQUEST QUOTE HERE</a>        
+        <?php 
+        $row	= $model->getProductSlugById(12);
+        
+        ?>
+        <a href="product/<?php echo $row->slug ?>" type="button" class="btn btn-primary">REQUEST QUOTE HERE</a>        
     </div>
     <br/><br/>
     <div>
