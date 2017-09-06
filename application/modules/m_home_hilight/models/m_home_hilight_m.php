@@ -62,5 +62,14 @@ class M_home_hilight_m extends MY_Model
 		else
 			return false;
 	}
+        public function getProductSlugById($id)
+	{
+		$this->db->select('slug' );              
+                $this->db->where('id', $id);
+                $this->db->limit(1);
+//                return parent::get(null, true);
+                $query = $this->db->get('products');
+                return $query->row();
+	}
 }
 ?>

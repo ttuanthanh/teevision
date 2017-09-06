@@ -193,7 +193,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 								<?php foreach($products as $data) { ?>
 								<div class="checkbox">
 									<label>
-									  <input type="checkbox" data-link="product/<?php echo $data->id; ?>-<?php echo $data->slug; ?>" data-title="<?php echo $data->title; ?>"> <?php echo $data->title; ?>
+									  <input type="checkbox" data-link="product/<?php echo $data->slug; ?>" data-title="<?php echo $data->title; ?>"> <?php echo $data->title; ?>
 									</label>
 								 </div>
 								<?php } ?>
@@ -580,7 +580,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 										<?php foreach($products as $data) { ?>
 										<div class="checkbox">
 											<label>
-											  <input type="checkbox" data-link="product/<?php echo $data->id; ?>-<?php echo $data->slug; ?>" data-title="<?php echo $data->title; ?>"> <?php echo $data->title; ?>
+											  <input type="checkbox" data-link="product/<?php echo $data->slug; ?>" data-title="<?php echo $data->title; ?>"> <?php echo $data->title; ?>
 											</label>
 										 </div>
 										<?php } ?>

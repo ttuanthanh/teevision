@@ -48,8 +48,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			echo '<div class="col-md-'.$cols.' col-ms-'.$col_ms.' col-xs-'.$col_xs.'">';
 		
 			echo 	'<div class="thumbnail layout-product edit-thumb">';
-                        echo 		'<div class="caption text-center"><a href="'.site_url().'product/'.$product->id.'-'.$product->slug.'"><h4>'.strtoupper($product->title).'</h4></a></div>';		
-			echo 		'<a href="'.site_url().'product/'.$product->id.'-'.$product->slug.'">';
+                        echo 		'<div class="caption text-center"><a href="'.site_url().'product/'.$product->slug.'"><h4>'.strtoupper($product->title).'</h4></a></div>';		
+			echo 		'<a href="'.site_url().'product/'.$product->slug.'">';
 			echo 			'<img class="img-responsive" src="'.base_url($product->image).'" alt=""/>';
 			echo 		'</a>';		
 

@@ -52,7 +52,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<!--  <span class="label label-info label-new"><?php echo lang('new'); ?></span>-->
 				<?php } ?>
 				 
-				 <a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>">
+				 <a href="<?php echo site_url('product/'.$product->slug); ?>" title="<?php echo $product->title; ?>">
 				 <!-- product image -->
 				<?php if ($product->image == '') { ?>
 					<img src="<?php echo base_url('assets/images/default.png'); ?>" alt="<?php echo $product->title; ?>" class="img-responsive">
@@ -63,7 +63,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				
 				<div class="caption text-left">
 					<h5>
-						<a href="<?php echo site_url('product/'.$product->id.'-'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
+						<a href="<?php echo site_url('product/'.$product->slug); ?>" title="<?php echo $product->title; ?>"><?php echo $product->title; ?></a>
 					</h5>
 					<p class="price">
 						<?php if($price != $product->price) { ?>

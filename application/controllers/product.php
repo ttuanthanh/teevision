@@ -19,8 +19,15 @@ class Product extends Frontend_Controller
 	// get product detail
 	public function index($string = '', $color = '')
 	{
-		$id 	= (int) $string;
-		
+                // load product info
+		$this->load->model('product_m');
+                $row	= $this->product_m->getProductIdBySlug($string);
+                //var_dump($row);
+		//$id 	= (int) $string;
+                if(isset($row->id))
+                    $id = $row->id;
+                else
+                    $id 	= (int) $string;
 		// page not found
 		$found 	= true;
 		if ($id == 0)
@@ -29,8 +36,7 @@ class Product extends Frontend_Controller
 		}
 		else
 		{
-			// load product info
-			$this->load->model('product_m');
+			
                         $this->load->model('categories_m');
 			$row	= $this->product_m->getProduct( array( 'id'=> $id, 'published' => 1 ) );
 			if (empty($row[0]) || count($row[0]) == 0)
