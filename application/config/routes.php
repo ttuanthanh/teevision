@@ -56,6 +56,7 @@ $route['search/(:any)'] 		= 'search/index/$1';
 
 $route['admin/users/(:num)']            = 'admin/users/index/$2';
 
+$route['blog/(:any)']                   = 'blog/post/$1';
 //$route['services']                       = 'services';
 $route['services/(:any)']                = 'services/post/$1';
 

@@ -71,6 +71,25 @@ class Product_m extends MY_Model
 		else
 			return false;
 	}
+        
+        public function getProductsByCat($cat)
+	{
+		//$this->db->cache_on();
+		$this->db->select('products.id,title,image,slug');		
+                $this->db->join('product_categories','product_categories.product_id=products.id');
+		$this->db->where('published', 1);
+                $this->db->where('product_categories.cate_id', $cat);
+		$this->db->order_by('default', 'DESC');
+		$this->db->limit(4);
+		$product = parent::get();
+		
+		//$this->db->cache_off();
+		
+		if ( count($product) )
+			return $product;
+		else
+			return false;
+	}
 	
 	function remove($id)
 	{

@@ -60,7 +60,16 @@ class Blog_m extends MY_Model
 	{
 		$this->db->order_by('date', 'DESC');
 		$this->db->where('publish', 1);
-                $this->db->where('cate_id !=', 268);
+                $this->db->where('cate_id', 87);
+		$this->db->limit(5);
+		$query = $this->db->get('article');
+		return $query->result();
+	}
+        public function getLastestArticleServices()
+	{
+		$this->db->order_by('date', 'DESC');
+		$this->db->where('publish', 1);
+                $this->db->where('cate_id', 86);
 		$this->db->limit(5);
 		$query = $this->db->get('article');
 		return $query->result();
@@ -103,5 +112,15 @@ class Blog_m extends MY_Model
 		$this->db->limit(5);
 		$query = $this->db->get('article');
 		return $query->result();
+	}
+        public function getBlogIdBySlug($string)
+	{
+		$this->db->select('id' );              
+                $this->db->where('slug ', $string);
+                $this->db->order_by('id', 'DESC');
+                $this->db->limit(1);
+                return parent::get(null, true);
+//                $query = $this->db->get('products');
+//                return $query->result();
 	}
 }

@@ -29,7 +29,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	</div>-->
         
         <div class="blog-headline">
-            <h3>BLOG</h3>
+            <h3>SERVICES</h3>
             <h4>Let's find the service thats right for you</h4>            
         </div>
 	
@@ -40,7 +40,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	?>
 		<div class="article-post clearfix">
                     
-			<a class="post-raw " href="<?php echo site_url().'blog/'.$article->id.'-'.$article->slug; ?>">
+			<a class="post-raw " href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>">
                             
 				<?php
 					if($article->image == '')

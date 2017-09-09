@@ -9,7 +9,7 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Services extends Frontend_Controller {
+class Blog extends Frontend_Controller {
 	
 	public function __construct(){
         parent::__construct();	
@@ -21,9 +21,9 @@ class Services extends Frontend_Controller {
 		$this->load->model('blog_m');
 		$this->data['categories'] = $this->blog_m->getCategories();
 		
-		$this->data['articles'] = $this->blog_m->getLastestArticleServices();
+		$this->data['articles'] = $this->blog_m->getLastestArticleBlog();
 		
-		$content				= $this->load->view('components/services/index', $this->data, true);
+		$content				= $this->load->view('components/blog/index', $this->data, true);
 		
 		$this->data['content']	= $content;		
 		$this->data['subview'] 	= $this->load->view('layouts/blog/category', array(), true);
@@ -43,12 +43,12 @@ class Services extends Frontend_Controller {
                 if ($id == 268)
                     $config['base_url'] = base_url('organizations/page/');
                 else
-                    $config['base_url'] = base_url('services/category/'.$id);
+                    $config['base_url'] = base_url('blog/category/'.$id);
 		
 		//check $id.
 		$id = (int)$id;
 		if($id == 0)
-			redirect(site_url().'services');
+			redirect(site_url().'blog');
 		$category = $this->blog_m->getCategory($id, true);
 		// check data category.
 		if(count($category) == 0)
@@ -78,7 +78,7 @@ class Services extends Frontend_Controller {
 			$this->data['meta_description'] = $category->meta_description;
 			$this->data['meta_keywords'] = $category->meta_keyword;
 			
-			$content				= $this->load->view('components/services/category', $this->data, true);
+			$content				= $this->load->view('components/blog/category', $this->data, true);
 		
 			$this->data['content']	= $content;		
 			$this->data['subview'] 	= $this->load->view('layouts/blog/category', array(), true);
@@ -90,17 +90,22 @@ class Services extends Frontend_Controller {
 	// $id: post id
 	public function post($string = '')
 	{
+            //var_dump($string);
+		//$id = (int)$id;
+		//if($id == 0)
+                //    redirect(site_url().'services');//redirect(site_url().'blog');
 		$this->load->model('blog_m');
-		$row = $this->blog_m->getBlogIdBySlug($string);                
+		$row = $this->blog_m->getBlogIdBySlug($string);
+                
                 if(!isset($row->id)){
                     $id = (int)$string;
                     if($id == 0)    
-                        redirect(site_url().'services');//redirect(site_url().'blog');
+                        redirect(site_url().'blog');//redirect(site_url().'blog');
                 }
                 else {
                     $id = $row->id;
                 }
-		
+                    
 		$article = $this->blog_m->getArticle($id, true);
 		
 		// check data page.
@@ -121,10 +126,9 @@ class Services extends Frontend_Controller {
 			
 			// list article connection.
 			$this->data['list_article'] = $this->blog_m->getListArticle($id, $article->cate_id);
-                        $this->load->model('product_m');
+			$this->load->model('product_m');
                         $this->data['product_m'] = $this->product_m;
-			
-			$content				= $this->load->view('components/services/post', $this->data, true);
+			$content				= $this->load->view('components/blog/post', $this->data, true);
 		
 			$this->data['content']	= $content;	
 			$this->data['subview'] 	= $this->load->view('layouts/blog/post', array(), true);
