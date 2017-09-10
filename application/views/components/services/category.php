@@ -89,7 +89,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				<?php } ?>
 					<div class="post-content">
 						<h4>
-							<a href="<?php echo site_url().'organizations/'.$article->id.'-'.$article->slug; ?>" ><?php echo $article->title; ?></a>
+							<a href="<?php echo site_url().'organizations/'.$article->slug; ?>" ><?php echo $article->title; ?></a>
 						</h4>
 						<p>
 							<?php 

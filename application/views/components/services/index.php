@@ -40,7 +40,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	?>
 		<div class="article-post clearfix">
                     
-			<a class="post-raw " href="<?php echo site_url().'services/'.$article->id.'-'.$article->slug; ?>">
+			<a class="post-raw " href="<?php echo site_url().'services/'.$article->slug; ?>">
                             
 				<?php
 					if($article->image == '')
