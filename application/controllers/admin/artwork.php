@@ -102,8 +102,8 @@ class Artwork extends Admin_Controller {
                         $this->thumb->file	= $file['full_path'];				
 
                         $thumbs	= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'';	
-                        $this->thumb->createThumb($file['full_path'], $file['file_ext'], array('width'=>500, 'height'=>500), $remove, 'jpg');
-                        $file['file_name'] = $file['file_name'].'_thumb.jpg';
+                        $this->thumb->createThumb($file['full_path'], $file['file_ext'], array('width'=>500, 'height'=>500), 0, 'png');
+                        $file['file_name'] = $file['file_name'].'_thumb.png';
 
                     }
                    

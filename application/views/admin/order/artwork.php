@@ -94,7 +94,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                             <li>
                                                 <img src="<?php echo $image->url; ?>" />
                                                 <div style="text-align: right;">
-                                                    <a target="_blank" href="<?php echo str_replace('_thumb.jpg', '', $image->url); ?>" class="fa fa-download" style="margin-right: 30px;padding-left: 10px "> download</a>
+                                                    <a target="_blank" href="<?php echo str_replace(array('_thumb.jpg', '_thumb.png'), '', $image->url); ?>" class="fa fa-download" style="margin-right: 30px;padding-left: 10px "> download</a>
                                                     <a class="fa fa-remove" href="/admin/artwork/deleteImage/<?php echo $image->id; ?>" style="margin-right: 30px;padding-left: 10px "> remove</a>
                                                 </div>
 
