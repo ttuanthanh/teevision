@@ -820,39 +820,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                     </div>
                                 </div>
 
-<!--                                <div class="image-clipart col-md-12">-->
-<!--                                    <div id="dag-list-arts"></div>-->
-<!--                                </div>-->
                                 <div class="popover-content">
 
                                     <!-- BEGIN clipart edit options -->
                                     <div id="options-add_item_clipart">
-<!--                                        <div class="dg-options-toolbar">-->
-<!--                                            <div aria-label="First group" role="group" class="btn-group btn-group-lg">-->
-<!--                                                <button class="btn btn-default btn-action-edit" type="button"-->
-<!--                                                        data-type="edit">-->
-<!--                                                    <i class="glyphicon glyphicon-tint"></i>-->
-<!--                                                    <small class="clearfix">Edit</small>-->
-<!--                                                </button>-->
-<!--                                                <button class="btn btn-default btn-action-colors" type="button"-->
-<!--                                                        data-type="colors">-->
-<!--                                                    <i class="glyphicon glyphicon-tint"></i>-->
-<!--                                                    <small class="clearfix">Colors</small>-->
-<!--                                                </button>-->
-<!--                                                <button class="btn btn-default" type="button" data-type="size">-->
-<!--                                                    <i class="fa fa-text-height"></i>-->
-<!--                                                    <small class="clearfix">Size</small>-->
-<!--                                                </button>-->
-<!--                                                <button class="btn btn-default" type="button" data-type="rotate">-->
-<!--                                                    <i class="fa fa-rotate-right"></i>-->
-<!--                                                    <small class="clearfix">Rotate</small>-->
-<!--                                                </button>-->
-<!--                                                <button class="btn btn-default" type="button" data-type="functions">-->
-<!--                                                    <i class="fa fa-cogs"></i>-->
-<!--                                                    <small class="clearfix">Functions</small>-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
 
                                         <div class="dg-options-content">
                                             <div class="row toolbar-action-edit">
@@ -901,15 +872,6 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                 </div>
 
                                             </div>
-
-                                            <!--                                            <div class="row toolbar-action-rotate">-->
-                                            <!--                                                <div class="form-group col-lg-12">-->
-                                            <!--                                                    <div class="row">-->
-                                            <!---->
-                                            <!--                                                    </div>-->
-                                            <!--                                                </div>-->
-                                            <!--                                            </div>-->
-
                                             <div class="row toolbar-action-functions margin-top-20">
                                                 <div class="col-xs-6">
                                             <span class="text_align">
@@ -933,6 +895,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 							</span>
                                                 </div>
                                             </div>
+                                            <div class="row toolbar-action-functions margin-top-20">
+                                                <div class="col-xs-12 paint-tools">
+                                                    <button class="btn btn-primary col-xs-12" onclick="design.item.showPopupPaint()">
+                                                        <img src="/tshirt/assets/images/icon/paintcan.gif">
+                                                        <text>Paint Tool</text>
+                                                    </button>
+                                                </div>
+                                                </div>
                                             <div class="row toolbar-action-functions">
                                                 <div class="col-lg-12 form-group">
 
@@ -1773,7 +1743,45 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
     <!-- End fonts -->
+    <!-- Begin paint -->
+    <div class="modal fade" id="dg-paint-tools" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title title-paint-tool">Paint Tools</h4>
+                </div>
+                <div class="modal-body" id="dg-main-paint">
 
+                    <div class="row content">
+                        <div id="dg-mask" class="loading"></div>
+                        <div class="result"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button"
+                                    class="btn btn-default btn-primary col-md-2">Save</button>
+
+                            <div class="list-colors col-md-8 color-list-paint">
+                                <a class="dropdown-color" id="txt-color"
+                                   title="Click to change color"
+                                   href="javascript:void(0)" data-color="black" data-label="color"
+                                   style="background-color:black">
+                                                <span
+                                                    class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
+                                </a>
+                                <span id="txt-color-text" class="text-color">Black</span>
+                            </div>
+                            <button type="button"
+                                    class="btn btn-default col-md-2"  style="float:right" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- Begin preview -->
     <div class="modal fade" id="dg-preview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">

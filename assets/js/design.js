@@ -3415,6 +3415,9 @@ var design = {
                     jQuery('#' + item.type + '-colors').css('display', 'none');
                     jQuery('.btn-action-colors').css('display', 'none');
                 }
+                if(item.upload=1){
+                    jQuery(".paint-tools").show();
+                }
                 jQuery('.cliparts-1').hide();
                 jQuery('.cliparts-2').hide();
                 jQuery('.cliparts-3').show();
@@ -3461,6 +3464,60 @@ var design = {
             });
             jQuery('.dg-tooltip').tooltip();
             // design.popover('add_item_' + item.type);
+        },
+        showPopupPaint: function(){
+            var e = this.get()[0];
+            jQuery("#dg-paint-tools .content .result").html("<img src='"+e.item.thumb+"'/>");
+            jQuery("#dg-paint-tools .content .result img").on("click",function(ev){
+                jQuery("#dg-paint-tools #dg-mask").show();
+                var targetOffset, x, y, color,file;
+                targetOffset = jQuery(ev.target).offset();
+                x = ev.offsetX || (ev.pageX - targetOffset.left);
+                y = ev.offsetY || (ev.pageY - targetOffset.top);
+                x = x + 4;
+                x = (x * this.naturalWidth) / this.width;
+                y = (y * this.naturalHeight) / this.height;
+                color = jQuery(".color-list-paint #txt-color").css("background-color");
+                file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "");
+                design.item.ajaxPaintTool(x,y, color,file);
+            });
+            jQuery("#dg-paint-tools").modal("show");
+        },
+        // clickPaintTool: function(ev){
+        //     jQuery("#dg-paint-tools #dg-mask").show();
+        //         var targetOffset, x, y, color,file;
+        //         targetOffset = jQuery(ev.target).offset();
+        //         x = ev.offsetX || (ev.pageX - targetOffset.left);
+        //         y = ev.offsetY || (ev.pageY - targetOffset.top);
+        //         x = x + 4;
+        //         if (jQuery.browser.msie) {
+        //             y = y - 16;
+        //         } else {
+        //             y = y + 16;
+        //         }
+        //         x = (x * _this.originalSize.width) / _this.size.width;
+        //         y = (y * _this.originalSize.height) / _this.size.height;
+        //         color = jQuery(".color-list-paint #txt-color").css("background-color");
+        //         file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "");
+        //
+        // },
+        ajaxPaintTool:function(x,y,color,file){
+            var data = {
+                "x": x,
+                "y": y,
+                'color': color,
+                'file': file
+            };
+            var url = baseURL + "ajax/pain"
+            jQuery.ajax({
+                url: url,
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify(data)
+
+            }).done(function (msg) {
+                jQuery("#dg-paint-tools #dg-mask").hide();
+            });
         },
         get: function () {
             var e = $jd('#app-wrap .drag-item-selected');
