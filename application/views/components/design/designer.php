@@ -1761,7 +1761,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     <div class="row">
                         <div class="col-md-12">
                             <button type="button"
-                                    class="btn btn-default btn-primary col-md-2">Save</button>
+                                    class="btn btn-default btn-primary col-md-2" onclick="design.item.savePaintTool()">Save</button>
 
                             <div class="list-colors col-md-8 color-list-paint">
                                 <a class="dropdown-color" id="txt-color"
@@ -1772,6 +1772,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
                                 </a>
                                 <span id="txt-color-text" class="text-color">Black</span>
+                                <span class="image-store"></span>
                             </div>
                             <button type="button"
                                     class="btn btn-default col-md-2"  style="float:right" data-dismiss="modal" aria-hidden="true">Cancel</button>

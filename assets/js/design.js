@@ -3415,7 +3415,7 @@ var design = {
                     jQuery('#' + item.type + '-colors').css('display', 'none');
                     jQuery('.btn-action-colors').css('display', 'none');
                 }
-                if(item.upload=1){
+                if(!item.clipart_id){
                     jQuery(".paint-tools").show();
                 }
                 jQuery('.cliparts-1').hide();
@@ -3467,6 +3467,7 @@ var design = {
         },
         showPopupPaint: function(){
             var e = this.get()[0];
+            this.colorsStore = [];
             jQuery("#dg-paint-tools .content .result").html("<img src='"+e.item.thumb+"'/>");
             jQuery("#dg-paint-tools .content .result img").on("click",function(ev){
                 jQuery("#dg-paint-tools #dg-mask").show();
@@ -3477,45 +3478,46 @@ var design = {
                 x = x + 4;
                 x = (x * this.naturalWidth) / this.width;
                 y = (y * this.naturalHeight) / this.height;
-                color = jQuery(".color-list-paint #txt-color").css("background-color");
-                file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "/");
+                color = jQuery(".color-list-paint #txt-color").data("color");
+                file = $jd('#dg-main-paint .content .result img').attr("src").replace(baseURL, "/");
                 design.item.ajaxPaintTool(x,y, color,file);
             });
             jQuery("#dg-paint-tools").modal("show");
         },
-        // clickPaintTool: function(ev){
-        //     jQuery("#dg-paint-tools #dg-mask").show();
-        //         var targetOffset, x, y, color,file;
-        //         targetOffset = jQuery(ev.target).offset();
-        //         x = ev.offsetX || (ev.pageX - targetOffset.left);
-        //         y = ev.offsetY || (ev.pageY - targetOffset.top);
-        //         x = x + 4;
-        //         if (jQuery.browser.msie) {
-        //             y = y - 16;
-        //         } else {
-        //             y = y + 16;
-        //         }
-        //         x = (x * _this.originalSize.width) / _this.size.width;
-        //         y = (y * _this.originalSize.height) / _this.size.height;
-        //         color = jQuery(".color-list-paint #txt-color").css("background-color");
-        //         file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "");
-        //
-        // },
+        savePaintTool: function(){
+            var e = this.get()[0];
+            e.item.thumb = $jd('#dg-main-paint .content .result img').attr("src");
+            e.item.url = $jd('#dg-main-paint .content .result img').attr("src");
+            e.item.colors =e.item.colors.concat(this.colorsStore);
+            jQuery('#layers li.active img').attr("src", e.item.url);
+            jQuery(e).find("image").attr("xlink:href", e.item.url);
+
+            design.item.select(e);
+            jQuery("#dg-paint-tools").modal("hide");
+            },
         ajaxPaintTool:function(x,y,color,file){
+            var colorsStore = this.colorsStore;
             var data = {
                 "x": x,
                 "y": y,
                 'color': color,
                 'file': file
             };
-            var url = baseURL + "ajax/paint"
+            var url = baseURL + "ajax/paint";
             jQuery.ajax({
                 url: url,
                 type: "POST",
-                contentType: 'application/json',
-                data: JSON.stringify(data)
+                // contentType: 'application/json',
+                data: data
 
-            }).done(function (msg) {
+            }).success(function (data) {
+                var jsonResult = JSON.parse(data);
+                if(jsonResult){
+                    colorsStore.push(color);
+                $jd('#dg-main-paint .content .result img').attr("src", jsonResult.url);
+                }
+
+            }).done(function(){
                 jQuery("#dg-paint-tools #dg-mask").hide();
             });
         },
@@ -3574,6 +3576,7 @@ var design = {
                 jQuery(a).css('background-color', '#' + color);
             }
             jQuery(a).data('value', color);
+            jQuery(a).data('color', color);
             //show text
             listColor.find(".text-color").get(index).innerHTML  = title;
             if (o.data('type') == 'clipart') {

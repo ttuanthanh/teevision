@@ -3267,7 +3267,9 @@ ul.choose_payment .description {
 #dg-designer .paint-tools{
     display: none;
 }
-
+#dg-desginer .paint-tools .image-store{
+    display: none;
+}
 #dg-paint-tools .title-paint-tool, #dg-designer #dg-paint-tools .color-list-paint{
     text-align: center;
 }
