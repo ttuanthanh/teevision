@@ -732,7 +732,7 @@ class Ajax extends Frontend_Controller {
                 $val = floatval($val/0.9);
 
                 $target = $im->getImagePixelColor($x, $y);
-                $data['color'] (strlen($data['color']) == 6) ? '#'.$data['color'] : $data['color'];
+                $data['color'] = (strlen($data['color']) == 6) ? '#'.$data['color'] : $data['color'];
                 $im->floodfillPaintImage($data['color'], $val, $target, $x, $y, false);
 
                 $date 	= new DateTime();
