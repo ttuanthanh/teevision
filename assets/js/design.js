@@ -3478,7 +3478,7 @@ var design = {
                 x = (x * this.naturalWidth) / this.width;
                 y = (y * this.naturalHeight) / this.height;
                 color = jQuery(".color-list-paint #txt-color").css("background-color");
-                file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "");
+                file = $jd('#dg-main-paint .content img').attr("src").replace(baseURL, "/");
                 design.item.ajaxPaintTool(x,y, color,file);
             });
             jQuery("#dg-paint-tools").modal("show");
@@ -3508,7 +3508,7 @@ var design = {
                 'color': color,
                 'file': file
             };
-            var url = baseURL + "ajax/pain"
+            var url = baseURL + "ajax/paint"
             jQuery.ajax({
                 url: url,
                 type: "POST",
