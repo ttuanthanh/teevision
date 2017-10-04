@@ -3415,6 +3415,9 @@ var design = {
                     jQuery('#' + item.type + '-colors').css('display', 'none');
                     jQuery('.btn-action-colors').css('display', 'none');
                 }
+                if(!item.clipart_id){
+                    jQuery(".paint-tools").show();
+                }
                 jQuery('.cliparts-1').hide();
                 jQuery('.cliparts-2').hide();
                 jQuery('.cliparts-3').show();
@@ -3461,6 +3464,62 @@ var design = {
             });
             jQuery('.dg-tooltip').tooltip();
             // design.popover('add_item_' + item.type);
+        },
+        showPopupPaint: function(){
+            var e = this.get()[0];
+            this.colorsStore = [];
+            jQuery("#dg-paint-tools .content .result").html("<img src='"+e.item.thumb+"'/>");
+            jQuery("#dg-paint-tools .content .result img").on("click",function(ev){
+                jQuery("#dg-paint-tools #dg-mask").show();
+                var targetOffset, x, y, color,file;
+                targetOffset = jQuery(ev.target).offset();
+                x = ev.offsetX || (ev.pageX - targetOffset.left);
+                y = ev.offsetY || (ev.pageY - targetOffset.top);
+                x = x + 4;
+                x = (x * this.naturalWidth) / this.width;
+                y = (y * this.naturalHeight) / this.height;
+                color = jQuery(".color-list-paint #txt-color").data("color");
+                file = $jd('#dg-main-paint .content .result img').attr("src").replace(baseURL, "/");
+                design.item.ajaxPaintTool(x,y, color,file);
+            });
+            jQuery("#dg-paint-tools").modal("show");
+        },
+        savePaintTool: function(){
+            var e = this.get()[0];
+            e.item.thumb = $jd('#dg-main-paint .content .result img').attr("src");
+            e.item.url = $jd('#dg-main-paint .content .result img').attr("src");
+            e.item.colors =e.item.colors.concat(this.colorsStore);
+            jQuery('#layers li.active img').attr("src", e.item.url);
+            jQuery(e).find("image").attr("xlink:href", e.item.url);
+
+            design.item.select(e);
+            jQuery("#dg-paint-tools").modal("hide");
+            },
+        ajaxPaintTool:function(x,y,color,file){
+            var colorsStore = this.colorsStore;
+            var data = {
+                "x": x,
+                "y": y,
+                'color': color,
+                'file': file
+            };
+            var url = baseURL + "ajax/paint";
+            jQuery.ajax({
+                url: url,
+                type: "POST",
+                // contentType: 'application/json',
+                data: data
+
+            }).success(function (data) {
+                var jsonResult = JSON.parse(data);
+                if(jsonResult){
+                    colorsStore.push(color);
+                $jd('#dg-main-paint .content .result img').attr("src", jsonResult.url);
+                }
+
+            }).done(function(){
+                jQuery("#dg-paint-tools #dg-mask").hide();
+            });
         },
         get: function () {
             var e = $jd('#app-wrap .drag-item-selected');
@@ -3517,6 +3576,7 @@ var design = {
                 jQuery(a).css('background-color', '#' + color);
             }
             jQuery(a).data('value', color);
+            jQuery(a).data('color', color);
             //show text
             listColor.find(".text-color").get(index).innerHTML  = title;
             if (o.data('type') == 'clipart') {

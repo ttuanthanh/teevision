@@ -294,14 +294,15 @@ class Ajax extends Frontend_Controller {
                             //$thumb = 'thanhtest.jpg';
                             $image->thumb 		= site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
                             if ($remove == 1){
-                                $strInputFile = site_url() .'/media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
+                                
+                                $strInputFile = $_SERVER['DOCUMENT_ROOT'].'/media/assets/uploaded/'. $year .'/'. $month .'/'. $thumb;
                                 $tranname= explode('.', $thumb);
                                 $target = site_url() .'media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png';
-
+                                
                                 $im = new Imagick($strInputFile);
                                 $im->transparentPaintImage($im->getImageBackgroundColor(), 0, 10000,FALSE);
                                 $im->setImageFormat('png');
-                                $im->writeImage('media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png');
+                                $im->writeImage($_SERVER['DOCUMENT_ROOT'].'/media/assets/uploaded/'. $year .'/'. $month .'/'.$tranname[0].'thumb_transparent.png');
                                 $im->destroy();
                                 $image->thumb =$target;
                             }
@@ -687,7 +688,70 @@ class Ajax extends Frontend_Controller {
             
             echo json_encode($return);
         }
-             
+        
+        public function paint()
+        {
+            $data = $this->input->post();
+            $x = isset($data['x']) ? $data['x'] : '' ;
+            $y = isset($data['y']) ? $data['y'] : '';
+            $exit = 0;
+            if($x == ''){
+                echo 'missing x param, ';
+                $exit = 1;
+            }                
+            if ($y == ''){
+                echo 'missing y param, ';
+                $exit = 1;
+            }                
+            if (!isset ($data['file']) || $data['file'] == ''){
+                echo 'missing file path param, ';
+                $exit = 1;
+            }                
+            if (!isset ($data['color']) || $data['color'] == ''){
+                echo 'missing color param';
+                $exit = 1;
+            }
+            
+            if($exit == 1)
+                exit();
+                
+            
+            
+            
+            
+            if (!extension_loaded('imagick')) 
+            {
+                echo json_encode(array('url'=>site_url().'media/assets/uploaded/2017/09/1505312243paint.png', 'path'=>'/media/assets/uploaded/2017/09/1505312243paint.png'));;
+            }
+            else 
+            {
+                
+                $im = new Imagick($_SERVER['DOCUMENT_ROOT'].'/'.$data['file']);
+                $val = 65535/40;
+                //divide by fuzz dilution, 1 is none
+                $val = floatval($val/0.9);
+
+                $target = $im->getImagePixelColor($x, $y);
+
+                $im->floodfillPaintImage($data['color'], $val, $target, $x, $y, false);
+
+                $date 	= new DateTime();
+                $month 	= $date->format('m');
+                $year	= $date->format('Y');
+                $root 	= ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'uploaded' .DS. $year;
+
+
+
+                $im->setImageFormat('png');
+                $file = $_SERVER['DOCUMENT_ROOT'].'/media/assets/uploaded/'. $year .'/'. $month .'/'.time().'paint.png'; 
+                $url = site_url().'media/assets/uploaded/'. $year .'/'. $month .'/'.time().'paint.png';
+                $path = 'media/assets/uploaded/'. $year .'/'. $month .'/'.time().'paint.png';
+                $im->writeImage($file);
+                $im->destroy();
+
+                echo json_encode(array('url'=>$url, 'path'=>$path));
+            }
+        }
 }
 
 ?>
