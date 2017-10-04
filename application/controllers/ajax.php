@@ -721,7 +721,7 @@ class Ajax extends Frontend_Controller {
             
             if (!extension_loaded('imagick')) 
             {
-                echo json_encode(array('url'=>site_url().'/media/assets/uploaded/2017/09/1505312243paint.png', 'path'=>'/media/assets/uploaded/2017/09/1505312243paint.png'));;
+                echo json_encode(array('url'=>site_url().'media/assets/uploaded/2017/09/1505312243paint.png', 'path'=>'/media/assets/uploaded/2017/09/1505312243paint.png'));;
             }
             else 
             {
