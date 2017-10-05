@@ -1766,7 +1766,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="list-colors col-md-8 color-list-paint">
                                 <a class="dropdown-color" id="txt-color"
                                    title="Click to change color"
-                                   href="javascript:void(0)" data-color="black" data-label="color"
+                                   href="javascript:void(0)" data-color="000000" data-label="color"
                                    style="background-color:black">
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
