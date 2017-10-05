@@ -3478,6 +3478,11 @@ var design = {
                 x = ev.offsetX || (ev.pageX - targetOffset.left);
                 y = ev.offsetY || (ev.pageY - targetOffset.top);
                 x = x + 4;
+                if (window.navigator.userAgent.indexOf('MSIE') > -1) {
+                    y = y - 16;
+                } else {
+                    y = y + 16;
+                }
                 x = (x * this.naturalWidth) / this.width;
                 y = (y * this.naturalHeight) / this.height;
                 color = jQuery(".color-list-paint #txt-color").data("color");
