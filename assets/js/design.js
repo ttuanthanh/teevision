@@ -3417,6 +3417,8 @@ var design = {
                 }
                 if(!item.clipart_id){
                     jQuery(".paint-tools").show();
+                }else{
+                    jQuery(".paint-tools").hide();
                 }
                 jQuery('.cliparts-1').hide();
                 jQuery('.cliparts-2').hide();
@@ -3476,6 +3478,11 @@ var design = {
                 x = ev.offsetX || (ev.pageX - targetOffset.left);
                 y = ev.offsetY || (ev.pageY - targetOffset.top);
                 x = x + 4;
+                if (window.navigator.userAgent.indexOf('MSIE') > -1) {
+                    y = y - 16;
+                } else {
+                    y = y + 16;
+                }
                 x = (x * this.naturalWidth) / this.width;
                 y = (y * this.naturalHeight) / this.height;
                 color = jQuery(".color-list-paint #txt-color").data("color");
@@ -3488,10 +3495,13 @@ var design = {
             var e = this.get()[0];
             e.item.thumb = $jd('#dg-main-paint .content .result img').attr("src");
             e.item.url = $jd('#dg-main-paint .content .result img').attr("src");
-            e.item.colors =e.item.colors.concat(this.colorsStore);
+            for(var i in this.colorsStore){
+                if(jQuery.inArray(this.colorsStore[i], e.item.colors)<0){
+                    e.item.colors.push(this.colorsStore[i]);
+                }
+            }
             jQuery('#layers li.active img').attr("src", e.item.url);
             jQuery(e).find("image").attr("xlink:href", e.item.url);
-
             design.item.select(e);
             jQuery("#dg-paint-tools").modal("hide");
             },
@@ -3513,7 +3523,9 @@ var design = {
             }).success(function (data) {
                 var jsonResult = JSON.parse(data);
                 if(jsonResult){
+                    if(jQuery.inArray(color, colorsStore)<0){
                     colorsStore.push(color);
+                    }
                 $jd('#dg-main-paint .content .result img').attr("src", jsonResult.url);
                 }
 
