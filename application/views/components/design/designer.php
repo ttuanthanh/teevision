@@ -898,7 +898,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <div class="row toolbar-action-functions margin-top-20">
                                                 <div class="col-xs-12 paint-tools">
                                                     <button class="btn btn-primary col-xs-12" onclick="design.item.showPopupPaint()">
-                                                        <img src="/tshirt/assets/images/icon/paintcan.gif">
+                                                        <img src="/assets/images//icon/paintcan.gif">
                                                         <text>Paint Tool</text>
                                                     </button>
                                                 </div>
