@@ -729,7 +729,7 @@ class Ajax extends Frontend_Controller {
                 $im = new Imagick($_SERVER['DOCUMENT_ROOT'].'/'.$data['file']);
                 $val = 65535/40;
                 //divide by fuzz dilution, 1 is none
-                $val = floatval($val/0.9);
+                $val = floatval($val/0.5);
 
                 $target = $im->getImagePixelColor($x, $y);
                 $data['color'] = (strlen($data['color']) == 6) ? '#'.$data['color'] : $data['color'];
