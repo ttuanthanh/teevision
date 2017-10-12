@@ -898,7 +898,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                                             <div class="row toolbar-action-functions margin-top-20">
                                                 <div class="col-xs-12 paint-tools">
                                                     <button class="btn btn-primary col-xs-12" onclick="design.item.showPopupPaint()">
-                                                        <img src="/tshirt/assets/images/icon/paintcan.gif">
+                                                        <img src="/assets/images//icon/paintcan.gif">
                                                         <text>Paint Tool</text>
                                                     </button>
                                                 </div>
@@ -1766,7 +1766,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                             <div class="list-colors col-md-8 color-list-paint">
                                 <a class="dropdown-color" id="txt-color"
                                    title="Click to change color"
-                                   href="javascript:void(0)" data-color="black" data-label="color"
+                                   href="javascript:void(0)" data-color="000000" data-label="color"
                                    style="background-color:black">
                                                 <span
                                                     class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>

@@ -3298,7 +3298,7 @@ ul.choose_payment .description {
 }
  #dg-paint-tools .content img{
     max-width: 80%;
-     cursor: url(/tshirt/assets/images/icon/paintcan.gif), url(/tshirt/assets/images/icon/paintcan.cur), crosshair;
+     cursor: url(/assets/images//icon/paintcan.gif), url(/assets/images//icon/paintcan.cur), crosshair;
  }
 #dg-paint-tools .modal-dialog{
     width: 1000px;
