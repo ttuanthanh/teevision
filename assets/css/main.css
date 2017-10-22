@@ -1203,4 +1203,6 @@ tr.o-complete td{
     color: black;
     border-color: #ffcc00;
 }
-
+.red-color{
+    color: #cc0033;
+}

@@ -131,7 +131,7 @@ class Artwork extends Admin_Controller {
                 
                 $this->load->model('order_m');
                 $order = new order_m();
-                $order->update(array('artwork'=>'1'), $data['order_id']);
+                $order->update(array('artwork'=>'1', 'artwork_date' => date('Y-m-d H:i:s')  ), $data['order_id']);
                 
                 redirect($_SERVER['HTTP_REFERER']);
         }

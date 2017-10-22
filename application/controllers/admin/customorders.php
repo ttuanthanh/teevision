@@ -84,4 +84,44 @@ class Customorders extends Admin_Controller
                 
                 redirect($_SERVER['HTTP_REFERER']);
         }
+        
+        public function saveartworkschedule($id = ''){
+            
+                $data = $this->input->post();
+                $mess = '';
+                $this->load->model('artwork_schedule_m');
+                $art_schedule = new artwork_schedule_m();
+                if(!isset($data['schedule_id']) || '' == $data['schedule_id']){
+                    $data['art_rush'] = $data['art_rush'] == 'on' ? 1 : 0;
+                    unset($data['schedule_id']);
+                    $art_schedule->save($data);
+                }
+                else{
+                    $schedule_id = $data['schedule_id'];
+                    unset($data['schedule_id']);
+                    $data['art_rush'] = $data['art_rush'] == 'on' ? 1 : 0;
+                    $art_schedule->update($data, $schedule_id);
+                }
+                
+
+                $mess = 'artwork schedule saved ';
+                //var_dump($gar_id);
+                
+                
+                $this->load->model('comment_m');
+                $comm = new comment_m();
+                $user = $this->user;
+                $comment = array();
+                $comment['order_id']    = $id;
+                $comment['user_name']   = $user['name'];
+                $comment['text']        = $mess;
+                $comment['createdt']    = date("Y-m-d H:i:sa");;
+                $comm->save($comment);
+                
+//                $this->load->model('order_m');
+//                $order = new order_m();
+//                $order->update(array('artwork'=>'1'), $data['order_id']);
+                
+                redirect($_SERVER['HTTP_REFERER']);
+        }
 }

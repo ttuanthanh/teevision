@@ -9,14 +9,19 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-function comment_box($comments, $order_id)
+function comment_box($comments, $order_id, $all = 1)
 {
     $thml = '';
     $i = 0;
     
     foreach ($comments as $row){
-        $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);        
-        $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('M j H:i A').')</small>: <i><b>'.$row->text.'</b></i></p>';
+        if($all == 0 && !strstr($row->text, "span style")) 
+            continue;
+        else {
+            
+            $newDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->createdt);        
+            $thml .= '<p class="cm-bg-'.(++$i%2).'"><b>'.$row->user_name.'</b> <small>('.$newDate->format('M j H:i A').')</small>: <i><b>'.$row->text.'</b></i></p>';
+        }
     }
     
     $return =   '<div class="panel panel-default">

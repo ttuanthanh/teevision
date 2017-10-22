@@ -1047,12 +1047,15 @@ class Orders extends Admin_Controller
 		$this->data['breadcrumb'] = 'artwork';
                 $this->data['meta_title'] = 'Artwork';
                 $this->data['sub_title'] = '';
-		
+		$this->load->model('artwork_schedule_m');
                 $items = $this->order_m->getItems($id);
                 foreach ($items as $key=>$item){
                     $items[$key]->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
-                    if(isset($items[$key]->artwork->id))
+                    if(isset($items[$key]->artwork->id)){
                         $items[$key]->artworkImage = $this->order_m->getArtworkImageByItem($items[$key]->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items[$key]->artwork->id) : '';
+                        $items[$key]->artworkSchedule = $this->artwork_schedule_m->getData($items[$key]->artwork->id);
+                    }
+                        
                 }
                 
 		$this->data['items'] = $items;
@@ -1063,7 +1066,7 @@ class Orders extends Admin_Controller
                 $this->load->model('comment_m');
                 $this->load->helper('comment');
                 $comments = $this->comment_m->getByOrder($id);
-                $cm_box  = comment_box($comments, $id);
+                $cm_box  = comment_box($comments, $id, 0);
                 $this->data['comment'] = $cm_box;
                 
                 
