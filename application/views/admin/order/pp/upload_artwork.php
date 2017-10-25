@@ -10,6 +10,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
+<script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.css'; ?>" media="screen" />
 <script type="text/javascript" src="<?php echo site_url().'assets/plugins/jquery-fancybox/jquery.fancybox.js'; ?>"></script>
 <link href="<?php echo base_url('assets/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css'); ?>" rel="stylesheet"/>
@@ -49,20 +50,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 <?php //var_dump($items); exit(); ?>
 <div class="artwork_ct">
-    <div class="row info-table">
-        <div class="col-md-3 col-md-offset-9 button-preview" style="margin-bottom: 10px; padding-right: 0">
-               
-                
-            </div>
-                <?php
-                        $this->load->helper('product');
-                        $help = new helperProduct();
-                        echo $help->product_detail_helper($order);
-                    ?>
-            
-    </div> 
-    <?php foreach($items as $product){
-//     var_dump($product);
+    <?php 
+     var_dump($product);
+     $order = new stdClass();
+     $product->id   = $product->artwork->item_id;
+     $order->id     = $product->artwork->order_id;
         ?>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -75,8 +67,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="row">
                     <div class="row-content">    
                     <?php
-                        $design_option   = json_decode($product->design_option);
-                        $colors = $design_option->colors;
+                        //$design_option   = json_decode($product->design_option);
+                        //$colors = $design_option->colors;
                         $artwork = $product->artwork;
                         //var_dump($artwork);
                         $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id, 'enctype'=>'multipart/form-data');		
@@ -124,78 +116,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <br clear="all"/>
                             </div>
                             <br clear="all"/>
-                            <div class="panel panel-default">
-                                
-                                <div class="panel-heading">
-                                        <i class="fa fa-external-link-square icon-external-link-sign"></i>
-                                        P.O Number
-                                </div>
-                                <?php
-                                        $design_option   = json_decode($product->design_option);
-                                        $colors = $design_option->colors;
-                                        $artwork = $product->artwork;
-                                        //var_dump($artwork);
-                                        $attribute = array('class' => 'form-horizontal', 'id' => 'form-artwork-'.$product->id);		
-                                        echo form_open(site_url('admin/artwork/save'), $attribute);
-                                        $address	= json_decode($order->address);
-                                ?>
-                                <div class="panel-body" id="panelbody">
-                                    <p><b>Client name: <?php echo $address->{'First Name'}.' '.$address->{'Last Name'}; ?></b></p>
-                                    <p><b>Client email : <?php echo $address->{'Email Address'}; ?></b></p>
-                                    <p><b>Client phone: <?php echo $address->{'Telephone'}; ?></b></p>
-                                    <p><b>Apparel Style: <?php echo $product->product_name; ?></b></p>
-                                    <p><b>Apparel color: <?php echo $colors->color_name  ?></b>
-                                    <span class="bg-colors" style="background-color:#<?php echo $colors->color_hex  ?>"></span>
-                                    </p>
-                                    <div>
-                                        <?php
-                                        if($product->attributes != '' && $product->attributes != '"[]"')
-                                        {
-                                                $size = json_decode(json_decode($product->attributes), true);
-                                                $sizename = '';
-                                                $sizenum = '';
-                                                if (count($size) > 0)
-                                                {
-                                                        foreach($size as $option) { ?>
-                                                                <p>
-            <!--                                                        <strong><?php echo $option['name']; ?>: </strong><br>-->
-                                                                        <?php 
-                                                                                if (is_string($option['value'])) echo $option['value'];
-                                                                                elseif (is_array($option['value']) && count($option['value']))
-                                                                                {
-                                                                                        foreach($option['value'] as $v=>$value)
-                                                                                        {
-                                                                                                if ($option['type'] == 'textlist'){
-                                                                                                    $sizename .= '<td>'.$v.'</td>';
-                                                                                                    $sizenum .= '<td>'.$value.'</td>';
-                                                                                                }
-                                                                                                else
-                                                                                                        echo $value.'; ';
-                                                                                        }
-                                                                                }
-                                                                        ?>
-                                                                </p>
-                                                        <?php } ?>
-                                                <table id="sample-table-1" class="table table-bordered table-hover">
-                                                    <thead>
-                                                            <tr>
-                                                                <?php echo $sizename ?>
-                                                            </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <?php echo $sizenum ?>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>            
-                                        <?php                
-                                                }
-                                        } 
-                                        ?>
-
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                             
 
@@ -203,9 +124,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <?php echo form_close(); ?>  
                         <div class="col-md-6">
                             
-                            <?php
-                                echo $comment;
-                            ?>
+                           
                             
                             <div class="panel panel-default">
                                 
@@ -381,7 +300,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             </div>
             
         </div>
-    <?php } ?>
+    
     
     
         
@@ -401,35 +320,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         
     });    
       
-    
-    function addmore(container){
-        current = $('.art_detail'+container+' table').length;
-        //current++;
-        tr = '<tr>'+
-                '<td class="text-right">Location: </td>'+
-                '<td style="width: 400px"><input class="form-control" name="d['+current+'][artw_location]" value=""></td>'+
-            '</tr>'+
-            '<tr>'+
-                '<td class="text-right">Color: </td>'+
-                '<td><input class="form-control"  name="d['+current+'][artw_color]" value=""></td>'+
-            '</tr>'+
-            '<tr>'+
-                '<td class="text-right">Measurement: </td>'+
-                '<td><input class="form-control" name="d['+current+'][artw_measurement]"  value=""></td>'+
-            '</tr>'+
-            '<tr>'+
-                '<td class="text-right">Comment: </td>'+
-                '<td>'+
-                    '<textarea class="form-control" name="d['+current+'][order_description]" rows="3" cols="" placeholder="Enter order description"></textarea>'+
-                '</td>'+
-            '</tr>';
-        html = '<br /><table class="tbde'+current+'">'+tr+'</table>';
-        html +='';        
-        $('.art_detail'+container).append(html);
-        if(current > 0){
-            $('.remove-detail'+container).show();
-        }
-    }
     
 //    $(document).on("click", ".remove-detail",function(e){
 //        $('.tbde'+current).remove();

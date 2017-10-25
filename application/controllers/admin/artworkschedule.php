@@ -21,6 +21,7 @@ class Artworkschedule extends Admin_Controller {
 		$this->user = $this->session->userdata('user');
                 $this->load->language('order');	
                 $this->load->model('artwork_schedule_m');
+                $this->load->model('order_m');
     }
 
     function index()
@@ -29,7 +30,7 @@ class Artworkschedule extends Admin_Controller {
             $this->data['breadcrumb'] = 'artwork achedule';
             $this->data['meta_title'] = 'Artwork achedule';
             $this->data['sub_title'] = '';
-            $this->load->model('artwork_schedule_m');
+            
             
             
             if ($this->input->post('option_s'))
@@ -79,6 +80,32 @@ class Artworkschedule extends Admin_Controller {
             $this->load->view('admin/_layout_main', $this->data);
     }
 
-        
+    
+        function upload($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		
+		$this->load->model('artwork_m');
+                $art = $this->artwork_m->getData($id);
+                //$items->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                $items = new stdClass();
+                $items->artwork =$art   ;
+                
+                $items->artworkImage = $this->order_m->getArtworkImageByItem($items->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items->artwork->id) : '';
+                $items->artworkSchedule = $this->artwork_schedule_m->getData($items->artwork->id);
+                   
+                
+		$this->data['product'] = $items;
+                
+                
+                
+                
+                
+		// Load view
+		//$this->data['subview'] = 'admin/order/pp/upload_artwork';
+		$this->load->view('admin/order/pp/upload_artwork', $this->data);
+	}    
 	
 }

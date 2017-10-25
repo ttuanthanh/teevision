@@ -21,13 +21,13 @@ class Artwork_m extends MY_Model
 	{	
 		if($id == '')
 		{
-			$query = $this->db->get('order_garment');
+			$query = $this->db->get('order_artwork');
 			return $query->result();
 		}
 		else
 		{
 			$this->db->where('id ', $id);
-			$query = $this->db->get('order_garment');
+			$query = $this->db->get('order_artwork');
 			return $query->row();
 		}
 	}
