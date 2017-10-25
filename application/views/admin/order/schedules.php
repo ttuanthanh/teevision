@@ -177,7 +177,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							if(isset($myorders))
 								$option_s = array('order_number' => lang('orders_admin_search_order_number'), 'date' => lang('orders_admin_search_date'));
 							else
-								$option_s = array('order_number' => lang('orders_admin_search_order_number'), 'customer' => lang('orders_admin_search_customer'), 'date' => lang('orders_admin_search_date'));
+								$option_s = array('order_number' => lang('orders_admin_search_order_number'), 'customer' => lang('orders_admin_search_customer'), 'date' => lang('orders_admin_search_date'), 'order60h'=>'Submitted 60 hours', 'today'=>'Order today', 'online60h'=>'Online submitted');
 							echo form_dropdown('option_s', $option_s, $option, 'class="form-control" id="option_s"'); 
 						?>
 					</div>				

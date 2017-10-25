@@ -16,7 +16,7 @@
 		<!-- end: META -->
 		<!-- start: MAIN CSS -->
 		<link href="<?php echo base_url('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="<?php echo base_url('assets/plugins/font-awesome/css/font-awesome.min.css'); ?>">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo base_url('assets/fonts/style.css'); ?>">
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css'); ?>">
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/main-responsive.css'); ?>">

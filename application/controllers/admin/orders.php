@@ -727,6 +727,11 @@ class Orders extends Admin_Controller
 		$this->data['setting'] 	= $setting;	
                 
 		$this->session->set_userdata('option_order', '');
+                if ($this->input->get('option_s'))
+		{		
+			$this->session->set_userdata('search_order', $this->input->post('search'));
+			$this->session->set_userdata('option_order', $this->input->get('option_s'));
+		}
 		if ($this->input->post('option_s'))
 		{		
 			$this->session->set_userdata('search_order', $this->input->post('search'));

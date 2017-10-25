@@ -178,6 +178,19 @@ class Order_m extends MY_Model
 		{
 			$this->db->like('orders.created_on', $search);
 		}
+                elseif($option == 'order60h')
+		{
+			$this->db->where('orders.created_on > (NOW() - INTERVAL 60 HOUR)');
+		}
+                elseif($option == 'today')
+		{
+			$this->db->where('DATE(dg_orders.created_on) LIKE DATE(NOW())');
+		}
+                elseif($option == 'online60h')
+		{
+			$this->db->where('orders.created_on > (NOW() - INTERVAL 60 HOUR)');
+                        $this->db->where('order_items.design_id != ""');
+		}
 		
 		$this->db->order_by("created_on", "DESC"); 
                 

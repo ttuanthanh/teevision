@@ -30,11 +30,16 @@ class Dashboard extends Admin_Controller {
 		}
 		
 		$this->load->model('users_m');
+                $this->load->model('order_m');
 		$this->data['count_users'] = $this->users_m->getCountUsers();
 		$this->data['count_cliparts'] = $this->users_m->getCountCliparts();
 		$this->data['count_products'] = $this->users_m->getCountProducts();
 		$this->data['count_orders'] = $this->users_m->getCountOrders();
 		
+                $this->data['count_60h'] = $this->order_m->getOrdersSched(true, 5, 1, '','order60h');
+		$this->data['count_today'] = $this->order_m->getOrdersSched(true, 5, 1, '', 'today');
+                $this->data['online_60h'] = $this->order_m->getOrdersSched(true, 5, 1, '','online60h');
+                
 		$this->data['subview'] = 'admin/dashboard/index';
     	$this->load->view('admin/_layout_main', $this->data);
 	}

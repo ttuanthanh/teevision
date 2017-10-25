@@ -25,31 +25,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="col-md-3 col-sm-3">
 				<div class="statistics-box">
 					<div class="statistics-icon">
-						<i class="fa fa-user fa-2x"></i>
+						<i class="fa fa-newspaper-o fa-2x"></i>
 					</div>
-					<a class="statistics-info" href="<?php echo site_url('admin/users'); ?>">
-						<span class="number"><?php echo $count_users; ?></span><span><?php echo lang('dashboard_user')?></span>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=order60h'); ?>">
+						<span class="number"><?php echo $count_60h; ?></span><span>New Order</span>
 					</a>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-3">
 				<div class="statistics-box">
 					<div class="statistics-icon">
-						<i class="fa fa-picture-o fa-2x"></i>
+						<i class="fa fa-shopping-bag fa-2x"></i>
 					</div>
-					<a class="statistics-info" href="<?php echo site_url('admin/art'); ?>">
-						<span class="number"><?php echo $count_cliparts;?></span><span><?php echo lang('dashboard_clipart')?></span>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-3">
-				<div class="statistics-box">
-					<div class="statistics-icon">
-						<i class="clip-t-shirt fa-2x"></i>
-					</div>
-					<a class="statistics-info" href="<?php echo site_url('admin/products'); ?>">
-						<span class="number"><?php echo $count_products;?></span><span><?php echo lang('dashboard_product')?></span>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=today'); ?>">
+						<span class="number"><?php echo $count_today;?></span><span>Order today</span>
 					</a>
 				</div>
 			</div>
@@ -59,8 +48,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 					<div class="statistics-icon">
 						<i class="fa fa-shopping-cart fa-2x"></i>
 					</div>
-					<a class="statistics-info" href="<?php echo site_url('admin/orders'); ?>">
-						<span class="number"><?php echo $count_orders;?></span><span><?php echo lang('dashboard_order')?></span>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules'); ?>">
+						<span class="number"><?php echo $count_orders;?></span><span>Order schedule</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-3 col-sm-3">
+				<div class="statistics-box">
+					<div class="statistics-icon">
+						<i class="fa fa-shopping-cart fa-2x"></i>
+					</div>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=online60h'); ?>">
+						<span class="number"><?php echo $online_60h;?></span><span>Order online</span>
 					</a>
 				</div>
 			</div>
