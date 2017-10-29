@@ -82,7 +82,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     });
     jQuery('document').ready(function(){
         var url;
-        jQuery('.add-new-order').fancybox({ 
+        jQuery('.upload-pp').fancybox({ 
             beforeClose: function() {
                 var $iframe = $('.fancybox-iframe');
                 url = $('input', $iframe.contents()).val();
@@ -111,7 +111,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     });
     }
 </script>
-<?php var_dump($items); ?>
+<?php //var_dump($items); ?>
 <div class="row">
 <?php if($this->session->flashdata('msg') != ''){?> 
 	<div class="col-md-12">
@@ -175,9 +175,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			
 			<div class="col-md-6">
 				<p style="text-align:right;">
-					<a id="add-new-order" class="btn btn-success tooltips add-new-order fancybox fancybox.iframe" title="Add new order" href="/admin/orders/listproduct" > 
-						<i class="fa fa-shopping-cart"></i> Add order
-					</a>
+                                    
 				</p>
 			</div>
 		</div>
@@ -221,10 +219,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php echo $item->art_type ?>
                                     </td>
                                     <td class="center"> 
-                                      
+                                        <a class="upload-pp fancybox fancybox.iframe" href="/admin/artworkschedule/upload/<?php echo $item->artwork_id; ?>">upload</a>
                                     </td>
                                     <td class="center">   
-                                        
+                                        <a class="upload-pp fancybox fancybox.iframe" href="/admin/artworkschedule/download/<?php echo $item->artwork_id; ?>">download</a>
                                     </td>
                             </tr>				
 			<?php } ?>

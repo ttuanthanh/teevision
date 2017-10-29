@@ -106,6 +106,103 @@ class Artworkschedule extends Admin_Controller {
 		// Load view
 		//$this->data['subview'] = 'admin/order/pp/upload_artwork';
 		$this->load->view('admin/order/pp/upload_artwork', $this->data);
-	}    
+	}  
+        
+        function download($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		
+		$this->load->model('artwork_m');
+                $art = $this->artwork_m->getData($id);
+                //$items->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                $items = new stdClass();
+                $items->artwork =$art   ;
+                
+                $items->artworkImage = $this->order_m->getArtworkImageByItem($items->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items->artwork->id) : '';
+                $items->artworkSchedule = $this->artwork_schedule_m->getData($items->artwork->id);
+                   
+
+		$this->data['product'] = $items;
+                
+                
+                
+                
+                
+		// Load view
+		//$this->data['subview'] = 'admin/order/pp/upload_artwork';
+		$this->load->view('admin/order/pp/download_artwork', $this->data);
+	}
+        
+        function download_zip($id = '')
+	{		
+                if ($id == '')
+                    redirect('admin/orders/schedules');
+                
+		
+		$this->load->model('artwork_m');
+                $art = $this->artwork_m->getData($id);
+                //$items->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
+                $items = new stdClass();
+                $items->artwork =$art   ;
+                
+                $items->artworkImage = $this->order_m->getArtworkImageByItem($items->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items->artwork->id) : '';
+                $items->artworkSchedule = $this->artwork_schedule_m->getData($items->artwork->id);
+		$this->data['product'] = $items;
+                
+                
+                
+                $order = $this->order_m->getOrderSchedule($items->artworkSchedule->order_id); 
+                
+                //Setup link for upload file
+                $date 	= new DateTime();
+		$year	= $date->format('Y');
+                $root           = ROOTPATH .DS. 'media' .DS. 'assets' .DS. 'zip' .DS. $year;
+                if (!file_exists($root))
+			mkdir($root, 0755, true);
+		
+		$month 	= $date->format('m');
+		$root 	= $root .DS. $month .DS;
+		if (!file_exists($root))
+			mkdir($root, 0755, true);    
+                
+                $address	= json_decode($order->address);
+                $zip = new ZipArchive();
+                $filename = $root.''.$address->{'First Name'}.'_'.$address->{'Last Name'}.".zip";
+
+                if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+                    exit("cannot open <$filename>\n");
+                }
+
+                foreach ($items->artworkImage as $image) {
+                    $file_img = str_replace(array('http://'.$_SERVER['HTTP_HOST']), array('') ,$image->url);
+                    //$fz = ROOTPATH.$file;
+                    if (file_exists(ROOTPATH.$file_img))  
+                    {
+                        $zip->addFile(ROOTPATH.$file_img, substr($file_img, strrpos($file_img, '/') + 1));
+                    }
+                }               
+                    
+                //echo "numfiles: " . $zip->numFiles . "\n";
+                //echo "status:" . $zip->status . "\n";
+                if ($zip->close() === false) {
+                    exit("Error creating ZIP file");
+                 };
+                
+                if (file_exists($filename)) 
+                {
+                    $file_name = basename($filename);
+                    header("Content-Type: application/zip");
+                    header("Content-Disposition: attachment; filename=$file_name");
+                    header("Content-Length: " . filesize($filename));
+
+                    readfile($filename);
+                } else {
+                    exit("Could not find Zip file to download");
+                }
+                exit;
+                
+	}
 	
 }

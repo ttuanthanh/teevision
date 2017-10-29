@@ -67,7 +67,7 @@
 					</li>
 				</ul>		
 			</li>
-			<li <?php if($segments[2] == 'orders') echo 'class="active open"' ?>>
+			<li <?php if($segments[2] == 'orders' || $segments[2] == 'artworkschedule') echo 'class="active open"' ?>>
 				<a href="javascript:void(0)">
 					<i class="fa fa-shopping-cart"></i>
 					<span class="title"><?php echo lang('page_left_admin_list_orders');?></span>
@@ -80,12 +80,18 @@
 							<span class="title">Scheduler</span>
 						</a>
 					</li>
-					<li <?php if($segments[2] == 'orders' && !isset($segments[3])) echo 'class="active open"'; ?>>
+					<li <?php if($segments[2] == 'artworkschedule') echo 'class="active open"'; ?>>
+						<a href="<?php echo site_url("admin/artworkschedule"); ?>">
+							<span class="title">Artword schedule</span>
+						</a>
+					</li>
+                                        
+                                        <!--<li <?php if($segments[2] == 'orders' && !isset($segments[3])) echo 'class="active open"'; ?>>
 						<a href="<?php echo site_url("admin/orders"); ?>">
 							<span class="title"><?php echo lang('page_left_admin_customer_orders');?></span>
 						</a>
 					</li>
-					<!--<li>
+					<li>
 						<a href="<?php echo site_url("orders/myorder"); ?>">
 							<span class="title">
 								<?php echo lang('page_left_admin_my_orders');?><br>
