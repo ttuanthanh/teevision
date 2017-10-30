@@ -4234,33 +4234,23 @@ var design = {
                     design.design_key = results.content.design_key;
                     design.productColor = productColor;
                     design.product_id = product_id;
+                    var linkEdit = baseURL + 'design-online/index/' + product_id + '/' + productColor + '/' + results.content.design_key;
+                    jQuery('.link-send-mail').val(linkEdit);
+                    jQuery('.email').val(design.design_email);
                 }
             }
             jQuery('#dg-mask').css('display', 'none');
             jQuery('#dg-designer').css('opacity', '1');
+            design.resentMailLite();
         });
     },
     resentMail:function(){
         this.mask(true);
-//        var data = {
-//            'design_url': jQuery('.link-send-mail').val(),
-//            'email': jQuery('.email').val()
-//        };
-//
-//        jQuery.ajax({
-//            url: baseURL + "ajax/sendMailDesign",
-//            type: "POST",
-//            contentType: 'application/json',
-//            data: JSON.stringify(data),
-//            async: false
-//        }).done(function (msg) {
-//            design.mask(false);
-//        });
         
         jQuery.post(baseURL + "ajax/sendMailDesign",
         {
             design_url: jQuery('.link-send-mail').val(),
-            email: jQuery('.email').val(),
+            email: design.design_email,
             id:design.design_id
         },
         function(data, status){
@@ -4268,6 +4258,17 @@ var design = {
                 alert("Your request was sent successful");
                 design.mask(false);
             }
+        });
+
+    },
+    resentMailLite:function(){       
+        jQuery.post(baseURL + "ajax/sendMailDesign",
+        {
+            design_url: jQuery('.link-send-mail').val(),
+            email: design.design_email,
+            id:design.design_id
+        },
+        function(data, status){
         });
 
     },
