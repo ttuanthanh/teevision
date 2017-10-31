@@ -67,7 +67,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 .cl8 { background:#8BDC65; padding:10px 0px;; text-align:center; width:115px; height: 42px!important; float:left;}
 
 .cl9{ position:absolute;}
+.art-bt-orange{
+    background-color: #cc6600;
+    color: white;
+}
 
+.art-bt-green{
+    background-color: #009900;
+    color: white;
+}
+/assets/images//icon/mark-yellow.png
 </style>
 <script type="text/javascript">
     jQuery(document).on('click change', 'input[name="check_all"]', function() {
@@ -89,9 +98,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 //alert(url);
             },
             afterClose: function() {
-                //alert(url);
-                if(url != 0 && typeof url !== "undefined")
-                    window.top.location.href = url;
+                location.reload();
             }
         });
         jQuery(".tablesorter").tablesorter({sortList: [[7,1]]} ); 
@@ -200,7 +207,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 ?>
                             <tr class="">
                                     <td class="center">    
-                                        
+                                        <?php 
+                                            if($item->art_iscomment == 1)
+                                                echo '<img src="/assets/images//icon/mark-yellow.png" width="25" />';
+                                        ?>
                                         
                                     </td>
                                     <td class="center <?php echo ($item->art_rush == 1) ? 'red-color' : '' ?>">    
@@ -213,13 +223,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <?php echo $item->order_number ?>
                                     </td>
                                     <td class="center">   
-                                        <?php echo $item->order_number ?>
+                                        <?php 
+                                        $address = json_decode($item->address);
+                                        echo $address->{'First Name'}.' '.$address->{'Last Name'} ?>
                                     </td>
-                                    <td class="center">    
+                                    <td class="center <?php
+                                        if($item->art_isupload == 1 || $item->art_iscomment == 1) 
+                                            echo 'art-bt-green'; 
+                                        elseif($item->art_comment == '')
+                                            echo 'art-bt-orange'; ?>">    
                                         <?php echo $item->art_type ?>
                                     </td>
                                     <td class="center"> 
-                                        <a class="upload-pp fancybox fancybox.iframe" href="/admin/artworkschedule/upload/<?php echo $item->artwork_id; ?>">upload</a>
+                                        <a class="upload-pp fancybox fancybox.iframe" href="/admin/artworkschedule/upload/<?php echo $item->artwork_id; ?>/<?php echo $item->id; ?>">upload</a>
                                     </td>
                                     <td class="center">   
                                         <a class="upload-pp fancybox fancybox.iframe" href="/admin/artworkschedule/download/<?php echo $item->artwork_id; ?>">download</a>

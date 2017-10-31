@@ -111,6 +111,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                 <input type="hidden" id="design-image-back<?php echo $product->id ?>" name="back_file" value="<?php echo isset($artwork->back_file) ? $artwork->back_file : '' ?>">
                                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $order->id; ?>">
                                 <input type="hidden" id="item_id" name="item_id" value="<?php echo $product->id; ?>">
+                                <input type="hidden" id="art_schedule" name="art_schedule" value="<?php echo $product->art_sched; ?>">
                                 <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">
                                 <br clear="all"/>
                             </div>
@@ -137,9 +138,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                         <div class="col-xs-8 ship-date">
                                             <?php //var_dump($product->artworkSchedule); ?>
 
-
+                                                <input class="form-control hidden" type="checkbox" name="art_rush" id="art_rush" <?php echo (isset($product->artworkSchedule->art_rush) && $product->artworkSchedule->art_rush == 1) ?  'checked' : ''?>>
                                                 <div class="form-group">
                                                     <textArea placeholder="Enter your comment..." rows="4" class="form-control" id="art_comment" name="art_comment"><?php echo isset($product->artworkSchedule->art_comment) ?  $product->artworkSchedule->art_comment : ''?></textArea>
+                                                    <textArea placeholder="Enter your comment..." rows="4" class="form-control hidden" id="art_comment_copy" name="art_comment_copy"><?php echo isset($product->artworkSchedule->art_comment) ?  $product->artworkSchedule->art_comment : ''?></textArea>
                                                 </div>
                                                 <?php $artwork = $product->artwork; ?>
                                                 <input type="hidden" id="artwork_id" name="artwork_id" value="<?php echo isset($artwork->id) ? $artwork->id : ''; ?>">

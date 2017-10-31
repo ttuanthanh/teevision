@@ -81,7 +81,7 @@ class Artworkschedule extends Admin_Controller {
     }
 
     
-        function upload($id = '')
+        function upload($id = '', $sched = '')
 	{		
                 if ($id == '')
                     redirect('admin/orders/schedules');
@@ -91,7 +91,8 @@ class Artworkschedule extends Admin_Controller {
                 $art = $this->artwork_m->getData($id);
                 //$items->artwork = $this->order_m->getArtworkByItem($item->id) != null ? $this->order_m->getArtworkByItem($item->id) : '';
                 $items = new stdClass();
-                $items->artwork =$art   ;
+                $items->artwork     = $art   ;
+                $items->art_sched   = $sched   ;
                 
                 $items->artworkImage = $this->order_m->getArtworkImageByItem($items->artwork->id) != null ? $this->order_m->getArtworkImageByItem($items->artwork->id) : '';
                 $items->artworkSchedule = $this->artwork_schedule_m->getData($items->artwork->id);

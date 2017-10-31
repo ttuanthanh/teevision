@@ -99,7 +99,12 @@ class Customorders extends Admin_Controller
                 else{
                     $schedule_id = $data['schedule_id'];
                     unset($data['schedule_id']);
-                    $data['art_rush'] = $data['art_rush'] == 'on' ? 1 : 0;
+                    if($data['art_comment'] !== $data['art_comment_copy'])
+                        $data['art_iscomment'] =1;
+                    if(isset($data['art_comment_copy']))
+                        unset($data['art_comment_copy']);
+                    if ($data['art_rush'] == 'on')  $data['art_rush'] = 1; else unset($data['art_rush']);
+                    
                     $art_schedule->update($data, $schedule_id);
                 }
                 

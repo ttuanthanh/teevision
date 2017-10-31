@@ -37,10 +37,12 @@ class Artwork extends Admin_Controller {
             
                 $data = $this->input->post();
                 $art_id = $data['artwork_id'];
-                $detail = $data['d'];
+                $detail = isset($data['d']) ? $data['d'] : '';
+                $art_schedule = isset($data['art_schedule']) ? $data['art_schedule'] : '';
                 $data['order_des'] = json_encode($detail);
                 unset($data['artwork_id']);
                 unset($data['d']);
+                unset($data['art_schedule']);
                 if ($art_id == '')
                 {                    
                     $data['createdt'] = date("Y-m-d H:i:sa");
@@ -133,6 +135,13 @@ class Artwork extends Admin_Controller {
                 $order = new order_m();
                 $order->update(array('artwork'=>'1', 'artwork_date' => date('Y-m-d H:i:s')  ), $data['order_id']);
                 
+                if($art_schedule)
+                {
+                    $this->load->model('artwork_schedule_m');
+                    $art_s = new artwork_schedule_m();
+                    $art_s->update(array('art_isupload'=>'1'), $art_schedule);
+                }
+                //
                 redirect($_SERVER['HTTP_REFERER']);
         }
         
