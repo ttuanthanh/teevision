@@ -301,6 +301,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                                     </td>
                                     <td class="center">      
                                         <?php 
+                                        //var_dump($order->shipdate);
                                         if(isset($order->shipdate))   
                                         {
                                             $newDate = DateTime::createFromFormat('Y-m-d', $order->shipdate);   

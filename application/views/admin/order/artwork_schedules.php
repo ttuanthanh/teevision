@@ -76,7 +76,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     background-color: #009900;
     color: white;
 }
-/assets/images//icon/mark-yellow.png
+
 </style>
 <script type="text/javascript">
     jQuery(document).on('click change', 'input[name="check_all"]', function() {

@@ -184,7 +184,7 @@ class Order_m extends MY_Model
 		}
                 elseif($option == 'today')
 		{
-			$this->db->where('DATE(dg_orders.created_on) LIKE DATE(NOW())');
+			$this->db->where('DATE(`dg_order_shipdate`.ship_date) LIKE DATE(NOW())');
 		}
                 elseif($option == 'online60h')
 		{
