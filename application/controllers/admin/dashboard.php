@@ -40,6 +40,8 @@ class Dashboard extends Admin_Controller {
 		$this->data['count_today'] = $this->order_m->getOrdersSched(true, 5, 1, '', 'today');
                 $this->data['online_60h'] = $this->order_m->getOrdersSched(true, 5, 1, '','online60h');
                 
+                $this->data['garments'] = $this->order_m->getOrdersSched(true, 5, 1, '','garments');
+                
 		$this->data['subview'] = 'admin/dashboard/index';
     	$this->load->view('admin/_layout_main', $this->data);
 	}
