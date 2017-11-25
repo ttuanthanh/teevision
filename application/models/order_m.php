@@ -191,7 +191,10 @@ class Order_m extends MY_Model
 			$this->db->where('orders.created_on > (NOW() - INTERVAL 60 HOUR)');
                         $this->db->where('order_items.design_id != ""');
 		}
-		
+		 elseif($option == 'garments')
+		{
+			$this->db->where('orders.apparel = 1');
+		}
 		$this->db->order_by("created_on", "DESC"); 
                 
                 $this->db->group_by("id"); 

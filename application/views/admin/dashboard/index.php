@@ -57,7 +57,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="col-md-3 col-sm-3">
 				<div class="statistics-box">
 					<div class="statistics-icon">
-						<i class="fa fa-shopping-cart fa-2x"></i>
+						<i class="fa fa-tag fa-2x"></i>
 					</div>
 					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=online60h'); ?>">
 						<span class="number"><?php echo $online_60h;?></span><span>Order online</span>
@@ -70,7 +70,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			<div class="control-panel-title">
 				<span><?php echo lang('dashboard_control_panel')?></span>
 			</div>
-			<div class="row">
+                    
+                        <div class="col-md-3 col-sm-3">
+				<div class="statistics-box">
+					<div class="statistics-icon">
+						<i class="fa fa-shopping-cart fa-2x"></i>
+					</div>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=online60h'); ?>">
+						<span class="number"><?php echo $online_60h;?></span><span>Order online</span>
+					</a>
+				</div>
+			</div>
+                        <div class="col-md-3 col-sm-3">
+				<div class="statistics-box">
+					<div class="statistics-icon">
+						<i class="fa fa-industry fa-2x"></i>
+					</div>
+					<a class="statistics-info" href="<?php echo site_url('admin/orders/schedules?option_s=garments'); ?>">
+						<span class="number"><?php echo $garments;?></span><span>Garments</span>
+					</a>
+				</div>
+			</div>
+<!--			<div class="row">
 				<div class="col-lg-2 col-md-3 col-sm-2">
 					<a class="control-panel-icon" href="<?php echo site_url('admin/users'); ?>">
 						<i class="fa fa-users fa-4x"></i><span><?php echo lang('dashboard_users')?></span>
@@ -101,7 +122,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 						<i class="fa fa-gear fa-4x"></i><span><?php echo lang('dashboard_settings')?></span>
 					</a>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 	<div class="col-md-4">
