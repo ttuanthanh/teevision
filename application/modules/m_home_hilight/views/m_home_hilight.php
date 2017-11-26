@@ -15,6 +15,71 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('media/modules/unslider/css/unslider.css'); ?>"/>
 <script src="<?php echo base_url('media/modules/unslider/js/unslider-min.js'); ?>"></script>
+<style>
+    .mp-btn{
+        position: absolute;
+        left: 40px;
+        bottom: 20px;
+        border-color: transparent;
+    }
+    .mp-btn:hover{
+        background: #00cccc;
+    }
+    .mp-green{background: #58a95d; }
+    .mp-ogran{background: #e4b254; }
+    .mp-about{
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        background-color: #eaebeb;
+    }
+    .about-left img{
+       max-width: 100%;
+       height: auto;
+    }
+    .about-right{
+        max-width: 550px;
+        min-height: 550px;
+        padding: 50px 0 0 30px;
+        background: url('/assets/images/newIU/about_tee_bg_right.png') no-repeat top left;
+    }
+    .text-center{text-align: right;}
+</style>
+<div class="row-elment module-best-price">
+    <div class="col-md-3">
+        <img width="100%" src="/assets/images/newIU/gafe.png" />
+    </div>
+    <div class="col-md-3">
+        <img width="100%" src="/assets/images/newIU/p_low.png" />
+        <a href="" class="btn btn-primary mp-btn">Inquire Now</a>
+    </div>
+    <div class="col-md-3">
+        <img width="100%" src="/assets/images/newIU/p_mid.png" />
+        <a href="" class="btn btn-primary mp-btn mp-green">Inquire Now</a>
+    </div>
+    <div class="col-md-3">
+        <img width="100%" src="/assets/images/newIU/p_best.png" />
+        <a href="" class="btn btn-primary mp-btn mp-ogran">Inquire Now</a>
+    </div>
+    
+    <br clear="all"/>
+</div>
+<br clear="all"/>
+<br clear="all"/>
+<div class="mp-about">
+    <div class="col-md-6 about-left text-center" >
+        <img src="/assets/images/newIU/about_tee_bg_left.png" />
+    </div>
+    <div class="col-md-6 about-right" >
+        <h3>Need custom T-shirts?</h3>
+        <br clear="all"/><br clear="all"/>
+        <p>Welcome to Tee Vision Printing, a trusted source of custom T-shirts in Philadelphia and beyond.</p>
+        <br clear="all"/>
+        <p>Everyone loves wearing tees, as they fit snugly and are extremely comfortable to wear. But, most tees we find in shops are either too plain or have generic designs. At Tee Vision Printing, we provide high-quality screen printing at an affordable price. Using our Design Studio, you can create your own designs on a range of shirt styles, sizes, and colors.</p>
+    </div>
+    <br clear="all"/>
+</div>
 <div class="module-highlight">
     
     <div class="text-center ">
@@ -69,28 +134,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
     <br class="clear"/>
 </div>
-<!--
-<div class="my-slider">
-    <h2 class="tee-title">Testimonials?</h2>
-	<ul>
-            <li>
-                <div class="col-md-2 text-center">
-                    <img src="assets/images/smily.png" >
-                </div>
-                <div class="col-xs-10 text-left">
-                    <p>
-                        Mr. Brittin<br>
-                        Administrator - International Christian High School
-                    </p>
-                    <hr>
-                    <p>
-                        Tee Vision Printing is the best quality custom printing on the Eeast Coast. We have ordered custom T-shirts, Hoodies, and Uniforms from Teevision Printing and have had these orders in hand in about 1 week( Free Delivery Too ! ) You will also not find a better deal on these custom made designs.
-                    </p>
-                </div>
-                
-            </li>
-	</ul>
-</div>-->
+
 <script>
         jQuery(document).ready(function($) {
                 $('.my-slider').unslider();
