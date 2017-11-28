@@ -71,5 +71,14 @@ class M_home_hilight_m extends MY_Model
                 $query = $this->db->get('products');
                 return $query->row();
 	}
+        
+        public function getChildren($id, $published = 1)
+	{
+		$this->db->where('parent_id', $id);
+		$this->db->where('published', $published);
+		
+		$query = $this->db->get('categories');		
+		return $query->result();
+	}
 }
 ?>

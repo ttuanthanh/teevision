@@ -21,9 +21,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         left: 40px;
         bottom: 20px;
         border-color: transparent;
+        border-radius: 0;
+        width: 120px;
+    }
+    .mp-btnrm{
+        border-color: transparent;
+        border-radius: 0;
+        width: 120px;
     }
     .mp-btn:hover{
         background: #00cccc;
+        
     }
     .mp-green{background: #58a95d; }
     .mp-ogran{background: #e4b254; }
@@ -41,26 +49,30 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     .about-right{
         max-width: 550px;
         min-height: 550px;
-        padding: 50px 0 0 30px;
+        padding: 50px 50px 0 30px;
         background: url('/assets/images/newIU/about_tee_bg_right.png') no-repeat top left;
     }
     .text-center{text-align: right;}
 </style>
+<?php
+
+?>
+
 <div class="row-elment module-best-price">
     <div class="col-md-3">
         <img width="100%" src="/assets/images/newIU/gafe.png" />
     </div>
     <div class="col-md-3">
-        <img width="100%" src="/assets/images/newIU/p_low.png" />
-        <a href="" class="btn btn-primary mp-btn">Inquire Now</a>
+        <img width="100%" src="<?php echo $category[0]->image; ?>" />
+        <a href="<?php echo '/categories/'.$category[0]->id.'-'.$category[0]->slug ?>" class="btn btn-primary mp-btn">Inquire Now</a>
     </div>
     <div class="col-md-3">
-        <img width="100%" src="/assets/images/newIU/p_mid.png" />
-        <a href="" class="btn btn-primary mp-btn mp-green">Inquire Now</a>
+        <img width="100%" src="<?php echo $category[1]->image; ?>" />
+        <a href="<?php echo '/categories/'.$category[1]->id.'-'.$category[1]->slug ?>" class="btn btn-primary mp-btn mp-green">Inquire Now</a>
     </div>
     <div class="col-md-3">
-        <img width="100%" src="/assets/images/newIU/p_best.png" />
-        <a href="" class="btn btn-primary mp-btn mp-ogran">Inquire Now</a>
+        <img width="100%" src="<?php echo $category[2]->image; ?>" />
+        <a href="<?php echo '/categories/'.$category[2]->id.'-'.$category[2]->slug ?>" class="btn btn-primary mp-btn mp-ogran">Inquire Now</a>
     </div>
     
     <br clear="all"/>
@@ -77,6 +89,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <p>Welcome to Tee Vision Printing, a trusted source of custom T-shirts in Philadelphia and beyond.</p>
         <br clear="all"/>
         <p>Everyone loves wearing tees, as they fit snugly and are extremely comfortable to wear. But, most tees we find in shops are either too plain or have generic designs. At Tee Vision Printing, we provide high-quality screen printing at an affordable price. Using our Design Studio, you can create your own designs on a range of shirt styles, sizes, and colors.</p>
+        <br clear="all"/>
+        <a href="" class="btn btn-warning mp-btnrm">Read more</a>
     </div>
     <br clear="all"/>
 </div>

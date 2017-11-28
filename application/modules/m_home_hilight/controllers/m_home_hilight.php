@@ -14,6 +14,8 @@ class M_home_hilight extends Frontend_Controller{
 	public function __construct(){ 
 		parent::__construct();		
 		$this->load->helper('url');
+                
+                //$this->load->model('categories_m');
 	} 
 	
 	public function index($id = ''){
@@ -25,6 +27,7 @@ class M_home_hilight extends Frontend_Controller{
 			$this->data['css']	= $css;	
 			$this->data['highlight'] = $highlight;	
                         $this->data['model'] = $this->m_home_hilight;
+                        $this->data['category'] = $this->m_home_hilight->getChildren(272);
 			$this->load->view('m_home_hilight', $this->data);
 		}
 	}
