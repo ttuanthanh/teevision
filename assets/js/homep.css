@@ -131,10 +131,15 @@ header .order .store text {
     height: 45px;
 }
 
-.price-block, .list-item {
+.price-block{
+    width: 100%;
+    padding: 50px 0 50px;
+    background: white;
+}
+.list-item {
     width: 100%;
     max-width: 1200px;
-    margin: 50px auto 20px;
+    margin: 50px auto 50px;
 }
 
 .price-block .header-description, .list-item .header-description {
@@ -144,7 +149,7 @@ header .order .store text {
     font-weight: bold;
 }
 
-.price-block .price-item .item:first-child {
+.price-block .price-item .item:first-child img{
     margin: 0 auto;
     position: relative;
     display: block;
@@ -217,13 +222,9 @@ header .order .store text {
 }
 
 .help-block {
-    height: calc(100vw * 0.396);
-    width: 100%;
     background: url("/assets/images/newIU/background-container.png") no-repeat;
     background-size: cover;
     position: relative;
-    max-width: 1200px;
-    max-height: 476px;
     margin: 0 auto;
 }
 

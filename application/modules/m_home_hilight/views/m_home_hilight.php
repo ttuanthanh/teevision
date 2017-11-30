@@ -21,6 +21,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 <section class="price-block">
+    <div class="container">
     <div class="header-description">Select Your Prefered Option</div>
     <div class="price-item row">
         <div class="item col-md-3 col-lg-3"><img src="/assets/images/newIU/design-shirt-block.png"></div>
@@ -42,8 +43,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <button class="inquire btn btn-warning">INQUIRE NOW</button>
         </div>
     </div>
+    </div>
 </section>
-<section class="help-block row">
+<section class="help-block">
+    <div class="container">
+        <div class="row">
     <div class="image col-md-6 col-lg-6">
         <img src="/assets/images/newIU/img-container.png">
     </div>
@@ -60,6 +64,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <button class="btn btn-warning">READ MORE</button>
         </p>
     </div>
+            </div>
+        </div>
 </section>
 <section class="list-item">
     <div class="header-description"><strong>Featured Cutomer</strong> Shirt Designs</div>
