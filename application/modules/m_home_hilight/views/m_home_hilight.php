@@ -28,19 +28,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options1.png"><span
                 class="type-price">LOW PRICE</span>
             <span class="price">$5-10<span class="pc">/pc</span></span><span class="unit">20 pcs above</span>
-            <button class="inquire btn btn-primary">INQUIRE NOW</button>
+            <a href="<?php echo '/categories/'.$category[0]->id.'-'.$category[0]->slug ?>" class="inquire btn btn-primary">INQUIRE NOW</a>
         </div>
         <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options2.png"><span
                 class="type-price type-price-1">MID PRICE</span>
             <span class="price price-1 ">$7-12<span class="pc">/pc</span></span><span
                     class="unit unit-1">15 pcs above</span>
-            <button class="inquire btn btn-success">INQUIRE NOW</button>
+            <a href="<?php echo '/categories/'.$category[1]->id.'-'.$category[1]->slug ?>" class="inquire btn btn-success">INQUIRE NOW</a>
         </div>
         <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options3.png"><span
                 class="type-price type-price-2">BEST PRICE</span>
             <span class="price price-2">$8-15<span class="pc">/pc</span></span><span
                     class="unit unit-2">10 pcs above</span>
-            <button class="inquire btn btn-warning">INQUIRE NOW</button>
+            <a href="<?php echo '/categories/'.$category[2]->id.'-'.$category[2]->slug ?>" class="inquire btn btn-warning">INQUIRE NOW</a>
         </div>
     </div>
     </div>
@@ -55,7 +55,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <p class="header">Need custom T-shirts?</p>
         <p class="content">Welcome to Tee Vision Printing, a trusted source of custom T-shirts in Philadelphia and
             beyond.
-            <br/>
+            <br/><br/>
             Everyone loves wearing tees, as they fit snugly and are extremely comfortable to wear. But, most tees we
             find in shops are either too plain or have generic designs. At Tee Vision Printing, we provide high-quality
             screen printing at an affordable price. Using our Design Studio, you can create your own designs on a range
@@ -128,7 +128,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             .
         </p>
         <p>
-            <button class="btn btn-warning">START HERE</button>
+            <a href="/design" class="btn btn-warning">START HERE</a>
         </p>
     </div>
 </section>
