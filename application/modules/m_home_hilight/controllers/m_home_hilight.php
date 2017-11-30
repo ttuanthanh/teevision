@@ -27,7 +27,7 @@ class M_home_hilight extends Frontend_Controller{
 			$this->data['css']	= $css;	
 			$this->data['highlight'] = $highlight;	
                         $this->data['model'] = $this->m_home_hilight;
-                        $this->data['category'] = $this->m_home_hilight->getChildren(272);
+                        $this->data['category'] = $this->m_home_hilight->getChildren(278);
 			$this->load->view('m_home_hilight', $this->data);
 		}
 	}
