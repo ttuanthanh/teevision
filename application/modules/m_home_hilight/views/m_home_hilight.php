@@ -69,47 +69,52 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 </section>
 <section class="list-item">
     <div class="header-description"><strong>Featured Cutomer</strong> Shirt Designs</div>
-    <div class="item-group row">
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt1.png">
+    <div class="item-group">
+        <div class="container">
+            <div class="row">
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt1.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt2.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt3.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt4.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt4.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt2.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt1.png">
+                    </div>
+                </div>
+                <div class="item col-md-3 col-lg-3">
+                    <div class="item-padding">
+                        <img align="middle" src="/assets/images/newIU/shirt3.png">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt2.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt3.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt4.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt4.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt2.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt1.png">
-            </div>
-        </div>
-        <div class="item col-md-3 col-lg-3">
-            <div class="item-padding">
-                <img align="middle" src="/assets/images/newIU/shirt3.png">
-            </div>
-        </div>
+
     </div>
     <div class="load-more-block">
         <button class="load-more btn btn-info">Load More <img src="/assets/images/newIU/load-more.png"></button>

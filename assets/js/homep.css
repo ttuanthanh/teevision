@@ -229,8 +229,6 @@ header .order .store text {
 }
 
 .help-block .image {
-    margin-left: 0;
-    padding-left: 0;
     position: relative;
     height: 100%;
 }
