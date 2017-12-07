@@ -14,7 +14,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-fancybox/jquery.fancybox.js'); ?>"></script>
 <link rel="stylesheet" href="<?php echo base_url('assets/plugins/jquery-fancybox/jquery.fancybox.css'); ?>">
 <script src="<?php echo base_url('assets/plugins/validate/validate.js'); ?>"></script>
-
+<script src="<?php echo base_url('assets/plugins/tag_js/inputTags.jquery.js'); ?>"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets/plugins/tag_js/inputTags.css'); ?>">
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';
 var url = '<?php echo base_url(); ?>';
@@ -136,7 +137,15 @@ tinymce.init({
 							?>
 						</div>	
 					</div>
-
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                    <label>Tags</label>
+                                                    <?php 
+                                                     //var_dump($article->tag);
+                                                    ?>
+                                                    <input type="text" id="tag" name="data[tag]" class="form-control" placeholder="<?php echo lang('custom_admin_created_by_title'); ?>" value="" />
+                                            </div>	
+                                        </div>
 					<div class="form-group">
 						<div class="col-md-10">
 							<label><?php echo lang('add_image'); ?></label><br/>
@@ -159,7 +168,9 @@ tinymce.init({
 							<input type="hidden" name="data[image]" id="image-box-img-view" value="<?php if(isset($data['image'])) echo $data['image']; else echo $article->image; ?>">
 							<a class="image-box-image" href="javascript:void(0)" onclick="jQuery.fancybox( {href : '<?php echo site_url().'admin/media/modals/imageImg/1'; ?>', type: 'iframe'} );"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 						</div>
-					</div>
+                                        
+				</div>
+                            
 				</div>	
 				
 				<div class="col-md-6">
@@ -204,6 +215,13 @@ tinymce.init({
 			
 <?php echo form_close();?>
 <script type="text/javascript">
+    
+        jQuery('#tag').inputTags();
+        
+        $(document).on("keypress", "form", function(event) { 
+            return event.keyCode != 13;
+        });
+
 	jQuery('#fr-article').validate();
 	
 	jQuery('.btn-close').click(function(){

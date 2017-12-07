@@ -46,6 +46,13 @@ class Custom_m extends MY_Model
 		$query = $this->db->get($this->_table_name);
 		return $query->row();
 	}
+        
+        public function getArticleTag($id)
+	{
+		$this->db->where('article_id', $id);
+		$query = $this->db->get('tag');
+		return $query->result();
+	}
 	
 	public function getNew ()
 	{

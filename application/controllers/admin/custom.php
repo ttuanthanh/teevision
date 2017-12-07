@@ -110,6 +110,9 @@ class Custom extends Admin_Controller
 			$this->form_validation->set_rules('data[cate_id]', lang('categories'), 'trim|required|is_natural');					
 			if($this->form_validation->run() == TRUE)
 			{
+                            var_dump($data['tag']);
+                            exit();
+                            
 				// check slug.
 				if($data['slug'] == '')
 					$data['slug'] = $data['title'];
@@ -152,9 +155,10 @@ class Custom extends Admin_Controller
 		
 		if($id == '')
 			$this->data['article'] = $this->custom_m->getNew();
-		else
+		else{
 			$this->data['article'] = $this->data['article'] = $this->custom_m->getArticle($id);
-		
+                        $this->data['article']->tag = $this->custom_m->getArticleTag($id);
+                }
 		$this->data['subview'] = 'admin/custom/edit_article';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
