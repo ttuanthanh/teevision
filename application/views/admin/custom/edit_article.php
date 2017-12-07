@@ -216,7 +216,13 @@ tinymce.init({
 <?php echo form_close();?>
 <script type="text/javascript">
     
-        jQuery('#tag').inputTags();
+        jQuery('#tag').inputTags(
+        {
+            tags: [<?php
+                foreach($article->tag as $tag)
+                    echo "'".$tag->tag."',";
+            ?>]
+        });
         
         $(document).on("keypress", "form", function(event) { 
             return event.keyCode != 13;
