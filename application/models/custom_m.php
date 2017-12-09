@@ -53,6 +53,17 @@ class Custom_m extends MY_Model
 		$query = $this->db->get('tag');
 		return $query->result();
 	}
+        
+        public function getTagList()
+	{
+                $this->db->select('tag, count(id) num');
+		
+                $this->db->group_by('tag');
+                $this->db->order_by('num', 'DESC');
+                $this->db->limit(5);
+		$query = $this->db->get('tag');
+		return $query->result();
+	}
 	
 	public function getNew ()
 	{

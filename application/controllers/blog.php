@@ -21,9 +21,38 @@ class Blog extends Frontend_Controller {
 		$this->load->model('blog_m');
 		$this->data['categories'] = $this->blog_m->getCategories();
 		
-		$this->data['articles'] = $this->blog_m->getLastestArticleBlog();
+                //================
+                // pagination		
+                $this->load->library('pagination'); 
+		$this->load->helper('url');
+                $config['base_url'] = base_url('/blog/page/');
+                
+		$config['total_rows'] = $this->blog_m->getArticles(true, 87);
+                $config['per_page'] = 2;
+
+                $config['uri_segment'] = 3; 
+                $config['next_link'] = lang('next'); 
+                $config['prev_link'] = lang('prev'); 
+                $config['first_link'] = lang('first'); 
+                $config['last_link'] = lang('last'); 
+                $config['num_links']	= 2;                
+                $this->pagination->initialize($config); 
+                $this->data['links'] = $this->pagination->create_links();
+                
+                //===============
+                                
+		$this->data['articles'] = $this->blog_m->getArticles(false, 87, $config['per_page'], $this->uri->segment($config['uri_segment']));
+                
+                //$this->blog_m->getLastestArticleBlog();
+                $this->data['latest'] = $this->blog_m->getLastestArticleBlog();
 		
-		$content				= $this->load->view('components/blog/index', $this->data, true);
+                $this->load->model('custom_m');
+                foreach ($this->data['articles'] as $key => $art){
+                    $this->data['articles'][$key]->tags = $this->custom_m->getArticleTag($art->id); 
+                }
+                $this->data['tags_list'] = $this->custom_m->getTagList();
+                
+		$content= $this->load->view('components/blog/index', $this->data, true);
 		
 		$this->data['content']	= $content;		
 		$this->data['subview'] 	= $this->load->view('layouts/blog/category', array(), true);

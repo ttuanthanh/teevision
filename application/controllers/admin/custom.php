@@ -110,8 +110,9 @@ class Custom extends Admin_Controller
 			$this->form_validation->set_rules('data[cate_id]', lang('categories'), 'trim|required|is_natural');					
 			if($this->form_validation->run() == TRUE)
 			{
-                            var_dump($data['tag']);
-                            exit();
+                            $tags = explode(',', $data['tag']);
+                            unset($data['tag']);
+                            //exit();
                             
 				// check slug.
 				if($data['slug'] == '')
@@ -128,8 +129,11 @@ class Custom extends Admin_Controller
 				if($id == '')
 				{
 					$data['date'] = date('Y-m-d H:i:s');
-					if($this->custom_m->save($data))
+                                        $p_id = $this->custom_m->save($data);
+					if($p_id)
 					{
+                                                $this->load->model('tag_m');
+                                                $this->tag_m->save_tag($p_id, $tags);
 						$this->session->set_flashdata('msg', lang('custom_admin_add_article_success_msg'));
 						redirect(site_url().'admin/custom/article');
 					}else
@@ -140,6 +144,8 @@ class Custom extends Admin_Controller
 				{
 					if($this->custom_m->save($data, $id))
 					{
+                                                $this->load->model('tag_m');
+                                                $this->tag_m->save_tag($id, $tags);
 						$this->session->set_flashdata('msg', lang('custom_admin_edit_article_success_msg'));
 						redirect(site_url().'admin/custom/article');
 					}else
@@ -147,6 +153,7 @@ class Custom extends Admin_Controller
 						$this->data['error'] = lang('custom_admin_edit_article_error_msg');
 					}
 				}
+                                
 			}else
 			{
 				$this->data['data'] = $this->input->post('data');

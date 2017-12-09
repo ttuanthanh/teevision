@@ -13,7 +13,74 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <link rel="stylesheet" href="<?php echo base_url('assets/css/blog.css'); ?>"/>
 <script src="<?php echo base_url('assets/js/blog.js'); ?>"></script>
 
-
+<div class="blog-page">
+<!--	<h3><?php echo lang('page_blog_blog_categories_title');?></h3>
+	<div class="row category-sub clearfix">
+		<?php
+			foreach($categories as $category)
+			{
+		?>
+				<div class="col-xs-4 col-sm-3 col-md-2 text-center form-group">
+					<a href="<?php echo site_url().'blog/category/'.$category->id.'-'.$category->slug; ?>">
+						<img class="img-responsive img-thumbnail" src="<?php echo base_url($category->image); ?>" alt="<?php echo $category->title; ?>"/>
+					</a>
+					<a href="<?php echo site_url().'blog/category/'.$category->id.'-'.$category->slug; ?>" title="<?php echo $category->title; ?>"><?php echo $category->title; ?></a>
+				</div>
+		<?php
+			} 
+		?>
+	</div>-->
+        
+        <div class="blog-headline">
+            <h3>BLOG</h3>
+            <h4>Let's find the service thats right for you</h4>            
+        </div>
+	
+	
+	<?php
+		foreach($articles as $article)
+		{
+	?>
+		<div class="article-post clearfix">
+                    
+			<a class="post-raw " href="<?php echo site_url().'blog/'.$article->slug; ?>">
+                            
+				<?php
+					if($article->image == '')
+					{
+						echo '<div class="col-sm-12">';
+					}else
+					{
+				?>
+					<div class="col-sm-4">
+						<div class="post-image">
+							<img class="thumbnail" src="<?php echo base_url($article->image); ?>" alt="<?php echo $article->title; ?>" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+				<?php } ?>
+					<div class="post-content">
+						<h4>
+							<?php echo $article->title; ?>
+						</h4>
+						<p>
+							<?php 
+								if(strlen(strip_tags($article->description)) <= 400)
+									echo strip_tags($article->description);
+								else
+									echo substr(strip_tags($article->description), 0, 400).' [...]';
+							?>
+						</p>
+					</div>
+				</div>
+                            <br clear="all"/>
+			</a><!--class="row post-raw"-->
+		</div><!--class="article-post"-->
+                <br clear="all"/>
+	<?php
+		} 
+	?>
+</div>
 
 <section class="wrap-search">
     <div class="container">
@@ -39,7 +106,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <div class="row">
             <div class="col-lg-9 col-md-9">
             <?php
-                   //var_dump($tags_list);
+                   // var_dump($articles[0]);
                 foreach($articles as $article)
                 {
             ?>
@@ -51,11 +118,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     </div>
                     <div class="col-lg-7 col-md-7 blog-des">
                         <div class="type-group">
-                            <?php 
-                                foreach($article->tags as $tag)
-                                    echo '<div class="type-item">'.strtoupper($tag->tag).'</div>';
-                            ?>
-                           
+                            <div class="type-item">DESIGN</div>
+                            <div class="type-item on">INSPIRATION</div>
                         </div>
                         <h3>
                             <a class="post-raw " href="<?php echo site_url().'blog/'.$article->slug; ?>">
@@ -80,7 +144,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     </div>
                 </div>
                 <?php } ?>
-<!--                <div class="row">
+                <div class="row">
                     <div class="col-lg-12 col-md-12 blog-paging">
                     <button class="btn btn-warning">Previous</button>
                     <text>1</text>
@@ -90,15 +154,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     <text>5</text>
                     <button class="btn btn-warning">Next</button>
                     </div>
-                </div>-->
-                <?php if ($links != '') { ?>
-		<hr>
-		<div class="row">
-			<div class="col-md-12">
-				<?php echo $links; ?>
-			</div>
-		</div>
-		<?php } ?>
+                </div>
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="row">
@@ -106,9 +162,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="like-block">
                         <h4>Like us for tshirt design tips, promos, and the discounts.</h4>
                         <div class="like-des">
-                            <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo "http://".$_SERVER['HTTP_HOST'].'/blog'; ?>&layout=button_count&show_faces=false&width=80&action=like&font=lucida+grande&colorscheme=light" allowtransparency="true" style="border: medium none; overflow: hidden; width: 80px; height: 21px;" frameborder="0" scrolling="no"></iframe>
-<!--                            <img src="./t-shirt images/like-fb.png"/>
-                            <text>647k people like this. <text class="login">Sign Up</text> to see what your friends like.</text>-->
+                            <img src="./t-shirt images/like-fb.png"/>
+                            <text>647k people like this. <text class="login">Sign Up</text> to see what your friends like.</text>
                         </div>
                         </div>
                     </div>
@@ -116,46 +171,46 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Recent Post</h4>
-                        <?php
-                        //var_dump($latest);
-                        foreach($latest as $post){
-                        ?>
-                        <a class="post-item" href="<?php echo site_url().'blog/'.$post->slug ?>">
-                           <text><?php echo $post->title ?></text>
+                        <a class="post-item">
+                           <text>50 Creative Resume Templates You Won't Believe are Microsoft Word</text>
                         </a>
-                        
-                        <?php
-                        }                        
-                        ?>
-                        
+                        <a class="post-item on">
+                            <text>How to Design a Logo: 50 Tutorials and Pro Tips</text>
+                        </a>
+                        <a class="post-item">
+                            <text>The 50 Best Apple Watch Face and App Concepts So Far</text>
+                        </a>
+                        <a class="post-item">
+                            <text>16 PowerPoint Templates That Look Great in 2017</text>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Post Tags</h4>
                         <div class="post-tag">
-                            <?php 
-                                foreach($tags_list as $tagl)
-                                    echo '<div class="post-tag-item">'.strtoupper($tagl->tag).'</div>';
-                            ?>
-                            
+                            <div class="post-tag-item">DESIGN</div>
+                            <div class="post-tag-item">PRINTINGS TIPS</div>
+                            <div class="post-tag-item">PRINTINGS TIPS</div>
+                            <div class="post-tag-item">SCREENPRINTING</div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Trending Posts</h4>
-                        <?php
-                        //var_dump($latest);
-                        foreach($latest as $post){
-                        ?>
-                        <a class="post-item" href="<?php echo site_url().'blog/'.$post->slug ?>">
-                           <text><?php echo $post->title ?></text>
+                        <a class="post-item">
+                            <text>50 Creative Resume Templates You Won't Believe are Microsoft Word</text>
                         </a>
-                        
-                        <?php
-                        }                        
-                        ?>
+                        <a class="post-item on">
+                            <text>How to Design a Logo: 50 Tutorials and Pro Tips</text>
+                        </a>
+                        <a class="post-item">
+                            <text>The 50 Best Apple Watch Face and App Concepts So Far</text>
+                        </a>
+                        <a class="post-item">
+                            <text>16 PowerPoint Templates That Look Great in 2017</text>
+                        </a>
                     </div>
                 </div>
 

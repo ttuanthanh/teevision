@@ -219,6 +219,7 @@ tinymce.init({
         jQuery('#tag').inputTags(
         {
             tags: [<?php
+            if(isset($article->tag))
                 foreach($article->tag as $tag)
                     echo "'".$tag->tag."',";
             ?>]
