@@ -148,7 +148,11 @@ class Blog extends Frontend_Controller {
 			$this->data['title'] = $article->meta_title;
 			$this->data['meta_description'] = $article->meta_description;
 			$this->data['meta_keywords'] = $article->meta_keyword;
-			
+			// List tag
+                        $this->load->model('custom_m');
+                        $this->data['tags'] = $this->custom_m->getArticleTag($id); 
+                        
+                        
 			// update view article.
 			$view['view'] = $article->view+1;
 			$this->blog_m->save($view, $article->id);
