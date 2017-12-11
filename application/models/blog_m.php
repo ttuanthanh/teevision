@@ -123,4 +123,24 @@ class Blog_m extends MY_Model
 //                $query = $this->db->get('products');
 //                return $query->result();
 	}
+        public function getNextArticle($id, $cate_id = '')
+	{
+		$this->db->where('cate_id', $cate_id);
+		$this->db->where('id >', $id);
+		$this->db->where('publish', 1);	
+                $this->db->order_by('id');
+		$this->db->limit(1);
+		$query = $this->db->get('article');
+		return $query->row();
+	}
+        public function getPreviousArticle($id, $cate_id = '')
+	{
+		$this->db->where('cate_id', $cate_id);
+		$this->db->where('id <', $id);
+		$this->db->where('publish', 1);	
+                $this->db->order_by('id', 'DESC');
+		$this->db->limit(1);
+		$query = $this->db->get('article');
+		return $query->row();
+	}
 }

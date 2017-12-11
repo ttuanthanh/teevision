@@ -17,7 +17,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <text>Blog</text>
+                <text><a href="/blog" style="text-decoration: none; color: white">Blog</a></text>
                 <div class="form-group">
                     <label for="email" class="sr-only">Enter your email here</label>
                     <input type="text" class="form-control" id="email" placeholder="Search our blog">
@@ -38,7 +38,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             <div class="col-lg-9 col-md-9">
                 <div class="blog-item">
                     <div class="type-group">
-                        <div class="type-item">DESIGN</div>
+                        <!--<div class="type-item">DESIGN</div>-->
                         <!--<div class="type-item on">INSPIRATION</div>-->
                         <?php 
                             foreach($tags as $tag)
@@ -70,12 +70,25 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 </div>
                 <div class="blog-continue">
                             <div class="col-md-6 col-lg-6 prev">
-                                <p class="arrow">< previous</p>
-                                <p class="des">The 50 Best Apple Watch Face and App Concepts So Far</p>
+                                <?php
+                                if ($previous_article) {
+                                ?>
+                                <p><a class="arrow" href="<?php echo site_url().'blog/'.$previous_article->slug; ?>">< previous</a></p>
+                                    <?php 
+                                        echo $previous_article->title;
+                                }
+                                ?>
+                                
                             </div>
                             <div class="col-md-6 col-lg-6 next">
-                                <p class="arrow">next ></p>
-                                <p class="des">Win $250, Beats Headphones + More: Creative Market’s <br/>Run The Day Sweepstakes</p>
+                                <?php
+                                if ($next_article) {
+                                ?>
+                                <p><a class="arrow"href="<?php echo site_url().'blog/'.$next_article->slug; ?>">next ></a></p>
+                                    <?php 
+                                        echo $next_article->title;
+                                }
+                                ?>
                             </div>
                 </div>
             </div>
@@ -87,8 +100,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         <div class="like-block">
                         <h4>Like us for tshirt design tips, promos, and the discounts.</h4>
                         <div class="like-des">
-                            <img src="./t-shirt images/like-fb.png"/>
-                            <text>647k people like this. <text class="login">Sign Up</text> to see what your friends like.</text>
+                            <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo site_url().'blog/'.$article->slug ?>&layout=button_count&show_faces=false&width=80&action=like&font=lucida+grande&colorscheme=light" allowtransparency="true" style="border: medium none; overflow: hidden; width: 80px; height: 21px;" frameborder="0" scrolling="no"></iframe>
                         </div>
                         </div>
                     </div>
@@ -96,46 +108,44 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Recent Post</h4>
-                        <a class="post-item">
-                           <text>50 Creative Resume Templates You Won't Believe are Microsoft Word</text>
+                        <?php
+                        //var_dump($latest);
+                        foreach($list_article as $post){
+                        ?>
+                        <a class="post-item" href="<?php echo site_url().'blog/'.$post->slug ?>">
+                           <text><?php echo $post->title ?></text>
                         </a>
-                        <a class="post-item on">
-                            <text>How to Design a Logo: 50 Tutorials and Pro Tips</text>
-                        </a>
-                        <a class="post-item">
-                            <text>The 50 Best Apple Watch Face and App Concepts So Far</text>
-                        </a>
-                        <a class="post-item">
-                            <text>16 PowerPoint Templates That Look Great in 2017</text>
-                        </a>
+                        
+                        <?php
+                        }                        
+                        ?>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Post Tags</h4>
                         <div class="post-tag">
-                            <div class="post-tag-item">DESIGN</div>
-                            <div class="post-tag-item">PRINTINGS TIPS</div>
-                            <div class="post-tag-item">PRINTINGS TIPS</div>
-                            <div class="post-tag-item">SCREENPRINTING</div>
+                            <?php 
+                                foreach($tags_list as $tagl)
+                                    echo '<div class="post-tag-item">'.strtoupper($tagl->tag).'</div>';
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 post-link">
                         <h4>Trending Posts</h4>
-                        <a class="post-item">
-                            <text>50 Creative Resume Templates You Won't Believe are Microsoft Word</text>
+                        <?php
+                        //var_dump($latest);
+                        foreach($list_trending as $trend){
+                        ?>
+                        <a class="post-item" href="<?php echo site_url().'blog/'.$trend->slug ?>">
+                           <text><?php echo $trend->title ?></text>
                         </a>
-                        <a class="post-item on">
-                            <text>How to Design a Logo: 50 Tutorials and Pro Tips</text>
-                        </a>
-                        <a class="post-item">
-                            <text>The 50 Best Apple Watch Face and App Concepts So Far</text>
-                        </a>
-                        <a class="post-item">
-                            <text>16 PowerPoint Templates That Look Great in 2017</text>
-                        </a>
+                        
+                        <?php
+                        }                        
+                        ?>
                     </div>
                 </div>
 
@@ -145,45 +155,33 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
         <div class="row recent-item">
             <div class="col-lg-12 col-md-12"><h3>Related Posts</h3></div>
+            
+            <?php
+            //var_dump($latest);
+            $i = 0;
+            foreach($list_article as $post){
+                
+            ?>
+            
             <div class="col-lg-4 col-md-4">
-                <img src="./t-shirt images/blog-post-recent.png">
-                <div class="recent-des">
-                    <h4>The Must Knows for Lifestyle Photography and Blog Creation </h4>
-                    <div class="author-group">
-                        <span>By</span>
-                        <span class="author">Jason Statam</span>
-                        <span class="date"><text>• </text> Nov 17, 2017</span>
-                        <span class="block">|</span>
-                        <span>21<text class="comment"> comments</text></span>
+                <a class="post-item" style="text-decoration: none" href="<?php echo site_url().'blog/'.$post->slug ?>">
+                    <img src="<?php echo base_url($post->image);  ?>">
+                    <div class="recent-des">
+                        <h4><?php echo $post->title ?></h4>
+                        <div class="author-group">
+                            <span>By</span>
+                            <span class="author"><?php echo $post->created; ?></span>
+                            <span class="date"><text>• </text> <?php echo date("M j, Y",strtotime($post->date)); ?></span>
+                            <span class="block">|</span>
+                            <span>0<text class="comment"> comments</text></span>
+                        </div>
                     </div>
-                </div>
+                </a>   
             </div>
-            <div class="col-lg-4 col-md-4">
-                <img src="./t-shirt images/blog-post-recent.png">
-                <div class="recent-des">
-                    <h4>The Must Knows for Lifestyle Photography and Blog Creation </h4>
-                    <div class="author-group">
-                        <span>By</span>
-                        <span class="author">Jason Statam</span>
-                        <span class="date"><text>• </text> Nov 17, 2017</span>
-                        <span class="block">|</span>
-                        <span>21<text class="comment"> comments</text></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <img src="./t-shirt images/blog-post-recent.png">
-                <div class="recent-des">
-                    <h4>The Must Knows for Lifestyle Photography and Blog Creation </h4>
-                    <div class="author-group">
-                        <span>By</span>
-                        <span class="author">Jason Statam</span>
-                        <span class="date"><text>• </text> Nov 17, 2017</span>
-                        <span class="block">|</span>
-                        <span>21<text class="comment"> comments</text></span>
-                    </div>
-                </div>
-            </div>
+            <?php
+                if(++$i == 3) break;
+            }                        
+            ?>
         </div>
 
     </div>

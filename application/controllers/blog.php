@@ -28,7 +28,7 @@ class Blog extends Frontend_Controller {
                 $config['base_url'] = base_url('/blog/page/');
                 
 		$config['total_rows'] = $this->blog_m->getArticles(true, 87);
-                $config['per_page'] = 2;
+                $config['per_page'] = 10;
 
                 $config['uri_segment'] = 3; 
                 $config['next_link'] = lang('next'); 
@@ -159,6 +159,16 @@ class Blog extends Frontend_Controller {
 			
 			// list article connection.
 			$this->data['list_article'] = $this->blog_m->getListArticle($id, $article->cate_id);
+                        //Trending list
+                        $this->data['list_trending'] = $this->blog_m->getListArticle($id, $article->cate_id);
+                        
+                        $this->load->model('custom_m');
+                        $this->data['tags_list'] = $this->custom_m->getTagList();
+                        
+                        $this->data['next_article'] = $this->blog_m->getNextArticle($id, $article->cate_id);
+                        $this->data['previous_article'] = $this->blog_m->getPreviousArticle($id, $article->cate_id);
+                        
+                        
 			$this->load->model('product_m');
                         $this->data['product_m'] = $this->product_m;
 			$content				= $this->load->view('components/blog/post', $this->data, true);
