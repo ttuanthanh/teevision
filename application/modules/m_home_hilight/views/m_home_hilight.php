@@ -19,14 +19,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 <script src="<?php echo base_url('assets/js/homep.js'); ?>"></script>
 
 
-<div class="wrap-slider">
-    <section class="slider">
-        <div class="btn-group">
-            <button class="start-btn btn btn-warning">START HERE</button>
-            <button class="request-btn btn">REQUEST A QUOTE</button>
-        </div>
-    </section>
-</div>
+
 <section class="price-block">
     <div class="container">
     <div class="header-description">Select Your Prefered Option</div>
