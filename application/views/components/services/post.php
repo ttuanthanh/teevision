@@ -31,7 +31,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 
                     if(is_array($list_article) || is_object($list_article))
                         foreach ($list_article as $pro){
-                            echo '<li>'.$pro->title.'.</li>';
+                            echo '<li><a href="'.site_url().'services/'.$pro->slug.'">'.$pro->title.'.</a></li>';
                         }
                 ?> 
 
