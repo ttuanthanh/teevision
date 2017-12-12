@@ -120,7 +120,7 @@ class Services extends Frontend_Controller {
 			$this->blog_m->save($view, $article->id);
 			
 			// list article connection.
-			$this->data['list_article'] = $this->blog_m->getListArticle($id, $article->cate_id);
+			$this->data['list_article'] = $this->blog_m->getListArticle(0, $article->cate_id);
                         $this->load->model('product_m');
                         $this->data['product_m'] = $this->product_m;
 			
