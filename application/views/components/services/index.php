@@ -10,6 +10,50 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
+<link rel="stylesheet" href="<?php echo base_url('assets/css/service.css'); ?>"/>
+<section class="wrap-search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <text>Our Services</text>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3 class="service-title">Let's find the service that right for you</h3>
+    <div class="">
+        <div class="col-md-4 col-lg-4 service-container">
+<!--            <table>
+                <tr>
+                    <td><div class="service-image" style="background-image: url('http://i.stack.imgur.com/2OrtT.jpg')"></div></td>
+                    <td>dfgdf dfgdffdg</td>
+                </tr>
+            </table>-->
+            <div class="col-md-4 service-img-ctn">
+                <div class="service-image" style="background-image: url('http://i.stack.imgur.com/2OrtT.jpg')"></div>
+            </div>
+            <div class="col-md-8 service-content">afssdghdhfdh</div>
+        </div>
+        <div class="col-md-4 col-lg-4 service-container">
+            <div class="col-md-4 service-img-ctn">
+                <div class="service-image" style="background-image: url('http://i.stack.imgur.com/2OrtT.jpg')"></div>
+            </div>
+            <div class="col-md-8 service-content">afssdghdhfdh</div>
+        </div>
+        <div class="col-md-4 col-lg-4 service-container">
+            <div class="col-md-4 service-img-ctn">
+                <div class="service-image" style="background-image: url('http://i.stack.imgur.com/2OrtT.jpg')"></div>
+            </div>
+            <div class="col-md-8 service-content">afssdghdhfdh</div>
+        </div>
+        
+    </div>
+</section>
+<br clear='all'>
 <div class="blog-page">
 <!--	<h3><?php echo lang('page_blog_blog_categories_title');?></h3>
 	<div class="row category-sub clearfix">
