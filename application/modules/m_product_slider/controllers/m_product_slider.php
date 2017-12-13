@@ -18,12 +18,13 @@ class M_product_slider extends Frontend_Controller{
 	
 	public function index($id = ''){
 		$this->m_product_slider = $this->load->model('m_product_slider/m_product_slider_m');		
-		$highlight = $this->m_product_slider->getm_product_slider($id);
-		if(count($highlight) > 0)
+		$products = $this->m_product_slider->geProductList();
+                $slides = $this->m_product_slider->getm_product_slider($id);
+		if(count($slides) > 0)
 		{
-			$css = getCss($highlight, 'module');
+			$css = getCss($slides, 'module');
 			$this->data['css']	= $css;	
-			$this->data['highlight'] = $highlight;	
+			$this->data['products'] = $products;	
 			$this->load->view('m_product_slider', $this->data);
 		}
 	}

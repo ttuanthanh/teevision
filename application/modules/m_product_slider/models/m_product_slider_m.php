@@ -62,5 +62,16 @@ class M_product_slider_m extends MY_Model
 		else
 			return false;
 	}
+        
+        public function geProductList()
+	{
+		$this->db->select('id, title, image, slug');
+		
+		$this->db->order_by('rand()');
+                $this->db->where('published', 1);
+                $this->db->limit(11);
+                $query = $this->db->get('products');
+                return $query->result();
+	}
 }
 ?>
