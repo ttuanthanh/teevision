@@ -11,6 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	echo $css;
 	//$content = json_decode($css->content);
+        if (isset($article->cate_id) && $article->cate_id == 86) {
 ?>
 <script src="/assets/plugins/m_slider/mootools.js" type="text/javascript" charset="utf-8"></script>
 <script src="/assets/plugins/m_slider/imageslider.min.js" type="text/javascript" charset="utf-8"></script>
@@ -128,7 +129,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             });
          });
       </script>
-<?php //var_dump($products); ?>
+<?php 
+
+?>
       <h3 class="p-slider-title">Select The <text style="font-weight: bold">Right Shirt</text> For You</h3>
       <div id="maskDiv" class="row">
          <div id="sliderContainer">
@@ -171,10 +174,4 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         <button type="submit" class="btn btn-info">Subscribe</button>
 
     </section>
-<!--      <div id="callBack">
-         
-      </div>-->
-<!--      <div id="slideToContainer">
-         <label for="">Slide to: </label><input type="text" name="slideTo" value="" id="slideTo">
-         <a href="#" id="slideToLink">go</a>
-      </div>-->
+        <?php } ?>

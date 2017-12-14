@@ -16,7 +16,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <text>Our Services</text>
+                <text><a href="/services" style="text-decoration: none; color: white">Our Services</a></text>
                 
             </div>
 
