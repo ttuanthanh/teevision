@@ -11,6 +11,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/service.css'); ?>"/>
+
 <section class="wrap-search">
     <div class="container">
         <div class="row">
@@ -22,11 +23,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
     </div>
 </section>
+<br /><br />
 <section>
     <div class="row">
         <div class="col-md-3">
-            <p>Sevices list</p>
-            <ul>
+            <br />
+            <p><b>SERVICES LIST</b></p>
+            <ul class="service-slist">
                 <?php
                 
                     if(is_array($list_article) || is_object($list_article))
@@ -38,9 +41,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             </ul>
         </div>
         <div class="col-md-9">
-            <h3>Philaden phia pringting</h3>
+            <h3 class="service-post-title"><?php echo $article->title ?></h3>
             <img src="<?php echo base_url($article->image); ?>" />
-            
+            <br /><br/>
+            <?php echo $article->description ?>
         </div>
         
     </div>
