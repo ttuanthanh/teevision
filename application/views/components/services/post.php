@@ -42,7 +42,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
             <h3 class="service-post-title"><?php echo $article->title ?></h3>
-            <img src="<?php echo base_url($article->image); ?>" />
+            <img style="max-width: 100%" src="<?php echo base_url($article->image); ?>" />
             <br /><br/>
             <?php echo $article->description ?>
         </div>
