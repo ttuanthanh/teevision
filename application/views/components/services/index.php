@@ -48,6 +48,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
 </section>
 <br clear='all'>
+<br/><br/><br/><br/><br/>
 <section class="wrap-offer">
     <text>Subscribe for special offers & updates</text>
     <div class="form-group">
