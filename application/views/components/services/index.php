@@ -48,3 +48,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     </div>
 </section>
 <br clear='all'>
+<section class="wrap-offer">
+    <text>Subscribe for special offers & updates</text>
+    <div class="form-group">
+        <label for="email" class="sr-only">Enter your email here</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter your email here">
+    </div>
+    <button type="submit" class="btn btn-info">Subscribe</button>
+
+</section>
