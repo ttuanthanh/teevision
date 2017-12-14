@@ -65,7 +65,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             position: absolute;
             padding: 3px; 
             left: 0;
-            top: 40%;
+            top: 30%;
             line-height: 70px;
             width: 15px;           
          }
@@ -73,7 +73,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             position: absolute;
             padding: 3px;
             right: 0;
-            top: 40%;
+            top: 30%;
             line-height: 70px;
             width: 15px;
          }
@@ -92,7 +92,23 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
              margin-top: 50px;
              color: #595959;
          }
-
+         .service-ft-bn{
+            position: relative;
+        }
+        .service-ft-bn .btn-gr{
+            position: absolute;
+            margin-left: 20px;
+            bottom: 50px;
+            left: 30px;
+        }
+        .service-ft-bn .btn-gr a{
+            line-height: 30px;
+            width: 150px;
+        }
+        .btn-quote{
+            margin-left: 50px;
+        }
+        
       </style>
       <script type="text/javascript" charset="utf-8">
          window.addEvent('domready', function(){
@@ -114,14 +130,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
       </script>
 <?php //var_dump($products); ?>
       <h3 class="p-slider-title">Select The <text style="font-weight: bold">Right Shirt</text> For You</h3>
-      <div id="maskDiv">
+      <div id="maskDiv" class="row">
          <div id="sliderContainer">
              <?php
              foreach ($products as $product){
              ?>
             <div class="sliderElement">
                 <a href="<?php echo site_url().'product/'.$product->slug ?>">
-                    <img src="<?php echo site_url().$product->image ?>"/>
+                    <img style="max-width: 100%" src="<?php echo site_url().$product->image ?>"/>
                     <h5><?php echo $product->title ?></h5>
                 </a>
                 
@@ -137,7 +153,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
          <a href="#" id="rightBtn">&#62;</a>
       </div>
       <br clear="all" />
-      <img src="/assets/images/newIU/blog_footer.png" />
+      
+      <div class="service-ft-bn">
+          <img src="/assets/images/newIU/blog_footer.png" />
+          <div class="btn-gr">
+                <a class="btn btn-warning btn-design" href="/design-online" >DESIGN NOW</a>
+                <a class="btn btn-info btn-quote" href="" >GET A QUOTE</a>
+          </div>
+          
+      </div>
       <section class="wrap-offer">
         <text>Subscribe for special offers & updates</text>
         <div class="form-group">
