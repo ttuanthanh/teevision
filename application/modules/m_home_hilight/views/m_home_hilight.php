@@ -25,22 +25,26 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     <div class="header-description">Select Your Prefered Option</div>
     <div class="price-item row">
         <div class="item col-md-3 col-lg-3"><img src="/assets/images/newIU/design-shirt-block.png"></div>
-        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options1.png"><span
-                class="type-price">LOW PRICE</span>
-            <span class="price">$5-10<span class="pc">/pc</span></span><span class="unit">20 pcs above</span>
-            <a href="<?php echo '/categories/'.$category[0]->id.'-'.$category[0]->slug ?>" class="inquire btn btn-primary">INQUIRE NOW</a>
+        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options1.png">
+            <!--<span class="type-price">LOW PRICE</span>-->
+            <span class="price">T-shirts<span class="pc"></span></span>
+            <!--<span class="unit">20 pcs above</span>-->
+            <a href="/categories/89-T-Shirts" class="inquire btn btn-primary">INQUIRE NOW</a>
+            <!--<a href="<?php echo '/categories/'.$category[0]->id.'-'.$category[0]->slug ?>" class="inquire btn btn-primary">INQUIRE NOW</a>-->
         </div>
-        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options2.png"><span
-                class="type-price type-price-1">MID PRICE</span>
-            <span class="price price-1 ">$7-12<span class="pc">/pc</span></span><span
-                    class="unit unit-1">15 pcs above</span>
-            <a href="<?php echo '/categories/'.$category[1]->id.'-'.$category[1]->slug ?>" class="inquire btn btn-success">INQUIRE NOW</a>
+        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options2.png">
+            <!--<span class="type-price type-price-1">MID PRICE</span>-->
+            <span class="price price-1 ">Sweatshirts<span class="pc"></span></span>
+            <!--<span class="unit unit-1">15 pcs above</span>-->
+            <a href="/categories/66-ladies-tshirts" class="inquire btn btn-success">INQUIRE NOW</a>
+            <!--<a href="<?php echo '/categories/'.$category[1]->id.'-'.$category[1]->slug ?>" class="inquire btn btn-success">INQUIRE NOW</a>-->
         </div>
-        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options3.png"><span
-                class="type-price type-price-2">BEST PRICE</span>
-            <span class="price price-2">$8-15<span class="pc">/pc</span></span><span
-                    class="unit unit-2">10 pcs above</span>
-            <a href="<?php echo '/categories/'.$category[2]->id.'-'.$category[2]->slug ?>" class="inquire btn btn-warning">INQUIRE NOW</a>
+        <div class="item col-md-3 col-lg-3"><img class="full" src="/assets/images/newIU/options3.png">
+            <!--<span class="type-price type-price-2">BEST PRICE</span>-->
+            <span class="price price-2">Others<span class="pc"></span></span>
+            <!--<span class="unit unit-2">10 pcs above</span>-->
+            <a href="/categories/63-Ladies" class="inquire btn btn-warning">INQUIRE NOW</a>
+            <!--<a href="<?php echo '/categories/'.$category[2]->id.'-'.$category[2]->slug ?>" class="inquire btn btn-warning">INQUIRE NOW</a>-->
         </div>
     </div>
     </div>
