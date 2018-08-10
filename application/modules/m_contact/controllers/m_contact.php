@@ -32,8 +32,10 @@ class M_Contact extends MY_Controller{
 			{
 				$this->form_validation->set_rules('subject', lang('subject'), 'trim|required|min_length[2]|max_length[200]');
 				$this->form_validation->set_rules('email', lang('email'), 'trim|required|valid_email');
-				
-				if ($this->form_validation->run() == TRUE)
+                $this->form_validation->set_rules('g-recaptcha-response','Captcha','callback_recaptcha');
+
+
+                if ($this->form_validation->run() == TRUE)
 				{
 					$name = $this->input->post('name');
 					$subject = $this->input->post('subject');
@@ -96,4 +98,38 @@ class M_Contact extends MY_Controller{
 			$this->load->view('m_contact', $this->data);
 		}
 	}
+
+    public function recaptcha($str='')
+    {
+        $google_url="https://www.google.com/recaptcha/api/siteverify";
+        $secret='6LeJS2kUAAAAAD8TdVePVp7WYTQQinOcAri450aL';
+        $ip=$_SERVER['REMOTE_ADDR'];
+        $url=$google_url."?secret=".$secret."&response=".$str."&remoteip=".$ip;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16");
+
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+        $res = curl_exec($curl);
+        if ($res === false) {
+            throw new Exception(curl_error($curl), curl_errno($curl));
+        }
+
+        curl_close($curl);
+        $res= json_decode($res, true);
+        //reCaptcha success check
+        if($res['success'])
+        {
+            return TRUE;
+        }
+        else
+        {
+            $this->form_validation->set_message('recaptcha', 'The reCAPTCHA field is telling me that you are a robot. Shall we give it another try?');
+            return FALSE;
+        }
+    }
 }
