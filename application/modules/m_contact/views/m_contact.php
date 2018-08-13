@@ -11,9 +11,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 ?>
 <script src="<?php echo base_url('assets/plugins/validate/validate.js'); ?>" type="text/javascript"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <?php echo $css; ?>
 
-<?php 
+<?php
 	echo '<h3>'.$contact->title.'</h3>';
 ?>
 
@@ -104,7 +105,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		<label><?php echo lang('contact_message_title');?></label>
 		<textarea name="message" class="form-control" rows="8" ><?php if(isset($data['message'])) echo $data['message']; ?></textarea>
 	</div>
-	
+    <div class="g-recaptcha" data-sitekey="6LeJS2kUAAAAAGLwcXRNkb7nurfsCbVvexi9IWLX"></div>
 	<div class="form-group">
 		<button class="btn btn-primary" type="submit"><?php echo lang('send');?></button>
 	</div>
